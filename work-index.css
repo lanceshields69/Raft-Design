@@ -1,28 +1,38 @@
-/* Work index page (/work/, /ja/work/) — shared EN + JA. Not loaded elsewhere. */
+/* Projects index page (/projects/, /ja/projects/) — shared EN + JA. Also
+   reused by journal.css for the Journal index hero (.work-hero /
+   .work-hero-title / .work-hero-intro) and by tools.css's Tools page,
+   which mirrors .work-hero-title's spec independently rather than
+   sharing this file.
+
+   Tokenized against Figma node 141:607 ("Work" — legacy name, matches
+   current /projects/ page). Every value here either already matched an
+   existing token exactly or corrected to one exactly — no new tokens
+   needed. See the session's audit notes for corrections and the one
+   flagged conflict (hero title tracking). */
 
 .work-hero {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: var(--space-sm);
   width: 100%;
-  padding: 100px clamp(20px, 8vw, 96px);
+  padding: 120px clamp(20px, 8vw, var(--space-huge)); /* vertical corrected 100px -> 120px per Figma; no scale match, left as literal */
   text-align: center;
 }
 
 .work-hero-title {
-  font-size: 72px;
-  font-weight: 900;
-  letter-spacing: -2px;
+  font-size: var(--font-size-display);
+  font-weight: var(--weight-black);
+  letter-spacing: -2px; /* FLAGGED: Figma binds this to a variable also named "tracking-eyebrow" but valued -1px here — conflicts with both this file's established -2px (also used by tools.css's hero title independently) and the unrelated small-label --tracking-eyebrow token (0.52px). Left unchanged pending a decision; likely a mislabeled/stale Figma binding rather than a real correction. */
   text-transform: uppercase;
   line-height: 1;
   color: var(--text-accent);
 }
 
 .work-hero-intro {
-  font-size: 16px;
-  line-height: 24px;
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-body);
   max-width: 559px;
   color: var(--text-primary);
 }
@@ -31,14 +41,14 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-bottom: 96px;
+  padding-bottom: var(--space-huge);
 }
 
 .work-row {
   display: flex;
-  gap: 76px;
+  gap: var(--space-xxxl); /* corrected 76px -> 60px per Figma */
   width: 100%;
-  padding: 64px clamp(20px, 6vw, 60px) 24px;
+  padding: var(--space-xxl) clamp(20px, 6vw, var(--space-xxxl)) var(--space-lg); /* top corrected 64px -> 48px per Figma */
 }
 
 .work-row:first-child {
@@ -48,7 +58,7 @@
 .work-card {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--space-md);
   flex: 1 0 0;
   min-width: 0;
   text-decoration: none;
@@ -64,16 +74,17 @@
 }
 
 .work-card-title {
-  font-size: 28px;
-  font-weight: 900;
-  line-height: 36px;
+  font-size: var(--font-size-heading-2);
+  font-weight: var(--weight-black);
+  line-height: var(--line-height-heading-large);
+  letter-spacing: 0;
   color: var(--text-primary);
 }
 
 @media (max-width: 1024px) {
   .work-row {
     flex-direction: column;
-    gap: 32px;
+    gap: var(--space-xl);
   }
 
   .work-hero-title {

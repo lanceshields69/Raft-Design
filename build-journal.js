@@ -50,17 +50,20 @@ const NAV_ITEMS = {
 };
 const JOURNAL_LABEL = { en: 'Journal', ja: 'Journal' };
 const CONTACT_LABEL = { en: 'Contact', ja: 'Contact' };
+const TOOLS_LABEL = { en: 'AI Tools', ja: 'AI Tools' };
 
 // langSwitch: { activeLabel, otherHref, otherHreflang, otherTarget, otherRel }
 function nav(lang, imagesPath, journalHref, langSwitch) {
   const items = NAV_ITEMS[lang];
   const homeHref = lang === 'ja' ? '/ja/' : '/';
   const anchorPrefix = lang === 'ja' ? '/ja/#' : '/#';
+  const toolsHref = lang === 'ja' ? '/ja/tools/' : '/tools/';
 
   const linkList = (cls) => items.map(([id, label]) =>
     `      <a href="${anchorPrefix}${id}" class="${cls}">${label}</a>`).join('\n') +
     `\n      <a href="${journalHref}" class="${cls}">${JOURNAL_LABEL[lang]}</a>` +
-    `\n      <a href="${anchorPrefix}contact" class="${cls}">${CONTACT_LABEL[lang]}</a>`;
+    `\n      <a href="${anchorPrefix}contact" class="${cls}">${CONTACT_LABEL[lang]}</a>` +
+    `\n      <a href="${toolsHref}" class="${cls}">${TOOLS_LABEL[lang]}</a>`;
 
   const langBlock = (extra) => {
     const otherAttrs = [
@@ -254,7 +257,7 @@ function fontLink(lang) {
   const jpWeights = lang === 'ja' ? '400;500;600;900' : '900';
   return `  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200;14..32,300;14..32,400;14..32,500;14..32,900&family=Noto+Sans+JP:wght@${jpWeights}&family=Lora:ital,wght@0,400;1,400&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">`;
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200;14..32,300;14..32,400;14..32,500;14..32,900&family=Noto+Sans+JP:wght@${jpWeights}&family=Fraunces:ital,opsz,SOFT,WONK,wght@0,9..144,0,1,600&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">`;
 }
 
 function esc(s) {

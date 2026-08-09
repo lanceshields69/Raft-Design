@@ -2,7 +2,16 @@
    (/ja/journal/[slug]/), and the homepage Journal carousel section
    (index.html, ja/index.html). Shared EN + JA.
    Reuses .work-hero / .work-hero-title / .work-hero-intro (work-index.css)
-   for the index hero, and .text-link (styles.css) for arrow links. */
+   for the index hero, and .text-link (styles.css) for arrow links.
+
+   Tokenized against Figma nodes 232:4846 (Journal index) and 231:3476
+   (Article template) — see the session's token-audit summary for the
+   full match/propose/flag breakdown. Only one new styles.css token came
+   out of this pass, --line-height-heading-large (36px) — it's reused
+   across two selectors here and confirmed identically in both Figma
+   files. Everything else that didn't fit the existing scale and isn't
+   reused elsewhere was corrected to its Figma-confirmed value but left
+   as a plain literal rather than minted into a new one-off token. */
 
 /* ---- Journal index: card grid ---- */
 
@@ -10,20 +19,20 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-bottom: 96px;
+  padding-bottom: var(--space-huge);
 }
 
 .journal-row {
   display: flex;
-  gap: 60px;
+  gap: var(--space-xxxl);
   width: 100%;
-  padding: 24px clamp(20px, 6vw, 60px) 48px;
+  padding: var(--space-lg) clamp(20px, 6vw, var(--space-xxxl)) var(--space-xxl);
 }
 
 .journal-card {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--space-md);
   flex: 0 1 calc(50% - 30px);
   min-width: 0;
   text-decoration: none;
@@ -39,22 +48,24 @@
 }
 
 .journal-card-title {
-  font-size: 28px;
-  font-weight: 900;
-  line-height: 36px;
+  font-size: var(--font-size-heading-2);
+  font-weight: var(--weight-black);
+  line-height: var(--line-height-heading-large); /* Line Height/heading-height-large */
+  letter-spacing: 0; /* Letter Spacing/tracking-heading, confirmed 0 in both Figma files; one-off value, not tokenized */
   color: var(--text-primary);
 }
 
 .journal-card-excerpt {
-  font-size: 16px;
-  line-height: 24px;
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-body);
   color: var(--text-primary);
 }
 
 .journal-card-link {
-  margin-top: 8px;
-  font-size: 16px;
-  font-weight: 600;
+  margin-top: var(--space-sm);
+  font-size: var(--font-size-body-md);
+  font-weight: var(--weight-semibold);
+  line-height: var(--line-height-body);
   color: var(--text-primary);
 }
 
@@ -66,7 +77,7 @@
 @media (max-width: 1024px) {
   .journal-row {
     flex-direction: column;
-    gap: 32px;
+    gap: var(--space-xl);
   }
 
   .journal-card {
@@ -81,7 +92,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding-bottom: 64px;
+  padding-bottom: 64px; /* no scale match (closest --space-xxxl is 4px off); Figma leaves this unbound too, no drift */
 }
 
 /* When a StatBar follows, the hero should be flush with the image —
@@ -94,16 +105,16 @@
   display: flex;
   flex-direction: column;
   width: min(830px, calc(100% - 40px));
-  padding: 80px 0 48px;
+  padding: 80px 0 var(--space-xxl); /* 80px unbound in Figma too (pt-[80px]), no drift */
 }
 
 .article-meta {
   display: flex;
   align-items: center;
-  gap: 16px;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
+  gap: var(--space-md);
+  font-weight: var(--weight-bold);
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-body);
   color: var(--text-muted);
 }
 
@@ -114,20 +125,20 @@
 }
 
 .article-title {
-  padding-top: 48px;
+  padding-top: var(--space-xxl);
   max-width: 900px;
-  font-size: 48px;
-  font-weight: 900;
-  line-height: 1.33;
+  font-size: 48px; /* Size/display-small; one-off, not tokenized */
+  font-weight: var(--weight-black);
+  line-height: 60px; /* Line Height/heading-height-ja; corrected from 1.33 ratio, one-off, not tokenized */
   color: var(--text-primary);
 }
 
 .article-subhead {
-  padding-top: 32px;
+  padding-top: var(--space-xl);
   max-width: 908px;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1.375;
+  font-size: var(--font-size-heading-3); /* corrected 20px -> 24px per Figma Size/body-x-large; reuses heading-3's exact value */
+  font-weight: var(--weight-medium);
+  line-height: var(--line-height-heading); /* corrected 1.375 ratio -> confirmed 28px per Figma */
   color: var(--text-muted);
 }
 
@@ -153,23 +164,23 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 64px;
+  margin-bottom: 64px; /* no direct Figma binding found for this specific margin; value has no exact scale match either, left as-is */
 }
 
 .stat-bar-inner {
   display: flex;
   width: 100%;
   max-width: 1200px;
-  padding: 48px clamp(20px, 5vw, 60px);
-  gap: 60px;
+  padding: var(--space-xxl) clamp(20px, 5vw, var(--space-xxxl));
+  gap: var(--space-xxxl);
 }
 
 .stat-bar-item {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding-left: 60px;
+  gap: var(--space-6);
+  padding-left: var(--space-xxxl);
   border-left: 1px solid var(--border-rule);
 }
 
@@ -179,13 +190,28 @@
 }
 
 .stat-bar-value {
-  font-family: 'Lora', serif;
-  font-size: 40px;
-  letter-spacing: -0.4px;
+  /* Figma's "Stats/Small" style (article template, node 251:7124/7129/7134)
+     confirms Fraunces SemiBold, not Lora — corrected. Mirrors .emphasis's
+     existing Fraunces variation-settings convention (styles.css). The
+     Google Fonts <link> across all journal pages was switched from Lora
+     to Fraunces (upright, weight 600) to match. */
+  font-family: 'Fraunces', serif;
+  font-weight: var(--weight-semibold);
+  font-variation-settings: 'SOFT' 0, 'WONK' 1;
+  font-size: var(--font-size-heading-1); /* corrected 40px -> 36px per Figma Size/heading-1 */
+  line-height: var(--line-height-heading-large); /* was previously unset */
+  letter-spacing: -0.4px; /* Stats/Small letterSpacing; one-off, not tokenized */
   color: var(--text-accent);
 }
 
 .stat-bar-label {
+  /* FLAGGED, not touched: this uppercase/eyebrow treatment doesn't match
+     what's actually in the article-template Figma file — the real stat
+     descriptions there ("ナレッジワーカーの85%がAIを使用" etc.) are plain
+     sentence-case Inter Semibold body-medium text in --text-muted, no
+     uppercase, no eyebrow tracking. This class may be legacy drift from
+     a different (homepage stats) component. See summary — needs a
+     product decision before changing font-family/text-transform/tracking. */
   font-family: 'Noto Sans JP', sans-serif;
   font-weight: 600;
   font-size: 16px;
@@ -197,13 +223,13 @@
 @media (max-width: 768px) {
   .stat-bar-inner {
     flex-direction: column;
-    gap: 24px;
+    gap: var(--space-lg);
   }
 
   .stat-bar-item {
     padding-left: 0;
     border-left: none;
-    padding-top: 24px;
+    padding-top: var(--space-lg);
     border-top: 1px solid var(--border-rule);
   }
 
@@ -226,32 +252,37 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 0 clamp(20px, 5vw, 60px) 96px;
+  padding: 0 clamp(20px, 5vw, var(--space-xxxl)) var(--space-huge);
 }
 
 .article-section {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: var(--space-lg);
   width: 830px;
   max-width: 100%;
-  padding-bottom: 48px;
+  padding-bottom: var(--space-xxl);
 }
 
 .article-section--last {
-  padding-bottom: 60px;
+  padding-bottom: var(--space-xxxl);
 }
 
 .article-h2 {
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 1.3;
+  font-size: var(--font-size-heading-2);
+  font-weight: var(--weight-bold);
+  line-height: 40px; /* Line Height/heading-height-xlarge; corrected from 1.3 ratio, one-off, not tokenized */
+  letter-spacing: 0; /* Letter Spacing/tracking-heading, confirmed 0 in both Figma files; one-off value, not tokenized */
   color: var(--text-primary);
 }
 
 .article-p {
-  font-size: 20px;
-  line-height: 32px;
+  /* Corrected 20px/32px -> 16px/24px: confirmed across every paragraph
+     instance in the article-template Figma pull (Size/body-medium +
+     Line Height/body-height, bound consistently, not a one-off). This
+     is the largest visual change in this pass — flagged in summary. */
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-body);
   color: var(--text-primary);
 }
 
@@ -267,17 +298,27 @@
 }
 
 .article-h3 {
+  /* FLAGGED: no H3-level heading appeared anywhere in either Figma pull
+     (only Heading 2 sections were present in the fetched article
+     content) — font-size/line-height left as-is, no source of truth
+     to correct against. Weight (700) still tokenized since it matches
+     --weight-bold regardless of the size question. */
   font-size: 22px;
-  font-weight: 700;
+  font-weight: var(--weight-bold);
   line-height: 1.3;
   color: var(--text-primary);
 }
 
 .article-list {
+  /* FLAGGED: no list element appeared in either Figma pull, so these
+     20px/32px values aren't directly confirmed. They match the OLD
+     (now-corrected) .article-p values exactly, which is circumstantial
+     evidence they should probably become 16px/24px too for consistency
+     — but left as-is pending confirmation rather than guessing. */
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding-left: 24px;
+  gap: var(--space-sm);
+  padding-left: var(--space-lg);
   font-size: 20px;
   line-height: 32px;
   color: var(--text-primary);
@@ -288,16 +329,19 @@
 }
 
 .article-author-card {
-  padding: 24px;
+  padding: var(--space-lg);
   border: 1px solid var(--border-rule);
   width: 830px;
   max-width: 100%;
 }
 
-/* Mode A: no citations — unchanged single-row photo + bio layout. */
+/* Mode A: no citations — unchanged single-row photo + bio layout.
+   FLAGGED: the article-template node fetched this session used Mode B
+   (citations present), so Mode A's classes below (avatar, eyebrow) have
+   no direct confirmation from this pull — left untouched. */
 .article-author-row {
   display: flex;
-  gap: 24px;
+  gap: var(--space-lg);
 }
 
 .article-author-avatar {
@@ -310,7 +354,7 @@
 .article-author-body {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-sm);
   flex: 1 1 0;
   min-width: 0;
 }
@@ -321,19 +365,22 @@
 }
 
 .article-author-name {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text-muted);
+  /* Color corrected: Figma shows this name in --text-primary (white),
+     not --text-muted — confirmed on the Mode B author-col node. */
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--weight-bold);
+  line-height: var(--line-height-body); /* added — was previously unset */
+  color: var(--text-primary);
 }
 
 .article-author-bio {
-  font-size: 16px;
-  line-height: 24px;
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-body);
   color: var(--text-primary);
 }
 
 .article-author-link {
-  font-size: 16px;
+  font-size: var(--font-size-body-md);
   color: var(--text-primary);
 }
 
@@ -355,16 +402,22 @@
    room for the citations column). */
 .article-extras-row {
   display: flex;
-  gap: 32px;
+  gap: var(--space-xl);
   width: 100%;
 }
 
 .article-eyebrow {
-  font-size: 13px;
-  font-weight: 900;
-  letter-spacing: 0.52px;
+  /* letter-spacing FLAGGED, not changed: the article-template Figma file
+     (231:3476) binds this to "Letter Spacing/tracking-section-title" = 1px,
+     which conflicts with the already-established sitewide --tracking-eyebrow
+     (0.52px) used by .section-label / .journal-carousel-badge elsewhere.
+     Kept on the existing, already-confirmed-live token rather than
+     silently switching to the article file's value — needs a decision. */
+  font-size: var(--font-size-eyebrow);
+  font-weight: var(--weight-black);
+  letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  line-height: 0.86;
+  line-height: var(--line-height-eyebrow);
   color: var(--text-muted);
 }
 
@@ -373,20 +426,20 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--space-md);
 }
 
 .article-citations-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--space-12);
 }
 
 .article-citation-item {
   padding-left: 13px;
   border-left: 1px solid var(--border-rule);
-  font-size: 16px;
-  line-height: 24px;
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-body);
   color: var(--text-primary);
 }
 
@@ -395,7 +448,7 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--space-md);
 }
 
 /* ---- Article: prev/next nav ---- */
@@ -407,15 +460,16 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 32px clamp(20px, 5vw, 60px);
-  margin-bottom: 48px;
+  padding: var(--space-xl) clamp(20px, 5vw, var(--space-xxxl));
+  margin-bottom: var(--space-xxl);
 }
 
 .article-nav-link {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 16px;
+  gap: var(--space-sm);
+  font-size: var(--font-size-body-md);
+  line-height: 32px; /* confirmed leading-[32px] on this exact element; one-off, not tokenized */
   color: var(--text-muted);
   text-decoration: none;
   transition: color 0.2s;
@@ -444,10 +498,16 @@
   }
 }
 
-/* ---- Homepage: Journal carousel section ---- */
+/* ---- Homepage: Journal carousel section ----
+   FLAGGED: neither Figma URL given this session covers the homepage
+   carousel specifically (232:4846 is the Journal index page, 231:3476
+   is the article template) — the values below are audited against the
+   existing token set only (exact-match rule), not against fresh Figma
+   data. Anything that doesn't exactly match an existing token is left
+   as a literal rather than guessed. */
 
 .journal-carousel-section {
-  padding: 0 15px 50px;
+  padding: 0 15px 50px; /* close to --space-md/--space-xxl but not exact; no Figma source this session, left as literal */
   max-width: 1920px;
   border-top: 1px solid var(--border-rule);
 }
@@ -468,7 +528,7 @@
   font-weight: var(--weight-black);
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
-  padding: 5px 20px;
+  padding: 5px 20px; /* matches the sitewide .section-label convention (styles.css) — also left as an intentional untokenized exception there */
   border-radius: var(--radius-sm);
 }
 
@@ -523,12 +583,12 @@
 
 .journal-carousel-track {
   display: flex;
-  gap: 20px;
+  gap: 20px; /* between --space-md(16) and --space-lg(24), no exact match; no Figma source this session */
   width: 100%;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 8px;
+  padding-bottom: var(--space-sm);
   cursor: grab;
   scrollbar-width: none;
 }
@@ -580,17 +640,19 @@
 .journal-carousel-card-body {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 10px; /* between --space-sm(8) and --space-md(16), no exact match; no Figma source this session */
   padding: var(--space-lg);
 }
 
 .journal-carousel-card-title {
+  /* FLAGGED: no Figma source this session (see section note above) */
   font-size: 18px;
   line-height: 26px;
   color: var(--text-primary);
 }
 
 .journal-carousel-card-link {
+  /* FLAGGED: no Figma source this session (see section note above) */
   font-size: 14px;
   color: var(--text-accent);
 }

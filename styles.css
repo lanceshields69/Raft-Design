@@ -38,6 +38,7 @@
   --line-height-label:   20px;  /* Line Height/label-height — added w/ Tools page: StatusBadge text */
   --line-height-body:    24px;  /* Line Height/body-height */
   --line-height-heading: 28px;  /* Line Height/heading-height */
+  --line-height-heading-large: 36px;  /* Line Height/heading-height-large — reused across journal-card-title (232:4846) and stat-bar-value (231:3476), confirmed identically in both Figma files */
   --tracking-eyebrow:    0.52px;
 
   --weight-regular:  400;

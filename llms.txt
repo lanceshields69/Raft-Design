@@ -11,15 +11,29 @@
 - [Home (English)](https://raftdesign.studio/): Studio thesis, practice areas, and origin story.
 - [Home (Japanese)](https://raftdesign.studio/ja/): 日本語版ホームページ。
 
-## Work
-- [Work index (English)](https://raftdesign.studio/work/)
-- [Work index (Japanese)](https://raftdesign.studio/ja/work/)
-- [LegalOn — Global AI Brand Platform](https://raftdesign.studio/work/legalon/) / [日本語](https://raftdesign.studio/ja/work/legalon/)
-- [Adobe Express Photos — 0-to-1 AI Product Design](https://raftdesign.studio/work/adobe-express-photos/) / [日本語](https://raftdesign.studio/ja/work/adobe-express-photos/)
-- [Walmart — AI-First Shopping Experience](https://raftdesign.studio/work/walmart/) / [日本語](https://raftdesign.studio/ja/work/walmart/)
-- [Adobe Express Enterprise — Embed SDK + Plugin Ecosystem](https://raftdesign.studio/work/adobe-express-enterprise/) / [日本語](https://raftdesign.studio/ja/work/adobe-express-enterprise/)
-- [Modere — Japanese Market Platform Redesign](https://raftdesign.studio/work/modere/) / [日本語](https://raftdesign.studio/ja/work/modere/)
-- [Modular Suite for XD — Design Collaboration Tools](https://raftdesign.studio/work/modular-suite-xd/) / [日本語](https://raftdesign.studio/ja/work/modular-suite-xd/)
+## Projects
+- [Projects index (English)](https://raftdesign.studio/projects/)
+- [Projects index (Japanese)](https://raftdesign.studio/ja/projects/)
+- [LegalOn — Global AI Brand Platform](https://raftdesign.studio/projects/legalon/) / [日本語](https://raftdesign.studio/ja/projects/legalon/)
+- [Adobe Express Photos — 0-to-1 AI Product Design](https://raftdesign.studio/projects/adobe-express-photos/) / [日本語](https://raftdesign.studio/ja/projects/adobe-express-photos/)
+- [Walmart — AI-First Shopping Experience](https://raftdesign.studio/projects/walmart/) / [日本語](https://raftdesign.studio/ja/projects/walmart/)
+- [Adobe Express Enterprise — Embed SDK + Plugin Ecosystem](https://raftdesign.studio/projects/adobe-express-enterprise/) / [日本語](https://raftdesign.studio/ja/projects/adobe-express-enterprise/)
+- [Modere — Japanese Market Platform Redesign](https://raftdesign.studio/projects/modere/) / [日本語](https://raftdesign.studio/ja/projects/modere/)
+- [Modular Suite for XD — Design Collaboration Tools](https://raftdesign.studio/projects/modular-suite-xd/) / [日本語](https://raftdesign.studio/ja/projects/modular-suite-xd/)
+
+## Journal
+- [Journal index (English)](https://raftdesign.studio/journal/)
+- [Journal index (Japanese)](https://raftdesign.studio/ja/journal/)
+- [Stop Adding AI to the Design Process. Re-engineer It.](https://raftdesign.studio/ja/journal/stop-adding-ai-to-the-design-process/) — 「AIをデザインプロセスに追加するのはやめよう。再設計しよう。」/ [English (Substack)](https://upstreamjournal.substack.com/p/stop-adding-ai-to-the-design-process)
+- [Why I Built a Raft, Not a Ship](https://raftdesign.studio/ja/journal/why-i-built-a-raft-not-a-ship/) — 「船ではなく、いかだをつくった理由」/ [English (Substack)](https://upstreamjournal.substack.com/p/why-i-built-a-raft-not-a-ship)
+- [The AI-Native Designer Was Only Phase One](https://raftdesign.studio/ja/journal/ai-native-designer-phase-one/) — 「AIネイティブ・デザイナーは、フェーズ1にすぎなかった」/ [English (Substack)](https://upstreamjournal.substack.com/p/the-ai-native-designer-was-only-phase)
+- [How I Use AI](https://raftdesign.studio/ja/journal/how-i-use-ai/) — 「私のAIの使い方」/ [English (Substack)](https://upstreamjournal.substack.com/p/how-i-use-ai)
+- [Designing for Awareness: How Multimodal AI Is Reshaping the Future of Interaction](https://raftdesign.studio/ja/journal/designing-for-awareness-how-multimodal/) — 「状況認識のためのデザイン：マルチモーダルAIがインタラクションの未来を変える」/ [English (Substack)](https://upstreamjournal.substack.com/p/designing-for-awareness-how-multimodal)
+- [Stop Treating AI Like Cheating on Your Homework: A Playbook for AI-Native Design Teams](https://raftdesign.studio/ja/journal/stop-treating-ai-like-cheating-on-your-homework/) — 「AIを宿題のカンニングのように扱うのはやめよう：AIネイティブなデザインチームのためのプレイブック」/ [English (Substack)](https://upstreamjournal.substack.com/p/stop-treating-ai-like-cheating-on)
+
+## AI Tools
+- [AI Tools (English)](https://raftdesign.studio/tools/): A reviewed, regularly-updated collection of the AI tools Raft Design actually uses for reasoning, design, and build — including ones dropped and why.
+- [AI Tools (Japanese)](https://raftdesign.studio/ja/tools/): 日本語版AIツールページ。
 
 ## Contact
 hello@raftdesign.studio

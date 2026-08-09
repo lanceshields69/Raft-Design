@@ -25,17 +25,23 @@
   /* Type scale — Figma "Sections" variable collection (Size/*, Line Height/*).
      EN sizes only; ja.css layers JP-specific overrides (line-height, tracking)
      on top of these the same way it already does for .emphasis/.stat-number. */
-  --font-size-eyebrow:   13px;  /* Heading/EN/H2 — section-title pill, journal badge */
-  --font-size-body-md:   16px;  /* Size/body-medium — default body copy */
-  --font-size-body-lg:   20px;  /* Size/body-large — CTA buttons, intro paragraphs */
-  --font-size-heading-2: 28px;  /* Size/heading-2 — card/FAQ headings */
-  --font-size-heading-1: 36px;  /* Size/heading-1 — section display headings */
+  --font-size-eyebrow:     13px;  /* Heading/EN/H2 — section-title pill, journal badge */
+  --font-size-label-small: 11px;  /* Size/label-small — added w/ Tools page: CategoryTag, Verdict eyebrow */
+  --font-size-label-medium:12px;  /* Size/label-medium — added w/ Tools page: StatusBadge text */
+  --font-size-body-md:     16px;  /* Size/body-medium — default body copy */
+  --font-size-body-lg:     20px;  /* Size/body-large — CTA buttons, intro paragraphs */
+  --font-size-heading-3:   24px;  /* Size/heading-3 — added w/ Tools page: ToolCard title */
+  --font-size-heading-2:   28px;  /* Size/heading-2 — card/FAQ headings */
+  --font-size-heading-1:   36px;  /* Size/heading-1 — section display headings */
+  --font-size-display:     72px;  /* added w/ Tools page: "AI TOOLS" hero heading (unbound in Figma, no Size/* token) */
   --line-height-eyebrow: 0.86;
+  --line-height-label:   20px;  /* Line Height/label-height — added w/ Tools page: StatusBadge text */
   --line-height-body:    24px;  /* Line Height/body-height */
   --line-height-heading: 28px;  /* Line Height/heading-height */
   --tracking-eyebrow:    0.52px;
 
   --weight-regular:  400;
+  --weight-medium:   500;  /* added w/ Tools page: StatusBadge text (Label/EN/Small) */
   --weight-semibold: 600;
   --weight-bold:     700;
   --weight-black:    900;
@@ -43,7 +49,9 @@
   /* Spacing scale — Figma "layout/gap-*" and "padding/container-*" */
   --space-xs:   4px;
   --space-sm:   8px;
+  --space-6:   6px;  /* layout/gap-xs — added w/ Tools page: StatusBadge dot-to-label gap, doesn't fit the xs/sm scale */
   --space-md:  16px;
+  --space-12:  12px;  /* padding/container-xs — added w/ Tools page: badge/tag horizontal padding */
   --space-lg:  24px;
   --space-xl:  32px;
   --space-xxl: 48px;

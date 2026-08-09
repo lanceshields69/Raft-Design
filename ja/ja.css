@@ -136,3 +136,50 @@ body {
   font-size: 1em;
   letter-spacing: 0;
 }
+
+/* 5. Tools page (/ja/tools/) — classes live in tools.css, not styles.css,
+   so they get their own JP treatment here rather than joining the lists
+   above. .tools-hero-title stays literal English ("AI Tools", like
+   .work-hero-title's "Journal"/"Projects"), so it's deliberately left out
+   of the "open the leading" / line-height groups below — same reasoning
+   as .work-hero-title not being in rule 2. */
+.tool-card-title,
+.graveyard-name {
+  line-height: 1.5;
+}
+
+.tools-hero-intro,
+.tool-card-summary,
+.tool-card-verdict-text,
+.community-strip-text,
+.tools-section-sub,
+.graveyard-note,
+.tools-footnote p {
+  line-height: 1.9;
+}
+
+.tools-hero-title,
+.tools-hero-intro,
+.community-strip-text,
+.tools-section-sub,
+.tool-card-title,
+.tool-card-tag,
+.tool-card-summary,
+.tool-card-verdict-label,
+.tool-card-verdict-text,
+.status-badge,
+.graveyard-name,
+.graveyard-note,
+.tools-footnote p {
+  font-family: 'Noto Sans JP', sans-serif;
+  overflow-wrap: anywhere;
+}
+
+/* Unlike Approach/Expertise/Studio, this page's section-label pills
+   ("稼働中", "グレイブヤード") are actual Japanese content, not Roman
+   labels kept in English — so the sitewide .section-label rule above
+   (which forces Inter, no JP fallback in its font stack) needs undoing
+   here specifically. */
+.tools-section-head .section-label {
+  font-family: 'Noto Sans JP', sans-serif;
+}

@@ -407,6 +407,14 @@
   .graveyard-row-head {
     flex: 0 0 auto;
   }
+
+  .graveyard-note {
+    /* .graveyard-note's flex-basis: 320px (desktop) becomes a min-height
+       once the row switches to flex-direction: column here — without
+       this reset it forces the text box to 320px tall regardless of
+       actual content, leaving a huge gap before the next row. */
+    flex: 1 1 auto;
+  }
 }
 
 @media (max-width: 480px) {

@@ -129,16 +129,15 @@
 }
 
 /* Role / metric labels — Figma uses a heavier, smaller label than the
-   base sidebar version. FLAGGED, not changed: letter-spacing.
-   Figma binds this to "tracking-section-title" = 1px here (confirmed
-   again on this pull — same conflict already flagged in the journal.css
-   and work-index.css passes against the established --tracking-eyebrow
-   token, 0.52px, which every other eyebrow-style label sitewide already
-   relies on). Kept on 0.52px pending a decision. */
+   base sidebar version. RESOLVED: the letter-spacing conflict flagged
+   in the journal.css/work-index.css/project.css passes turned out to
+   be a real second token, not drift — MY ROLE has no pill background
+   (unlike .section-label), so it belongs on --tracking-section-title
+   (1px), not --tracking-eyebrow (0.52px). */
 .project-page .project-section-label {
   font-size: 13px;
   font-weight: 900;
-  letter-spacing: 0.52px;
+  letter-spacing: var(--tracking-section-title);
   line-height: 0.86;
 }
 

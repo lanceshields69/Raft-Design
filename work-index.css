@@ -24,7 +24,7 @@
 .work-hero-title {
   font-size: var(--font-size-display);
   font-weight: var(--weight-black);
-  letter-spacing: -2px; /* FLAGGED: Figma binds this to a variable also named "tracking-eyebrow" but valued -1px here — conflicts with both this file's established -2px (also used by tools.css's hero title independently) and the unrelated small-label --tracking-eyebrow token (0.52px). Left unchanged pending a decision; likely a mislabeled/stale Figma binding rather than a real correction. */
+  letter-spacing: -2px; /* RESOLVED: confirmed correct as -2px, independently matched by tools.css's hero title. Figma's -1px binding on this layer uses a variable also named "tracking-eyebrow" but is unrelated to the real --tracking-eyebrow token — stale/mislabeled on this specific layer, not a real correction. */
   text-transform: uppercase;
   line-height: 1;
   color: var(--text-accent);

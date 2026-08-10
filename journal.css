@@ -205,18 +205,16 @@
 }
 
 .stat-bar-label {
-  /* FLAGGED, not touched: this uppercase/eyebrow treatment doesn't match
-     what's actually in the article-template Figma file — the real stat
-     descriptions there ("ナレッジワーカーの85%がAIを使用" etc.) are plain
-     sentence-case Inter Semibold body-medium text in --text-muted, no
-     uppercase, no eyebrow tracking. This class may be legacy drift from
-     a different (homepage stats) component. See summary — needs a
-     product decision before changing font-family/text-transform/tracking. */
+  /* RESOLVED: matches the article-template Figma file's actual spec —
+     plain sentence-case Inter Semibold body-medium text, no uppercase,
+     no eyebrow tracking. The previous uppercase/eyebrow treatment was
+     legacy drift (likely copied from a different homepage stats
+     component) and broke CJK legibility, since text-transform:uppercase
+     doesn't apply meaningfully to Japanese and was fighting the
+     sentence-case Japanese stat descriptions. */
   font-family: 'Noto Sans JP', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  letter-spacing: 0.52px;
-  text-transform: uppercase;
+  font-weight: var(--weight-semibold);
+  font-size: var(--font-size-body-md);
   color: var(--text-muted);
 }
 
@@ -407,15 +405,14 @@
 }
 
 .article-eyebrow {
-  /* letter-spacing FLAGGED, not changed: the article-template Figma file
-     (231:3476) binds this to "Letter Spacing/tracking-section-title" = 1px,
-     which conflicts with the already-established sitewide --tracking-eyebrow
-     (0.52px) used by .section-label / .journal-carousel-badge elsewhere.
-     Kept on the existing, already-confirmed-live token rather than
-     silently switching to the article file's value — needs a decision. */
+  /* RESOLVED: the letter-spacing conflict flagged against the article
+     template Figma file (231:3476) turned out to be a real second
+     token, not drift — this is a plain field label with no pill
+     background (unlike .section-label), so it belongs on
+     --tracking-section-title (1px), not --tracking-eyebrow (0.52px). */
   font-size: var(--font-size-eyebrow);
   font-weight: var(--weight-black);
-  letter-spacing: var(--tracking-eyebrow);
+  letter-spacing: var(--tracking-section-title);
   text-transform: uppercase;
   line-height: var(--line-height-eyebrow);
   color: var(--text-muted);

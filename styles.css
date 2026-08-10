@@ -40,6 +40,7 @@
   --line-height-heading: 28px;  /* Line Height/heading-height */
   --line-height-heading-large: 36px;  /* Line Height/heading-height-large — reused across journal-card-title (232:4846) and stat-bar-value (231:3476), confirmed identically in both Figma files */
   --tracking-eyebrow:    0.52px;
+  --tracking-section-title: 1px;  /* plain uppercase field labels with no pill background — MY ROLE, PUBLISHED, etc. Distinct from --tracking-eyebrow (0.52px), which is reserved for pill/badge components (.section-label, .tool-card-tag). Confirmed independently in two Figma files: project template (144:1183) and article template (231:3476). */
 
   --weight-regular:  400;
   --weight-medium:   500;  /* added w/ Tools page: StatusBadge text (Label/EN/Small) */
@@ -1901,7 +1902,7 @@ p {
 .project-section-label {
   font-size: 12px;
   font-weight: 500;
-  letter-spacing: 1px;
+  letter-spacing: var(--tracking-section-title);
   color: var(--text-muted);
   margin-bottom: var(--space-sm);
 }
@@ -2022,7 +2023,7 @@ p {
   border: none;
   font-size: 14px;
   font-weight: 500;
-  letter-spacing: 1px;
+  letter-spacing: var(--tracking-section-title);
   color: var(--text-muted);
   cursor: pointer;
   padding: var(--space-sm) 0;

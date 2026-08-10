@@ -1,12 +1,13 @@
-/* Project detail pages (e.g. /work/legalon/) — wide, standalone version
-   of the homepage's project modal. Reuses styles.css's .modal-* classes
-   for layout/theming, but those classes were authored for the modal's
-   narrow card (project-modal is 80vw, capped at 92vh, 8px radius) —
-   .modal-content itself only carries padding, no width/height/overflow
-   constraints of its own, but every override below is still scoped
-   under .project-page so nothing here can ever reach the real modal
-   elsewhere on the site. Do not edit styles.css or rename any modal-*
-   class from this file. */
+/* Project detail pages (/projects/[slug]/, /ja/projects/[slug]/) — wide,
+   standalone pages using the .project-content/.project-title/etc. family
+   defined in styles.css. Those classes used to be prefixed "modal-",
+   inherited from a homepage in-page project modal; that modal was dead
+   code (nothing triggered it — "See Project" links go straight to these
+   pages) and was removed, and the shared classes renamed to "project-"
+   along with it. .project-content itself only carries padding, no
+   width/height/overflow constraints of its own — every override below
+   is still scoped under .project-page. Do not edit styles.css or rename
+   any project-content-family class from this file. */
 
 .project-hero-full {
   width: 100%;
@@ -30,59 +31,79 @@
 
 /* Page container — full viewport width like the homepage, not a
    centered card. Gutters live here (roomier than the homepage's 16px)
-   rather than on .modal-content, so every section below aligns to the
+   rather than on .project-content, so every section below aligns to the
    same left/right edges. */
 .project-page {
   max-width: none;
   margin: 0;
-  padding-left: clamp(20px, 4vw, 60px);
-  padding-right: clamp(20px, 4vw, 60px);
+  padding-left: clamp(20px, 4vw, var(--space-xxxl));
+  padding-right: clamp(20px, 4vw, var(--space-xxxl));
 }
 
-.project-page .modal-content {
+/* Vertical padding corrected 48px/32px -> uniform 60px per Figma
+   (node 144:1183): the title-row container is padded 60px on every
+   side, and since .project-content wraps the title row through the
+   final image before .project-bottombar, this single value also fixes
+   the hero-to-title and last-image-to-bottombar gaps in one place. */
+.project-page .project-content {
   max-width: none;
   width: auto;
   max-height: none;
   overflow: visible;
   border-radius: 0;
-  padding: 48px 0 32px;
+  padding: var(--space-xxxl) 0;
 }
 
-/* Prev/Next bar is a sibling of .modal-content (both direct children of
+/* Prev/Next bar is a sibling of .project-content (both direct children of
    .project-page) with its own fixed 48px horizontal padding in
    styles.css — zero it out so the row aligns to .project-page's own
    gutters instead of adding a second, narrower inset. */
-.project-page .modal-bottombar {
+.project-page .project-bottombar {
   padding-left: 0;
   padding-right: 0;
 }
 
 /* Title/role row — confirm it spans the full (now wide) container
    rather than any inherited narrow width. */
-.project-page .modal-top-row {
+.project-page .project-top-row {
   width: 100%;
 }
 
-/* MY ROLE + metrics column — the modal's 280px sidebar width read too
+/* MY ROLE + metrics column — the base 280px sidebar width read too
    narrow on the full-width page; widened 30% (280 * 1.3 = 364px). Only
-   above the 1024px breakpoint: styles.css switches .modal-right to
-   width:100% once .modal-top-row stacks to a single column, and this
+   above the 1024px breakpoint: styles.css switches .project-right to
+   width:100% once .project-top-row stacks to a single column, and this
    two-class selector's higher specificity would otherwise pin it at
    364px there too, orphaning it at less than full width. */
 @media (min-width: 1025px) {
-  .project-page .modal-right {
+  .project-page .project-right {
     width: 364px;
   }
 }
 
-/* Title block — tightened per Figma (was inheriting the modal's tighter
-   sidebar-card spacing, which read as too loose on a full page). */
-.project-page .modal-title {
-  font-size: 36px;
+/* Title block — font-size 36px already confirmed against Figma in an
+   earlier pass (kept). line-height/letter-spacing added this pass per
+   node 144:1183 (Size/heading-1, Line Height/heading-height-xlarge,
+   tracking-heading). FLAGGED, not changed: margin-bottom — the earlier
+   pass explicitly tightened this to 4px "per Figma", but this pass's
+   pull shows the title+subtitle group with a 16px gap instead. Left
+   at 4px pending a decision, since it was a deliberate prior
+   correction, not obvious drift. */
+.project-page .project-title {
+  font-size: var(--font-size-heading-1);
+  line-height: 40px;
+  letter-spacing: 0;
   margin-bottom: 4px;
 }
 
-.project-page .modal-subtitle {
+.project-page .project-subtitle {
+  /* FLAGGED, not changed: this pass's Figma pull shows one green,
+     Instrument-Sans-Bold, 20px accent line under the title — but
+     .project-tension (below) already matches that spec exactly
+     (confirmed correct in an earlier pass). Unclear whether this
+     Figma frame's line maps to .project-subtitle or .project-tension;
+     left unchanged rather than guessing and risking a regression on
+     projects that use both fields. */
   margin-bottom: 4px;
 }
 
@@ -94,59 +115,108 @@
   margin-bottom: 24px;
 }
 
-/* Description sits inline in .modal-left, right after the title block
+/* Description sits inline in .project-left, right after the title block
    (see index.html) rather than promoted to its own full-width block.
    Readable measure: 88ch (70ch * 1.25) so it reads wider on desktop
-   while still stopping short of edge-to-edge on the full-width page. */
-.project-page .modal-description {
+   while still stopping short of edge-to-edge on the full-width page.
+   font-size/line-height corrected 18px/1.5 -> 16px/24px per Figma
+   (Size/body-medium, Line Height/body-height). */
+.project-page .project-description {
   max-width: 88ch;
   margin-top: 0;
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-body);
 }
 
 /* Role / metric labels — Figma uses a heavier, smaller label than the
-   modal's sidebar version. */
-.project-page .modal-section-label {
+   base sidebar version. FLAGGED, not changed: letter-spacing.
+   Figma binds this to "tracking-section-title" = 1px here (confirmed
+   again on this pull — same conflict already flagged in the journal.css
+   and work-index.css passes against the established --tracking-eyebrow
+   token, 0.52px, which every other eyebrow-style label sitewide already
+   relies on). Kept on 0.52px pending a decision. */
+.project-page .project-section-label {
   font-size: 13px;
   font-weight: 900;
   letter-spacing: 0.52px;
   line-height: 0.86;
 }
 
-/* Challenge/Solution headings are now full descriptive sentences (GEO —
-   self-contained when extracted out of context), not short uppercase
-   labels like MY ROLE, so they take the paragraph's own 16px size below
-   them. line-height loosened from the label's 0.86 since these can wrap
-   to two lines and 0.86 would clip the second line. */
-.project-page .modal-challenge .modal-section-label,
-.project-page .modal-solution .modal-section-label {
+/* Sidebar-only: MY ROLE's gap to the role-text/metrics below it is 24px
+   per Figma (node 144:1207's 26px group gap, close enough to reuse the
+   existing token rather than mint a one-off) — scoped to .project-right
+   only so it doesn't also affect the Challenge/Solution labels below,
+   which need their own smaller gap. */
+.project-page .project-right .project-section-label {
+  margin-bottom: var(--space-lg);
+}
+
+/* FLAGGED, not changed: this pass's Figma pull shows THE CHALLENGE /
+   THE SOLUTION as short 13px uppercase labels (same style as MY ROLE),
+   contradicting the full-sentence treatment below — which itself has
+   an explicit "per Figma" rationale from an earlier pass and likely
+   reflects real, newer site copy the Figma frame hasn't caught up to
+   (this frame also still shows the pre-rebrand nav/logo). Left as-is;
+   flagging in case the Figma file needs updating instead of the code. */
+.project-page .project-challenge .project-section-label,
+.project-page .project-solution .project-section-label {
   font-size: 16px;
   line-height: 1.3;
 }
 
-.project-page .modal-role-text {
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 28px;
-  letter-spacing: -0.44px;
+/* font-size/line-height/letter-spacing corrected per Figma
+   (Size/body-medium, Line Height/body-height, tracking-body: 0). */
+.project-page .project-role-text {
+  font-size: var(--font-size-body-md);
+  font-weight: var(--weight-regular);
+  line-height: var(--line-height-body);
+  letter-spacing: 0;
   max-width: 36ch;
 }
 
-.project-page .modal-metric-value {
-  font-size: 34px;
-  font-weight: 400;
+/* Matches journal.css's .stat-bar-value styling exactly (Fraunces
+   SemiBold, brand green, 36px/36px) per Lance's request — same
+   font-variation-settings convention as .emphasis (styles.css). Needs
+   Fraunces loaded via the page's Google Fonts <link> (added alongside
+   the existing Inter/Noto Sans JP/Playfair Display request). */
+.project-page .project-metric-value {
+  font-family: 'Fraunces', serif;
+  font-weight: var(--weight-semibold);
+  font-variation-settings: 'SOFT' 0, 'WONK' 1;
+  font-size: var(--font-size-heading-1);
+  line-height: var(--line-height-heading-large);
   letter-spacing: 0.4px;
+  color: var(--text-accent);
+  margin-bottom: var(--space-xs);
 }
 
-.project-page .modal-metric-label {
+/* text-transform/color/weight/letter-spacing/line-height corrected per
+   Figma (Body/EN/Small: uppercase, --text-primary not --text-muted,
+   regular weight not 500, 0 tracking not 0.5px, 15px line-height). */
+.project-page .project-metric-label {
   font-size: 13px;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  font-weight: var(--weight-regular);
+  letter-spacing: 0;
+  line-height: 15px;
 }
 
 /* Challenge / Solution — full-width two-column row already (flex, gap
    48px in styles.css); cap each paragraph's own measure so a single
    column doesn't stretch uncomfortably wide on very large viewports. */
-.project-page .modal-challenge p,
-.project-page .modal-solution p {
+.project-page .project-challenge p,
+.project-page .project-solution p {
   max-width: 60ch;
+}
+
+/* padding corrected 40px -> 60px, margin-bottom corrected 40px -> 48px,
+   border-bottom added (Figma shows this section fully bounded by rules
+   top and bottom, not just a top rule) — all per Figma node 144:1219. */
+.project-page .project-challenge-solution {
+  padding: var(--space-xxxl) 0;
+  margin-bottom: var(--space-xxl);
+  border-bottom: 1px solid var(--border-rule);
 }
 
 .project-testimonial {
@@ -166,20 +236,20 @@
 }
 
 /* Image stack — full container width (no max-width of its own to
-   override — .modal-image-grid img was already width:100%), large
+   override — .project-image-grid img was already width:100%), large
    crop per Figma instead of each image's native height. Bug fix:
-   .modal-image-grid img only set width:100% in styles.css, leaving the
+   .project-image-grid img only set width:100% in styles.css, leaving the
    height="…" HTML attribute in effect as a literal pixel height
    (browsers only auto-derive height from the width/height attributes
    when neither is overridden by CSS) — that's what was stretching every
    image. aspect-ratio + object-fit: cover fixes the stretch and matches
    the Figma crop treatment; the border used inside the modal is dropped
    since Figma shows plain edge-to-edge images here. */
-.project-page .modal-image-grid {
+.project-page .project-image-grid {
   gap: 48px;
 }
 
-.project-page .modal-image-grid img {
+.project-page .project-image-grid img {
   width: 100%;
   aspect-ratio: 2000 / 1307;
   object-fit: cover;
@@ -191,7 +261,7 @@
 /* Video — already width:100% / 16:9 (560:315) in styles.css and now
    inherits the wider container automatically; no override needed
    beyond confirming no stray max-width applies here. */
-.project-page .modal-video {
+.project-page .project-video {
   max-width: none;
 }
 

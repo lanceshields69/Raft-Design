@@ -169,7 +169,7 @@
 .raft-chat-messages {
   flex: 1;
   overflow-y: auto;
-  padding: 28px 1px 20px;
+  padding: 28px 11px 20px 1px;
   display: flex;
   flex-direction: column;
   gap: 28px;

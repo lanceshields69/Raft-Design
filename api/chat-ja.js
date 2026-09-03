@@ -100,13 +100,17 @@ function resolveJournal(titles) {
     .filter(Boolean);
 }
 
+// summary is null, not a blank {working_on:'',...} object, on both fallback
+// replies below — see api/chat.js for why (blank objects are truthy and
+// silently overwrite a real accumulated summary in the frontend's
+// `data.summary || state.lastSummary` merge).
 const RATE_LIMIT_REPLY = {
   reply: '多くのご質問をいただいています。しばらくしてからもう一度お試しいただくか、Lanceに直接ご連絡ください。',
   chips: ['Raftは、実際に何をする会社ですか？', '実績を見せてください', '相談したいプロジェクトがあります'],
   cta: true,
   projects: [],
   journal: [],
-  summary: { working_on: '', blocker: '', looking_for: '' },
+  summary: null,
 };
 
 const ERROR_REPLY = {
@@ -115,7 +119,7 @@ const ERROR_REPLY = {
   cta: true,
   projects: [],
   journal: [],
-  summary: { working_on: '', blocker: '', looking_for: '' },
+  summary: null,
 };
 
 let anthropic = null;

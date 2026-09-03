@@ -83,7 +83,11 @@
       reply: opts.networkErrorText || NETWORK_ERROR_TEXT,
       chips: this.openers.slice(0, 3),
       cta: true,
-      summary: { working_on: '', blocker: '', looking_for: '' }
+      // null, not a blank object — a blank object is truthy and would win
+      // over a real accumulated summary in `data.summary || state.lastSummary`
+      // below, silently wiping out prior context whenever a network error
+      // interrupts an otherwise-informative conversation.
+      summary: null
     };
 
     this.state = {

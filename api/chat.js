@@ -102,13 +102,18 @@ function resolveJournal(titles) {
     .filter(Boolean);
 }
 
+// summary is null, not a blank {working_on:'',...} object, on both fallback
+// replies below — the frontend does `data.summary || state.lastSummary` to
+// carry the last real summary forward across turns, and a blank object is
+// truthy, so it would silently overwrite a real accumulated summary with
+// nothing the moment a visitor hit a rate limit or a server error.
 const RATE_LIMIT_REPLY = {
   reply: "Getting a lot of questions right now. Try again in a bit, or reach Lance directly.",
   chips: ['Show me the work', 'What does Raft actually do?', 'I have a project in mind'],
   cta: true,
   projects: [],
   journal: [],
-  summary: { working_on: '', blocker: '', looking_for: '' },
+  summary: null,
 };
 
 const ERROR_REPLY = {
@@ -117,7 +122,7 @@ const ERROR_REPLY = {
   cta: true,
   projects: [],
   journal: [],
-  summary: { working_on: '', blocker: '', looking_for: '' },
+  summary: null,
 };
 
 let anthropic = null;

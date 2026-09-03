@@ -157,7 +157,7 @@
 
     var header = el('div', { class: 'raft-chat-header' });
     var headerId = el('div', { class: 'raft-chat-header-id' });
-    this.avatar = el('img', { class: 'raft-chat-avatar', src: this.avatarSrc, alt: '', width: '25', height: '25' });
+    this.avatar = el('img', { class: 'raft-chat-avatar', src: this.avatarSrc, alt: '', width: '32', height: '32' });
     var label = el('p', { class: 'raft-chat-label' }, 'Ishmael');
     headerId.appendChild(this.avatar);
     headerId.appendChild(label);

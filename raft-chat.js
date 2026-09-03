@@ -59,6 +59,13 @@
     };
     this.timers = [];
     this.nextId = 1;
+    // render() rebuilds the whole message list from scratch on every
+    // setState (including every ~26ms word-reveal tick), so a message's DOM
+    // node is destroyed and recreated many times over its lifetime. Track
+    // which ids have already played their entrance animation so it's only
+    // applied once, on first render — otherwise the fade-in restarts every
+    // tick and the text never reaches full opacity while "typing."
+    this.enteredIds = {};
 
     this.build();
     this.bind();
@@ -263,47 +270,52 @@
     });
 
     this.fetchReply(text, historyBeforeThisTurn).then(function (data) {
+      // The response is already complete when it arrives — this is a
+      // client-side staged reveal over static text, not real token
+      // streaming. Line-by-line (paragraph-by-paragraph) rather than
+      // word-by-word: far fewer re-renders over the reveal's lifetime, and
+      // each line's fade-in is tracked as entered-once (see renderMessage),
+      // so — unlike the old word-by-word version — a line can't get caught
+      // mid-animation and left translucent by an unrelated re-render.
       var full = data.reply || '';
-      var words = full.split(' ');
+      var lines = full.split(/\n{2,}/).filter(function (p) { return p.length; });
+      if (!lines.length) lines = [''];
       var botId = self.nextId++;
 
       self.setState({
         thinking: false,
         messages: self.state.messages.concat({
-          id: botId, isBot: true, text: words[0] || '', hasCta: false, projects: [], journal: []
+          id: botId, isBot: true, text: full, revealedLines: 0, hasCta: false, projects: [], journal: []
         })
       });
 
-      var step = function (i) {
-        if (i >= words.length) {
-          self.setState({
-            busy: false,
-            followUps: Array.isArray(data.chips) && data.chips.length ? data.chips : OPENERS.slice(0, 3),
-            lastSummary: data.summary || self.state.lastSummary,
-            history: historyBeforeThisTurn.concat(
-              { role: 'user', content: text },
-              { role: 'assistant', content: full }
-            ),
-            messages: self.state.messages.map(function (m) {
-              return m.id === botId ? Object.assign({}, m, {
-                hasCta: !!data.cta,
-                projects: Array.isArray(data.projects) ? data.projects : [],
-                journal: Array.isArray(data.journal) ? data.journal : []
-              }) : m;
-            })
-          });
-          return;
+      var stepLine = function (i) {
+        var isLast = i + 1 >= lines.length;
+        var patch = {
+          messages: self.state.messages.map(function (m) {
+            if (m.id !== botId) return m;
+            var next = Object.assign({}, m, { revealedLines: i + 1 });
+            if (isLast) {
+              next.hasCta = !!data.cta;
+              next.projects = Array.isArray(data.projects) ? data.projects : [];
+              next.journal = Array.isArray(data.journal) ? data.journal : [];
+            }
+            return next;
+          })
+        };
+        if (isLast) {
+          patch.busy = false;
+          patch.followUps = Array.isArray(data.chips) && data.chips.length ? data.chips : OPENERS.slice(0, 3);
+          patch.lastSummary = data.summary || self.state.lastSummary;
+          patch.history = historyBeforeThisTurn.concat(
+            { role: 'user', content: text },
+            { role: 'assistant', content: full }
+          );
         }
-        self.after(26, function () {
-          self.setState({
-            messages: self.state.messages.map(function (m) {
-              return m.id === botId ? Object.assign({}, m, { text: m.text + ' ' + words[i] }) : m;
-            })
-          });
-          step(i + 1);
-        });
+        self.setState(patch);
+        if (!isLast) self.after(350, function () { stepLine(i + 1); });
       };
-      step(1);
+      stepLine(0);
     });
   };
 
@@ -325,22 +337,35 @@
   };
 
   RaftChat.prototype.renderMessage = function (m) {
+    var isFirstRender = !this.enteredIds[m.id];
+    if (isFirstRender) this.enteredIds[m.id] = true;
+    var enterClass = isFirstRender ? ' raft-chat-msg--enter' : '';
+
     if (m.isUser) {
-      var wrap = el('div', { class: 'raft-chat-msg--user' });
+      var wrap = el('div', { class: 'raft-chat-msg--user' + enterClass });
       var bubble = el('p', { class: 'raft-chat-bubble--user' });
       bubble.textContent = m.text;
       wrap.appendChild(bubble);
       return wrap;
     }
 
-    var botWrap = el('div', { class: 'raft-chat-msg--bot' });
+    var botWrap = el('div', { class: 'raft-chat-msg--bot' + enterClass });
     botWrap.appendChild(el('span', { class: 'raft-chat-bot-arrow' }, '&#8594;'));
     var content = el('div', { class: 'raft-chat-bot-content' });
 
     var paragraphs = m.text.split(/\n{2,}/).filter(function (p) { return p.length; });
     if (!paragraphs.length) paragraphs = [''];
-    paragraphs.forEach(function (para) {
-      var p = el('p', { class: 'raft-chat-bot-text' });
+    var revealCount = typeof m.revealedLines === 'number' ? m.revealedLines : paragraphs.length;
+    var self3 = this;
+    paragraphs.slice(0, revealCount).forEach(function (para, idx) {
+      // Each line's fade-in is tracked as entered-once, keyed by message id
+      // + line index — a re-render (e.g. the next line arriving) must not
+      // restart an already-settled line's animation, same reasoning as the
+      // message-level enteredIds above.
+      var lineKey = m.id + ':' + idx;
+      var lineIsFirstRender = !self3.enteredIds[lineKey];
+      if (lineIsFirstRender) self3.enteredIds[lineKey] = true;
+      var p = el('p', { class: 'raft-chat-bot-text' + (lineIsFirstRender ? ' raft-chat-msg--enter' : '') });
       p.textContent = para;
       content.appendChild(p);
     });

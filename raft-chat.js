@@ -9,6 +9,9 @@
 (function () {
   'use strict';
 
+  // English defaults — untouched from the original build, so an EN instance
+  // (`new RaftChat(root, {})`) behaves exactly as before. A JA instance
+  // overrides these via opts (see raft-chat-ja-init below / index.html).
   var OPENERS = ['What does Raft actually do?', 'Show me the work', 'Do you work in Japanese?', 'I have a project in mind'];
 
   // Shown instantly, client-side, on the first message of every session —
@@ -17,12 +20,7 @@
   // reproduce this itself; its first-turn reply picks up right after it.
   var GREETING_TEXT = "Call me Ishmael. It's a nod to Moby-Dick's narrator, the one who watches and tells the story rather than steering the ship, and it felt like the right name for something whose job is to help you find your way through this site. I can answer questions about Raft, walk through the work, or help sort out what you're looking for.";
 
-  var NETWORK_ERROR_REPLY = {
-    reply: "Lost the connection there. Try again, or reach Lance directly.",
-    chips: OPENERS.slice(0, 3),
-    cta: true,
-    summary: { working_on: '', blocker: '', looking_for: '' }
-  };
+  var NETWORK_ERROR_TEXT = "Lost the connection there. Try again, or reach Lance directly.";
 
   var MIC_ICON = '<svg width="16" height="20" viewBox="0 0 16 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M8 1.5a3 3 0 0 1 3 3v4.5a3 3 0 0 1-6 0V4.5a3 3 0 0 1 3-3Z"></path><path d="M14 9a6 6 0 0 1-12 0"></path><path d="M8 15v3.5"></path></svg>';
   var SEND_ICON = '<svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15.5V3"></path><path d="M3.5 8.5 9 3l5.5 5.5"></path></svg>';
@@ -33,6 +31,19 @@
     ['looking_for', "What you're looking for"]
   ];
 
+  // UI microcopy — every other language-visible string in the widget chrome
+  // (as opposed to conversation content, which comes from the API). A JA
+  // instance passes opts.strings to override.
+  var DEFAULT_STRINGS = {
+    close: 'Close',
+    mic: 'Voice input',
+    send: 'Send',
+    journal: 'Journal',
+    journalRead: 'Read →',
+    projectGo: 'See project →',
+    cta: 'Send a message'
+  };
+
   function el(tag, attrs, html) {
     var node = document.createElement(tag);
     if (attrs) {
@@ -42,9 +53,9 @@
     return node;
   }
 
-  function formatSummary(summary) {
+  function formatSummary(summary, labels) {
     if (!summary) return '';
-    return SUMMARY_LABELS
+    return labels
       .map(function (pair) { return summary[pair[0]] ? pair[1] + ': ' + summary[pair[0]] : null; })
       .filter(Boolean)
       .join('\n');
@@ -58,10 +69,21 @@
     this.showMic = opts.showMic !== false;
     this.onCta = typeof opts.onCta === 'function' ? opts.onCta : this.defaultCta.bind(this);
     this.avatarSrc = opts.avatarSrc || 'images/Ishmael-avatar.svg';
+    this.openers = Array.isArray(opts.openers) && opts.openers.length ? opts.openers : OPENERS;
+    this.greetingText = opts.greetingText || GREETING_TEXT;
+    this.micLang = opts.micLang || 'en-US';
+    this.summaryLabels = Array.isArray(opts.summaryLabels) && opts.summaryLabels.length ? opts.summaryLabels : SUMMARY_LABELS;
+    this.strings = Object.assign({}, DEFAULT_STRINGS, opts.strings || {});
+    this.networkErrorReply = {
+      reply: opts.networkErrorText || NETWORK_ERROR_TEXT,
+      chips: this.openers.slice(0, 3),
+      cta: true,
+      summary: { working_on: '', blocker: '', looking_for: '' }
+    };
 
     this.state = {
       mode: 'rest', draft: '', messages: [], thinking: false,
-      followUps: OPENERS.slice(), busy: false, history: [], lastSummary: null
+      followUps: this.openers.slice(), busy: false, history: [], lastSummary: null
     };
     this.timers = [];
     this.nextId = 1;
@@ -88,7 +110,7 @@
     window.raftChatPrefillSummary = function () {
       var field = document.getElementById('contact-message');
       if (!field) return;
-      var text = formatSummary(self.state.lastSummary);
+      var text = formatSummary(self.state.lastSummary, self.summaryLabels);
       if (text) field.value = text;
     };
   };
@@ -107,7 +129,7 @@
   RaftChat.prototype.setupSpeech = function (SpeechRecognitionImpl) {
     var self = this;
     var recognition = new SpeechRecognitionImpl();
-    recognition.lang = 'en-US';
+    recognition.lang = this.micLang;
     recognition.interimResults = true;
     recognition.continuous = false;
 
@@ -167,7 +189,7 @@
     var label = el('p', { class: 'raft-chat-label' }, 'Ishmael');
     headerId.appendChild(this.avatar);
     headerId.appendChild(label);
-    this.closeBtn = el('button', { type: 'button', class: 'raft-chat-close', 'aria-label': 'Close' }, '&#10005;');
+    this.closeBtn = el('button', { type: 'button', class: 'raft-chat-close', 'aria-label': this.strings.close }, '&#10005;');
     header.appendChild(headerId);
     header.appendChild(this.closeBtn);
 
@@ -191,11 +213,11 @@
     this.form.appendChild(this.input);
     var SpeechRecognitionImpl = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (this.showMic && SpeechRecognitionImpl) {
-      this.micBtn = el('button', { type: 'button', class: 'raft-chat-mic', 'aria-label': 'Voice input' }, MIC_ICON);
+      this.micBtn = el('button', { type: 'button', class: 'raft-chat-mic', 'aria-label': this.strings.mic }, MIC_ICON);
       this.form.appendChild(this.micBtn);
       this.setupSpeech(SpeechRecognitionImpl);
     }
-    var sendBtn = el('button', { type: 'submit', class: 'raft-chat-send', 'aria-label': 'Send' }, SEND_ICON);
+    var sendBtn = el('button', { type: 'submit', class: 'raft-chat-send', 'aria-label': this.strings.send }, SEND_ICON);
     this.form.appendChild(sendBtn);
 
     inputInner.appendChild(this.chipsWrap);
@@ -255,7 +277,7 @@
         return res.json();
       })
       .catch(function () {
-        return NETWORK_ERROR_REPLY;
+        return self.networkErrorReply;
       });
   };
 
@@ -280,7 +302,7 @@
       // other turn) give them something real to read while the actual
       // answer is still generating.
       messagesAfterUser = messagesAfterUser.concat({
-        id: botId, isBot: true, text: GREETING_TEXT, revealedLines: 1,
+        id: botId, isBot: true, text: this.greetingText, revealedLines: 1,
         hasCta: false, projects: [], journal: []
       });
     }
@@ -301,7 +323,7 @@
       // is already revealed — the reveal loop continues on from there
       // rather than re-animating it.
       var full = data.reply || '';
-      var combinedText = isFirstTurn ? GREETING_TEXT + '\n\n' + full : full;
+      var combinedText = isFirstTurn ? self.greetingText + '\n\n' + full : full;
       var lines = combinedText.split(/\n{2,}/).filter(function (p) { return p.length; });
       if (!lines.length) lines = [''];
       var startIndex = isFirstTurn ? 1 : 0;
@@ -333,7 +355,7 @@
         };
         if (isLast) {
           patch.busy = false;
-          patch.followUps = Array.isArray(data.chips) && data.chips.length ? data.chips : OPENERS.slice(0, 3);
+          patch.followUps = Array.isArray(data.chips) && data.chips.length ? data.chips : self.openers.slice(0, 3);
           patch.lastSummary = data.summary || self.state.lastSummary;
           patch.history = historyBeforeThisTurn.concat(
             { role: 'user', content: text },
@@ -404,11 +426,13 @@
           class: 'raft-chat-journal-card', href: j.url || '#',
           target: '_blank', rel: 'noopener noreferrer'
         });
-        card.appendChild(el('span', { class: 'raft-chat-journal-label' }, 'Journal'));
+        card.appendChild(el('span', { class: 'raft-chat-journal-label' }, self3.strings.journal));
         var title = el('span', { class: 'raft-chat-journal-title' });
         title.textContent = j.title;
         card.appendChild(title);
-        card.appendChild(el('span', { class: 'raft-chat-journal-go' }, 'Read &#8594;'));
+        var journalGo = el('span', { class: 'raft-chat-journal-go' });
+        journalGo.textContent = self3.strings.journalRead;
+        card.appendChild(journalGo);
         content.appendChild(card);
       });
     }
@@ -426,7 +450,8 @@
         sub.textContent = p.subtitle;
         body.appendChild(name);
         body.appendChild(sub);
-        var go = el('p', { class: 'raft-chat-project-go' }, 'See project &#8594;');
+        var go = el('p', { class: 'raft-chat-project-go' });
+        go.textContent = self3.strings.projectGo;
         card.appendChild(thumb);
         card.appendChild(body);
         card.appendChild(go);
@@ -437,7 +462,8 @@
 
     if (m.hasCta) {
       var self2 = this;
-      var cta = el('button', { type: 'button', class: 'raft-chat-cta' }, 'Send a message');
+      var cta = el('button', { type: 'button', class: 'raft-chat-cta' });
+      cta.textContent = this.strings.cta;
       cta.addEventListener('click', function () { self2.onCta(); });
       content.appendChild(cta);
     }
@@ -470,7 +496,7 @@
 
     this.messagesEl.scrollTop = this.messagesEl.scrollHeight;
 
-    var chipLabels = open ? s.followUps : OPENERS;
+    var chipLabels = open ? s.followUps : this.openers;
     var chipsVisible = s.mode === 'focus' || (open && s.followUps.length > 0 && !s.thinking);
     this.chipsWrap.setAttribute('data-visible', String(chipsVisible));
     this.chipsEl.innerHTML = '';

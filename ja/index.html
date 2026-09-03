@@ -36,6 +36,7 @@
   <link rel="stylesheet" href="../build.css">
   <link rel="stylesheet" href="../journal.css">
   <link rel="stylesheet" href="ja.css">
+  <link rel="stylesheet" href="../raft-chat.css">
   <script>
     if (localStorage.getItem('raft-theme') === 'light') {
       document.documentElement.dataset.theme = 'light';
@@ -1364,5 +1365,43 @@
     formspree('initForm', { formElement: '#contact-modal-form', formId: 'xdennklr' });
   </script>
   <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+  <!-- Ishmael (floating chat, Japanese) -->
+  <div id="raft-chat-root"></div>
+  <script src="../raft-chat.js"></script>
+  <script>
+    new RaftChat(document.getElementById('raft-chat-root'), {
+      apiUrl: '/api/chat-ja',
+      avatarSrc: '../images/Ishmael-avatar.svg',
+      placeholder: 'Raftについて、何でも聞いてください',
+      micLang: 'ja-JP',
+      greetingText: '私のことは、イシュメールと呼んでください。\n\n『白鯨』の語り手にちなんだ名前です。船を操るのではなく、物語を見届け、それを語る人物。このサイトでみなさんが進む道を見つけるお手伝いをする役目に、ぴったりの名前だと思いました。\n\nRaftについてのご質問にお答えしたり、これまでの仕事をご紹介したり、何をお探しなのか一緒に整理したりできます。',
+      networkErrorText: '接続が途切れてしまいました。もう一度お試しいただくか、Lanceに直接ご連絡ください。',
+      openers: [
+        'Raftは、実際に何をする会社ですか？',
+        '実績を見せてください',
+        'Raft Designは日本語に対応していますか？',
+        '相談したいプロジェクトがあります'
+      ],
+      summaryLabels: [
+        ['working_on', '取り組んでいること'],
+        ['blocker', '障壁になっていること'],
+        ['looking_for', '求めていること']
+      ],
+      strings: {
+        close: '閉じる',
+        mic: '音声入力',
+        send: '送信',
+        journal: 'Journal',
+        journalRead: '読む →',
+        projectGo: 'プロジェクトを見る →',
+        cta: 'メッセージを送る'
+      },
+      onCta: function () {
+        var btn = document.getElementById('contact-modal-btn');
+        if (btn) btn.click();
+      }
+    });
+  </script>
 </body>
 </html>

@@ -71,6 +71,11 @@
     this.avatarSrc = opts.avatarSrc || 'images/Ishmael-avatar.svg';
     this.openers = Array.isArray(opts.openers) && opts.openers.length ? opts.openers : OPENERS;
     this.greetingText = opts.greetingText || GREETING_TEXT;
+    // The EN greeting is a single paragraph, so revealing "line 1" happened
+    // to show the whole thing. The JA greeting is 3 paragraphs — count them
+    // so the full greeting always appears instantly, regardless of how many
+    // paragraphs a given language's greeting has.
+    this.greetingLineCount = this.greetingText.split(/\n{2,}/).filter(function (p) { return p.length; }).length || 1;
     this.micLang = opts.micLang || 'en-US';
     this.summaryLabels = Array.isArray(opts.summaryLabels) && opts.summaryLabels.length ? opts.summaryLabels : SUMMARY_LABELS;
     this.strings = Object.assign({}, DEFAULT_STRINGS, opts.strings || {});
@@ -302,7 +307,7 @@
       // other turn) give them something real to read while the actual
       // answer is still generating.
       messagesAfterUser = messagesAfterUser.concat({
-        id: botId, isBot: true, text: this.greetingText, revealedLines: 1,
+        id: botId, isBot: true, text: this.greetingText, revealedLines: this.greetingLineCount,
         hasCta: false, projects: [], journal: []
       });
     }
@@ -326,7 +331,7 @@
       var combinedText = isFirstTurn ? self.greetingText + '\n\n' + full : full;
       var lines = combinedText.split(/\n{2,}/).filter(function (p) { return p.length; });
       if (!lines.length) lines = [''];
-      var startIndex = isFirstTurn ? 1 : 0;
+      var startIndex = isFirstTurn ? self.greetingLineCount : 0;
 
       if (isFirstTurn) {
         self.setState({ thinking: false });

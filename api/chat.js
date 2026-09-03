@@ -203,7 +203,21 @@ module.exports = async function handler(req, res) {
     }
     const response = await client.messages.parse({
       model: MODEL,
-      max_tokens: 2000,
+      // Sonnet 5's adaptive thinking draws from this SAME budget, not a
+      // separate one — confirmed by reproduction: a long/hard prompt (a
+      // multi-part Japanese question) hit thinking_tokens: 2000/2000 against
+      // the old max_tokens: 2000 ceiling, leaving zero room for the actual
+      // reply and producing null parsed_output or a truncated, invalid JSON
+      // string mid-generation (in one case a thrown "Unterminated string in
+      // JSON" error). Under lighter versions of the same pressure, the model
+      // can visibly race/self-correct inline within the reply string as it
+      // runs out of room, which is the "scratchpad narration leaking into
+      // the reply" bug this was raised for. 8000 gives real headroom for
+      // both — the same hard prompt used up to ~2600 thinking tokens plus
+      // its actual reply at max_tokens: 6000 with zero failures across 3
+      // reruns; this is just a ceiling, not a spend floor, so a generous
+      // value costs nothing when a simple reply only needs a few hundred.
+      max_tokens: 8000,
       system,
       messages: [...history, { role: 'user', content: message }],
       output_config: {

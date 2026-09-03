@@ -1145,6 +1145,7 @@
     }
 
     function openContactModal(trigger) {
+      if (window.raftChatPrefillSummary) window.raftChatPrefillSummary();
       contactModalTrigger = trigger || document.activeElement;
       contactModalOverlay.classList.add('active');
       requestAnimationFrame(() => {

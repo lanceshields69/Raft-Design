@@ -11,6 +11,12 @@
 
   var OPENERS = ['What does Raft actually do?', 'Show me the work', 'Do you work in Japanese?', 'I have a project in mind'];
 
+  // Shown instantly, client-side, on the first message of every session —
+  // no reason to make a visitor wait on a live API call for text that's
+  // identical every time. The API is told (in api/chat.js) not to
+  // reproduce this itself; its first-turn reply picks up right after it.
+  var GREETING_TEXT = "Call me Ishmael. It's a nod to Moby-Dick's narrator, the one who watches and tells the story rather than steering the ship, and it felt like the right name for something whose job is to help you find your way through this site. I can answer questions about Raft, walk through the work, or help sort out what you're looking for.";
+
   var NETWORK_ERROR_REPLY = {
     reply: "Lost the connection there. Try again, or reach Lance directly.",
     chips: OPENERS.slice(0, 3),
@@ -263,10 +269,25 @@
     // so state.history must not already contain it or the newest turn gets
     // sent twice.
     var historyBeforeThisTurn = this.state.history;
+    var isFirstTurn = historyBeforeThisTurn.length === 0;
+    var botId = this.nextId++;
+
+    var messagesAfterUser = this.state.messages.concat({ id: id, isUser: true, text: text });
+    if (isFirstTurn) {
+      // Show the greeting immediately — it never varies, so there's no
+      // reason to make a visitor wait on a live API call for it. The
+      // thinking dots (rendered right after this message, same as any
+      // other turn) give them something real to read while the actual
+      // answer is still generating.
+      messagesAfterUser = messagesAfterUser.concat({
+        id: botId, isBot: true, text: GREETING_TEXT, revealedLines: 1,
+        hasCta: false, projects: [], journal: []
+      });
+    }
 
     this.setState({
       mode: 'open', busy: true, draft: '', thinking: true, followUps: [],
-      messages: this.state.messages.concat({ id: id, isUser: true, text: text })
+      messages: messagesAfterUser
     });
 
     this.fetchReply(text, historyBeforeThisTurn).then(function (data) {
@@ -275,26 +296,33 @@
       // streaming. Line-by-line (paragraph-by-paragraph) rather than
       // word-by-word: far fewer re-renders over the reveal's lifetime, and
       // each line's fade-in is tracked as entered-once (see renderMessage),
-      // so — unlike the old word-by-word version — a line can't get caught
-      // mid-animation and left translucent by an unrelated re-render.
+      // so a line can't get caught mid-animation and left translucent by
+      // an unrelated re-render. On the first turn, the greeting's own line
+      // is already revealed — the reveal loop continues on from there
+      // rather than re-animating it.
       var full = data.reply || '';
-      var lines = full.split(/\n{2,}/).filter(function (p) { return p.length; });
+      var combinedText = isFirstTurn ? GREETING_TEXT + '\n\n' + full : full;
+      var lines = combinedText.split(/\n{2,}/).filter(function (p) { return p.length; });
       if (!lines.length) lines = [''];
-      var botId = self.nextId++;
+      var startIndex = isFirstTurn ? 1 : 0;
 
-      self.setState({
-        thinking: false,
-        messages: self.state.messages.concat({
-          id: botId, isBot: true, text: full, revealedLines: 0, hasCta: false, projects: [], journal: []
-        })
-      });
+      if (isFirstTurn) {
+        self.setState({ thinking: false });
+      } else {
+        self.setState({
+          thinking: false,
+          messages: self.state.messages.concat({
+            id: botId, isBot: true, text: combinedText, revealedLines: 0, hasCta: false, projects: [], journal: []
+          })
+        });
+      }
 
       var stepLine = function (i) {
         var isLast = i + 1 >= lines.length;
         var patch = {
           messages: self.state.messages.map(function (m) {
             if (m.id !== botId) return m;
-            var next = Object.assign({}, m, { revealedLines: i + 1 });
+            var next = Object.assign({}, m, { text: combinedText, revealedLines: i + 1 });
             if (isLast) {
               next.hasCta = !!data.cta;
               next.projects = Array.isArray(data.projects) ? data.projects : [];
@@ -309,13 +337,13 @@
           patch.lastSummary = data.summary || self.state.lastSummary;
           patch.history = historyBeforeThisTurn.concat(
             { role: 'user', content: text },
-            { role: 'assistant', content: full }
+            { role: 'assistant', content: combinedText }
           );
         }
         self.setState(patch);
         if (!isLast) self.after(350, function () { stepLine(i + 1); });
       };
-      stepLine(0);
+      stepLine(startIndex);
     });
   };
 

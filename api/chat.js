@@ -199,7 +199,7 @@ module.exports = async function handler(req, res) {
     // since it's a per-reply style constraint, not session-scoped.
     let system = SYSTEM_PROMPT + '\n\n---\n\nReminder: never use an em dash (—) anywhere in your reply, per the Voice section above. If a sentence wants one, restructure it with a period, comma, or "and" instead.';
     if (isFirstTurn) {
-      system += '\n\nThis is also the first user message of a new session. The greeting is never skipped, only shortened — begin your reply with "Call me Ishmael" (compressed if the message also needs to ask a clarifying question or give an answer) rather than dropping it, per the Identity section above.';
+      system += '\n\nThis is also the first user message of a new session. The interface has already shown the "Call me Ishmael" greeting to the visitor — do not reproduce it, any variant of it, or a reference to "the narrator" yourself. Answer the visitor\'s message directly, exactly as you would on any later turn.';
     }
     const response = await client.messages.parse({
       model: MODEL,

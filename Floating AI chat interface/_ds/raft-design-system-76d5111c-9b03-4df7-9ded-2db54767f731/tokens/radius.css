@@ -1,0 +1,8 @@
+/* Three steps only. Buttons and badges use pill, cards use md, section-label
+   pills and 250px badge tiles use sm. Circles (avatars, status dots) use a
+   raw 50% — a distinct pattern, not a fourth step on the scale. */
+:root {
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-pill: 999px;
+}

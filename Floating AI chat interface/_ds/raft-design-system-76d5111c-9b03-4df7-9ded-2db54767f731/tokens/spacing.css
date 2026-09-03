@@ -1,0 +1,20 @@
+/* 8-point-ish scale, plus two deliberate insertions (--space-6, --space-12)
+   minted for the Tools page badges/tags. Convention: when a component needs
+   a value the scale lacks, name the exact pixel value as a new token rather
+   than force-fit an existing one. */
+:root {
+  --space-xs: 4px;
+  --space-6: 6px;    /* layout/gap-xs — StatusBadge dot-to-label gap */
+  --space-sm: 8px;
+  --space-12: 12px;  /* padding/container-xs — badge + tag horizontal padding */
+  --space-md: 16px;
+  --space-lg: 24px;  /* card padding */
+  --space-xl: 32px;
+  --space-xxl: 48px;
+  --space-xxxl: 60px;
+  --space-huge: 96px;
+
+  --gutter-page: 15px;      /* homepage section gutters */
+  --gutter-page-wide: 32px; /* Tools / project page gutters */
+  --nav-height: 66px;
+}

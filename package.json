@@ -1,0 +1,12 @@
+{
+  "name": "raft-design-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Raft Design site — static HTML/CSS/JS, plus Vercel serverless functions under /api",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.123.0",
+    "@upstash/ratelimit": "^2.0.8",
+    "@upstash/redis": "^1.38.3",
+    "zod": "^4.5.4"
+  }
+}

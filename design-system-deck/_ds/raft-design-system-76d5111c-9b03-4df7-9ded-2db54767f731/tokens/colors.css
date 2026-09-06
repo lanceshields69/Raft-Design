@@ -1,0 +1,51 @@
+/* Brand palette — dark mode IS the default (:root). Light mode is a full
+   parallel palette applied with [data-theme="light"] on <html>, not an
+   inverted filter. Values from the Figma "Sections" collections. */
+:root {
+  --bg-canvas: #04220F;   /* page background — same value as the wordmark's dark state */
+  --bg-surface: #2E4034;  /* small UI chrome only (theme-toggle pill, community strip) */
+  --bg-elevated: #102A1B; /* cards, modals, panels */
+  --bg-brand: #3DE83D;    /* solid brand-green fills — constant across themes */
+  --bg-sunken: #02190A;   /* recessed panels, darker than canvas */
+  --text-primary: #EDF2EE;/* body text — off-white, never pure white */
+  --text-muted: #8FA396;  /* labels, captions, metadata — constant across themes */
+  --text-accent: #3DE83D; /* links + accent text */
+  --border-rule: #1E3A28; /* dividers, hairlines, card borders */
+  --border-button: #3DE83D;/* pill button outlines */
+  --border-bright: #438259;/* border on sunken panels */
+  --accent-ink: #0B1F14;  /* text sitting on brand-green fills — constant across themes */
+
+  /* Wordmark palette — fixed, independent of page theme */
+  --lime: #3DE83D;
+  --dark: #04220F;
+  --white: #EDF2EE;
+  --mid: #0E4A22;  /* transient flicker state only, never a resting state */
+
+  /* Semantic aliases */
+  --surface-page: var(--bg-canvas);
+  --surface-card: var(--bg-elevated);
+  --surface-chrome: var(--bg-surface);
+  --surface-recessed: var(--bg-sunken);
+  --text-body: var(--text-primary);
+  --text-label: var(--text-muted);
+  --text-link: var(--text-accent);
+  --on-brand: var(--accent-ink);
+
+  /* Form validation — the one deliberate exception to the brand palette.
+     Untokenized in the source (raw hex on .contact-modal-field-error);
+     named here so a second error component doesn't re-invent them. */
+  --color-error: #FF8A80;
+}
+
+[data-theme="light"] {
+  --bg-canvas: #F7FFF7;
+  --bg-surface: #EBF7EB;
+  --bg-elevated: #EBF7EB;  /* no separate light-mode modal spec; reuses the surface tone */
+  --text-primary: #000000;
+  --text-accent: #159845;
+  --border-rule: #CFE5D7;
+  --border-button: #159845;
+  --bg-sunken: #EAFFEA;
+  --border-bright: #A9C7B4;
+  --color-error: #C62828;
+}

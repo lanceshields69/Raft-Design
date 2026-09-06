@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Raft Design System</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="_ds/raft-design-system-76d5111c-9b03-4df7-9ded-2db54767f731/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/raft-design-system-76d5111c-9b03-4df7-9ded-2db54767f731/tokens/colors.css">
+<link rel="stylesheet" href="_ds/raft-design-system-76d5111c-9b03-4df7-9ded-2db54767f731/tokens/status.css">
+<link rel="stylesheet" href="_ds/raft-design-system-76d5111c-9b03-4df7-9ded-2db54767f731/tokens/typography.css">
+<link rel="stylesheet" href="_ds/raft-design-system-76d5111c-9b03-4df7-9ded-2db54767f731/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/raft-design-system-76d5111c-9b03-4df7-9ded-2db54767f731/tokens/radius.css">
+<link rel="stylesheet" href="_ds/raft-design-system-76d5111c-9b03-4df7-9ded-2db54767f731/tokens/base.css">
+<link rel="stylesheet" href="_ds/raft-design-system-76d5111c-9b03-4df7-9ded-2db54767f731/styles.css">
+<style>
+html,body{margin:0;background:#04220F}
+deck-stage:not(:defined){visibility:hidden}
+.pill{align-self:flex-start;background:var(--bg-brand);color:var(--accent-ink);font-size:24px;font-weight:900;letter-spacing:.96px;line-height:.86;text-transform:uppercase;padding:10px 28px;border-radius:var(--radius-sm)}
+.eyebrow{font-size:24px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted)}
+.emph{font-family:var(--font-emphasis);font-style:italic;font-weight:600;font-variation-settings:'SOFT' 0,'WONK' 1;color:var(--text-accent)}
+.rule{border-top:1px solid var(--border-rule)}
+.card{background:var(--bg-elevated);border:1px solid var(--border-rule);border-radius:var(--radius-md);padding:32px}
+.mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+.swatch{border-radius:var(--radius-md);border:1px solid var(--border-rule);display:flex;flex-direction:column;justify-content:flex-end;padding:16px}
+.swatch p{font-size:24px;font-weight:700}
+.swatch span{font-size:24px;color:var(--text-muted);font-family:ui-monospace,monospace}
+section{width:1920px;height:1080px;background:var(--bg-canvas);color:var(--text-primary);font-family:var(--font-sans);padding:96px;display:flex;flex-direction:column;box-sizing:border-box}
+</style>
+<script src="deck-stage.js"></script>
+</head><body>
+<template id="__bundler_thumbnail" data-bg-color="#04220F">
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="800" fill="#04220F"/>
+<rect x="360" y="220" width="480" height="360" fill="#3DE83D"/>
+<text x="600" y="390" text-anchor="middle" font-family="Inter,Helvetica,Arial,sans-serif" font-weight="900" font-size="120" letter-spacing="-6" fill="#04220F">RAFT</text>
+<text x="600" y="500" text-anchor="middle" font-family="Inter,Helvetica,Arial,sans-serif" font-weight="900" font-size="120" letter-spacing="-4" fill="#EDF2EE">DESIGN</text>
+</svg>
+</template>
+<deck-stage width="1920" height="1080">
+
+<section data-label="Cover" style="display:grid;grid-template-columns:auto 1fr;column-gap:64px;align-content:center">
+<div style="width:280px;height:280px;background:var(--lime);display:flex;align-items:center;justify-content:center;align-self:start"><div style="display:flex;flex-direction:column;align-items:center;font-weight:900;text-transform:uppercase;line-height:.85"><span style="font-size:68px;letter-spacing:-.06em;color:var(--dark)">Raft</span><span style="font-size:68px;letter-spacing:-.04em;color:var(--white)">Design</span></div></div>
+<div style="align-self:start">
+<h1 style="font-weight:900;font-size:96px;line-height:.88;letter-spacing:-.03em;text-transform:uppercase">The Raft <span class="emph" style="font-size:110px;text-transform:none;width:272px;height:163px">Design &amp; Brand</span> System</h1>
+<p style="margin-top:40px;font-size:32px;font-weight:900;color:var(--text-accent)">Visual language, EN/JA typesetting, and how to build with it here</p>
+</div>
+</section>
+
+<section style="justify-content:center;gap:56px">
+<span class="pill">What it is</span>
+<p style="font-size:60px;font-weight:900;line-height:1.05;letter-spacing:-.02em;max-width:1500px">Raft Design is a bilingual AI-native studio working across the U.S. and Japan on brand, product, and digital experience.</p>
+<div style="display:flex;gap:80px;font-size:28px;line-height:1.5;max-width:1650px">
+<p style="flex:1">Founded by Lance Shields after twenty years of design leadership at Adobe and Walmart, plus brand and product work with LegalOn, Visa, Hitachi, and Red Bull. The studio's own words: hands-on, fast, and <span class="emph" style="font-style:italic">built to move with change rather than around it.</span></p>
+<p style="flex:1;color:var(--text-muted)">The system reads as editorial-technical: a near-black forest-green canvas, one acid-lime accent, Inter Black for everything structural, and Fraunces italic for the few moments of warmth. Dark mode is the default; light mode is a full parallel palette, not an inverted filter.</p>
+</div>
+</section>
+
+<section style="justify-content:center;gap:48px">
+<span class="pill">Voice</span>
+<p style="font-size:56px;font-weight:900;line-height:1.05;letter-spacing:-.02em">Plain, declarative, senior. Short sentences. Claims followed by the reason for the claim.</p>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:48px;font-size:26px;line-height:1.5">
+<div class="card"><p style="font-weight:700;color:var(--text-accent);margin-bottom:12px">Negation then correction</p><p style="color:var(--text-muted)">The house rhythm, used sparingly: "The build is directed, not just delegated." "Meaning has to be rebuilt, not converted."</p></div>
+<div class="card"><p style="font-weight:700;color:var(--text-accent);margin-bottom:12px">Honesty as a device</p><p style="color:var(--text-muted)">Copy admits limits rather than hiding them — a published Graveyard of dropped tools, verdicts that name downsides, a "Known Gaps" section in the spec itself.</p></div>
+<div class="card"><p style="font-weight:700;color:var(--text-accent);margin-bottom:12px">Person</p><p style="color:var(--text-muted)">"We" for the studio. "I" only where Lance speaks personally. "You" addresses the reader's situation, never marketing address.</p></div>
+<div class="card"><p style="font-weight:700;color:var(--text-accent);margin-bottom:12px">No emoji, no hype</p><p style="color:var(--text-muted)">No exclamation marks, no rhetorical questions except FAQ headings. The one recurring glyph is the arrow →.</p></div>
+</div>
+</section>
+
+<section style="justify-content:center;gap:48px">
+<span class="pill">Color — dark mode (default)</span>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:20px;height:420px">
+<div class="swatch" style="background:#04220F"><p>Canvas</p><span>#04220F</span></div>
+<div class="swatch" style="background:#102A1B"><p>Elevated</p><span>#102A1B</span></div>
+<div class="swatch" style="background:#02190A"><p>Sunken</p><span>#02190A</span></div>
+<div class="swatch" style="background:#2E4034"><p>Chrome</p><span>#2E4034</span></div>
+<div class="swatch" style="background:#3DE83D"><p style="color:#0B1F14">Brand / accent</p><span style="color:#0B1F14">#3DE83D</span></div>
+<div class="swatch" style="background:#1E3A28"><p>Rule</p><span>#1E3A28</span></div>
+</div>
+<p style="font-size:26px;line-height:1.5;color:var(--text-muted);max-width:1650px">One saturated color in the whole system — <span style="color:var(--text-accent);font-weight:700">#3DE83D</span> — does not change between themes. Everything else is a value step of the same forest green. Body text is off-white #EDF2EE, never pure white; metadata sits at #8FA396.</p>
+</section>
+
+<section style="justify-content:center;gap:48px">
+<span class="pill">Color — light mode</span>
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:20px;height:420px">
+<div class="swatch" style="background:#F7FFF7;border-color:#CFE5D7"><p style="color:#000">Canvas</p><span>#F7FFF7</span></div>
+<div class="swatch" style="background:#EBF7EB;border-color:#CFE5D7"><p style="color:#000">Surface / elevated</p><span>#EBF7EB</span></div>
+<div class="swatch" style="background:#159845"><p>Accent (darkened)</p><span>#159845</span></div>
+<div class="swatch" style="background:#CFE5D7;border-color:#A9C7B4"><p style="color:#000">Rule</p><span>#CFE5D7</span></div>
+<div class="swatch" style="background:#000000"><p>Text primary</p><span>#000000</span></div>
+</div>
+<p style="font-size:26px;line-height:1.5;color:var(--text-muted);max-width:1650px">Light mode is a full parallel palette, not an inverted filter — its own canvas, its own darkened accent (#159845 instead of #3DE83D) for contrast, its own rule and border tones.</p>
+</section>
+
+<section style="justify-content:center;gap:44px">
+<span class="pill">Typography — Inter</span>
+<p style="font-size:112px;font-weight:900;letter-spacing:-.02em;line-height:1">Aa</p>
+<div style="display:flex;gap:56px;align-items:baseline;flex-wrap:wrap">
+<p style="font-size:72px;font-weight:900">72</p><p style="font-size:36px;font-weight:900">36</p><p style="font-size:28px;font-weight:900">28</p><p style="font-size:24px;font-weight:900">24</p><p style="font-size:20px;color:var(--text-muted)">20</p><p style="font-size:16px;color:var(--text-muted)">16</p><p style="font-size:13px;color:var(--text-muted)">13</p><p style="font-size:12px;color:var(--text-muted)">12</p><p style="font-size:11px;color:var(--text-muted)">11</p>
+</div>
+<p style="font-size:26px;line-height:1.5;color:var(--text-muted);max-width:1650px">Inter carries the system at weight 900 for anything that reads as a heading, with optical sizing and cv11 kerning so the heavy weight doesn't muddy. Scale: 11 / 12 / 13 / 16 / 20 / 24 / 28 / 36 / 72px, plus two untokenized literals — a 48px article title and a 105–128px hero display.</p>
+</section>
+
+<section style="justify-content:center;gap:44px">
+<span class="pill">Typography — emphasis &amp; tracking</span>
+<p class="emph" style="font-size:120px;line-height:1">turbulent</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;font-size:26px;line-height:1.5">
+<p style="color:var(--text-muted)">Fraunces italic SemiBold, with <span class="mono">'SOFT' 0, 'WONK' 1</span>, is the emphasis face — accent words in the hero and every stat figure. It never carries body copy.</p>
+<div>
+<p style="margin-bottom:8px"><span style="letter-spacing:-2px;font-weight:900">Display heading</span> <span class="mono" style="color:var(--text-muted)">-2px</span></p>
+<p style="margin-bottom:8px"><span style="letter-spacing:.52px;font-weight:900">PILL LABEL</span> <span class="mono" style="color:var(--text-muted)">0.52px</span></p>
+<p style="margin-bottom:8px"><span style="letter-spacing:1px;font-weight:900">FLAT LABEL</span> <span class="mono" style="color:var(--text-muted)">1px</span></p>
+<p><span>Body &amp; headings</span> <span class="mono" style="color:var(--text-muted)">0</span></p>
+</div>
+</div>
+</section>
+
+<section style="justify-content:center;gap:48px">
+<span class="pill">日本語タイポグラフィ — foundations</span>
+<p style="font-size:56px;font-weight:900;line-height:1.1;letter-spacing:-.02em;max-width:1650px">Japanese is real content, not translation. Copy is rebuilt for the market, not converted.</p>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:48px;font-size:26px;line-height:1.5">
+<div class="card"><p style="font-weight:700;color:var(--text-accent);margin-bottom:12px">Type faces</p><p style="color:var(--text-muted)">Noto Sans JP is the logotype face and the default body/heading face. Noto Serif JP 900 substitutes for Fraunces — it has no CJK glyphs.</p></div>
+<div class="card"><p style="font-weight:700;color:var(--text-accent);margin-bottom:12px">Tracking &amp; line-height</p><p style="color:var(--text-muted)">Tracking is always 0 on Japanese pages. Line-height opens to 1.5 for headings and 1.9 for body — noticeably looser than the Latin scale.</p></div>
+<div class="card"><p style="font-weight:700;color:var(--text-accent);margin-bottom:12px">What stays English</p><p style="color:var(--text-muted)">Nav labels and section pills stay English on purpose — they function as design elements, not copy to translate.</p></div>
+<div class="card"><p style="font-weight:700;color:var(--text-accent);margin-bottom:12px">What switches</p><p style="color:var(--text-muted)">FAQ questions and Tools-page pills switch to genuine Japanese: よくある質問 / 稼働中 / グレイブヤード.</p></div>
+</div>
+</section>
+
+<section style="justify-content:center;gap:56px">
+<span class="pill">日本語タイポグラフィ — live example</span>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
+<div>
+<p class="eyebrow" style="margin-bottom:24px">EN — tracking -2px, line-height 1</p>
+<h2 style="font-size:64px;font-weight:900;line-height:1;letter-spacing:-.02em;text-transform:uppercase">DESIGNING FOR <span class="emph" style="text-transform:none;font-size:72px">turbulent</span> TIMES AHEAD.</h2>
+</div>
+<div lang="ja" style="font-family:'Noto Sans JP',var(--font-sans)">
+<p class="eyebrow" style="margin-bottom:24px">JA — tracking 0, line-height 1.5</p>
+<h2 style="font-size:52px;font-weight:900;line-height:1.5;letter-spacing:0">変わりゆく時代を、<br>デザインする。</h2>
+</div>
+</div>
+<div class="rule" style="padding-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:80px">
+<p style="font-size:26px;line-height:1.9;color:var(--text-muted)">Body copy sets at line-height 1.55 across the system, letting long paragraphs breathe without feeling loose.</p>
+<p lang="ja" style="font-family:'Noto Sans JP',var(--font-sans);font-size:26px;line-height:1.9;color:var(--text-muted)">日本語のボディコピーは行間1.9で組まれ、漢字とかなが混在する文章でも読みやすさを保つ。</p>
+</div>
+</section>
+
+<section style="justify-content:center;gap:48px">
+<span class="pill">Spacing &amp; layout</span>
+<div style="display:flex;align-items:flex-end;gap:24px;height:200px">
+<div style="width:4px;height:4px;background:var(--bg-brand)"></div><div style="width:8px;height:8px;background:var(--bg-brand)"></div><div style="width:16px;height:16px;background:var(--bg-brand)"></div><div style="width:24px;height:24px;background:var(--bg-brand)"></div><div style="width:32px;height:32px;background:var(--bg-brand)"></div><div style="width:48px;height:48px;background:var(--bg-brand)"></div><div style="width:60px;height:60px;background:var(--bg-brand)"></div><div style="width:96px;height:96px;background:var(--bg-brand)"></div>
+</div>
+<div style="display:flex;gap:56px;font-size:26px;line-height:1.5;color:var(--text-muted);max-width:1750px">
+<p style="flex:1">An 8-point-ish scale from 4 to 96px, with 6px and 12px minted specifically for badges and tags. When a component needs a value the scale lacks, name the exact pixel value as a new token rather than force-fit an existing one.</p>
+<p style="flex:1">Sections run full-width to a 1920px cap with 15px gutters on the homepage, 32px on the Tools page. Sections separate with a single 1px rule — no background changes, no cards-as-sections. Only the nav is fixed, at 66px.</p>
+</div>
+</section>
+
+<section style="justify-content:center;gap:48px">
+<span class="pill">Cards &amp; surfaces</span>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px">
+<div class="card"><p style="font-size:32px;font-weight:900;margin-bottom:16px">Elevated card</p><p style="font-size:24px;color:var(--text-muted);line-height:1.5">Elevated fill, 1px hairline rule border, 4px radius, 24px padding. No shadows exist in this system — depth comes from surface value and a border.</p></div>
+<div style="background:var(--bg-sunken);border:1px solid var(--border-bright);border-radius:0;padding:32px"><p style="font-size:32px;font-weight:900;margin-bottom:16px">Recessed banner</p><p style="font-size:24px;color:var(--text-muted);line-height:1.5">The inverse of a card: darker fill, brighter border, square corners. Used for the CTA banner.</p></div>
+<div class="card" style="border-color:var(--bg-brand)"><p style="font-size:32px;font-weight:900;margin-bottom:16px">Cards don't hover</p><p style="font-size:24px;color:var(--text-muted);line-height:1.5">Hovers are 0.2s color/background transitions — never scale or lift. Cards have no hover state at all.</p></div>
+</div>
+</section>
+
+<section style="justify-content:center;gap:48px">
+<span class="pill">Radii &amp; motion</span>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:40px;align-items:end">
+<div style="text-align:center"><div style="width:100%;height:160px;background:var(--bg-elevated);border:1px solid var(--border-rule);border-radius:2px;margin-bottom:16px"></div><p style="font-size:24px">2px — labels, tags</p></div>
+<div style="text-align:center"><div style="width:100%;height:160px;background:var(--bg-elevated);border:1px solid var(--border-rule);border-radius:4px;margin-bottom:16px"></div><p style="font-size:24px">4px — cards, images</p></div>
+<div style="text-align:center"><div style="width:100%;height:160px;background:var(--bg-brand);border-radius:999px;margin-bottom:16px"></div><p style="font-size:24px">Pill — buttons, badges</p></div>
+<div style="text-align:center"><div style="width:160px;height:160px;background:var(--bg-elevated);border:1px solid var(--border-rule);border-radius:50%;margin:0 auto 16px"></div><p style="font-size:24px">50% — dots, avatars</p></div>
+</div>
+<p style="font-size:26px;line-height:1.5;color:var(--text-muted);max-width:1750px">Motion is purposeful and mostly one-shot: clip-path reveals at 0.33–0.6s, 0.6s scroll fade-ins with a 20px translate, a 24s client marquee at 50% opacity. Every animation disables under prefers-reduced-motion.</p>
+</section>
+
+<section style="justify-content:center;gap:48px">
+<span class="pill">Iconography</span>
+<p style="font-size:140px;color:var(--text-accent);line-height:1">→</p>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:48px;font-size:26px;line-height:1.5">
+<div class="card"><p style="font-weight:700;color:var(--text-accent);margin-bottom:12px">No icon library</p><p style="color:var(--text-muted)">There is no icon font in this codebase. The arrow → is the house glyph — it leads CTAs, prefixes taglines, and appears in nav and carousel controls.</p></div>
+<div class="card"><p style="font-weight:700;color:var(--text-accent);margin-bottom:12px">Hand-written SVGs &amp; brand figures</p><p style="color:var(--text-muted)">A handful of inline SVGs (theme icons, hamburger, close X) plus animated brand-figure motifs that live inside 250px lime badge tiles. No emoji, anywhere.</p></div>
+</div>
+</section>
+
+<section style="justify-content:center;gap:48px">
+<span class="pill">Motion graphic library</span>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px">
+<div style="width:100%;aspect-ratio:1;background:var(--lime);border-radius:var(--radius-sm);overflow:hidden"><img src="assets/anime-1.gif" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+<div style="width:100%;aspect-ratio:1;background:var(--lime);border-radius:var(--radius-sm);overflow:hidden"><img src="assets/anime-2.gif" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+<div style="width:100%;aspect-ratio:1;background:var(--lime);border-radius:var(--radius-sm);overflow:hidden"><img src="assets/anime-3.gif" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+<div style="width:100%;aspect-ratio:1;background:var(--lime);border-radius:var(--radius-sm);overflow:hidden"><img src="assets/anime-4.gif" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+</div>
+<p style="font-size:26px;line-height:1.5;color:var(--text-muted);max-width:1750px">Hand-keyed brand-figure animations, squash-and-stretch eased, always cropped into 250px square lime tiles — flat vector on the one saturated color, never freestanding icons.</p>
+</section>
+
+<section style="justify-content:center;gap:48px">
+<span class="pill">Components</span>
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:32px;font-size:24px;line-height:1.6">
+<div><p style="font-weight:900;color:var(--text-accent);margin-bottom:12px">Core</p><p style="color:var(--text-muted)">Button<br>SectionLabel<br>Eyebrow<br>Tag<br>StatusBadge<br>StatValue<br>TextLink<br>Card</p></div>
+<div><p style="font-weight:900;color:var(--text-accent);margin-bottom:12px">Forms</p><p style="color:var(--text-muted)">TextField</p></div>
+<div><p style="font-weight:900;color:var(--text-accent);margin-bottom:12px">Content</p><p style="color:var(--text-muted)">ToolCard<br>GraveyardRow<br>ServiceCard<br>WorkCard<br>JournalCard<br>FaqItem</p></div>
+<div><p style="font-weight:900;color:var(--text-accent);margin-bottom:12px">Navigation</p><p style="color:var(--text-muted)">NavHeader<br>ThemeToggle<br>SiteFooter</p></div>
+<div><p style="font-weight:900;color:var(--text-accent);margin-bottom:12px">Marketing</p><p style="color:var(--text-muted)">PageHero<br>LogoBlock<br>CtaBanner<br>CommunityStrip<br>ClientLogoMarquee</p></div>
+</div>
+<p style="font-size:24px;color:var(--text-muted);max-width:1750px">Every component maps to a real class in the source CSS. The inventory stops where the source stops — no Select, Checkbox, Tabs, or Toast, because the live site doesn't have them.</p>
+</section>
+
+<section style="justify-content:center;gap:48px">
+<span class="pill">Status badges — one place other hues appear</span>
+<div style="display:flex;gap:24px;flex-wrap:wrap">
+<span style="display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:999px;background:var(--status-stack-bg);border:1px solid var(--status-stack-border);font-size:24px"><span style="width:11px;height:11px;border-radius:50%;background:var(--status-stack)"></span>core stack</span>
+<span style="display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:999px;background:var(--status-rotation-bg);border:1px solid var(--status-rotation-border);font-size:24px"><span style="width:11px;height:11px;border-radius:50%;background:var(--status-rotation)"></span>in rotation</span>
+<span style="display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:999px;background:var(--status-watching-bg);border:1px solid var(--status-watching-border);font-size:24px"><span style="width:11px;height:11px;border-radius:50%;background:var(--status-watching)"></span>watching</span>
+<span style="display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:999px;background:var(--status-overhyped-bg);border:1px solid var(--status-overhyped-border);font-size:24px"><span style="width:11px;height:11px;border-radius:50%;background:var(--status-overhyped)"></span>overhyped</span>
+<span style="display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:999px;background:var(--status-dropped-bg);border:1px solid var(--status-dropped-border);font-size:24px"><span style="width:11px;height:11px;border-radius:50%;background:var(--status-dropped)"></span>dropped</span>
+</div>
+<p style="font-size:26px;line-height:1.5;color:var(--text-muted);max-width:1750px">Five status colors, scoped to the AI Tools page's tool-rating badges — the only place other hues appear in the system. Each pairs a text/dot color with a 12% tint fill and a 25–30% border.</p>
+</section>
+
+<section style="justify-content:center;gap:48px">
+<span class="pill">Templates in this project</span>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px">
+<div class="card"><p style="font-size:32px;font-weight:900;margin-bottom:16px">Raft portfolio deck</p><p style="font-size:24px;color:var(--text-muted);line-height:1.5">15-slide new-business deck — approach, expertise, projects, build, studio, contact.</p></div>
+<div class="card"><p style="font-size:32px;font-weight:900;margin-bottom:16px">Raft portfolio deck (JA)</p><p style="font-size:24px;color:var(--text-muted);line-height:1.5">16-slide Japanese version, with Noto Sans JP, 0 tracking, and 1.9 line-height applied throughout.</p></div>
+<div class="card"><p style="font-size:32px;font-weight:900;margin-bottom:16px">Raft site page</p><p style="font-size:24px;color:var(--text-muted);line-height:1.5">Site page scaffold — sticky nav, 72px hero, section block, CTA banner, footer.</p></div>
+</div>
+<p style="font-size:26px;color:var(--text-muted);max-width:1750px">Check whether one of these matches before building from scratch — copy it in as a starting point, then swap in the real content.</p>
+</section>
+
+<section style="justify-content:center;gap:48px">
+<span class="pill">Working in Claude Design — concept</span>
+<p style="font-size:52px;font-weight:900;line-height:1.15;letter-spacing:-.02em;max-width:1750px">The design system is a bundle you load, not a style to imitate.</p>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px;font-size:25px;line-height:1.5">
+<div class="card"><p style="font-weight:700;color:var(--text-accent);margin-bottom:12px">1. Load it</p><p style="color:var(--text-muted)">Every page links the token stylesheets and a compiled JS bundle. React and ReactDOM must load first — the bundle calls React.createElement directly.</p></div>
+<div class="card"><p style="font-weight:700;color:var(--text-accent);margin-bottom:12px">2. Compose with it</p><p style="color:var(--text-muted)">Components come off <span class="mono">window.RaftDesignSystem_76d511</span> — Button, Card, and the rest. Don't rebuild them from raw HTML.</p></div>
+<div class="card"><p style="font-weight:700;color:var(--text-accent);margin-bottom:12px">3. Style against tokens</p><p style="color:var(--text-muted)">Colors, type, spacing, radii — reach for the linked <span class="mono">var(--*)</span> tokens instead of guessing new values.</p></div>
+</div>
+</section>
+
+<section style="justify-content:center;gap:40px">
+<span class="pill">Working in Claude Design — code</span>
+<div class="card mono" style="font-size:22px;line-height:1.7;background:var(--bg-sunken);white-space:pre">&lt;link rel="stylesheet" href="_ds/&lt;folder&gt;/tokens/fonts.css"&gt;
+&lt;link rel="stylesheet" href="_ds/&lt;folder&gt;/tokens/colors.css"&gt;
+&lt;link rel="stylesheet" href="_ds/&lt;folder&gt;/tokens/typography.css"&gt;
+&lt;link rel="stylesheet" href="_ds/&lt;folder&gt;/styles.css"&gt;
+&lt;script src="_ds/&lt;folder&gt;/_ds_bundle.js"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+  const { Button, Card } = window.RaftDesignSystem_76d511;
+&lt;/script&gt;</div>
+<p style="font-size:25px;line-height:1.5;color:var(--text-muted);max-width:1750px">If a template already matches the brief — a deck, a site page — copy it in first and edit its content rather than assembling the bundle by hand.</p>
+</section>
+
+<section style="justify-content:space-between">
+<div>
+<span class="pill">Sources</span>
+<p style="font-size:44px;font-weight:900;margin-top:32px;line-height:1.3;max-width:1600px">GitHub repo (source of truth) · DESIGN.md · llms.txt · raftdesign.studio</p>
+</div>
+<div class="rule" style="padding-top:40px;display:flex;justify-content:space-between;align-items:flex-end">
+<p style="font-size:26px;color:var(--text-muted)">Where DESIGN.md and this system disagree, DESIGN.md wins.</p>
+<p style="font-size:26px;color:var(--text-muted)">Raft Design System</p>
+</div>
+</section>
+
+</deck-stage>
+</body></html>

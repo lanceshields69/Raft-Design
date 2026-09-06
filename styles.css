@@ -963,6 +963,80 @@ p {
   }
 }
 
+/* AI Systems Panel */
+.ai-systems-section {
+  padding: 20px 15px 120px;
+  max-width: 1920px;
+  border-top: 1px solid var(--border-rule);
+}
+
+.ai-systems-content {
+  display: flex;
+  gap: var(--space-xxl);
+  align-items: flex-start;
+  margin-top: var(--space-xxl);
+}
+
+.ai-systems-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  width: 483px;
+  flex-shrink: 0;
+}
+
+.ai-systems-heading {
+  font-size: var(--font-size-heading-2);
+  line-height: 1.3;
+  font-weight: var(--weight-regular);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.ai-systems-body {
+  font-size: var(--font-size-body-md);
+  line-height: 1.5;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.ai-systems-content .scan-cta {
+  align-self: flex-start;
+}
+
+.ai-systems-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border-rule);
+  flex: 1;
+}
+
+.ai-systems-item {
+  padding: 36px 28px;
+  border-right: 1px solid var(--border-rule);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ai-systems-item:last-child {
+  border-right: none;
+}
+
+.ai-systems-item-title {
+  font-size: var(--font-size-body-md);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.ai-systems-item-body {
+  font-size: var(--font-size-label-medium);
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin: 0;
+}
+
 /* Work Section */
 .work-section {
   padding: 20px 15px 50px;
@@ -2249,6 +2323,31 @@ p {
 
   .service-card {
     width: 100%;
+  }
+
+  .ai-systems-content {
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .ai-systems-text {
+    width: 100%;
+  }
+
+  .ai-systems-grid {
+    grid-template-columns: 1fr;
+    border-top: none;
+  }
+
+  .ai-systems-item {
+    border-right: none;
+    border-top: 1px solid var(--border-rule);
+    padding: var(--space-lg) 0;
+  }
+
+  .ai-systems-item:first-child {
+    border-top: none;
+    padding-top: 0;
   }
 
   .faq-row {

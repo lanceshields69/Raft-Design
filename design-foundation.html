@@ -145,6 +145,13 @@
          viewport gets narrow, overflowing the page. Stack company info
          above the quote instead of squeezing them side by side. */
       .df-track-row { grid-template-columns: 1fr !important; }
+      /* AI-tools grid: the desktop border-right dividers between columns
+         become stray vertical lines once auto-fit collapses this to one
+         column per row. Swap to a horizontal top border between stacked
+         items instead, and normalize the asymmetric side padding used to
+         balance the desktop dividers. */
+      .df-ai-tool-item { padding: 32px 0 !important; border-right: none !important; border-top: 1px solid var(--border-rule); }
+      .df-ai-tool-item:first-child { border-top: none; padding-top: 0 !important; }
     }
   </style>
 </head>
@@ -454,6 +461,80 @@
       <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:36px;color:var(--text-accent);margin:0">04</p>
       <p style="font-size:20px;font-weight:900;margin:0">Systemize <span style="font-weight:400;color:var(--text-muted);font-size:16px">— Week 4</span></p>
       <p style="font-size:16px;line-height:1.4;margin:0">Tokenized component library, fully documented handoff, recorded engineering walkthrough. Your team builds on it without you in the room.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AI-READY DESIGN SYSTEM -->
+<section style="padding:80px 15px;max-width:1400px;margin:0 auto;border-top:1px solid var(--border-rule)">
+  <span class="section-label">AI-ready design system</span>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:48px;margin-bottom:56px">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <h2 style="font-weight:900;font-size:clamp(28px,3.5vw,36px);line-height:1.05;letter-spacing:-1px;margin:0">Your design system shouldn't stop at Figma.</h2>
+      <p style="font-size:16px;color:var(--text-muted);line-height:1.4;margin:0">Raft structures your brand rules, design tokens, components, templates, voice, and DESIGN.md so your team and AI tools can keep producing consistent work after the sprint ends.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <p style="font-size:16px;line-height:1.4;margin:0">That means your marketing, sales, design, and engineering teams can create new work faster, without starting from zero or slowly drifting off-brand.</p>
+      <div style="width:40px;height:1px;background:var(--text-accent);opacity:0.5"></div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <img src="images/claude-icon.png" alt="" style="width:36px;height:36px;flex-shrink:0;border-radius:50%">
+        <p style="font-size:16px;line-height:1.4;margin:0">We're tool-agnostic. Claude Design is one of the AI tools we use effectively for this.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="df-ai-tools-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));border-top:1px solid var(--border-rule);margin-bottom:80px">
+    <div class="df-ai-tool-item" style="padding:40px 32px 40px 0;border-right:1px solid var(--border-rule);display:flex;flex-direction:column;gap:16px">
+      <img src="images/icon-marketing.svg" alt="" style="width:32px;height:32px">
+      <p style="font-size:16px;font-weight:600;margin:0">Marketing</p>
+      <p style="font-size:16px;color:var(--text-muted);line-height:1.4;margin:0">Create campaign concepts, ads, landing pages, launch materials, and social assets from the same brand foundation.</p>
+    </div>
+    <div class="df-ai-tool-item" style="padding:40px 32px;border-right:1px solid var(--border-rule);display:flex;flex-direction:column;gap:16px">
+      <img src="images/icon-sales.svg" alt="" style="width:32px;height:32px">
+      <p style="font-size:16px;font-weight:600;margin:0">Sales</p>
+      <p style="font-size:16px;color:var(--text-muted);line-height:1.4;margin:0">Generate on-brand decks, proposals, customer presentations, and enablement materials without reinventing the visual language.</p>
+    </div>
+    <div class="df-ai-tool-item" style="padding:40px 32px;border-right:1px solid var(--border-rule);display:flex;flex-direction:column;gap:16px">
+      <img src="images/icon-product-design.svg" alt="" style="width:32px;height:32px">
+      <p style="font-size:16px;font-weight:600;margin:0">Product + design</p>
+      <p style="font-size:16px;color:var(--text-muted);line-height:1.4;margin:0">Explore new flows, prototypes, feature concepts, and product surfaces using the established components and design rules.</p>
+    </div>
+    <div class="df-ai-tool-item" style="padding:40px 0 40px 32px;display:flex;flex-direction:column;gap:16px">
+      <img src="images/icon-engineering.svg" alt="" style="width:32px;height:32px">
+      <p style="font-size:16px;font-weight:600;margin:0">Engineering</p>
+      <p style="font-size:16px;color:var(--text-muted);line-height:1.4;margin:0">Work from shared tokens, components, implementation guidance, and a clearer source of truth.</p>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:64px;margin-bottom:80px">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <span class="project-section-label" style="color:var(--text-accent);margin-bottom:0">See how it works</span>
+      <h3 style="font-weight:900;font-size:clamp(22px,2.6vw,28px);line-height:1.15;margin:20px 0 0">This Raft design guideline was built with the same system.</h3>
+      <p style="font-size:16px;font-weight:600;margin:24px 0 0">Raft's own brand system includes:</p>
+      <ul style="list-style:none;padding:0;margin:20px 0 0;display:flex;flex-direction:column;gap:12px">
+        <li style="display:flex;align-items:center;gap:12px"><img src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Design tokens</span></li>
+        <li style="display:flex;align-items:center;gap:12px"><img src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Typography and layout rules</span></li>
+        <li style="display:flex;align-items:center;gap:12px"><img src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Reusable components</span></li>
+        <li style="display:flex;align-items:center;gap:12px"><img src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Brand voice</span></li>
+        <li style="display:flex;align-items:center;gap:12px"><img src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Motion guidance</span></li>
+        <li style="display:flex;align-items:center;gap:12px"><img src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Presentation templates</span></li>
+        <li style="display:flex;align-items:center;gap:12px"><img src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">DESIGN.md</span></li>
+        <li style="display:flex;align-items:center;gap:12px"><img src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Guidance for AI tools such as Claude Design</span></li>
+      </ul>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <iframe width="100%" style="aspect-ratio:16/9;border-radius:var(--radius-sm)" src="https://www.youtube.com/embed/-Q_afihcKs0?si=QvlXaj-x5coFCtP8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <a class="scan-cta" href="/design-system-deck/"><span class="scan-cta-arrow">→</span> View the Raft Design System</a>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:64px;align-items:center;border-top:1px solid var(--border-rule);padding-top:48px">
+    <div style="display:flex;align-items:flex-start;gap:24px">
+      <div style="width:32px;height:2px;background:var(--text-accent);margin-top:12px;flex-shrink:0"></div>
+      <p style="font-size:20px;line-height:1.4;margin:0">The goal isn't to automate design judgment.<br>It's to automate the repetitive work around it.</p>
+    </div>
+    <div style="padding-left:64px;border-left:1px solid var(--border-rule)">
+      <p style="font-size:16px;color:var(--text-muted);line-height:1.4;margin:0">Better tools. A stronger system. A faster, more consistent team.</p>
     </div>
   </div>
 </section>

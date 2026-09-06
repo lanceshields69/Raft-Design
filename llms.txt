@@ -21,6 +21,9 @@
 - [Modere — Japanese Market Platform Redesign](https://raftdesign.studio/projects/modere/) / [日本語](https://raftdesign.studio/ja/projects/modere/)
 - [Modular Suite for XD — Design Collaboration Tools](https://raftdesign.studio/projects/modular-suite-xd/) / [日本語](https://raftdesign.studio/ja/projects/modular-suite-xd/)
 
+## Services
+- [Design Foundation Sprint](https://raftdesign.studio/design-foundation.html): A four-week engagement for funded startups — brand system first, then the product screens that express it, delivered as a tokenized, documented design system rather than a one-off deliverable. English only.
+
 ## Journal
 - [Journal index (English)](https://raftdesign.studio/journal/)
 - [Journal index (Japanese)](https://raftdesign.studio/ja/journal/)

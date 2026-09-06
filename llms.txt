@@ -8,8 +8,8 @@
 > around it.
 
 ## Studio
-- [Home (English)](https://raftdesign.studio/): Studio thesis, practice areas, and origin story.
-- [Home (Japanese)](https://raftdesign.studio/ja/): 日本語版ホームページ。
+- [Home (English)](https://raftdesign.studio/): Studio thesis, practice areas, and origin story. Includes an "AI-Ready Design Systems" section (between Approach and Projects) linking to the full page below.
+- [Home (Japanese)](https://raftdesign.studio/ja/): 日本語版ホームページ。「AI対応型デザインシステム」セクション（Approach と Projects の間）を含む。
 
 ## Projects
 - [Projects index (English)](https://raftdesign.studio/projects/)
@@ -22,8 +22,8 @@
 - [Modular Suite for XD — Design Collaboration Tools](https://raftdesign.studio/projects/modular-suite-xd/) / [日本語](https://raftdesign.studio/ja/projects/modular-suite-xd/)
 
 ## Services
-- [Design Foundation Sprint](https://raftdesign.studio/design-foundation.html): A four-week engagement for funded startups — brand system first, then the product screens that express it, delivered as a tokenized, documented design system rather than a one-off deliverable. English only.
-- [AI-Ready Design Systems](https://raftdesign.studio/design-system.html): Why and how Raft builds design systems that give both a team and its AI tools (Claude Design, ChatGPT, Cursor, and others) the same source of truth — brand rules, tokens, components, and DESIGN.md. Links to a real example, the [Raft Design & Brand System deck](https://raftdesign.studio/design-system-deck/). English only.
+- [Design Foundation Sprint](https://raftdesign.studio/design-foundation.html) / [日本語](https://raftdesign.studio/ja/design-foundation.html): A four-week engagement for funded startups — brand system first, then the product screens that express it, delivered as a tokenized, documented design system rather than a one-off deliverable.
+- [AI-Ready Design Systems](https://raftdesign.studio/design-system.html) / [日本語](https://raftdesign.studio/ja/design-system.html): Why and how Raft builds design systems that give both a team and its AI tools (Claude Design, ChatGPT, Cursor, and others) the same source of truth — brand rules, tokens, components, and DESIGN.md. Links to a real example, the [Raft Design & Brand System deck](https://raftdesign.studio/design-system-deck/) (English only).
 
 ## Journal
 - [Journal index (English)](https://raftdesign.studio/journal/)

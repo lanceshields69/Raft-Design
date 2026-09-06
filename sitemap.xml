@@ -207,6 +207,19 @@
     <lastmod>2026-09-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/design-foundation.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/design-foundation.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/design-foundation.html" />
+  </url>
+
+  <url>
+    <loc>https://raftdesign.studio/ja/design-foundation.html</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/design-foundation.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/design-foundation.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/design-foundation.html" />
   </url>
 
   <url>
@@ -214,6 +227,19 @@
     <lastmod>2026-09-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/design-system.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/design-system.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/design-system.html" />
+  </url>
+
+  <url>
+    <loc>https://raftdesign.studio/ja/design-system.html</loc>
+    <lastmod>2026-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/design-system.html" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/design-system.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/design-system.html" />
   </url>
 
   <url>

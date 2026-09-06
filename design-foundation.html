@@ -24,6 +24,9 @@
   <meta name="twitter:title" content="Design Foundation Sprint — Raft Design">
   <meta name="twitter:description" content="Senior design leadership, before you're ready to hire it. Raft closes the gap between your product and your brand in four weeks.">
   <meta name="twitter:image" content="https://raftdesign.studio/images/Raft-Design-Social.png">
+  <link rel="alternate" hreflang="en" href="https://raftdesign.studio/design-foundation.html">
+  <link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/design-foundation.html">
+  <link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/design-foundation.html">
   <link rel="canonical" href="https://raftdesign.studio/design-foundation.html">
   <link rel="icon" type="image/png" href="images/r-mark-favicon.png">
   <script type="application/ld+json">
@@ -206,8 +209,22 @@
        aria-hidden marquee. Here the logos are real credibility content, so
        a white mark going invisible on the light canvas is a real bug, not
        a cosmetic one; scoped to this page rather than changing the shared
-       class's default behavior elsewhere. */
-    [data-theme="light"] .client-logo { filter: invert(1); }
+       class's default behavior elsewhere. Real black-logo assets now exist
+       for 8 of 9 marks (same dark/light swap pattern as .nav-logo-gif in
+       styles.css); Leadspace has no black asset yet, so it keeps the
+       filter:invert(1) fallback until one is supplied. */
+    .client-logo--light { display: none; }
+    [data-theme="light"] .client-logo--dark { display: none; }
+    [data-theme="light"] .client-logo--light { display: block; }
+    [data-theme="light"] .client-logo--invert-fallback { filter: invert(1); }
+
+    /* Accent-green icon SVGs are flat external assets (not inline, so
+       currentColor can't reach them) — same dark/light swap idea as the
+       client logos just above, with a real darker-green (#159845,
+       matching --text-accent's light-mode value) asset for light mode. */
+    .svg-icon--light { display: none; }
+    [data-theme="light"] .svg-icon--dark { display: none; }
+    [data-theme="light"] .svg-icon--light { display: block; }
 
     /* The source design's hero grid (minmax(0,1.3fr) minmax(280px,1fr)) has
        no responsive breakpoint at all — the 280px-minimum second column
@@ -459,15 +476,24 @@
   </div>
 
   <div style="display:flex;flex-wrap:nowrap;overflow-x:auto;gap:16px;padding:48px 0 0;border-top:1px solid var(--border-rule);margin-top:48px;justify-content:space-between">
-    <img class="client-logo" src="images/client-legalon.png" alt="LegalOn">
-    <img class="client-logo" src="images/client-adobe.png" alt="Adobe">
-    <img class="client-logo" src="images/client-fitbit.png" alt="Fitbit">
-    <img class="client-logo" src="images/client-healthcatalyst.png" alt="Health Catalyst">
-    <img class="client-logo" src="images/client-cloudcruiser.png" alt="Cloud Cruiser">
-    <img class="client-logo" src="images/client-orderdynamics.png" alt="OrderDynamics">
-    <img class="client-logo" src="images/client-leadspace.png" alt="Leadspace">
-    <img class="client-logo" src="images/client-protagonist.png" alt="Protagonist.io">
-    <img class="client-logo" src="images/client-rally.png" alt="Rally Health">
+    <img class="client-logo client-logo--dark" src="images/client-legalon.png" alt="LegalOn">
+    <img class="client-logo client-logo--light" src="images/client-legalon-black.png" alt="LegalOn">
+    <img class="client-logo client-logo--dark" src="images/client-adobe.png" alt="Adobe">
+    <img class="client-logo client-logo--light" src="images/client-adobe-black.png" alt="Adobe">
+    <img class="client-logo client-logo--dark" src="images/client-fitbit.png" alt="Fitbit">
+    <img class="client-logo client-logo--light" src="images/client-fitbit-black.png" alt="Fitbit">
+    <img class="client-logo client-logo--dark" src="images/client-healthcatalyst.png" alt="Health Catalyst">
+    <img class="client-logo client-logo--light" src="images/client-healthcatalyst-black.png" alt="Health Catalyst">
+    <img class="client-logo client-logo--dark" src="images/client-cloudcruiser.png" alt="Cloud Cruiser">
+    <img class="client-logo client-logo--light" src="images/client-cloudcruiser-black.png" alt="Cloud Cruiser">
+    <img class="client-logo client-logo--dark" src="images/client-orderdynamics.png" alt="OrderDynamics">
+    <img class="client-logo client-logo--light" src="images/client-orderdynamics-black.png" alt="OrderDynamics">
+    <!-- No client-leadspace-black.png supplied yet — falls back to filter:invert(1) in light mode. -->
+    <img class="client-logo client-logo--invert-fallback" src="images/client-leadspace.png" alt="Leadspace">
+    <img class="client-logo client-logo--dark" src="images/client-protagonist.png" alt="Protagonist.io">
+    <img class="client-logo client-logo--light" src="images/client-protagonist-black.png" alt="Protagonist.io">
+    <img class="client-logo client-logo--dark" src="images/client-rally.png" alt="Rally Health">
+    <img class="client-logo client-logo--light" src="images/client-rally-black.png" alt="Rally Health">
   </div>
 </section>
 
@@ -568,22 +594,26 @@
 
   <div class="df-ai-tools-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));border-top:1px solid var(--border-rule);margin-bottom:80px">
     <div class="df-ai-tool-item" style="padding:40px 32px 40px 0;border-right:1px solid var(--border-rule);display:flex;flex-direction:column;gap:16px">
-      <img src="images/icon-marketing.svg" alt="" style="width:32px;height:32px">
+      <img class="svg-icon--dark" src="images/icon-marketing.svg" alt="" style="width:32px;height:32px">
+<img class="svg-icon--light" src="images/icon-marketing-light.svg" alt="" style="width:32px;height:32px">
       <p style="font-size:16px;font-weight:600;margin:0">Marketing</p>
       <p style="font-size:16px;color:var(--text-muted);line-height:1.4;margin:0">Create campaign concepts, ads, landing pages, launch materials, and social assets from the same brand foundation.</p>
     </div>
     <div class="df-ai-tool-item" style="padding:40px 32px;border-right:1px solid var(--border-rule);display:flex;flex-direction:column;gap:16px">
-      <img src="images/icon-sales.svg" alt="" style="width:32px;height:32px">
+      <img class="svg-icon--dark" src="images/icon-sales.svg" alt="" style="width:32px;height:32px">
+<img class="svg-icon--light" src="images/icon-sales-light.svg" alt="" style="width:32px;height:32px">
       <p style="font-size:16px;font-weight:600;margin:0">Sales</p>
       <p style="font-size:16px;color:var(--text-muted);line-height:1.4;margin:0">Generate on-brand decks, proposals, customer presentations, and enablement materials without reinventing the visual language.</p>
     </div>
     <div class="df-ai-tool-item" style="padding:40px 32px;border-right:1px solid var(--border-rule);display:flex;flex-direction:column;gap:16px">
-      <img src="images/icon-product-design.svg" alt="" style="width:32px;height:32px">
+      <img class="svg-icon--dark" src="images/icon-product-design.svg" alt="" style="width:32px;height:32px">
+<img class="svg-icon--light" src="images/icon-product-design-light.svg" alt="" style="width:32px;height:32px">
       <p style="font-size:16px;font-weight:600;margin:0">Product + design</p>
       <p style="font-size:16px;color:var(--text-muted);line-height:1.4;margin:0">Explore new flows, prototypes, feature concepts, and product surfaces using the established components and design rules.</p>
     </div>
     <div class="df-ai-tool-item" style="padding:40px 0 40px 32px;display:flex;flex-direction:column;gap:16px">
-      <img src="images/icon-engineering.svg" alt="" style="width:32px;height:32px">
+      <img class="svg-icon--dark" src="images/icon-engineering.svg" alt="" style="width:32px;height:32px">
+<img class="svg-icon--light" src="images/icon-engineering-light.svg" alt="" style="width:32px;height:32px">
       <p style="font-size:16px;font-weight:600;margin:0">Engineering</p>
       <p style="font-size:16px;color:var(--text-muted);line-height:1.4;margin:0">Work from shared tokens, components, implementation guidance, and a clearer source of truth.</p>
     </div>
@@ -595,14 +625,22 @@
       <h3 style="font-weight:900;font-size:clamp(22px,2.6vw,28px);line-height:1.15;margin:20px 0 0">This Raft design guideline was built with the same system.</h3>
       <p style="font-size:16px;font-weight:600;margin:24px 0 0">Raft's own brand system includes:</p>
       <ul style="list-style:none;padding:0;margin:20px 0 0;display:flex;flex-direction:column;gap:12px">
-        <li style="display:flex;align-items:center;gap:12px"><img src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Design tokens</span></li>
-        <li style="display:flex;align-items:center;gap:12px"><img src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Typography and layout rules</span></li>
-        <li style="display:flex;align-items:center;gap:12px"><img src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Reusable components</span></li>
-        <li style="display:flex;align-items:center;gap:12px"><img src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Brand voice</span></li>
-        <li style="display:flex;align-items:center;gap:12px"><img src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Motion guidance</span></li>
-        <li style="display:flex;align-items:center;gap:12px"><img src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Presentation templates</span></li>
-        <li style="display:flex;align-items:center;gap:12px"><img src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">DESIGN.md</span></li>
-        <li style="display:flex;align-items:center;gap:12px"><img src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Guidance for AI tools such as Claude Design</span></li>
+        <li style="display:flex;align-items:center;gap:12px"><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0">
+<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Design tokens</span></li>
+        <li style="display:flex;align-items:center;gap:12px"><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0">
+<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Typography and layout rules</span></li>
+        <li style="display:flex;align-items:center;gap:12px"><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0">
+<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Reusable components</span></li>
+        <li style="display:flex;align-items:center;gap:12px"><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0">
+<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Brand voice</span></li>
+        <li style="display:flex;align-items:center;gap:12px"><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0">
+<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Motion guidance</span></li>
+        <li style="display:flex;align-items:center;gap:12px"><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0">
+<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Presentation templates</span></li>
+        <li style="display:flex;align-items:center;gap:12px"><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0">
+<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">DESIGN.md</span></li>
+        <li style="display:flex;align-items:center;gap:12px"><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0">
+<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Guidance for AI tools such as Claude Design</span></li>
       </ul>
     </div>
     <div style="display:flex;flex-direction:column;gap:32px">

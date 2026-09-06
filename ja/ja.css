@@ -182,3 +182,28 @@ body {
 .tools-section-head .section-label {
   font-family: 'Noto Sans JP', sans-serif;
 }
+
+/* 6. Homepage AI Systems panel (added with design-system.html/JA build)
+   — its pill ("AI対応型デザインシステム") is also actual Japanese
+   content, same exception as the tools page pills above. */
+.ai-systems-section .section-label {
+  font-family: 'Noto Sans JP', sans-serif;
+  letter-spacing: 0;
+}
+
+.ai-systems-heading {
+  line-height: 1.5;
+}
+
+.ai-systems-body,
+.ai-systems-item-body {
+  line-height: 1.9;
+}
+
+.ai-systems-heading,
+.ai-systems-body,
+.ai-systems-item-title,
+.ai-systems-item-body {
+  font-family: 'Noto Sans JP', sans-serif;
+  overflow-wrap: anywhere;
+}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RW873N0SWM"></script>
@@ -12,43 +12,45 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI-Ready Design Systems — Raft Design</title>
-  <meta name="description" content="Raft creates brand and product systems that give your teams and AI tools the same source of truth, so new work can move faster without losing consistency.">
-  <meta property="og:title" content="AI-Ready Design Systems — Raft Design">
-  <meta property="og:description" content="Raft creates brand and product systems that give your teams and AI tools the same source of truth, so new work can move faster without losing consistency.">
+  <title>AI対応型デザインシステム — Raft Design</title>
+  <meta name="description" content="Raftは、チームとAIツールが同じ基盤を拠り所にできるブランド＆プロダクトシステムをつくります。一貫性を保ったまま、新しい制作をより速く進められるようになります。">
+  <meta property="og:title" content="AI対応型デザインシステム — Raft Design">
+  <meta property="og:description" content="Raftは、チームとAIツールが同じ基盤を拠り所にできるブランド＆プロダクトシステムをつくります。一貫性を保ったまま、新しい制作をより速く進められるようになります。">
   <meta property="og:image" content="https://raftdesign.studio/images/Raft-Design-Social.png">
   <meta property="og:type" content="website">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:url" content="https://raftdesign.studio/design-system.html">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:url" content="https://raftdesign.studio/ja/design-system.html">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AI-Ready Design Systems — Raft Design">
-  <meta name="twitter:description" content="Raft creates brand and product systems that give your teams and AI tools the same source of truth, so new work can move faster without losing consistency.">
+  <meta name="twitter:title" content="AI対応型デザインシステム — Raft Design">
+  <meta name="twitter:description" content="Raftは、チームとAIツールが同じ基盤を拠り所にできるブランド＆プロダクトシステムをつくります。一貫性を保ったまま、新しい制作をより速く進められるようになります。">
   <meta name="twitter:image" content="https://raftdesign.studio/images/Raft-Design-Social.png">
   <link rel="alternate" hreflang="en" href="https://raftdesign.studio/design-system.html">
   <link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/design-system.html">
   <link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/design-system.html">
-  <link rel="canonical" href="https://raftdesign.studio/design-system.html">
-  <link rel="icon" type="image/png" href="images/r-mark-favicon.png">
+  <link rel="canonical" href="https://raftdesign.studio/ja/design-system.html">
+  <link rel="icon" type="image/png" href="../images/r-mark-favicon.png">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "AI-Ready Design Systems",
-    "url": "https://raftdesign.studio/design-system.html",
-    "description": "Raft creates brand and product systems that give your teams and AI tools the same source of truth, so new work can move faster without losing consistency.",
+    "name": "AI対応型デザインシステム",
+    "url": "https://raftdesign.studio/ja/design-system.html",
+    "description": "Raftは、チームとAIツールが同じ基盤を拠り所にできるブランド＆プロダクトシステムをつくります。一貫性を保ったまま、新しい制作をより速く進められるようになります。",
     "provider": { "@id": "https://raftdesign.studio/#organization" },
     "areaServed": ["US", "JP"],
+    "inLanguage": "ja",
     "audience": {
       "@type": "Audience",
-      "audienceType": "Teams building or scaling a brand and product design system"
+      "audienceType": "ブランド＆プロダクトのデザインシステムを構築・拡張するチーム"
     }
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200;14..32,300;14..32,400;14..32,500;14..32,900&family=Fraunces:ital,opsz,SOFT,WONK,wght@1,9..144,0,1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="tools.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200;14..32,300;14..32,400;14..32,500;14..32,900&family=Noto+Sans+JP:wght@400;500;900&family=Noto+Serif+JP:wght@900&family=Fraunces:ital,opsz,SOFT,WONK,wght@1,9..144,0,1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../tools.css">
+  <link rel="stylesheet" href="ja.css">
   <script>
     if (localStorage.getItem('raft-theme') === 'light') {
       document.documentElement.dataset.theme = 'light';
@@ -59,14 +61,14 @@
        .project-section-label, .contact-modal-field, .footer, and all the
        --token values besides the two below) comes straight from styles.css,
        the real site's own stylesheet. Nothing here duplicates a rule that
-       already exists there. */
+       already exists there. Structural clone of design-system.html (EN) —
+       ja.css (loaded after styles.css) handles the sitewide JP typography
+       overrides; this page's own JP-specific line-height/letter-spacing
+       adjustments live inline, matching how the EN page styles everything
+       inline rather than via new classes. */
 
     :root {
-      /* styles.css hardcodes font-family directly rather than tokenizing it
-         (see body/.serif-heading rules) — these two are page-local so this
-         file can use var(--font-sans)/var(--font-emphasis) without adding an
-         abstraction the rest of the site doesn't have. */
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-sans: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       --font-emphasis: 'Fraunces', serif;
     }
 
@@ -102,7 +104,7 @@
     .ds-compare-card--no { background: var(--bg-sunken); border: 1px solid var(--border-rule); }
     .ds-compare-card--yes { background: var(--bg-surface); border: 1px solid var(--border-button); }
     .ds-compare-list { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; width: 100%; }
-    .ds-compare-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; line-height: 1.5; }
+    .ds-compare-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; line-height: 1.7; }
     .ds-compare-arrow { display: flex; align-items: center; justify-content: center; align-self: center; }
 
     .ds-build-grid, .ds-team-grid { display: grid; grid-template-columns: minmax(240px,280px) minmax(0,1fr); gap: 80px; align-items: start; }
@@ -142,19 +144,19 @@
 
 <nav class="nav-header">
   <div class="nav-logotype">
-    <a href="/" class="nav-logo-text"><img src="images/r-mark-dark.gif" width="50" height="50" alt="Raft Design" class="nav-logo-gif nav-logo-gif--dark">
-        <img src="images/r-mark-light.gif" width="50" height="50" alt="Raft Design" class="nav-logo-gif nav-logo-gif--light"></a>
+    <a href="/ja/" class="nav-logo-text"><img src="../images/r-mark-dark.gif" width="50" height="50" alt="Raft Design" class="nav-logo-gif nav-logo-gif--dark">
+        <img src="../images/r-mark-light.gif" width="50" height="50" alt="Raft Design" class="nav-logo-gif nav-logo-gif--light"></a>
   </div>
   <div class="nav-links">
-    <a href="/#approach" class="nav-link">Approach</a>
-    <a href="/#expertise" class="nav-link">Expertise</a>
-    <a href="/#projects" class="nav-link">Projects</a>
-    <a href="/#build" class="nav-link">Build</a>
-    <a href="/#studio" class="nav-link">Studio</a>
-    <a href="/journal/" class="nav-link">Journal</a>
-    <a href="/#contact" class="nav-link">Contact</a>
-    <a href="/tools/" class="nav-link">AI Tools</a>
-    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode">
+    <a href="/ja/#approach" class="nav-link">Approach</a>
+    <a href="/ja/#expertise" class="nav-link">Expertise</a>
+    <a href="/ja/#projects" class="nav-link">Projects</a>
+    <a href="/ja/#build" class="nav-link">Build</a>
+    <a href="/ja/#studio" class="nav-link">Studio</a>
+    <a href="/ja/journal/" class="nav-link">Journal</a>
+    <a href="/ja/#contact" class="nav-link">Contact</a>
+    <a href="/ja/tools/" class="nav-link">AI Tools</a>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="ライトモードに切り替え">
       <svg class="theme-toggle-icon theme-toggle-icon--moon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M17.5 10.6583C17.3689 12.0768 16.8365 13.4287 15.9652 14.5557C15.0939 15.6826 13.9196 16.5382 12.5798 17.0221C11.2399 17.5061 9.78999 17.5984 8.39958 17.2884C7.00918 16.9784 5.73583 16.2788 4.72852 15.2715C3.72121 14.2642 3.02162 12.9908 2.71159 11.6004C2.40156 10.21 2.49393 8.76007 2.97788 7.42025C3.46184 6.08042 4.31736 4.90614 5.44434 4.03479C6.57133 3.16345 7.92316 2.63109 9.34167 2.5C8.51118 3.62356 8.11154 5.00787 8.21544 6.40118C8.31935 7.79448 8.91988 9.10422 9.90783 10.0922C10.8958 11.0801 12.2055 11.6807 13.5988 11.7846C14.9921 11.8885 16.3764 11.4888 17.5 10.6583Z" stroke="currentColor" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
@@ -171,12 +173,12 @@
       </svg>
     </button>
     <div class="nav-lang">
-      <span class="nav-lang-active">EN</span>
+      <a href="/design-system.html" class="nav-lang-inactive" hreflang="en">EN</a>
       <span class="nav-lang-divider">|</span>
-      <a href="/ja/" class="nav-lang-inactive" hreflang="ja">JP</a>
+      <span class="nav-lang-active">JP</span>
     </div>
   </div>
-  <button class="nav-hamburger" id="nav-hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu-overlay">
+  <button class="nav-hamburger" id="nav-hamburger" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu-overlay">
     <svg width="55" height="32" viewBox="0 0 55 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M20.4167 24C19.6343 24 19 23.3657 19 22.5833C19 21.8009 19.6343 21.1667 20.4167 21.1667H35.2546C36.037 21.1667 36.6712 21.8009 36.6712 22.5833C36.6712 23.3657 36.037 24 35.2546 24H20.4167ZM20.4167 16.9167C19.6343 16.9167 19 16.2824 19 15.5C19 14.7176 19.6343 14.0833 20.4167 14.0833H35.2546C36.037 14.0833 36.6712 14.7176 36.6712 15.5C36.6712 16.2824 36.037 16.9167 35.2546 16.9167H20.4167ZM20.4167 9.83333C19.6343 9.83333 19 9.19907 19 8.41667C19 7.63426 19.6343 7 20.4167 7H35.2546C36.037 7 36.6712 7.63426 36.6712 8.41667C36.6712 9.19907 36.037 9.83333 35.2546 9.83333H20.4167Z" fill="currentColor"/>
     </svg>
@@ -185,10 +187,10 @@
 
 <div class="mobile-menu-overlay" id="mobile-menu-overlay">
   <div class="mobile-menu-topbar">
-    <span class="mobile-menu-logo"><img src="images/r-mark-dark.gif" width="50" height="50" alt="Raft Design" class="nav-logo-gif nav-logo-gif--dark">
-        <img src="images/r-mark-light.gif" width="50" height="50" alt="Raft Design" class="nav-logo-gif nav-logo-gif--light"></span>
+    <span class="mobile-menu-logo"><img src="../images/r-mark-dark.gif" width="50" height="50" alt="Raft Design" class="nav-logo-gif nav-logo-gif--dark">
+        <img src="../images/r-mark-light.gif" width="50" height="50" alt="Raft Design" class="nav-logo-gif nav-logo-gif--light"></span>
     <div class="mobile-menu-controls">
-      <button class="theme-toggle" id="theme-toggle-mobile" type="button" aria-label="Switch to light mode">
+      <button class="theme-toggle" id="theme-toggle-mobile" type="button" aria-label="ライトモードに切り替え">
         <svg class="theme-toggle-icon theme-toggle-icon--moon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M17.5 10.6583C17.3689 12.0768 16.8365 13.4287 15.9652 14.5557C15.0939 15.6826 13.9196 16.5382 12.5798 17.0221C11.2399 17.5061 9.78999 17.5984 8.39958 17.2884C7.00918 16.9784 5.73583 16.2788 4.72852 15.2715C3.72121 14.2642 3.02162 12.9908 2.71159 11.6004C2.40156 10.21 2.49393 8.76007 2.97788 7.42025C3.46184 6.08042 4.31736 4.90614 5.44434 4.03479C6.57133 3.16345 7.92316 2.63109 9.34167 2.5C8.51118 3.62356 8.11154 5.00787 8.21544 6.40118C8.31935 7.79448 8.91988 9.10422 9.90783 10.0922C10.8958 11.0801 12.2055 11.6807 13.5988 11.7846C14.9921 11.8885 16.3764 11.4888 17.5 10.6583Z" stroke="currentColor" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -205,11 +207,11 @@
         </svg>
       </button>
       <div class="nav-lang">
-        <span class="nav-lang-active">EN</span>
+        <a href="/design-system.html" class="nav-lang-inactive" hreflang="en">EN</a>
         <span class="nav-lang-divider">|</span>
-        <a href="/ja/" class="nav-lang-inactive" hreflang="ja">JP</a>
+        <span class="nav-lang-active">JP</span>
       </div>
-      <button class="mobile-menu-close" id="mobile-menu-close" type="button" aria-label="Close menu">
+      <button class="mobile-menu-close" id="mobile-menu-close" type="button" aria-label="メニューを閉じる">
         <svg width="17" height="16" viewBox="0 0 16.5332 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M0.268262 0.259611C0.440253 0.0933737 0.673395 0 0.916476 0C1.15956 0 1.3927 0.0933737 1.56469 0.259611L16.2412 14.4628C16.3313 14.5441 16.4036 14.6421 16.4538 14.751C16.5039 14.8599 16.5309 14.9774 16.533 15.0966C16.5352 15.2158 16.5125 15.3342 16.4664 15.4448C16.4203 15.5553 16.3516 15.6557 16.2645 15.74C16.1774 15.8243 16.0736 15.8907 15.9594 15.9354C15.8452 15.98 15.7229 16.002 15.5997 15.9999C15.4765 15.9978 15.3551 15.9717 15.2426 15.9232C15.13 15.8746 15.0288 15.8047 14.9448 15.7175L0.268262 1.51423C0.0964852 1.34779 0 1.12216 0 0.886921C0 0.651679 0.0964852 0.426056 0.268262 0.259611Z" fill="currentColor"/>
           <path fill-rule="evenodd" clip-rule="evenodd" d="M16.2405 0.259611C16.4123 0.426056 16.5088 0.651679 16.5088 0.886921C16.5088 1.12216 16.4123 1.34779 16.2405 1.51423L1.564 15.7175C1.39011 15.8743 1.16012 15.9596 0.922484 15.9556C0.684845 15.9515 0.458111 15.8584 0.290049 15.6957C0.121987 15.5331 0.0257188 15.3136 0.021526 15.0837C0.0173331 14.8537 0.105543 14.6311 0.267572 14.4628L14.9441 0.259611C15.1161 0.0933737 15.3492 0 15.5923 0C15.8354 0 16.0685 0.0933737 16.2405 0.259611Z" fill="currentColor"/>
@@ -218,14 +220,14 @@
     </div>
   </div>
   <nav class="mobile-menu-links">
-    <a href="/#approach" class="mobile-menu-link">Approach</a>
-    <a href="/#expertise" class="mobile-menu-link">Expertise</a>
-    <a href="/#projects" class="mobile-menu-link">Projects</a>
-    <a href="/#build" class="mobile-menu-link">Build</a>
-    <a href="/#studio" class="mobile-menu-link">Studio</a>
-    <a href="/journal/" class="mobile-menu-link">Journal</a>
-    <a href="/#contact" class="mobile-menu-link">Contact</a>
-    <a href="/tools/" class="mobile-menu-link">AI Tools</a>
+    <a href="/ja/#approach" class="mobile-menu-link">Approach</a>
+    <a href="/ja/#expertise" class="mobile-menu-link">Expertise</a>
+    <a href="/ja/#projects" class="mobile-menu-link">Projects</a>
+    <a href="/ja/#build" class="mobile-menu-link">Build</a>
+    <a href="/ja/#studio" class="mobile-menu-link">Studio</a>
+    <a href="/ja/journal/" class="mobile-menu-link">Journal</a>
+    <a href="/ja/#contact" class="mobile-menu-link">Contact</a>
+    <a href="/ja/tools/" class="mobile-menu-link">AI Tools</a>
   </nav>
 </div>
 
@@ -234,37 +236,36 @@
   <div class="ds-hero-grid">
     <div>
       <div style="display:flex;align-items:center;gap:14px">
-        <span style="font-size:11px;font-weight:600;letter-spacing:1.98px;text-transform:uppercase;color:var(--text-accent)">AI-Ready Design Systems</span>
+        <span style="font-family:'Noto Sans JP',sans-serif;font-size:11px;font-weight:600;letter-spacing:0;text-transform:uppercase;color:var(--text-accent)">AI対応型デザインシステム</span>
         <div style="flex:1;height:1px;background:var(--text-accent);opacity:0.35"></div>
       </div>
-      <h1 style="font-weight:900;letter-spacing:-1.5px;text-transform:uppercase;margin:24px 0 0;line-height:1.02">
-        <span style="display:block;font-size:clamp(30px,4vw,48px)">Your Design System</span>
-        <span style="display:block;font-family:var(--font-emphasis);font-style:italic;font-weight:600;font-variation-settings:'SOFT' 0,'WONK' 1;color:var(--text-accent);text-transform:none;font-size:clamp(34px,4.6vw,58px);letter-spacing:-1.5px">shouldn&rsquo;t stop</span>
-        <span style="display:block;font-size:clamp(30px,4vw,48px)">at Figma.</span>
+      <h1 style="font-weight:900;letter-spacing:0;margin:24px 0 0;line-height:1.5;overflow-wrap:anywhere">
+        <span style="display:block;font-family:'Noto Sans JP',sans-serif;font-size:clamp(26px,3.6vw,42px)">デザインシステムは、</span>
+        <span style="display:block;font-family:'Noto Serif JP',serif;font-weight:900;color:var(--text-accent);font-size:clamp(26px,3.6vw,42px)">Figmaの中だけで完結するものではありません。</span>
       </h1>
-      <p style="font-size:17px;line-height:1.7;color:var(--text-muted);max-width:460px;margin:24px 0 0">Raft creates brand and product systems that give your teams and AI tools the same source of truth, so new work can move faster without losing consistency.</p>
+      <p style="font-family:'Noto Sans JP',sans-serif;font-size:17px;line-height:1.9;color:var(--text-muted);max-width:480px;margin:24px 0 0;overflow-wrap:anywhere">Raftは、チームとAIツールが同じ基盤を拠り所にできるブランド＆プロダクトシステムをつくります。一貫性を保ったまま、新しい制作をより速く進められるようになります。</p>
       <div style="display:flex;align-items:center;flex-wrap:wrap;gap:16px 24px;margin-top:36px">
-        <button type="button" id="ds-talk-to-us-btn" class="scan-cta"><span class="scan-cta-arrow">→</span> Talk to us</button>
-        <a href="/design-system-deck/" target="_blank" rel="noopener noreferrer" style="font-size:16px;font-weight:400;line-height:24px;color:var(--text-primary);text-decoration:none">See the Raft design system example <span style="color:var(--text-accent)">→</span></a>
+        <button type="button" id="ds-talk-to-us-btn" class="scan-cta"><span class="scan-cta-arrow">→</span> 相談する</button>
+        <a href="/design-system-deck/" target="_blank" rel="noopener noreferrer" style="font-family:'Noto Sans JP',sans-serif;font-size:16px;font-weight:400;line-height:24px;color:var(--text-primary);text-decoration:none">Raftのデザインシステム事例を見る <span style="color:var(--text-accent)">→</span></a>
       </div>
     </div>
 
     <div class="ds-hero-card" id="ds-hero-card">
       <div class="ds-hero-card-grid">
         <div data-ds-leaf style="--ds-x:-40px" data-cx="0" data-cy="0" data-cs="1">
-          <div class="ds-hero-chip" data-ds-leaf style="--ds-s:0.85">Brand</div>
-          <div class="ds-hero-chip" data-ds-leaf style="--ds-s:0.85;margin-top:16px">Product</div>
-          <div class="ds-hero-chip ds-hero-chip--active ds-ai-ready-chip" data-ds-leaf style="--ds-s:0.85;margin-top:16px">AI-ready</div>
+          <div class="ds-hero-chip" data-ds-leaf style="--ds-s:0.85">ブランド</div>
+          <div class="ds-hero-chip" data-ds-leaf style="--ds-s:0.85;margin-top:16px">プロダクト</div>
+          <div class="ds-hero-chip ds-hero-chip--active ds-ai-ready-chip" data-ds-leaf style="--ds-s:0.85;margin-top:16px">AI対応</div>
         </div>
         <div class="ds-hero-divider" data-ds-leaf style="--ds-y:-20px"></div>
         <div data-ds-leaf style="--ds-x:40px;display:flex;flex-direction:column;justify-content:space-between">
           <div>
-            <p class="ds-hero-label" data-ds-leaf style="--ds-y:15px;margin:0">People</p>
-            <p class="ds-hero-label" data-ds-leaf style="--ds-y:15px;margin:12px 0 0">Teams</p>
-            <p class="ds-hero-label" data-ds-leaf style="--ds-y:15px;margin:12px 0 0">AI Tools</p>
+            <p class="ds-hero-label" data-ds-leaf style="--ds-y:15px;margin:0">人</p>
+            <p class="ds-hero-label" data-ds-leaf style="--ds-y:15px;margin:12px 0 0">チーム</p>
+            <p class="ds-hero-label" data-ds-leaf style="--ds-y:15px;margin:12px 0 0">AIツール</p>
             <div style="width:24px;height:1px;background:var(--text-accent);opacity:0.4;margin-top:16px"></div>
           </div>
-          <p data-ds-leaf style="--ds-y:20px;font-size:13px;color:var(--text-muted);line-height:1.5;margin:16px 0 0">One system.<br>More possibilities.</p>
+          <p data-ds-leaf style="--ds-y:20px;font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--text-muted);line-height:1.7;margin:16px 0 0">ひとつのシステムから、<br>より多くの可能性へ。</p>
         </div>
       </div>
     </div>
@@ -275,45 +276,45 @@
 <section style="padding:80px 15px;max-width:1200px;margin:0 auto;border-top:1px solid var(--border-rule)">
   <div class="ds-shift-grid">
     <div>
-      <h2 style="font-weight:900;font-size:clamp(28px,3.5vw,36px);line-height:1.05;letter-spacing:-1px;margin:0">The way design systems work is changing.</h2>
-      <p style="font-size:20px;line-height:1.5;color:var(--text-muted);margin:20px 0 0">Teams are already using AI tools, but most design systems weren&rsquo;t built for them. The result is fast but inconsistent output, off-brand materials, and duplicated effort.</p>
+      <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:clamp(26px,3.5vw,34px);line-height:1.5;letter-spacing:0;margin:0;overflow-wrap:anywhere">デザインシステムのあり方が、変わりはじめています。</h2>
+      <p style="font-family:'Noto Sans JP',sans-serif;font-size:20px;line-height:1.9;color:var(--text-muted);margin:20px 0 0;overflow-wrap:anywhere">すでに多くのチームがAIツールを活用しています。しかし、ほとんどのデザインシステムはAIの利用を前提に設計されていません。その結果、制作スピードは上がっても、アウトプットに一貫性がなく、ブランドから外れた成果物や重複した作業が生まれています。</p>
       <div class="ds-stats-row">
         <div>
           <p class="ds-stat-figure">71%</p>
-          <p style="font-size:13px;color:var(--text-muted);margin:6px 0 0">of teams use AI in their workflow</p>
+          <p style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--text-muted);line-height:1.7;margin:6px 0 0">業務でAIツールを活用しているチームの割合</p>
         </div>
         <div>
           <p class="ds-stat-figure">60%</p>
-          <p style="font-size:13px;color:var(--text-muted);margin:6px 0 0">report inconsistent brand output</p>
+          <p style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--text-muted);line-height:1.7;margin:6px 0 0">ブランド表現に一貫性がないと回答したチームの割合</p>
         </div>
         <div>
           <p class="ds-stat-figure">3×</p>
-          <p style="font-size:13px;color:var(--text-muted);margin:6px 0 0">faster production with a structured AI-ready system</p>
+          <p style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--text-muted);line-height:1.7;margin:6px 0 0">構造化されたAI対応型システムによる制作スピードの向上</p>
         </div>
       </div>
     </div>
 
     <div class="ds-compare-grid">
       <div class="ds-compare-card ds-compare-card--no">
-        <img src="images/ds-icon-traditional.svg" alt="" width="36" height="36">
-        <p style="font-weight:600;font-size:13px;margin:8px 0 0;text-align:center">Traditional approach</p>
+        <img src="../images/ds-icon-traditional.svg" alt="" width="36" height="36">
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:13px;margin:8px 0 0;text-align:center">従来型のアプローチ</p>
         <ul class="ds-compare-list">
-          <li><span style="color:var(--text-muted)">✕</span><span style="opacity:0.7">Static brand guidelines</span></li>
-          <li><span style="color:var(--text-muted)">✕</span><span style="opacity:0.7">Designed for humans only</span></li>
-          <li><span style="color:var(--text-muted)">✕</span><span style="opacity:0.7">Reinvention for each project</span></li>
-          <li><span style="color:var(--text-muted)">✕</span><span style="opacity:0.7">Inconsistent AI output</span></li>
+          <li><span style="color:var(--text-muted)">✕</span><span style="font-family:'Noto Sans JP',sans-serif;opacity:0.7">静的なブランドガイドライン</span></li>
+          <li><span style="color:var(--text-muted)">✕</span><span style="font-family:'Noto Sans JP',sans-serif;opacity:0.7">人が使うことだけを想定</span></li>
+          <li><span style="color:var(--text-muted)">✕</span><span style="font-family:'Noto Sans JP',sans-serif;opacity:0.7">プロジェクトごとに一から作り直す</span></li>
+          <li><span style="color:var(--text-muted)">✕</span><span style="font-family:'Noto Sans JP',sans-serif;opacity:0.7">AIによるアウトプットが一貫しない</span></li>
         </ul>
       </div>
-      <div class="ds-compare-arrow"><img src="images/ds-icon-arrow.svg" alt="" width="20" height="20"></div>
+      <div class="ds-compare-arrow"><img src="../images/ds-icon-arrow.svg" alt="" width="20" height="20"></div>
       <div class="ds-compare-card ds-compare-card--yes">
-        <img class="svg-icon--dark" src="images/ds-icon-ai-ready-star.svg" alt="" width="36" height="36">
-<img class="svg-icon--light" src="images/ds-icon-ai-ready-star-light.svg" alt="" width="36" height="36">
-        <p style="font-weight:600;font-size:13px;margin:8px 0 0;text-align:center;color:var(--text-accent)">Raft&rsquo;s AI-ready approach</p>
+        <img class="svg-icon--dark" src="../images/ds-icon-ai-ready-star.svg" alt="" width="36" height="36">
+<img class="svg-icon--light" src="../images/ds-icon-ai-ready-star-light.svg" alt="" width="36" height="36">
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:13px;margin:8px 0 0;text-align:center;color:var(--text-accent)">Raftの<wbr>AI対応型アプローチ</p>
         <ul class="ds-compare-list">
-          <li><span style="color:var(--text-accent)">✓</span><span>Structured for AI tools</span></li>
-          <li><span style="color:var(--text-accent)">✓</span><span>Consistent on-brand output</span></li>
-          <li><span style="color:var(--text-accent)">✓</span><span>Reusable components + templates</span></li>
-          <li><span style="color:var(--text-accent)">✓</span><span>Faster, higher quality work</span></li>
+          <li><span style="color:var(--text-accent)">✓</span><span style="font-family:'Noto Sans JP',sans-serif">AIツールが活用できる構造</span></li>
+          <li><span style="color:var(--text-accent)">✓</span><span style="font-family:'Noto Sans JP',sans-serif">ブランドに沿った一貫したアウトプット</span></li>
+          <li><span style="color:var(--text-accent)">✓</span><span style="font-family:'Noto Sans JP',sans-serif">再利用可能なコンポーネントとテンプレート</span></li>
+          <li><span style="color:var(--text-accent)">✓</span><span style="font-family:'Noto Sans JP',sans-serif">より速く、より高品質な制作</span></li>
         </ul>
       </div>
     </div>
@@ -324,57 +325,57 @@
 <section style="padding:80px 15px;max-width:1200px;margin:0 auto;border-top:1px solid var(--border-rule)">
   <div class="ds-build-grid">
     <div>
-      <h2 style="font-weight:900;font-size:clamp(24px,3vw,28px);line-height:1.2;margin:0">A complete system for brand, product, and AI.</h2>
-      <p style="font-size:15px;line-height:1.6;margin:16px 0 0">We structure all the pieces your team and AI tools need to create consistent, high-quality work.</p>
+      <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:clamp(22px,3vw,26px);line-height:1.5;letter-spacing:0;margin:0;overflow-wrap:anywhere">ブランド、プロダクト、AIをつなぐ、ひとつの完全なシステム。</h2>
+      <p style="font-family:'Noto Sans JP',sans-serif;font-size:15px;line-height:1.9;margin:16px 0 0;overflow-wrap:anywhere">チームとAIツールが、一貫性のある高品質な成果物をつくるために必要な要素を、ひとつのシステムとして構造化します。</p>
     </div>
     <div class="ds-build-items">
       <div class="ds-build-item">
-        <img class="svg-icon--dark" src="images/ds-icon-brand-foundations.svg" alt="" width="28" height="28">
-<img class="svg-icon--light" src="images/ds-icon-brand-foundations-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">Brand foundations</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">Strategy, positioning, visual identity</p>
+        <img class="svg-icon--dark" src="../images/ds-icon-brand-foundations.svg" alt="" width="28" height="28">
+<img class="svg-icon--light" src="../images/ds-icon-brand-foundations-light.svg" alt="" width="28" height="28">
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">ブランド基盤</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">戦略、ポジショニング、ビジュアルアイデンティティ</p>
       </div>
       <div class="ds-build-item">
-        <img class="svg-icon--dark" src="images/ds-icon-voice-content.svg" alt="" width="28" height="28">
-<img class="svg-icon--light" src="images/ds-icon-voice-content-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">Voice and content</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">Messaging, tone, copy guidance</p>
+        <img class="svg-icon--dark" src="../images/ds-icon-voice-content.svg" alt="" width="28" height="28">
+<img class="svg-icon--light" src="../images/ds-icon-voice-content-light.svg" alt="" width="28" height="28">
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">ボイス＆コンテンツ</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">メッセージング、トーン、コピーガイドライン</p>
       </div>
       <div class="ds-build-item">
-        <img class="svg-icon--dark" src="images/ds-icon-design-tokens.svg" alt="" width="28" height="28">
-<img class="svg-icon--light" src="images/ds-icon-design-tokens-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">Design tokens</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">Colors, type, spacing, layout rules</p>
+        <img class="svg-icon--dark" src="../images/ds-icon-design-tokens.svg" alt="" width="28" height="28">
+<img class="svg-icon--light" src="../images/ds-icon-design-tokens-light.svg" alt="" width="28" height="28">
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">デザイントークン</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">カラー、タイポグラフィ、スペーシング、レイアウトルール</p>
       </div>
       <div class="ds-build-item">
-        <img class="svg-icon--dark" src="images/ds-icon-component-library.svg" alt="" width="28" height="28">
-<img class="svg-icon--light" src="images/ds-icon-component-library-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">Component library</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">UI components, patterns, states</p>
+        <img class="svg-icon--dark" src="../images/ds-icon-component-library.svg" alt="" width="28" height="28">
+<img class="svg-icon--light" src="../images/ds-icon-component-library-light.svg" alt="" width="28" height="28">
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">コンポーネントライブラリ</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">UIコンポーネント、パターン、状態設計</p>
       </div>
       <div class="ds-build-item">
-        <img class="svg-icon--dark" src="images/ds-icon-templates.svg" alt="" width="28" height="28">
-<img class="svg-icon--light" src="images/ds-icon-templates-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">Templates</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">Decks, marketing, proposals, pages</p>
+        <img class="svg-icon--dark" src="../images/ds-icon-templates.svg" alt="" width="28" height="28">
+<img class="svg-icon--light" src="../images/ds-icon-templates-light.svg" alt="" width="28" height="28">
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">テンプレート</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">プレゼン資料、マーケティング素材、提案書、Webページ</p>
       </div>
       <div class="ds-build-item">
-        <img class="svg-icon--dark" src="images/ds-icon-design-md.svg" alt="" width="28" height="28">
-<img class="svg-icon--light" src="images/ds-icon-design-md-light.svg" alt="" width="28" height="28">
+        <img class="svg-icon--dark" src="../images/ds-icon-design-md.svg" alt="" width="28" height="28">
+<img class="svg-icon--light" src="../images/ds-icon-design-md-light.svg" alt="" width="28" height="28">
         <p style="font-weight:600;font-size:16px;margin:0">DESIGN.md</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">Structured context for AI tools</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">AIツール向けに構造化されたコンテキスト</p>
       </div>
       <div class="ds-build-item">
-        <img class="svg-icon--dark" src="images/ds-icon-ai-workflows.svg" alt="" width="28" height="28">
-<img class="svg-icon--light" src="images/ds-icon-ai-workflows-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">AI workflows</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">Tool setup, prompts, usage guidance</p>
+        <img class="svg-icon--dark" src="../images/ds-icon-ai-workflows.svg" alt="" width="28" height="28">
+<img class="svg-icon--light" src="../images/ds-icon-ai-workflows-light.svg" alt="" width="28" height="28">
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">AIワークフロー</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">ツール設定、プロンプト、活用ガイド</p>
       </div>
       <div class="ds-build-item">
-        <img class="svg-icon--dark" src="images/ds-icon-implementation.svg" alt="" width="28" height="28">
-<img class="svg-icon--light" src="images/ds-icon-implementation-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">Implementation</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">Hand-off docs, engineering support</p>
+        <img class="svg-icon--dark" src="../images/ds-icon-implementation.svg" alt="" width="28" height="28">
+<img class="svg-icon--light" src="../images/ds-icon-implementation-light.svg" alt="" width="28" height="28">
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">実装</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">ハンドオフ資料、エンジニアリング支援</p>
       </div>
     </div>
   </div>
@@ -384,33 +385,33 @@
 <section style="padding:80px 15px;max-width:1200px;margin:0 auto;border-top:1px solid var(--border-rule)">
   <div class="ds-team-grid">
     <div>
-      <h2 style="font-weight:900;font-size:clamp(24px,3vw,28px);line-height:1.2;margin:0">Built for every team that creates.</h2>
-      <p style="font-size:15px;line-height:1.6;color:var(--text-accent);margin:16px 0 0">The same system helps different teams move faster, with less rework and greater consistency.</p>
+      <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:clamp(22px,3vw,26px);line-height:1.5;letter-spacing:0;margin:0;overflow-wrap:anywhere">つくるすべてのチームのために。</h2>
+      <p style="font-family:'Noto Sans JP',sans-serif;font-size:15px;line-height:1.9;color:var(--text-accent);margin:16px 0 0;overflow-wrap:anywhere">同じシステムを共有することで、あらゆるチームが手戻りを減らし、一貫性を保ちながら、より速く動けるようになります。</p>
     </div>
     <div class="ds-team-items">
       <div class="ds-team-item">
-        <img class="svg-icon--dark" src="images/ds-icon-team-marketing.svg" alt="" width="28" height="28">
-<img class="svg-icon--light" src="images/ds-icon-team-marketing-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">Marketing</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">Create campaign assets, ads, landing pages, and social content.</p>
+        <img class="svg-icon--dark" src="../images/ds-icon-team-marketing.svg" alt="" width="28" height="28">
+<img class="svg-icon--light" src="../images/ds-icon-team-marketing-light.svg" alt="" width="28" height="28">
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">マーケティング</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">キャンペーン素材、広告、ランディングページ、SNSコンテンツを制作。</p>
       </div>
       <div class="ds-team-item">
-        <img class="svg-icon--dark" src="images/ds-icon-team-sales.svg" alt="" width="28" height="28">
-<img class="svg-icon--light" src="images/ds-icon-team-sales-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">Sales</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">Generate decks, proposals, and customer enablement materials.</p>
+        <img class="svg-icon--dark" src="../images/ds-icon-team-sales.svg" alt="" width="28" height="28">
+<img class="svg-icon--light" src="../images/ds-icon-team-sales-light.svg" alt="" width="28" height="28">
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">セールス</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">提案資料、プレゼン資料、営業支援素材を作成。</p>
       </div>
       <div class="ds-team-item">
-        <img class="svg-icon--dark" src="images/ds-icon-team-product-design.svg" alt="" width="28" height="28">
-<img class="svg-icon--light" src="images/ds-icon-team-product-design-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">Product + Design</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">Explore new flows, prototypes, and product surfaces.</p>
+        <img class="svg-icon--dark" src="../images/ds-icon-team-product-design.svg" alt="" width="28" height="28">
+<img class="svg-icon--light" src="../images/ds-icon-team-product-design-light.svg" alt="" width="28" height="28">
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">プロダクト＋デザイン</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">新しいユーザーフロー、プロトタイプ、プロダクト画面を検討・設計。</p>
       </div>
       <div class="ds-team-item">
-        <img class="svg-icon--dark" src="images/ds-icon-team-engineering.svg" alt="" width="28" height="28">
-<img class="svg-icon--light" src="images/ds-icon-team-engineering-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">Engineering</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">Work from shared tokens, components, and implementation guidance.</p>
+        <img class="svg-icon--dark" src="../images/ds-icon-team-engineering.svg" alt="" width="28" height="28">
+<img class="svg-icon--light" src="../images/ds-icon-team-engineering-light.svg" alt="" width="28" height="28">
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">エンジニアリング</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">共有されたトークン、コンポーネント、実装ガイドをもとに開発。</p>
       </div>
     </div>
   </div>
@@ -420,31 +421,31 @@
 <section id="see-it-in-action" style="padding:80px 15px;max-width:1200px;margin:0 auto;border-top:1px solid var(--border-rule)">
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:64px">
     <div>
-      <span class="project-section-label" style="color:var(--text-accent);margin-bottom:0">See how it works</span>
-      <h3 style="font-weight:900;font-size:clamp(22px,2.6vw,28px);line-height:1.15;margin:20px 0 0">This Raft design guideline was built with the same system.</h3>
-      <p style="font-size:16px;font-weight:600;margin:24px 0 0">Raft&rsquo;s own brand system includes:</p>
+      <span class="project-section-label" style="font-family:'Noto Sans JP',sans-serif;letter-spacing:0;color:var(--text-accent);margin-bottom:0">実際の仕組みを見る</span>
+      <h3 style="font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:clamp(20px,2.6vw,26px);line-height:1.5;margin:20px 0 0;overflow-wrap:anywhere">このRaftのデザインガイドラインも、同じシステムからつくられています。</h3>
+      <p style="font-family:'Noto Sans JP',sans-serif;font-size:16px;font-weight:600;margin:24px 0 0;overflow-wrap:anywhere">Raft自身のブランドシステムには、以下が含まれます。</p>
       <ul class="ds-checklist">
-        <li><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px">Design tokens</span></li>
-        <li><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px">Typography and layout rules</span></li>
-        <li><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px">Reusable components</span></li>
-        <li><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px">Brand voice</span></li>
-        <li><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px">Motion guidance</span></li>
-        <li><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px">Presentation templates</span></li>
-        <li><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px">DESIGN.md</span></li>
-        <li><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px">Guidance for AI tools such as Claude Design</span></li>
+        <li><img class="svg-icon--dark" src="../images/icon-check-green.svg" alt="" width="20" height="20">
+<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-family:'Noto Sans JP',sans-serif;font-size:16px">デザイントークン</span></li>
+        <li><img class="svg-icon--dark" src="../images/icon-check-green.svg" alt="" width="20" height="20">
+<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-family:'Noto Sans JP',sans-serif;font-size:16px">タイポグラフィとレイアウトルール</span></li>
+        <li><img class="svg-icon--dark" src="../images/icon-check-green.svg" alt="" width="20" height="20">
+<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-family:'Noto Sans JP',sans-serif;font-size:16px">再利用可能なコンポーネント</span></li>
+        <li><img class="svg-icon--dark" src="../images/icon-check-green.svg" alt="" width="20" height="20">
+<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-family:'Noto Sans JP',sans-serif;font-size:16px">ブランドボイス</span></li>
+        <li><img class="svg-icon--dark" src="../images/icon-check-green.svg" alt="" width="20" height="20">
+<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-family:'Noto Sans JP',sans-serif;font-size:16px">モーションガイド</span></li>
+        <li><img class="svg-icon--dark" src="../images/icon-check-green.svg" alt="" width="20" height="20">
+<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-family:'Noto Sans JP',sans-serif;font-size:16px">プレゼンテーションテンプレート</span></li>
+        <li><img class="svg-icon--dark" src="../images/icon-check-green.svg" alt="" width="20" height="20">
+<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px">DESIGN.md</span></li>
+        <li><img class="svg-icon--dark" src="../images/icon-check-green.svg" alt="" width="20" height="20">
+<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-family:'Noto Sans JP',sans-serif;font-size:16px;overflow-wrap:anywhere">Claude Designなど、AIツール向けのガイドライン</span></li>
       </ul>
     </div>
     <div style="display:flex;flex-direction:column;gap:32px">
       <iframe width="100%" style="aspect-ratio:16/9;border-radius:var(--radius-sm)" src="https://www.youtube.com/embed/-Q_afihcKs0?si=QvlXaj-x5coFCtP8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <a class="scan-cta" href="/design-system-deck/" target="_blank" rel="noopener noreferrer" style="align-self:flex-start"><span class="scan-cta-arrow">→</span> View the Raft Design System</a>
+      <a class="scan-cta" href="/design-system-deck/" target="_blank" rel="noopener noreferrer" style="align-self:flex-start"><span class="scan-cta-arrow">→</span> Raftのデザインシステムを見る</a>
     </div>
   </div>
 </section>
@@ -453,38 +454,38 @@
 <section style="padding:80px 15px;max-width:1200px;margin:0 auto;border-top:1px solid var(--border-rule)">
   <div style="display:flex;gap:80px;flex-wrap:wrap">
     <div style="width:320px;flex-shrink:0;display:flex;flex-direction:column;gap:16px">
-      <h2 style="font-weight:900;font-size:clamp(24px,3vw,28px);line-height:1.2;margin:0">Works with modern AI tools.</h2>
-      <p style="font-size:15px;line-height:1.7;color:var(--text-muted);margin:0">One workflow we use today is <strong style="color:var(--text-primary)">Claude Design</strong>, where we load the full design system, brand rules, and DESIGN.md as context. This allows teams to generate on-brand output more reliably.</p>
-      <p style="font-size:15px;line-height:1.7;margin:0">We&rsquo;re tool-agnostic. <strong>The system is the asset. The tools will evolve.</strong></p>
+      <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:clamp(22px,3vw,26px);line-height:1.5;letter-spacing:0;margin:0;overflow-wrap:anywhere">最新のAIツールと連携します。</h2>
+      <p style="font-family:'Noto Sans JP',sans-serif;font-size:15px;line-height:1.9;color:var(--text-muted);margin:0;overflow-wrap:anywhere">現在Raftが実践しているワークフローのひとつが、<strong style="color:var(--text-primary)">Claude Design</strong>です。デザインシステム全体、ブランドルール、DESIGN.mdをコンテキストとして読み込ませることで、チームはブランドに沿ったアウトプットを、より確実に生成できます。</p>
+      <p style="font-family:'Noto Sans JP',sans-serif;font-size:15px;line-height:1.9;margin:0;overflow-wrap:anywhere">Raftは特定のツールに依存しません。<strong>価値があるのはシステムそのものです。ツールは、これからも進化し続けます。</strong></p>
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:32px 48px;align-items:flex-start;padding-top:8px">
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
-        <img src="images/claude-icon.png" alt="" width="30" height="30" style="border-radius:50%">
+        <img src="../images/claude-icon.png" alt="" width="30" height="30" style="border-radius:50%">
         <p style="font-size:12px;color:var(--text-primary);margin:0">Claude Design</p>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
-        <img src="images/tool-icon-chatgpt.svg" alt="" width="30" height="30">
+        <img src="../images/tool-icon-chatgpt.svg" alt="" width="30" height="30">
         <p style="font-size:12px;color:var(--text-primary);margin:0">ChatGPT</p>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
-        <img src="images/tool-icon-figma-make.svg" alt="" width="32" height="32">
+        <img src="../images/tool-icon-figma-make.svg" alt="" width="32" height="32">
         <p style="font-size:12px;color:var(--text-primary);margin:0">Figma Make</p>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
-        <img src="images/tool-icon-cursor.svg" alt="" width="27" height="30">
+        <img src="../images/tool-icon-cursor.svg" alt="" width="27" height="30">
         <p style="font-size:12px;color:var(--text-primary);margin:0">Cursor</p>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
-        <img src="images/tool-icon-lovable.png" alt="" width="30" height="30">
+        <img src="../images/tool-icon-lovable.png" alt="" width="30" height="30">
         <p style="font-size:12px;color:var(--text-primary);margin:0">Lovable</p>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
-        <img src="images/tool-icon-canva.svg" alt="" width="30" height="30">
+        <img src="../images/tool-icon-canva.svg" alt="" width="30" height="30">
         <p style="font-size:12px;color:var(--text-primary);margin:0">Canva AI</p>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
-        <img src="images/tool-icon-other.svg" alt="" width="30" height="30">
-        <p style="font-size:12px;color:var(--text-primary);margin:0">Other</p>
+        <img src="../images/tool-icon-other.svg" alt="" width="30" height="30">
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-primary);margin:0">その他</p>
       </div>
     </div>
   </div>
@@ -494,34 +495,34 @@
 <section style="padding:80px 15px;max-width:1200px;margin:0 auto;border-top:1px solid var(--border-rule)">
   <div class="ds-build-grid">
     <div>
-      <h2 style="font-weight:900;font-size:clamp(24px,3vw,28px);line-height:1.2;margin:0">A higher standard for what&rsquo;s possible.</h2>
+      <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:clamp(22px,3vw,26px);line-height:1.5;letter-spacing:0;margin:0;overflow-wrap:anywhere">「できること」の基準を、もう一段上へ。</h2>
     </div>
     <div style="display:flex;flex-direction:column;gap:24px">
-      <p style="font-size:16px;line-height:1.7;margin:0">An AI-ready design system helps you move faster while maintaining a consistent, high-quality brand and product experience.</p>
+      <p style="font-family:'Noto Sans JP',sans-serif;font-size:16px;line-height:1.9;margin:0;overflow-wrap:anywhere">AI対応型デザインシステムは、一貫性のある高品質なブランド・プロダクト体験を保ちながら、制作スピードを高めます。</p>
       <div class="ds-build-items" style="border-top:1px solid var(--border-rule)">
         <div class="ds-build-item">
-          <img class="svg-icon--dark" src="images/outcome-icon-faster-production.svg" alt="" width="28" height="28">
-<img class="svg-icon--light" src="images/outcome-icon-faster-production-light.svg" alt="" width="28" height="28">
-          <p style="font-weight:600;font-size:16px;margin:0">Faster production</p>
-          <p style="font-size:12px;color:var(--text-muted);margin:0">Create more, faster, with less rework.</p>
+          <img class="svg-icon--dark" src="../images/outcome-icon-faster-production.svg" alt="" width="28" height="28">
+<img class="svg-icon--light" src="../images/outcome-icon-faster-production-light.svg" alt="" width="28" height="28">
+          <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">より速い制作</p>
+          <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">手戻りを減らし、より多くのものを、より短時間で。</p>
         </div>
         <div class="ds-build-item">
-          <img class="svg-icon--dark" src="images/outcome-icon-consistent-quality.svg" alt="" width="28" height="28">
-<img class="svg-icon--light" src="images/outcome-icon-consistent-quality-light.svg" alt="" width="28" height="28">
-          <p style="font-weight:600;font-size:16px;margin:0">Consistent quality</p>
-          <p style="font-size:12px;color:var(--text-muted);margin:0">Stay on-brand across all channels.</p>
+          <img class="svg-icon--dark" src="../images/outcome-icon-consistent-quality.svg" alt="" width="28" height="28">
+<img class="svg-icon--light" src="../images/outcome-icon-consistent-quality-light.svg" alt="" width="28" height="28">
+          <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">一貫したクオリティ</p>
+          <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">あらゆるチャネルで、ブランドらしさを保つ。</p>
         </div>
         <div class="ds-build-item">
-          <img class="svg-icon--dark" src="images/outcome-icon-greater-alignment.svg" alt="" width="28" height="28">
-<img class="svg-icon--light" src="images/outcome-icon-greater-alignment-light.svg" alt="" width="28" height="28">
-          <p style="font-weight:600;font-size:16px;margin:0">Greater alignment</p>
-          <p style="font-size:12px;color:var(--text-muted);margin:0">One source of truth across teams.</p>
+          <img class="svg-icon--dark" src="../images/outcome-icon-greater-alignment.svg" alt="" width="28" height="28">
+<img class="svg-icon--light" src="../images/outcome-icon-greater-alignment-light.svg" alt="" width="28" height="28">
+          <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">より高い連携</p>
+          <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">チーム間で共通の基準を持つ。</p>
         </div>
         <div class="ds-build-item">
-          <img class="svg-icon--dark" src="images/outcome-icon-long-term-scale.svg" alt="" width="28" height="28">
-<img class="svg-icon--light" src="images/outcome-icon-long-term-scale-light.svg" alt="" width="28" height="28">
-          <p style="font-weight:600;font-size:16px;margin:0">Long-term scale</p>
-          <p style="font-size:12px;color:var(--text-muted);margin:0">A foundation that grows with you.</p>
+          <img class="svg-icon--dark" src="../images/outcome-icon-long-term-scale.svg" alt="" width="28" height="28">
+<img class="svg-icon--light" src="../images/outcome-icon-long-term-scale-light.svg" alt="" width="28" height="28">
+          <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">長期的なスケール</p>
+          <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">成長に合わせて進化する基盤。</p>
         </div>
       </div>
     </div>
@@ -531,32 +532,32 @@
 <!-- RELATED WORK -->
 <section style="padding:80px 15px;max-width:1200px;margin:0 auto;border-top:1px solid var(--border-rule)">
   <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:16px">
-    <h2 style="font-weight:700;font-size:clamp(24px,3vw,32px);letter-spacing:-0.5px;margin:0">Related work</h2>
-    <a href="/projects/" style="font-size:14px;color:var(--text-accent);text-decoration:none">View all projects →</a>
+    <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:clamp(22px,3vw,30px);letter-spacing:0;margin:0;overflow-wrap:anywhere">関連プロジェクト</h2>
+    <a href="/ja/projects/" style="font-family:'Noto Sans JP',sans-serif;font-size:14px;color:var(--text-accent);text-decoration:none">すべてのプロジェクトを見る →</a>
   </div>
-  <p style="font-size:15px;color:var(--text-muted);margin:12px 0 0">Examples of brand and product systems we&rsquo;ve created.</p>
+  <p style="font-family:'Noto Sans JP',sans-serif;font-size:15px;color:var(--text-muted);margin:12px 0 0;overflow-wrap:anywhere">ブランドとプロダクトのシステムを設計した事例です。</p>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:40px">
-    <a href="/projects/legalon/" style="background:var(--bg-elevated);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit">
-      <div style="height:180px;overflow:hidden"><img src="images/legalon-hero.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 25%"></div>
+    <a href="/ja/projects/legalon/" style="background:var(--bg-elevated);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit">
+      <div style="height:180px;overflow:hidden"><img src="../images/legalon-hero.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 25%"></div>
       <div style="padding:20px 24px 24px;display:flex;flex-direction:column;gap:6px">
         <p style="font-weight:600;font-size:14px;color:var(--text-primary);margin:0">LegalOn</p>
-        <p style="font-size:13px;color:var(--text-primary);margin:0">Brand and product system for an AI-legal platform</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--text-primary);margin:0;overflow-wrap:anywhere">AIリーガルプラットフォームのブランド＆プロダクトシステム</p>
         <span style="color:var(--text-accent);font-size:13px;margin-top:6px">→</span>
       </div>
     </a>
-    <a href="/projects/adobe-express-photos/" style="background:var(--bg-elevated);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit">
-      <div style="height:180px;overflow:hidden"><img src="images/harmony-hero.jpg" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+    <a href="/ja/projects/adobe-express-photos/" style="background:var(--bg-elevated);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit">
+      <div style="height:180px;overflow:hidden"><img src="../images/harmony-hero.jpg" alt="" style="width:100%;height:100%;object-fit:cover"></div>
       <div style="padding:20px 24px 24px;display:flex;flex-direction:column;gap:6px">
         <p style="font-weight:600;font-size:14px;color:var(--text-primary);margin:0">Adobe Express Photos</p>
-        <p style="font-size:13px;color:var(--text-primary);margin:0">Design system and platform ecosystem</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--text-primary);margin:0;overflow-wrap:anywhere">デザインシステムとプラットフォームエコシステム</p>
         <span style="color:var(--text-accent);font-size:13px;margin-top:6px">→</span>
       </div>
     </a>
-    <a href="/projects/modere/" style="background:var(--bg-elevated);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit">
-      <div style="height:180px;overflow:hidden"><img src="images/modere-1.webp" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+    <a href="/ja/projects/modere/" style="background:var(--bg-elevated);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit">
+      <div style="height:180px;overflow:hidden"><img src="../images/modere-1.webp" alt="" style="width:100%;height:100%;object-fit:cover"></div>
       <div style="padding:20px 24px 24px;display:flex;flex-direction:column;gap:6px">
         <p style="font-weight:600;font-size:14px;color:var(--text-primary);margin:0">Modere eCommerce</p>
-        <p style="font-size:13px;color:var(--text-primary);margin:0">Bilingual eCommerce platform for a wellness brand</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--text-primary);margin:0;overflow-wrap:anywhere">ウェルネスブランド向けバイリンガルECプラットフォーム</p>
         <span style="color:var(--text-accent);font-size:13px;margin-top:6px">→</span>
       </div>
     </a>
@@ -567,23 +568,25 @@
 <section style="padding:80px 15px;max-width:1200px;margin:0 auto;border-top:1px solid var(--border-rule)">
   <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:40px">
     <div style="max-width:600px">
+      <!-- NOTE: no JA translation supplied for this eyebrow in the approved
+           doc — left in English pending confirmation, see summary. -->
       <span style="font-size:11px;font-weight:600;letter-spacing:1.98px;text-transform:uppercase;color:var(--text-accent)">Let&rsquo;s build what&rsquo;s next</span>
-      <h2 style="font-weight:700;font-size:clamp(28px,4vw,40px);line-height:1.15;letter-spacing:-1px;margin:20px 0 0">Ready to create an AI-ready design system for your team?</h2>
-      <p style="font-size:16px;color:var(--text-muted);margin:16px 0 0">Let&rsquo;s talk about your goals and how Raft can help.</p>
+      <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:clamp(26px,4vw,36px);line-height:1.5;letter-spacing:0;margin:20px 0 0;overflow-wrap:anywhere">チームのためのAI対応型デザインシステムを、つくりませんか？</h2>
+      <p style="font-family:'Noto Sans JP',sans-serif;font-size:16px;color:var(--text-muted);margin:16px 0 0;overflow-wrap:anywhere">目指す姿と、Raftにできることについて、お話ししましょう。</p>
     </div>
-    <button type="button" id="ds-cta-talk-btn" class="scan-cta scan-cta--wide"><span class="scan-cta-arrow">→</span> Start a conversation</button>
+    <button type="button" id="ds-cta-talk-btn" class="scan-cta scan-cta--wide"><span class="scan-cta-arrow">→</span> 相談をはじめる</button>
   </div>
 </section>
 
-<!-- Contact Modal (same as homepage) -->
+<!-- Contact Modal (verbatim from ja/index.html) -->
 <div class="contact-modal-overlay" id="contact-modal-overlay">
   <div class="contact-modal" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-headline">
     <div class="contact-modal-header">
       <div class="contact-modal-header-text">
         <p class="section-label">Contact</p>
-        <h2 class="contact-modal-headline" id="contact-modal-headline">Let&rsquo;s explore your project&rsquo;s potential.</h2>
+        <h2 class="contact-modal-headline" id="contact-modal-headline">プロジェクトの可能性を、一緒に探りましょう。</h2>
       </div>
-      <button class="contact-modal-close" id="contact-modal-close" type="button" aria-label="Close">
+      <button class="contact-modal-close" id="contact-modal-close" type="button" aria-label="閉じる">
         <svg width="14" height="14" viewBox="0 0 16.5332 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M0.268262 0.259611C0.440253 0.0933737 0.673395 0 0.916476 0C1.15956 0 1.3927 0.0933737 1.56469 0.259611L16.2412 14.4628C16.3313 14.5441 16.4036 14.6421 16.4538 14.751C16.5039 14.8599 16.5309 14.9774 16.533 15.0966C16.5352 15.2158 16.5125 15.3342 16.4664 15.4448C16.4203 15.5553 16.3516 15.6557 16.2645 15.74C16.1774 15.8243 16.0736 15.8907 15.9594 15.9354C15.8452 15.98 15.7229 16.002 15.5997 15.9999C15.4765 15.9978 15.3551 15.9717 15.2426 15.9232C15.13 15.8746 15.0288 15.8047 14.9448 15.7175L0.268262 1.51423C0.0964852 1.34779 0 1.12216 0 0.886921C0 0.651679 0.0964852 0.426056 0.268262 0.259611Z" fill="currentColor"/>
           <path fill-rule="evenodd" clip-rule="evenodd" d="M16.2405 0.259611C16.4123 0.426056 16.5088 0.651679 16.5088 0.886921C16.5088 1.12216 16.4123 1.34779 16.2405 1.51423L1.564 15.7175C1.39011 15.8743 1.16012 15.9596 0.922484 15.9556C0.684845 15.9515 0.458111 15.8584 0.290049 15.6957C0.121987 15.5331 0.0257188 15.3136 0.021526 15.0837C0.0173331 14.8537 0.105543 14.6311 0.267572 14.4628L14.9441 0.259611C15.1161 0.0933737 15.3492 0 15.5923 0C15.8354 0 16.0685 0.0933737 16.2405 0.259611Z" fill="currentColor"/>
@@ -592,31 +595,31 @@
     </div>
     <div class="contact-modal-body">
       <div data-fs-success class="contact-modal-success" aria-live="polite">
-        <p>Thanks — I&rsquo;ll get back to you soon.</p>
+        <p>送信ありがとうございます。追ってご連絡します。</p>
       </div>
       <div data-fs-error class="contact-modal-error-banner" aria-live="polite">
-        <p>Something went wrong. Try again, or email <a href="mailto:hello@raftdesign.studio">hello@raftdesign.studio</a> directly.</p>
+        <p>送信に失敗しました。もう一度お試しいただくか、<a href="mailto:hello@raftdesign.studio">hello@raftdesign.studio</a> までご連絡ください。</p>
       </div>
       <form id="contact-modal-form" class="contact-modal-form">
         <div class="contact-modal-field">
-          <label for="contact-name">Name</label>
-          <input type="text" id="contact-name" name="name" data-fs-field required placeholder="Your name">
+          <label for="contact-name">お名前</label>
+          <input type="text" id="contact-name" name="name" data-fs-field required placeholder="お名前を入力">
           <span data-fs-error="name" class="contact-modal-field-error"></span>
         </div>
         <div class="contact-modal-field">
-          <label for="contact-email">Email</label>
+          <label for="contact-email">メールアドレス</label>
           <input type="email" id="contact-email" name="email" data-fs-field required placeholder="you@company.com">
           <span data-fs-error="email" class="contact-modal-field-error"></span>
         </div>
         <div class="contact-modal-field">
-          <label for="contact-message">Message</label>
-          <textarea id="contact-message" name="message" data-fs-field required placeholder="Tell me about your project…"></textarea>
+          <label for="contact-message">メッセージ</label>
+          <textarea id="contact-message" name="message" data-fs-field required placeholder="プロジェクトについて教えてください"></textarea>
           <span data-fs-error="message" class="contact-modal-field-error"></span>
         </div>
-        <input type="hidden" name="_language" value="en">
+        <input type="hidden" name="_language" value="ja">
         <input type="hidden" name="_subject" value="New inquiry from raftdesign.studio">
         <div class="contact-modal-submit-row">
-          <button type="submit" class="scan-cta contact-modal-submit" data-fs-submit-btn><span class="scan-cta-arrow">→</span> Send message</button>
+          <button type="submit" class="scan-cta contact-modal-submit" data-fs-submit-btn><span class="scan-cta-arrow">→</span> 送信する</button>
         </div>
       </form>
     </div>
@@ -632,14 +635,14 @@
     <div class="footer-text">
       <div class="footer-column">
         <div class="footer-group">
-          <p class="footer-heading">OFFICE</p>
+          <p class="footer-heading">所在地</p>
           <a href="https://www.google.com/maps/search/?api=1&query=Hollywood%2C+Los+Angeles%2C+CA+90068" target="_blank" rel="noopener noreferrer" class="footer-link-block">
             <p>Hollywood</p>
             <p>Los Angeles, CA 90068</p>
           </a>
         </div>
         <div class="footer-group">
-          <p class="footer-heading">CONTACT</p>
+          <p class="footer-heading">連絡先</p>
           <div class="footer-links">
             <a href="tel:4153619584" class="footer-link">(415) 361-9584</a>
             <a href="mailto:hello@raftdesign.studio" class="footer-link">hello@raftdesign.studio</a>
@@ -648,7 +651,7 @@
       </div>
       <div class="footer-column">
         <div class="footer-group">
-          <p class="footer-heading">SOCIAL</p>
+          <p class="footer-heading">ソーシャル</p>
           <div class="footer-links">
             <a href="https://www.linkedin.com/company/raftdesignstudio/" class="footer-link" rel="me noopener noreferrer" target="_blank">LinkedIn</a>
             <a href="https://x.com/raftdesignco" class="footer-link" rel="me noopener noreferrer" target="_blank">Twitter</a>
@@ -660,7 +663,7 @@
       </div>
     </div>
   </div>
-  <p class="footer-colophon">Designed by hand. Built by AI.<span class="blink-cursor">|</span>
+  <p class="footer-colophon">手で設計し、AIで実装。<span class="blink-cursor">|</span>
     <span class="footer-llm-icons">
       <svg class="footer-llm-icon" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Anthropic" role="img">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M4.12038 13.9606L8.25037 11.6445L8.32037 11.4433L8.25037 11.3312H8.05L7.35875 11.2893L4.998 11.2254L2.95137 11.1405L0.968625 11.0337L0.469 10.9279L0 10.311L0.048125 10.003L0.468125 9.72213L1.06837 9.77462L2.39837 9.86475L4.39163 10.003L5.83713 10.0879L7.98 10.311H8.32037L8.3685 10.1736L8.25125 10.0879L8.16112 10.003L6.09787 8.6065L3.86487 7.1295L2.69588 6.279L2.06238 5.84937L1.74388 5.44513L1.60563 4.56313L2.17962 3.93138L2.9505 3.98387L3.14737 4.03725L3.92875 4.6375L5.59825 5.929L7.77787 7.53288L8.09725 7.79888L8.22413 7.70875L8.24075 7.64488L8.09725 7.40513L6.91163 5.26488L5.64638 3.08612L5.08288 2.18312L4.93412 1.6415C4.87745 1.43347 4.84688 1.2192 4.84312 1.00362L5.49762 0.11725L5.859 0L6.7305 0.11725L7.098 0.43575L7.6405 1.673L8.51725 3.62337L9.87787 6.27463L10.2769 7.06038L10.4895 7.78838L10.5691 8.0115H10.7074V7.88375L10.8194 6.391L11.0268 4.55788L11.228 2.19975L11.298 1.53475L11.627 0.7385L12.2806 0.308L12.7916 0.553L13.2116 1.15238L13.153 1.54088L12.9028 3.1605L12.4136 5.70062L12.0951 7.39987H12.2806L12.4932 7.18813L13.3551 6.04537L14.8006 4.23937L15.4394 3.52188L16.1831 2.73088L16.6617 2.35375H17.5656L18.2306 3.34163L17.9331 4.36188L17.0021 5.5405L16.2312 6.53975L15.1252 8.02725L14.434 9.21725L14.4979 9.3135L14.6624 9.296L17.1614 8.76575L18.5115 8.52075L20.1224 8.24513L20.8512 8.58462L20.9309 8.93025L20.6439 9.63637L18.921 10.0616L16.9006 10.4659L13.8915 11.1773L13.8547 11.2035L13.8976 11.2569L15.253 11.3846L15.8322 11.4161H17.2515L19.894 11.613L20.5852 12.0697L21 12.628L20.9309 13.0524L19.8677 13.5949L18.4327 13.2545L15.0824 12.4582L13.9344 12.1704H13.7751V12.2666L14.7315 13.2011L16.4867 14.7849L18.6821 16.8236L18.7933 17.3294L18.5115 17.7275L18.214 17.6846L16.2846 16.2348L15.54 15.5811L13.8547 14.1636H13.7428V14.3124L14.1312 14.8803L16.1831 17.9611L16.2899 18.9061L16.1411 19.215L15.6091 19.4014L15.0246 19.2946L13.8224 17.6102L12.5842 15.7141L11.5841 14.014L11.4616 14.084L10.8719 20.4313L10.5954 20.755L9.9575 21L9.42637 20.5966L9.14463 19.943L9.42637 18.6515L9.76675 16.968L10.0424 15.6292L10.2926 13.9667L10.4414 13.4137L10.4309 13.377L10.3084 13.3927L9.05363 15.1139L7.14612 17.6908L5.63587 19.3051L5.27362 19.4486L4.64625 19.1249L4.70487 18.5456L5.05575 18.0303L7.14525 15.3737L8.40525 13.727L9.219 12.7768L9.21375 12.6385H9.16563L3.6155 16.24L2.62675 16.3677L2.20063 15.9688L2.254 15.316L2.45612 15.1034L4.12563 13.9554L4.12038 13.9606Z" fill="currentColor"/>
@@ -683,7 +686,7 @@
     const toggles = document.querySelectorAll('#theme-toggle, #theme-toggle-mobile');
     if (!toggles.length) return;
     const initiallyLight = document.documentElement.dataset.theme === 'light';
-    toggles.forEach(t => t.setAttribute('aria-label', initiallyLight ? 'Switch to dark mode' : 'Switch to light mode'));
+    toggles.forEach(t => t.setAttribute('aria-label', initiallyLight ? 'ダークモードに切り替え' : 'ライトモードに切り替え'));
     toggles.forEach(toggle => {
       toggle.addEventListener('click', () => {
         const isLight = document.documentElement.dataset.theme === 'light';
@@ -694,7 +697,7 @@
           document.documentElement.dataset.theme = 'light';
         }
         localStorage.setItem('raft-theme', next);
-        toggles.forEach(t => t.setAttribute('aria-label', next === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'));
+        toggles.forEach(t => t.setAttribute('aria-label', next === 'dark' ? 'ライトモードに切り替え' : 'ダークモードに切り替え'));
       });
     });
   })();

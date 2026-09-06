@@ -268,7 +268,7 @@ p {
   height: 36px;
   padding: 8px;
   border: none;
-  border-radius: 99px;
+  border-radius: var(--radius-pill);
   background: var(--bg-surface);
   color: var(--text-primary);
   cursor: pointer;
@@ -305,7 +305,7 @@ p {
   height: 32px;
   padding: 0;
   border: none;
-  border-radius: 3px;
+  border-radius: 3px; /* sits exactly between --radius-sm (2px) and --radius-md (4px), no Figma source to confirm which is correct — left as a literal rather than guessed */
   background: var(--bg-brand);
   color: var(--accent-ink);
   cursor: pointer;
@@ -636,7 +636,7 @@ p {
   height: 250px;
   background: var(--lime);
   overflow: hidden;
-  border-radius: 2px;
+  border-radius: var(--radius-sm);
 }
 
 .approach-laptop {
@@ -799,7 +799,7 @@ p {
   height: 250px;
   background: var(--lime);
   overflow: hidden;
-  border-radius: 2px;
+  border-radius: var(--radius-sm);
 }
 
 .expertise-leg {

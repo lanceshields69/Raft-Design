@@ -23,6 +23,7 @@
 
 ## Services
 - [Design Foundation Sprint](https://raftdesign.studio/design-foundation.html): A four-week engagement for funded startups — brand system first, then the product screens that express it, delivered as a tokenized, documented design system rather than a one-off deliverable. English only.
+- [AI-Ready Design Systems](https://raftdesign.studio/design-system.html): Why and how Raft builds design systems that give both a team and its AI tools (Claude Design, ChatGPT, Cursor, and others) the same source of truth — brand rules, tokens, components, and DESIGN.md. Links to a real example, the [Raft Design & Brand System deck](https://raftdesign.studio/design-system-deck/). English only.
 
 ## Journal
 - [Journal index (English)](https://raftdesign.studio/journal/)

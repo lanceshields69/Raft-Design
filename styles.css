@@ -200,6 +200,25 @@ p {
   display: block;
 }
 
+/* Accent-green icon SVGs — same dark/light swap idea as the nav logo just
+   above. Flat external assets (not inline, so currentColor can't reach
+   them); light mode uses a real darker-green (#159845, matching
+   --text-accent's light-mode value) asset rather than the default-green
+   one going low-contrast against the light canvas. Promoted here from
+   design-foundation.html/design-system.html's page-local copies once a
+   second page (the homepage) needed the same swap. */
+.svg-icon--light {
+  display: none;
+}
+
+[data-theme="light"] .svg-icon--dark {
+  display: none;
+}
+
+[data-theme="light"] .svg-icon--light {
+  display: block;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -315,12 +334,16 @@ p {
 /* Mobile Menu Overlay — hidden by default; only openable below the
    768px breakpoint where the nav row switches to the hamburger trigger.
    The breakpoint-gated .open rule also force-closes it if the viewport
-   is resized past 768px while it's open. */
+   is resized past 768px while it's open. z-index sits above the Ishmael
+   chat dock (--chat-z-dock: 410 in raft-chat.css) — a full-screen nav
+   takeover should cover the persistent floating chat bar, not sit under
+   it; this became visible once the "Book a call" button pushed content
+   low enough to reach the dock's footprint. */
 .mobile-menu-overlay {
   display: none;
   position: fixed;
   inset: 0;
-  z-index: 200;
+  z-index: 420;
   background: var(--bg-canvas);
   padding: 20px;
   overflow-y: auto;
@@ -1764,6 +1787,193 @@ p {
 
 .contact-modal-error-banner a {
   color: var(--text-accent);
+}
+
+/* "Book a call" solid pill — new button state, used only for this CTA
+   (nav, mobile menu, and the bottom Connect panel). Per Figma node 617:4133
+   dark mode is a literal white/black fill (var(--text/reversed)), not a
+   theme-inverting token — matches how --accent-ink stays fixed on the
+   brand-green section-label pill regardless of theme. Light mode inverts to
+   black/white rather than reusing white-on-white: the site's light canvas
+   is itself near-white, so a white pill there reads too weak even with a
+   hairline border. */
+.cta-solid-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  flex-shrink: 0;
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.cta-solid-button:hover {
+  opacity: 0.85;
+}
+
+[data-theme="light"] .cta-solid-button {
+  background: #000000;
+  color: #ffffff;
+}
+
+/* Light mode's button is black, so the dark-mode hover (fade toward
+   transparent, which reads as going darker against the white fill) would
+   go the wrong direction here — a black button can't get any darker, so
+   this hovers lighter (a solid dark gray) instead of fading opacity. */
+[data-theme="light"] .cta-solid-button:hover {
+  opacity: 1;
+  background: #333333;
+}
+
+.nav-cta-button {
+  height: 48px;
+  padding: 0 24px;
+  font-size: var(--font-size-body-md);
+  font-weight: var(--weight-medium);
+  line-height: 1;
+}
+
+.mobile-menu-cta {
+  width: 100%;
+  margin-top: 24px;
+  padding: 16px 24px;
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--weight-medium);
+}
+
+/* Bottom-of-page "Ready to move at Raft speed?" panel — Figma node 612:4098.
+   Full-bleed sunken band (not a card), sits directly below the connect
+   section it replaces. */
+.connect-cta-sunken {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xxl);
+  padding: var(--space-huge) 30px;
+  background: var(--bg-sunken);
+  border-top: 1px solid var(--border-rule);
+  text-align: center;
+}
+
+.connect-cta-sunken-heading {
+  font-size: clamp(26px, 5vw, 48px);
+  font-weight: var(--weight-medium);
+  line-height: 1;
+  margin: 0;
+}
+
+.connect-cta-solid {
+  padding: 20px 60px;
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--weight-regular);
+  line-height: var(--line-height-heading);
+}
+
+/* Arrow uses the site's existing bold-weight-of-body-font treatment
+   (.scan-cta-arrow) rather than importing Instrument Sans for one glyph;
+   color is the fixed muted green from the Figma spec (var(--border/bright)
+   has no light-mode counterpart, so it's applied as-is, not theme-swapped). */
+.connect-cta-solid-arrow {
+  font-weight: var(--weight-bold);
+  color: var(--border-bright);
+}
+
+@media (max-width: 600px) {
+  .connect-cta-solid {
+    padding: 18px 32px;
+  }
+}
+
+/* Calendly Modal — same overlay/border/radius/animation treatment as
+   .contact-modal-overlay / .contact-modal above, just wider (a calendar
+   grid needs more room than a form) and with no header copy, since
+   Calendly's own iframe already carries the event title. */
+.calendly-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 950;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+[data-theme="light"] .calendly-modal-overlay {
+  background: rgba(165, 165, 165, 0.5);
+}
+
+.calendly-modal-overlay.active {
+  display: flex;
+}
+
+.calendly-modal-overlay.visible {
+  opacity: 1;
+}
+
+.calendly-modal {
+  width: 100%;
+  max-width: 900px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  background: var(--bg-canvas);
+  border: 1px solid var(--border-rule);
+  border-radius: var(--radius-md);
+  transform: scale(0.96);
+  opacity: 0;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+}
+
+.calendly-modal-overlay.visible .calendly-modal {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.calendly-modal-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--space-md) var(--space-md) 0;
+}
+
+.calendly-modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border-rule);
+  border-radius: var(--radius-pill);
+  background: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.calendly-modal-close:hover {
+  background: var(--border-rule);
+}
+
+.calendly-modal-close svg {
+  width: 14px;
+  height: 14px;
+}
+
+.calendly-modal-body {
+  padding: 0 var(--space-md) var(--space-md);
+}
+
+.calendly-inline-container {
+  min-width: 320px;
+  min-height: 700px;
 }
 
 @media (max-width: 768px) {

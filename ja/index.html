@@ -168,6 +168,7 @@
         <span class="nav-lang-divider">|</span>
         <span class="nav-lang-active">JP</span>
       </div>
+      <button class="cta-solid-button nav-cta-button open-calendly-modal" type="button">Book a call</button>
     </div>
     <button class="nav-hamburger" id="nav-hamburger" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu-overlay">
       <svg width="55" height="32" viewBox="0 0 55 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -221,6 +222,7 @@
       <a href="#contact" class="mobile-menu-link">Contact</a>
       <a href="/ja/tools/" class="mobile-menu-link">AI Tools</a>
     </nav>
+    <button class="cta-solid-button mobile-menu-cta open-calendly-modal" type="button">Book a call</button>
   </div>
 
   <main>
@@ -722,16 +724,15 @@
       </div>
     </section>
 
-    <!-- Connect Section -->
-    <section id="contact" class="connect-section">
-      <hr class="divider">
-      <div class="connect-row fade-in">
-        <p class="connect-heading"><span class="cta-accent">ご相談ください。</span>まだ名前のついていない矛盾から始めます。</p>
-        <div class="connect-cta-group">
-          <button class="scan-cta scan-cta--wide" id="contact-modal-btn" type="button"><span class="scan-cta-arrow">→</span> メッセージを送る</button>
-        </div>
-      </div>
-      <hr class="divider">
+    <!-- Connect CTA (Figma node 612:4098) — replaces the earlier
+         "ご相談ください。" panel. The contact form itself
+         (id="contact-modal-btn") stays in the DOM, hidden, so Ishmael's
+         chat escalation and the ?contact=open deep link still work; it's
+         just no longer offered as a second visible button here. -->
+    <section id="contact" class="connect-cta-sunken fade-in">
+      <p class="connect-cta-sunken-heading"><span class="emphasis">Raft</span>のスピードで、次のプロジェクトへ。</p>
+      <button class="cta-solid-button connect-cta-solid open-calendly-modal" type="button">Lanceとの相談を予約する <span class="connect-cta-solid-arrow">→</span></button>
+      <button id="contact-modal-btn" type="button" style="display:none" aria-hidden="true" tabindex="-1"></button>
     </section>
   </main>
 
@@ -1437,6 +1438,117 @@
         if (btn) btn.click();
       }
     });
+  </script>
+
+  <!-- Calendly Modal — triggered by any .open-calendly-modal element (nav
+       "Book a call" pill, desktop + mobile, and the bottom Connect CTA).
+       widget.js loads lazily on first open, never on page load. -->
+  <div class="calendly-modal-overlay" id="calendly-modal-overlay">
+    <div class="calendly-modal" id="calendly-modal" role="dialog" aria-modal="true" aria-label="Book a call">
+      <div class="calendly-modal-header">
+        <button class="calendly-modal-close" id="calendly-modal-close" type="button" aria-label="閉じる">
+          <svg width="14" height="14" viewBox="0 0 16.5332 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.268262 0.259611C0.440253 0.0933737 0.673395 0 0.916476 0C1.15956 0 1.3927 0.0933737 1.56469 0.259611L16.2412 14.4628C16.3313 14.5441 16.4036 14.6421 16.4538 14.751C16.5039 14.8599 16.5309 14.9774 16.533 15.0966C16.5352 15.2158 16.5125 15.3342 16.4664 15.4448C16.4203 15.5553 16.3516 15.6557 16.2645 15.74C16.1774 15.8243 16.0736 15.8907 15.9594 15.9354C15.8452 15.98 15.7229 16.002 15.5997 15.9999C15.4765 15.9978 15.3551 15.9717 15.2426 15.9232C15.13 15.8746 15.0288 15.8047 14.9448 15.7175L0.268262 1.51423C0.0964852 1.34779 0 1.12216 0 0.886921C0 0.651679 0.0964852 0.426056 0.268262 0.259611Z" fill="currentColor"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.2405 0.259611C16.4123 0.426056 16.5088 0.651679 16.5088 0.886921C16.5088 1.12216 16.4123 1.34779 16.2405 1.51423L1.564 15.7175C1.39011 15.8743 1.16012 15.9596 0.922484 15.9556C0.684845 15.9515 0.458111 15.8584 0.290049 15.6957C0.121987 15.5331 0.0257188 15.3136 0.021526 15.0837C0.0173331 14.8537 0.105543 14.6311 0.267572 14.4628L14.9441 0.259611C15.1161 0.0933737 15.3492 0 15.5923 0C15.8354 0 16.0685 0.0933737 16.2405 0.259611Z" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+      <div class="calendly-modal-body">
+        <div class="calendly-inline-container" id="calendly-inline-container"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var overlay = document.getElementById('calendly-modal-overlay');
+      var modal = document.getElementById('calendly-modal');
+      var closeBtn = document.getElementById('calendly-modal-close');
+      var container = document.getElementById('calendly-inline-container');
+      var triggers = document.querySelectorAll('.open-calendly-modal');
+      if (!overlay || !modal || !triggers.length) return;
+
+      var CALENDLY_URL = 'https://calendly.com/raftdesignstudio/30min';
+      var trigger = null;
+      var widgetInitialized = false;
+      var scriptPromise = null;
+
+      function loadCalendlyScript() {
+        if (scriptPromise) return scriptPromise;
+        scriptPromise = new Promise(function (resolve, reject) {
+          if (window.Calendly) { resolve(); return; }
+          var script = document.createElement('script');
+          script.src = 'https://assets.calendly.com/assets/external/widget.js';
+          script.async = true;
+          script.onload = resolve;
+          script.onerror = reject;
+          document.body.appendChild(script);
+        });
+        return scriptPromise;
+      }
+
+      function initWidget() {
+        if (widgetInitialized) return;
+        widgetInitialized = true;
+        window.Calendly.initInlineWidget({
+          url: CALENDLY_URL,
+          parentElement: container,
+          resize: true
+        });
+      }
+
+      function getFocusable() {
+        return Array.from(modal.querySelectorAll('a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])'))
+          .filter(function (el) { return el.offsetParent !== null; });
+      }
+
+      function trapFocus(e) {
+        if (e.key !== 'Tab') return;
+        var focusable = getFocusable();
+        if (!focusable.length) return;
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+
+      function onKeydown(e) {
+        if (e.key === 'Escape') closeModal();
+        else trapFocus(e);
+      }
+
+      function openModal(el) {
+        trigger = el || document.activeElement;
+        overlay.classList.add('active');
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () { overlay.classList.add('visible'); });
+        });
+        document.body.style.overflow = 'hidden';
+        if (closeBtn) closeBtn.focus();
+        document.addEventListener('keydown', onKeydown);
+        loadCalendlyScript().then(initWidget);
+      }
+
+      function closeModal() {
+        overlay.classList.remove('visible');
+        document.body.style.overflow = '';
+        document.removeEventListener('keydown', onKeydown);
+        setTimeout(function () { overlay.classList.remove('active'); }, 200);
+        if (trigger) trigger.focus();
+      }
+
+      triggers.forEach(function (el) {
+        el.addEventListener('click', function (e) { openModal(e.currentTarget); });
+      });
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      overlay.addEventListener('click', function (e) {
+        if (e.target === e.currentTarget) closeModal();
+      });
+    })();
   </script>
 </body>
 </html>

@@ -1858,6 +1858,7 @@ p {
   padding: var(--space-huge) 30px;
   background: var(--bg-sunken);
   border-top: 1px solid var(--border-rule);
+  border-bottom: 1px solid var(--border-rule);
   text-align: center;
 }
 

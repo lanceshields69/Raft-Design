@@ -10,7 +10,7 @@
 ## Studio
 - [Home (English)](https://raftdesign.studio/): Studio thesis, practice areas, and origin story. Includes an "AI-Ready Design Systems" section (between Approach and Projects) linking to the full page below.
 - [Home (Japanese)](https://raftdesign.studio/ja/): 日本語版ホームページ。「AI対応型デザインシステム」セクション（Approach と Projects の間）を含む。
-- [Meet Raft](https://raftdesign.studio/meet-raft.html) / [日本語](https://raftdesign.studio/ja/meet-raft.html): Founder Lance Shields' background — design leadership at Adobe and Walmart, a decade leading a Tokyo design team, and why the studio is built to move rather than to look finished.
+- [Meet Raft](https://raftdesign.studio/about.html) / [日本語](https://raftdesign.studio/ja/about.html): Founder Lance Shields' background — design leadership at Adobe and Walmart, a decade leading a Tokyo design team, and why the studio is built to move rather than to look finished.
 
 ## Projects
 - [Projects index (English)](https://raftdesign.studio/projects/)

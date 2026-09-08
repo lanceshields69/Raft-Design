@@ -1891,6 +1891,27 @@ p {
   }
 }
 
+/* Download link under the Book-a-call button — Figma node 637:4232.
+   Accent green throughout (not the muted-until-hover .text-link
+   treatment), so it gets its own small class rather than reusing that
+   one incorrectly. */
+.connect-cta-download {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--text-accent);
+  font-size: var(--font-size-body-lg);
+  transition: opacity 0.2s;
+}
+
+.connect-cta-download:hover {
+  opacity: 0.8;
+}
+
+.connect-cta-download-arrow {
+  font-weight: var(--weight-bold);
+}
+
 /* Calendly Modal — same overlay/border/radius/animation treatment as
    .contact-modal-overlay / .contact-modal above, just wider (a calendar
    grid needs more room than a form) and with no header copy, since

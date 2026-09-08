@@ -13,16 +13,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meet Raft — Raft Design</title>
-  <meta name="description" content="Meet the people behind Raft Design — a small, senior-led studio building brand and product systems for startups and established companies in the U.S. and Japan.">
+  <meta name="description" content="Meet Lance Shields, founder and head of design at Raft Design — twenty years of brand and product leadership across Adobe, Walmart, and a decade leading a Tokyo design team.">
   <meta property="og:title" content="Meet Raft — Raft Design">
-  <meta property="og:description" content="Meet the people behind Raft Design — a small, senior-led studio building brand and product systems for startups and established companies in the U.S. and Japan.">
+  <meta property="og:description" content="Meet Lance Shields, founder and head of design at Raft Design — twenty years of brand and product leadership across Adobe, Walmart, and a decade leading a Tokyo design team.">
   <meta property="og:image" content="https://raftdesign.studio/images/Raft-Design-Social.png">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://raftdesign.studio/meet-raft.html">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Meet Raft — Raft Design">
-  <meta name="twitter:description" content="Meet the people behind Raft Design — a small, senior-led studio building brand and product systems for startups and established companies in the U.S. and Japan.">
+  <meta name="twitter:description" content="Meet Lance Shields, founder and head of design at Raft Design — twenty years of brand and product leadership across Adobe, Walmart, and a decade leading a Tokyo design team.">
   <meta name="twitter:image" content="https://raftdesign.studio/images/Raft-Design-Social.png">
   <link rel="alternate" hreflang="en" href="https://raftdesign.studio/meet-raft.html">
   <link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/meet-raft.html">
@@ -34,9 +34,9 @@
     "@type": "AboutPage",
     "name": "Meet Raft",
     "url": "https://raftdesign.studio/meet-raft.html",
-    "description": "Meet the people behind Raft Design — a small, senior-led studio building brand and product systems for startups and established companies in the U.S. and Japan.",
-    "about": { "@id": "https://raftdesign.studio/#organization" },
-    "mainEntity": { "@id": "https://raftdesign.studio/#organization" }
+    "description": "Meet Lance Shields, founder and head of design at Raft Design — twenty years of brand and product leadership across Adobe, Walmart, and a decade leading a Tokyo design team.",
+    "about": { "@id": "https://raftdesign.studio/#lance-shields" },
+    "mainEntity": { "@id": "https://raftdesign.studio/#lance-shields" }
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -64,15 +64,53 @@
 
     body { margin: 0; }
 
-    /* Team photos: square, cropped to fill, matching the source design's
-       1:1 aspect-ratio card layout. */
-    .mr-team-photo { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radius-md); display: block; }
+    /* Founder portrait: fixed circle, shrinks on narrow viewports so the
+       name/role column keeps enough room to sit beside it. A hairline
+       border keeps the circle's edge visible even where a photo's own
+       tones run dark against the page's near-black canvas — without it, a
+       dark lower half can read as the circle being clipped when it isn't. */
+    .mr-founder-photo { width: 200px; height: 200px; object-fit: cover; border-radius: 50%; border: 1px solid var(--border-rule); flex-shrink: 0; }
+    @media (max-width: 480px) {
+      .mr-founder-photo { width: 120px; height: 120px; }
+    }
 
-    /* Cooper row: fixed circular avatar + caption. Wraps on narrow
-       viewports rather than forcing the fixed-width avatar to squeeze
-       the caption down to one word per line. */
-    .mr-cooper-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-    .mr-cooper-avatar { width: 144px; height: 144px; object-fit: cover; border-radius: 50%; flex-shrink: 0; }
+    /* Cooper row: fixed circular avatar + caption, text sitting beside it
+       like the founder row above. Wraps to stacked on narrow viewports
+       rather than forcing the fixed-width avatar to squeeze the caption
+       down to one word per line. */
+    .mr-cooper-row { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .mr-cooper-avatar { width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 1px solid var(--border-rule); flex-shrink: 0; }
+    @media (max-width: 480px) {
+      .mr-cooper-avatar { width: 90px; height: 90px; }
+    }
+    /* flex-basis:0 (not the default auto) — auto lets a wrapping-text
+       paragraph's content-based basis balloon to an unbounded single-line
+       width, which was forcing it onto its own flex line instead of
+       sitting beside the photo. min-width:0 lets it actually shrink to fit. */
+    .mr-cooper-text { flex: 1 1 0; min-width: 240px; }
+
+    /* Social icon links — same muted-to-accent hover as .text-link, just
+       for a bare icon rather than a labeled link. */
+    .mr-icon-link { display: flex; color: var(--text-muted); transition: color 0.2s; }
+    .mr-icon-link:hover { color: var(--text-accent); }
+
+    /* Hero wipe reveal — same clip-path mechanism as the homepage's
+       .headline-line (styles.css), staggered ~120ms apart via the
+       .revealed class in the script at the bottom of this page. */
+    .mr-wipe {
+      display: inline-block;
+      clip-path: inset(-100% 100% -100% 0);
+      transition: clip-path 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    .mr-wipe.revealed {
+      clip-path: inset(-100% 0 -100% 0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .mr-wipe {
+        transition: none;
+        clip-path: inset(-100% 0 -100% 0);
+      }
+    }
   </style>
 </head>
 <body style="background:var(--bg-canvas);min-height:100vh;font-family:var(--font-sans);color:var(--text-primary)">
@@ -172,74 +210,61 @@
 <!-- HERO -->
 <section style="padding:96px 15px 64px;max-width:1920px">
   <div style="max-width:800px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px">
-    <span style="font-size:var(--font-size-eyebrow);font-weight:var(--weight-black);letter-spacing:var(--tracking-section-title);line-height:var(--line-height-eyebrow);text-transform:uppercase;color:var(--text-accent)">Meet Raft</span>
-    <h1 style="font-weight:900;font-size:clamp(36px,6vw,72px);line-height:.95;letter-spacing:-2px;margin:0">A small studio, built to move.</h1>
-    <p style="font-size:20px;line-height:1.4;color:var(--text-primary);max-width:559px;margin:0">Raft is three people and a very opinionated dog. Here's who's actually doing the work, and why it started this way.</p>
+    <span class="mr-wipe" id="mr-hero-eyebrow" style="font-size:23px;font-weight:var(--weight-black);letter-spacing:var(--tracking-section-title);line-height:var(--line-height-eyebrow);text-transform:uppercase;color:var(--text-accent)">Meet Raft</span>
+    <h1 class="mr-wipe" id="mr-hero-headline" style="font-weight:900;font-size:clamp(40px,8vw,79px);line-height:.95;letter-spacing:-2px;margin:0">Built to <span class="emphasis" style="color:var(--text-accent);font-size:clamp(46px,9vw,94px)">move</span>.</h1>
+    <p style="font-size:20px;line-height:1.4;color:var(--text-primary);max-width:559px;margin:0">Raft is a small, senior-led studio. Here's the twenty years behind it, and why it's built the way it is.</p>
   </div>
 </section>
 
 <!-- ORIGIN STORY -->
 <section style="padding:64px 15px 96px;border-top:1px solid var(--border-rule);max-width:1920px">
-  <div style="max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+  <div class="fade-in" style="max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
     <span style="font-size:var(--font-size-eyebrow);font-weight:var(--weight-black);letter-spacing:var(--tracking-section-title);line-height:var(--line-height-eyebrow);text-transform:uppercase;color:var(--text-muted)">Where we started</span>
     <p style="font-size:20px;line-height:1.5;margin:0">I spent twenty years building for other people's timelines. An agency of my own first, then Adobe, then Walmart, learning what real design discipline looks like at a scale most founders never see up close.</p>
-    <p style="font-size:20px;line-height:1.5;margin:0">At some point I stopped trying to build a ship. A ship is built for one fixed route, and it's built to look permanent. <span class="emphasis" style="font-size:clamp(22px,3vw,28px);line-height:1.4;display:block;margin:16px 0">What I actually needed to build was something that reads the current and keeps moving.</span> That's where the name comes from.</p>
+    <p style="font-size:20px;line-height:1.5;margin:0">Then AI changed the water underneath the whole industry. Design and product work now moves faster than any fixed process can track, and it's still moving. A ship is built for one route, built to look permanent, exactly the wrong shape for turbulent times. <span class="emphasis" style="font-size:clamp(22px,3vw,28px);line-height:1.4;display:block;margin:16px 0">What I needed to build instead was something that reads the current and adjusts.</span> That's where the name Raft came from and why it's built to move.</p>
     <a href="https://upstreamjournal.substack.com/p/why-i-built-a-raft-not-a-ship" class="text-link text-link-large">Read the full story: "Why I Built a Raft, Not a Ship" <span class="arrow">→</span></a>
-    <p style="font-size:20px;line-height:1.5;font-weight:900;margin:16px 0 0">Today, Raft isn't just me.</p>
   </div>
 </section>
 
-<!-- TEAM -->
+<!-- FOUNDER -->
 <section style="padding:64px 15px 96px;border-top:1px solid var(--border-rule);max-width:1920px">
-  <span class="section-label" style="margin-bottom:64px">The team</span>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:1200px;margin:0 auto">
+  <span class="section-label" style="margin-bottom:64px">The founder</span>
+  <div class="fade-in" style="max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
 
-    <div style="display:flex;flex-direction:column;gap:20px;background:var(--bg-elevated);border:1px solid var(--border-rule);border-radius:var(--radius-md);padding:var(--space-lg)">
-      <img src="images/LanceShields.jpg" alt="Lance Shields" class="mr-team-photo">
-      <div style="display:flex;flex-direction:column;gap:4px">
-        <h3 style="font-size:24px;font-weight:900;margin:0">Lance Shields</h3>
+    <div style="display:flex;align-items:center;gap:20px">
+      <img src="images/LanceShields.jpg" alt="Lance Shields" class="mr-founder-photo">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <h3 style="font-size:36px;font-weight:900;margin:0">Lance Shields</h3>
         <span style="font-size:var(--font-size-eyebrow);font-weight:var(--weight-black);letter-spacing:var(--tracking-section-title);line-height:var(--line-height-eyebrow);text-transform:uppercase;color:var(--text-accent)">Founder &amp; Head of Design</span>
       </div>
-      <p style="font-size:16px;line-height:1.4;margin:0">Twenty years of design leadership, including senior roles at Adobe and Walmart, and brand and product work with LegalOn, Visa, Hitachi, and Red Bull. Leads every engagement directly, no handoff to junior staff.</p>
     </div>
 
-    <div style="display:flex;flex-direction:column;gap:20px;background:var(--bg-elevated);border:1px solid var(--border-rule);border-radius:var(--radius-md);padding:var(--space-lg)">
-      <img src="images/RikaShields.jpg" alt="Rika Shields" class="mr-team-photo">
-      <div style="display:flex;flex-direction:column;gap:4px">
-        <h3 style="font-size:24px;font-weight:900;margin:0">Rika Shields</h3>
-        <span style="font-size:var(--font-size-eyebrow);font-weight:var(--weight-black);letter-spacing:var(--tracking-section-title);line-height:var(--line-height-eyebrow);text-transform:uppercase;color:var(--text-accent)">Business Manager</span>
-      </div>
-      <p style="font-size:16px;line-height:1.4;margin:0">Japan-born and a native Japanese speaker, Rika runs the business side of Raft and makes sure everything we ship in Japanese actually sounds like it was written by someone from there, because it was. Brand-savvy across both markets, not just fluent in the language.</p>
-    </div>
+    <p style="font-size:20px;line-height:1.5;margin:0">Twenty years of design leadership across brand and product, split between big tech, agency, startup and enterprise work in the U.S. and Japan.</p>
+    <p style="font-size:20px;line-height:1.5;margin:0">Before leading design at Adobe and Walmart, I ran an award-winning design studio in San Francisco, doing brand and product work for funded startups and Fortune 500s alike. Some of that startup design judgment is still holding up: an IPO, a couple of acquisitions, and several still running growing businesses.</p>
+    <p style="font-size:20px;line-height:1.5;margin:0">I also led a Tokyo design team for a decade, building Hitachi and ANA Airlines' global brand sites and winning a Good Design Award for Hitachi.com. At Adobe, I built its first international design team, then led AI product design at Adobe Express. Most recently, Design Director at Walmart, shaping AI shopping experiences for 580M monthly visitors.</p>
+    <p style="font-size:20px;line-height:1.5;margin:0">That cross-market, cross-discipline instinct now drives Raft's flagship work: LegalOn's brand and product platform across seven AI products. I lead every engagement directly. I take on projects like a traditional studio, brand and product through to shipped work, and if needed I can embed as fractional design leadership when a team's scaling and needs senior direction.</p>
 
-    <div style="display:flex;flex-direction:column;gap:20px;background:var(--bg-elevated);border:1px solid var(--border-rule);border-radius:var(--radius-md);padding:var(--space-lg)">
-      <img src="images/AriaShields-2.jpg" alt="Aria Shields" class="mr-team-photo">
-      <div style="display:flex;flex-direction:column;gap:4px">
-        <h3 style="font-size:24px;font-weight:900;margin:0">Aria Shields</h3>
-        <span style="font-size:var(--font-size-eyebrow);font-weight:var(--weight-black);letter-spacing:var(--tracking-section-title);line-height:var(--line-height-eyebrow);text-transform:uppercase;color:var(--text-accent)">Creative Producer</span>
-      </div>
-      <p style="font-size:16px;line-height:1.4;margin:0">Photography, animation, music coordination, and brand styling. Aria produces the visual and audio craft behind Raft's work, the case study photography, motion, and styling that make a finished project actually look and feel finished.</p>
+    <div style="display:flex;align-items:center;gap:20px;margin-top:8px">
+      <a href="https://www.linkedin.com/in/lanceshields" aria-label="LinkedIn" class="mr-icon-link">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+      </a>
+      <a href="https://upstreamjournal.substack.com" aria-label="Upstream Journal on Substack" class="mr-icon-link">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16v3.2H4V3zm0 5.4h16V11H4V8.4zm0 5.4h16v7.2l-8-4.6-8 4.6v-7.2z"/></svg>
+      </a>
     </div>
-
   </div>
 
-  <div class="mr-cooper-row" style="max-width:1200px;margin:48px auto 0">
-    <img src="images/Cooper.jpg" alt="Cooper Shields" class="mr-cooper-avatar">
-    <p style="font-size:14px;line-height:1.4;color:var(--text-muted);margin:0"><strong style="color:var(--text-primary);font-weight:900">Cooper Shields — Chief Happiness Officer.</strong> Attends most meetings. Approves nothing, improves everything.</p>
+  <div class="mr-cooper-row fade-in" style="max-width:680px;margin:78px auto 0">
+    <img src="images/Cooper-Shields.jpg" alt="Cooper Shields" class="mr-cooper-avatar">
+    <p class="mr-cooper-text" style="font-size:14px;line-height:1.4;color:var(--text-muted);margin:0"><strong style="color:var(--text-primary);font-weight:900">Cooper Shields — Chief Happiness Officer.</strong><br>Attends most meetings. Approves nothing, improves everything.</p>
   </div>
 </section>
 
-<!-- CLOSE -->
-<section style="padding:32px;max-width:1920px;border-top:1px solid var(--border-rule)">
-  <div style="display:flex;flex-direction:column;gap:24px;max-width:680px;margin:0 auto;background:var(--bg-sunken);border:1px solid var(--border-bright);padding:60px 48px">
-    <h2 style="font-size:36px;font-weight:400;margin:0;font-family:var(--font-sans)">Work with us</h2>
-    <p style="font-size:16px;line-height:1.4;margin:0">Building a startup? See the Design Foundation Sprint. Running a team already shipping with AI tools? See AI-Ready Design Systems.</p>
-    <div style="display:flex;flex-wrap:wrap;gap:16px">
-      <a href="/design-foundation.html" class="scan-cta"><span class="scan-cta-arrow">→</span> Design Foundation Sprint</a>
-      <a href="/design-system.html" class="scan-cta"><span class="scan-cta-arrow">→</span> AI-Ready Design Systems</a>
-    </div>
-    <a href="https://upstreamjournal.substack.com" class="text-link text-link-large">Upstream Journal <span class="arrow">→</span></a>
-  </div>
+<!-- CLOSE — reused verbatim from the homepage's "Ready to move at Raft
+     speed?" panel: same classes, same Calendly modal trigger. -->
+<section class="connect-cta-sunken fade-in">
+  <p class="connect-cta-sunken-heading">Ready to move at <span class="emphasis" style="font-size:clamp(30px,7vw,64px);line-height:1">Raft</span> speed?</p>
+  <button class="cta-solid-button connect-cta-solid open-calendly-modal" type="button">Book a call with Lance <span class="connect-cta-solid-arrow">→</span></button>
 </section>
 
 <footer class="footer">
@@ -345,6 +370,34 @@
     });
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && overlay.classList.contains('open')) closeMenu();
+    });
+  })();
+
+  // Scroll fade-in — same IntersectionObserver + .fade-in/.visible pattern
+  // as the homepage (styles.css already has the CSS; this just wires it up
+  // on this page too).
+  (function () {
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+  })();
+
+  // Hero wipe reveal — same clip-path mechanism and 120ms stagger as the
+  // homepage's headline (styles.css .headline-line), just triggered on
+  // load here rather than after a logo intro animation.
+  (function () {
+    const items = [
+      document.getElementById('mr-hero-eyebrow'),
+      document.getElementById('mr-hero-headline')
+    ].filter(Boolean);
+    const staggerMs = 120;
+    items.forEach((el, i) => {
+      setTimeout(() => el.classList.add('revealed'), i * staggerMs);
     });
   })();
 </script>

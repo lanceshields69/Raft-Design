@@ -609,7 +609,7 @@ p {
   align-self: center;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 20px;
   min-width: 0;
 }
 
@@ -717,12 +717,43 @@ p {
 .headline-line {
   display: block;
   font-size: clamp(40px, 6vw, 100px);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 0.95;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
   color: var(--text-primary);
   clip-path: inset(-100% 100% -100% 0);
   transition: clip-path 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Homepage hero "momentum" (Figma node 649:4819 / 658:4966) — animated
+   green gradient sweeping left to right on a seamless loop. Figma's static
+   version is a plain 2-stop light->dark gradient spanning the FULL word
+   width. To keep that full-width span at every frame while still looping,
+   the stop sequence is a symmetric light->dark->light wave repeated twice
+   (5 stops over a 400%-wide background — each half-wave = 1 full word
+   width, vs. a 200%-wide background where each half-wave is only half the
+   word). Shifting background-position by exactly one wave-period lands on
+   a color-for-color identical frame, so the loop has no visible seam. */
+.headline-momentum {
+  background-image: linear-gradient(90deg, #3FE83D, #159845, #3FE83D, #159845, #3FE83D);
+  background-size: 400% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: headline-momentum-gradient 2.67s linear infinite;
+}
+
+@keyframes headline-momentum-gradient {
+  from { background-position: 0% 0%; }
+  to { background-position: -66.6667% 0%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .headline-momentum {
+    animation: none;
+  }
 }
 
 .headline-line.revealed {
@@ -738,6 +769,7 @@ html[lang="ja"] .headline-line {
   font-family: 'Noto Sans JP', sans-serif;
   font-weight: 900;
   line-height: 1.12;
+  letter-spacing: -0.03em;
 }
 
 

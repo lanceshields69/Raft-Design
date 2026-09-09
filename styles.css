@@ -181,7 +181,11 @@ p {
 .nav-logo-gif {
   width: 50px;
   height: 50px;
-  object-fit: contain;
+  object-fit: cover;
+  border-radius: 50%;
+  overflow: hidden;
+  /* Trims 3px further in from the circle above, past the gif's own edge. */
+  clip-path: circle(calc(50% - 3px));
 }
 
 .nav-logo-gif--dark {
@@ -432,12 +436,78 @@ p {
   padding: 45px 15px 0;
 }
 
+/* Video background — homepage only (Figma node 649:4819). Video + scrim
+   sit behind .hero-lockup via z-index, absolutely positioned to the
+   section so they extend the full hero height including the client-logo
+   row. Nav stays outside this section, on its own solid background, not
+   overlaid on the video — that's a bigger sitewide change than "update
+   the hero area" asked for. */
+.intro-section--video {
+  position: relative;
+  /* not overflow:hidden — the video/scrim intentionally extend 66px above
+     this section's own top edge (see below) to show through the sticky
+     nav's translucent background, matching the Figma reference where the
+     video is visible behind the header. */
+}
+
+.intro-bg-video,
+.intro-bg-scrim {
+  position: absolute;
+  top: -66px; /* .nav-header's rendered height, so the layer reaches y:0 */
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.intro-bg-video {
+  width: 100%;
+  height: calc(100% + 66px);
+  object-fit: cover;
+  z-index: 0;
+}
+
+.intro-bg-scrim {
+  background: rgba(4, 34, 15, 0.6);
+  z-index: 1;
+}
+
+/* Light-mode video is bright enough on its own for the theme-aware dark
+   text — the dark scrim (tuned for the always-dark video) would just tint
+   it green instead of helping legibility. */
+[data-theme="light"] .intro-bg-scrim {
+  background: transparent;
+}
+
+/* Dark/light video swap — same pattern as .nav-logo-gif--dark/--light. */
+.intro-bg-video--dark {
+  display: block;
+}
+
+.intro-bg-video--light {
+  display: none;
+}
+
+[data-theme="light"] .intro-bg-video--dark {
+  display: none;
+}
+
+[data-theme="light"] .intro-bg-video--light {
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-bg-video {
+    display: none;
+  }
+}
+
 .hero-lockup {
   position: relative;
+  z-index: 2;
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto auto;
-  column-gap: 30px;
+  column-gap: 46px;
   row-gap: 25px;
   padding-bottom: 80px;
   border-bottom: 1px solid var(--border-rule);
@@ -525,6 +595,36 @@ p {
   margin-top: 50px;
 }
 
+/* EN homepage hero (Figma node 649:4819): headline + subhead are grouped
+   in their own flex stack, spanning what would be rows 1-2 in column 2,
+   so their 32px gap is a real flex gap between the two text blocks —
+   independent of .logo-block's 300px height, which otherwise forces
+   .intro-heading's grid cell (and therefore row 2's start position) to be
+   much taller than a single short headline actually needs. ja/index.html
+   doesn't use this wrapper, so its .intro-heading/.hero-tags keep the
+   original grid-row placement below untouched. */
+.hero-copy {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-width: 0;
+}
+
+.hero-copy .intro-heading {
+  grid-column: auto;
+  grid-row: auto;
+  margin-top: 0;
+}
+
+.hero-copy .hero-tags {
+  grid-column: auto;
+  grid-row: auto;
+  align-self: auto;
+}
+
 .hero-tags {
   grid-column: 2;
   grid-row: 2;
@@ -550,6 +650,23 @@ p {
   color: var(--text-accent);
 }
 
+/* New homepage hero subhead (Figma node 642:4754) — a single sentence,
+   not a row of tags, so it needs its own inner treatment. Reuses the
+   .hero-tags wrapper only for its existing clip-path reveal mechanism
+   (same JS hook); ja/index.html keeps the original plain .hero-tags
+   (flex row of four tag items) untouched via this modifier scoping. */
+.hero-tags--subhead {
+  display: block;
+  max-width: 800px;
+}
+
+.hero-subhead {
+  font-size: var(--font-size-heading-3);
+  font-weight: var(--weight-medium);
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
 .client-logos {
   grid-column: 1 / -1;
   grid-row: 3;
@@ -561,7 +678,7 @@ p {
 }
 
 .client-logos.revealed {
-  opacity: 0.5;
+  opacity: 1;
 }
 
 .client-logos-track {
@@ -579,6 +696,13 @@ p {
   object-fit: contain;
 }
 
+/* Logo assets are solid white on transparent — built for the dark theme.
+   Light mode has no separate asset set, so force them black in place
+   (brightness(0) maps any opaque pixel to black, alpha untouched). */
+[data-theme="light"] .client-logo {
+  filter: brightness(0) saturate(100%);
+}
+
 @keyframes client-logos-scroll {
   from { transform: translateX(0); }
   to { transform: translateX(calc(-1 * var(--marquee-distance))); }
@@ -592,17 +716,28 @@ p {
 
 .headline-line {
   display: block;
-  font-size: 128px;
-  line-height: 0.78;
+  font-size: clamp(40px, 6vw, 100px);
+  font-weight: 700;
+  line-height: 0.95;
   letter-spacing: -0.03em;
   color: var(--text-primary);
-  white-space: nowrap;
   clip-path: inset(-100% 100% -100% 0);
   transition: clip-path 0.6s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .headline-line.revealed {
   clip-path: inset(-100% 0 -100% 0);
+}
+
+/* JA hero headline (Figma node 655:4858) — Noto Sans JP kanji sit taller in
+   their em-box than Latin glyphs, so the EN line-height (0.95, tuned for
+   Inter) clips JP strokes; Figma's own JA spec uses line-height ~1.12
+   (101px/90px) instead. Only 400/500/900 are loaded for Noto Sans JP (no
+   700), so 900 stands in for Figma's Bold. */
+html[lang="ja"] .headline-line {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 900;
+  line-height: 1.12;
 }
 
 
@@ -2529,6 +2664,13 @@ p {
     grid-row: auto;
     order: 4;
     flex-wrap: wrap;
+  }
+
+  .hero-copy {
+    grid-column: 1;
+    grid-row: auto;
+    order: 3;
+    gap: var(--space-lg);
   }
 
   .client-logos {

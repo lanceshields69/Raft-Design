@@ -1201,6 +1201,17 @@ html[lang="ja"] .headline-line {
   flex: 1;
 }
 
+/* Homepage's AI Systems panel split into two offerings (Foundation Design
+   Sprint + AI-ready design systems) side by side, replacing the second
+   .ai-systems-text's fixed 483px width (meant for pairing with the
+   4-column .ai-systems-grid, no longer used here) with an even flexible
+   split. Scoped to this modifier so ja/index.html's unmodified single-text
+   + grid layout keeps the original fixed width. */
+.ai-systems-content--split .ai-systems-text {
+  width: auto;
+  flex: 1;
+}
+
 .ai-systems-item {
   padding: 36px 28px;
   border-right: 1px solid var(--border-rule);

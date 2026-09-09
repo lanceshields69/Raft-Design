@@ -253,6 +253,12 @@
          viewport gets narrow, overflowing the page. Stack company info
          above the quote instead of squeezing them side by side. */
       .df-track-row { grid-template-columns: 1fr !important; }
+      /* Testimonial rows (avatar + quote): same narrow-viewport problem as
+         above, one level down — stack the quote above the photo instead of
+         squeezing an 80px avatar next to the text. column-reverse (not
+         column) because the avatar is the first DOM child but should end
+         up second/below visually. */
+      .df-testimonial-row { flex-direction: column-reverse !important; gap: 20px !important; }
       /* AI-tools grid: the desktop border-right dividers between columns
          become stray vertical lines once auto-fit collapses this to one
          column per row. Swap to a horizontal top border between stacked
@@ -427,7 +433,7 @@
         <p style="font-size:36px;font-weight:900;line-height:1;letter-spacing:-1px;margin:0">LegalOn</p>
         <span style="display:inline-flex;align-self:flex-start;font-size:13px;font-weight:700;color:var(--text-accent);text-transform:uppercase;letter-spacing:0.52px">Current Project · $200M+ funded</span>
       </div>
-      <div style="display:flex;align-items:flex-start;gap:48px">
+      <div class="df-testimonial-row" style="display:flex;align-items:flex-start;gap:48px">
         <img src="images/legalon-quote.webp" alt="Rin Yano" width="80" height="80" style="width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;display:block">
         <div style="display:flex;flex-direction:column;gap:16px">
           <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:20px;line-height:1.4;margin:0">&ldquo;Lance seamlessly connected LegalOn&rsquo;s U.S.-born brand with the cultural context of Japan. The brand architecture and framework he created gave us a clear way to express our core idea of &lsquo;ON&rsquo; while keeping the brand cohesive as our product portfolio expanded.&rdquo;</p>
@@ -441,7 +447,7 @@
         <p style="font-size:36px;font-weight:900;line-height:1;letter-spacing:-1px;margin:0">Cloud Cruiser</p>
         <span style="display:inline-flex;align-self:flex-start;font-size:13px;font-weight:700;color:var(--text-accent);text-transform:uppercase;letter-spacing:0.52px">Acquired by HPE, 2017</span>
       </div>
-      <div style="display:flex;align-items:flex-start;gap:48px">
+      <div class="df-testimonial-row" style="display:flex;align-items:flex-start;gap:48px">
         <img src="images/Karla-Haley.png" alt="Karla Haley" width="80" height="80" style="width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;display:block">
         <div style="display:flex;flex-direction:column;gap:16px">
           <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:20px;line-height:1.4;margin:0">&ldquo;LinkedIn only lets me rate Lance high on three attributes, but he actually delivers high on all: great results, personable, expert, good value, on time, high integrity and creative. Finding all of these in one person is very rare.&rdquo;</p>
@@ -456,7 +462,7 @@
         <span style="display:inline-flex;align-self:flex-start;font-size:13px;font-weight:700;color:var(--text-accent);text-transform:uppercase;letter-spacing:0.52px">IPO'd on Nasdaq, 2019 · ~$292M revenue</span>
       </div>
       <div style="display:flex;flex-direction:column;gap:24px">
-        <div style="display:flex;align-items:flex-start;gap:48px">
+        <div class="df-testimonial-row" style="display:flex;align-items:flex-start;gap:48px">
           <img src="images/Dan-Burton.png" alt="Dan Burton" width="80" height="80" style="width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;display:block">
           <div style="display:flex;flex-direction:column;gap:16px">
             <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:20px;line-height:1.4;margin:0">&ldquo;Lance, and his team, did a fantastic job helping our company launch its new brand identity. He was directly involved in all aspects of the project, including the brand redesign strategy as well as the creative implementation on our fully redesigned website and other collateral.&rdquo;</p>
@@ -471,7 +477,7 @@
         <p style="font-size:36px;font-weight:900;line-height:1;letter-spacing:-1px;margin:0">OrderDynamics</p>
         <span style="display:inline-flex;align-self:flex-start;font-size:13px;font-weight:700;color:var(--text-accent);text-transform:uppercase;letter-spacing:0.52px">Acquired by Tecsys, 2018</span>
       </div>
-      <div style="display:flex;align-items:flex-start;gap:48px">
+      <div class="df-testimonial-row" style="display:flex;align-items:flex-start;gap:48px">
         <img src="images/kylee-hall.png" alt="Kylee Hall" width="80" height="80" style="width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;display:block">
         <div style="display:flex;flex-direction:column;gap:16px">
           <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:20px;line-height:1.4;margin:0">&ldquo;I first worked with Lance's team at OrderDynamics on a website redesign. I thought their work was great and brought them in to redo our website at Leadspace. We went through an RFP process and reviewed several other vendors, but Lance's team stood out in terms of their creative talent and their unique experience in designing B2B websites focused on generating leads.&rdquo;</p>
@@ -485,7 +491,7 @@
         <p style="font-size:36px;font-weight:900;line-height:1;letter-spacing:-1px;margin:0">Leadspace</p>
         <span style="display:inline-flex;align-self:flex-start;font-size:13px;font-weight:700;color:var(--text-accent);text-transform:uppercase;letter-spacing:0.52px">Still operating, still shipping</span>
       </div>
-      <div style="display:flex;align-items:flex-start;gap:48px">
+      <div class="df-testimonial-row" style="display:flex;align-items:flex-start;gap:48px">
         <img src="images/Damon-Waldron.png" alt="Damon Waldron" width="80" height="80" style="width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;display:block">
         <div style="display:flex;flex-direction:column;gap:16px">
           <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:20px;line-height:1.4;margin:0">&ldquo;Lance and his team did an amazing job redesigning Leadspace.com. Really cutting edge work that helps us stand out in the competitive predictive analytics market. They were also great to work with, patient with our requests but helped guide us with a clear and thoughtful approach to design.&rdquo;</p>
@@ -723,6 +729,42 @@
       </button>
       <div class="df-faq-panel">
         <p class="df-faq-answer">Most teams either take what's delivered and run with it in-house, or move into the Land &amp; Expand fractional retainer to keep shipping with continued design leadership.</p>
+      </div>
+    </div>
+    <div class="df-faq-row">
+      <button class="df-faq-toggle" type="button">
+        <span class="df-faq-question">How soon can we start?</span>
+        <span class="df-faq-arrow">→</span>
+      </button>
+      <div class="df-faq-panel">
+        <p class="df-faq-answer">Sprints typically start within four weeks of booking a fit assessment call, depending on current availability. Book a call to find the next open slot.</p>
+      </div>
+    </div>
+    <div class="df-faq-row">
+      <button class="df-faq-toggle" type="button">
+        <span class="df-faq-question">Will our product and roadmap details stay confidential?</span>
+        <span class="df-faq-arrow">→</span>
+      </button>
+      <div class="df-faq-panel">
+        <p class="df-faq-answer">Yes. Happy to sign an NDA before any detailed discussion, just ask.</p>
+      </div>
+    </div>
+    <div class="df-faq-row">
+      <button class="df-faq-toggle" type="button">
+        <span class="df-faq-question">Why can't I just use AI tools myself?</span>
+        <span class="df-faq-arrow">→</span>
+      </button>
+      <div class="df-faq-panel">
+        <p class="df-faq-answer">AI tools are powerful, but they don't know which choices are right for your specific business. The value isn't the AI, it's twenty years of judgment directing it: knowing what to build, when it's right, and how to get there fast. Without that direction, AI accelerates guesswork just as easily as it accelerates good decisions.</p>
+      </div>
+    </div>
+    <div class="df-faq-row">
+      <button class="df-faq-toggle" type="button">
+        <span class="df-faq-question">How is this different from AI-Ready Design Systems?</span>
+        <span class="df-faq-arrow">→</span>
+      </button>
+      <div class="df-faq-panel">
+        <p class="df-faq-answer">The Sprint is a fixed, one-time engagement that builds your brand and product foundation from the ground up. <a href="https://raftdesign.studio/design-system.html" style="color:var(--text-accent)">AI-Ready Design Systems</a> is for teams that already have a system in place and want it restructured so their team and their AI tools can work from it directly. Most funded startups start with the Sprint.</p>
       </div>
     </div>
   </div>

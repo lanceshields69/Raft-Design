@@ -198,6 +198,14 @@
        stylesheet (a light green default for [data-fs-success][data-fs-active]
        etc.) at runtime, after this block, with matching specificity — it
        wins the cascade tie and overrides a plain declaration here. */
+    /* Pricing cards' "what's included" checklist — no sitewide checklist
+       component exists yet, so this is page-local, sitting alongside
+       .tool-card/.tool-card-tag (styles.css/tools.css) which the cards
+       reuse as-is for their frame and pill label. */
+    .df-pricing-checklist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-sm); }
+    .df-pricing-checklist li { display: flex; align-items: flex-start; gap: var(--space-sm); font-size: 14px; line-height: 1.4; color: var(--text-primary); }
+    .df-pricing-checklist li::before { content: "✓"; flex-shrink: 0; color: var(--text-accent); font-weight: var(--weight-black); }
+
     .df-form-banner { display: none; background: var(--bg-sunken) !important; padding: var(--space-md); border: 1px solid var(--border-rule); border-radius: var(--radius-sm); margin-bottom: 24px; }
     .df-form-banner[data-fs-active] { display: block; }
     .df-form-banner[data-fs-active] ~ #design-foundation-lead-form { display: none; }
@@ -355,41 +363,204 @@
 <section style="padding:96px 15px 80px;max-width:1400px;margin:0 auto">
   <div class="df-hero-grid" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,1fr);gap:32px;align-items:center">
     <div style="display:flex;flex-direction:column;gap:32px;max-width:640px">
-      <span class="project-section-label" style="color:var(--text-accent);margin-bottom:0;font-size:14px;font-weight:900;text-transform:uppercase">For funded startups</span>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <span class="project-section-label" style="color:var(--text-accent);margin-bottom:0;font-size:16px;font-weight:900;text-transform:uppercase">The Design Foundation Sprint</span>
+        <span style="color:var(--text-accent);font-size:13px;font-weight:700">For Funded Startups</span>
+      </div>
       <h1 style="font-weight:900;font-size:clamp(36px,4.6vw,60px);line-height:1.02;letter-spacing:-2px;margin:0;color:var(--text-primary)">Senior design leadership, before you're ready to hire it.</h1>
       <p style="font-size:20px;line-height:1.5;max-width:560px;color:var(--text-primary);margin:0">Your engineering team is shipping. Your product, brand, and site still reflect the company you were eighteen months ago. Raft closes that gap in four weeks — brand first, then the product that expresses it.</p>
-      <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:8px">
-        <a href="https://calendly.com/raftdesignstudio/30min" target="_blank" rel="noopener noreferrer" class="scan-cta scan-cta--wide">Book a 10-minute fit assessment</a>
-        <a href="https://raftdesign.studio/tools/" class="text-link text-link-large">Try the free diagnostic <span class="arrow">→</span></a>
-      </div>
-      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:24px;padding-top:24px;border-top:1px solid var(--border-rule)">
-        <span style="font-size:13px;color:var(--text-muted)">20+ years, Adobe and Walmart scale</span>
-        <span style="color:var(--border-rule)">·</span>
-        <span style="font-size:13px;color:var(--text-muted)">Startups that went on to IPO</span>
-        <span style="color:var(--border-rule)">·</span>
-        <span style="font-size:13px;color:var(--text-muted)">Acquired by HPE, UnitedHealth, Tecsys</span>
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:24px;margin-top:8px">
+        <a href="https://calendly.com/raftdesignstudio/30min" target="_blank" rel="noopener noreferrer" class="scan-cta scan-cta--wide">Book a 30-minute fit assessment</a>
+        <a href="#pricing" class="text-link text-link-large" style="color:var(--text-primary);font-weight:700">See pricing <span class="arrow">→</span></a>
       </div>
     </div>
 
-    <div style="width:100%">
+    <div style="width:100%;margin-top:-30px">
       <img src="images/Diagram.gif" alt="Diagram showing engineering and business maturity advancing steadily while design maturity lags, until Raft's intervention brings both into alignment before the scaling stage" style="width:100%;height:auto;display:block;border-radius:var(--radius-md)">
     </div>
   </div>
 </section>
 
-<!-- PROBLEM -->
+<!-- BLUEPRINT -->
 <section style="padding:80px 15px;max-width:1400px;margin:0 auto;border-top:1px solid var(--border-rule)">
-  <span class="section-label">Sound familiar?</span>
+  <span class="section-label">The scope</span>
+  <div style="display:flex;flex-direction:column;gap:16px;max-width:700px;margin-bottom:56px">
+    <h2 style="font-weight:900;font-size:clamp(28px,3.5vw,36px);line-height:1.05;letter-spacing:-1px;margin:0">Brand first. Then the product that expresses it.</h2>
+    <p style="font-size:16px;color:var(--text-muted);margin:0">Why four weeks, not three: most sprints pick one lane. This does both, in the order that actually works.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:36px;color:var(--text-accent);margin:0">01</p>
+      <p style="font-size:20px;font-weight:900;margin:0">Define <span style="font-weight:400;color:var(--text-muted);font-size:16px">— Week 1</span></p>
+      <p style="font-size:16px;line-height:1.4;margin:0">Direction-setting. Positioning, audience, and the design foundation everything else builds on.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:36px;color:var(--text-accent);margin:0">02</p>
+      <p style="font-size:20px;font-weight:900;margin:0">Brand <span style="font-weight:400;color:var(--text-muted);font-size:16px">— Week 2</span></p>
+      <p style="font-size:16px;line-height:1.4;margin:0">Identity system: typography, color architecture, voice, and an investor-ready deck template.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:36px;color:var(--text-accent);margin:0">03</p>
+      <p style="font-size:20px;font-weight:900;margin:0">Product <span style="font-weight:400;color:var(--text-muted);font-size:16px">— Week 3</span></p>
+      <p style="font-size:16px;line-height:1.4;margin:0">5–10 high-fidelity screens, interactive prototype, edge cases mapped, built on the Week 2 system.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:36px;color:var(--text-accent);margin:0">04</p>
+      <p style="font-size:20px;font-weight:900;margin:0">Systemize <span style="font-weight:400;color:var(--text-muted);font-size:16px">— Week 4</span></p>
+      <p style="font-size:16px;line-height:1.4;margin:0">Tokenized component library, fully documented handoff, recorded engineering walkthrough. Your team builds on it without you in the room.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRACK RECORD -->
+<section id="track-record" style="padding:96px 15px;max-width:1400px;margin:0 auto;border-top:1px solid var(--border-rule)">
+  <span class="section-label">Track record</span>
+  <div style="display:flex;flex-direction:column;gap:16px;max-width:700px;margin-bottom:64px">
+    <h2 style="font-weight:900;font-size:clamp(28px,3.5vw,36px);line-height:1.05;letter-spacing:-1px;margin:0">Happy clients. Real outcomes.</h2>
+    <p style="font-size:16px;color:var(--text-muted);margin:0">An IPO on Nasdaq. Acquisitions by HPE and Tecsys. Companies still running and growing years later. Here's what the people who hired us early have to say about it.</p>
+  </div>
+
+  <div style="display:flex;flex-direction:column">
+
+    <div class="df-track-row" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:40px;padding:48px 0;border-top:1px solid var(--border-rule)">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <p style="font-size:36px;font-weight:900;line-height:1;letter-spacing:-1px;margin:0">LegalOn</p>
+        <span style="display:inline-flex;align-self:flex-start;font-size:13px;font-weight:700;color:var(--text-accent);text-transform:uppercase;letter-spacing:0.52px">Current Project · $200M+ funded</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:48px">
+        <img src="images/legalon-quote.webp" alt="Rin Yano" width="80" height="80" style="width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;display:block">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:20px;line-height:1.4;margin:0">&ldquo;Lance seamlessly connected LegalOn&rsquo;s U.S.-born brand with the cultural context of Japan. The brand architecture and framework he created gave us a clear way to express our core idea of &lsquo;ON&rsquo; while keeping the brand cohesive as our product portfolio expanded.&rdquo;</p>
+          <p style="font-size:14px;color:var(--text-muted);margin:0">— Rin Yano, Chief Design Officer, LegalOn</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="df-track-row" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:40px;padding:48px 0;border-top:1px solid var(--border-rule)">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <p style="font-size:36px;font-weight:900;line-height:1;letter-spacing:-1px;margin:0">Cloud Cruiser</p>
+        <span style="display:inline-flex;align-self:flex-start;font-size:13px;font-weight:700;color:var(--text-accent);text-transform:uppercase;letter-spacing:0.52px">Acquired by HPE, 2017</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:48px">
+        <img src="images/Karla-Haley.png" alt="Karla Haley" width="80" height="80" style="width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;display:block">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:20px;line-height:1.4;margin:0">&ldquo;LinkedIn only lets me rate Lance high on three attributes, but he actually delivers high on all: great results, personable, expert, good value, on time, high integrity and creative. Finding all of these in one person is very rare.&rdquo;</p>
+          <p style="font-size:14px;color:var(--text-muted);margin:0">— Karla Haley, Director of Demand Generation, Cloud Cruiser</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="df-track-row" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:40px;padding:48px 0;border-top:1px solid var(--border-rule)">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <p style="font-size:36px;font-weight:900;line-height:1;letter-spacing:-1px;margin:0">Health Catalyst</p>
+        <span style="display:inline-flex;align-self:flex-start;font-size:13px;font-weight:700;color:var(--text-accent);text-transform:uppercase;letter-spacing:0.52px">IPO'd on Nasdaq, 2019 · ~$292M revenue</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <div style="display:flex;align-items:flex-start;gap:48px">
+          <img src="images/Dan-Burton.png" alt="Dan Burton" width="80" height="80" style="width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;display:block">
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:20px;line-height:1.4;margin:0">&ldquo;Lance, and his team, did a fantastic job helping our company launch its new brand identity. He was directly involved in all aspects of the project, including the brand redesign strategy as well as the creative implementation on our fully redesigned website and other collateral.&rdquo;</p>
+            <p style="font-size:14px;color:var(--text-muted);margin:0">— Dan Burton, CEO at the time</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="df-track-row" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:40px;padding:48px 0;border-top:1px solid var(--border-rule)">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <p style="font-size:36px;font-weight:900;line-height:1;letter-spacing:-1px;margin:0">OrderDynamics</p>
+        <span style="display:inline-flex;align-self:flex-start;font-size:13px;font-weight:700;color:var(--text-accent);text-transform:uppercase;letter-spacing:0.52px">Acquired by Tecsys, 2018</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:48px">
+        <img src="images/kylee-hall.png" alt="Kylee Hall" width="80" height="80" style="width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;display:block">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:20px;line-height:1.4;margin:0">&ldquo;I first worked with Lance's team at OrderDynamics on a website redesign. I thought their work was great and brought them in to redo our website at Leadspace. We went through an RFP process and reviewed several other vendors, but Lance's team stood out in terms of their creative talent and their unique experience in designing B2B websites focused on generating leads.&rdquo;</p>
+          <p style="font-size:14px;color:var(--text-muted);margin:0">— Kylee Hall, Director of Product Marketing, OrderDynamics and Leadspace</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="df-track-row" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:40px;padding:48px 0;border-top:1px solid var(--border-rule);border-bottom:1px solid var(--border-rule)">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <p style="font-size:36px;font-weight:900;line-height:1;letter-spacing:-1px;margin:0">Leadspace</p>
+        <span style="display:inline-flex;align-self:flex-start;font-size:13px;font-weight:700;color:var(--text-accent);text-transform:uppercase;letter-spacing:0.52px">Still operating, still shipping</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:48px">
+        <img src="images/Damon-Waldron.png" alt="Damon Waldron" width="80" height="80" style="width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;display:block">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:20px;line-height:1.4;margin:0">&ldquo;Lance and his team did an amazing job redesigning Leadspace.com. Really cutting edge work that helps us stand out in the competitive predictive analytics market. They were also great to work with, patient with our requests but helped guide us with a clear and thoughtful approach to design.&rdquo;</p>
+          <p style="font-size:14px;color:var(--text-muted);margin:0">— Damon Waldron, Director of Demand Generation, Leadspace</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- INVESTMENT -->
+<section id="pricing" style="padding:80px 15px;max-width:1400px;margin:0 auto;border-top:1px solid var(--border-rule)">
+  <span class="section-label">Pricing</span>
   <div style="display:flex;flex-direction:column;gap:16px;max-width:700px;margin-bottom:48px">
-    <h2 style="font-weight:900;font-size:clamp(28px,3.5vw,36px);line-height:1.05;letter-spacing:-1px;margin:0">The things founders say right before they call us.</h2>
-    <p style="font-size:16px;color:var(--text-muted);margin:0">If two or more of these are true, the sprint is built for you.</p>
+    <h2 style="font-weight:900;font-size:clamp(28px,3.5vw,36px);line-height:1.05;letter-spacing:-1px;margin:0">The most direct way to hire senior design leadership.</h2>
+    <p style="font-size:16px;color:var(--text-muted);margin:0">No hourly billing. No scope creep. No junior handoff. Just a fixed price for senior judgment, delivered in four weeks.</p>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
-    <div class="tool-card" style="justify-content:center"><p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:20px;line-height:1.35;color:var(--text-primary);margin:0">&ldquo;Our product ships faster than our brand can keep up.&rdquo;</p></div>
-    <div class="tool-card" style="justify-content:center"><p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:20px;line-height:1.35;color:var(--text-primary);margin:0">&ldquo;We look like a seed-stage company talking to enterprise buyers.&rdquo;</p></div>
-    <div class="tool-card" style="justify-content:center"><p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:20px;line-height:1.35;color:var(--text-primary);margin:0">&ldquo;Nobody internally can explain our design system, because there isn't one.&rdquo;</p></div>
-    <div class="tool-card" style="justify-content:center"><p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:20px;line-height:1.35;color:var(--text-primary);margin:0">&ldquo;We have five components doing the same job, none of them documented.&rdquo;</p></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-bottom:24px">
+    <div class="tool-card">
+      <img src="images/icon-foundation-sprint.jpg" alt="" width="80" height="80" style="width:80px;height:80px;display:block;margin-bottom:8px;border-radius:var(--radius-sm)">
+      <p style="font-size:20px;font-weight:900;margin:0">Core</p>
+      <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:36px;color:var(--text-accent);margin:0">$28,000</p>
+      <p style="font-size:16px;line-height:1.4;margin:0">Ideal for teams with some existing design foundation. You need a brand system and a working product to show investors and early customers, without the full weight of a mature product surface yet.</p>
+      <span class="tool-card-tag">What's included</span>
+      <ul class="df-pricing-checklist">
+        <li>Positioning, audience, experience principles</li>
+        <li>Core brand identity system (typography, color, voice)</li>
+        <li>Key sales and marketing templates</li>
+        <li>Up to 5 core product screens, high-fidelity</li>
+        <li>Interactive prototype</li>
+        <li>Core states and edge cases mapped</li>
+        <li>Component library and design tokens</li>
+        <li>Documentation and engineering handoff</li>
+        <li>AI-ready design system (DESIGN.md)</li>
+        <li>Everything built and delivered in Figma</li>
+      </ul>
+      <p style="font-size:14px;color:var(--text-muted);margin:0">50% to start · 50% at delivery</p>
+      <a href="https://calendly.com/raftdesignstudio/30min" target="_blank" rel="noopener noreferrer" class="scan-cta" style="margin-top:auto;align-self:flex-start">Reserve your sprint <span class="scan-cta-arrow">→</span></a>
+    </div>
+    <div class="tool-card">
+      <img src="images/icon-full-system.jpg" alt="" width="80" height="80" style="width:80px;height:80px;display:block;margin-bottom:8px;border-radius:var(--radius-sm)">
+      <p style="font-size:20px;font-weight:900;margin:0">Full System</p>
+      <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:36px;color:var(--text-accent);margin:0">$34,000</p>
+      <p style="font-size:16px;line-height:1.4;margin:0">Ideal for teams starting closer to zero. You need the full brand system and a broader product surface mapped and built, ready to hand to engineering across your whole app, not just a few key screens.</p>
+      <span class="tool-card-tag">What's included</span>
+      <ul class="df-pricing-checklist">
+        <li>Everything in Core, plus:</li>
+        <li>Expanded brand system: iconography/illustration style, extended template set (deck, social, email)</li>
+        <li>Full messaging framework: positioning statement, brand pillars, audience-specific messaging</li>
+        <li>8–10 product screens, high-fidelity</li>
+        <li>Deeper edge-case and state mapping across the full product surface</li>
+        <li>Expanded component library covering additional product surfaces</li>
+        <li>Everything built and delivered in Figma</li>
+      </ul>
+      <p style="font-size:14px;color:var(--text-muted);margin:0">50% to start · 50% at delivery</p>
+      <a href="https://calendly.com/raftdesignstudio/30min" target="_blank" rel="noopener noreferrer" class="scan-cta" style="margin-top:auto;align-self:flex-start">Reserve your sprint <span class="scan-cta-arrow">→</span></a>
+    </div>
   </div>
+  <!-- Land & Expand is structurally distinct from Core/Full System (no
+       checklist, different kind of engagement, not a third sprint tier) —
+       once the two sprint cards above grew tall with checklists, keeping
+       this in the same 3-up grid left it dwarfed with a lot of empty space
+       beside it. A wide, shorter horizontal card of its own row reads much
+       better than forcing it into an equal-height third column. -->
+  <div class="tool-card" style="flex-direction:row;flex-wrap:wrap;align-items:center;gap:32px;margin-bottom:24px">
+    <img src="images/icon-land-expand.jpg" alt="" width="80" height="80" style="width:80px;height:80px;flex-shrink:0;display:block;border-radius:var(--radius-sm)">
+    <div style="display:flex;flex-direction:column;gap:8px;flex:2 1 260px;min-width:0">
+      <p style="font-size:13px;color:var(--text-accent);text-transform:uppercase;letter-spacing:1px;font-weight:900;margin:0">After the sprint</p>
+      <p style="font-size:20px;font-weight:900;margin:0">Land &amp; Expand</p>
+      <p style="font-size:16px;line-height:1.4;margin:0">Ongoing fractional design leadership, roughly 15 hours a week, for teams that want to keep the brand and product functions running well without a full-time hire.</p>
+    </div>
+    <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:36px;color:var(--text-accent);margin:0;flex:1 1 180px;text-align:right">$10,000<span style="font-family:var(--font-sans);font-style:normal;font-size:16px;font-weight:400;color:var(--text-muted)">/mo</span></p>
+  </div>
+  <p style="font-size:14px;color:var(--text-muted);margin:0">Currently taking a limited number of sprint engagements in exchange for case-study rights. If you're an early yes, the terms reflect that.</p>
 </section>
 
 <!-- SHOWCASE -->
@@ -408,6 +579,7 @@
       <div style="display:flex;flex-direction:column;gap:4px">
         <p style="font-size:28px;font-weight:900;line-height:0.95;margin:0">LegalOn</p>
         <p style="font-size:13px;color:var(--text-muted);margin:0;text-transform:uppercase;letter-spacing:1px">Brand & Product</p>
+        <p style="font-size:13px;color:var(--text-accent);font-weight:700;margin:4px 0 0">View project <span class="arrow">→</span></p>
       </div>
     </a>
 
@@ -419,6 +591,7 @@
       <div style="display:flex;flex-direction:column;gap:4px">
         <p style="font-size:28px;font-weight:900;line-height:0.95;margin:0">Walmart</p>
         <p style="font-size:13px;color:var(--text-muted);margin:0;text-transform:uppercase;letter-spacing:1px">AI shopping experience</p>
+        <p style="font-size:13px;color:var(--text-accent);font-weight:700;margin:4px 0 0">View project <span class="arrow">→</span></p>
       </div>
     </a>
 
@@ -430,6 +603,7 @@
       <div style="display:flex;flex-direction:column;gap:4px">
         <p style="font-size:28px;font-weight:900;line-height:0.95;margin:0">Adobe Express Photos</p>
         <p style="font-size:13px;color:var(--text-muted);margin:0;text-transform:uppercase;letter-spacing:1px">0-to-1 AI product</p>
+        <p style="font-size:13px;color:var(--text-accent);font-weight:700;margin:4px 0 0">View project <span class="arrow">→</span></p>
       </div>
     </a>
 
@@ -501,303 +675,14 @@
   </div>
 </section>
 
-<!-- RAFT EDGE -->
-<section style="padding:80px 15px;max-width:1400px;margin:0 auto;border-top:1px solid var(--border-rule)">
-  <span class="section-label">The Raft edge</span>
-  <h2 style="font-weight:900;font-size:clamp(28px,3.5vw,36px);line-height:1.05;letter-spacing:-1px;margin:0 0 48px;max-width:700px">Twenty years of judgment. One AI-native studio.</h2>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:48px">
-    <div style="display:flex;flex-direction:column;gap:13px">
-      <p style="font-size:28px;font-weight:900;line-height:0.95;margin:0">Adobe and Walmart pedigree</p>
-      <p style="font-size:16px;line-height:1.4;margin:0">Systems thinking built where a single component decision touches millions of users. That discipline doesn't disappear at your size. It moves faster, because there's no committee left to slow it down.</p>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:13px">
-      <p style="font-size:28px;font-weight:900;line-height:0.95;margin:0">LegalOn, the current flagship</p>
-      <p style="font-size:16px;line-height:1.4;margin:0">Japan's leading legal AI, expanded into a family of seven AI-powered products. The job: one coherent identity across all seven, room for each to stand on its own. Live, current, bilingual work.</p>
-    </div>
-  </div>
-</section>
-
-<!-- COMPARISON -->
-<section style="padding:80px 15px;max-width:1400px;margin:0 auto;border-top:1px solid var(--border-rule)">
-  <span class="section-label">Why not a legacy agency</span>
-  <h2 style="font-weight:900;font-size:clamp(28px,3.5vw,36px);line-height:1.05;letter-spacing:-1px;margin:0 0 48px;max-width:700px">One sprint, brand and product together.</h2>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px">
-    <div class="tool-card">
-      <p style="font-size:20px;font-weight:900;margin:0 0 8px;color:var(--text-accent)">Raft Design</p>
-      <div style="display:flex;flex-direction:column">
-        <p style="font-size:16px;line-height:1.4;padding:16px 0;border-top:1px solid var(--border-rule);margin:0">4 weeks, fixed price</p>
-        <p style="font-size:16px;line-height:1.4;padding:16px 0;border-top:1px solid var(--border-rule);margin:0">Brand and product, one system</p>
-        <p style="font-size:16px;line-height:1.4;padding:16px 0;border-top:1px solid var(--border-rule);margin:0">You work directly with a 20-year design leader</p>
-        <p style="font-size:16px;line-height:1.4;padding:16px 0;border-top:1px solid var(--border-rule);margin:0">AI-native workflow, not junior production</p>
-        <p style="font-size:16px;line-height:1.4;padding:16px 0;border-top:1px solid var(--border-rule);margin:0">Proven with startups that IPO'd and got acquired</p>
-        <p style="font-size:16px;line-height:1.4;padding:16px 0;border-top:1px solid var(--border-rule);margin:0">Handoff includes tokens and an engineering walkthrough</p>
-      </div>
-    </div>
-    <div class="tool-card">
-      <p style="font-size:20px;font-weight:900;margin:0 0 8px;color:var(--text-muted)">Traditional route</p>
-      <div style="display:flex;flex-direction:column">
-        <p style="font-size:16px;line-height:1.4;padding:16px 0;border-top:1px solid var(--border-rule);margin:0;color:var(--text-muted)">2–6 months minimum</p>
-        <p style="font-size:16px;line-height:1.4;padding:16px 0;border-top:1px solid var(--border-rule);margin:0;color:var(--text-muted)">Separate brand agency plus separate product freelancer</p>
-        <p style="font-size:16px;line-height:1.4;padding:16px 0;border-top:1px solid var(--border-rule);margin:0;color:var(--text-muted)">Junior staff and account managers in between</p>
-        <p style="font-size:16px;line-height:1.4;padding:16px 0;border-top:1px solid var(--border-rule);margin:0;color:var(--text-muted)">Files handed off, engineering interprets as best it can</p>
-        <p style="font-size:16px;line-height:1.4;padding:16px 0;border-top:1px solid var(--border-rule);margin:0;color:var(--text-muted)">No shared system between brand and product</p>
-        <p style="font-size:16px;line-height:1.4;padding:16px 0;border-top:1px solid var(--border-rule);margin:0;color:var(--text-muted)">Unproven junior team, or a generalist you're hoping works out</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BLUEPRINT -->
-<section style="padding:80px 15px;max-width:1400px;margin:0 auto;border-top:1px solid var(--border-rule)">
-  <span class="section-label">The scope</span>
-  <div style="display:flex;flex-direction:column;gap:16px;max-width:700px;margin-bottom:56px">
-    <h2 style="font-weight:900;font-size:clamp(28px,3.5vw,36px);line-height:1.05;letter-spacing:-1px;margin:0">Brand first. Then the product that expresses it.</h2>
-    <p style="font-size:16px;color:var(--text-muted);margin:0">Why four weeks, not three: most sprints pick one lane. This does both, in the order that actually works.</p>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px">
-    <div style="display:flex;flex-direction:column;gap:12px">
-      <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:36px;color:var(--text-accent);margin:0">01</p>
-      <p style="font-size:20px;font-weight:900;margin:0">Define <span style="font-weight:400;color:var(--text-muted);font-size:16px">— Week 1</span></p>
-      <p style="font-size:16px;line-height:1.4;margin:0">Direction-setting. Positioning, audience, and the design foundation everything else builds on.</p>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:12px">
-      <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:36px;color:var(--text-accent);margin:0">02</p>
-      <p style="font-size:20px;font-weight:900;margin:0">Brand <span style="font-weight:400;color:var(--text-muted);font-size:16px">— Week 2</span></p>
-      <p style="font-size:16px;line-height:1.4;margin:0">Identity system: typography, color architecture, voice, and an investor-ready deck template.</p>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:12px">
-      <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:36px;color:var(--text-accent);margin:0">03</p>
-      <p style="font-size:20px;font-weight:900;margin:0">Product <span style="font-weight:400;color:var(--text-muted);font-size:16px">— Week 3</span></p>
-      <p style="font-size:16px;line-height:1.4;margin:0">5–10 high-fidelity screens, interactive prototype, edge cases mapped, built on the Week 2 system.</p>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:12px">
-      <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:36px;color:var(--text-accent);margin:0">04</p>
-      <p style="font-size:20px;font-weight:900;margin:0">Systemize <span style="font-weight:400;color:var(--text-muted);font-size:16px">— Week 4</span></p>
-      <p style="font-size:16px;line-height:1.4;margin:0">Tokenized component library, fully documented handoff, recorded engineering walkthrough. Your team builds on it without you in the room.</p>
-    </div>
-  </div>
-</section>
-
 <!-- AI-READY DESIGN SYSTEM -->
 <section style="padding:80px 15px;max-width:1400px;margin:0 auto;border-top:1px solid var(--border-rule)">
   <span class="section-label">AI-ready design system</span>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:48px;margin-bottom:56px">
-    <div style="display:flex;flex-direction:column;gap:20px">
-      <h2 style="font-weight:900;font-size:clamp(28px,3.5vw,36px);line-height:1.05;letter-spacing:-1px;margin:0">Your design system shouldn't stop at Figma.</h2>
-      <p style="font-size:16px;color:var(--text-muted);line-height:1.4;margin:0">Raft structures your brand rules, design tokens, components, templates, voice, and DESIGN.md so your team and AI tools can keep producing consistent work after the sprint ends.</p>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:20px">
-      <p style="font-size:16px;line-height:1.4;margin:0">That means your marketing, sales, design, and engineering teams can create new work faster, without starting from zero or slowly drifting off-brand.</p>
-      <div style="width:40px;height:1px;background:var(--text-accent);opacity:0.5"></div>
-      <div style="display:flex;align-items:center;gap:16px">
-        <img src="images/claude-icon.png" alt="" style="width:36px;height:36px;flex-shrink:0;border-radius:50%">
-        <p style="font-size:16px;line-height:1.4;margin:0">We're tool-agnostic. Claude Design is one of the AI tools we use effectively for this.</p>
-      </div>
-    </div>
+  <div style="display:flex;flex-direction:column;gap:16px;max-width:700px">
+    <h2 style="font-weight:900;font-size:clamp(28px,3.5vw,36px);line-height:1.05;letter-spacing:-1px;margin:0">Your design system shouldn't stop at Figma.</h2>
+    <p style="font-size:16px;color:var(--text-muted);line-height:1.5;margin:0">Every sprint includes an AI-ready design system, not just Figma files. Your brand rules, tokens, components, and DESIGN.md stay usable by your team and your AI tools long after the sprint ends.</p>
+    <a href="https://raftdesign.studio/design-system.html" class="text-link text-link-large" style="margin-top:8px">See how it works <span class="arrow">→</span></a>
   </div>
-
-  <div class="df-ai-tools-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));border-top:1px solid var(--border-rule);margin-bottom:80px">
-    <div class="df-ai-tool-item" style="padding:40px 32px 40px 0;border-right:1px solid var(--border-rule);display:flex;flex-direction:column;gap:16px">
-      <img class="svg-icon--dark" src="images/icon-marketing.svg" alt="" style="width:32px;height:32px">
-<img class="svg-icon--light" src="images/icon-marketing-light.svg" alt="" style="width:32px;height:32px">
-      <p style="font-size:16px;font-weight:600;margin:0">Marketing</p>
-      <p style="font-size:16px;color:var(--text-muted);line-height:1.4;margin:0">Create campaign concepts, ads, landing pages, launch materials, and social assets from the same brand foundation.</p>
-    </div>
-    <div class="df-ai-tool-item" style="padding:40px 32px;border-right:1px solid var(--border-rule);display:flex;flex-direction:column;gap:16px">
-      <img class="svg-icon--dark" src="images/icon-sales.svg" alt="" style="width:32px;height:32px">
-<img class="svg-icon--light" src="images/icon-sales-light.svg" alt="" style="width:32px;height:32px">
-      <p style="font-size:16px;font-weight:600;margin:0">Sales</p>
-      <p style="font-size:16px;color:var(--text-muted);line-height:1.4;margin:0">Generate on-brand decks, proposals, customer presentations, and enablement materials without reinventing the visual language.</p>
-    </div>
-    <div class="df-ai-tool-item" style="padding:40px 32px;border-right:1px solid var(--border-rule);display:flex;flex-direction:column;gap:16px">
-      <img class="svg-icon--dark" src="images/icon-product-design.svg" alt="" style="width:32px;height:32px">
-<img class="svg-icon--light" src="images/icon-product-design-light.svg" alt="" style="width:32px;height:32px">
-      <p style="font-size:16px;font-weight:600;margin:0">Product + design</p>
-      <p style="font-size:16px;color:var(--text-muted);line-height:1.4;margin:0">Explore new flows, prototypes, feature concepts, and product surfaces using the established components and design rules.</p>
-    </div>
-    <div class="df-ai-tool-item" style="padding:40px 0 40px 32px;display:flex;flex-direction:column;gap:16px">
-      <img class="svg-icon--dark" src="images/icon-engineering.svg" alt="" style="width:32px;height:32px">
-<img class="svg-icon--light" src="images/icon-engineering-light.svg" alt="" style="width:32px;height:32px">
-      <p style="font-size:16px;font-weight:600;margin:0">Engineering</p>
-      <p style="font-size:16px;color:var(--text-muted);line-height:1.4;margin:0">Work from shared tokens, components, implementation guidance, and a clearer source of truth.</p>
-    </div>
-  </div>
-
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:64px;margin-bottom:80px">
-    <div style="display:flex;flex-direction:column;gap:8px">
-      <span class="project-section-label" style="color:var(--text-accent);margin-bottom:0">See how it works</span>
-      <h3 style="font-weight:900;font-size:clamp(22px,2.6vw,28px);line-height:1.15;margin:20px 0 0">This Raft design guideline was built with the same system.</h3>
-      <p style="font-size:16px;font-weight:600;margin:24px 0 0">Raft's own brand system includes:</p>
-      <ul style="list-style:none;padding:0;margin:20px 0 0;display:flex;flex-direction:column;gap:12px">
-        <li style="display:flex;align-items:center;gap:12px"><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0">
-<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Design tokens</span></li>
-        <li style="display:flex;align-items:center;gap:12px"><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0">
-<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Typography and layout rules</span></li>
-        <li style="display:flex;align-items:center;gap:12px"><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0">
-<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Reusable components</span></li>
-        <li style="display:flex;align-items:center;gap:12px"><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0">
-<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Brand voice</span></li>
-        <li style="display:flex;align-items:center;gap:12px"><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0">
-<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Motion guidance</span></li>
-        <li style="display:flex;align-items:center;gap:12px"><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0">
-<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Presentation templates</span></li>
-        <li style="display:flex;align-items:center;gap:12px"><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0">
-<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">DESIGN.md</span></li>
-        <li style="display:flex;align-items:center;gap:12px"><img class="svg-icon--dark" src="images/icon-check-green.svg" alt="" style="width:20px;height:20px;flex-shrink:0">
-<img class="svg-icon--light" src="images/icon-check-green-light.svg" alt="" style="width:20px;height:20px;flex-shrink:0"><span style="font-size:16px">Guidance for AI tools such as Claude Design</span></li>
-      </ul>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:32px">
-      <iframe width="100%" style="aspect-ratio:16/9;border-radius:var(--radius-sm)" src="https://www.youtube.com/embed/-Q_afihcKs0?si=QvlXaj-x5coFCtP8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <a class="scan-cta" href="/design-system-deck/" target="_blank" rel="noopener noreferrer" style="align-self:flex-start"><span class="scan-cta-arrow">→</span> View the Raft Design System</a>
-    </div>
-  </div>
-
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:64px;align-items:center;border-top:1px solid var(--border-rule);padding-top:48px">
-    <div style="display:flex;align-items:flex-start;gap:24px">
-      <div style="width:32px;height:2px;background:var(--text-accent);margin-top:12px;flex-shrink:0"></div>
-      <p style="font-size:20px;line-height:1.4;margin:0">The goal isn't to automate design judgment.<br>It's to automate the repetitive work around it.</p>
-    </div>
-    <div style="padding-left:64px;border-left:1px solid var(--border-rule)">
-      <p style="font-size:16px;color:var(--text-muted);line-height:1.4;margin:0">Better tools. A stronger system. A faster, more consistent team.</p>
-    </div>
-  </div>
-</section>
-
-<!-- TRACK RECORD -->
-<section id="track-record" style="padding:96px 15px;max-width:1400px;margin:0 auto;border-top:1px solid var(--border-rule)">
-  <span class="section-label">Track record</span>
-  <div style="display:flex;flex-direction:column;gap:16px;max-width:700px;margin-bottom:64px">
-    <h2 style="font-weight:900;font-size:clamp(28px,3.5vw,36px);line-height:1.05;letter-spacing:-1px;margin:0">Early judgment, later proven.</h2>
-    <p style="font-size:16px;color:var(--text-muted);margin:0">Before Adobe and Walmart, Lance led the creative work behind five startups. Here's what happened to them since.</p>
-  </div>
-
-  <div style="display:flex;flex-direction:column">
-
-    <div class="df-track-row" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:40px;padding:48px 0;border-top:1px solid var(--border-rule)">
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <p style="font-size:36px;font-weight:900;line-height:1;letter-spacing:-1px;margin:0">LegalOn</p>
-        <span style="display:inline-flex;align-self:flex-start;font-size:13px;font-weight:700;color:var(--text-accent);text-transform:uppercase;letter-spacing:0.52px">Current flagship project</span>
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:48px">
-        <img src="images/legalon-quote.webp" alt="Rin Yano" width="80" height="80" style="width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;display:block">
-        <div style="display:flex;flex-direction:column;gap:16px">
-          <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:24px;line-height:1.4;margin:0">&ldquo;Lance seamlessly connected LegalOn&rsquo;s U.S.-born brand with the cultural context of Japan. The brand architecture and framework he created gave us a clear way to express our core idea of &lsquo;ON&rsquo; while keeping the brand cohesive as our product portfolio expanded.&rdquo;</p>
-          <p style="font-size:14px;color:var(--text-muted);margin:0">— Rin Yano, Chief Design Officer, LegalOn</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="df-track-row" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:40px;padding:48px 0;border-top:1px solid var(--border-rule)">
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <p style="font-size:36px;font-weight:900;line-height:1;letter-spacing:-1px;margin:0">Cloud Cruiser</p>
-        <span style="display:inline-flex;align-self:flex-start;font-size:13px;font-weight:700;color:var(--text-accent);text-transform:uppercase;letter-spacing:0.52px">Acquired by HPE, 2017</span>
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:48px">
-        <img src="images/Karla-Haley.png" alt="Karla Haley" width="80" height="80" style="width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;display:block">
-        <div style="display:flex;flex-direction:column;gap:16px">
-          <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:24px;line-height:1.4;margin:0">&ldquo;LinkedIn only lets me rate Lance high on three attributes, but he actually delivers high on all: great results, personable, expert, good value, on time, high integrity and creative. Finding all of these in one person is very rare.&rdquo;</p>
-          <p style="font-size:14px;color:var(--text-muted);margin:0">— Karla Haley, Director of Demand Generation, Cloud Cruiser</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="df-track-row" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:40px;padding:48px 0;border-top:1px solid var(--border-rule)">
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <p style="font-size:36px;font-weight:900;line-height:1;letter-spacing:-1px;margin:0">Health Catalyst</p>
-        <span style="display:inline-flex;align-self:flex-start;font-size:13px;font-weight:700;color:var(--text-accent);text-transform:uppercase;letter-spacing:0.52px">IPO'd on Nasdaq, 2019 · ~$292M revenue</span>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:24px">
-        <div style="display:flex;align-items:flex-start;gap:48px">
-          <img src="images/Dan-Burton.png" alt="Dan Burton" width="80" height="80" style="width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;display:block">
-          <div style="display:flex;flex-direction:column;gap:16px">
-            <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:24px;line-height:1.4;margin:0">&ldquo;Lance, and his team, did a fantastic job helping our company launch its new brand identity. He was directly involved in all aspects of the project, including the brand redesign strategy as well as the creative implementation on our fully redesigned website and other collateral.&rdquo;</p>
-            <p style="font-size:14px;color:var(--text-muted);margin:0">— Dan Burton, CEO at the time</p>
-          </div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:48px">
-          <img src="images/Paul%20Horstmeier.png" alt="Paul Horstmeier" width="80" height="80" style="width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;display:block">
-          <div style="display:flex;flex-direction:column;gap:16px">
-            <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:24px;line-height:1.4;margin:0">&ldquo;Lance and his team did a great job on our brand redesign!&rdquo;</p>
-            <p style="font-size:14px;color:var(--text-muted);margin:0">— Paul Horstmeier, SVP Marketing</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="df-track-row" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:40px;padding:48px 0;border-top:1px solid var(--border-rule)">
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <p style="font-size:36px;font-weight:900;line-height:1;letter-spacing:-1px;margin:0">OrderDynamics</p>
-        <span style="display:inline-flex;align-self:flex-start;font-size:13px;font-weight:700;color:var(--text-accent);text-transform:uppercase;letter-spacing:0.52px">Acquired by Tecsys, 2018</span>
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:48px">
-        <img src="images/kylee-hall.png" alt="Kylee Hall" width="80" height="80" style="width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;display:block">
-        <div style="display:flex;flex-direction:column;gap:16px">
-          <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:24px;line-height:1.4;margin:0">&ldquo;I first worked with Lance's team at OrderDynamics on a website redesign. I thought their work was great and brought them in to redo our website at Leadspace. We went through an RFP process and reviewed several other vendors, but Lance's team stood out in terms of their creative talent and their unique experience in designing B2B websites focused on generating leads.&rdquo;</p>
-          <p style="font-size:14px;color:var(--text-muted);margin:0">— Kylee Hall, Director of Product Marketing, OrderDynamics and Leadspace</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="df-track-row" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:40px;padding:48px 0;border-top:1px solid var(--border-rule);border-bottom:1px solid var(--border-rule)">
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <p style="font-size:36px;font-weight:900;line-height:1;letter-spacing:-1px;margin:0">Leadspace</p>
-        <span style="display:inline-flex;align-self:flex-start;font-size:13px;font-weight:700;color:var(--text-accent);text-transform:uppercase;letter-spacing:0.52px">Still operating, still shipping</span>
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:48px">
-        <img src="images/Damon-Waldron.png" alt="Damon Waldron" width="80" height="80" style="width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;display:block">
-        <div style="display:flex;flex-direction:column;gap:16px">
-          <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:24px;line-height:1.4;margin:0">&ldquo;Lance and his team did an amazing job redesigning Leadspace.com. Really cutting edge work that helps us stand out in the competitive predictive analytics market. They were also great to work with, patient with our requests but helped guide us with a clear and thoughtful approach to design.&rdquo;</p>
-          <p style="font-size:14px;color:var(--text-muted);margin:0">— Damon Waldron, Director of Demand Generation, Leadspace</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- DIAGNOSTIC -->
-<section style="padding:80px 15px;max-width:1400px;margin:0 auto;border-top:1px solid var(--border-rule)">
-  <span class="project-section-label" style="margin-bottom:0">Not ready for a call yet?</span>
-  <h2 style="font-weight:900;font-size:clamp(28px,3.5vw,36px);line-height:1.05;letter-spacing:-1px;margin:16px 0 16px;max-width:700px">Get a free brand and product design health check.</h2>
-  <p style="font-size:16px;line-height:1.5;max-width:600px;color:var(--text-primary);margin:0 0 40px">A scan of your site and product, scored on both brand cohesion and product design signals, not just logo and color. See where the gap actually is before you commit to fixing it.</p>
-  <div class="scan-banner-box">
-    <div class="scan-banner-text">
-      <h3 class="scan-banner-heading">Design Intelligence Engine</h3>
-      <p class="scan-banner-body">Ever wondered if your site is designed or built well? Is it readable by LLMs or search? Let our intelligent tool scan your site and give you a genuine score.</p>
-    </div>
-    <div class="scan-banner-cta-wrap">
-      <button class="scan-cta scan-cta--wide" id="df-scan-banner-cta-btn" type="button"><span class="scan-cta-arrow">→</span> Scan your site</button>
-    </div>
-  </div>
-</section>
-
-<!-- INVESTMENT -->
-<section style="padding:80px 15px;max-width:1400px;margin:0 auto;border-top:1px solid var(--border-rule)">
-  <span class="section-label">The investment</span>
-  <h2 style="font-weight:900;font-size:clamp(28px,3.5vw,36px);line-height:1.05;letter-spacing:-1px;margin:0 0 48px;max-width:700px">Transparent capital. No hourly guessing games.</h2>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-bottom:24px">
-    <div class="tool-card">
-      <img src="images/icon-foundation-sprint.jpg" alt="" width="80" height="80" style="width:80px;height:80px;display:block;margin-bottom:8px;border-radius:var(--radius-sm)">
-      <p style="font-size:20px;font-weight:900;margin:0">Foundation Sprint</p>
-      <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:36px;color:var(--text-accent);margin:0">$28,000</p>
-      <p style="font-size:16px;line-height:1.4;margin:0">Brand system plus up to 5 core product screens. For teams with some existing design foundation to build on. 50% to start, 50% at delivery.</p>
-    </div>
-    <div class="tool-card">
-      <img src="images/icon-full-system.jpg" alt="" width="80" height="80" style="width:80px;height:80px;display:block;margin-bottom:8px;border-radius:var(--radius-sm)">
-      <p style="font-size:20px;font-weight:900;margin:0">Full System Sprint</p>
-      <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:36px;color:var(--text-accent);margin:0">$34,000</p>
-      <p style="font-size:16px;line-height:1.4;margin:0">Brand system plus 8–10 product screens and deeper edge-case mapping. The default for most funded startups starting closer to zero. 50% to start, 50% at delivery.</p>
-    </div>
-    <div class="tool-card">
-      <img src="images/icon-land-expand.jpg" alt="" width="80" height="80" style="width:80px;height:80px;display:block;margin-bottom:8px;border-radius:var(--radius-sm)">
-      <p style="font-size:13px;color:var(--text-accent);text-transform:uppercase;letter-spacing:1px;font-weight:900;margin:0">After the sprint</p>
-      <p style="font-size:20px;font-weight:900;margin:0">Land &amp; Expand</p>
-      <p style="font-family:var(--font-emphasis);font-style:italic;font-variation-settings:'SOFT' 0,'WONK' 1;font-weight:600;font-size:36px;color:var(--text-accent);margin:0">$10,000<span style="font-family:var(--font-sans);font-style:normal;font-size:16px;font-weight:400;color:var(--text-muted)">/mo</span></p>
-      <p style="font-size:16px;line-height:1.4;margin:0">Ongoing fractional design leadership, roughly 15 hours a week, for teams that want to keep the brand and product functions running well without a full-time hire.</p>
-    </div>
-  </div>
-  <p style="font-size:14px;color:var(--text-muted);margin:0">Currently taking a limited number of sprint engagements in exchange for case-study rights. If you're an early yes, the terms reflect that.</p>
 </section>
 
 <!-- FAQ -->
@@ -847,7 +732,7 @@
 <section style="padding:96px 15px;max-width:900px;margin:0 auto;border-top:1px solid var(--border-rule)">
   <span class="section-label">Next step</span>
   <h2 style="font-weight:900;font-size:clamp(28px,3.5vw,36px);line-height:1.05;letter-spacing:-1px;margin:0 0 16px">Let's unblock your roadmap.</h2>
-  <p style="font-size:16px;line-height:1.5;color:var(--text-primary);margin:0 0 48px;max-width:600px">Share a brief below and you'll get a scoping note and timeline back within 48 hours, or book the 10-minute call directly if you'd rather talk it through first.</p>
+  <p style="font-size:16px;line-height:1.5;color:var(--text-primary);margin:0 0 48px;max-width:600px">Share a brief below and you'll get a scoping note and timeline back within 48 hours, or book the 30-minute call directly if you'd rather talk it through first.</p>
 
   <div data-fs-success class="df-form-banner" id="design-foundation-success-banner" aria-live="polite">
     <p>Thanks — I'll get back to you within 48 hours.</p>
@@ -896,6 +781,7 @@
     </div>
   </form>
 </section>
+
 
 <!-- Design Intelligence Tool Modal (same as homepage) -->
 <div class="scan-modal-overlay" id="df-scan-modal-overlay">

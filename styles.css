@@ -3046,9 +3046,12 @@ html[lang="ja"] .headline-line {
   /* .intro-section--video hardcodes a wider 35px left padding at every
      breakpoint (for the desktop side-by-side hero); the rest of the site's
      sections use 15px. Match that here so the mobile hero's left edge
-     lines up with the content below it. */
+     lines up with the content below it. Its 130px padding-bottom (the
+     space after the client-logo marquee, before the next section) is
+     also unconditional at every breakpoint — halved here for mobile. */
   .intro-section--video {
     padding-left: 15px;
+    padding-bottom: 65px;
   }
 
   .headline-variant--desktop {

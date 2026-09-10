@@ -444,10 +444,29 @@ p {
    the hero area" asked for. */
 .intro-section--video {
   position: relative;
+  padding-left: 35px;
+  padding-bottom: 130px;
   /* not overflow:hidden — the video/scrim intentionally extend 66px above
      this section's own top edge (see below) to show through the sticky
      nav's translucent background, matching the Figma reference where the
      video is visible behind the header. */
+}
+
+/* Desktop hero fills the viewport below the sticky nav (Figma node
+   649:4819): .hero-lockup (logo/headline/subhead/scroll-CTA) anchors to
+   the top, .client-logos anchors to the bottom, with any extra vertical
+   space on tall viewports distributed as one gap between them via
+   space-between — rather than a fixed margin-top on .client-logos, which
+   would either leave dead space or overflow depending on viewport height.
+   Mobile keeps natural content-height stacking (no min-height), since a
+   forced full-screen hero reads as awkward empty space on a phone. */
+@media (min-width: 1025px) {
+  .intro-section--video {
+    min-height: calc(100vh - 66px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }
 
 .intro-bg-video,
@@ -467,15 +486,8 @@ p {
 }
 
 .intro-bg-scrim {
-  background: rgba(4, 34, 15, 0.6);
-  z-index: 1;
-}
-
-/* Light-mode video is bright enough on its own for the theme-aware dark
-   text — the dark scrim (tuned for the always-dark video) would just tint
-   it green instead of helping legibility. */
-[data-theme="light"] .intro-bg-scrim {
   background: transparent;
+  z-index: 1;
 }
 
 /* Dark/light video swap — same pattern as .nav-logo-gif--dark/--light. */
@@ -509,8 +521,6 @@ p {
   grid-template-rows: auto auto auto;
   column-gap: 46px;
   row-gap: 25px;
-  padding-bottom: 80px;
-  border-bottom: 1px solid var(--border-rule);
 }
 
 .logo-block {
@@ -521,8 +531,8 @@ p {
   height: 300px;
   background: var(--lime);
   overflow: hidden;
-  margin-top: 50px;
-  margin-bottom: 10px;
+  margin-top: 100px;
+  margin-bottom: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -606,7 +616,11 @@ p {
 .hero-copy {
   grid-column: 2;
   grid-row: 1 / span 2;
-  align-self: center;
+  align-self: start;
+  margin-top: 100px; /* matches .logo-block's own margin-top, so the
+    headline's top edge lines up with the logo's top edge instead of
+    vertically centering within the row (which drifted once the new
+    scroll-down CTA made this column taller). */
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -617,12 +631,14 @@ p {
   grid-column: auto;
   grid-row: auto;
   margin-top: 0;
+  order: 0;
 }
 
 .hero-copy .hero-tags {
   grid-column: auto;
   grid-row: auto;
   align-self: auto;
+  order: 0;
 }
 
 .hero-tags {
@@ -667,10 +683,32 @@ p {
   color: var(--text-primary);
 }
 
+/* Hero scroll-down CTA (Figma node 649:4819) — anchors to the Approach
+   section right below. Reuses .scan-cta's pill/outline treatment; the
+   arrow is the shared .scan-cta-arrow span, rotated 90deg to point down. */
+.hero-scroll-cta {
+  align-self: flex-start;
+  margin-top: 38px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.hero-scroll-cta.revealed {
+  opacity: 1;
+}
+
+.hero-scroll-arrow {
+  display: inline-block;
+  transform: rotate(90deg);
+}
+
 .client-logos {
-  grid-column: 1 / -1;
-  grid-row: 3;
-  margin-top: 95px;
+  /* No longer a .hero-lockup grid item — it's a sibling of .hero-lockup
+     now, so .intro-section--video's flex space-between (desktop) handles
+     the gap above it; this margin-top is the floor for that gap on short
+     viewports and the actual gap on mobile, where space-between isn't
+     applied (see .intro-section--video's 1025px breakpoint). */
+  margin-top: 60px;
   width: 100%;
   overflow: hidden;
   opacity: 0;
@@ -1746,6 +1784,15 @@ html[lang="ja"] .headline-line {
   font-weight: var(--weight-bold);
 }
 
+/* .hero-scroll-cta's own opacity transition (styles.css, above .scan-cta
+   in source) loses the cascade tie to this transition: shorthand — same
+   specificity, later source order wins the whole longhand property, not a
+   merge. Redeclaring the full list here (after .scan-cta) keeps both the
+   reveal fade and the hover transition working. */
+.hero-scroll-cta {
+  transition: opacity 0.6s ease, background 0.2s, color 0.2s;
+}
+
 /* Contact Modal */
 .contact-modal-overlay {
   display: none;
@@ -2677,7 +2724,6 @@ html[lang="ja"] .headline-line {
   .hero-lockup {
     grid-template-columns: 1fr;
     row-gap: var(--space-lg);
-    padding-bottom: 80px;
   }
 
   .logo-block {
@@ -2717,9 +2763,6 @@ html[lang="ja"] .headline-line {
   }
 
   .client-logos {
-    grid-column: 1;
-    grid-row: auto;
-    order: 5;
     margin-top: var(--space-xxl);
   }
 

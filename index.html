@@ -249,9 +249,11 @@
           <div class="hero-tags hero-tags--subhead">
             <p class="hero-subhead">RAFT designs the strategy, brand, product, and AI-ready systems that keep it moving, no matter which way the current turns.</p>
           </div>
+          <a href="#approach" class="scan-cta hero-scroll-cta">See how we build momentum <span class="scan-cta-arrow hero-scroll-arrow" aria-hidden="true">→</span></a>
         </div>
-        <div class="client-logos" id="client-logos" aria-hidden="true">
-          <div class="client-logos-track">
+      </div>
+      <div class="client-logos" id="client-logos" aria-hidden="true">
+        <div class="client-logos-track">
             <img class="client-logo" src="images/client-chase.png" alt="">
             <img class="client-logo" src="images/client-hitachi.png" alt="">
             <img class="client-logo" src="images/client-redbull.png" alt="">
@@ -299,7 +301,6 @@
             <img class="client-logo" src="images/client-fitbit.png" alt="">
           </div>
         </div>
-      </div>
     </section>
 
     <!-- Approach Section -->
@@ -962,6 +963,11 @@
       const tagsDurationMs = 600; // matches .hero-tags' clip-path transition duration
       if (tags) {
         setTimeout(() => tags.classList.add('revealed'), headlineDoneMs);
+      }
+
+      const scrollCta = document.querySelector('.hero-scroll-cta');
+      if (scrollCta) {
+        setTimeout(() => scrollCta.classList.add('revealed'), headlineDoneMs + tagsDurationMs);
       }
 
       const clientLogos = document.querySelector('.client-logos');

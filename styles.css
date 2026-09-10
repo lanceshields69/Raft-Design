@@ -798,6 +798,16 @@ p {
   clip-path: inset(-100% 0 -100% 0);
 }
 
+/* EN homepage headline re-break for mobile only (Figma's 2-line split is
+   "We're here to" / "build momentum.", tuned for desktop width). At phone
+   widths "We're here to" wraps mid-line, orphaning "to" on its own row
+   away from "build" below it. Rendering both wordings and toggling with
+   display keeps "to build" together below 768px without touching the
+   desktop split or the JA headline (which has its own markup). */
+.headline-variant--mobile {
+  display: none;
+}
+
 /* JA hero headline (Figma node 655:4858) — Noto Sans JP kanji sit taller in
    their em-box than Latin glyphs, so the EN line-height (0.95, tuned for
    Inter) clips JP strokes; Figma's own JA spec uses line-height ~1.12
@@ -3031,6 +3041,22 @@ html[lang="ja"] .headline-line {
      the gap here instead, so this is the single source of that spacing. */
   .hero-lockup {
     row-gap: 30px;
+  }
+
+  /* .intro-section--video hardcodes a wider 35px left padding at every
+     breakpoint (for the desktop side-by-side hero); the rest of the site's
+     sections use 15px. Match that here so the mobile hero's left edge
+     lines up with the content below it. */
+  .intro-section--video {
+    padding-left: 15px;
+  }
+
+  .headline-variant--desktop {
+    display: none;
+  }
+
+  .headline-variant--mobile {
+    display: inline;
   }
 }
 

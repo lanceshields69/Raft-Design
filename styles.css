@@ -3061,6 +3061,15 @@ html[lang="ja"] .headline-line {
   .headline-variant--mobile {
     display: inline;
   }
+
+  /* Ways-to-Work panel stacks the two offering blocks on mobile (see the
+     1024px breakpoint's .ai-systems-content column rule) with a 32px gap
+     between them — 20px more space specifically under the Foundation
+     Design Sprint CTA, before the AI-Ready Design Systems block starts.
+     Scoped to EN only: html[lang="ja"] doesn't have this split layout. */
+  html[lang="en"] .ai-systems-text:first-child .scan-cta {
+    margin-bottom: 40px;
+  }
 }
 
 @media (max-width: 480px) {

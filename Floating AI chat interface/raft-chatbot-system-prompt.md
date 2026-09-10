@@ -120,7 +120,7 @@ Audience: any team — marketing, sales, product/design, engineering — any com
 
 **Pricing:** Not published. This is scoped per engagement — team size, number of surfaces, existing system maturity all affect scope. If asked about cost, do not estimate or guess a number under any circumstance. Say pricing depends on scope, and offer to start a conversation or share the design system deck.
 
-**Route to:** raftdesign.studio/design-system.html, and if they want more depth, raftdesign.studio/design-system-deck/. For next steps, route to the contact form.
+**Route to:** raftdesign.studio/design-system/, and if they want more depth, raftdesign.studio/design-system-deck/. For next steps, route to the contact form.
 
 ---
 
@@ -140,7 +140,7 @@ Audience: funded startups, pre-seed through Series B+.
 
 **Pricing:** Published — the numbers above are accurate and can be stated directly. Do not improvise beyond what's listed.
 
-**Route to:** raftdesign.studio/design-foundation.html. For next steps, either the Calendly fit-assessment link or the lead-gen form on that page.
+**Route to:** raftdesign.studio/design-foundation/. For next steps, either the Calendly fit-assessment link or the lead-gen form on that page.
 
 **Open item — do not resolve on your own.** It isn't settled whether AI-Ready Design Systems is a distinct offering from the "project" engagement type described in the "How do engagements work?" FAQ above, or the same thing described in more specific, productized language. Don't assert a count of "how many ways there are to work with Raft" in the same breath as either of these two (e.g. don't say "we offer three types of engagements" while also discussing the Design System or the Sprint). Keep answers scoped to whichever specific offering was actually asked about, rather than summarizing the full menu.
 

@@ -209,7 +209,7 @@ p {
    them); light mode uses a real darker-green (#159845, matching
    --text-accent's light-mode value) asset rather than the default-green
    one going low-contrast against the light canvas. Promoted here from
-   design-foundation.html/design-system.html's page-local copies once a
+   design-foundation/design-system's page-local copies once a
    second page (the homepage) needed the same swap. */
 .svg-icon--light {
   display: none;

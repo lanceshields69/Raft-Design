@@ -2999,6 +2999,39 @@ html[lang="ja"] .headline-line {
   .footer {
     gap: var(--space-xxxl);
   }
+
+  /* Mobile-only hero shrink: the hero (logo lockup + subhead) ran too
+     tall to fit the first scroll on phones, on top of the 1024px
+     tablet/mobile shared 200px .logo-block size above. 25% off both the
+     logo box (150px) and the subhead (18px) so the hero fits one screen
+     without a separate width-fit recalculation — .wordmark's font-size is
+     computed from .logo-block's live clientWidth on load, so it scales
+     down automatically with the box. */
+  .logo-block {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 0;
+  }
+
+  .hero-subhead {
+    font-size: 18px;
+  }
+
+  /* .hero-copy's base rule carries a 100px margin-top meant to line its
+     top edge up with .logo-block's own 100px margin-top in the desktop
+     side-by-side grid — irrelevant once the two stack in a single column,
+     where it just adds 100px of dead space below the logo. */
+  .hero-copy {
+    margin-top: 0;
+  }
+
+  /* .logo-block's margin-bottom (40px, above) plus .hero-lockup's
+     row-gap (24px, set at the 1024px tablet breakpoint) stacked to 64px
+     between the logo and the headline — zeroed the margin above and set
+     the gap here instead, so this is the single source of that spacing. */
+  .hero-lockup {
+    row-gap: 30px;
+  }
 }
 
 @media (max-width: 480px) {

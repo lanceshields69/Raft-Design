@@ -721,26 +721,29 @@ function main() {
   const articles = files
     .map((f) => JSON.parse(fs.readFileSync(path.join(DATA_DIR, f), 'utf8')))
     .sort((a, b) => b.date.localeCompare(a.date));
+  // Articles without a `ja` block are English-only (e.g. a Substack piece with
+  // no Japanese translation yet) and are omitted from the Japanese site.
+  const jaArticles = articles.filter((a) => a.ja);
 
   fs.mkdirSync(path.join(ROOT, 'journal'), { recursive: true });
   fs.mkdirSync(path.join(ROOT, 'ja', 'journal'), { recursive: true });
   fs.writeFileSync(path.join(ROOT, 'journal', 'index.html'), buildIndexPage('en', articles));
-  fs.writeFileSync(path.join(ROOT, 'ja', 'journal', 'index.html'), buildIndexPage('ja', articles));
+  fs.writeFileSync(path.join(ROOT, 'ja', 'journal', 'index.html'), buildIndexPage('ja', jaArticles));
   console.log('Wrote /journal/index.html and /ja/journal/index.html');
 
-  for (const article of articles) {
+  for (const article of jaArticles) {
     if (PROTECTED_SLUGS.includes(article.slug)) {
       console.log(`Skipped /ja/journal/${article.slug}/index.html (protected — left untouched)`);
       continue;
     }
     const dir = path.join(ROOT, 'ja', 'journal', article.slug);
     fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(path.join(dir, 'index.html'), buildArticlePage(article, articles));
+    fs.writeFileSync(path.join(dir, 'index.html'), buildArticlePage(article, jaArticles));
     console.log(`Wrote /ja/journal/${article.slug}/index.html`);
   }
 
   patchHomepage(path.join(ROOT, 'index.html'), 'en', articles);
-  patchHomepage(path.join(ROOT, 'ja', 'index.html'), 'ja', articles);
+  patchHomepage(path.join(ROOT, 'ja', 'index.html'), 'ja', jaArticles);
 }
 
 main();

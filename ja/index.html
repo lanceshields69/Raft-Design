@@ -247,7 +247,7 @@
         </div>
         <div class="hero-copy">
           <h1 class="intro-heading">
-            <span class="headline-line headline-line--single">Raftは、<span class="headline-highlight">AIネイティブ</span>なブランディング・<br class="hero-break-desktop">プロダクトデザインエージェンシーです。</span>
+            <span class="headline-line headline-line--single">Raftは、<span class="headline-highlight">AIネイティブ</span><span class="ai-native-trigger" tabindex="0"><img src="../images/asterisk.svg" alt="" class="ai-native-asterisk"><span class="ai-native-panel" role="tooltip"><strong>AIネイティブなエージェンシー</strong><br>AIは、私たちの思考・デザイン・リリースのプロセスに組み込まれています。あらゆる段階を加速させながら、判断は人が担います。</span></span>なブランディング・<br class="hero-break-desktop">プロダクトデザインエージェンシーです。</span>
           </h1>
           <div class="hero-tags hero-tags--subhead">
             <p class="hero-subhead">AI・デザイン・テクノロジーを融合し、世界の挑戦的なブランドのために、<br class="hero-break-desktop">大胆なインタラクティブ体験を生み出します。</p>
@@ -867,6 +867,35 @@
       });
       document.addEventListener('keydown', e => {
         if (e.key === 'Escape' && overlay.classList.contains('open')) closeMenu();
+      });
+    })();
+
+    // AI-native definition panel — on touch devices (no real :hover),
+    // opens on tap instead. Toggles per-trigger, closes on an outside
+    // tap or Escape. Desktop keeps the CSS :hover/:focus-within behavior
+    // untouched; this only adds the .is-open class on top of it.
+    (function() {
+      const triggers = document.querySelectorAll('.ai-native-trigger');
+      if (!triggers.length || !window.matchMedia('(hover: none)').matches) return;
+
+      function closeAll(except) {
+        triggers.forEach(t => { if (t !== except) t.classList.remove('is-open'); });
+      }
+
+      triggers.forEach(trigger => {
+        trigger.addEventListener('click', e => {
+          e.preventDefault();
+          const isOpen = trigger.classList.contains('is-open');
+          closeAll();
+          trigger.classList.toggle('is-open', !isOpen);
+        });
+      });
+
+      document.addEventListener('click', e => {
+        if (!e.target.closest('.ai-native-trigger')) closeAll();
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeAll();
       });
     })();
 

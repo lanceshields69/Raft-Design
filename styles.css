@@ -832,7 +832,7 @@ p {
    it holds focus. */
 .ai-native-trigger {
   position: relative;
-  top: -10px;
+  top: -18px;
   display: inline-block;
   margin-left: 4px;
   margin-right: 6px;
@@ -1005,6 +1005,12 @@ html[lang="ja"] .hero-tags--subhead {
 html[lang="ja"] .hero-link {
   font-family: 'Noto Sans JP', sans-serif;
   font-size: 24px;
+}
+
+html[lang="ja"] .ai-native-panel {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
 }
 
 /* JA mobile pass: headline +10% (the desktop clamp's fluid mid-value

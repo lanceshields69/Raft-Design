@@ -444,7 +444,7 @@ p {
    the hero area" asked for. */
 .intro-section--video {
   position: relative;
-  padding-left: 35px;
+  padding-left: 55px;
   padding-bottom: 130px;
   /* not overflow:hidden — the video/scrim intentionally extend 66px above
      this section's own top edge (see below) to show through the sticky
@@ -519,7 +519,7 @@ p {
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto auto;
-  column-gap: 46px;
+  column-gap: 66px;
   row-gap: 25px;
 }
 
@@ -527,8 +527,8 @@ p {
   grid-column: 1;
   grid-row: 1;
   flex-shrink: 0;
-  width: 270px;
-  height: 270px;
+  width: 240px;
+  height: 240px;
   background: var(--lime);
   overflow: hidden;
   margin-top: 100px;

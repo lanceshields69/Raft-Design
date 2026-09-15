@@ -677,8 +677,9 @@ p {
 }
 
 .hero-subhead {
-  font-size: var(--font-size-heading-3);
-  font-weight: var(--weight-medium);
+  font-size: var(--font-size-heading-2);
+  font-weight: var(--weight-regular);
+  letter-spacing: -1px;
   line-height: 1.4;
   color: var(--text-primary);
 }
@@ -717,6 +718,15 @@ p {
 
 .client-logos.revealed {
   opacity: 1;
+}
+
+/* EN's .hero-links sits 30px lower than JA's .hero-scroll-cta (see
+   .hero-links margin-top above) — this offsets .client-logos' own
+   margin-top by the same 30px so the logo row's position (the mobile/
+   short-viewport floor; desktop's space-between keeps it bottom-anchored
+   either way) doesn't drift down with it. JA keeps the shared 60px. */
+html[lang="en"] .client-logos {
+  margin-top: 30px;
 }
 
 .client-logos-track {
@@ -798,41 +808,35 @@ p {
   clip-path: inset(-100% 0 -100% 0);
 }
 
-/* EN homepage hero v2 (Figma node 738:1814) — mixed-case headline, not
-   .headline-line's default uppercase treatment. Line 1 stays the shared
-   sans; line 2 is a static two-stop gradient across the whole phrase in
-   Fraunces italic (vs. .headline-momentum's animated gradient scoped to
-   one word). EN-only: ja/index.html keeps its original uppercase
+/* EN homepage hero v3 (Figma node 740:2229) — single flowing sentence in
+   Inter Regular, not .headline-line's default uppercase/800-weight
+   treatment; "AI-native" highlighted as a plain solid accent color, not
+   a gradient. EN-only: ja/index.html keeps its original uppercase
    .headline-line + .headline-momentum treatment untouched. */
-.headline-line--plain {
+.headline-line--single {
+  font-weight: var(--weight-regular);
+  font-size: clamp(28px, 4.9vw, 70px);
+  line-height: 1.03;
+  letter-spacing: -2px;
   text-transform: none;
-  font-size: clamp(30px, 6vw, 90px);
 }
 
-.headline-line--gradient {
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-  font-weight: 700;
-  font-variation-settings: 'SOFT' 0, 'WONK' 1;
-  text-transform: none;
-  background-image: linear-gradient(90deg, #3FE83D, #159845);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+.headline-highlight {
+  color: var(--text-accent);
 }
 
-/* Hero text-link row (Figma node 738:1814) — replaces the old single
+/* Hero text-link stack (Figma node 740:2201) — replaces the old single
    .hero-scroll-cta pill button on the EN homepage only; ja/index.html
    still uses .hero-scroll-cta/.hero-scroll-arrow as-is, so those classes
    stay untouched above. Reveal timing/mechanism (opacity fade via JS
-   adding .revealed) mirrors .hero-scroll-cta's own. */
+   adding .revealed) mirrors .hero-scroll-cta's own. Plain text, no arrow
+   glyph — a deliberate change from the previous arrow+label row. */
 .hero-links {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 32px;
-  margin-top: 38px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  margin-top: 68px;
   opacity: 0;
   transition: opacity 0.6s ease;
 }
@@ -842,26 +846,16 @@ p {
 }
 
 .hero-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 20px;
-  font-weight: 400;
+  font-size: var(--font-size-heading-2);
+  font-weight: var(--weight-regular);
+  letter-spacing: -0.56px;
+  line-height: var(--line-height-heading);
   color: var(--text-accent);
   transition: opacity 0.2s;
 }
 
 .hero-link:hover {
   opacity: 0.75;
-}
-
-.hero-link-arrow {
-  color: var(--text-primary);
-  font-weight: var(--weight-bold);
-}
-
-.hero-link-arrow--sm {
-  font-size: 15px;
 }
 
 /* EN homepage headline re-break for mobile only (Figma's 2-line split is
@@ -3096,8 +3090,28 @@ html[lang="ja"] .headline-line {
     margin-bottom: 0;
   }
 
+  /* EN-only mobile pass: headline 25% smaller than the 1024px tablet
+     clamp (40/56 -> 30/42, 12vw -> 9vw proportionally), subhead 24%
+     larger than its old 18px (-> 22px), and the CTA stack sized to match
+     the new subhead. ja/index.html keeps .headline-line's shared tablet
+     clamp untouched (no .headline-line--single there). */
+  .headline-line--single {
+    font-size: clamp(30px, 9vw, 42px);
+  }
+
   .hero-subhead {
-    font-size: 18px;
+    font-size: 22px;
+  }
+
+  .hero-link {
+    font-size: 22px;
+  }
+
+  /* 30px less than the base 68px — that value was tuned for the desktop
+     row-2 gap under .logo-block; on mobile's natural single-column stack
+     it read as too much air under the subhead. */
+  .hero-links {
+    margin-top: 38px;
   }
 
   /* .hero-copy's base rule carries a 100px margin-top meant to line its

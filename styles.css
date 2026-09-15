@@ -899,6 +899,26 @@ p {
   pointer-events: auto;
 }
 
+/* Mobile: center in the viewport instead of under the trigger — the
+   trigger can sit anywhere in the flowing headline text, so an
+   under-trigger position isn't reliably centered (or even fully
+   on-screen) at phone widths. */
+@media (max-width: 768px) {
+  .ai-native-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .ai-native-trigger:hover .ai-native-panel,
+  .ai-native-trigger:focus .ai-native-panel,
+  .ai-native-trigger:focus-within .ai-native-panel,
+  .ai-native-trigger.is-open .ai-native-panel {
+    transform: translate(-50%, -50%);
+  }
+}
+
 /* Hero text-link stack (Figma node 740:2201) — replaces the old single
    .hero-scroll-cta pill button on the EN homepage only; ja/index.html
    still uses .hero-scroll-cta/.hero-scroll-arrow as-is, so those classes

@@ -40,12 +40,12 @@ const CLOSE_SVG = `<svg width="17" height="16" viewBox="0 0 16.5332 16" fill="no
 
 const NAV_ITEMS = {
   en: [
-    ['approach', 'Approach'], ['expertise', 'Expertise'], ['projects', 'Projects'],
-    ['build', 'Build'], ['studio', 'Studio'],
+    ['work', 'Work'], ['approach', 'Approach'], ['services', 'Services'],
+    ['studio', 'Studio'],
   ],
   ja: [
-    ['approach', 'Approach'], ['expertise', 'Expertise'], ['projects', 'Projects'],
-    ['build', 'Build'], ['studio', 'Studio'],
+    ['work', 'Work'], ['approach', 'Approach'], ['services', 'Services'],
+    ['studio', 'Studio'],
   ],
 };
 const JOURNAL_LABEL = { en: 'Journal', ja: 'Journal' };

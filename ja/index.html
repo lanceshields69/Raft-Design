@@ -140,10 +140,9 @@
           <img src="../images/r-mark-light.gif" width="50" height="50" alt="Raft Design" class="nav-logo-gif nav-logo-gif--light"></a>
     </div>
     <div class="nav-links">
+      <a href="#work" class="nav-link">Work</a>
       <a href="#approach" class="nav-link">Approach</a>
-      <a href="#expertise" class="nav-link">Expertise</a>
-      <a href="#projects" class="nav-link">Projects</a>
-      <a href="#build" class="nav-link">Build</a>
+      <a href="#services" class="nav-link">Services</a>
       <a href="/ja/about.html" class="nav-link">About</a>
       <a href="#studio" class="nav-link">Studio</a>
       <a href="/ja/journal/" class="nav-link">Journal</a>
@@ -215,10 +214,9 @@
       </div>
     </div>
     <nav class="mobile-menu-links">
+      <a href="#work" class="mobile-menu-link">Work</a>
       <a href="#approach" class="mobile-menu-link">Approach</a>
-      <a href="#expertise" class="mobile-menu-link">Expertise</a>
-      <a href="#projects" class="mobile-menu-link">Projects</a>
-      <a href="#build" class="mobile-menu-link">Build</a>
+      <a href="#services" class="mobile-menu-link">Services</a>
       <a href="/ja/about.html" class="mobile-menu-link">About</a>
       <a href="#studio" class="mobile-menu-link">Studio</a>
       <a href="/ja/journal/" class="mobile-menu-link">Journal</a>
@@ -332,8 +330,8 @@
     </section>
 
     <!-- Practice Section -->
-    <section id="expertise" class="expertise-section">
-      <h2 class="section-label fade-in">Expertise</h2>
+    <section id="services" class="expertise-section">
+      <h2 class="section-label fade-in">Services</h2>
       <div class="expertise-content">
         <div class="expertise-cards fade-in">
           <div class="expertise-row">
@@ -415,8 +413,8 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="work-section">
-      <h2 class="section-label fade-in">Projects</h2>
+    <section id="work" class="work-section">
+      <h2 class="section-label fade-in">Work</h2>
 
       <div class="reel-video fade-in">
         <iframe src="https://player.vimeo.com/video/1045216396?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;muted=1&amp;loop=1&amp;autoplay=1&amp;title=0&amp;byline=0&amp;portrait=0&amp;controls=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Lance Shields - Portfolio Reel"></iframe>
@@ -527,40 +525,6 @@
         <a href="/ja/projects/" class="scan-cta scan-cta--wide view-work-cta"><span class="scan-cta-arrow">→</span> すべての実績を見る</a>
       </div>
 
-    </section>
-
-    <!-- Build Section -->
-    <section id="build" class="expertise-section">
-      <h2 class="section-label fade-in">Build</h2>
-      <div class="approach-content">
-        <div class="approach-text fade-in">
-          <p class="approach-heading">デザイナーは引き渡す。<br>エンジニアは仕様を待つ。<br>どちらももう必要ない。</p>
-          <p class="approach-body">ツールを開く前に、LLMとの対話のなかで戦略が固まる。デザインとプロトタイプは同時に進み、エンジニアリングを待たずにテストし、共有できるところまで仕上がる。そこからClaude Code、Cursor、V0が実際に動くプロダクトに変えていく。引き渡しはない。Figmaプラグインから一日でつくったインタラクティブなアート作品まで、五つのプロジェクトが公開されている。</p>
-          <a href="https://github.com/lanceshields69" class="text-link" target="_blank" rel="noopener noreferrer">プロジェクトを見る <span class="arrow">&rarr;</span></a>
-        </div>
-        <img class="stats-badge fade-in" src="../images/anime-3.gif" alt="" aria-hidden="true" width="250" height="250">
-      </div>
-      <div class="expertise-content">
-        <div class="expertise-cards fade-in">
-          <div class="expertise-row">
-            <div class="service-card">
-              <p class="service-title">戦略から始める</p>
-              <p class="service-body">ClaudeやChatGPTと、課題、ユーザー、プロダクトの論理を考え抜く時間。プロンプトを書き、アイデアを試し、ピクセルもコードも一切生まれる前に明確な視点にたどり着く。</p>
-              <p class="service-tag">→ 課題設定、プロダクトロジック、ポジショニング</p>
-            </div>
-            <div class="service-card">
-              <p class="service-title">デザインとプロトタイプを同時に</p>
-              <p class="service-body">FigmaとAIツールを行き来しながら、フロー、画面、インタラクションを描く。エンジニアリングを待たずにテストし、共有し、反復できるところまで仕上げる。</p>
-              <p class="service-tag">→ Figma、Figma Make、ラピッドプロトタイピング</p>
-            </div>
-          </div>
-          <div class="service-card service-card--wide">
-            <p class="service-title">動くものにする</p>
-            <p class="service-body">Claude Code、Cursor、V0でコードを生成し、磨き込む。ビルドは委ねるのではなく、指揮するもの。何が欲しいかを知り、正しいときがわかり、そこへ速くたどり着く。</p>
-            <p class="service-tag">→ Claude Code、Cursor、V0、デプロイ済みプロダクト</p>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- Studio Section -->
@@ -1294,8 +1258,8 @@
     // of them would overflow the viewport, so the reel just stays full-width.
     (function () {
       const reelVideo = document.querySelector('.reel-video');
-      const reelSection = document.querySelector('#projects');
-      const grid = document.querySelector('#projects .image-grid');
+      const reelSection = document.querySelector('#work');
+      const grid = document.querySelector('#work .image-grid');
       if (!reelVideo || !reelSection || !grid) return;
 
       function alignReelWidth() {

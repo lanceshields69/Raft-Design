@@ -906,6 +906,33 @@ html[lang="ja"] .hero-link {
   font-size: 24px;
 }
 
+/* JA mobile pass: headline +10% (the desktop clamp's fluid mid-value
+   sits below its own 26px floor at phone widths anyway, so this is
+   effectively a floor bump: 26/52 -> 29/57), subhead and CTA -20%
+   (24px -> 19px), keeping the CTA matched to the subhead per the
+   desktop rule above. */
+@media (max-width: 768px) {
+  html[lang="ja"] .headline-line--single {
+    font-size: clamp(29px, 3.74vw, 57px);
+  }
+
+  html[lang="ja"] .hero-subhead {
+    font-size: 19px;
+  }
+
+  html[lang="ja"] .hero-link {
+    font-size: 19px;
+  }
+
+  /* Manual breaks in the JA headline/subhead (after "ブランディング・"
+     and "ために、") are tuned for the wide desktop column — on mobile's
+     narrow width they'd force an extra-short first line on top of
+     natural wrapping, so drop them and let the text reflow on its own. */
+  .hero-break-desktop {
+    display: none;
+  }
+}
+
 
 @media (prefers-reduced-motion: reduce) {
   .headline-line {

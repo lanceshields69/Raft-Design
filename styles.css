@@ -467,6 +467,15 @@ p {
     flex-direction: column;
     justify-content: space-between;
   }
+
+  /* space-between (above) bottom-anchors .client-logos on tall
+     viewports, which makes its own margin-top a no-op there (it only
+     matters as a floor on short viewports — see .client-logos itself).
+     transform moves it regardless of which mechanism is actually
+     positioning it. -50px = the last two requested nudges (-20, -30). */
+  .client-logos {
+    transform: translateY(-70px);
+  }
 }
 
 .intro-bg-video,
@@ -717,8 +726,9 @@ p {
      viewports and the actual gap on mobile, where space-between isn't
      applied (see .intro-section--video's 1025px breakpoint). 30px (not
      the original 60px) to offset .hero-links' own 68px margin-top, which
-     both languages' hero now shares — see .hero-links above. */
-  margin-top: 30px;
+     both languages' hero now shares — see .hero-links above. Nudged
+     tighter twice more on top of that (-20px, then -30px). */
+  margin-top: -20px;
   width: 100%;
   overflow: hidden;
   opacity: 0;
@@ -842,7 +852,8 @@ p {
 
 @media (max-width: 768px) {
   html[lang="en"] .ai-native-trigger {
-    top: -13px;
+    top: -11px;
+    margin-left: 3px;
   }
 }
 
@@ -936,7 +947,7 @@ p {
   flex-direction: column;
   align-items: flex-start;
   gap: 18px;
-  margin-top: 68px;
+  margin-top: 48px;
   opacity: 0;
   transition: opacity 0.6s ease;
 }
@@ -1556,19 +1567,37 @@ html[lang="ja"] .ai-native-panel {
 
 /* Reel */
 .reel-section {
-  padding: 120px 32px 120px 15px;
+  padding: 120px 60px 60px 60px;
   max-width: 1920px;
-  border-top: 1px solid var(--border-rule);
+  position: relative;
 }
 
+/* Pulled up 60px past the section's own 120px top padding (180px total)
+   so the video itself visually overlaps the hero section above it —
+   .reel-section is later in DOM order than the hero, so it paints on
+   top wherever they overlap, with no z-index needed. 60px left/right
+   section padding (above) gives the video an even gap on both sides —
+   replaces the old JS that stretched it to align with the first
+   Project tile's left edge, which is no longer used. */
 .reel-video {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-radius: var(--radius-md);
+  margin-top: -250px;
+  border-radius: 24px;
   overflow: hidden;
-  border: 1px solid var(--border-rule);
-  margin-bottom: 62px;
+  border: 1px solid var(--lime);
+  margin-bottom: 31px;
+  /* Fades in once the hero text/CTAs finish their own reveal (see the
+     revealHeadline() JS, which adds .revealed at the same moment as
+     .hero-links/.client-logos), rather than appearing immediately with
+     the rest of the page. */
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.reel-video.revealed {
+  opacity: 1;
 }
 
 .reel-video iframe {

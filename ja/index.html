@@ -956,6 +956,11 @@
       if (clientLogos) {
         setTimeout(() => clientLogos.classList.add('revealed'), headlineDoneMs + tagsDurationMs);
       }
+
+      const reelVideo = document.querySelector('.reel-video');
+      if (reelVideo) {
+        setTimeout(() => reelVideo.classList.add('revealed'), headlineDoneMs + tagsDurationMs);
+      }
     }
 
     // Logo wordmark animation — wipe reveal, then a scattered color-flip flicker
@@ -1251,38 +1256,6 @@
       }
     });
 
-    // Align the Reel video's left edge to the first Project tile below it,
-    // then let it run full-width from there. Only above the mobile
-    // breakpoint — at 768px and under, tiles are 72% wide and the reel just
-    // stays full-width with the section's own padding.
-    (function () {
-      const reelVideo = document.querySelector('.reel-video');
-      const reelSection = document.querySelector('.reel-section');
-      const grid = document.querySelector('#work .image-grid');
-      if (!reelVideo || !reelSection || !grid) return;
-
-      function alignReelWidth() {
-        if (window.innerWidth <= 768) {
-          reelVideo.style.width = '';
-          reelVideo.style.marginLeft = '';
-          return;
-        }
-        const imgs = grid.querySelectorAll('img');
-        if (imgs.length < 1) return;
-        const img1 = imgs[0].getBoundingClientRect();
-        const sectionRect = reelSection.getBoundingClientRect();
-        const paddingLeft = parseFloat(getComputedStyle(reelSection).paddingLeft) || 0;
-        const paddingRight = parseFloat(getComputedStyle(reelSection).paddingRight) || 0;
-        const contentLeft = sectionRect.left + paddingLeft;
-        const contentRight = sectionRect.right - paddingRight;
-        reelVideo.style.marginLeft = (img1.left - contentLeft) + 'px';
-        reelVideo.style.width = (contentRight - img1.left) + 'px';
-      }
-
-      window.addEventListener('load', alignReelWidth);
-      window.addEventListener('resize', alignReelWidth);
-      alignReelWidth();
-    })();
 
     // Drag-to-scroll for image grids
     document.querySelectorAll('.image-grid').forEach(grid => {

@@ -527,8 +527,8 @@ p {
   grid-column: 1;
   grid-row: 1;
   flex-shrink: 0;
-  width: 300px;
-  height: 300px;
+  width: 270px;
+  height: 270px;
   background: var(--lime);
   overflow: hidden;
   margin-top: 100px;
@@ -630,7 +630,7 @@ p {
 .hero-copy .intro-heading {
   grid-column: auto;
   grid-row: auto;
-  margin-top: 0;
+  margin-top: -5px;
   order: 0;
 }
 
@@ -796,6 +796,72 @@ p {
 
 .headline-line.revealed {
   clip-path: inset(-100% 0 -100% 0);
+}
+
+/* EN homepage hero v2 (Figma node 738:1814) — mixed-case headline, not
+   .headline-line's default uppercase treatment. Line 1 stays the shared
+   sans; line 2 is a static two-stop gradient across the whole phrase in
+   Fraunces italic (vs. .headline-momentum's animated gradient scoped to
+   one word). EN-only: ja/index.html keeps its original uppercase
+   .headline-line + .headline-momentum treatment untouched. */
+.headline-line--plain {
+  text-transform: none;
+  font-size: clamp(30px, 6vw, 90px);
+}
+
+.headline-line--gradient {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-variation-settings: 'SOFT' 0, 'WONK' 1;
+  text-transform: none;
+  background-image: linear-gradient(90deg, #3FE83D, #159845);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hero text-link row (Figma node 738:1814) — replaces the old single
+   .hero-scroll-cta pill button on the EN homepage only; ja/index.html
+   still uses .hero-scroll-cta/.hero-scroll-arrow as-is, so those classes
+   stay untouched above. Reveal timing/mechanism (opacity fade via JS
+   adding .revealed) mirrors .hero-scroll-cta's own. */
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 32px;
+  margin-top: 38px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.hero-links.revealed {
+  opacity: 1;
+}
+
+.hero-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-accent);
+  transition: opacity 0.2s;
+}
+
+.hero-link:hover {
+  opacity: 0.75;
+}
+
+.hero-link-arrow {
+  color: var(--text-primary);
+  font-weight: var(--weight-bold);
+}
+
+.hero-link-arrow--sm {
+  font-size: 15px;
 }
 
 /* EN homepage headline re-break for mobile only (Figma's 2-line split is

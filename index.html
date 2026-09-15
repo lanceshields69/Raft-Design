@@ -244,13 +244,17 @@
         </div>
         <div class="hero-copy">
           <h1 class="intro-heading">
-            <span class="headline-line headline-line--1"><span class="headline-variant headline-variant--desktop">We're here to</span><span class="headline-variant headline-variant--mobile">We're here</span></span>
-            <span class="headline-line headline-line--2"><span class="headline-variant headline-variant--desktop">build <span class="headline-momentum">momentum</span>.</span><span class="headline-variant headline-variant--mobile">to build <span class="headline-momentum">momentum</span>.</span></span>
+            <span class="headline-line headline-line--1 headline-line--plain"><span class="headline-variant headline-variant--desktop">Raft is an AI-native</span><span class="headline-variant headline-variant--mobile">Raft is an AI-native</span></span>
+            <span class="headline-line headline-line--2 headline-line--gradient"><span class="headline-variant headline-variant--desktop">brand and product studio.</span><span class="headline-variant headline-variant--mobile">brand and product studio.</span></span>
           </h1>
           <div class="hero-tags hero-tags--subhead">
-            <p class="hero-subhead">RAFT designs the strategy, brand, product, and AI-ready systems that keep it moving, no matter which way the current turns.</p>
+            <p class="hero-subhead">We create bold interactive experiences for the world's most ambitious brands by combining AI, design, and technology.</p>
           </div>
-          <a href="#approach" class="scan-cta hero-scroll-cta">See how we build momentum <span class="scan-cta-arrow hero-scroll-arrow" aria-hidden="true">→</span></a>
+          <div class="hero-links">
+            <a href="#work" class="hero-link"><span class="hero-link-arrow hero-link-arrow--sm" aria-hidden="true">→</span> Reinvent how you compete</a>
+            <a href="/design-foundation/" class="hero-link"><span class="hero-link-arrow" aria-hidden="true">→</span> Elevate your startup design</a>
+            <a href="/design-system/" class="hero-link"><span class="hero-link-arrow" aria-hidden="true">→</span> Build AI systems that last</a>
+          </div>
         </div>
       </div>
       <div class="client-logos" id="client-logos" aria-hidden="true">
@@ -921,9 +925,9 @@
         setTimeout(() => tags.classList.add('revealed'), headlineDoneMs);
       }
 
-      const scrollCta = document.querySelector('.hero-scroll-cta');
-      if (scrollCta) {
-        setTimeout(() => scrollCta.classList.add('revealed'), headlineDoneMs + tagsDurationMs);
+      const heroLinks = document.querySelector('.hero-links');
+      if (heroLinks) {
+        setTimeout(() => heroLinks.classList.add('revealed'), headlineDoneMs + tagsDurationMs);
       }
 
       const clientLogos = document.querySelector('.client-logos');

@@ -1208,6 +1208,13 @@ html[lang="ja"] .headline-line {
   border-top: 1px solid var(--border-rule);
 }
 
+/* AI Systems Panel only (EN "Engage" / JA equivalent): .section-label's
+   shared 133px margin-bottom is 40px tighter here than the rest of the
+   site's sections. */
+.ai-systems-section > .section-label {
+  margin-bottom: 93px;
+}
+
 .ai-systems-content {
   display: flex;
   gap: var(--space-xxl);

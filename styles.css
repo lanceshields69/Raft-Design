@@ -708,8 +708,10 @@ p {
      now, so .intro-section--video's flex space-between (desktop) handles
      the gap above it; this margin-top is the floor for that gap on short
      viewports and the actual gap on mobile, where space-between isn't
-     applied (see .intro-section--video's 1025px breakpoint). */
-  margin-top: 60px;
+     applied (see .intro-section--video's 1025px breakpoint). 30px (not
+     the original 60px) to offset .hero-links' own 68px margin-top, which
+     both languages' hero now shares — see .hero-links above. */
+  margin-top: 30px;
   width: 100%;
   overflow: hidden;
   opacity: 0;
@@ -718,15 +720,6 @@ p {
 
 .client-logos.revealed {
   opacity: 1;
-}
-
-/* EN's .hero-links sits 30px lower than JA's .hero-scroll-cta (see
-   .hero-links margin-top above) — this offsets .client-logos' own
-   margin-top by the same 30px so the logo row's position (the mobile/
-   short-viewport floor; desktop's space-between keeps it bottom-anchored
-   either way) doesn't drift down with it. JA keeps the shared 60px. */
-html[lang="en"] .client-logos {
-  margin-top: 30px;
 }
 
 .client-logos-track {
@@ -878,6 +871,39 @@ html[lang="ja"] .headline-line {
   font-weight: 900;
   line-height: 1.12;
   letter-spacing: -0.03em;
+}
+
+/* JA homepage hero v2 (Figma node 740:2314) — matches the EN
+   single-sentence treatment (.headline-line--single/.hero-subhead)
+   rather than the older uppercase/900-weight styling above. Sized
+   smaller than EN's Latin values since Noto Sans JP glyphs render
+   visually larger at the same px; weight stays Medium per the JA
+   spec (EN uses Regular). */
+html[lang="ja"] .headline-line--single {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: var(--weight-medium);
+  font-size: clamp(26px, 3.4vw, 52px);
+  line-height: 1.167;
+  letter-spacing: -2px;
+}
+
+html[lang="ja"] .hero-subhead {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 24px;
+  letter-spacing: normal;
+  line-height: 1.7;
+}
+
+/* Wide enough that the text only wraps at the manual <br> after
+   「ために、」, not earlier — EN's 800px cap (above) is too narrow for
+   this text at 24px Noto Sans JP. */
+html[lang="ja"] .hero-tags--subhead {
+  max-width: 900px;
+}
+
+html[lang="ja"] .hero-link {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 24px;
 }
 
 

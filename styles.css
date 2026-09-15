@@ -1621,12 +1621,13 @@ html[lang="ja"] .ai-native-panel {
    60px inset. */
 @media (max-width: 768px) {
   .reel-section {
+    padding-top: 60px;
     padding-left: 15px;
     padding-right: 15px;
   }
 
   .reel-video {
-    margin-top: 50px;
+    margin-top: 31px;
   }
 }
 

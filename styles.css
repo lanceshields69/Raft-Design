@@ -840,6 +840,12 @@ p {
   cursor: help;
 }
 
+@media (max-width: 768px) {
+  html[lang="en"] .ai-native-trigger {
+    top: -13px;
+  }
+}
+
 .ai-native-asterisk {
   display: block;
   width: 22px;

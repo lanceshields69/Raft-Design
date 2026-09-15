@@ -478,6 +478,19 @@ p {
   }
 }
 
+/* Below ~870px of viewport HEIGHT (old MacBook Air screens, 1440x900
+   scaled or similar), .intro-section--video's own min-height leaves
+   little to no natural space-between gap — the -70px transform above
+   was a blind shift with no regard for available room, so on these
+   short screens it pushed .client-logos up underneath .hero-links.
+   Canceling it here lets normal flow (and .client-logos' own
+   margin-top floor) keep it below the CTAs instead. */
+@media (min-width: 1025px) and (max-height: 869px) {
+  .client-logos {
+    transform: none;
+  }
+}
+
 .intro-bg-video,
 .intro-bg-scrim {
   position: absolute;
@@ -1598,6 +1611,32 @@ html[lang="ja"] .ai-native-panel {
 
 .reel-video.revealed {
   opacity: 1;
+}
+
+/* Mobile: the -250px desktop overlap (tuned for the tall desktop hero)
+   would swallow the whole mobile hero, which is much shorter — so drop
+   it back to normal flow. Side padding matches raft-chat's own mobile
+   gutter (--chat-gutter, raft-chat.css) so the video reads the same
+   width as the chat box below it, instead of the wider desktop-tuned
+   60px inset. */
+@media (max-width: 768px) {
+  .reel-section {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .reel-video {
+    margin-top: 0;
+  }
+}
+
+/* Short desktop screens (old MacBook Airs etc., see the matching
+   .client-logos fix above) — 30px less overlap than the default
+   -250px, so the video doesn't eat as far into the shorter hero. */
+@media (min-width: 1025px) and (max-height: 869px) {
+  .reel-video {
+    margin-top: -220px;
+  }
 }
 
 .reel-video iframe {

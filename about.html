@@ -96,6 +96,17 @@
     .mr-icon-link { display: flex; color: var(--text-muted); transition: color 0.2s; }
     .mr-icon-link:hover { color: var(--text-accent); }
 
+    /* Awards — reuses the homepage's .awards-row/.awards-list/.awards-logos
+       (styles.css) for item/typography styling, but this page's content
+       column is always ~680px (not the homepage's wide .stats-content), so
+       the row stacks instead of sitting side-by-side regardless of
+       viewport width — the shared 1024px breakpoint that stacks it there
+       only fires on actual viewport width, which would stay "desktop" wide
+       here even though this column is already narrow. */
+    .mr-awards-section .awards-row { flex-direction: column; align-items: stretch; gap: var(--space-xl); }
+    .mr-awards-section .awards-logos-wrap { justify-content: flex-start; }
+    .mr-awards-section .awards-logos { width: 100%; max-width: 320px; height: auto; }
+
     /* Hero wipe reveal — same clip-path mechanism as the homepage's
        .headline-line (styles.css), staggered ~120ms apart via the
        .revealed class in the script at the bottom of this page. */
@@ -261,6 +272,29 @@
   <div class="mr-cooper-row fade-in" style="max-width:680px;margin:78px auto 0">
     <img src="images/Cooper-Shields.jpg" alt="Cooper Shields" class="mr-cooper-avatar">
     <p class="mr-cooper-text" style="font-size:14px;line-height:1.4;color:var(--text-muted);margin:0"><strong style="color:var(--text-primary);font-weight:900">Cooper Shields — Chief Happiness Officer.</strong><br>Attends most meetings. Approves nothing, improves everything.</p>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section class="mr-awards-section" style="padding:64px 15px 96px;border-top:1px solid var(--border-rule);max-width:1920px">
+  <span class="section-label" style="margin-bottom:64px">Awards</span>
+  <div class="fade-in awards-row" style="max-width:680px;margin:0 auto">
+    <div class="awards-list">
+      <div class="awards-item"><p>Webby Winner - All-in-One AI-Powered Creativity App, 2024, For Adobe Express</p></div>
+      <div class="awards-item"><p>Webby Winner - Best Nonprofit Website, 2016, For Thatsnotcool.com</p></div>
+      <div class="awards-item"><p>Webby Winner - Campaign in Advertising, 2016 For "I am a Witness" campaign and website</p></div>
+      <div class="awards-item"><p>W3 Award - Gold: Mobile Apps - Public Service and Activism, 2017, For Respect Effect mobile app</p></div>
+      <div class="awards-item"><p>W3 Award - Gold: Mobile Apps - Family and Kids, 2017, For Respect Effect mobile app</p></div>
+      <div class="awards-item"><p>W3 Award - Gold: Mobile Apps - Education, 2017, For Respect Effect mobile app</p></div>
+      <div class="awards-item"><p>Davey Awards - Silver: Mobile Apps/Sites-Social Gaming, 2017, for Redbull online game</p></div>
+      <div class="awards-item"><p>Communicators Awards - Websites, 2016, For Thatsnotcool.com</p></div>
+      <div class="awards-item"><p>Japan Marketers Award - Silver: B2B Marketing, 2011, For Yokogawa's Vigilance brand campaign</p></div>
+      <div class="awards-item"><p>Good Design Award - Best Global Website, 2008, For Hitachi.com</p></div>
+    </div>
+    <div class="awards-logos-wrap">
+      <img class="awards-logos awards-logos--dark" src="images/awards-logos.png" width="888" height="855" alt="Logos: The Webby Awards, Good Design Award, Davey Awards, W3 Award, The Communicator Awards" loading="lazy">
+      <img class="awards-logos awards-logos--light" src="images/awards-logos-black.png" width="888" height="855" alt="Logos: The Webby Awards, Good Design Award, Davey Awards, W3 Award, The Communicator Awards" loading="lazy">
+    </div>
   </div>
 </section>
 

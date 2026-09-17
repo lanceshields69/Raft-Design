@@ -1755,9 +1755,7 @@ html[lang="ja"] .ai-native-panel {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-radius: 24px;
   overflow: hidden;
-  border: 1px solid var(--lime);
   margin-bottom: 31px;
   /* Fades in once the hero text/CTAs finish their own reveal (see the
      revealHeadline() JS, which adds .revealed at the same moment as

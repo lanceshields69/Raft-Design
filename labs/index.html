@@ -155,69 +155,6 @@
       border-color: rgba(0, 0, 0, 0.2);
     }
 
-    /* Courses */
-    .lab-courses {
-      display: flex;
-      gap: 40px;
-    }
-    .lab-course {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      flex: 1;
-      min-width: 0;
-    }
-    .lab-course-image {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-rule);
-    }
-    .lab-course-title {
-      font-size: 20px;
-      font-weight: 900;
-      margin: 0;
-    }
-    .lab-course-body {
-      font-size: var(--font-size-body-md);
-      line-height: 1.5;
-      color: var(--text-muted);
-      margin: 0;
-    }
-
-    /* How I Build — same shape as about.html's "How we build" steps, with
-       a small square icon (the source page's build1/2/3.png) added above
-       each heading. */
-    .lab-build-step {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .lab-build-icon {
-      width: 56px;
-      height: 56px;
-      display: block;
-      /* Source icon is solid black ink on transparent (built for a light
-         background); invert white for this site's dark theme (default),
-         same pattern as .project-award-logo (project.css). */
-      filter: brightness(0) invert(1);
-    }
-    [data-theme="light"] .lab-build-icon {
-      filter: none;
-    }
-    .lab-build-title {
-      font-size: 20px;
-      font-weight: 900;
-      margin: 0;
-    }
-    .lab-build-body {
-      font-size: 18px;
-      line-height: 1.5;
-      color: var(--text-muted);
-      margin: 0;
-    }
-
     @media (max-width: 800px) {
       .lab-project,
       .lab-project:nth-child(even) {
@@ -226,10 +163,6 @@
       .lab-project-media {
         width: 100%;
         max-width: 320px;
-      }
-      .lab-courses {
-        flex-direction: column;
-        gap: 32px;
       }
     }
   </style>
@@ -246,8 +179,8 @@
     <a href="/#approach" class="nav-link">Approach</a>
     <a href="/#services" class="nav-link">Services</a>
     <a href="/about.html" class="nav-link">About</a>
-    <a href="/labs/" class="nav-link">Labs</a>
     <a href="/journal/" class="nav-link">Journal</a>
+    <a href="/labs/" class="nav-link">Labs</a>
     <a href="/#contact" class="nav-link">Contact</a>
     <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode">
       <svg class="theme-toggle-icon theme-toggle-icon--moon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -309,8 +242,8 @@
     <a href="/#approach" class="mobile-menu-link">Approach</a>
     <a href="/#services" class="mobile-menu-link">Services</a>
     <a href="/about.html" class="mobile-menu-link">About</a>
-    <a href="/labs/" class="mobile-menu-link">Labs</a>
     <a href="/journal/" class="mobile-menu-link">Journal</a>
+    <a href="/labs/" class="mobile-menu-link">Labs</a>
     <a href="/#contact" class="mobile-menu-link">Contact</a>
   </nav>
 <button class="cta-solid-button mobile-menu-cta open-calendly-modal" type="button">Book a call</button>
@@ -318,7 +251,7 @@
 
 <div class="work-hero">
   <h1 class="work-hero-title">Labs</h1>
-  <p class="work-hero-intro">This is where we make room to follow an idea before we know where it will lead. We explore new tools, test hunches, and build things we wish existed.</p>
+  <p class="work-hero-intro">This is where we make room to follow an idea before we know where it will lead. We explore new tools and build things we wish existed.</p>
 </div>
 
 <!-- PROJECTS -->
@@ -333,7 +266,7 @@
       <div class="lab-project-body">
         <p class="lab-project-number">01</p>
         <h3 class="lab-project-title">Raft Design</h3>
-        <p class="lab-project-desc">Raft Design is my AI-native brand and product studio, built bilingual in English and Japanese from day one. The site runs on Vercel with a full EN/JP architecture and GEO infrastructure, plus Ishmael, an AI chatbot built on the Claude API that opens with "Call me Ishmael" and routes visitors toward the right service based on what they're actually trying to solve. It's proof of craft, not just lead gen. I also built a diagnostic tool in Lovable: paste a URL and it reads the site, names the contradiction the brand is holding, and shows where brand, product, AI, and global work would move it.</p>
+        <p class="lab-project-desc">Raft Design is our AI-native brand and product studio, built bilingual in English and Japanese from day one. The site runs on Vercel with a full EN/JP architecture and GEO infrastructure, plus Ishmael, an AI chatbot built on the Claude API that opens with "Call me Ishmael" and routes visitors toward the right service based on what they're actually trying to solve. It's proof of craft, not just lead gen. We also built a diagnostic tool in Lovable: paste a URL and it reads the site, names the contradiction the brand is holding, and shows where brand, product, AI, and global work would move it.</p>
         <div class="lab-tags">
           <span class="lab-tag">Claude Code</span>
           <span class="lab-tag">Anthropic API</span>
@@ -401,7 +334,7 @@
       <div class="lab-project-body">
         <p class="lab-project-number">05</p>
         <h3 class="lab-project-title">Dreaming in Design</h3>
-        <p class="lab-project-desc">Dreaming in Design is an AI-powered portfolio reviewer trained on real hiring criteria. The tool I'm building will use AI because it's the only way to deliver personalized feedback at scale — specific to your role, level, and target companies.</p>
+        <p class="lab-project-desc">Dreaming in Design is an AI-powered portfolio reviewer trained on real hiring criteria. The tool we're building will use AI because it's the only way to deliver personalized feedback at scale — specific to your role, level, and target companies.</p>
         <p class="lab-project-status">Currently in research phase</p>
         <div class="lab-tags">
           <span class="lab-tag">Claude Code</span>
@@ -418,7 +351,7 @@
       <div class="lab-project-body">
         <p class="lab-project-number">06</p>
         <h3 class="lab-project-title">We Are the Ones</h3>
-        <p class="lab-project-desc">An interactive art experience built entirely through vibe coding — no design tools, no code written by hand. I wanted to understand what becomes possible when a designer works purely in language, and to feel what it's like to describe something into existence rather than draw it. A golden door opens onto an open sky. A Tolkien-inspired story scrolls with read-along narrator, the sky brightening from pre-dawn to full daylight as it plays. The entire experience lives in a single HTML file, 84 kilobytes, two minutes long. Built in a day.</p>
+        <p class="lab-project-desc">An interactive art experience built entirely through vibe coding — no design tools, no code written by hand. We wanted to understand what becomes possible when a designer works purely in language, and to feel what it's like to describe something into existence rather than draw it. A golden door opens onto an open sky. A Tolkien-inspired story scrolls with read-along narrator, the sky brightening from pre-dawn to full daylight as it plays. The entire experience lives in a single HTML file, 84 kilobytes, two minutes long. Built in a day.</p>
         <div class="lab-tags">
           <span class="lab-tag">Cursor</span>
           <span class="lab-tag">Claude Sonnet 4.6</span>
@@ -431,46 +364,6 @@
   </div>
 </section>
 
-<!-- COMPLETED AI COURSES -->
-<section style="padding:64px 15px 96px;border-top:1px solid var(--border-rule);max-width:1920px">
-  <div style="max-width:830px;margin:0 auto"><span class="section-label fade-in" style="margin-bottom:64px">Completed AI Courses</span></div>
-  <div class="lab-courses fade-in" style="max-width:830px;margin:0 auto">
-    <div class="lab-course">
-      <img class="lab-course-image" src="../images/lab-cert-mit.png" alt="MIT xPRO Designing and Building AI Products and Services certification screenshot." loading="lazy">
-      <p class="lab-course-title">MIT AI Product Design Certification</p>
-      <p class="lab-course-body">I completed MIT xPRO's <em>Designing and Building AI Products and Services</em> certification to gain practical, working knowledge of how to design user-centered AI products.</p>
-      <a href="https://verify.skilljar.com/c/fj4kvjz6t7d8" class="text-link" target="_blank" rel="noopener noreferrer">View certification <span class="arrow">→</span></a>
-    </div>
-    <div class="lab-course">
-      <img class="lab-course-image" src="../images/lab-cert-anthropic.jpg" alt="Anthropic Claude Code In Action certificate." loading="lazy">
-      <p class="lab-course-title">Claude Code In Action — Anthropic</p>
-      <p class="lab-course-body">Completed Anthropic's certification, mastering AI-native development workflows, context management, custom commands, MCP, hooks, and agentic coding with Claude Code.</p>
-      <a href="https://verify.skilljar.com/c/fj4kvjz6t7d8" class="text-link" target="_blank" rel="noopener noreferrer">View certification <span class="arrow">→</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- HOW I BUILD -->
-<section style="padding:64px 15px 96px;border-top:1px solid var(--border-rule);max-width:1920px">
-  <div style="max-width:830px;margin:0 auto"><span class="section-label fade-in" style="margin-bottom:64px">How I Build</span></div>
-  <div class="fade-in" style="max-width:830px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
-    <div class="lab-build-step">
-      <img class="lab-build-icon" src="../images/lab-build-1.png" alt="" aria-hidden="true">
-      <h3 class="lab-build-title">Start with the strategy</h3>
-      <p class="lab-build-body">Before I open any tool, I spend time with LLMs like Claude and ChatGPT thinking through the problem, the user, and the product logic. This is where the strategy forms. I'm writing prompts, pressure-testing ideas, and getting to a clear point of view before a single pixel or line of code exists.</p>
-    </div>
-    <div class="lab-build-step">
-      <img class="lab-build-icon" src="../images/lab-build-2.png" alt="" aria-hidden="true">
-      <h3 class="lab-build-title">Design and prototype together</h3>
-      <p class="lab-build-body">I move between Figma and AI tools like Figma Make to sketch the experience: flows, screens, and interactions. The prototypes I make at this stage are close enough to the real thing that they can be tested, shared, and iterated on without waiting for engineering.</p>
-    </div>
-    <div class="lab-build-step">
-      <img class="lab-build-icon" src="../images/lab-build-3.png" alt="" aria-hidden="true">
-      <h3 class="lab-build-title">Ship it with vibe coding</h3>
-      <p class="lab-build-body">I use Claude Code, Cursor and V0.dev to generate and refine working code. I'm directing the build. I know what I want, I know when it's right, and I know how to get there fast. Ideas become deployed products without a traditional engineering handoff.</p>
-    </div>
-  </div>
-</section>
 
 <!-- CLOSE — reused verbatim from the homepage's "Ready to move at Raft
      speed?" panel: same classes, same Calendly modal trigger. -->

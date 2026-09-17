@@ -1762,6 +1762,11 @@ html[lang="ja"] .ai-native-panel {
   border-radius: var(--radius-pill);
 }
 
+[data-theme="light"] .featured-work-tag,
+[data-theme="light"] .work-card-tag {
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
 .featured-work-tag-label {
   font-size: var(--font-size-label-medium);
   font-weight: var(--weight-medium);

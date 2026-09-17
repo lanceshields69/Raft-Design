@@ -1134,11 +1134,18 @@ html[lang="ja"] .ai-native-panel {
   gap: 40px;
 }
 
+.approach-left {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
 .approach-text {
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
-  max-width: 480px;
+  width: 480px;
+  flex-shrink: 0;
 }
 
 .approach-text .scan-cta {
@@ -1168,9 +1175,8 @@ html[lang="ja"] .ai-native-panel {
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
-  flex: 1;
-  min-width: 0;
-  max-width: 480px;
+  width: 480px;
+  flex-shrink: 0;
 }
 
 .approach-stat {
@@ -1571,14 +1577,38 @@ html[lang="ja"] .ai-native-panel {
 }
 
 /* Homepage's AI Systems panel split into two offerings (Foundation Design
-   Sprint + AI-ready design systems) side by side, replacing the second
-   .ai-systems-text's fixed 483px width (meant for pairing with the
-   4-column .ai-systems-grid, no longer used here) with an even flexible
-   split. Scoped to this modifier so ja/index.html's unmodified single-text
-   + grid layout keeps the original fixed width. */
+   Sprint + AI-ready design systems) side by side. Fixed at 480px/40px gap
+   to match Approach/Services' column width and left alignment (per the
+   "make all three sections match" pass) rather than the original fixed
+   483px width (meant for pairing with the 4-column .ai-systems-grid, no
+   longer used here) or an evenly-flexible split. Scoped to this modifier
+   so ja/index.html's unmodified single-text + grid layout is untouched. */
+.ai-systems-content--split {
+  gap: 40px;
+  justify-content: space-between;
+}
+
 .ai-systems-content--split .ai-systems-text {
-  width: auto;
-  flex: 1;
+  width: 480px;
+  flex: none;
+}
+
+.ai-systems-left {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* Right-side badge — same 250x250 fixed size and position as
+   .approach-badge/.expertise-badge above it, reusing the gif that used
+   to sit in the now-removed Studio section (.stats-badge, styles.css). */
+.ai-systems-badge {
+  flex-shrink: 0;
+  width: 250px;
+  height: 250px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  display: block;
 }
 
 .ai-systems-item {

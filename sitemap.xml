@@ -163,6 +163,15 @@
   </url>
 
   <url>
+    <loc>https://raftdesign.studio/lab/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/lab/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/lab/" />
+  </url>
+
+  <url>
     <loc>https://raftdesign.studio/journal/</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>

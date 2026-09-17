@@ -12,15 +12,16 @@
 - [Home (Japanese)](https://raftdesign.studio/ja/): 日本語版ホームページ。「Engage」セクション（Services の後）に、Design Foundation SprintとAI対応デザインシステムへのタイルを含む。
 - [Meet Raft](https://raftdesign.studio/about.html) / [日本語](https://raftdesign.studio/ja/about.html): Founder Lance Shields' background — design leadership at Adobe and Walmart, a decade leading a Tokyo design team, and why the studio is built to move rather than to look finished.
 
-## Projects
-- [Projects index (English)](https://raftdesign.studio/projects/)
-- [Projects index (Japanese)](https://raftdesign.studio/ja/projects/)
-- [LegalOn — Global AI Brand Platform](https://raftdesign.studio/projects/legalon/) / [日本語](https://raftdesign.studio/ja/projects/legalon/)
-- [Adobe Express Photos — 0-to-1 AI Product Design](https://raftdesign.studio/projects/adobe-express-photos/) / [日本語](https://raftdesign.studio/ja/projects/adobe-express-photos/)
-- [Walmart — AI-First Shopping Experience](https://raftdesign.studio/projects/walmart/) / [日本語](https://raftdesign.studio/ja/projects/walmart/)
-- [Adobe Express Enterprise — Embed SDK + Plugin Ecosystem](https://raftdesign.studio/projects/adobe-express-enterprise/) / [日本語](https://raftdesign.studio/ja/projects/adobe-express-enterprise/)
-- [Modere — Japanese Market Platform Redesign](https://raftdesign.studio/projects/modere/) / [日本語](https://raftdesign.studio/ja/projects/modere/)
-- [Modular Suite for XD — Design Collaboration Tools](https://raftdesign.studio/projects/modular-suite-xd/) / [日本語](https://raftdesign.studio/ja/projects/modular-suite-xd/)
+## Work
+- [Work index (English)](https://raftdesign.studio/work/)
+- [Work index (Japanese)](https://raftdesign.studio/ja/work/)
+- [LegalOn — Global AI Brand Platform](https://raftdesign.studio/work/legalon/) / [日本語](https://raftdesign.studio/ja/work/legalon/)
+- [That's Not Cool — Webby Award-Winning Non-Profit Site](https://raftdesign.studio/work/thats-not-cool/) / [日本語](https://raftdesign.studio/ja/work/thats-not-cool/)
+- [Adobe Express Photos — 0-to-1 AI Product Design](https://raftdesign.studio/work/adobe-express-photos/) / [日本語](https://raftdesign.studio/ja/work/adobe-express-photos/)
+- [Walmart — AI-First Shopping Experience](https://raftdesign.studio/work/walmart/) / [日本語](https://raftdesign.studio/ja/work/walmart/)
+- [Adobe Express Enterprise — Embed SDK + Plugin Ecosystem](https://raftdesign.studio/work/adobe-express-enterprise/) / [日本語](https://raftdesign.studio/ja/work/adobe-express-enterprise/)
+- [Modere — Japanese Market Platform Redesign](https://raftdesign.studio/work/modere/) / [日本語](https://raftdesign.studio/ja/work/modere/)
+- [Modular Suite for XD — Design Collaboration Tools](https://raftdesign.studio/work/modular-suite-xd/) / [日本語](https://raftdesign.studio/ja/work/modular-suite-xd/)
 
 ## Services
 - [Design Foundation Sprint](https://raftdesign.studio/design-foundation/) / [日本語](https://raftdesign.studio/ja/design-foundation/): A four-week engagement for funded startups — brand system first, then the product screens that express it, delivered as a tokenized, documented design system rather than a one-off deliverable.

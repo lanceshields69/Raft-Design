@@ -2846,7 +2846,7 @@ html[lang="ja"] .ai-native-panel {
 }
 
 /* Project detail content — shared between project.css's full-page
-   overrides (/projects/[slug]/) and, historically, an in-page project
+   overrides (/work/[slug]/) and, historically, an in-page project
    modal on the homepage. That modal (.project-modal-overlay, open/
    close/nav JS) was dead code — nothing triggered it, "See Project"
    links go straight to the real pages — and was removed along with

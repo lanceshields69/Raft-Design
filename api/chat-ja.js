@@ -19,32 +19,32 @@ const MAX_HISTORY_MESSAGES = 20;
 const PROJECT_MAP = {
   "LegalOn's AI Brand Platform": {
     image: '/images/legalon-3.webp',
-    url: '/ja/projects/legalon/',
+    url: '/ja/work/legalon/',
     subtitle: '7つのプロダクトを貫く一貫したグローバルアイデンティティ',
   },
   'Adobe Express Photos': {
     image: '/images/Harmony-thumbnail-01.webp',
-    url: '/ja/projects/adobe-express-photos/',
+    url: '/ja/work/adobe-express-photos/',
     subtitle: '0→1のAIプロダクトデザイン',
   },
   "Walmart's AI-First Shopping Experience": {
     image: '/images/walmart-3.webp',
-    url: '/ja/projects/walmart/',
+    url: '/ja/work/walmart/',
     subtitle: 'AR室内スキャン、対話型検索、ARでのテレビ比較',
   },
   'Adobe Express Enterprise Platform': {
     image: '/images/express-hero.jpg',
-    url: '/ja/projects/adobe-express-enterprise/',
+    url: '/ja/work/adobe-express-enterprise/',
     subtitle: '埋め込みSDKとプラグインエコシステム',
   },
   'Modere eCommerce': {
     image: '/images/modere-1.webp',
-    url: '/ja/projects/modere/',
+    url: '/ja/work/modere/',
     subtitle: 'バイリンガルなストアフロント、アンチエイジング美容液の製品ページ',
   },
   'Modular Suite for XD': {
     image: '/images/modular-hero.jpg',
-    url: '/ja/projects/modular-suite-xd/',
+    url: '/ja/work/modular-suite-xd/',
     subtitle: 'Adobe XDプラグイン、ランディングページ向けテーマシステム',
   },
 };

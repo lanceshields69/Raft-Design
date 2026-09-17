@@ -21,32 +21,32 @@ const MAX_HISTORY_MESSAGES = 20;
 const PROJECT_MAP = {
   "LegalOn's AI Brand Platform": {
     image: 'images/legalon-3.webp',
-    url: '/projects/legalon/',
+    url: '/work/legalon/',
     subtitle: 'Unified brand lockup across seven products under one identity',
   },
   'Adobe Express Photos': {
     image: 'images/Harmony-thumbnail-01.webp',
-    url: '/projects/adobe-express-photos/',
+    url: '/work/adobe-express-photos/',
     subtitle: '0-to-1 AI-powered desktop image editor',
   },
   "Walmart's AI-First Shopping Experience": {
     image: 'images/walmart-3.webp',
-    url: '/projects/walmart/',
+    url: '/work/walmart/',
     subtitle: 'AR room scan, conversational search, AR TV comparison',
   },
   'Adobe Express Enterprise Platform': {
     image: 'images/express-hero.jpg',
-    url: '/projects/adobe-express-enterprise/',
+    url: '/work/adobe-express-enterprise/',
     subtitle: 'Add-on marketplace and partner integrations',
   },
   'Modere eCommerce': {
     image: 'images/modere-1.webp',
-    url: '/projects/modere/',
+    url: '/work/modere/',
     subtitle: 'Bilingual storefront, anti-aging serum product page',
   },
   'Modular Suite for XD': {
     image: 'images/modular-hero.jpg',
-    url: '/projects/modular-suite-xd/',
+    url: '/work/modular-suite-xd/',
     subtitle: 'Adobe XD plugin, theme system for landing pages',
   },
 };

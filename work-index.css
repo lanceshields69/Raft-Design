@@ -1,11 +1,11 @@
-/* Projects index page (/projects/, /ja/projects/) — shared EN + JA. Also
+/* Work index page (/work/, /ja/work/) — shared EN + JA. Also
    reused by journal.css for the Journal index hero (.work-hero /
    .work-hero-title / .work-hero-intro) and by tools.css's Tools page,
    which mirrors .work-hero-title's spec independently rather than
    sharing this file.
 
    Tokenized against Figma node 141:607 ("Work" — legacy name, matches
-   current /projects/ page). Every value here either already matched an
+   current /work/ page). Every value here either already matched an
    existing token exactly or corrected to one exactly — no new tokens
    needed. See the session's audit notes for corrections and the one
    flagged conflict (hero title tracking). */
@@ -65,12 +65,35 @@
   color: inherit;
 }
 
+/* Image hover zoom — matches the homepage Featured Work grid
+   (.featured-work-image/img, styles.css): 4% scale, ease-out on
+   hover-in, ease-in on hover-out (the destination state's own
+   transition governs each direction). Needs its own overflow:hidden
+   wrapper since the img can't clip its own enlarged render. */
+.work-card-image-wrap {
+  width: 100%;
+  aspect-ratio: 2000 / 1307;
+  overflow: hidden;
+}
+
 .work-card-image {
   width: 100%;
-  height: auto;
-  aspect-ratio: 2000 / 1307;
+  height: 100%;
   object-fit: cover;
   display: block;
+  transform: scale(1);
+  transition: transform 0.4s ease-in;
+}
+
+.work-card:hover .work-card-image {
+  transform: scale(1.04);
+  transition: transform 0.4s ease-out;
+}
+
+.work-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
 }
 
 .work-card-title {
@@ -79,6 +102,42 @@
   line-height: var(--line-height-heading-large);
   letter-spacing: 0;
   color: var(--text-primary);
+}
+
+.work-card-subtitle {
+  font-size: var(--font-size-body-lg);
+  line-height: var(--line-height-heading);
+  color: var(--text-primary);
+  font-weight: var(--weight-regular);
+}
+
+.work-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  padding-top: var(--space-sm);
+}
+
+.work-card-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px var(--space-12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-pill);
+}
+
+.work-card-tag-label {
+  font-size: var(--font-size-label-medium);
+  font-weight: var(--weight-medium);
+  line-height: var(--line-height-label);
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-card-image {
+    transition: none;
+  }
 }
 
 @media (max-width: 1024px) {

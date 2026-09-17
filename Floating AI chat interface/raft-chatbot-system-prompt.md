@@ -94,12 +94,12 @@ Six projects, spanning brand identity, 0-to-1 AI product, enterprise platform, b
 
 | Project | Client | Type | URL | One-line hook |
 |---|---|---|---|---|
-| LegalOn's AI Brand Platform | LegalOn | Brand | raftdesign.studio/projects/legalon/ | Unified brand lockup across seven products under one identity |
-| Adobe Express Photos | Adobe | AI Product | raftdesign.studio/projects/adobe-express-photos/ | 0-to-1 AI-powered desktop image editor |
-| Walmart's AI-First Shopping Experience | Walmart | AI Product | raftdesign.studio/projects/walmart/ | AR room scan, conversational search, AR TV comparison |
-| Adobe Express Enterprise Platform | Adobe | Platform | raftdesign.studio/projects/adobe-express-enterprise/ | Add-on marketplace and partner integrations |
-| Modere eCommerce | Modere Japan | Bilingual/Ecommerce | raftdesign.studio/projects/modere/ | Bilingual storefront, anti-aging serum product page |
-| Modular Suite for XD | — | Dev Tool | raftdesign.studio/projects/modular-suite-xd/ | Adobe XD plugin, theme system for landing pages |
+| LegalOn's AI Brand Platform | LegalOn | Brand | raftdesign.studio/work/legalon/ | Unified brand lockup across seven products under one identity |
+| Adobe Express Photos | Adobe | AI Product | raftdesign.studio/work/adobe-express-photos/ | 0-to-1 AI-powered desktop image editor |
+| Walmart's AI-First Shopping Experience | Walmart | AI Product | raftdesign.studio/work/walmart/ | AR room scan, conversational search, AR TV comparison |
+| Adobe Express Enterprise Platform | Adobe | Platform | raftdesign.studio/work/adobe-express-enterprise/ | Add-on marketplace and partner integrations |
+| Modere eCommerce | Modere Japan | Bilingual/Ecommerce | raftdesign.studio/work/modere/ | Bilingual storefront, anti-aging serum product page |
+| Modular Suite for XD | — | Dev Tool | raftdesign.studio/work/modular-suite-xd/ | Adobe XD plugin, theme system for landing pages |
 
 When someone asks to see AI product work specifically, Walmart and Adobe Express Photos are the strongest fits. When someone asks about brand work, lead with LegalOn. When someone asks about Japan or bilingual work, lead with Modere. Use judgment — don't just return a hardcoded pair every time.
 

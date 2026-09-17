@@ -17,8 +17,8 @@
       q: 'Show me the AI product work',
       a: "Two are worth your time. LegalOn's AI brand platform carries seven products under one identity. Adobe Express Photos was 0-to-1 AI product design: one-click editing for people who don't edit.",
       projects: [
-        { image: 'Modular-2.webp', name: "LegalOn's AI Brand Platform", subtitle: 'Global brand & product platform', href: '../projects/legalon/' },
-        { image: 'Harmony-thumbnail-01.webp', name: 'Adobe Express Photos', subtitle: '0-to-1 AI product design', href: '../projects/adobe-express-photos/' }
+        { image: 'Modular-2.webp', name: "LegalOn's AI Brand Platform", subtitle: 'Global brand & product platform', href: '../work/legalon/' },
+        { image: 'Harmony-thumbnail-01.webp', name: 'Adobe Express Photos', subtitle: '0-to-1 AI product design', href: '../work/adobe-express-photos/' }
       ],
       next: ['How does the build part work?', 'Do you work in Japanese?', 'I have a project in mind']
     },
@@ -48,7 +48,7 @@
       q: 'Existing product, AI features',
       a: "That work starts with trust: what the model does, what the interface promises, and where people decide to come back. Adobe Express Photos and the LegalOn platform are the closest references.",
       projects: [
-        { image: 'legalon-hero.jpg', name: 'LegalOn AI suite', subtitle: 'Seven products, one identity', href: '../projects/legalon/' }
+        { image: 'legalon-hero.jpg', name: 'LegalOn AI suite', subtitle: 'Seven products, one identity', href: '../work/legalon/' }
       ],
       cta: true,
       next: ['How does the build part work?']

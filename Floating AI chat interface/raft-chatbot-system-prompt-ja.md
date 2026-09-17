@@ -136,12 +136,12 @@ Company and project names stay in English/Roman lettering per existing site conv
 
 | Project | Client | Type | URL | One-line hook (Japanese) |
 |---|---|---|---|---|
-| LegalOn's AI Brand Platform | LegalOn | Brand | raftdesign.studio/ja/projects/legalon/ | 7つのプロダクト（LegalOn、SalesOn、CorporateOn、WorkOn、CXOn、DealOn、GovernOn）を貫く一貫したグローバルアイデンティティ。「ON」という共通コンセプトのもと、共通のロックアップと、それぞれ独自のパレット・アイデンティティを両立 |
-| Adobe Express Photos | Adobe | AI Product | raftdesign.studio/ja/projects/adobe-express-photos/ | 0→1のAIプロダクトデザイン。複雑な編集をワンクリックに変え、プロ品質の加工をマーケターや一般ユーザーにまで開いた |
-| Walmart's AI-First Shopping Experience | Walmart | AI Product | raftdesign.studio/ja/projects/walmart/ | AIコマース戦略・プロダクトデザイン。検索を置き換えるのではなく上に重ね、マルチモーダル検索・ARウィザード・生成AIファッション提案へ |
-| Adobe Express Enterprise Platform | Adobe | Platform | raftdesign.studio/ja/projects/adobe-express-enterprise/ | 埋め込みSDK + プラグインエコシステム。統制されたプラグインマーケットプレイスと埋め込みエディターを設計し、MAUは114%成長、エンタープライズ・パートナー全体でのエンゲージメントを倍増させた |
-| Modere eCommerce | Modere Japan | Bilingual/Ecommerce | raftdesign.studio/ja/projects/modere/ | 日本市場向けプラットフォーム再設計。グローバルのブランドシステムはそのままに、日本の消費者が実際にどう選ぶかを軸に、パーソナライズされた発見とコミュニティコンテンツで体験を組み直した |
-| Modular Suite for XD | — | Dev Tool | raftdesign.studio/ja/projects/modular-suite-xd/ | デザインコラボレーションツール。Adobe XD向けプラグイン群で、共同のアイデア出しから画面設計、プレゼンテーションまでを一本につなぎ、デザイナーと非デザイナーの共同作業を可能にした |
+| LegalOn's AI Brand Platform | LegalOn | Brand | raftdesign.studio/ja/work/legalon/ | 7つのプロダクト（LegalOn、SalesOn、CorporateOn、WorkOn、CXOn、DealOn、GovernOn）を貫く一貫したグローバルアイデンティティ。「ON」という共通コンセプトのもと、共通のロックアップと、それぞれ独自のパレット・アイデンティティを両立 |
+| Adobe Express Photos | Adobe | AI Product | raftdesign.studio/ja/work/adobe-express-photos/ | 0→1のAIプロダクトデザイン。複雑な編集をワンクリックに変え、プロ品質の加工をマーケターや一般ユーザーにまで開いた |
+| Walmart's AI-First Shopping Experience | Walmart | AI Product | raftdesign.studio/ja/work/walmart/ | AIコマース戦略・プロダクトデザイン。検索を置き換えるのではなく上に重ね、マルチモーダル検索・ARウィザード・生成AIファッション提案へ |
+| Adobe Express Enterprise Platform | Adobe | Platform | raftdesign.studio/ja/work/adobe-express-enterprise/ | 埋め込みSDK + プラグインエコシステム。統制されたプラグインマーケットプレイスと埋め込みエディターを設計し、MAUは114%成長、エンタープライズ・パートナー全体でのエンゲージメントを倍増させた |
+| Modere eCommerce | Modere Japan | Bilingual/Ecommerce | raftdesign.studio/ja/work/modere/ | 日本市場向けプラットフォーム再設計。グローバルのブランドシステムはそのままに、日本の消費者が実際にどう選ぶかを軸に、パーソナライズされた発見とコミュニティコンテンツで体験を組み直した |
+| Modular Suite for XD | — | Dev Tool | raftdesign.studio/ja/work/modular-suite-xd/ | デザインコラボレーションツール。Adobe XD向けプラグイン群で、共同のアイデア出しから画面設計、プレゼンテーションまでを一本につなぎ、デザイナーと非デザイナーの共同作業を可能にした |
 
 When someone asks to see AI product work specifically, Walmart and Adobe Express Photos are the strongest fits. When someone asks about brand work, lead with LegalOn. When someone asks about Japan or bilingual work, lead with Modere — particularly relevant given the audience on this page.
 

@@ -1,4 +1,4 @@
-/* Project detail pages (/projects/[slug]/, /ja/projects/[slug]/) — wide,
+/* Project detail pages (/work/[slug]/, /ja/work/[slug]/) — wide,
    standalone pages using the .project-content/.project-title/etc. family
    defined in styles.css. Those classes used to be prefixed "modal-",
    inherited from a homepage in-page project modal; that modal was dead

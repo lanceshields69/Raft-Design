@@ -241,6 +241,10 @@
             <div class="wordmark-line wordmark-line--raft" id="line-raft"><span class="letter" aria-hidden="true">R</span><span class="letter" aria-hidden="true">A</span><span class="letter" aria-hidden="true">F</span><span class="letter" aria-hidden="true">T</span></div>
             <div class="wordmark-line wordmark-line--studio" id="line-studio"><span class="letter" aria-hidden="true">D</span><span class="letter" aria-hidden="true">E</span><span class="letter" aria-hidden="true">S</span><span class="letter" aria-hidden="true">I</span><span class="letter" aria-hidden="true">G</span><span class="letter" aria-hidden="true">N</span></div>
           </div>
+          <!-- GIF logo (753:4884 redesign) — swapped back out in favor of the
+               animated text wordmark above. Kept here, commented out, in
+               case we want to bring the GIF back later. -->
+          <!-- <img src="images/anime-0.gif" alt="Raft Design" class="logo-gif"> -->
         </div>
         <div class="hero-copy">
           <h1 class="intro-heading">
@@ -250,9 +254,10 @@
             <p class="hero-subhead">We create bold interactive experiences for the world's most ambitious brands by combining AI, design, and technology.</p>
           </div>
           <div class="hero-links">
-            <a href="#work" class="hero-link">Reinvent how you compete</a>
-            <a href="/design-foundation/" class="hero-link">Elevate your startup design</a>
-            <a href="/design-system/" class="hero-link">Build AI systems that last</a>
+            <a href="#work" class="hero-link"><span class="hero-link-arrow" aria-hidden="true">→</span> See the work</a>
+            <a href="#services" class="hero-link"><span class="hero-link-arrow" aria-hidden="true">→</span> Discover our services</a>
+            <a href="#approach" class="hero-link"><span class="hero-link-arrow" aria-hidden="true">→</span> Check our approach</a>
+            <a href="#studio" class="hero-link"><span class="hero-link-arrow" aria-hidden="true">→</span> This is Raft</a>
           </div>
         </div>
       </div>
@@ -499,8 +504,8 @@
       <h2 class="section-label fade-in">Studio</h2>
       <div class="stats-content">
         <div class="stats-intro fade-in">
-          <p class="stats-intro-text">Raft Design is an AI-native studio collaborating with companies in the U.S. and Japan on brand, product, and innovation.</p>
-          <p class="stats-intro-bio">Twenty years of building brand, product, and platform work across Tokyo and San Francisco taught the same lesson twice: what survives isn't the work built to impress. It's the work built to move. We work hands-on, owning the hard problems and building alongside product and engineering rather than handing off. Design leadership at Adobe and Walmart. Brand and product work with LegalOn, Visa, Hitachi, and Red Bull. Most engagements start with a company that isn't sure how to move yet.</p>
+          <p class="stats-intro-text">Raft Design is an AI-native studio collaborating with companies on brand, product, and innovation.</p>
+          <p class="stats-intro-bio">Twenty years of building brand, product, and platform work taught us what survives isn't the work built to impress. It's the work built to move. We work hands-on, owning the hard problems and building alongside product and engineering rather than handing off. Design leadership at Adobe and Walmart. Brand and product work with LegalOn, Visa, Hitachi, and Red Bull. Most engagements start with a company that isn't sure how to move yet.</p>
           <a href="/about.html" class="scan-cta" style="margin-top:32px;margin-bottom:30px"><span class="scan-cta-arrow">→</span> Meet Raft’s founder</a>
         </div>
         <div class="stats-contain fade-in">
@@ -1120,6 +1125,24 @@
         playLogoAnimation(revealHeadline);
       }
     })();
+
+    /* GIF logo fade-in trigger (753:4884 redesign) — commented out
+       since the animated text wordmark is back in the markup above,
+       which drives revealHeadline() itself via playLogoAnimation.
+       Kept here in case we swap back to the GIF logo later.
+
+    // Logo GIF fade-in, then the headline wipe-reveal starts once that
+    // finishes (matches .logo-gif's own opacity transition duration below).
+    (function () {
+      const logoGif = document.querySelector('.logo-gif');
+      const fadeMs = 600;
+      if (!logoGif) { revealHeadline(); return; }
+      requestAnimationFrame(() => {
+        logoGif.classList.add('revealed');
+        setTimeout(revealHeadline, fadeMs);
+      });
+    })();
+    */
 
     // Design Intelligence tool modal
     const SCAN_TOOL_URL = 'https://design-intelligence-engine.lovable.app/?lang=en';

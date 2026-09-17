@@ -188,6 +188,20 @@ p {
   clip-path: circle(calc(50% - 3px));
 }
 
+/* EN homepage header only (Figma node 753:4884) — the icon+wordmark
+   lockup SVG, white-only (no separate light-theme asset), so light mode
+   inverts it black like .client-logo does for its own single-asset
+   marks. Every other page keeps the circular .nav-logo-gif above. */
+.nav-logo-svg {
+  height: 32px;
+  width: auto;
+  margin-left: 32px;
+}
+
+[data-theme="light"] .nav-logo-svg {
+  filter: brightness(0);
+}
+
 .nav-logo-gif--dark {
   display: block;
 }
@@ -474,7 +488,7 @@ p {
      transform moves it regardless of which mechanism is actually
      positioning it. -50px = the last two requested nudges (-20, -30). */
   .client-logos {
-    transform: translateY(-70px);
+    transform: translateY(-40px);
   }
 }
 
@@ -558,6 +572,21 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* EN homepage hero (Figma node 753:4884) — replaces the animated text
+   wordmark (commented out in the markup) with a looping GIF, sized to
+   fill the green box exactly like the wordmark did. */
+.logo-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.logo-gif.revealed {
+  opacity: 1;
 }
 
 .logo-tagline {
@@ -653,6 +682,7 @@ p {
   grid-column: auto;
   grid-row: auto;
   margin-top: -5px;
+  margin-bottom: 10px;
   order: 0;
   /* .headline-line's own clip-path (reveal-on-load wipe) makes it a
      stacking context, which traps the AI-native definition panel's
@@ -949,17 +979,17 @@ p {
   }
 }
 
-/* Hero text-link stack (Figma node 740:2201) — replaces the old single
-   .hero-scroll-cta pill button on the EN homepage only; ja/index.html
-   still uses .hero-scroll-cta/.hero-scroll-arrow as-is, so those classes
-   stay untouched above. Reveal timing/mechanism (opacity fade via JS
-   adding .revealed) mirrors .hero-scroll-cta's own. Plain text, no arrow
-   glyph — a deliberate change from the previous arrow+label row. */
+/* Hero CTA row (Figma node 753:4884) — four links in a single wrapping
+   row with an arrow glyph, replacing the previous 3-link plain-text
+   vertical stack. ja/index.html still uses .hero-scroll-cta/
+   .hero-scroll-arrow as-is, untouched by this. Reveal timing/mechanism
+   (opacity fade via JS adding .revealed) mirrors .hero-scroll-cta's own. */
 .hero-links {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 18px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
   margin-top: 48px;
   opacity: 0;
   transition: opacity 0.6s ease;
@@ -970,16 +1000,23 @@ p {
 }
 
 .hero-link {
-  font-size: var(--font-size-heading-2);
-  font-weight: var(--weight-regular);
-  letter-spacing: -0.56px;
-  line-height: var(--line-height-heading);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 21px;
+  font-weight: var(--weight-medium);
+  letter-spacing: -0.6px;
   color: var(--text-accent);
   transition: opacity 0.2s;
 }
 
 .hero-link:hover {
   opacity: 0.75;
+}
+
+.hero-link-arrow {
+  color: var(--text-primary);
+  font-weight: var(--weight-bold);
 }
 
 /* EN homepage headline re-break for mobile only (Figma's 2-line split is
@@ -1580,23 +1617,23 @@ html[lang="ja"] .ai-native-panel {
 
 /* Reel */
 .reel-section {
-  padding: 120px 60px 60px 60px;
+  padding: 91px 60px 60px 60px;
   max-width: 1920px;
   position: relative;
 }
 
-/* Pulled up 60px past the section's own 120px top padding (180px total)
-   so the video itself visually overlaps the hero section above it —
-   .reel-section is later in DOM order than the hero, so it paints on
-   top wherever they overlap, with no z-index needed. 60px left/right
-   section padding (above) gives the video an even gap on both sides —
-   replaces the old JS that stretched it to align with the first
-   Project tile's left edge, which is no longer used. */
+/* No longer overlapping the hero above it (see the 753:4884 redesign —
+   the taller headline made the old overlap amounts crowd/cover the
+   hero content) — .reel-section's own top padding (above) is now the
+   full gap between the hero and the video, set to 91px to match the
+   91px of space below the video (31px .reel-video margin-bottom + 60px
+   section padding-bottom). 60px left/right section padding gives the
+   video an even gap on both sides — replaces the old JS that stretched
+   it to align with the first Project tile's left edge, no longer used. */
 .reel-video {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  margin-top: -250px;
   border-radius: 24px;
   overflow: hidden;
   border: 1px solid var(--lime);
@@ -1628,15 +1665,6 @@ html[lang="ja"] .ai-native-panel {
 
   .reel-video {
     margin-top: 31px;
-  }
-}
-
-/* Short desktop screens (old MacBook Airs etc., see the matching
-   .client-logos fix above) — 30px less overlap than the default
-   -250px, so the video doesn't eat as far into the shorter hero. */
-@media (min-width: 1025px) and (max-height: 869px) {
-  .reel-video {
-    margin-top: -220px;
   }
 }
 

@@ -1122,7 +1122,7 @@ html[lang="ja"] .ai-native-panel {
 
 /* Thesis Section */
 .approach-section {
-  padding: 20px 15px 120px;
+  padding: var(--space-xl) var(--space-xxl) 120px;
   max-width: 1920px;
   border-top: 1px solid var(--border-rule);
 }
@@ -1268,7 +1268,7 @@ html[lang="ja"] .ai-native-panel {
 
 /* Services Section */
 .expertise-section {
-  padding: 20px 15px 120px;
+  padding: var(--space-xl) var(--space-xxl) 120px;
   max-width: 1920px;
   border-top: 1px solid var(--border-rule);
 }
@@ -1490,7 +1490,7 @@ html[lang="ja"] .ai-native-panel {
 
 /* AI Systems Panel */
 .ai-systems-section {
-  padding: 20px 15px 120px;
+  padding: var(--space-xl) var(--space-xxl) 120px;
   max-width: 1920px;
   border-top: 1px solid var(--border-rule);
 }
@@ -1582,7 +1582,7 @@ html[lang="ja"] .ai-native-panel {
 
 /* Work Section */
 .work-section {
-  padding: 20px 15px 50px;
+  padding: var(--space-xl) var(--space-xxl) 50px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -1615,9 +1615,130 @@ html[lang="ja"] .ai-native-panel {
   text-decoration: none;
 }
 
+/* Featured Work — EN homepage (index.html) 2x2 tile grid, per Figma
+   node 758:12309. ja/index.html still uses the older .project article
+   layout below (image-grid, project-info, etc.) — left untouched since
+   it's still live there. */
+.featured-work-label {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: var(--font-size-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  line-height: var(--line-height-eyebrow);
+  text-transform: uppercase;
+  font-weight: var(--weight-black);
+  background: var(--bg-brand);
+  color: var(--accent-ink);
+  padding: 5px 20px;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-xxl);
+}
+
+.featured-work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xxl);
+  max-width: 1920px;
+}
+
+.featured-work-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  text-decoration: none;
+  color: inherit;
+}
+
+.featured-work-image {
+  width: 100%;
+  aspect-ratio: 621 / 450;
+  overflow: hidden;
+  background: var(--bg-elevated);
+}
+
+.featured-work-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1);
+  transition: transform 0.4s ease-in;
+}
+
+.featured-work-card:hover .featured-work-image img {
+  transform: scale(1.04);
+  transition: transform 0.4s ease-out;
+}
+
+.featured-work-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.featured-work-title {
+  font-weight: var(--weight-black);
+  font-size: var(--font-size-heading-2);
+  line-height: var(--line-height-heading-large);
+  color: var(--text-primary);
+}
+
+.featured-work-subtitle {
+  font-size: var(--font-size-body-lg);
+  line-height: var(--line-height-heading);
+  color: var(--text-primary);
+  font-weight: var(--weight-regular);
+}
+
+.featured-work-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  padding-top: var(--space-sm);
+}
+
+.featured-work-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px var(--space-12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-pill);
+}
+
+.featured-work-tag-label {
+  font-size: var(--font-size-label-medium);
+  font-weight: var(--weight-medium);
+  line-height: var(--line-height-label);
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+@media (max-width: 1024px) {
+  .featured-work-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .featured-work-label {
+    margin-bottom: var(--space-xxl);
+  }
+
+  .featured-work-title {
+    font-size: var(--font-size-heading-3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featured-work-image img {
+    transition: none;
+  }
+}
+
 /* Reel */
 .reel-section {
-  padding: 91px 60px 60px 60px;
+  padding: 91px var(--space-xxl) 60px;
   max-width: 1920px;
   position: relative;
 }
@@ -1797,7 +1918,7 @@ html[lang="ja"] .ai-native-panel {
 
 /* Stats Section */
 .stats-section {
-  padding: 0 15px 50px;
+  padding: var(--space-xl) var(--space-xxl) 50px;
   max-width: 1920px;
   border-top: 1px solid var(--border-rule);
 }
@@ -1959,7 +2080,7 @@ html[lang="ja"] .ai-native-panel {
 
 /* Design Intelligence Banner (Scan CTA) */
 .scan-banner-section {
-  padding: var(--space-xl);
+  padding: var(--space-xl) var(--space-xxl);
   max-width: 1920px;
   border-top: 1px solid var(--border-rule);
 }
@@ -2008,7 +2129,7 @@ html[lang="ja"] .ai-native-panel {
 
 /* FAQs Section */
 .faq-section {
-  padding: var(--space-lg) var(--space-md) var(--space-huge);
+  padding: var(--space-xl) var(--space-xxl) var(--space-huge);
   max-width: 1920px;
   border-top: 1px solid var(--border-rule);
 }
@@ -2632,7 +2753,7 @@ html[lang="ja"] .ai-native-panel {
 
 /* Footer */
 .footer {
-  padding: 30px 15px 15px;
+  padding: 30px var(--space-xxl) 15px;
   display: flex;
   flex-direction: column;
   gap: 47px;

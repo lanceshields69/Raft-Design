@@ -234,6 +234,38 @@
   max-width: 60ch;
 }
 
+/* Award callout — same banded top/bottom-rule treatment as
+   .project-testimonial, used on pages with an award to call out instead
+   of a client quote. */
+.project-award {
+  margin-bottom: 24px;
+  padding: 24px 0;
+  border-top: 1px solid var(--border-rule);
+  border-bottom: 1px solid var(--border-rule);
+}
+
+.project-award-text {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  margin-bottom: 20px;
+  max-width: 60ch;
+}
+
+/* Webby_logo.svg ships with solid black paths; the site defaults to dark
+   theme, so invert it to white there and drop the filter in light theme,
+   where the original black already reads correctly. */
+.project-award-logo {
+  width: 150px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+[data-theme="light"] .project-award-logo {
+  filter: none;
+}
+
 /* Image stack — full container width (no max-width of its own to
    override — .project-image-grid img was already width:100%), large
    crop per Figma instead of each image's native height. Bug fix:
@@ -266,6 +298,10 @@
 
 @media (max-width: 768px) {
   .project-testimonial-quote {
+    font-size: 20px;
+  }
+
+  .project-award-text {
     font-size: 20px;
   }
 }

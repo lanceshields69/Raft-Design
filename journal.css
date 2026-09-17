@@ -504,7 +504,7 @@
    as a literal rather than guessed. */
 
 .journal-carousel-section {
-  padding: 0 15px 50px; /* close to --space-md/--space-xxl but not exact; no Figma source this session, left as literal */
+  padding: 0 var(--space-xxl) 50px;
   max-width: 1920px;
   border-top: 1px solid var(--border-rule);
 }
@@ -513,7 +513,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-lg) 1px var(--space-xxl);
+  padding: var(--space-xl) 1px var(--space-xxl);
 }
 
 .journal-carousel-badge {

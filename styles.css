@@ -1138,6 +1138,11 @@ html[lang="ja"] .ai-native-panel {
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
+  max-width: 480px;
+}
+
+.approach-text .scan-cta {
+  align-self: flex-start;
 }
 
 .approach-heading {
@@ -1152,6 +1157,28 @@ html[lang="ja"] .ai-native-panel {
   line-height: 1.4;
   color: var(--text-primary);
   max-width: 615px;
+}
+
+/* Stats — moved here from the removed homepage Studio section (per
+   Figma node 764:2830); reuses .stat-number/.stat-description
+   (defined further down in the old Studio-section block) since those
+   already match this spec exactly. ja/index.html still has the old
+   Studio section, so those classes stay defined for it. */
+.approach-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  flex: 1;
+  min-width: 0;
+  max-width: 480px;
+}
+
+.approach-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--border-rule);
 }
 
 .approach-badge {

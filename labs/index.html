@@ -72,39 +72,35 @@
 
     body { margin: 0; }
 
-    /* Projects — each a media block + text block, stacked with a rule
-       between, alternating side on wide viewports (odd ones media-left,
-       even ones media-right) purely for visual rhythm down a list of six. */
+    /* Projects — text column fixed at 370px (left), a wide landscape
+       screenshot filling the rest of the row (right); same order for
+       every project, no alternating. Matches Figma node 768:3124
+       ("ProjectCard"). */
     .lab-project {
       display: flex;
-      gap: 40px;
+      gap: var(--space-xl);
       align-items: flex-start;
-      padding: 48px 0;
+      padding: var(--space-xxl) 0;
       border-top: 1px solid var(--border-rule);
     }
-    .lab-project:nth-child(even) {
-      flex-direction: row-reverse;
+    .lab-project-body {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+      flex-shrink: 0;
+      width: 370px;
     }
     .lab-project-media {
-      flex-shrink: 0;
-      width: 320px;
-      aspect-ratio: 4 / 5;
+      flex: 1 0 0;
+      min-width: 0;
+      aspect-ratio: 1920 / 1061;
       overflow: hidden;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-rule);
     }
     .lab-project-media img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-    }
-    .lab-project-body {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      flex: 1;
-      min-width: 0;
     }
     .lab-project-number {
       font-family: 'Fraunces', serif;
@@ -127,7 +123,6 @@
       line-height: 1.5;
       color: var(--text-primary);
       margin: 0;
-      max-width: 640px;
     }
     .lab-project-status {
       font-size: var(--font-size-label-medium);
@@ -155,15 +150,69 @@
     [data-theme="light"] .lab-tag {
       border-color: rgba(0, 0, 0, 0.2);
     }
+    .lab-project-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      color: var(--text-primary);
+      font-size: var(--font-size-body-lg);
+      font-weight: var(--weight-regular);
+      transition: opacity 0.2s;
+    }
+    .lab-project-cta:hover {
+      opacity: 0.7;
+    }
+    .lab-project-cta-arrow {
+      color: var(--text-accent);
+      font-weight: var(--weight-bold);
+    }
+    .lab-project:first-child {
+      border-top: none;
+    }
 
-    @media (max-width: 800px) {
-      .lab-project,
-      .lab-project:nth-child(even) {
+    /* Section header — replaces the old pill .section-label. Figma node
+       768:3078: eyebrow label + count on the left, a rule filling the
+       middle, a date range on the right. */
+    .lab-section-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+      padding: var(--space-xl) 0;
+      border-bottom: 1px solid var(--border-rule);
+    }
+    .lab-section-header-label,
+    .lab-section-header-range {
+      font-family: 'Inter', sans-serif;
+      font-weight: var(--weight-black);
+      font-size: 13px;
+      line-height: 0.86;
+      letter-spacing: var(--tracking-section-title);
+      text-transform: uppercase;
+      white-space: nowrap;
+      margin: 0;
+    }
+    .lab-section-header-label {
+      color: var(--text-accent);
+    }
+    .lab-section-header-range {
+      color: var(--text-muted);
+    }
+    .lab-section-header-rule {
+      flex: 1 0 0;
+      height: 1px;
+      background: var(--border-rule);
+    }
+
+    @media (max-width: 900px) {
+      .lab-project {
         flex-direction: column;
+      }
+      .lab-project-body {
+        width: 100%;
       }
       .lab-project-media {
         width: 100%;
-        max-width: 320px;
+        aspect-ratio: 3 / 2;
       }
     }
   </style>
@@ -266,34 +315,17 @@
 </div>
 
 <!-- PROJECTS -->
-<section style="padding:0 15px 96px;border-top:1px solid var(--border-rule);max-width:1920px">
-  <div style="max-width:830px;margin:0 auto"><span class="section-label fade-in" style="margin-bottom:0;margin-top:64px">Projects</span></div>
-  <div style="max-width:830px;margin:0 auto">
+<section style="padding:0 48px 96px;max-width:1920px">
+  <div class="lab-section-header fade-in">
+    <p class="lab-section-header-label">Projects — 05</p>
+    <div class="lab-section-header-rule"></div>
+    <p class="lab-section-header-range">2024 – 2026</p>
+  </div>
+  <div>
 
     <div class="lab-project fade-in">
-      <div class="lab-project-media">
-        <img src="../images/lab-raft-design.jpg" alt="Four phone screens showing the Raft Design website's bilingual homepage, Japanese homepage, services page, and the Ishmael AI chat assistant." loading="lazy">
-      </div>
       <div class="lab-project-body">
         <p class="lab-project-number">01</p>
-        <h3 class="lab-project-title">Raft Design</h3>
-        <p class="lab-project-desc">Raft Design is our AI-native brand and product studio, built bilingual in English and Japanese from day one. The site runs on Vercel with a full EN/JP architecture and GEO infrastructure, plus Ishmael, an AI chatbot built on the Claude API that opens with "Call me Ishmael" and routes visitors toward the right service based on what they're actually trying to solve. It's proof of craft, not just lead gen. We also built a diagnostic tool in Lovable: paste a URL and it reads the site, names the contradiction the brand is holding, and shows where brand, product, AI, and global work would move it.</p>
-        <div class="lab-tags">
-          <span class="lab-tag">Claude Code</span>
-          <span class="lab-tag">Anthropic API</span>
-          <span class="lab-tag">Lovable</span>
-          <span class="lab-tag">Vercel</span>
-        </div>
-        <a href="https://raftdesign.studio/" class="text-link">raftdesign.studio <span class="arrow">→</span></a>
-      </div>
-    </div>
-
-    <div class="lab-project fade-in">
-      <div class="lab-project-media">
-        <img src="../images/lab-storyroom.jpg" alt="Mobile app concept screen for Storyroom, a synchronous book club app, showing a shared reading passage and AI-surfaced context." loading="lazy">
-      </div>
-      <div class="lab-project-body">
-        <p class="lab-project-number">02</p>
         <h3 class="lab-project-title">Storyroom</h3>
         <p class="lab-project-desc">Reading alone is easy to abandon. Reading alongside other people — even strangers, even silently — makes you actually finish. Storyroom is an exploration of what a modern book club could feel like if it lived in your phone. Same book, same chapter, same day. A Salon where readers share passages clipped directly from the audio and an AI called StoryBot surfaces the context no one else could. The concept started with a real question: why does discovery through other readers feel so much more alive than any algorithm? Concept designed and vibe coded, an idea that doesn't exist anywhere else yet.</p>
         <div class="lab-tags">
@@ -301,32 +333,32 @@
           <span class="lab-tag">Claude Code</span>
           <span class="lab-tag">React Prototype</span>
         </div>
-        <a href="https://lanceshields69.github.io/storyroom/" class="text-link" target="_blank" rel="noopener noreferrer">View the Concept <span class="arrow">→</span></a>
+        <a href="https://lanceshields69.github.io/storyroom/" class="lab-project-cta" target="_blank" rel="noopener noreferrer"><span class="lab-project-cta-arrow">→</span> View the Concept</a>
+      </div>
+      <div class="lab-project-media">
+        <img src="../images/Labs-storyroom.jpg" alt="Mobile app concept screens for Storyroom, a synchronous book club app, showing a shared reading passage and AI-surfaced context." loading="lazy">
       </div>
     </div>
 
     <div class="lab-project fade-in">
-      <div class="lab-project-media">
-        <img src="../images/lab-prompt-annotations.jpg" alt="Figma file showing the Prompt Annotations plugin's annotation frame next to a design, capturing a vibe coding chat transcript and AI summary." loading="lazy">
-      </div>
       <div class="lab-project-body">
-        <p class="lab-project-number">03</p>
+        <p class="lab-project-number">02</p>
         <h3 class="lab-project-title">Prompt Annotations</h3>
         <p class="lab-project-desc">Prompt Annotations is a Figma plugin that captures your vibe coding chat transcript and places a structured annotation frame next to your design in the file. It keeps the prompts, AI summary, and full back and forth with your design so your whole team has the context behind the work.</p>
         <div class="lab-tags">
           <span class="lab-tag">Claude Code</span>
           <span class="lab-tag">Figma</span>
         </div>
-        <a href="https://www.lanceshields.design/prompt-annotations" class="text-link" target="_blank" rel="noopener noreferrer">Plugin Page <span class="arrow">→</span></a>
+        <a href="https://www.lanceshields.design/prompt-annotations" class="lab-project-cta" target="_blank" rel="noopener noreferrer"><span class="lab-project-cta-arrow">→</span> Plugin Page</a>
+      </div>
+      <div class="lab-project-media">
+        <img src="../images/Labs-prompt-annotations.jpg" alt="Figma file showing the Prompt Annotations plugin's annotation frame next to a design, capturing a vibe coding chat transcript and AI summary." loading="lazy">
       </div>
     </div>
 
     <div class="lab-project fade-in">
-      <div class="lab-project-media">
-        <img src="../images/lab-ship-yourself-cards.png" alt="Ship Yourself Cards app showing a deck of flippable career cards, including 'Plant Seeds Before You Need Them' and 'Ship the Story, Not Just the Screens.'" loading="lazy">
-      </div>
       <div class="lab-project-body">
-        <p class="lab-project-number">04</p>
+        <p class="lab-project-number">03</p>
         <h3 class="lab-project-title">Ship Yourself Cards</h3>
         <p class="lab-project-desc">Ship Yourself Cards is a helpful card deck app researched, designed, and coded using AI tools to help designers of all levels build momentum, tell their story, and navigate career transitions with confidence.</p>
         <div class="lab-tags">
@@ -334,16 +366,16 @@
           <span class="lab-tag">Figma</span>
           <span class="lab-tag">ChatGPT</span>
         </div>
-        <a href="https://www.lanceshields.design/ship-yourself-cards" class="text-link" target="_blank" rel="noopener noreferrer">Learn more <span class="arrow">→</span></a>
+        <a href="https://www.lanceshields.design/ship-yourself-cards" class="lab-project-cta" target="_blank" rel="noopener noreferrer"><span class="lab-project-cta-arrow">→</span> Learn more</a>
+      </div>
+      <div class="lab-project-media">
+        <img src="../images/Labs-ship-yourself.jpg" alt="Ship Yourself Cards app showing a deck of flippable career cards, including 'Plant Seeds Before You Need Them' and 'Ship the Story, Not Just the Screens.'" loading="lazy">
       </div>
     </div>
 
     <div class="lab-project fade-in">
-      <div class="lab-project-media">
-        <img src="../images/lab-dreaming-in-design.jpg" alt="Illustration for Dreaming in Design, an AI-powered portfolio reviewer trained on real hiring criteria." loading="lazy">
-      </div>
       <div class="lab-project-body">
-        <p class="lab-project-number">05</p>
+        <p class="lab-project-number">04</p>
         <h3 class="lab-project-title">Dreaming in Design</h3>
         <p class="lab-project-desc">Dreaming in Design is an AI-powered portfolio reviewer trained on real hiring criteria. The tool we're building will use AI because it's the only way to deliver personalized feedback at scale — specific to your role, level, and target companies.</p>
         <p class="lab-project-status">Currently in research phase</p>
@@ -351,16 +383,16 @@
           <span class="lab-tag">Claude Code</span>
           <span class="lab-tag">Cursor</span>
         </div>
-        <a href="https://www.dreamingindesign.com/" class="text-link" target="_blank" rel="noopener noreferrer">dreamingindesign.com <span class="arrow">→</span></a>
+        <a href="https://www.dreamingindesign.com/" class="lab-project-cta" target="_blank" rel="noopener noreferrer"><span class="lab-project-cta-arrow">→</span> dreamingindesign.com</a>
+      </div>
+      <div class="lab-project-media">
+        <img src="../images/Labs-dreaming-in-design.jpg" alt="Illustration for Dreaming in Design, an AI-powered portfolio reviewer trained on real hiring criteria." loading="lazy">
       </div>
     </div>
 
     <div class="lab-project fade-in">
-      <div class="lab-project-media">
-        <img src="../images/lab-we-are-the-ones.jpg" alt="A golden door opening onto an open sky, the opening scene of We Are the Ones, an interactive art experience." loading="lazy">
-      </div>
       <div class="lab-project-body">
-        <p class="lab-project-number">06</p>
+        <p class="lab-project-number">05</p>
         <h3 class="lab-project-title">We Are the Ones</h3>
         <p class="lab-project-desc">An interactive art experience built entirely through vibe coding — no design tools, no code written by hand. We wanted to understand what becomes possible when a designer works purely in language, and to feel what it's like to describe something into existence rather than draw it. A golden door opens onto an open sky. A Tolkien-inspired story scrolls with read-along narrator, the sky brightening from pre-dawn to full daylight as it plays. The entire experience lives in a single HTML file, 84 kilobytes, two minutes long. Built in a day.</p>
         <div class="lab-tags">
@@ -368,7 +400,10 @@
           <span class="lab-tag">Claude Sonnet 4.6</span>
           <span class="lab-tag">ElevenLabs</span>
         </div>
-        <a href="https://www.wearetheones.art/" class="text-link" target="_blank" rel="noopener noreferrer">wearetheones.art <span class="arrow">→</span></a>
+        <a href="https://www.wearetheones.art/" class="lab-project-cta" target="_blank" rel="noopener noreferrer"><span class="lab-project-cta-arrow">→</span> wearetheones.art</a>
+      </div>
+      <div class="lab-project-media">
+        <img src="../images/Labs-the-one.jpg" alt="A golden door opening onto an open sky, the opening scene of We Are the Ones, an interactive art experience." loading="lazy">
       </div>
     </div>
 

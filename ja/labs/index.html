@@ -74,39 +74,35 @@
 
     body { margin: 0; }
 
-    /* Projects — each a media block + text block, stacked with a rule
-       between, alternating side on wide viewports (odd ones media-left,
-       even ones media-right) purely for visual rhythm down a list of six. */
+    /* Projects — text column fixed at 370px (left), a wide landscape
+       screenshot filling the rest of the row (right); same order for
+       every project, no alternating. Matches Figma node 768:3124
+       ("ProjectCard"). */
     .lab-project {
       display: flex;
-      gap: 40px;
+      gap: var(--space-xl);
       align-items: flex-start;
-      padding: 48px 0;
+      padding: var(--space-xxl) 0;
       border-top: 1px solid var(--border-rule);
     }
-    .lab-project:nth-child(even) {
-      flex-direction: row-reverse;
+    .lab-project-body {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+      flex-shrink: 0;
+      width: 370px;
     }
     .lab-project-media {
-      flex-shrink: 0;
-      width: 320px;
-      aspect-ratio: 4 / 5;
+      flex: 1 0 0;
+      min-width: 0;
+      aspect-ratio: 1920 / 1061;
       overflow: hidden;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-rule);
     }
     .lab-project-media img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-    }
-    .lab-project-body {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      flex: 1;
-      min-width: 0;
     }
     .lab-project-number {
       font-family: 'Fraunces', serif;
@@ -130,7 +126,6 @@
       overflow-wrap: anywhere;
       color: var(--text-primary);
       margin: 0;
-      max-width: 640px;
     }
     .lab-project-status {
       font-size: var(--font-size-label-medium);
@@ -158,15 +153,69 @@
     [data-theme="light"] .lab-tag {
       border-color: rgba(0, 0, 0, 0.2);
     }
+    .lab-project-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      color: var(--text-primary);
+      font-size: var(--font-size-body-lg);
+      font-weight: var(--weight-regular);
+      transition: opacity 0.2s;
+    }
+    .lab-project-cta:hover {
+      opacity: 0.7;
+    }
+    .lab-project-cta-arrow {
+      color: var(--text-accent);
+      font-weight: var(--weight-bold);
+    }
+    .lab-project:first-child {
+      border-top: none;
+    }
 
-    @media (max-width: 800px) {
-      .lab-project,
-      .lab-project:nth-child(even) {
+    /* Section header — replaces the old pill .section-label. Figma node
+       768:3078: eyebrow label + count on the left, a rule filling the
+       middle, a date range on the right. */
+    .lab-section-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+      padding: var(--space-xl) 0;
+      border-bottom: 1px solid var(--border-rule);
+    }
+    .lab-section-header-label,
+    .lab-section-header-range {
+      font-family: 'Inter', sans-serif;
+      font-weight: var(--weight-black);
+      font-size: 13px;
+      line-height: 0.86;
+      letter-spacing: var(--tracking-section-title);
+      text-transform: uppercase;
+      white-space: nowrap;
+      margin: 0;
+    }
+    .lab-section-header-label {
+      color: var(--text-accent);
+    }
+    .lab-section-header-range {
+      color: var(--text-muted);
+    }
+    .lab-section-header-rule {
+      flex: 1 0 0;
+      height: 1px;
+      background: var(--border-rule);
+    }
+
+    @media (max-width: 900px) {
+      .lab-project {
         flex-direction: column;
+      }
+      .lab-project-body {
+        width: 100%;
       }
       .lab-project-media {
         width: 100%;
-        max-width: 320px;
+        aspect-ratio: 3 / 2;
       }
     }
   </style>
@@ -269,35 +318,17 @@
 </div>
 
 <!-- PROJECTS -->
-<section style="padding:0 15px 96px;border-top:1px solid var(--border-rule);max-width:1920px">
-  <div style="max-width:830px;margin:0 auto"><span class="section-label fade-in" style="margin-bottom:0;margin-top:64px">プロジェクト</span></div>
-  <div style="max-width:830px;margin:0 auto">
+<section style="padding:0 48px 96px;max-width:1920px">
+  <div class="lab-section-header fade-in">
+    <p class="lab-section-header-label">プロジェクト — 05</p>
+    <div class="lab-section-header-rule"></div>
+    <p class="lab-section-header-range">2024 – 2026</p>
+  </div>
+  <div>
 
     <div class="lab-project fade-in">
-      <div class="lab-project-media">
-        <img src="../../images/lab-raft-design.jpg" alt="Raft Designの英語版・日本語版トップページ、サービスページ、AIチャットアシスタント「Ishmael」を表示した4台のスマートフォン。" loading="lazy">
-      </div>
       <div class="lab-project-body">
         <p class="lab-project-number">01</p>
-        <h3 class="lab-project-title">Raft Design</h3>
-        <p class="lab-project-desc">Raft Designは、ブランドとプロダクトを手がけるAIネイティブのスタジオです。立ち上げ当初から英語と日本語の両方に対応する設計でつくりました。サイトはVercel上で稼働し、英語・日本語のサイト構成とGEOの基盤を備えています。Claude APIを使ったAIチャットボット「Ishmael」は、“Call me Ishmael”という一言から会話を始め、訪問者が実際に解決したい課題に合わせてサービスへ案内します。</p>
-        <p class="lab-project-desc">このサイトは、問い合わせを集めるためだけのものではありません。Raftのものづくりを示す場でもあります。Lovableでは診断ツールも制作しました。URLを貼り付けるとサイトを読み取り、ブランドが抱える矛盾を言語化し、ブランド、プロダクト、AI、グローバル展開の視点から、次に進む方向を示します。</p>
-        <div class="lab-tags">
-          <span class="lab-tag">Claude Code</span>
-          <span class="lab-tag">Anthropic API</span>
-          <span class="lab-tag">Lovable</span>
-          <span class="lab-tag">Vercel</span>
-        </div>
-        <a href="https://raftdesign.studio/" class="text-link">raftdesign.studio <span class="arrow">→</span></a>
-      </div>
-    </div>
-
-    <div class="lab-project fade-in">
-      <div class="lab-project-media">
-        <img src="../../images/lab-storyroom.jpg" alt="同じ本を同じペースで読む読書アプリ「Storyroom」のコンセプト画面。共有された文章とAIが示す背景情報。" loading="lazy">
-      </div>
-      <div class="lab-project-body">
-        <p class="lab-project-number">02</p>
         <h3 class="lab-project-title">Storyroom</h3>
         <p class="lab-project-desc">一人で読む本は、途中でやめやすい。けれど、知らない誰かと、言葉を交わさずとも同じ本を読んでいると、最後まで読みたくなる。Storyroomは、読書会がスマートフォンの中にあったら、どんな体験になるかを探るプロジェクトです。</p>
         <p class="lab-project-desc">同じ本の、同じ章を、同じ日に読む。読者がオーディオブックから直接切り出した一節を共有できる「Salon」があり、AIの「StoryBot」が、その場の誰も知らなかった背景を教えてくれます。</p>
@@ -307,32 +338,32 @@
           <span class="lab-tag">Claude Code</span>
           <span class="lab-tag">React Prototype</span>
         </div>
-        <a href="https://lanceshields69.github.io/storyroom/" class="text-link" target="_blank" rel="noopener noreferrer">コンセプトを見る <span class="arrow">→</span></a>
+        <a href="https://lanceshields69.github.io/storyroom/" class="lab-project-cta" target="_blank" rel="noopener noreferrer"><span class="lab-project-cta-arrow">→</span> コンセプトを見る</a>
+      </div>
+      <div class="lab-project-media">
+        <img src="../../images/Labs-storyroom.jpg" alt="同じ本を同じペースで読む読書アプリ「Storyroom」のコンセプト画面。共有された文章とAIが示す背景情報。" loading="lazy">
       </div>
     </div>
 
     <div class="lab-project fade-in">
-      <div class="lab-project-media">
-        <img src="../../images/lab-prompt-annotations.jpg" alt="Figmaのデザインの横に、対話履歴とAIによる要約を記録したPrompt Annotationsの注釈フレーム。" loading="lazy">
-      </div>
       <div class="lab-project-body">
-        <p class="lab-project-number">03</p>
+        <p class="lab-project-number">02</p>
         <h3 class="lab-project-title">Prompt Annotations</h3>
         <p class="lab-project-desc">Prompt Annotationsは、バイブコーディングのチャット履歴を取り込み、Figmaファイル内のデザインの横に、整理された注釈フレームとして配置するプラグインです。プロンプト、AIによる要約、やり取りの全履歴をデザインと一緒に残すことで、チーム全員が制作の背景を理解できます。</p>
         <div class="lab-tags">
           <span class="lab-tag">Claude Code</span>
           <span class="lab-tag">Figma</span>
         </div>
-        <a href="https://www.lanceshields.design/prompt-annotations" class="text-link" target="_blank" rel="noopener noreferrer">プラグインのページを見る <span class="arrow">→</span></a>
+        <a href="https://www.lanceshields.design/prompt-annotations" class="lab-project-cta" target="_blank" rel="noopener noreferrer"><span class="lab-project-cta-arrow">→</span> プラグインのページを見る</a>
+      </div>
+      <div class="lab-project-media">
+        <img src="../../images/Labs-prompt-annotations.jpg" alt="Figmaのデザインの横に、対話履歴とAIによる要約を記録したPrompt Annotationsの注釈フレーム。" loading="lazy">
       </div>
     </div>
 
     <div class="lab-project fade-in">
-      <div class="lab-project-media">
-        <img src="../../images/lab-ship-yourself-cards.png" alt="キャリアに関する助言をめくって読めるShip Yourself Cardsのアプリ画面。" loading="lazy">
-      </div>
       <div class="lab-project-body">
-        <p class="lab-project-number">04</p>
+        <p class="lab-project-number">03</p>
         <h3 class="lab-project-title">Ship Yourself Cards</h3>
         <p class="lab-project-desc">Ship Yourself Cardsは、あらゆる経験段階のデザイナーが前に進み、自分の歩みを伝え、キャリアの転機を自信を持って乗り越えるためのカードアプリです。リサーチからデザイン、実装までAIツールを活用して制作しました。</p>
         <div class="lab-tags">
@@ -340,16 +371,16 @@
           <span class="lab-tag">Figma</span>
           <span class="lab-tag">ChatGPT</span>
         </div>
-        <a href="https://www.lanceshields.design/ship-yourself-cards" class="text-link" target="_blank" rel="noopener noreferrer">詳しく見る <span class="arrow">→</span></a>
+        <a href="https://www.lanceshields.design/ship-yourself-cards" class="lab-project-cta" target="_blank" rel="noopener noreferrer"><span class="lab-project-cta-arrow">→</span> 詳しく見る</a>
+      </div>
+      <div class="lab-project-media">
+        <img src="../../images/Labs-ship-yourself.jpg" alt="キャリアに関する助言をめくって読めるShip Yourself Cardsのアプリ画面。" loading="lazy">
       </div>
     </div>
 
     <div class="lab-project fade-in">
-      <div class="lab-project-media">
-        <img src="../../images/lab-dreaming-in-design.jpg" alt="採用現場の評価基準をもとにしたAIポートフォリオレビュー「Dreaming in Design」のイラスト。" loading="lazy">
-      </div>
       <div class="lab-project-body">
-        <p class="lab-project-number">05</p>
+        <p class="lab-project-number">04</p>
         <h3 class="lab-project-title">Dreaming in Design</h3>
         <p class="lab-project-desc">Dreaming in Designは、実際の採用基準をもとにしたAI搭載のポートフォリオレビューツールです。目指す職種、経験レベル、応募先の企業に合わせた具体的なフィードバックを、多くの人に届ける。そのためにAIを活用したツールを開発しています。</p>
         <p class="lab-project-status">現在リサーチ段階</p>
@@ -357,16 +388,16 @@
           <span class="lab-tag">Claude Code</span>
           <span class="lab-tag">Cursor</span>
         </div>
-        <a href="https://dreamingindesign.com/" class="text-link" target="_blank" rel="noopener noreferrer">dreamingindesign.com <span class="arrow">→</span></a>
+        <a href="https://dreamingindesign.com/" class="lab-project-cta" target="_blank" rel="noopener noreferrer"><span class="lab-project-cta-arrow">→</span> dreamingindesign.com</a>
+      </div>
+      <div class="lab-project-media">
+        <img src="../../images/Labs-dreaming-in-design.jpg" alt="採用現場の評価基準をもとにしたAIポートフォリオレビュー「Dreaming in Design」のイラスト。" loading="lazy">
       </div>
     </div>
 
     <div class="lab-project fade-in">
-      <div class="lab-project-media">
-        <img src="../../images/lab-we-are-the-ones.jpg" alt="インタラクティブなアート作品「We Are the Ones」の冒頭。黄金の扉の向こうに空が広がる。" loading="lazy">
-      </div>
       <div class="lab-project-body">
-        <p class="lab-project-number">06</p>
+        <p class="lab-project-number">05</p>
         <h3 class="lab-project-title">We Are the Ones</h3>
         <p class="lab-project-desc">デザインツールを使わず、コードも手書きせず、すべてをバイブコーディングでつくったインタラクティブなアート作品です。デザイナーが言葉だけで制作すると何が可能になるのか。描く代わりに、言葉で伝えたものが形になる感覚を確かめたくて制作しました。</p>
         <p class="lab-project-desc">黄金の扉を開くと、広い空が現れます。トールキンに着想を得た物語が、朗読に合わせてスクロールし、夜明け前の空は再生が進むにつれて明るくなっていきます。体験全体を一つのHTMLファイルに収めました。容量は84キロバイト、再生時間は2分。制作期間は1日です。</p>
@@ -375,7 +406,10 @@
           <span class="lab-tag">Claude Sonnet 4.6</span>
           <span class="lab-tag">ElevenLabs</span>
         </div>
-        <a href="https://www.wearetheones.art/" class="text-link" target="_blank" rel="noopener noreferrer">wearetheones.art <span class="arrow">→</span></a>
+        <a href="https://www.wearetheones.art/" class="lab-project-cta" target="_blank" rel="noopener noreferrer"><span class="lab-project-cta-arrow">→</span> wearetheones.art</a>
+      </div>
+      <div class="lab-project-media">
+        <img src="../../images/Labs-the-one.jpg" alt="インタラクティブなアート作品「We Are the Ones」の冒頭。黄金の扉の向こうに空が広がる。" loading="lazy">
       </div>
     </div>
 

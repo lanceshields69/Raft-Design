@@ -2835,7 +2835,7 @@ html[lang="ja"] .ai-native-panel {
 .footer-mark-raft {
   font-weight: 200;
   font-size: 105px;
-  line-height: 120px;
+  line-height: 106px;
   letter-spacing: -0.05em;
   margin-bottom: -19px;
   color: var(--text-accent);
@@ -2853,6 +2853,8 @@ html[lang="ja"] .ai-native-panel {
   display: flex;
   justify-content: space-between;
   width: 616px;
+  padding-top: 10px; /* Figma node 782:4050 — aligns OFFICE/SOCIAL with
+    the visible top of "RAFT", not the top of its line box. */
   font-size: var(--font-size-body-lg);
   letter-spacing: -1px;
 }
@@ -3434,6 +3436,9 @@ html[lang="ja"] .ai-native-panel {
 
   .footer-text {
     width: 100%;
+    padding-top: 0; /* the ink-alignment nudge above only matters when
+      .footer-text sits beside .footer-mark-raft in a row; stacked, it'd
+      just be extra gap */
   }
 
   .footer-mark-raft {

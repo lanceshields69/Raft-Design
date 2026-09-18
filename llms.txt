@@ -11,7 +11,8 @@
 - [Home (English)](https://raftdesign.studio/): Studio thesis, practice areas, and origin story. Includes an "Engage" section (after Services) with two tiles linking to the Design Foundation Sprint and AI-Ready Design Systems pages below.
 - [Home (Japanese)](https://raftdesign.studio/ja/): 日本語版ホームページ。「Engage」セクション（Services の後）に、Design Foundation SprintとAI対応デザインシステムへのタイルを含む。
 - [Meet Raft](https://raftdesign.studio/about.html) / [日本語](https://raftdesign.studio/ja/about.html): Founder Lance Shields' background — design leadership at Adobe and Walmart, a decade leading a Tokyo design team, and why the studio is built to move rather than to look finished.
-- [Labs](https://raftdesign.studio/labs/) (English only): Lance Shields' hands-on experiments in AI product design, prototyping, and emerging tools — six shipped projects, two AI certifications, and how he actually builds.
+- [Labs](https://raftdesign.studio/labs/) / [日本語](https://raftdesign.studio/ja/labs/): Lance Shields' hands-on experiments in AI product design, prototyping, and emerging tools.
+- [Contact](https://raftdesign.studio/contact/) / [日本語](https://raftdesign.studio/ja/contact/): Get in touch to start a project.
 
 ## Work
 - [Work index (English)](https://raftdesign.studio/work/)
@@ -43,4 +44,6 @@
 - [AI Tools (Japanese)](https://raftdesign.studio/ja/tools/): 日本語版AIツールページ。
 
 ## Contact
+- [Contact (English)](https://raftdesign.studio/contact/): Contact form to start a project.
+- [Contact (Japanese)](https://raftdesign.studio/ja/contact/): お問い合わせページ。
 hello@raftdesign.studio

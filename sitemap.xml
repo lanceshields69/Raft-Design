@@ -283,6 +283,26 @@
   </url>
 
   <url>
+    <loc>https://raftdesign.studio/contact/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/contact/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/contact/" />
+  </url>
+
+  <url>
+    <loc>https://raftdesign.studio/ja/contact/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/contact/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/contact/" />
+  </url>
+
+  <url>
     <loc>https://raftdesign.studio/ja/journal/ai-native-designer-phase-one/</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>

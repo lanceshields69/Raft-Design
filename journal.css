@@ -509,6 +509,13 @@
   border-top: 1px solid var(--border-rule);
 }
 
+@media (max-width: 768px) {
+  .journal-carousel-section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
 .journal-carousel-header {
   display: flex;
   align-items: center;

@@ -3482,6 +3482,14 @@ html[lang="ja"] .ai-native-panel {
     margin-bottom: var(--space-xxxl);
   }
 
+  .work-section,
+  .approach-section,
+  .expertise-section,
+  .ai-systems-section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
   .image-grid img {
     flex: 0 0 72%;
     width: 72%;

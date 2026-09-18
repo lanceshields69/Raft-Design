@@ -3294,6 +3294,16 @@ html[lang="ja"] .ai-native-panel {
     gap: var(--space-xl);
   }
 
+  .approach-left {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .approach-text,
+  .approach-stats {
+    width: 100%;
+  }
+
   .expertise-content {
     flex-direction: column;
     gap: var(--space-xl);
@@ -3314,6 +3324,15 @@ html[lang="ja"] .ai-native-panel {
   }
 
   .ai-systems-text {
+    width: 100%;
+  }
+
+  .ai-systems-left {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .ai-systems-content--split .ai-systems-text {
     width: 100%;
   }
 

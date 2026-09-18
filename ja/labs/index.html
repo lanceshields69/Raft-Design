@@ -216,6 +216,10 @@
       background: var(--border-rule);
     }
 
+    .lab-projects-section {
+      padding: 0 48px 96px;
+    }
+
     @media (max-width: 900px) {
       .lab-project {
         flex-direction: column-reverse;
@@ -227,6 +231,9 @@
         flex: none;
         width: 100%;
         aspect-ratio: 3 / 2;
+      }
+      .lab-projects-section {
+        padding: 0 16px 96px;
       }
     }
 
@@ -333,7 +340,7 @@
 </div>
 
 <!-- PROJECTS -->
-<section style="padding:0 48px 96px;max-width:1920px">
+<section class="lab-projects-section" style="max-width:1920px">
   <div class="lab-section-header fade-in">
     <p class="lab-section-header-label">プロジェクト — 05</p>
     <div class="lab-section-header-rule"></div>

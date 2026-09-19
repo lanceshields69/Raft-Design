@@ -1487,6 +1487,14 @@
           });
           player.on('play', function () { setPlayPauseIcon(true); });
           player.on('pause', function () { setPlayPauseIcon(false); });
+          player.on('ended', function () {
+            // Rest on the last frame instead of Vimeo's default end
+            // behavior (which can flash back to the first frame).
+            player.getDuration().then(function (duration) {
+              player.setCurrentTime(Math.max(0, duration - 0.05));
+            });
+            setPlayPauseIcon(false);
+          });
         }
       }
 

@@ -1798,65 +1798,6 @@ html[lang="ja"] .ai-native-panel {
   }
 }
 
-/* Reel */
-.reel-section {
-  padding: 91px var(--space-xxl) 60px;
-  max-width: 1920px;
-  position: relative;
-}
-
-/* No longer overlapping the hero above it (see the 753:4884 redesign —
-   the taller headline made the old overlap amounts crowd/cover the
-   hero content) — .reel-section's own top padding (above) is now the
-   full gap between the hero and the video, set to 91px to match the
-   91px of space below the video (31px .reel-video margin-bottom + 60px
-   section padding-bottom). 60px left/right section padding gives the
-   video an even gap on both sides — replaces the old JS that stretched
-   it to align with the first Project tile's left edge, no longer used. */
-.reel-video {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  margin-bottom: 31px;
-  /* Fades in once the hero text/CTAs finish their own reveal (see the
-     revealHeadline() JS, which adds .revealed at the same moment as
-     .hero-links/.client-logos), rather than appearing immediately with
-     the rest of the page. */
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-
-.reel-video.revealed {
-  opacity: 1;
-}
-
-/* Mobile: the -250px desktop overlap (tuned for the tall desktop hero)
-   would swallow the whole mobile hero, which is much shorter — so drop
-   it back to normal flow. Side padding matches raft-chat's own mobile
-   gutter (--chat-gutter, raft-chat.css) so the video reads the same
-   width as the chat box below it, instead of the wider desktop-tuned
-   60px inset. */
-@media (max-width: 768px) {
-  .reel-section {
-    padding-top: 60px;
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
-  .reel-video {
-    margin-top: 31px;
-  }
-}
-
-.reel-video iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
 /* Project */
 .project {
   display: flex;
@@ -3640,5 +3581,234 @@ html[lang="ja"] .ai-native-panel {
   .nav-links {
     gap: 20px;
     justify-content: flex-start;
+  }
+}
+
+/* ==========================================================================
+   Showreel — floating launch panel (Figma node 793:5157) that reveals once
+   #approach scrolls into view, docks fixed bottom-right aligned with the
+   Ishmael chat input's own bottom inset (30px, matching
+   .raft-chat-input-inner's padding-bottom in raft-chat.css), and on click
+   morphs (FLIP: animate the literal box, not a transform, since
+   border-radius has to shrink too) into a fullscreen custom Vimeo player.
+   ========================================================================== */
+
+:root {
+  --showreel-ease: cubic-bezier(.65, 0, .35, 1);
+}
+
+.showreel-launcher {
+  position: fixed;
+  right: clamp(12px, 4vw, 24px);
+  bottom: 30px;
+  width: clamp(160px, 42vw, 300px);
+  border-radius: 24px;
+  border: 4px solid #fff;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 390; /* below --chat-z-scrim(400)/--chat-z-dock(410) so an open
+    chat panel renders over it, not under it */
+  opacity: 0;
+  transform: translateY(40px);
+  pointer-events: none;
+  transition: opacity 0.6s var(--showreel-ease), transform 0.6s var(--showreel-ease);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  font-family: var(--font-sans);
+}
+
+.showreel-launcher.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.showreel-launcher:focus-visible {
+  outline: 2px solid var(--border-button);
+  outline-offset: 3px;
+}
+
+.showreel-launcher-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 366 / 209;
+}
+
+.showreel-launcher-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.showreel-launcher-cta {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  background: rgba(216, 216, 216, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.13px;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.showreel-launcher:hover .showreel-launcher-cta {
+  background: rgba(216, 216, 216, 0.45);
+}
+
+@media (max-width: 600px) {
+  .showreel-launcher-cta {
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+}
+
+/* Fullscreen overlay + FLIP morph target */
+.showreel-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.showreel-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.showreel-overlay-morph {
+  position: fixed;
+  overflow: hidden;
+}
+
+.showreel-overlay-frame {
+  position: absolute;
+  inset: 0;
+}
+
+.showreel-overlay-frame iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+
+.showreel-close,
+.showreel-playpause,
+.showreel-mute {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  border-radius: 999px;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, background 0.2s ease;
+  z-index: 501;
+}
+
+.showreel-overlay.active .showreel-close,
+.showreel-overlay.active .showreel-playpause,
+.showreel-overlay.active .showreel-mute,
+.showreel-overlay.active .showreel-progress {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.showreel-close:hover,
+.showreel-playpause:hover,
+.showreel-mute:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.showreel-close {
+  top: 28px;
+  right: 28px;
+  width: 44px;
+  height: 44px;
+}
+
+.showreel-playpause {
+  left: 28px;
+  bottom: 40px;
+  width: 48px;
+  height: 48px;
+}
+
+.showreel-mute {
+  right: 28px;
+  bottom: 40px;
+  width: 48px;
+  height: 48px;
+}
+
+.showreel-progress {
+  position: fixed;
+  left: 92px;
+  right: 92px;
+  bottom: 62px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  cursor: pointer;
+  z-index: 501;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.showreel-progress-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0%;
+  background: var(--text-accent);
+  border-radius: 999px;
+}
+
+@media (max-width: 600px) {
+  .showreel-close {
+    top: 16px;
+    right: 16px;
+    width: 38px;
+    height: 38px;
+  }
+
+  .showreel-playpause,
+  .showreel-mute {
+    bottom: 24px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .showreel-playpause {
+    left: 16px;
+  }
+
+  .showreel-mute {
+    right: 16px;
+  }
+
+  .showreel-progress {
+    left: 66px;
+    right: 66px;
+    bottom: 44px;
   }
 }

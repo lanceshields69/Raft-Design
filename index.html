@@ -306,12 +306,40 @@
         </div>
     </section>
 
-    <!-- Reel -->
-    <section class="reel-section">
-      <div class="reel-video fade-in">
-        <iframe src="https://player.vimeo.com/video/1045216396?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;muted=1&amp;loop=1&amp;autoplay=1&amp;title=0&amp;byline=0&amp;portrait=0&amp;controls=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Lance Shields - Portfolio Reel"></iframe>
+    <section id="approach" class="approach-section">
+      <h2 class="section-label fade-in">Approach</h2>
+      <div class="approach-content">
+        <div class="approach-left">
+          <div class="approach-text fade-in">
+            <p class="approach-heading">Made for people. Built with AI. Moving fast at scale.</p>
+            <p class="approach-body">AI is changing how people find and use products. RAFT works with established companies rethinking their brand and products for an AI-first world, and startups turning new technology into experiences people want to use. We join your team early and stay involved through design and build. Strategy, brand, product, and AI shape each other from the start.</p>
+            <a href="/about.html" class="scan-cta"><span class="scan-cta-arrow">→</span> Learn about Raft</a>
+          </div>
+          <div class="approach-stats fade-in">
+            <div class="approach-stat">
+              <p class="stat-number">540M+</p>
+              <p class="stat-description">Users and visitors interacted with our design in Walmart app</p>
+            </div>
+            <div class="approach-stat">
+              <p class="stat-number">2X</p>
+              <p class="stat-description">Increase of MAU for Adobe Express from an extensible platform</p>
+            </div>
+          </div>
+        </div>
+        <div class="approach-badge fade-in" aria-hidden="true">
+          <div class="approach-badge-viewport">
+            <div class="approach-marquee">
+              <img class="approach-marquee-item approach-marquee-item--1" src="images/thesis-marquee-1.svg" alt="">
+              <img class="approach-marquee-item approach-marquee-item--2" src="images/thesis-marquee-2.svg" alt="">
+              <img class="approach-marquee-item approach-marquee-item--3" src="images/thesis-marquee-3.svg" alt="">
+            </div>
+            <img class="approach-girl2" src="images/thesis-girl2.svg" alt="">
+            <img class="approach-girl" src="images/thesis-girl.svg" alt="">
+            <img class="approach-oddball" src="images/thesis-oddball.svg" alt="">
+          </div>
+          <img class="approach-laptop" src="images/thesis-laptop.svg" alt="">
+        </div>
       </div>
-      <script src="https://player.vimeo.com/api/player.js"></script>
     </section>
 
     <!-- Projects Section -->
@@ -389,42 +417,6 @@
     </section>
 
     <!-- Approach Section -->
-    <section id="approach" class="approach-section">
-      <h2 class="section-label fade-in">Approach</h2>
-      <div class="approach-content">
-        <div class="approach-left">
-          <div class="approach-text fade-in">
-            <p class="approach-heading">Made for people. Built with AI. Moving fast at scale.</p>
-            <p class="approach-body">AI is changing how people find and use products. RAFT works with established companies rethinking their brand and products for an AI-first world, and startups turning new technology into experiences people want to use. We join your team early and stay involved through design and build. Strategy, brand, product, and AI shape each other from the start.</p>
-            <a href="/about.html" class="scan-cta"><span class="scan-cta-arrow">→</span> Learn about Raft</a>
-          </div>
-          <div class="approach-stats fade-in">
-            <div class="approach-stat">
-              <p class="stat-number">540M+</p>
-              <p class="stat-description">Users and visitors interacted with our design in Walmart app</p>
-            </div>
-            <div class="approach-stat">
-              <p class="stat-number">2X</p>
-              <p class="stat-description">Increase of MAU for Adobe Express from an extensible platform</p>
-            </div>
-          </div>
-        </div>
-        <div class="approach-badge fade-in" aria-hidden="true">
-          <div class="approach-badge-viewport">
-            <div class="approach-marquee">
-              <img class="approach-marquee-item approach-marquee-item--1" src="images/thesis-marquee-1.svg" alt="">
-              <img class="approach-marquee-item approach-marquee-item--2" src="images/thesis-marquee-2.svg" alt="">
-              <img class="approach-marquee-item approach-marquee-item--3" src="images/thesis-marquee-3.svg" alt="">
-            </div>
-            <img class="approach-girl2" src="images/thesis-girl2.svg" alt="">
-            <img class="approach-girl" src="images/thesis-girl.svg" alt="">
-            <img class="approach-oddball" src="images/thesis-oddball.svg" alt="">
-          </div>
-          <img class="approach-laptop" src="images/thesis-laptop.svg" alt="">
-        </div>
-      </div>
-    </section>
-
     <!-- Practice Section -->
     <section id="services" class="expertise-section">
       <h2 class="section-label fade-in">Services</h2>
@@ -911,11 +903,6 @@
       if (clientLogos) {
         setTimeout(() => clientLogos.classList.add('revealed'), headlineDoneMs + tagsDurationMs);
       }
-
-      const reelVideo = document.querySelector('.reel-video');
-      if (reelVideo) {
-        setTimeout(() => reelVideo.classList.add('revealed'), headlineDoneMs + tagsDurationMs);
-      }
     }
 
     // Logo wordmark animation — wipe reveal, then a scattered color-flip flicker
@@ -1339,6 +1326,222 @@
         if (btn) btn.click();
       }
     });
+  </script>
+
+  <!-- Showreel — floating launch panel (Figma node 793:5157), revealed once
+       #approach scrolls into view. Click morphs it into a fullscreen custom
+       Vimeo player with sound on (the click itself is the user gesture
+       browsers require for unmuted autoplay). -->
+  <div class="showreel-launcher" id="showreel-launcher" role="button" tabindex="0" aria-label="Play showreel">
+    <div class="showreel-launcher-media">
+      <img src="images/showreel-launcher.jpg" alt="" loading="lazy">
+    </div>
+    <span class="showreel-launcher-cta">
+      Play showreel
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M6.37 2.54H11.46V7.63" stroke="white" stroke-width="1.5"/>
+        <path d="M7.56 10.84L2.48 10.71L2.61 5.63" stroke="white" stroke-width="1.5"/>
+      </svg>
+    </span>
+  </div>
+
+  <div class="showreel-overlay" id="showreel-overlay" aria-hidden="true">
+    <div class="showreel-overlay-morph" id="showreel-morph">
+      <div class="showreel-overlay-frame">
+        <iframe id="showreel-iframe" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Raft Design — Showreel"></iframe>
+      </div>
+    </div>
+    <button type="button" class="showreel-close" id="showreel-close" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 16.5332 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.268262 0.259611C0.440253 0.0933737 0.673395 0 0.916476 0C1.15956 0 1.3927 0.0933737 1.56469 0.259611L16.2412 14.4628C16.3313 14.5441 16.4036 14.6421 16.4538 14.751C16.5039 14.8599 16.5309 14.9774 16.533 15.0966C16.5352 15.2158 16.5125 15.3342 16.4664 15.4448C16.4203 15.5553 16.3516 15.6557 16.2645 15.74C16.1774 15.8243 16.0736 15.8907 15.9594 15.9354C15.8452 15.98 15.7229 16.002 15.5997 15.9999C15.4765 15.9978 15.3551 15.9717 15.2426 15.9232C15.13 15.8746 15.0288 15.8047 14.9448 15.7175L0.268262 1.51423C0.0964852 1.34779 0 1.12216 0 0.886921C0 0.651679 0.0964852 0.426056 0.268262 0.259611Z" fill="currentColor"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M16.2405 0.259611C16.4123 0.426056 16.5088 0.651679 16.5088 0.886921C16.5088 1.12216 16.4123 1.34779 16.2405 1.51423L1.564 15.7175C1.39011 15.8743 1.16012 15.9596 0.922484 15.9556C0.684845 15.9515 0.458111 15.8584 0.290049 15.6957C0.121987 15.5331 0.0257188 15.3136 0.021526 15.0837C0.0173331 14.8537 0.105543 14.6311 0.267572 14.4628L14.9441 0.259611C15.1161 0.0933737 15.3492 0 15.5923 0C15.8354 0 16.0685 0.0933737 16.2405 0.259611Z" fill="currentColor"/>
+      </svg>
+    </button>
+    <button type="button" class="showreel-playpause" id="showreel-playpause" aria-label="Pause">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="3" y="2" width="4" height="12" rx="1" fill="currentColor"/><rect x="9" y="2" width="4" height="12" rx="1" fill="currentColor"/></svg>
+    </button>
+    <div class="showreel-progress" id="showreel-progress">
+      <div class="showreel-progress-bar" id="showreel-progress-bar"></div>
+    </div>
+    <button type="button" class="showreel-mute" id="showreel-mute" aria-label="Mute">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 7.5H6L10 4V16L6 12.5H3V7.5Z"/><path d="M13 6.5C14 7.5 14.5 8.7 14.5 10C14.5 11.3 14 12.5 13 13.5"/><path d="M15.3 4.2C17 5.8 18 7.8 18 10C18 12.2 17 14.2 15.3 15.8"/></svg>
+    </button>
+  </div>
+  <script src="https://player.vimeo.com/api/player.js"></script>
+  <script>
+    (function () {
+      var launcher = document.getElementById('showreel-launcher');
+      if (!launcher) return;
+
+      // Position — stacks fixed just above the chat dock's live height, so
+      // it always reads as "sitting right by the chat box" without ever
+      // risking overlap with the input field. (An earlier version tried to
+      // sit beside the input when the centered, max-width chat box left
+      // room to its right — but that room shrinks unpredictably across
+      // common laptop widths, 1024–1400px, where it isn't reliably safe.)
+      var dock = document.querySelector('.raft-chat-dock');
+      function positionLauncher() {
+        var dockHeight = dock ? dock.getBoundingClientRect().height : 0;
+        launcher.style.bottom = (dockHeight + 14) + 'px';
+      }
+      positionLauncher();
+      window.addEventListener('resize', positionLauncher);
+      if (dock && window.ResizeObserver) {
+        new ResizeObserver(positionLauncher).observe(dock);
+      }
+
+      // Reveal — a two-way toggle keyed off the hero, not #approach: slides
+      // up once the hero has scrolled completely out of view (i.e. fully
+      // into Approach or beyond), and slides back down if the user scrolls
+      // back up into the hero.
+      var heroEl = document.querySelector('.intro-section');
+      if (heroEl) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            launcher.classList.toggle('visible', !entry.isIntersecting);
+          });
+        }, { threshold: 0 });
+        io.observe(heroEl);
+      }
+    })();
+
+    (function () {
+      var VIDEO_ID = '1228244782';
+      var PLAY_SVG = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 2.5L13.5 8L4 13.5V2.5Z" fill="currentColor"/></svg>';
+      var PAUSE_SVG = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="3" y="2" width="4" height="12" rx="1" fill="currentColor"/><rect x="9" y="2" width="4" height="12" rx="1" fill="currentColor"/></svg>';
+      var UNMUTED_SVG = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 7.5H6L10 4V16L6 12.5H3V7.5Z"/><path d="M13 6.5C14 7.5 14.5 8.7 14.5 10C14.5 11.3 14 12.5 13 13.5"/><path d="M15.3 4.2C17 5.8 18 7.8 18 10C18 12.2 17 14.2 15.3 15.8"/></svg>';
+      var MUTED_SVG = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 7.5H6L10 4V16L6 12.5H3V7.5Z"/><path d="M14 7.5L18 13.5"/><path d="M18 7.5L14 13.5"/></svg>';
+
+      var launcher = document.getElementById('showreel-launcher');
+      var overlay = document.getElementById('showreel-overlay');
+      var morph = document.getElementById('showreel-morph');
+      var iframe = document.getElementById('showreel-iframe');
+      var closeBtn = document.getElementById('showreel-close');
+      var playPauseBtn = document.getElementById('showreel-playpause');
+      var muteBtn = document.getElementById('showreel-mute');
+      var progress = document.getElementById('showreel-progress');
+      var progressBar = document.getElementById('showreel-progress-bar');
+      if (!launcher || !overlay) return;
+
+      var player = null;
+      var isOpen = false;
+
+      function onKeydown(e) {
+        if (e.key === 'Escape') closeShowreel();
+      }
+
+      function openShowreel() {
+        if (isOpen) return;
+        isOpen = true;
+
+        var rect = launcher.getBoundingClientRect();
+        morph.style.transition = 'none';
+        morph.style.top = rect.top + 'px';
+        morph.style.left = rect.left + 'px';
+        morph.style.width = rect.width + 'px';
+        morph.style.height = rect.height + 'px';
+        morph.style.borderRadius = getComputedStyle(launcher).borderRadius;
+
+        overlay.classList.add('active');
+        iframe.src = 'https://player.vimeo.com/video/' + VIDEO_ID + '?badge=0&autopause=0&player_id=showreel&app_id=58479&muted=0&autoplay=1&loop=0&title=0&byline=0&portrait=0&controls=0';
+
+        // Force layout so the "from" box above is committed before animating.
+        void morph.offsetHeight;
+
+        requestAnimationFrame(function () {
+          morph.style.transition = 'top 0.6s var(--showreel-ease), left 0.6s var(--showreel-ease), width 0.6s var(--showreel-ease), height 0.6s var(--showreel-ease), border-radius 0.6s var(--showreel-ease)';
+          morph.style.top = '0px';
+          morph.style.left = '0px';
+          morph.style.width = '100vw';
+          morph.style.height = '100vh';
+          morph.style.borderRadius = '0px';
+        });
+
+        document.body.style.overflow = 'hidden';
+        document.addEventListener('keydown', onKeydown);
+
+        if (window.Vimeo) {
+          player = new Vimeo.Player(iframe);
+          player.on('timeupdate', function (data) {
+            if (progressBar) progressBar.style.width = (data.percent * 100) + '%';
+          });
+          player.on('play', function () { setPlayPauseIcon(true); });
+          player.on('pause', function () { setPlayPauseIcon(false); });
+        }
+      }
+
+      function closeShowreel() {
+        if (!isOpen) return;
+        isOpen = false;
+
+        var rect = launcher.getBoundingClientRect();
+        morph.style.transition = 'top 0.5s var(--showreel-ease), left 0.5s var(--showreel-ease), width 0.5s var(--showreel-ease), height 0.5s var(--showreel-ease), border-radius 0.5s var(--showreel-ease)';
+        morph.style.top = rect.top + 'px';
+        morph.style.left = rect.left + 'px';
+        morph.style.width = rect.width + 'px';
+        morph.style.height = rect.height + 'px';
+        morph.style.borderRadius = getComputedStyle(launcher).borderRadius;
+
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+        document.removeEventListener('keydown', onKeydown);
+
+        setTimeout(function () {
+          iframe.src = '';
+          player = null;
+          if (progressBar) progressBar.style.width = '0%';
+          setPlayPauseIcon(true);
+          setMuteIcon(false);
+        }, 500);
+      }
+
+      function setPlayPauseIcon(playing) {
+        if (!playPauseBtn) return;
+        playPauseBtn.innerHTML = playing ? PAUSE_SVG : PLAY_SVG;
+        playPauseBtn.setAttribute('aria-label', playing ? 'Pause' : 'Play');
+      }
+
+      function setMuteIcon(muted) {
+        if (!muteBtn) return;
+        muteBtn.innerHTML = muted ? MUTED_SVG : UNMUTED_SVG;
+        muteBtn.setAttribute('aria-label', muted ? 'Unmute' : 'Mute');
+      }
+
+      launcher.addEventListener('click', openShowreel);
+      launcher.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openShowreel(); }
+      });
+      closeBtn.addEventListener('click', closeShowreel);
+
+      playPauseBtn.addEventListener('click', function () {
+        if (!player) return;
+        player.getPaused().then(function (paused) {
+          if (paused) player.play(); else player.pause();
+        });
+      });
+
+      muteBtn.addEventListener('click', function () {
+        if (!player) return;
+        player.getVolume().then(function (vol) {
+          if (vol > 0) {
+            player.setVolume(0);
+            setMuteIcon(true);
+          } else {
+            player.setVolume(1);
+            setMuteIcon(false);
+          }
+        });
+      });
+
+      progress.addEventListener('click', function (e) {
+        if (!player) return;
+        var rect = progress.getBoundingClientRect();
+        var pct = (e.clientX - rect.left) / rect.width;
+        player.getDuration().then(function (duration) {
+          player.setCurrentTime(pct * duration);
+        });
+      });
+    })();
   </script>
 
   <!-- Calendly Modal — triggered by any .open-calendly-modal element (nav

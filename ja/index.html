@@ -1387,18 +1387,39 @@
         new ResizeObserver(positionLauncher).observe(dock);
       }
 
-      // Reveal — a two-way toggle keyed off the hero, not #approach: slides
-      // up once the hero has scrolled completely out of view (i.e. fully
-      // into Approach or beyond), and slides back down if the user scrolls
-      // back up into the hero.
+      // Reveal — two separate thresholds (not one toggle point), so
+      // hovering right at the hero/Approach boundary doesn't flicker:
+      // slides up once scrolled halfway down into Approach, and only
+      // slides back down once scrolling back up far enough to see the
+      // bottom of the hero again.
       var heroEl = document.querySelector('.intro-section');
-      if (heroEl) {
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            launcher.classList.toggle('visible', !entry.isIntersecting);
-          });
-        }, { threshold: 0 });
-        io.observe(heroEl);
+      var approachEl = document.getElementById('approach');
+      if (heroEl && approachEl) {
+        var heroBottom = 0;
+        var approachMid = 0;
+        var isRevealed = false;
+
+        function measure() {
+          heroBottom = heroEl.offsetTop + heroEl.offsetHeight;
+          approachMid = approachEl.offsetTop + approachEl.offsetHeight / 2;
+        }
+
+        function updateReveal() {
+          if (!isRevealed && window.scrollY >= approachMid) {
+            isRevealed = true;
+            launcher.classList.add('visible');
+          } else if (isRevealed && window.scrollY <= heroBottom) {
+            isRevealed = false;
+            launcher.classList.remove('visible');
+          }
+        }
+
+        measure();
+        updateReveal();
+        window.addEventListener('resize', function () { measure(); updateReveal(); });
+        window.addEventListener('scroll', function () {
+          requestAnimationFrame(updateReveal);
+        }, { passive: true });
       }
     })();
 

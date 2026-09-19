@@ -1387,35 +1387,37 @@
         new ResizeObserver(positionLauncher).observe(dock);
       }
 
-      // Reveal — two separate thresholds (not one toggle point), so
-      // hovering right at the hero/Approach boundary doesn't flicker:
-      // slides up once scrolled halfway down into Approach, and only
-      // slides back down once scrolling back up far enough to see the
-      // bottom of the hero again.
+      // Reveal — a single toggle point at the hero's own midpoint: slides
+      // up once scrolled halfway through the hero, slides back down if
+      // scrolling back up above that point. (An earlier version used two
+      // separate thresholds — show at hero's midpoint, hide at hero's
+      // bottom — meaning "hide" required a scrollY the "show" condition
+      // was already satisfied by. Every scroll position between them
+      // matched both conditions at once, so on a smooth/incremental
+      // scroll it flickered between the two states every frame instead of
+      // settling. A single boundary can't have that overlap.)
       var heroEl = document.querySelector('.intro-section');
       var approachEl = document.getElementById('approach');
       if (heroEl && approachEl) {
-        var heroBottom = 0;
-        var approachMid = 0;
-        var isRevealed = false;
+        var showTrigger = 0;
 
         function measure() {
-          heroBottom = heroEl.offsetTop + heroEl.offsetHeight;
-          approachMid = approachEl.offsetTop + approachEl.offsetHeight / 2;
+          showTrigger = heroEl.offsetTop + heroEl.offsetHeight / 2;
         }
 
         function updateReveal() {
-          if (!isRevealed && window.scrollY >= approachMid) {
-            isRevealed = true;
-            launcher.classList.add('visible');
-          } else if (isRevealed && window.scrollY <= heroBottom) {
-            isRevealed = false;
-            launcher.classList.remove('visible');
-          }
+          launcher.classList.toggle('visible', window.scrollY >= showTrigger);
         }
 
         measure();
         updateReveal();
+        // Web fonts loading in after this initial measurement can shift
+        // section heights (more noticeable on the Japanese page's Noto
+        // Sans JP) — re-measure once they've settled so the trigger point
+        // doesn't stay based on a slightly-too-early layout.
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(function () { measure(); updateReveal(); });
+        }
         window.addEventListener('resize', function () { measure(); updateReveal(); });
         window.addEventListener('scroll', function () {
           requestAnimationFrame(updateReveal);
@@ -1424,7 +1426,7 @@
     })();
 
     (function () {
-      var VIDEO_ID = '1228256821';
+      var VIDEO_ID = '1228259036';
       var PLAY_SVG = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 2.5L13.5 8L4 13.5V2.5Z" fill="currentColor"/></svg>';
       var PAUSE_SVG = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="3" y="2" width="4" height="12" rx="1" fill="currentColor"/><rect x="9" y="2" width="4" height="12" rx="1" fill="currentColor"/></svg>';
       var UNMUTED_SVG = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 7.5H6L10 4V16L6 12.5H3V7.5Z"/><path d="M13 6.5C14 7.5 14.5 8.7 14.5 10C14.5 11.3 14 12.5 13 13.5"/><path d="M15.3 4.2C17 5.8 18 7.8 18 10C18 12.2 17 14.2 15.3 15.8"/></svg>';
@@ -1461,7 +1463,7 @@
         morph.style.borderRadius = getComputedStyle(launcher).borderRadius;
 
         overlay.classList.add('active');
-        iframe.src = 'https://player.vimeo.com/video/' + VIDEO_ID + '?h=ed27a27e09&badge=0&autopause=0&player_id=showreel&app_id=58479&muted=0&autoplay=1&loop=0&title=0&byline=0&portrait=0&controls=0';
+        iframe.src = 'https://player.vimeo.com/video/' + VIDEO_ID + '?badge=0&autopause=0&player_id=showreel&app_id=58479&muted=0&autoplay=1&loop=0&title=0&byline=0&portrait=0&controls=0';
 
         // Force layout so the "from" box above is committed before animating.
         void morph.offsetHeight;

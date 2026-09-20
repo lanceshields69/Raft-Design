@@ -16,10 +16,12 @@
   background: var(--bg-elevated);
 }
 
-.project-hero-full img {
+.project-hero-full img,
+.project-hero-full video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 /* .footer is only ever loaded alongside project.css on project pages
@@ -287,6 +289,34 @@
   height: auto;
   border: none;
   border-radius: 0;
+}
+
+/* Wide graphics (e.g. Fitbit's lineup collage and icon strip) keep their
+   native ratio instead of the 2000 / 1307 crop above. */
+.project-page .project-image-grid img.project-image--wide {
+  aspect-ratio: auto;
+}
+
+/* Three or more stats (California Walnuts) don't fit one row in the narrow
+   right column without breaking their labels mid-word; wrap whole stats. */
+.project-page .project-metrics:has(> .project-metric:nth-child(3)) {
+  flex-wrap: wrap;
+  row-gap: 24px;
+}
+
+/* Pages with more than one paragraph per block (Fitbit): the global
+   p reset zeroes margins, and styles.css only sizes the last challenge /
+   solution paragraph, so size them all and space the stack. */
+.project-page .project-description + .project-description,
+.project-page .project-challenge p + p,
+.project-page .project-solution p + p {
+  margin-top: 16px;
+}
+
+.project-page .project-challenge p,
+.project-page .project-solution p {
+  font-size: var(--font-size-body-md);
+  line-height: 1.5;
 }
 
 /* Video — already width:100% / 16:9 (560:315) in styles.css and now

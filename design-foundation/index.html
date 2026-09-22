@@ -268,6 +268,18 @@
        flex-direction/gap), so a plain rule here can't out-rank it — this is
        the only way [hidden] can actually hide the form once submitted. */
     .df-lead-form[hidden] { display: none !important; }
+    /* Placeholder text in these forms uses styles.css's shared
+       .contact-modal-field rule, which sets placeholder color to
+       var(--border-rule) (#1E3A28) — a hairline color, not a text color,
+       so it read as too dim here. 15% lighter (HSL lightness +15, same
+       hue/saturation) rather than editing the shared token, since
+       --border-rule is also used for dividers sitewide. Dark theme only:
+       lightening the light-theme placeholder would reduce its contrast
+       against the light-theme's white canvas instead of improving it. */
+    .df-lead-form .contact-modal-field input::placeholder,
+    .df-lead-form .contact-modal-field textarea::placeholder {
+      color: #386C4B;
+    }
 
     /* .client-logo (shared, styles.css) has no light-mode treatment
        anywhere on the site — its one existing use is a decorative,

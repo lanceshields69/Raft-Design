@@ -226,11 +226,9 @@
     /* Lead-form success/error banners — same visual treatment as the
        homepage contact modal's, which is scoped under .contact-modal-body
        and so doesn't apply outside it; this is the equivalent for a
-       full-page (non-modal) form. */
-    /* !important on background: @formspree/ajax injects its own dynamic
-       stylesheet (a light green default for [data-fs-success][data-fs-active]
-       etc.) at runtime, after this block, with matching specificity — it
-       wins the cascade tie and overrides a plain declaration here. */
+       full-page (non-modal) form. Submission is plain fetch() (see the
+       script at the bottom), the same pattern contact/index.html uses,
+       so there's no injected third-party stylesheet to fight here. */
     /* Pricing cards' "what's included" checklist — no sitewide checklist
        component exists yet, so this is page-local, sitting alongside
        .tool-card/.tool-card-tag (styles.css/tools.css) which the cards
@@ -239,11 +237,37 @@
     .df-pricing-checklist li { display: flex; align-items: flex-start; gap: var(--space-sm); font-size: 14px; line-height: 1.4; color: var(--text-primary); }
     .df-pricing-checklist li::before { content: "✓"; flex-shrink: 0; color: var(--text-accent); font-weight: var(--weight-black); }
 
-    .df-form-banner { display: none; background: var(--bg-sunken) !important; padding: var(--space-md); border: 1px solid var(--border-rule); border-radius: var(--radius-sm); margin-bottom: 24px; }
+    .df-form-banner { display: none; background: var(--bg-sunken); padding: var(--space-md); border: 1px solid var(--border-rule); border-radius: var(--radius-sm); margin-bottom: 24px; }
     .df-form-banner[data-fs-active] { display: block; }
-    .df-form-banner[data-fs-active] ~ #design-foundation-lead-form { display: none; }
     .df-form-banner p { font-size: var(--font-size-body-md); line-height: 1.5; color: var(--text-primary); margin: 0; }
     #design-foundation-error-banner a { color: var(--text-accent); }
+
+    /* Founder/VC lead-form tabs — no tab pattern exists elsewhere on the
+       site, so this is a minimal page-local control built from tokens
+       already in use on this page (border-rule, text-accent, text-muted)
+       rather than a new visual system. */
+    .df-lead-tablist { display: flex; gap: 24px; border-bottom: 1px solid var(--border-rule); margin-bottom: 32px; }
+    .df-lead-tab {
+      all: unset;
+      box-sizing: border-box;
+      cursor: pointer;
+      padding: 0 0 12px;
+      margin-bottom: -1px;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-muted);
+      border-bottom: 2px solid transparent;
+    }
+    .df-lead-tab:hover { color: var(--text-primary); }
+    .df-lead-tab:focus-visible { outline: 2px solid var(--text-accent); outline-offset: 2px; }
+    .df-lead-tab[aria-selected="true"] { color: var(--text-primary); border-bottom-color: var(--text-accent); }
+    .df-lead-fit { font-size: 14px; font-weight: 700; color: var(--text-accent); margin: 0 0 12px; }
+    .df-lead-panel[hidden] { display: none; }
+    /* !important: each form's own display:flex is set inline (alongside its
+       flex-direction/gap), so a plain rule here can't out-rank it — this is
+       the only way [hidden] can actually hide the form once submitted. */
+    .df-lead-form[hidden] { display: none !important; }
 
     /* .client-logo (shared, styles.css) has no light-mode treatment
        anywhere on the site — its one existing use is a decorative,
@@ -401,10 +425,14 @@
         <span style="color:var(--text-accent);font-size:13px;font-weight:700">For Funded Startups</span>
       </div>
       <h1 style="font-weight:900;font-size:clamp(36px,4.6vw,60px);line-height:1.02;letter-spacing:-2px;margin:0;color:var(--text-primary)">You raised the round. Now the product has to look like it.</h1>
-      <p style="font-size:20px;line-height:1.5;max-width:560px;color:var(--text-primary);margin:0">Your team is shipping fast, and AI is writing a lot of the code. Speed without a design foundation gives you a product that works but doesn't feel like one company made it. Raft closes that gap in four weeks. Brand first, then the product that expresses it.</p>
+      <p style="font-size:20px;line-height:1.5;max-width:560px;color:var(--text-primary);margin:0">Your team ships fast, and AI writes a lot of the code. Without a design foundation, that speed shows: a product that works but doesn't feel like one company made it. We partner with funded startups to close that gap in four weeks, so you get a brand people love and a product people love to use.</p>
       <div style="display:flex;flex-direction:column;align-items:flex-start;gap:24px;margin-top:8px">
         <a href="https://calendly.com/raftdesignstudio/30min" target="_blank" rel="noopener noreferrer" class="scan-cta scan-cta--wide">Book a 30-minute fit assessment</a>
         <a href="#pricing" class="text-link text-link-large" style="color:var(--text-primary);font-weight:700">See pricing <span class="arrow">→</span></a>
+        <div style="display:flex;align-items:center;flex-wrap:wrap;gap:8px">
+          <span style="font-size:20px;letter-spacing:-0.6px;color:var(--text-muted)">Are you a VC?</span>
+          <a href="#next-step" id="df-refer-link" class="text-link text-link-large" style="color:var(--text-primary);font-weight:700">Refer a portfolio company <span class="arrow">→</span></a>
+        </div>
       </div>
     </div>
 
@@ -452,6 +480,8 @@
     <h2 style="font-weight:900;font-size:clamp(28px,3.5vw,36px);line-height:1.05;letter-spacing:-1px;margin:0">Happy clients. Real outcomes.</h2>
     <p style="font-size:16px;color:var(--text-muted);margin:0">An IPO on Nasdaq. Acquisitions by HPE and Tecsys. Companies still running and growing years later. Here's what the people who hired us early have to say about it.</p>
   </div>
+
+  <img src="../images/lance-presenting.jpg" alt="Lance presenting to a room" style="width:100%;height:auto;display:block;border-radius:var(--radius-md);margin-bottom:64px">
 
   <div style="display:flex;flex-direction:column">
 
@@ -798,10 +828,14 @@
 </section>
 
 <!-- LEAD FORM -->
-<section style="padding:96px 15px;max-width:900px;margin:0 auto;border-top:1px solid var(--border-rule)">
+<section id="next-step" style="padding:96px 15px;max-width:900px;margin:0 auto;border-top:1px solid var(--border-rule)">
   <span class="section-label">Next step</span>
-  <h2 style="font-weight:900;font-size:clamp(28px,3.5vw,36px);line-height:1.05;letter-spacing:-1px;margin:0 0 16px">Let's unblock your roadmap.</h2>
-  <p style="font-size:16px;line-height:1.5;color:var(--text-primary);margin:0 0 48px;max-width:600px">Share a brief below and you'll get a scoping note and timeline back within 48 hours, or book the 30-minute call directly if you'd rather talk it through first.</p>
+  <h2 style="font-weight:900;font-size:clamp(28px,3.5vw,36px);line-height:1.05;letter-spacing:-1px;margin:0 0 32px">Let's unblock your roadmap.</h2>
+
+  <div class="df-lead-tablist" role="tablist" aria-label="Contact type">
+    <button type="button" role="tab" id="df-tab-founder" aria-controls="df-panel-founder" aria-selected="true" class="df-lead-tab" data-panel="founder">I'm a founder</button>
+    <button type="button" role="tab" id="df-tab-vc" aria-controls="df-panel-vc" aria-selected="false" tabindex="-1" class="df-lead-tab" data-panel="vc">I'm a VC</button>
+  </div>
 
   <div data-fs-success class="df-form-banner" id="design-foundation-success-banner" aria-live="polite">
     <p>Thanks — I'll get back to you within 48 hours.</p>
@@ -810,45 +844,96 @@
     <p>Something went wrong. Try again, or email <a href="mailto:hello@raftdesign.studio">hello@raftdesign.studio</a> directly.</p>
   </div>
 
-  <form id="design-foundation-lead-form" action="https://formspree.io/f/xqpkdeqe" method="POST" style="display:flex;flex-direction:column;gap:24px">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px">
-      <div class="contact-modal-field">
-        <label for="df-name">Name</label>
-        <input type="text" id="df-name" name="name" data-fs-field required placeholder="Your name">
-        <span data-fs-error="name" class="contact-modal-field-error"></span>
+  <div id="df-panel-founder" class="df-lead-panel" role="tabpanel" aria-labelledby="df-tab-founder" tabindex="0">
+    <p class="df-lead-fit">Best fit: funded startups with an engineering team already shipping and a brand or product that hasn't caught up yet.</p>
+    <p style="font-size:16px;line-height:1.5;color:var(--text-primary);margin:0 0 32px;max-width:600px">Share a brief below and you'll get a scoping note and timeline back within 48 hours, or book the 30-minute call directly if you'd rather talk it through first.</p>
+
+    <form id="design-foundation-lead-form-founder" class="df-lead-form" data-form-type="founder" style="display:flex;flex-direction:column;gap:24px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px">
+        <div class="contact-modal-field">
+          <label for="df-name">Name</label>
+          <input type="text" id="df-name" name="name" data-fs-field required placeholder="Your name">
+          <span data-fs-error="name" class="contact-modal-field-error"></span>
+        </div>
+        <div class="contact-modal-field">
+          <label for="df-email">Work email</label>
+          <input type="email" id="df-email" name="email" data-fs-field required placeholder="you@company.com">
+          <span data-fs-error="email" class="contact-modal-field-error"></span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px">
+        <div class="contact-modal-field">
+          <label for="df-company">Company</label>
+          <input type="text" id="df-company" name="company" data-fs-field required placeholder="Company name">
+          <span data-fs-error="company" class="contact-modal-field-error"></span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <label for="df-funding" style="font-size:12px;font-weight:500;letter-spacing:0.48px;text-transform:uppercase;color:var(--text-muted)">Funding stage</label>
+          <select id="df-funding" name="funding_stage" class="df-select" style="width:100%;padding:13px 17px;background:rgba(44,71,54,0.35);border:1px solid var(--border-rule);border-radius:var(--radius-sm);font-family:inherit;font-size:16px;color:var(--text-primary);height:50px;outline:none">
+            <option>Series A</option>
+            <option>Series B+</option>
+          </select>
+        </div>
       </div>
       <div class="contact-modal-field">
-        <label for="df-email">Work email</label>
-        <input type="email" id="df-email" name="email" data-fs-field required placeholder="you@company.com">
-        <span data-fs-error="email" class="contact-modal-field-error"></span>
+        <label for="df-message">What's blocking your roadmap right now?</label>
+        <textarea id="df-message" name="message" data-fs-field required placeholder="Tell me what's going on…" style="height:180px"></textarea>
+        <span data-fs-error="message" class="contact-modal-field-error"></span>
       </div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px">
+      <input type="hidden" name="form_type" value="founder">
+      <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start;margin-top:8px">
+        <button type="submit" class="scan-cta scan-cta--wide" data-fs-submit-btn>Send &amp; get a scoping note</button>
+        <span style="font-size:13px;color:var(--text-muted)">Response within 48 hours.</span>
+      </div>
+    </form>
+  </div>
+
+  <div id="df-panel-vc" class="df-lead-panel" role="tabpanel" aria-labelledby="df-tab-vc" tabindex="0" hidden>
+    <p class="df-lead-fit">Best fit: portfolio companies with an engineering team already shipping and a brand or product that hasn't caught up yet.</p>
+    <p style="font-size:16px;line-height:1.5;color:var(--text-primary);margin:0 0 32px;max-width:600px">Tell us who, and we'll reach out directly.</p>
+
+    <form id="design-foundation-lead-form-vc" class="df-lead-form" data-form-type="vc" style="display:flex;flex-direction:column;gap:24px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px">
+        <div class="contact-modal-field">
+          <label for="df-vc-name">Your name</label>
+          <input type="text" id="df-vc-name" name="name" data-fs-field required placeholder="Your name">
+          <span data-fs-error="name" class="contact-modal-field-error"></span>
+        </div>
+        <div class="contact-modal-field">
+          <label for="df-vc-firm">Your firm</label>
+          <input type="text" id="df-vc-firm" name="firm" data-fs-field required placeholder="Firm name">
+          <span data-fs-error="firm" class="contact-modal-field-error"></span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px">
+        <div class="contact-modal-field">
+          <label for="df-vc-founder-name">Founder's name</label>
+          <input type="text" id="df-vc-founder-name" name="founder_name" data-fs-field required placeholder="Founder's name">
+          <span data-fs-error="founder_name" class="contact-modal-field-error"></span>
+        </div>
+        <div class="contact-modal-field">
+          <label for="df-vc-founder-email">Founder's email</label>
+          <input type="email" id="df-vc-founder-email" name="founder_email" data-fs-field required placeholder="founder@company.com">
+          <span data-fs-error="founder_email" class="contact-modal-field-error"></span>
+        </div>
+      </div>
       <div class="contact-modal-field">
-        <label for="df-company">Company</label>
-        <input type="text" id="df-company" name="company" data-fs-field required placeholder="Company name">
+        <label for="df-vc-company">Company</label>
+        <input type="text" id="df-vc-company" name="company" data-fs-field required placeholder="Company name">
         <span data-fs-error="company" class="contact-modal-field-error"></span>
       </div>
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <label for="df-funding" style="font-size:12px;font-weight:500;letter-spacing:0.48px;text-transform:uppercase;color:var(--text-muted)">Funding stage</label>
-        <select id="df-funding" name="funding_stage" class="df-select" style="width:100%;padding:13px 17px;background:rgba(44,71,54,0.35);border:1px solid var(--border-rule);border-radius:var(--radius-sm);font-family:inherit;font-size:16px;color:var(--text-primary);height:50px;outline:none">
-          <option>Pre-seed/Seed</option>
-          <option>Series A</option>
-          <option>Series B+</option>
-          <option>Bootstrapped</option>
-        </select>
+      <div class="contact-modal-field">
+        <label for="df-vc-why">Why are you referring them?</label>
+        <textarea id="df-vc-why" name="message" data-fs-field required placeholder="Tell me what's going on…" style="height:180px"></textarea>
+        <span data-fs-error="message" class="contact-modal-field-error"></span>
       </div>
-    </div>
-    <div class="contact-modal-field">
-      <label for="df-message">What's blocking your roadmap right now?</label>
-      <textarea id="df-message" name="message" data-fs-field required placeholder="Tell me what's going on…" style="height:180px"></textarea>
-      <span data-fs-error="message" class="contact-modal-field-error"></span>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start;margin-top:8px">
-      <button type="submit" class="scan-cta scan-cta--wide" data-fs-submit-btn>Send &amp; get a scoping note</button>
-      <span style="font-size:13px;color:var(--text-muted)">Response within 48 hours.</span>
-    </div>
-  </form>
+      <input type="hidden" name="form_type" value="vc">
+      <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start;margin-top:8px">
+        <button type="submit" class="scan-cta scan-cta--wide" data-fs-submit-btn>Send the referral</button>
+        <span style="font-size:13px;color:var(--text-muted)">Response within 48 hours.</span>
+      </div>
+    </form>
+  </div>
 </section>
 
 
@@ -913,12 +998,102 @@
 </footer>
 
 <script>
-  window.formspree = window.formspree || function () {
-    (formspree.q = formspree.q || []).push(arguments);
-  };
-  formspree('initForm', { formElement: '#design-foundation-lead-form', formId: 'xqpkdeqe' });
+  // Founder/VC tabs — simple APG-style manual tab control, no library.
+  (function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.df-lead-tab'));
+    var successEl = document.getElementById('design-foundation-success-banner');
+    var errorEl = document.getElementById('design-foundation-error-banner');
+    if (!tabs.length) return;
+
+    function panelFor(tab) {
+      return document.getElementById(tab.getAttribute('aria-controls'));
+    }
+
+    function activate(tab) {
+      tabs.forEach(function (t) {
+        var isActive = t === tab;
+        t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        t.tabIndex = isActive ? 0 : -1;
+        panelFor(t).hidden = !isActive;
+      });
+      // Switching tabs shouldn't carry a stale success/error message (or a
+      // hidden-but-submitted form) over from the other tab. Toggling
+      // `hidden` here (not .style.display) matters: this form's flex
+      // layout comes from the same inline style attribute, and writing
+      // to .style.display directly would rewrite that attribute and
+      // silently drop `display:flex` along with it.
+      successEl.removeAttribute('data-fs-active');
+      errorEl.removeAttribute('data-fs-active');
+      panelFor(tab).querySelector('.df-lead-form').hidden = false;
+      tab.focus();
+    }
+
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function () { activate(tab); });
+      tab.addEventListener('keydown', function (e) {
+        var next;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = tabs[(i + 1) % tabs.length];
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = tabs[(i - 1 + tabs.length) % tabs.length];
+        else if (e.key === 'Home') next = tabs[0];
+        else if (e.key === 'End') next = tabs[tabs.length - 1];
+        else return;
+        e.preventDefault();
+        activate(next);
+      });
+    });
+  })();
+
+  // Hero "Refer them" CTA — opens the VC tab (not just the section) before
+  // scrolling, since a referral is exactly what that tab is for.
+  (function () {
+    var referLink = document.getElementById('df-refer-link');
+    var vcTab = document.getElementById('df-tab-vc');
+    var section = document.getElementById('next-step');
+    if (!referLink || !vcTab || !section) return;
+    referLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      vcTab.click();
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  })();
+
+  // Submits via plain fetch, same pattern as contact/index.html (see the
+  // comment there): @formspree/ajax injects its own <style> tag that
+  // fights this page's CSS, and doesn't cleanly support two independent
+  // forms sharing one pair of success/error banners.
+  (function () {
+    var FORM_ENDPOINT = 'https://formspree.io/f/xqpkdeqe';
+    var successEl = document.getElementById('design-foundation-success-banner');
+    var errorEl = document.getElementById('design-foundation-error-banner');
+
+    document.querySelectorAll('.df-lead-form').forEach(function (form) {
+      var submitBtn = form.querySelector('[data-fs-submit-btn]');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        errorEl.removeAttribute('data-fs-active');
+        if (submitBtn) submitBtn.disabled = true;
+
+        fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        }).then(function (res) {
+          if (res.ok) {
+            successEl.setAttribute('data-fs-active', '');
+            form.hidden = true;
+          } else {
+            errorEl.setAttribute('data-fs-active', '');
+          }
+        }).catch(function () {
+          errorEl.setAttribute('data-fs-active', '');
+        }).finally(function () {
+          if (submitBtn) submitBtn.disabled = false;
+        });
+      });
+    });
+  })();
 </script>
-<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 <script>
   document.querySelectorAll('.df-faq-row').forEach(function (row) {

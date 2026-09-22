@@ -66,9 +66,12 @@
        .scan-cta, .footer, .contact-field-error, and all the --token values)
        comes straight from styles.css, the real site's own stylesheet. Same
        self-contained pattern as contact/index.html (the EN page this
-       mirrors) and ja/labs/index.html. Figma node 783:4474 ("Contact", JA
-       variant of 782:3936); form field treatment matches its 'Text
-       Input'/'Text Area' nodes. */
+       mirrors). Rebuilt from Figma node 860:3632 ("Contact"), keeping the
+       site's real nav-header/footer/Calendly-modal and the existing
+       plain-fetch form-submit pattern — same structure as the EN rebuild,
+       with JA-specific type adjustments (larger heading clamp, 1.9
+       line-height on body copy) carried over from this page's own
+       pre-rebuild conventions rather than the EN values verbatim. */
 
     :root {
       --font-sans: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -76,20 +79,35 @@
 
     body { margin: 0; }
 
-    .contact-hero {
+    .contact-hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 660px) minmax(320px, 1fr);
+      gap: 120px;
+      align-items: stretch;
+      padding-top: 120px;
+      padding-bottom: 120px;
+      /* No max-width/margin:auto here — the photo column needs to reach
+         the true viewport edge (see .contact-hero-photo), so centering
+         is replicated by hand on the left side only: the same "half the
+         leftover space past 1600px" a max-width:1600/margin:auto pair
+         would produce, plus the same clamp() padding every other
+         section uses, so the text column still lines up with the CTA
+         band and footer below it. */
+      padding-left: calc(max(0px, (100vw - 1600px) / 2) + clamp(20px, 6vw, 100px));
+      padding-right: 0;
+    }
+    .contact-hero-col {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: var(--space-lg);
-      text-align: center;
-      padding: 120px clamp(20px, 8vw, var(--space-huge)) 0;
+      gap: var(--space-xxl);
+      max-width: 660px;
     }
     .contact-hero-title {
-      font-size: clamp(32px, 6vw, 68px);
+      font-size: clamp(32px, 4.2vw, 56px);
       font-weight: var(--weight-black);
       letter-spacing: -0.68px;
       line-height: 1.3;
-      max-width: 900px;
+      max-width: 655px;
       margin: 0;
       color: var(--text-primary);
     }
@@ -97,25 +115,39 @@
       color: var(--text-accent);
     }
     .contact-hero-intro {
-      font-size: var(--font-size-body-md);
-      font-weight: var(--weight-semibold);
+      font-size: var(--font-size-body-lg);
       line-height: 1.9;
-      max-width: 640px;
+      max-width: 520px;
       color: var(--text-primary);
       margin: 0;
     }
-
-    .contact-form-section {
-      display: flex;
-      justify-content: center;
-      padding: var(--space-xxl) 48px var(--space-huge);
+    /* Crossfade slideshow — six photos absolutely stacked in the same
+       box; JS below toggles .is-active every 3s and this transition
+       handles the fade. Same six shared photos as the EN page. */
+    .contact-hero-photo {
+      position: relative;
+      overflow: hidden;
+      min-height: 320px;
     }
+    .contact-hero-photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    .contact-hero-photo img.is-active {
+      opacity: 1;
+    }
+
     .contact-form {
       display: flex;
       flex-direction: column;
       gap: var(--space-xl);
       width: 100%;
-      max-width: 830px;
     }
     #contact-form {
       display: flex;
@@ -123,10 +155,10 @@
       gap: var(--space-xl);
     }
 
-    /* Success state — replaces the form in place (Figma node 783:4572,
-       "Frame 187"), hidden until our own submit handler below marks it
-       active. The base [data-fs-success] { display: none } /
-       [data-fs-active] { display: block } rules live in styles.css. */
+    /* Success state — replaces the form in place, hidden until our own
+       submit handler below marks it active. The base
+       [data-fs-success] { display: none } / [data-fs-active] { display:
+       block } rules live in styles.css. */
     .contact-success {
       align-items: center;
       justify-content: center;
@@ -177,10 +209,10 @@
       width: 100%;
       padding: 16px 20px;
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.5);
       border-radius: 3px;
       font-family: inherit;
-      font-size: var(--font-size-heading-3);
+      font-size: var(--font-size-body-lg);
       color: var(--text-primary);
       transition: border-color 0.2s;
     }
@@ -194,7 +226,7 @@
     }
     .contact-field textarea {
       height: 217px;
-      line-height: 1.4;
+      line-height: var(--line-height-heading);
       resize: vertical;
     }
     .contact-field input::placeholder,
@@ -219,21 +251,100 @@
     }
     .contact-submit-row {
       display: flex;
-      justify-content: flex-end;
+      justify-content: flex-start;
     }
     [data-fs-success][data-fs-active] ~ #contact-form {
       display: none;
     }
 
-    @media (max-width: 700px) {
-      .contact-hero {
+    /* "お話ししましょう / 通話を予約 / オフィス" band — new in this
+       rebuild, sitting between the form and the footer. #112D1B is a
+       literal (not a shared token) matching the Figma source exactly. */
+    .contact-cta-band {
+      background: #112D1B;
+      padding: var(--space-huge) 0;
+    }
+    /* Mirrors .contact-hero-grid's exact box model so the two sections'
+       left/right content edges line up. */
+    .contact-cta-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xxl);
+      justify-content: space-between;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 6vw, 100px);
+    }
+    .contact-cta-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      max-width: 280px;
+      min-width: 220px;
+    }
+    .contact-cta-heading {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .contact-cta-title {
+      font-size: 32px;
+      font-weight: 500;
+      letter-spacing: 0;
+      color: var(--text-primary);
+      margin: 0;
+    }
+    .contact-cta-sub {
+      font-size: var(--font-size-body-lg);
+      line-height: 1.9;
+      color: var(--text-primary);
+      margin: 0;
+    }
+    .contact-cta-link {
+      display: inline-block;
+      font-family: inherit;
+      font-size: 18px;
+      line-height: 24px;
+      color: var(--text-accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      text-align: left;
+      transition: opacity 0.2s;
+    }
+    .contact-cta-link:hover {
+      opacity: 0.8;
+    }
+
+    @media (max-width: 900px) {
+      .contact-hero-grid {
+        grid-template-columns: 1fr;
         padding-top: 80px;
+        padding-left: 0;
+        padding-right: 0;
       }
-      .contact-form-section {
-        padding: var(--space-xl) 20px var(--space-xxl);
+      .contact-hero-col {
+        padding-left: clamp(20px, 6vw, 100px);
+        padding-right: clamp(20px, 6vw, 100px);
       }
+      .contact-hero-photo {
+        order: -1;
+        width: 100%;
+        aspect-ratio: 747 / 913;
+        max-height: 420px;
+      }
+    }
+
+    @media (max-width: 700px) {
       .contact-success {
         padding: 80px 24px;
+      }
+      .contact-cta-band {
+        padding: var(--space-xxl) 0;
       }
     }
   </style>
@@ -328,48 +439,83 @@
 <a href="/ja/contact/" class="cta-solid-button mobile-menu-cta">お問い合わせ</a>
 </div>
 
-<!-- HERO -->
-<div class="contact-hero fade-in">
-  <h1 class="contact-hero-title">次の一歩を、一緒に<br><span class="emphasis-accent">デザインしましょう。</span></h1>
-  <p class="contact-hero-intro">Raftは、テクノロジー、デザイン、AIが交わる領域で、戦略から制作まで一貫して手がけるエージェンシーです。</p>
-</div>
+<!-- HERO + FORM -->
+<section class="contact-hero-grid fade-in">
+  <div class="contact-hero-col">
+    <h1 class="contact-hero-title">次の一歩を、一緒に<br><span class="emphasis-accent">デザインしましょう。</span></h1>
+    <p class="contact-hero-intro">Raftは、テクノロジー、デザイン、AIが交わる領域で、戦略から制作まで一貫して手がけるエージェンシーです。</p>
 
-<!-- FORM -->
-<section class="contact-form-section fade-in">
-  <div class="contact-form">
-    <div data-fs-success class="contact-success" aria-live="polite">
-      <img src="../../images/r-mark-logo.svg" alt="" width="60" height="60" class="contact-success-icon">
-      <p class="contact-success-text">ありがとうございます。近日中にご連絡いたします。</p>
+    <div class="contact-form">
+      <div data-fs-success class="contact-success" aria-live="polite">
+        <img src="../../images/r-mark-logo.svg" alt="" width="60" height="60" class="contact-success-icon">
+        <p class="contact-success-text">ありがとうございます。近日中にご連絡いたします。</p>
+      </div>
+      <div data-fs-error class="contact-modal-error-banner" aria-live="polite">
+        <p>送信できませんでした。もう一度お試しいただくか、<a href="mailto:hello@raftdesign.studio">hello@raftdesign.studio</a> まで直接ご連絡ください。</p>
+      </div>
+      <form id="contact-form">
+        <div class="contact-field">
+          <label for="contact-page-name">お名前</label>
+          <input type="text" id="contact-page-name" name="name" data-fs-field required placeholder="お名前">
+          <span data-fs-error="name" class="contact-field-error"></span>
+        </div>
+        <div class="contact-field">
+          <label for="contact-page-email">メールアドレス</label>
+          <input type="email" id="contact-page-email" name="email" data-fs-field required placeholder="メールアドレス">
+          <span data-fs-error="email" class="contact-field-error"></span>
+        </div>
+        <div class="contact-field">
+          <label for="contact-page-company">会社名</label>
+          <input type="text" id="contact-page-company" name="company" data-fs-field placeholder="会社名">
+        </div>
+        <div class="contact-field">
+          <label for="contact-page-message">プロジェクトについて教えてください</label>
+          <textarea id="contact-page-message" name="message" data-fs-field required placeholder="プロジェクトについて教えてください"></textarea>
+          <span data-fs-error="message" class="contact-field-error"></span>
+        </div>
+        <input type="hidden" name="_language" value="ja">
+        <input type="hidden" name="_subject" value="raftdesign.studio からの新規お問い合わせ">
+        <div class="contact-submit-row">
+          <button type="submit" class="scan-cta" data-fs-submit-btn><span class="scan-cta-arrow">→</span> 送信する</button>
+        </div>
+      </form>
     </div>
-    <div data-fs-error class="contact-modal-error-banner" aria-live="polite">
-      <p>送信できませんでした。もう一度お試しいただくか、<a href="mailto:hello@raftdesign.studio">hello@raftdesign.studio</a> まで直接ご連絡ください。</p>
+  </div>
+
+  <div class="contact-hero-photo" id="contact-hero-photo">
+    <img src="../../images/Contact-photo-1.jpg" alt="Raftの拠点があるロサンゼルス" class="is-active">
+    <img src="../../images/Contact-photo-2.jpg" alt="">
+    <img src="../../images/Contact-photo-3.jpg" alt="">
+    <img src="../../images/Contact-photo-4.jpg" alt="">
+    <img src="../../images/Contact-photo-5.jpg" alt="">
+    <img src="../../images/Contact-photo-6.jpg" alt="">
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="contact-cta-band fade-in">
+  <div class="contact-cta-inner">
+    <div class="contact-cta-col">
+      <div class="contact-cta-heading">
+        <p class="contact-cta-title">お話ししましょう</p>
+        <p class="contact-cta-sub">プロジェクトについてお聞かせください。</p>
+      </div>
+      <a href="mailto:hello@raftdesign.studio" class="contact-cta-link">hello@raftdesign.studio</a>
     </div>
-    <form id="contact-form">
-      <div class="contact-field">
-        <label for="contact-page-name">お名前</label>
-        <input type="text" id="contact-page-name" name="name" data-fs-field required placeholder="お名前">
-        <span data-fs-error="name" class="contact-field-error"></span>
+    <div class="contact-cta-col">
+      <div class="contact-cta-heading">
+        <p class="contact-cta-title">通話を予約</p>
+        <p class="contact-cta-sub">カレンダーからお好きな日時をお選びください。</p>
       </div>
-      <div class="contact-field">
-        <label for="contact-page-email">メールアドレス</label>
-        <input type="email" id="contact-page-email" name="email" data-fs-field required placeholder="メールアドレス">
-        <span data-fs-error="email" class="contact-field-error"></span>
+      <button type="button" class="contact-cta-link open-calendly-modal">日時を選択する</button>
+    </div>
+    <div class="contact-cta-col">
+      <div class="contact-cta-heading">
+        <p class="contact-cta-title">オフィス</p>
+        <p class="contact-cta-sub">6662 Emmet Terrace<br>Los Angeles, CA 90068</p>
       </div>
-      <div class="contact-field">
-        <label for="contact-page-company">会社名</label>
-        <input type="text" id="contact-page-company" name="company" data-fs-field placeholder="会社名">
-      </div>
-      <div class="contact-field">
-        <label for="contact-page-message">ご相談内容</label>
-        <textarea id="contact-page-message" name="message" data-fs-field required placeholder="ご相談内容"></textarea>
-        <span data-fs-error="message" class="contact-field-error"></span>
-      </div>
-      <input type="hidden" name="_language" value="ja">
-      <input type="hidden" name="_subject" value="raftdesign.studio からの新規お問い合わせ">
-      <div class="contact-submit-row">
-        <button type="submit" class="scan-cta" data-fs-submit-btn><span class="scan-cta-arrow">→</span> 送信する</button>
-      </div>
-    </form>
+      <a href="tel:4153619584" class="contact-cta-link">(415) 361-9584</a>
+    </div>
   </div>
 </section>
 
@@ -490,6 +636,30 @@
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+  })();
+
+  // Hero photo slideshow — crossfades through the 6 stacked images every
+  // 3s. Pauses when the tab isn't visible so it doesn't burn through the
+  // interval in the background and jump on return.
+  (function () {
+    const photos = document.querySelectorAll('#contact-hero-photo img');
+    if (photos.length < 2) return;
+    let index = 0;
+    let timer = setInterval(next, 3000);
+
+    function next() {
+      photos[index].classList.remove('is-active');
+      index = (index + 1) % photos.length;
+      photos[index].classList.add('is-active');
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        clearInterval(timer);
+      } else {
+        timer = setInterval(next, 3000);
+      }
+    });
   })();
 </script>
 

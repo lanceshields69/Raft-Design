@@ -124,3 +124,17 @@ body.wide-spacing .connect-cta-sunken {
   padding-left: var(--page-gutter);
   padding-right: var(--page-gutter);
 }
+
+/* Labs — just the left/right margin, no gap-tier or layout changes
+   (unlike Work/Journal/About). .work-hero/.work-hero-title/
+   .work-hero-intro are the original shared classes (work-index.css);
+   Labs is now their only remaining user (Work, Journal, and About
+   moved to their own inline-styled .page-hero earlier in this spacing
+   pass), so this is safe to override without affecting any other
+   page. .lab-projects-section is defined in labs/index.html's own
+   <style> block, same self-contained-page pattern as about.html. */
+body.wide-spacing .work-hero,
+body.wide-spacing .lab-projects-section {
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+}

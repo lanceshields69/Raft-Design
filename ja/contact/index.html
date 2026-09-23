@@ -56,6 +56,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200;14..32,300;14..32,400;14..32,500;14..32,900&family=Fraunces:ital,opsz,SOFT,WONK,wght@1,9..144,0,1,600&family=Noto+Sans+JP:wght@400;500;600;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../styles.css">
   <link rel="stylesheet" href="../ja.css">
+  <link rel="stylesheet" href="../../page-spacing.css">
   <script>
     if (localStorage.getItem('raft-theme') === 'light') {
       document.documentElement.dataset.theme = 'light';
@@ -87,13 +88,15 @@
       padding-top: 120px;
       padding-bottom: 120px;
       /* No max-width/margin:auto here — the photo column needs to reach
-         the true viewport edge (see .contact-hero-photo), so centering
-         is replicated by hand on the left side only: the same "half the
-         leftover space past 1600px" a max-width:1600/margin:auto pair
-         would produce, plus the same clamp() padding every other
-         section uses, so the text column still lines up with the CTA
-         band and footer below it. */
-      padding-left: calc(max(0px, (100vw - 1600px) / 2) + clamp(20px, 6vw, 100px));
+         the true viewport edge (see .contact-hero-photo). Left padding
+         uses the same --page-gutter fluid formula as nav/footer/every
+         other page in this spacing pass (home-spacing.css/page-spacing.css/
+         project.css), replacing the old bespoke "clamp() + half the
+         leftover space past 1600px" formula — this pass standardized
+         on a 1292px content floor rather than 1600px, so the manual
+         centering term is no longer needed: --page-gutter already
+         grows correctly on its own past that floor. */
+      padding-left: var(--page-gutter);
       padding-right: 0;
     }
     .contact-hero-col {
@@ -103,7 +106,9 @@
       max-width: 660px;
     }
     .contact-hero-title {
-      font-size: clamp(32px, 4.2vw, 56px);
+      /* Sized down to match the longer EN headline's 3-line fit
+         (was clamp(32px, 4.2vw, 56px) -> 4 lines on phones). */
+      font-size: clamp(26px, 3.2vw, 44px);
       font-weight: var(--weight-black);
       letter-spacing: -0.68px;
       line-height: 1.3;
@@ -111,7 +116,20 @@
       margin: 0;
       color: var(--text-primary);
     }
-    .contact-hero-title .emphasis-accent {
+    /* Eyebrow + headline pair, 24px apart — same eyebrow/headline
+       spacing as the Work/Journal/About heroes; the column's larger
+       --space-xxl gap still separates this pair from the intro/form. */
+    .contact-hero-heading {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .contact-hero-eyebrow {
+      font-size: 23px;
+      font-weight: var(--weight-black);
+      letter-spacing: var(--tracking-section-title);
+      line-height: var(--line-height-eyebrow);
+      text-transform: uppercase;
       color: var(--text-accent);
     }
     .contact-hero-intro {
@@ -271,9 +289,9 @@
       flex-wrap: wrap;
       gap: var(--space-xxl);
       justify-content: space-between;
-      max-width: 1600px;
+      max-width: 1920px;
       margin: 0 auto;
-      padding: 0 clamp(20px, 6vw, 100px);
+      padding: 0 var(--page-gutter);
     }
     .contact-cta-col {
       display: flex;
@@ -328,8 +346,8 @@
         padding-right: 0;
       }
       .contact-hero-col {
-        padding-left: clamp(20px, 6vw, 100px);
-        padding-right: clamp(20px, 6vw, 100px);
+        padding-left: var(--page-gutter);
+        padding-right: var(--page-gutter);
       }
       .contact-hero-photo {
         order: -1;
@@ -349,7 +367,7 @@
     }
   </style>
 </head>
-<body style="background:var(--bg-canvas);min-height:100vh;font-family:var(--font-sans);color:var(--text-primary)">
+<body class="wide-spacing" style="background:var(--bg-canvas);min-height:100vh;font-family:var(--font-sans);color:var(--text-primary)">
 
 <nav class="nav-header">
   <div class="nav-logotype">
@@ -442,7 +460,10 @@
 <!-- HERO + FORM -->
 <section class="contact-hero-grid fade-in">
   <div class="contact-hero-col">
-    <h1 class="contact-hero-title">次の一歩を、一緒に<br><span class="emphasis-accent">デザインしましょう。</span></h1>
+    <div class="contact-hero-heading">
+      <span class="contact-hero-eyebrow">お問い合わせ</span>
+      <h1 class="contact-hero-title">貴社のことや、ご一緒できることについて、ぜひお聞かせください。</h1>
+    </div>
     <p class="contact-hero-intro">Raftは、テクノロジー、デザイン、AIが交わる領域で、戦略から制作まで一貫して手がけるエージェンシーです。</p>
 
     <div class="contact-form">

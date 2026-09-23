@@ -1,10 +1,10 @@
-/* Work and Journal top-page spacing — same fluid gutter formula and
-   80/48/32 card-gap tiers as the homepage test (home-spacing.css).
+/* Work, Journal, and About page spacing — same fluid gutter formula
+   and 80/48/32 card-gap tiers as the homepage test (home-spacing.css).
    Separate file/class because .nav-header, .footer, .work-hero*, and
    .work-row/.journal-row are also shared with labs/index.html — this
    stays scoped to body.wide-spacing, applied to work/index.html,
-   journal/index.html, ja/work/index.html, and ja/journal/index.html
-   (all four carry the class and link this file); Labs is untouched.
+   journal/index.html, about.html, and their /ja/ counterparts (all six
+   carry the class and link this file); Labs is untouched.
 
    Formula: clamp(24px, min(10vw, calc((100vw - 1292px) / 2)), 192px)
    — identical to home-spacing.css; see that file's comment for the
@@ -98,4 +98,29 @@ body.wide-spacing .work-row:first-child .work-card {
   body.wide-spacing .work-row:first-child .work-card {
     max-width: none;
   }
+}
+
+/* About page — its content is a narrow, centered 830px column (long-
+   form bio/story copy, not a card grid), so there's no grid gap to
+   tier here the way Work/Journal/the homepage have. Only the outer
+   chrome changes: nav/footer (already covered by the shared rule
+   above) and each section's own edge padding.
+
+   .about-section replaces the identical inline
+   `padding:64px 15px 96px;border-top:1px solid var(--border-rule)`
+   that was duplicated across the origin-story, founder, awards, and
+   build sections — consolidated into one rule since this pass was
+   already touching that declaration. Unconditional so it matches the
+   original inline values when used without body.wide-spacing.
+   .page-hero (already defined above) covers the hero section, which
+   used the same 96/15/64 pattern as Work/Journal's hero. */
+.about-section {
+  padding: 64px 15px 96px;
+  border-top: 1px solid var(--border-rule);
+}
+
+body.wide-spacing .about-section,
+body.wide-spacing .connect-cta-sunken {
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
 }

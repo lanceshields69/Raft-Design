@@ -47,6 +47,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200;14..32,300;14..32,400;14..32,500;14..32,900&family=Noto+Sans+JP:wght@400;500;900&family=Noto+Serif+JP:wght@900&family=Fraunces:ital,opsz,SOFT,WONK,wght@1,9..144,0,1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="ja.css">
+  <link rel="stylesheet" href="../page-spacing.css">
   <script>
     if (localStorage.getItem('raft-theme') === 'light') {
       document.documentElement.dataset.theme = 'light';
@@ -68,14 +69,22 @@
 
     body { margin: 0; }
 
-    /* Founder portrait: fixed circle, shrinks on narrow viewports so the
-       name/role column keeps enough room to sit beside it. A hairline
-       border keeps the circle's edge visible even where a photo's own
-       tones run dark against the page's near-black canvas — without it, a
-       dark lower half can read as the circle being clipped when it isn't. */
-    .mr-founder-photo { width: 220px; height: 220px; object-fit: cover; border-radius: 50%; border: 1px solid var(--border-rule); flex-shrink: 0; }
-    @media (max-width: 480px) {
-      .mr-founder-photo { width: 132px; height: 132px; }
+    /* Two-column split — Origin Story, Founder, and Awards each pair text
+       (left) with a photo/graphic (right) at a fixed 60/40 ratio. Grid's
+       fr unit divides space left over after the gap, so 60fr/40fr holds
+       that ratio exactly regardless of container width, unlike percentage
+       flex-basis which would need manual gap subtraction. Stacks to one
+       column at ≤1024px, same 80/48/32 gap tiers as the rest of the
+       site's spacing work (home-spacing.css/page-spacing.css/
+       project.css). */
+    .about-split { display: grid; grid-template-columns: 60fr 40fr; gap: 80px; align-items: start; }
+    .about-split-image { width: 100%; aspect-ratio: 1 / 1; border-radius: var(--radius-md); overflow: hidden; }
+    .about-split-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    @media (max-width: 1024px) {
+      .about-split { grid-template-columns: 1fr; gap: 48px; }
+    }
+    @media (max-width: 768px) {
+      .about-split { gap: 32px; }
     }
 
     /* Cooper row: fixed circular avatar + caption, text sitting beside it
@@ -108,8 +117,6 @@
       column-gap: 30px;
       row-gap: 60px;
       align-items: center;
-      max-width: 730px;
-      margin: 0 0 48px;
     }
     .mr-awards-logo { display: block; height: auto; }
 
@@ -143,7 +150,7 @@
     }
   </style>
 </head>
-<body style="background:var(--bg-canvas);min-height:100vh;font-family:var(--font-sans);color:var(--text-primary)">
+<body class="wide-spacing" style="background:var(--bg-canvas);min-height:100vh;font-family:var(--font-sans);color:var(--text-primary)">
 
 <nav class="nav-header">
   <div class="nav-logotype">
@@ -234,7 +241,7 @@
 </div>
 
 <!-- HERO -->
-<section style="padding:96px 15px 64px;max-width:1920px">
+<section class="page-hero" style="max-width:1920px">
   <div style="max-width:800px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px">
     <span class="mr-wipe" id="mr-hero-eyebrow" style="font-size:23px;font-weight:var(--weight-black);letter-spacing:var(--tracking-section-title);line-height:var(--line-height-eyebrow);text-transform:uppercase;color:var(--text-accent)">Meet Raft</span>
     <h1 class="mr-wipe" id="mr-hero-headline" style="font-weight:900;font-size:clamp(34px,7vw,64px);line-height:1.3;letter-spacing:0;margin:0">変化の中でも、前へ。</h1>
@@ -243,63 +250,60 @@
 </section>
 
 <!-- ORIGIN STORY -->
-<section style="padding:64px 15px 96px;border-top:1px solid var(--border-rule);max-width:1920px">
-  <div class="fade-in" style="max-width:830px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
-    <span style="font-size:var(--font-size-eyebrow);font-weight:var(--weight-black);letter-spacing:var(--tracking-section-title);line-height:var(--line-height-eyebrow);text-transform:uppercase;color:var(--text-muted)">原点</span>
-    <p style="font-size:20px;line-height:1.8;margin:0;overflow-wrap:anywhere">私は20年間、他者が描いた時間軸の中でデザインをしてきました。最初は自ら立ち上げたエージェンシーで、その後はAdobe、そしてWalmartで。そこで、多くの創業者が間近で目にすることのない規模で、本物のデザインの規律とは何かを学びました。</p>
-    <p style="font-size:20px;line-height:1.8;margin:0;overflow-wrap:anywhere">そしてAIが、業界全体の足元にある流れを変えました。デザインとプロダクトを取り巻く環境は、固定されたプロセスでは追いつけないほど速く動き、今も変わり続けています。船は、一つの航路を進み、そこにあり続けるためにつくられます。絶えず変わる流れには、まったく向いていません。<span class="emphasis" style="font-size:clamp(22px,3vw,26px);line-height:1.6;display:block;margin:16px 0">だから私がつくるべきだったのは、流れを読み、その変化に合わせて進めるものでした。</span>そこから「Raft（いかだ）」という名前が生まれました。固定された計画が通用しないときでも、前進する力を失わないための存在です。</p>
-    <a href="/ja/journal/why-i-built-a-raft-not-a-ship/" class="text-link text-link-large">全文を読む:「船ではなく、いかだをつくった理由」 <span class="arrow">→</span></a>
+<section class="about-section" style="max-width:1920px">
+  <div class="about-split fade-in" style="max-width:1292px;margin:0 auto">
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <span style="font-size:var(--font-size-eyebrow);font-weight:var(--weight-black);letter-spacing:var(--tracking-section-title);line-height:var(--line-height-eyebrow);text-transform:uppercase;color:var(--text-muted)">原点</span>
+      <p style="font-size:20px;line-height:1.8;margin:0;overflow-wrap:anywhere">私は20年間、他者が描いた時間軸の中でデザインをしてきました。最初は自ら立ち上げたエージェンシーで、その後はAdobe、そしてWalmartで。そこで、多くの創業者が間近で目にすることのない規模で、本物のデザインの規律とは何かを学びました。</p>
+      <p style="font-size:20px;line-height:1.8;margin:0;overflow-wrap:anywhere">そしてAIが、業界全体の足元にある流れを変えました。デザインとプロダクトを取り巻く環境は、固定されたプロセスでは追いつけないほど速く動き、今も変わり続けています。船は、一つの航路を進み、そこにあり続けるためにつくられます。絶えず変わる流れには、まったく向いていません。<span class="emphasis" style="font-size:clamp(22px,3vw,26px);line-height:1.6;display:block;margin:16px 0">だから私がつくるべきだったのは、流れを読み、その変化に合わせて進めるものでした。</span>そこから「Raft（いかだ）」という名前が生まれました。固定された計画が通用しないときでも、前進する力を失わないための存在です。</p>
+      <a href="/ja/journal/why-i-built-a-raft-not-a-ship/" class="text-link text-link-large">全文を読む:「船ではなく、いかだをつくった理由」 <span class="arrow">→</span></a>
+    </div>
+    <div class="about-split-image">
+      <img src="../images/raft-stamp.jpeg" width="839" height="839" alt="木製の「Raft」ゴム印がデスクの上に他のスタンプと共に置かれている。" loading="lazy">
+    </div>
   </div>
 </section>
 
 <!-- FOUNDER -->
-<section style="padding:64px 15px 96px;border-top:1px solid var(--border-rule);max-width:1920px">
-  <div style="max-width:830px;margin:0 auto"><span class="section-label" style="margin-bottom:64px">The founder</span></div>
-  <div class="fade-in" style="max-width:830px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
-
-    <div style="display:flex;align-items:center;gap:20px">
-      <img src="../images/lance-shields-pic.jpg" alt="Lance Shields" class="mr-founder-photo">
+<section class="about-section" style="max-width:1920px">
+  <div style="max-width:1292px;margin:0 auto"><span class="section-label" style="margin-bottom:64px">The founder</span></div>
+  <div class="about-split fade-in" style="max-width:1292px;margin:0 auto">
+    <div style="display:flex;flex-direction:column;gap:32px">
       <div style="display:flex;flex-direction:column;gap:8px">
         <h3 style="font-size:36px;font-weight:900;line-height:1.24;margin:0">Lance Shields</h3>
         <span style="font-size:var(--font-size-eyebrow);font-weight:var(--weight-black);letter-spacing:var(--tracking-section-title);line-height:var(--line-height-eyebrow);text-transform:uppercase;color:var(--text-accent)">Founder &amp; Head of Design</span>
       </div>
+
+      <p style="font-size:20px;line-height:1.8;margin:0;overflow-wrap:anywhere">ブランドとプロダクト、両方の領域における20年以上のデザインリーダーシップ。ビッグテック、エージェンシー、スタートアップ、そしてエンタープライズ、米国と日本の両方で築いてきました。</p>
+      <p style="font-size:20px;line-height:1.8;margin:0;overflow-wrap:anywhere">東京では10年間デザインチームを率い、日立やANA(全日空)のグローバルブランドサイトなどを手がけ、Hitachi.comの仕事でグッドデザイン賞を受賞しました。Adobeでは同社初となる国際デザインチームを立ち上げ、その後Adobe ExpressでAIプロダクトデザインを率いました。直近ではWalmartのDesign Directorとして、月間5億8000万人が訪れるショッピング体験にAIを取り入れる仕事を牽引しました。</p>
+      <p style="font-size:20px;line-height:1.8;margin:0;overflow-wrap:anywhere">AdobeやWalmartでデザインを率いる前は、サンフランシスコで受賞歴のあるデザインスタジオを経営し、資金調達を終えたスタートアップからフォーチュン500企業まで、ブランドとプロダクトの両面で仕事をしてきました。当時培った目利きは今も証明され続けています。IPOを果たした企業、買収された企業がいくつかあり、今も成長を続けている企業もあります。</p>
+      <p style="font-size:20px;line-height:1.8;margin:0;overflow-wrap:anywhere">その市場を越え、領域を越える感覚が、今Raftのフラッグシップである、LegalOnのブランド・プロダクトプラットフォームを7つのAIプロダクトにわたって支えています。すべての案件を、私自身が直接リードします。従来のスタジオのように、ブランドからプロダクト、実装までを一貫して手がけることもあれば、必要に応じて、スケールするチームにフラクショナル・デザインリーダーシップとして加わることもあります。</p>
+
+      <div style="display:flex;align-items:center;gap:20px;margin-top:8px">
+        <a href="https://www.linkedin.com/in/lanceshields" aria-label="LinkedIn" class="mr-icon-link">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
+        <a href="https://upstreamjournal.substack.com" aria-label="Upstream Journal on Substack" class="mr-icon-link">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16v3.2H4V3zm0 5.4h16V11H4V8.4zm0 5.4h16v7.2l-8-4.6-8 4.6v-7.2z"/></svg>
+        </a>
+      </div>
     </div>
 
-    <p style="font-size:20px;line-height:1.8;margin:0;overflow-wrap:anywhere">ブランドとプロダクト、両方の領域における20年以上のデザインリーダーシップ。ビッグテック、エージェンシー、スタートアップ、そしてエンタープライズ、米国と日本の両方で築いてきました。</p>
-    <p style="font-size:20px;line-height:1.8;margin:0;overflow-wrap:anywhere">東京では10年間デザインチームを率い、日立やANA(全日空)のグローバルブランドサイトなどを手がけ、Hitachi.comの仕事でグッドデザイン賞を受賞しました。Adobeでは同社初となる国際デザインチームを立ち上げ、その後Adobe ExpressでAIプロダクトデザインを率いました。直近ではWalmartのDesign Directorとして、月間5億8000万人が訪れるショッピング体験にAIを取り入れる仕事を牽引しました。</p>
-    <p style="font-size:20px;line-height:1.8;margin:0;overflow-wrap:anywhere">AdobeやWalmartでデザインを率いる前は、サンフランシスコで受賞歴のあるデザインスタジオを経営し、資金調達を終えたスタートアップからフォーチュン500企業まで、ブランドとプロダクトの両面で仕事をしてきました。当時培った目利きは今も証明され続けています。IPOを果たした企業、買収された企業がいくつかあり、今も成長を続けている企業もあります。</p>
-    <p style="font-size:20px;line-height:1.8;margin:0;overflow-wrap:anywhere">その市場を越え、領域を越える感覚が、今Raftのフラッグシップである、LegalOnのブランド・プロダクトプラットフォームを7つのAIプロダクトにわたって支えています。すべての案件を、私自身が直接リードします。従来のスタジオのように、ブランドからプロダクト、実装までを一貫して手がけることもあれば、必要に応じて、スケールするチームにフラクショナル・デザインリーダーシップとして加わることもあります。</p>
-
-    <div style="display:flex;align-items:center;gap:20px;margin-top:8px">
-      <a href="https://www.linkedin.com/in/lanceshields" aria-label="LinkedIn" class="mr-icon-link">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
-      </a>
-      <a href="https://upstreamjournal.substack.com" aria-label="Upstream Journal on Substack" class="mr-icon-link">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h16v3.2H4V3zm0 5.4h16V11H4V8.4zm0 5.4h16v7.2l-8-4.6-8 4.6v-7.2z"/></svg>
-      </a>
+    <div class="about-split-image">
+      <img src="../images/LanceShields.jpg" width="791" height="791" alt="Lance Shields" loading="lazy">
     </div>
   </div>
 
-  <div class="mr-cooper-row fade-in" style="max-width:830px;margin:78px auto 0">
+  <div class="mr-cooper-row fade-in" style="max-width:1292px;margin:78px auto 0">
     <img src="../images/Cooper-Shields.jpg" alt="Cooper Shields" class="mr-cooper-avatar">
     <p class="mr-cooper-text" style="font-size:14px;line-height:1.6;color:var(--text-muted);margin:0;overflow-wrap:anywhere"><strong style="color:var(--text-primary);font-weight:900">Cooper Shields — チーフ・ハピネス・オフィサー。</strong><br>ほとんどの会議に出席。何も承認しませんが、すべてを良くします。</p>
   </div>
 </section>
 
 <!-- AWARDS -->
-<section class="mr-awards-section" style="padding:64px 15px 96px;border-top:1px solid var(--border-rule);max-width:1920px">
-  <div style="max-width:830px;margin:0 auto"><span class="section-label" style="margin-bottom:64px">Awards</span></div>
-  <div style="max-width:830px;margin:0 auto">
-    <div class="fade-in mr-awards-logos-grid">
-      <img class="mr-awards-logo" src="../images/award-webby.svg" width="177" height="100" alt="The Webby Awards" loading="lazy" style="justify-self:start">
-      <img class="mr-awards-logo" src="../images/award-good-design.svg" width="203" height="69" alt="Good Design Award" loading="lazy" style="justify-self:center">
-      <img class="mr-awards-logo" src="../images/award-W3.svg" width="159" height="78" alt="W3 Awards" loading="lazy" style="justify-self:end">
-      <img class="mr-awards-logo" src="../images/award-communicator.svg" width="229" height="47" alt="Communicator Awards" loading="lazy" style="justify-self:start">
-      <img class="mr-awards-logo" src="../images/award-daveys.svg" width="134" height="84" alt="Davey Awards" loading="lazy" style="justify-self:center">
-      <img class="mr-awards-logo" src="../images/award-JPM.svg" width="148" height="67" alt="Japan Marketers Award" loading="lazy" style="justify-self:end">
-    </div>
-  </div>
-  <div class="fade-in" style="max-width:830px;margin:0 auto">
+<section class="mr-awards-section about-section" style="max-width:1920px">
+  <div style="max-width:1292px;margin:0 auto"><span class="section-label" style="margin-bottom:64px">Awards</span></div>
+  <div class="about-split fade-in" style="max-width:1292px;margin:0 auto">
     <div class="awards-list">
       <div class="awards-item"><p>Webby Winner - All-in-One AI-Powered Creativity App, 2024, For Adobe Express</p></div>
       <div class="awards-item"><p>Webby Winner - Best Nonprofit Website, 2016, For Thatsnotcool.com</p></div>
@@ -312,28 +316,42 @@
       <div class="awards-item"><p>Japan Marketers Award - Silver: B2B Marketing, 2011, For Yokogawa's Vigilance brand campaign</p></div>
       <div class="awards-item"><p>Good Design Award - Best Global Website, 2008, For Hitachi.com</p></div>
     </div>
+    <div class="mr-awards-logos-grid">
+      <img class="mr-awards-logo" src="../images/award-webby.svg" width="177" height="100" alt="The Webby Awards" loading="lazy" style="justify-self:start">
+      <img class="mr-awards-logo" src="../images/award-good-design.svg" width="203" height="69" alt="Good Design Award" loading="lazy" style="justify-self:center">
+      <img class="mr-awards-logo" src="../images/award-W3.svg" width="159" height="78" alt="W3 Awards" loading="lazy" style="justify-self:end">
+      <img class="mr-awards-logo" src="../images/award-communicator.svg" width="229" height="47" alt="Communicator Awards" loading="lazy" style="justify-self:start">
+      <img class="mr-awards-logo" src="../images/award-daveys.svg" width="134" height="84" alt="Davey Awards" loading="lazy" style="justify-self:center">
+      <img class="mr-awards-logo" src="../images/award-JPM.svg" width="148" height="67" alt="Japan Marketers Award" loading="lazy" style="justify-self:end">
+    </div>
   </div>
 </section>
 
 <!-- BUILD -->
-<section id="build" style="padding:64px 15px 96px;border-top:1px solid var(--border-rule);max-width:1920px">
-  <div style="max-width:830px;margin:0 auto"><span class="section-label" style="margin-bottom:64px">Build</span></div>
-  <div class="fade-in" style="max-width:830px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
-    <p class="emphasis" style="font-size:clamp(22px,3vw,28px);line-height:1.4;margin:0">デザイナーは引き渡す。エンジニアは仕様を待つ。どちらももう必要ない。</p>
-    <p style="font-size:20px;line-height:1.8;margin:0;overflow-wrap:anywhere">ツールを開く前に、LLMとの対話のなかで戦略が固まる。デザインとプロトタイプは同時に進み、エンジニアリングを待たずにテストし、共有できるところまで仕上がる。そこからClaude Code、Cursor、V0が実際に動くプロダクトに変えていく。引き渡しはない。Figmaプラグインから一日でつくったインタラクティブなアート作品まで、五つのプロジェクトが公開されている。</p>
-    <a href="https://github.com/lanceshields69" class="text-link text-link-large" target="_blank" rel="noopener noreferrer">プロジェクトを見る <span class="arrow">→</span></a>
+<section id="build" class="about-section" style="max-width:1920px">
+  <div style="max-width:1292px;margin:0 auto"><span class="section-label" style="margin-bottom:64px">Build</span></div>
+  <div class="about-split fade-in" style="max-width:1292px;margin:0 auto">
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <p class="emphasis" style="font-size:clamp(22px,3vw,28px);line-height:1.4;margin:0">デザイナーは引き渡す。エンジニアは仕様を待つ。どちらももう必要ない。</p>
+      <p style="font-size:20px;line-height:1.8;margin:0;overflow-wrap:anywhere">ツールを開く前に、LLMとの対話のなかで戦略が固まる。デザインとプロトタイプは同時に進み、エンジニアリングを待たずにテストし、共有できるところまで仕上がる。そこからClaude Code、Cursor、V0が実際に動くプロダクトに変えていく。引き渡しはない。Figmaプラグインから一日でつくったインタラクティブなアート作品まで、五つのプロジェクトが公開されている。</p>
+      <a href="https://github.com/lanceshields69" class="text-link text-link-large" target="_blank" rel="noopener noreferrer">プロジェクトを見る <span class="arrow">→</span></a>
 
-    <div style="display:flex;flex-direction:column;gap:8px;margin-top:16px">
-      <h3 style="font-size:20px;font-weight:900;margin:0">戦略から始める</h3>
-      <p style="font-size:18px;line-height:1.8;margin:0;color:var(--text-muted);overflow-wrap:anywhere">ClaudeやChatGPTと、課題、ユーザー、プロダクトの論理を考え抜く時間。プロンプトを書き、アイデアを試し、ピクセルもコードも一切生まれる前に明確な視点にたどり着く。</p>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:16px">
+        <h3 style="font-size:20px;font-weight:900;margin:0">戦略から始める</h3>
+        <p style="font-size:18px;line-height:1.8;margin:0;color:var(--text-muted);overflow-wrap:anywhere">ClaudeやChatGPTと、課題、ユーザー、プロダクトの論理を考え抜く時間。プロンプトを書き、アイデアを試し、ピクセルもコードも一切生まれる前に明確な視点にたどり着く。</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <h3 style="font-size:20px;font-weight:900;margin:0">デザインとプロトタイプを同時に</h3>
+        <p style="font-size:18px;line-height:1.8;margin:0;color:var(--text-muted);overflow-wrap:anywhere">FigmaとAIツールを行き来しながら、フロー、画面、インタラクションを描く。エンジニアリングを待たずにテストし、共有し、反復できるところまで仕上げる。</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <h3 style="font-size:20px;font-weight:900;margin:0">動くものにする</h3>
+        <p style="font-size:18px;line-height:1.8;margin:0;color:var(--text-muted);overflow-wrap:anywhere">Claude Code、Cursor、V0でコードを生成し、磨き込む。ビルドは委ねるのではなく、指揮するもの。何が欲しいかを知り、正しいときがわかり、そこへ速くたどり着く。</p>
+      </div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:8px">
-      <h3 style="font-size:20px;font-weight:900;margin:0">デザインとプロトタイプを同時に</h3>
-      <p style="font-size:18px;line-height:1.8;margin:0;color:var(--text-muted);overflow-wrap:anywhere">FigmaとAIツールを行き来しながら、フロー、画面、インタラクションを描く。エンジニアリングを待たずにテストし、共有し、反復できるところまで仕上げる。</p>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:8px">
-      <h3 style="font-size:20px;font-weight:900;margin:0">動くものにする</h3>
-      <p style="font-size:18px;line-height:1.8;margin:0;color:var(--text-muted);overflow-wrap:anywhere">Claude Code、Cursor、V0でコードを生成し、磨き込む。ビルドは委ねるのではなく、指揮するもの。何が欲しいかを知り、正しいときがわかり、そこへ速くたどり着く。</p>
+
+    <div class="about-split-image">
+      <img src="../images/how-build.jpg" width="1066" height="1066" alt="デスクの上のノートパソコンに、AIコーディングアシスタント（V0）がカード型のWebアプリを構築している画面が表示されている。" loading="lazy">
     </div>
   </div>
 </section>

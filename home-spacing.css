@@ -1,0 +1,191 @@
+/* Homepage spacing test — fluid, proportional horizontal gutters
+   inspired by Clay (clay.global): both the content area and the outer
+   gutters grow as the viewport widens, instead of a fixed-width
+   container with dead margin on large screens.
+
+   Formula: clamp(24px, min(10vw, calc((100vw - 1292px) / 2)), 192px)
+   - Below ~1340px the (100vw - 1292px) / 2 term goes negative, so the
+     24px floor wins outright — no separate mobile/tablet breakpoint
+     needed, the same expression degrades correctly on its own.
+   - From ~1340px to ~1615px, that term is the smaller of the two and
+     the formula holds content width at exactly 1292px by shrinking the
+     gutter as the viewport narrows toward 1340px.
+   - Above ~1615px, 10vw becomes the smaller term, so gutters scale as
+     a flat 10% of viewport and content width grows past 1292px.
+   - The 192px ceiling caps gutters (and therefore this formula) at the
+     1920px viewport; wider viewports stay at 192px gutters with
+     content continuing to grow.
+
+   Scoped entirely to body.home — this file is linked from index.html
+   and ja/index.html only, both of which carry that class on <body>.
+   Work, About, Journal, Contact, and their /ja/ counterparts are
+   untouched; their shared .nav-header, .footer, and section classes
+   keep their existing fixed padding. This is a homepage-only test
+   (EN + JA) for local review before any wider rollout. */
+
+body.home {
+  --home-gutter: clamp(24px, min(10vw, calc((100vw - 1292px) / 2)), 192px);
+}
+
+body.home .nav-header,
+body.home .intro-section,
+body.home .approach-section,
+body.home .expertise-section,
+body.home .ai-systems-section,
+body.home .work-section,
+body.home .journal-carousel-section,
+body.home .scan-banner-section,
+body.home .faq-section,
+body.home .connect-cta-sunken,
+body.home .footer {
+  padding-left: var(--home-gutter);
+  padding-right: var(--home-gutter);
+}
+
+/* .intro-section--video previously overrode padding-left to 55px
+   (asymmetric vs. the base .intro-section's 15px right side). The
+   .intro-section rule above already wins on specificity (two classes
+   vs. one) and unifies both sides to the shared gutter, so the hero
+   text now aligns with nav/sections/footer on both edges. The
+   full-bleed video/scrim behind it are absolutely positioned with
+   left:0/right:0 against the section's padding box, so they are
+   unaffected by this and continue to bleed full-width. */
+
+/* Featured Work project-card grid gap — desktop 48px -> 80px, with new
+   tablet/mobile tiers replacing the old single ≤1024px value (32px for
+   everything below desktop). Breakpoints match this page's existing
+   768/1024 convention (nav hamburger, hero-lockup collapse). Only the
+   `gap` between cards changes: grid-template-columns (2-col above
+   1024px, 1-col at/below it) is untouched, as is every gap *inside* a
+   card (.featured-work-card, .featured-work-info, .featured-work-tags),
+   image aspect-ratio, and title/tag typography.
+
+   .featured-work-grid is shared with ja/index.html, which now also
+   carries body.home, so this applies identically on both. */
+body.home .featured-work-grid {
+  gap: 80px;
+}
+
+@media (max-width: 1024px) {
+  body.home .featured-work-grid {
+    gap: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  body.home .featured-work-grid {
+    gap: 32px;
+  }
+}
+
+/* Same 80/48/32 tiers applied to Approach, Services, Engage, and FAQs —
+   each section's content-split/card gaps, matching Featured Work's grid
+   gap in kind and value. This includes each section's inner column
+   split too (.approach-left's text-block-vs-stats-column gap,
+   .ai-systems-left's two-offer-blocks gap) — those separate two major
+   sibling content blocks, same as the outer content gaps, just one
+   level deeper. Left untouched as genuinely internal spacing (same
+   precedent as .featured-work-card's inner gap, which stays put):
+   - .service-card (title-to-body gap inside one card)
+   - .faq-item (question-to-answer gap inside one FAQ)
+
+   Engage's markup carries both .ai-systems-content and its modifier
+   .ai-systems-content--split (added for the EN homepage's two-offering
+   layout — see that modifier's own comment above). Same specificity,
+   so which one currently wins depends on source order and shifts
+   between breakpoints (40px desktop via the modifier, 32px at ≤1024px
+   via the base class's own responsive rule) — both are targeted below
+   so this override wins outright at every width regardless.
+
+   All of these classes are also used by ja/index.html (and .faq-row
+   additionally by design-foundation/ + ja/design-foundation/), so
+   everything here stays under body.home like the rest of this test.
+
+   Desktop values replace flat 40px (approach/services/engage) or
+   48px/60px (faq-grid/faq-row) gaps; tablet/mobile split the site's
+   existing single ≤1024px value (32px for approach/services/engage,
+   48px for FAQ rows) into two real tiers, same as the Featured Work
+   change. */
+body.home .approach-content,
+body.home .approach-left,
+body.home .expertise-content,
+body.home .expertise-cards,
+body.home .expertise-row,
+body.home .ai-systems-content,
+body.home .ai-systems-content--split,
+body.home .ai-systems-left,
+body.home .faq-grid,
+body.home .faq-row {
+  gap: 80px;
+}
+
+/* .faq-row--single caps a lone trailing item to one column's width via
+   half the row gap (was 30px = 60px / 2), for the desktop 2-column
+   layout only. BUG (found on mobile): this selector's specificity
+   (body.home + 3 classes) beat styles.css's own ≤1024px reset of this
+   same property to `none` (2 classes, no body.home prefix) — so the
+   50%-based cap was winning everywhere, including ≤1024px where
+   .faq-row has already stacked to one column, squeezing the trailing
+   FAQ to roughly half-width instead of the full row. Fixed by
+   explicitly restoring `none` at ≤1024px below, at matching
+   specificity, rather than relying on the un-scoped original to win. */
+body.home .faq-row--single .faq-item {
+  max-width: calc(50% - 40px);
+}
+
+@media (max-width: 1024px) {
+  body.home .approach-content,
+  body.home .approach-left,
+  body.home .expertise-content,
+  body.home .expertise-cards,
+  body.home .expertise-row,
+  body.home .ai-systems-content,
+  body.home .ai-systems-content--split,
+  body.home .ai-systems-left,
+  body.home .faq-grid,
+  body.home .faq-row {
+    gap: 48px;
+  }
+
+  body.home .faq-row--single .faq-item {
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  body.home .approach-content,
+  body.home .approach-left,
+  body.home .expertise-content,
+  body.home .expertise-cards,
+  body.home .expertise-row,
+  body.home .ai-systems-content,
+  body.home .ai-systems-content--split,
+  body.home .ai-systems-left,
+  body.home .faq-grid,
+  body.home .faq-row {
+    gap: 32px;
+  }
+}
+
+/* Journal carousel — card-to-card gap in the horizontally-scrolling
+   track, 20px -> 48px flat (no tiers requested: this is a scroll-snap
+   carousel, not a wrapping grid, so one value at every width matches
+   how the rest of the track already behaves — card width itself
+   already has its own ≤640px override in journal.css, untouched here).
+   .journal-carousel-card-body's 10px title-to-link gap stays internal,
+   same precedent as elsewhere. Also used by ja/index.html, so scoped
+   to body.home like the rest of this test. */
+body.home .journal-carousel-track {
+  gap: 48px;
+}
+
+/* Card width 440px -> 398px so 3 cards + 2 new 48px gaps (1290px) fit
+   within this page's ~1292px desktop content floor (viewport - 2x
+   --home-gutter, see the gutter formula's own comment above) instead
+   of showing ~2.5 cards. max-width: 82vw (journal.css) is untouched,
+   so the existing shrink-to-viewport behavior on narrow screens still
+   applies; the ≤640px width:320px override is also untouched, since a
+   phone-width carousel was never going to show three across anyway. */
+body.home .journal-carousel-card {
+  width: 398px;
+}

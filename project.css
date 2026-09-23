@@ -24,9 +24,30 @@
   display: block;
 }
 
-/* .footer is only ever loaded alongside project.css on project pages
-   (the homepage doesn't link this stylesheet), so no .project-page
-   scoping is needed here. */
+/* Fluid gutter — same formula as the homepage/Work/Journal top-page
+   spacing test (home-spacing.css / page-spacing.css): 24px mobile up
+   to 192px at wide desktop, holding a 1292px content floor from ~1340
+   down to 1615px. Defined once here since project.css (like the rest
+   of this file) is only ever loaded on the 18 project detail pages
+   (/work/[slug]/, /ja/work/[slug]/) — no body-class scoping needed,
+   the file's own inclusion is the scope. */
+:root {
+  --project-gutter: clamp(24px, min(10vw, calc((100vw - 1292px) / 2)), 192px);
+}
+
+/* .nav-header and .footer are only ever loaded alongside project.css
+   on project pages (the homepage/Work/Journal top pages link their own
+   spacing files instead), so no .project-page scoping is needed here
+   either — same reasoning as this rule's pre-existing .footer
+   margin-top override below. Project.css loads after styles.css on
+   every page that uses it, so plain-class rules here win by cascade
+   order without needing extra specificity. */
+.nav-header,
+.footer {
+  padding-left: var(--project-gutter);
+  padding-right: var(--project-gutter);
+}
+
 .footer {
   margin-top: 50px;
 }
@@ -38,8 +59,8 @@
 .project-page {
   max-width: none;
   margin: 0;
-  padding-left: clamp(20px, 4vw, var(--space-xxxl));
-  padding-right: clamp(20px, 4vw, var(--space-xxxl));
+  padding-left: var(--project-gutter);
+  padding-right: var(--project-gutter);
 }
 
 /* Vertical padding corrected 48px/32px -> uniform 60px per Figma
@@ -66,9 +87,15 @@
 }
 
 /* Title/role row — confirm it spans the full (now wide) container
-   rather than any inherited narrow width. */
+   rather than any inherited narrow width. Gap 48px -> 80px/48px/32px
+   across desktop/tablet/mobile, same tiers as the homepage/Work/
+   Journal top-page spacing (see the responsive block near the bottom
+   of this file). styles.css already switches this row to
+   flex-direction: column at ≤1024px — the gap value applies the same
+   either way, row or column. */
 .project-page .project-top-row {
   width: 100%;
+  gap: 80px;
 }
 
 /* MY ROLE + metrics column — the base 280px sidebar width read too
@@ -213,11 +240,17 @@
 
 /* padding corrected 40px -> 60px, margin-bottom corrected 40px -> 48px,
    border-bottom added (Figma shows this section fully bounded by rules
-   top and bottom, not just a top rule) — all per Figma node 144:1219. */
+   top and bottom, not just a top rule) — all per Figma node 144:1219.
+   Gap 48px -> 80px/48px/32px, same tiers as .project-top-row above
+   (styles.css switches this row to column only at ≤768px, not
+   ≤1024px like top-row, but one shared gap value works the same in
+   either direction so the tiers still line up with the site's
+   standard 768/1024 breakpoints). */
 .project-page .project-challenge-solution {
   padding: var(--space-xxxl) 0;
   margin-bottom: var(--space-xxl);
   border-bottom: 1px solid var(--border-rule);
+  gap: 80px;
 }
 
 .project-testimonial {
@@ -277,9 +310,12 @@
    when neither is overridden by CSS) — that's what was stretching every
    image. aspect-ratio + object-fit: cover fixes the stretch and matches
    the Figma crop treatment; the border used inside the modal is dropped
-   since Figma shows plain edge-to-edge images here. */
+   since Figma shows plain edge-to-edge images here. Gap 48px -> 80px/
+   48px/32px, same tiers as .project-top-row/.project-challenge-solution
+   above (see the responsive block near the bottom of this file) — more
+   breathing room between stacked project screenshots. */
 .project-page .project-image-grid {
-  gap: 48px;
+  gap: 80px;
 }
 
 .project-page .project-image-grid img {
@@ -326,6 +362,18 @@
   max-width: none;
 }
 
+/* Tablet/mobile gap tiers for the three gaps set to 80px above —
+   .project-top-row, .project-challenge-solution, .project-image-grid.
+   Same 768/1024 breakpoints as the homepage/Work/Journal top-page
+   spacing tiers. */
+@media (max-width: 1024px) {
+  .project-page .project-top-row,
+  .project-page .project-challenge-solution,
+  .project-page .project-image-grid {
+    gap: 48px;
+  }
+}
+
 @media (max-width: 768px) {
   .project-testimonial-quote {
     font-size: 20px;
@@ -333,5 +381,11 @@
 
   .project-award-text {
     font-size: 20px;
+  }
+
+  .project-page .project-top-row,
+  .project-page .project-challenge-solution,
+  .project-page .project-image-grid {
+    gap: 32px;
   }
 }

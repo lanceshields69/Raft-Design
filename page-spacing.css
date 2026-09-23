@@ -1,0 +1,101 @@
+/* Work and Journal top-page spacing — same fluid gutter formula and
+   80/48/32 card-gap tiers as the homepage test (home-spacing.css).
+   Separate file/class because .nav-header, .footer, .work-hero*, and
+   .work-row/.journal-row are also shared with labs/index.html — this
+   stays scoped to body.wide-spacing, applied to work/index.html,
+   journal/index.html, ja/work/index.html, and ja/journal/index.html
+   (all four carry the class and link this file); Labs is untouched.
+
+   Formula: clamp(24px, min(10vw, calc((100vw - 1292px) / 2)), 192px)
+   — identical to home-spacing.css; see that file's comment for the
+   full breakdown of how it behaves across breakpoints. */
+
+body.wide-spacing {
+  --page-gutter: clamp(24px, min(10vw, calc((100vw - 1292px) / 2)), 192px);
+}
+
+/* .page-hero is a new class added to each page's bare hero <section>
+   (it previously had no class at all — inline-styled only, from the
+   earlier hero-copy pass, still carrying its own max-width:1920px
+   inline). Its padding used to be inline too (96px 15px 64px); moved
+   here because an inline style always wins over any stylesheet rule
+   regardless of specificity, which silently blocked the body.wide-
+   spacing override below. Unconditional so it matches the original
+   inline value when this class is used without body.wide-spacing. */
+.page-hero {
+  padding: 96px 15px 64px;
+}
+
+/* .work-row/.journal-row keep their own vertical padding
+   (--space-xxl/--space-lg top/bottom, from work-index.css/
+   journal.css) — only the horizontal component is overridden here,
+   same technique as home-spacing.css. */
+body.wide-spacing .nav-header,
+body.wide-spacing .page-hero,
+body.wide-spacing .work-row,
+body.wide-spacing .journal-row,
+body.wide-spacing .footer {
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+}
+
+/* Card-to-card gap: 60px -> 80px/48px/32px across desktop/tablet/
+   mobile, same tiers and 768/1024 breakpoints as the homepage's
+   Featured Work grid. .work-card and .journal-card's own internal
+   gaps (title/subtitle/tags stack) stay untouched, same precedent. */
+body.wide-spacing .work-row,
+body.wide-spacing .journal-row {
+  gap: 80px;
+}
+
+/* .journal-card sizes itself to half the row width minus half the row
+   gap (calc(50% - 30px), assuming the old 60px gap). Updated to match
+   the new 80px desktop gap (half = 40px). Only needs the desktop
+   value: the ≤1024px rule below already resets this to flex-basis:
+   100% once .journal-row stacks to one column, same as .work-card
+   needs no equivalent fix (it has no such calc to begin with). */
+body.wide-spacing .journal-card {
+  flex-basis: calc(50% - 40px);
+}
+
+@media (max-width: 1024px) {
+  body.wide-spacing .work-row,
+  body.wide-spacing .journal-row {
+    gap: 48px;
+  }
+
+  /* Restores the existing flex-basis: 100% reset (work-index.css /
+     journal.css already do this at ≤1024px when the row stacks to a
+     single column) at matching specificity — the rule above would
+     otherwise win here too and squeeze the card, the same mobile bug
+     already found and fixed once on the homepage's FAQ section. */
+  body.wide-spacing .journal-card {
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  body.wide-spacing .work-row,
+  body.wide-spacing .journal-row {
+    gap: 32px;
+  }
+}
+
+/* The first work-row holds only one .work-card (LegalOn), and
+   .work-card's flex: 1 0 0 stretches a lone item to fill the entire
+   row — 100% of content width, full-bleed edge to edge. Capped to 85%
+   so it still reads as a featured/lead item (wider than a normal 2-up
+   card) without spanning full-bleed. Desktop only (>1024px, where
+   work-row is actually 2 columns) — reset to `none` below once the
+   row stacks to one column at ≤1024px, so it still goes full-width
+   there like every other stacked card, same pattern as .journal-card
+   above. */
+body.wide-spacing .work-row:first-child .work-card {
+  max-width: 85%;
+}
+
+@media (max-width: 1024px) {
+  body.wide-spacing .work-row:first-child .work-card {
+    max-width: none;
+  }
+}

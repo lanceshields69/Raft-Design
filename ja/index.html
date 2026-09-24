@@ -39,6 +39,7 @@
   <link rel="stylesheet" href="ja.css">
   <link rel="stylesheet" href="../raft-chat.css">
   <link rel="stylesheet" href="../home-spacing.css">
+  <link rel="stylesheet" href="../hero-lens.css">
   <script>
     if (localStorage.getItem('raft-theme') === 'light') {
       document.documentElement.dataset.theme = 'light';
@@ -1264,6 +1265,7 @@
   <!-- Ishmael (floating chat, Japanese) -->
   <div id="raft-chat-root"></div>
   <script src="../raft-chat.js"></script>
+  <script src="../hero-lens.js" defer></script>
   <script>
     new RaftChat(document.getElementById('raft-chat-root'), {
       apiUrl: '/api/chat-ja',

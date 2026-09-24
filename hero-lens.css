@@ -1,0 +1,82 @@
+/* Home hero "inverse lens" cursor. JS (hero-lens.js) appends a clone of
+   the hero, in the opposite theme, over the real hero and clips it to a
+   circle that follows the pointer. Desktop / fine-pointer only — the
+   .has-hero-lens class is only ever added when the JS enables it. */
+
+@property --lens-r {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+.intro-section.has-hero-lens,
+.intro-section.has-hero-lens * {
+  cursor: none;
+}
+
+.hero-lens {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  color: var(--text-primary);
+  background: var(--bg-canvas);
+  clip-path: circle(var(--lens-r) at var(--lens-x, -100px) var(--lens-y, -100px));
+  transition: --lens-r 0.16s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hero-lens.is-active { --lens-r: 35px; }          /* 70px diameter */
+.hero-lens.is-active.is-over-text { --lens-r: 50px; } /* 100px on headline/subhead/logo */
+.hero-lens.is-active.is-over-cta { --lens-r: 55px; }  /* 110px on CTAs */
+
+/* The clone is a copy of .intro-section, so cancel its own layout offsets. */
+.hero-lens.intro-section { margin: 0; min-height: 0; }
+
+/* Wordmark inversion (both directions): darker green block, and the letters'
+   --white/--dark are swapped so RAFT reads white and DESIGN reads dark. The
+   letter colors are set inline as var(--white)/var(--dark) by the intro
+   animation, so this also inverts the flicker. */
+.hero-lens {
+  --lime:  #22C321;
+  --white: #04220F;
+  --dark:  #EDF2EE;
+}
+
+/* Opposite-theme tokens. [data-theme] on <html> can't be overridden for a
+   subtree (light rules match via the html ancestor), so both directions
+   are spelled out here. */
+.hero-lens.hero-lens--light {
+  --bg-canvas:     #F7FFF7;
+  --bg-surface:    #EBF7EB;
+  --bg-elevated:   #EBF7EB;
+  --text-primary:  #000000;
+  --text-accent:   #159845;
+  --border-rule:   #CFE5D7;
+  --border-button: #159845;
+  --bg-sunken:     #EAFFEA;
+  --border-bright: #A9C7B4;
+}
+
+.hero-lens.hero-lens--dark {
+  --bg-canvas:     #04220F;
+  --bg-surface:    #2E4034;
+  --bg-elevated:   #102A1B;
+  --text-primary:  #EDF2EE;
+  --text-accent:   #3DE83D;
+  --border-rule:   #1E3A28;
+  --border-button: #3DE83D;
+  --bg-sunken:     #02190A;
+  --border-bright: #438259;
+}
+
+.hero-lens.hero-lens--light .intro-bg-video--dark,
+.hero-lens.hero-lens--dark .intro-bg-video--light { display: none; }
+.hero-lens.hero-lens--light .intro-bg-video--light,
+.hero-lens.hero-lens--dark .intro-bg-video--dark { display: block; }
+
+.hero-lens.hero-lens--light .client-logo { filter: none; }
+.hero-lens.hero-lens--dark .client-logo { filter: none; }
+
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+  .hero-lens { display: none; }
+}

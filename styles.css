@@ -2693,8 +2693,12 @@ html[lang="ja"] .ai-native-panel {
 .calendly-modal {
   width: 100%;
   max-width: 900px;
-  max-height: calc(100vh - 32px);
-  overflow-y: auto;
+  height: calc(100vh - 32px);
+  height: calc(100dvh - 32px);
+  max-height: 960px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   background: var(--bg-canvas);
   border: 1px solid var(--border-rule);
   border-radius: var(--radius-md);
@@ -2709,6 +2713,7 @@ html[lang="ja"] .ai-native-panel {
 }
 
 .calendly-modal-header {
+  flex-shrink: 0;
   display: flex;
   justify-content: flex-end;
   padding: var(--space-md) var(--space-md) 0;
@@ -2739,12 +2744,19 @@ html[lang="ja"] .ai-native-panel {
 }
 
 .calendly-modal-body {
+  flex: 1;
+  min-height: 0;
   padding: 0 var(--space-md) var(--space-md);
 }
 
 .calendly-inline-container {
   min-width: 320px;
-  min-height: 700px;
+  height: 100%;
+}
+
+.calendly-inline-container .calendly-inline-widget,
+.calendly-inline-container iframe {
+  height: 100%;
 }
 
 @media (max-width: 768px) {

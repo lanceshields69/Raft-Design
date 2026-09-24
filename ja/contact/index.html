@@ -132,6 +132,12 @@
       text-transform: uppercase;
       color: var(--text-accent);
     }
+    .contact-hero-intro-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-lg, 24px);
+    }
     .contact-hero-intro {
       font-size: var(--font-size-body-lg);
       line-height: 1.9;
@@ -462,7 +468,10 @@
       <span class="contact-hero-eyebrow">お問い合わせ</span>
       <h1 class="contact-hero-title">貴社のことや、ご一緒できることについて、ぜひお聞かせください。</h1>
     </div>
-    <p class="contact-hero-intro">Raftは、テクノロジー、デザイン、AIが交わる領域で、戦略から制作まで一貫して手がけるエージェンシーです。</p>
+    <div class="contact-hero-intro-group">
+      <p class="contact-hero-intro">Raftは、テクノロジー、デザイン、AIが交わる領域で、戦略から制作まで一貫して手がけるエージェンシーです。</p>
+      <button type="button" class="text-link text-link-large open-calendly-modal" style="color:var(--text-primary);font-weight:700;font-family:inherit;background:none;border:none;padding:0;cursor:pointer">相談を予約する <span class="arrow">→</span></button>
+    </div>
 
     <div class="contact-form">
       <div data-fs-success class="contact-success" aria-live="polite">

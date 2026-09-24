@@ -2170,45 +2170,76 @@ html[lang="ja"] .ai-native-panel {
   margin-bottom: 80px;
 }
 
-.faq-grid {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xxl);
+/* FAQ accordion — same collapsible pattern as design-foundation's
+   #design-foundation-faq (.df-faq-*): a single column under 700px, two
+   columns side by side above it, each row collapsed by default and
+   opened by its own click handler adding .is-open (see the inline
+   script near the other homepage scripts). Replaces the old always-
+   expanded two-column .faq-grid/.faq-row/.faq-item layout. */
+.faq-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
   width: 100%;
+}
+@media (min-width: 700px) {
+  .faq-list {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 64px;
+  }
 }
 
 .faq-row {
+  border-top: 1px solid var(--border-rule);
+}
+
+.faq-toggle {
+  all: unset;
+  box-sizing: border-box;
   display: flex;
-  align-items: flex-start;
-  gap: var(--space-xxxl);
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
   width: 100%;
-}
-
-.faq-item {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  flex: 1 0 0;
-  min-width: 0;
-}
-
-/* A trailing row with a single item would otherwise stretch to the
-   full row width — cap it to match a normal column's width instead. */
-.faq-row--single .faq-item {
-  max-width: calc(50% - 30px);
+  padding: 28px 0;
+  cursor: pointer;
+  text-align: left;
 }
 
 .faq-question {
-  font-size: var(--font-size-heading-2);
-  line-height: 1;
-  color: var(--text-primary);
+  font-size: 20px;
   font-weight: var(--weight-regular);
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+.faq-arrow {
+  flex-shrink: 0;
+  font-size: 20px;
+  color: var(--text-accent);
+  transition: transform 0.2s;
+}
+
+.faq-row.is-open .faq-arrow {
+  transform: rotate(90deg);
+}
+
+.faq-panel {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.25s ease;
+}
+
+.faq-row.is-open .faq-panel {
+  max-height: 400px;
 }
 
 .faq-answer {
   font-size: var(--font-size-body-md);
   line-height: 1.5;
   color: var(--text-primary);
+  margin: 0 0 28px;
+  max-width: 760px;
 }
 
 /* Connect Section */
@@ -3322,15 +3353,6 @@ html[lang="ja"] .ai-native-panel {
   .ai-systems-item:first-child {
     border-top: none;
     padding-top: 0;
-  }
-
-  .faq-row {
-    flex-direction: column;
-    gap: var(--space-xxl);
-  }
-
-  .faq-row--single .faq-item {
-    max-width: none;
   }
 
   .origin-content {

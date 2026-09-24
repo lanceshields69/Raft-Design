@@ -103,10 +103,10 @@
       },
       {
         "@type": "Question",
-        "name": "Does Raft Design work in Japanese?",
+        "name": "How do engagements work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. We work natively in both Japanese and English, with design leadership across both markets. Our founder has over ten years of experience working in Japan, in Japanese, across a range of clients and projects, and this site is fully bilingual. For Japanese companies expanding abroad, or global brands entering Japan, we rebuild meaning for the new market rather than translating it — the harder and more important work."
+          "text": "Three ways, depending on what a team needs. We take on projects like a traditional studio, from brand and product design to shipped experiences. We embed as fractional design leadership when a team is scaling and needs senior direction. And we consult with teams that want to make their own design practice AI-native. Engagements run from short diagnostic sprints to ongoing partnerships."
         }
       },
       {
@@ -115,14 +115,6 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Both. Most studios hand off static designs for someone else to build. We take work through to functioning software — prototypes that behave like the real thing, testable and demoable, using tools like Claude Code, Cursor, and V0. The build is directed, not just delegated."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How do engagements work?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Three ways, depending on what a team needs. We take on projects like a traditional studio, from brand and product design to shipped experiences. We embed as fractional design leadership when a team is scaling and needs senior direction. And we consult with teams that want to make their own design practice AI-native. Engagements run from short diagnostic sprints to ongoing partnerships."
         }
       }
     ]
@@ -532,31 +524,41 @@
     <!-- FAQs Section -->
     <section id="faqs" class="faq-section">
       <h2 class="section-label fade-in">FAQs</h2>
-      <div class="faq-grid fade-in">
+      <div class="faq-list fade-in" id="home-faq">
         <div class="faq-row">
-          <div class="faq-item">
-            <p class="faq-question">What is Raft Design?</p>
+          <button class="faq-toggle" type="button">
+            <span class="faq-question">What is Raft Design?</span>
+            <span class="faq-arrow">→</span>
+          </button>
+          <div class="faq-panel">
             <p class="faq-answer">Raft Design is an AI-native studio working across the U.S. and Japan on brand, product, and digital experience. Twenty years of experience across Adobe, Walmart, and LegalOn shape how we work: hands-on, fast, and built to move with change rather than around it.</p>
           </div>
-          <div class="faq-item">
-            <p class="faq-question">What does "AI-native studio" mean?</p>
+        </div>
+        <div class="faq-row">
+          <button class="faq-toggle" type="button">
+            <span class="faq-question">What does "AI-native studio" mean?</span>
+            <span class="faq-arrow">→</span>
+          </button>
+          <div class="faq-panel">
             <p class="faq-answer">It means AI is part of how the work gets made, not just what it's about. Strategy forms in conversation with language models, design and prototype move together, and working software gets built without the usual handoff between design and engineering. The result is senior design judgment delivered at a speed a traditional studio can't match.</p>
           </div>
         </div>
         <div class="faq-row">
-          <div class="faq-item">
-            <p class="faq-question">Does Raft Design work in Japanese?</p>
-            <p class="faq-answer">Yes. We work natively in both Japanese and English, with design leadership across both markets. Our founder has over ten years of experience working in Japan, in Japanese, across a range of clients and projects, and this site is fully bilingual. For Japanese companies expanding abroad, or global brands entering Japan, we rebuild meaning for the new market rather than translating it — the harder and more important work.</p>
-          </div>
-          <div class="faq-item">
-            <p class="faq-question">Does Raft Design design, or also build?</p>
-            <p class="faq-answer">Both. Most studios hand off static designs for someone else to build. We take work through to functioning software — prototypes that behave like the real thing, testable and demoable, using tools like Claude Code, Cursor, and V0. The build is directed, not just delegated.</p>
+          <button class="faq-toggle" type="button">
+            <span class="faq-question">How do engagements work?</span>
+            <span class="faq-arrow">→</span>
+          </button>
+          <div class="faq-panel">
+            <p class="faq-answer">Three ways, depending on what a team needs. We take on projects like a traditional studio, from brand and product design to shipped experiences. We embed as fractional design leadership when a team is scaling and needs senior direction. And we consult with teams that want to make their own design practice AI-native. Engagements run from short diagnostic sprints to ongoing partnerships.</p>
           </div>
         </div>
-        <div class="faq-row faq-row--single">
-          <div class="faq-item">
-            <p class="faq-question">How do engagements work?</p>
-            <p class="faq-answer">Three ways, depending on what a team needs. We take on projects like a traditional studio, from brand and product design to shipped experiences. We embed as fractional design leadership when a team is scaling and needs senior direction. And we consult with teams that want to make their own design practice AI-native. Engagements run from short diagnostic sprints to ongoing partnerships.</p>
+        <div class="faq-row">
+          <button class="faq-toggle" type="button">
+            <span class="faq-question">Does Raft Design design, or also build?</span>
+            <span class="faq-arrow">→</span>
+          </button>
+          <div class="faq-panel">
+            <p class="faq-answer">Both. Most studios hand off static designs for someone else to build. We take work through to functioning software — prototypes that behave like the real thing, testable and demoable, using tools like Claude Code, Cursor, and V0. The build is directed, not just delegated.</p>
           </div>
         </div>
       </div>
@@ -822,6 +824,14 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+    // FAQ accordion — same click-to-expand pattern as design-foundation's
+    // #design-foundation-faq.
+    document.querySelectorAll('#home-faq .faq-row').forEach(function (row) {
+      row.querySelector('.faq-toggle').addEventListener('click', function () {
+        row.classList.toggle('is-open');
+      });
+    });
 
     // Headline reveal — each line wipes in, staggered ~120ms apart,
     // triggered by the logo wordmark animation's completion callback.

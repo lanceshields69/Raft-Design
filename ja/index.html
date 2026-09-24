@@ -522,30 +522,49 @@
     <!-- FAQs Section -->
     <section id="faqs" class="faq-section">
       <h2 class="section-label fade-in">よくある質問</h2>
-      <div class="faq-grid fade-in">
+      <div class="faq-list fade-in" id="home-faq">
         <div class="faq-row">
-          <div class="faq-item">
-            <p class="faq-question">Raft Designとは?</p>
+          <button class="faq-toggle" type="button">
+            <span class="faq-question">Raft Designとは?</span>
+            <span class="faq-arrow">→</span>
+          </button>
+          <div class="faq-panel">
             <p class="faq-answer">Raft Designは、米国と日本でブランド、プロダクト、デジタル体験に取り組むAIネイティブなスタジオです。Adobe、Walmart、LegalOnでの20年の経験に基づき、私たちは手を動かしながら素早く動き、変化を避けるのではなく共に進みます。</p>
           </div>
-          <div class="faq-item">
-            <p class="faq-question">「AIネイティブなスタジオ」とはどういう意味ですか?</p>
+        </div>
+        <div class="faq-row">
+          <button class="faq-toggle" type="button">
+            <span class="faq-question">「AIネイティブなスタジオ」とはどういう意味ですか?</span>
+            <span class="faq-arrow">→</span>
+          </button>
+          <div class="faq-panel">
             <p class="faq-answer">これは、AIが仕事の対象であるだけでなく、仕事の作り方そのものの一部であることを意味します。戦略は言語モデルとの対話の中で形づくられ、デザインとプロトタイプは同時に進み、デザインとエンジニアリングの間によくある引き継ぎなしに、動くソフトウェアが作られます。その結果、従来のスタジオでは実現できない速度で、経験豊富なデザインの判断力を届けます。</p>
           </div>
         </div>
         <div class="faq-row">
-          <div class="faq-item">
-            <p class="faq-question">Raft Designは日本語に対応していますか?</p>
+          <button class="faq-toggle" type="button">
+            <span class="faq-question">Raft Designは日本語に対応していますか?</span>
+            <span class="faq-arrow">→</span>
+          </button>
+          <div class="faq-panel">
             <p class="faq-answer">はい。私たちは日本語と英語の両方でネイティブに対応し、両市場でデザインリーダーシップを発揮しています。創業者は日本で10年以上、日本語で、幅広いクライアントとプロジェクトに携わってきました。このサイトも完全にバイリンガルです。海外展開を目指す日本企業や、日本市場に参入するグローバルブランドに対しては、単に翻訳するのではなく、新しい市場に合わせて意味を再構築します。これこそが、より難しく、より重要な仕事です。</p>
           </div>
-          <div class="faq-item">
-            <p class="faq-question">Raft Designはデザインだけでなく、実装も行いますか?</p>
+        </div>
+        <div class="faq-row">
+          <button class="faq-toggle" type="button">
+            <span class="faq-question">Raft Designはデザインだけでなく、実装も行いますか?</span>
+            <span class="faq-arrow">→</span>
+          </button>
+          <div class="faq-panel">
             <p class="faq-answer">その両方です。多くのスタジオは、静的なデザインを誰かに引き渡して終わりです。私たちは、Claude Code、Cursor、V0などのツールを使い、実際に動作するソフトウェアまで作り上げます。プロトタイプは本物のように動作し、テストやデモが可能です。実装は任せきりにするのではなく、私たち自身が方向づけます。</p>
           </div>
         </div>
-        <div class="faq-row faq-row--single">
-          <div class="faq-item">
-            <p class="faq-question">プロジェクトはどのように進みますか?</p>
+        <div class="faq-row">
+          <button class="faq-toggle" type="button">
+            <span class="faq-question">プロジェクトはどのように進みますか?</span>
+            <span class="faq-arrow">→</span>
+          </button>
+          <div class="faq-panel">
             <p class="faq-answer">チームのニーズに応じて、3つの関わり方があります。従来のスタジオのように、ブランドやプロダクトのデザインからリリースまでプロジェクトを担うこと。チームが拡大し、経験豊富な方向性を必要とするタイミングで、フラクショナルなデザインリーダーシップとして加わること。そして、自社のデザイン実践をAIネイティブにしたいチームへのコンサルティングです。関わり方は、短期の診断スプリントから継続的なパートナーシップまで幅広くあります。</p>
           </div>
         </div>
@@ -812,6 +831,14 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+    // FAQ accordion — same click-to-expand pattern as design-foundation's
+    // #design-foundation-faq.
+    document.querySelectorAll('#home-faq .faq-row').forEach(function (row) {
+      row.querySelector('.faq-toggle').addEventListener('click', function () {
+        row.classList.toggle('is-open');
+      });
+    });
 
     // Headline reveal — each line wipes in, staggered ~120ms apart,
     // triggered by the logo wordmark animation's completion callback.

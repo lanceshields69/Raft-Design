@@ -1122,9 +1122,22 @@ html[lang="ja"] .ai-native-panel {
 
 /* Thesis Section */
 .approach-section {
-  padding: var(--space-xl) var(--space-xxl) 120px;
+  /* Top padding raised var(--space-xl) (32px) -> var(--space-xxl) (48px)
+     so the section-label pill sits with more room below the divider
+     line, matching the same change across every homepage section title
+     (Work/Offerings/Journal/FAQs). */
+  padding: var(--space-xxl) var(--space-xxl) 120px;
   max-width: 1920px;
   border-top: 1px solid var(--border-rule);
+}
+
+/* Approach's title pill was falling back to .section-label's sitewide
+   133px margin-bottom (meant as a general default for pages that use
+   .section-label once and move on) — visibly more than every other
+   homepage section title. Overridden to the same 80px used across
+   Work/Offerings/Journal/FAQs below. */
+.approach-section .section-label {
+  margin-bottom: 80px;
 }
 
 .approach-content {
@@ -1523,16 +1536,22 @@ html[lang="ja"] .ai-native-panel {
 
 /* AI Systems Panel */
 .ai-systems-section {
-  padding: var(--space-xl) var(--space-xxl) 120px;
+  /* Top padding raised var(--space-xl) -> var(--space-xxl), same change
+     across every homepage section title. */
+  padding: var(--space-xxl) var(--space-xxl) 120px;
   max-width: 1920px;
   border-top: 1px solid var(--border-rule);
 }
 
-/* AI Systems Panel only (EN "Engage" / JA equivalent): .section-label's
-   shared 133px margin-bottom is 40px tighter here than the rest of the
-   site's sections. */
+/* AI Systems Panel only (EN "Offerings" / JA equivalent): the label is
+   display:inline-block, so its margin-bottom does NOT collapse with
+   .ai-systems-content's own 48px margin-top below (inline-block boxes
+   don't participate in sibling margin collapsing) — the two simply
+   add. 32px here + that 48px = 80px total under the pill, matching
+   every other homepage section title. (Previously 93px, which combined
+   with the 48px it never actually collapsed with to total 141px.) */
 .ai-systems-section > .section-label {
-  margin-bottom: 93px;
+  margin-bottom: 32px;
 }
 
 .ai-systems-content {
@@ -1639,7 +1658,9 @@ html[lang="ja"] .ai-native-panel {
 
 /* Work Section */
 .work-section {
-  padding: var(--space-xl) var(--space-xxl) 50px;
+  /* Top padding raised var(--space-xl) -> var(--space-xxl), same change
+     across every homepage section title. */
+  padding: var(--space-xxl) var(--space-xxl) 50px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -1688,7 +1709,9 @@ html[lang="ja"] .ai-native-panel {
   color: var(--accent-ink);
   padding: 5px 20px;
   border-radius: var(--radius-sm);
-  margin-bottom: var(--space-xxl);
+  /* 70px margin + .work-section's own 10px flex gap = 80px total under
+     the pill, matching every other homepage section title. */
+  margin-bottom: 70px;
 }
 
 .featured-work-grid {
@@ -2130,13 +2153,16 @@ html[lang="ja"] .ai-native-panel {
 
 /* FAQs Section */
 .faq-section {
-  padding: var(--space-xl) var(--space-xxl) var(--space-huge);
+  /* Top padding raised var(--space-xl) -> var(--space-xxl), same change
+     across every homepage section title. */
+  padding: var(--space-xxl) var(--space-xxl) var(--space-huge);
   max-width: 1920px;
   border-top: 1px solid var(--border-rule);
 }
 
 .faq-section .section-label {
-  margin-bottom: var(--space-xxl);
+  /* 80px, matching every other homepage section title. */
+  margin-bottom: 80px;
 }
 
 .faq-grid {
@@ -3527,9 +3553,13 @@ html[lang="ja"] .ai-native-panel {
 
   /* 30px less than the base 68px — that value was tuned for the desktop
      row-2 gap under .logo-block; on mobile's natural single-column stack
-     it read as too much air under the subhead. */
+     it read as too much air under the subhead. Nudged up another 20px
+     (38px -> 18px) and the row/column gap between the wrapped links
+     (stacked at this width) cut 25% (base 24px -> 18px) — still felt
+     loose relative to the rest of the mobile hero. */
   .hero-links {
-    margin-top: 38px;
+    margin-top: 18px;
+    gap: 18px;
   }
 
   /* .hero-copy's base rule carries a 100px margin-top meant to line its

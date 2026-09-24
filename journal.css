@@ -520,7 +520,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-xl) 1px var(--space-xxl);
+  /* Top padding raised var(--space-xl) -> var(--space-xxl), same change
+     across every homepage section title (styles.css: .approach-section,
+     .ai-systems-section, .work-section, .faq-section). Bottom padding
+     (space under the pill, before the carousel track) set to 80px to
+     match those same sections too, up from var(--space-xxl) (48px). */
+  padding: var(--space-xxl) 1px 80px;
 }
 
 .journal-carousel-badge {

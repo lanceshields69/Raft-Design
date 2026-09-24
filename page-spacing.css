@@ -138,3 +138,11 @@ body.wide-spacing .lab-projects-section {
   padding-left: var(--page-gutter);
   padding-right: var(--page-gutter);
 }
+
+/* Article prev/next pagination — its links sat on journal.css's own
+   clamp(20px, 5vw, 64px) inset, so they lined up with neither the header
+   nor the footer. Same page gutter as both. Rules stay full-bleed. */
+body.wide-spacing .article-nav {
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+}

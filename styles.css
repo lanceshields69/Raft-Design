@@ -1003,7 +1003,9 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 21px;
+  /* Desktop only — mobile keeps its own 22px set at the ≤768px
+     breakpoint below, untouched by this. */
+  font-size: 23px;
   font-weight: var(--weight-medium);
   letter-spacing: -0.6px;
   color: var(--text-accent);
@@ -1071,7 +1073,10 @@ html[lang="ja"] .hero-tags--subhead {
 
 html[lang="ja"] .hero-link {
   font-family: 'Noto Sans JP', sans-serif;
-  font-size: 24px;
+  /* Desktop only — mobile keeps its own 19px set at the ≤768px
+     breakpoint below, untouched by this. Bumped 2px same as the EN
+     desktop value (21px -> 23px) above. */
+  font-size: 26px;
 }
 
 html[lang="ja"] .ai-native-panel {

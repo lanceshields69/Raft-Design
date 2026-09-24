@@ -13,48 +13,24 @@
   <script src="https://analytics.ahrefs.com/analytics.js" data-key="JP3/LvYmI24t5w4Tro8ARQ" async></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Labs — Raft Design</title>
-  <meta name="description" content="Hands-on experiments in AI product design, prototyping, and emerging tools — six shipped projects, two AI certifications, and how founder Lance Shields actually builds.">
-  <meta property="og:title" content="Labs — Raft Design">
-  <meta property="og:description" content="Hands-on experiments in AI product design, prototyping, and emerging tools — six shipped projects, two AI certifications, and how founder Lance Shields actually builds.">
-  <meta property="og:image" content="https://raftdesign.studio/images/lab-hero.jpg">
+  <title>Services — Raft Design</title>
+  <meta name="description" content="Brand strategy, digital product design, websites, AI interfaces, and globalization — Raft brings brand and product together in one practice.">
+  <meta property="og:title" content="Services — Raft Design">
+  <meta property="og:description" content="Brand strategy, digital product design, websites, AI interfaces, and globalization — Raft brings brand and product together in one practice.">
+  <meta property="og:image" content="https://raftdesign.studio/images/Raft-Design-Social.png">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
-  <meta property="og:url" content="https://raftdesign.studio/labs/">
+  <meta property="og:url" content="https://raftdesign.studio/services/">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Labs — Raft Design">
-  <meta name="twitter:description" content="Hands-on experiments in AI product design, prototyping, and emerging tools — six shipped projects, two AI certifications, and how founder Lance Shields actually builds.">
-  <meta name="twitter:image" content="https://raftdesign.studio/images/lab-hero.jpg">
-  <link rel="alternate" hreflang="en" href="https://raftdesign.studio/labs/">
-  <link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/labs/">
-  <link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/labs/">
-  <link rel="canonical" href="https://raftdesign.studio/labs/">
+  <meta name="twitter:title" content="Services — Raft Design">
+  <meta name="twitter:description" content="Brand strategy, digital product design, websites, AI interfaces, and globalization — Raft brings brand and product together in one practice.">
+  <meta name="twitter:image" content="https://raftdesign.studio/images/Raft-Design-Social.png">
+  <link rel="canonical" href="https://raftdesign.studio/services/">
   <link rel="icon" type="image/png" href="../images/r-mark-favicon.png">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Labs",
-    "url": "https://raftdesign.studio/labs/",
-    "description": "Hands-on experiments in AI product design, prototyping, and emerging tools.",
-    "author": { "@type": "Person", "name": "Lance Shields" }
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://raftdesign.studio/" },
-      { "@type": "ListItem", "position": 2, "name": "Labs", "item": "https://raftdesign.studio/labs/" }
-    ]
-  }
-  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200;14..32,300;14..32,400;14..32,500;14..32,900&family=Fraunces:ital,opsz,SOFT,WONK,wght@1,9..144,0,1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
-  <link rel="stylesheet" href="../work-index.css">
   <link rel="stylesheet" href="../page-spacing.css">
   <script>
     if (localStorage.getItem('raft-theme') === 'light') {
@@ -63,183 +39,49 @@
   </script>
   <style>
     /* This page's own additions — everything else (.nav-header, .section-label,
-       .scan-cta, .text-link, .footer, and all the --token values) comes
-       straight from styles.css, the real site's own stylesheet. Same
-       self-contained pattern as about.html. */
+       .page-hero, .about-section, .connect-cta-sunken, .scan-cta, .footer,
+       and all the --token values) comes straight from styles.css/
+       page-spacing.css, the same shared rules every other page
+       (About, Work, Journal, Labs) already uses. Reusing .about-section by
+       name rather than duplicating it under a new "services-" name — same
+       precedent as Labs reusing .work-hero (it's genuinely shared, defined
+       in page-spacing.css). .about-split/.about-split-image are NOT shared
+       though — they're private to about.html's own <style> block — so this
+       page defines its own .services-split/.services-split-image below
+       rather than depending on markup that happens to share a class name
+       with no matching rule. */
 
     :root {
+      /* styles.css hardcodes font-family directly rather than tokenizing it
+         (see body/.emphasis rules) — --font-sans is page-local so the body
+         tag below can use it, same as about.html. Without this, the body's
+         inline font-family:var(--font-sans) resolves to nothing and falls
+         back to the browser's default serif — the bug this page shipped
+         with initially. */
       --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
 
-    body { margin: 0; }
-
-    /* Projects — text column fixed at 370px (left), a wide landscape
-       screenshot filling the rest of the row (right); same order for
-       every project, no alternating. Matches Figma node 768:3124
-       ("ProjectCard"). */
-    .lab-project {
-      display: flex;
-      gap: var(--space-xl);
-      align-items: flex-start;
-      padding: var(--space-xxl) 0;
-      border-top: 1px solid var(--border-rule);
+    /* Same image-column treatment as .about-split-image (square crop,
+       rounded corners), plus the split ratio: 50/50 here vs About's 60/40,
+       per the Figma spec. Same gap/stacking breakpoints as .about-split. */
+    .services-split { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .services-split-image { width: 100%; aspect-ratio: 1 / 1; border-radius: var(--radius-md); overflow: hidden; }
+    .services-split-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    @media (max-width: 1024px) {
+      .services-split { grid-template-columns: 1fr; gap: 48px; }
+      /* Image always above text once stacked, regardless of source order
+         (half the sections have the image first, half have text first). */
+      .services-split-image { order: -1; }
     }
-    .lab-project-body {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-lg);
-      flex-shrink: 0;
-      width: 370px;
-    }
-    .lab-project-media {
-      flex: 1 0 0;
-      min-width: 0;
-      aspect-ratio: 1920 / 1061;
-      overflow: hidden;
-    }
-    /* Image hover zoom — matches the Work index grid (.work-card-image,
-       work-index.css): 4% scale, ease-out on hover-in, ease-in on
-       hover-out (the destination state's own transition governs each
-       direction). */
-    .lab-project-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transform: scale(1);
-      transition: transform 0.4s ease-in;
-    }
-    .lab-project:hover .lab-project-media img {
-      transform: scale(1.04);
-      transition: transform 0.4s ease-out;
-    }
-    .lab-project-number {
-      font-family: 'Fraunces', serif;
-      font-style: italic;
-      font-weight: 600;
-      font-variation-settings: 'SOFT' 0, 'WONK' 1;
-      font-size: 32px;
-      line-height: 1;
-      color: var(--text-accent);
-      margin: 0;
-    }
-    .lab-project-title {
-      font-size: 28px;
-      font-weight: 900;
-      line-height: 1.1;
-      margin: 0;
-    }
-    .lab-project-desc {
-      font-size: var(--font-size-body-md);
-      line-height: 1.5;
-      color: var(--text-primary);
-      margin: 0;
-    }
-    .lab-project-status {
-      font-size: var(--font-size-label-medium);
-      font-weight: var(--weight-semibold);
-      color: var(--text-muted);
-      margin: 0;
-    }
-    .lab-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-sm);
-      margin: 4px 0;
-    }
-    .lab-tag {
-      display: inline-flex;
-      align-items: center;
-      padding: 3px var(--space-12);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: var(--radius-pill);
-      font-size: var(--font-size-label-medium);
-      font-weight: var(--weight-medium);
-      color: var(--text-primary);
-      white-space: nowrap;
-    }
-    [data-theme="light"] .lab-tag {
-      border-color: rgba(0, 0, 0, 0.2);
-    }
-    .lab-project-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-sm);
-      color: var(--text-primary);
-      font-size: var(--font-size-body-lg);
-      font-weight: var(--weight-regular);
-      transition: opacity 0.2s;
-    }
-    .lab-project-cta:hover {
-      opacity: 0.7;
-    }
-    .lab-project-cta-arrow {
-      color: var(--text-accent);
-      font-weight: var(--weight-bold);
-    }
-    .lab-project:first-child {
-      border-top: none;
+    @media (max-width: 768px) {
+      .services-split { gap: 32px; }
     }
 
-    /* Section header — replaces the old pill .section-label. Figma node
-       768:3078: eyebrow label + count on the left, a rule filling the
-       middle, a date range on the right. */
-    .lab-section-header {
-      display: flex;
-      align-items: center;
-      gap: var(--space-lg);
-      padding: var(--space-xl) 0;
-      border-bottom: 1px solid var(--border-rule);
-    }
-    .lab-section-header-label,
-    .lab-section-header-range {
-      font-family: 'Inter', sans-serif;
-      font-weight: var(--weight-black);
-      font-size: 13px;
-      line-height: 0.86;
-      letter-spacing: var(--tracking-section-title);
-      text-transform: uppercase;
-      white-space: nowrap;
-      margin: 0;
-    }
-    .lab-section-header-label {
-      color: var(--text-accent);
-    }
-    .lab-section-header-range {
-      color: var(--text-muted);
-    }
-    .lab-section-header-rule {
-      flex: 1 0 0;
-      height: 1px;
-      background: var(--border-rule);
-    }
-
-    .lab-projects-section {
-      padding: 0 48px 96px;
-    }
-
-    @media (max-width: 900px) {
-      .lab-project {
-        flex-direction: column-reverse;
-      }
-      .lab-project-body {
-        width: 100%;
-      }
-      .lab-project-media {
-        flex: none;
-        width: 100%;
-        aspect-ratio: 3 / 2;
-      }
-      .lab-projects-section {
-        padding: 0 16px 96px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .lab-project-media img {
-        transition: none;
-      }
-    }
+    /* Divided list of sub-services under each pitch paragraph — border-top
+       on the list once, border-bottom per row, matching the Figma spec's
+       "List Item" rows exactly (12px vertical padding, 18px body text). */
+    .services-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border-rule); }
+    .services-list li { padding: 12px 0; border-bottom: 1px solid var(--border-rule); font-size: 18px; line-height: 1.35; color: var(--text-primary); }
   </style>
 </head>
 <body class="wide-spacing" style="background:var(--bg-canvas);min-height:100vh;font-family:var(--font-sans);color:var(--text-primary)">
@@ -252,10 +94,10 @@
   <div class="nav-links">
     <a href="/work/" class="nav-link">Work</a>
     <a href="/#approach" class="nav-link">Approach</a>
-    <a href="/services/" class="nav-link">Services</a>
+    <a href="/services/" class="nav-link" style="color:var(--text-accent)">Services</a>
     <a href="/about.html" class="nav-link">About</a>
     <a href="/journal/" class="nav-link">Journal</a>
-    <a href="/labs/" class="nav-link">Labs</a>
+      <a href="/labs/" class="nav-link">Labs</a>
     <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode">
       <svg class="theme-toggle-icon theme-toggle-icon--moon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M17.5 10.6583C17.3689 12.0768 16.8365 13.4287 15.9652 14.5557C15.0939 15.6826 13.9196 16.5382 12.5798 17.0221C11.2399 17.5061 9.78999 17.5984 8.39958 17.2884C7.00918 16.9784 5.73583 16.2788 4.72852 15.2715C3.72121 14.2642 3.02162 12.9908 2.71159 11.6004C2.40156 10.21 2.49393 8.76007 2.97788 7.42025C3.46184 6.08042 4.31736 4.90614 5.44434 4.03479C6.57133 3.16345 7.92316 2.63109 9.34167 2.5C8.51118 3.62356 8.11154 5.00787 8.21544 6.40118C8.31935 7.79448 8.91988 9.10422 9.90783 10.0922C10.8958 11.0801 12.2055 11.6807 13.5988 11.7846C14.9921 11.8885 16.3764 11.4888 17.5 10.6583Z" stroke="currentColor" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
@@ -275,7 +117,7 @@
     <div class="nav-lang">
       <span class="nav-lang-active">EN</span>
       <span class="nav-lang-divider">|</span>
-      <a href="/ja/labs/" class="nav-lang-inactive" hreflang="ja">JP</a>
+      <a href="/ja/#services" class="nav-lang-inactive" hreflang="ja">JP</a>
     </div>
     <a href="/contact/" class="cta-solid-button nav-cta-button">Contact Us</a>
   </div>
@@ -311,7 +153,7 @@
       <div class="nav-lang">
         <span class="nav-lang-active">EN</span>
         <span class="nav-lang-divider">|</span>
-        <a href="/ja/labs/" class="nav-lang-inactive" hreflang="ja">JP</a>
+        <a href="/ja/#services" class="nav-lang-inactive" hreflang="ja">JP</a>
       </div>
       <button class="mobile-menu-close" id="mobile-menu-close" type="button" aria-label="Close menu">
         <svg width="17" height="16" viewBox="0 0 16.5332 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -327,115 +169,128 @@
     <a href="/services/" class="mobile-menu-link">Services</a>
     <a href="/about.html" class="mobile-menu-link">About</a>
     <a href="/journal/" class="mobile-menu-link">Journal</a>
-    <a href="/labs/" class="mobile-menu-link">Labs</a>
+      <a href="/labs/" class="mobile-menu-link">Labs</a>
   </nav>
 <a href="/contact/" class="cta-solid-button mobile-menu-cta">Contact Us</a>
 </div>
 
-<div class="work-hero">
-  <h1 class="work-hero-title">Labs</h1>
-  <p class="work-hero-intro">This is where we make room to follow an idea before we know where it will lead. We explore new tools and build things we wish existed.</p>
-</div>
-
-<!-- PROJECTS -->
-<section class="lab-projects-section" style="max-width:1920px">
-  <div class="lab-section-header fade-in">
-    <p class="lab-section-header-label">Projects — 05</p>
-    <div class="lab-section-header-rule"></div>
-    <p class="lab-section-header-range">2024 – 2026</p>
-  </div>
-  <div>
-
-    <a href="https://lanceshields69.github.io/storyroom/" class="lab-project fade-in" target="_blank" rel="noopener noreferrer">
-      <div class="lab-project-body">
-        <p class="lab-project-number">01</p>
-        <h3 class="lab-project-title">Storyroom</h3>
-        <p class="lab-project-desc">Reading alone is easy to abandon. Reading alongside other people — even strangers, even silently — makes you actually finish. Storyroom is an exploration of what a modern book club could feel like if it lived in your phone. Same book, same chapter, same day. A Salon where readers share passages clipped directly from the audio and an AI called StoryBot surfaces the context no one else could. The concept started with a real question: why does discovery through other readers feel so much more alive than any algorithm? Concept designed and vibe coded, an idea that doesn't exist anywhere else yet.</p>
-        <div class="lab-tags">
-          <span class="lab-tag">Figma Make</span>
-          <span class="lab-tag">Claude Code</span>
-          <span class="lab-tag">React Prototype</span>
-        </div>
-        <span class="lab-project-cta"><span class="lab-project-cta-arrow">→</span> View the Concept</span>
-      </div>
-      <div class="lab-project-media">
-        <img src="../images/Labs-storyroom.jpg" alt="Mobile app concept screens for Storyroom, a synchronous book club app, showing a shared reading passage and AI-surfaced context." loading="lazy">
-      </div>
-    </a>
-
-    <a href="https://www.lanceshields.design/prompt-annotations" class="lab-project fade-in" target="_blank" rel="noopener noreferrer">
-      <div class="lab-project-body">
-        <p class="lab-project-number">02</p>
-        <h3 class="lab-project-title">Prompt Annotations</h3>
-        <p class="lab-project-desc">Prompt Annotations is a Figma plugin that captures your vibe coding chat transcript and places a structured annotation frame next to your design in the file. It keeps the prompts, AI summary, and full back and forth with your design so your whole team has the context behind the work.</p>
-        <div class="lab-tags">
-          <span class="lab-tag">Claude Code</span>
-          <span class="lab-tag">Figma</span>
-        </div>
-        <span class="lab-project-cta"><span class="lab-project-cta-arrow">→</span> Plugin Page</span>
-      </div>
-      <div class="lab-project-media">
-        <img src="../images/Labs-prompt-annotations.jpg" alt="Figma file showing the Prompt Annotations plugin's annotation frame next to a design, capturing a vibe coding chat transcript and AI summary." loading="lazy">
-      </div>
-    </a>
-
-    <a href="https://shipyourselfcards.com" class="lab-project fade-in" target="_blank" rel="noopener noreferrer">
-      <div class="lab-project-body">
-        <p class="lab-project-number">03</p>
-        <h3 class="lab-project-title">Ship Yourself Cards</h3>
-        <p class="lab-project-desc">Ship Yourself Cards is a helpful card deck app researched, designed, and coded using AI tools to help designers of all levels build momentum, tell their story, and navigate career transitions with confidence.</p>
-        <div class="lab-tags">
-          <span class="lab-tag">V0.dev</span>
-          <span class="lab-tag">Figma</span>
-          <span class="lab-tag">ChatGPT</span>
-        </div>
-        <span class="lab-project-cta"><span class="lab-project-cta-arrow">→</span> shipyourselfcards.com</span>
-      </div>
-      <div class="lab-project-media">
-        <img src="../images/Labs-ship-yourself.jpg" alt="Ship Yourself Cards app showing a deck of flippable career cards, including 'Plant Seeds Before You Need Them' and 'Ship the Story, Not Just the Screens.'" loading="lazy">
-      </div>
-    </a>
-
-    <a href="https://www.dreamingindesign.com/" class="lab-project fade-in" target="_blank" rel="noopener noreferrer">
-      <div class="lab-project-body">
-        <p class="lab-project-number">04</p>
-        <h3 class="lab-project-title">Dreaming in Design</h3>
-        <p class="lab-project-desc">Dreaming in Design is an AI-powered portfolio reviewer trained on real hiring criteria. The tool we're building will use AI because it's the only way to deliver personalized feedback at scale — specific to your role, level, and target companies.</p>
-        <p class="lab-project-status">Currently in research phase</p>
-        <div class="lab-tags">
-          <span class="lab-tag">Claude Code</span>
-          <span class="lab-tag">Cursor</span>
-        </div>
-        <span class="lab-project-cta"><span class="lab-project-cta-arrow">→</span> dreamingindesign.com</span>
-      </div>
-      <div class="lab-project-media">
-        <img src="../images/Labs-dreaming-in-design.jpg" alt="Illustration for Dreaming in Design, an AI-powered portfolio reviewer trained on real hiring criteria." loading="lazy">
-      </div>
-    </a>
-
-    <a href="https://www.wearetheones.art/" class="lab-project fade-in" target="_blank" rel="noopener noreferrer">
-      <div class="lab-project-body">
-        <p class="lab-project-number">05</p>
-        <h3 class="lab-project-title">We Are the Ones</h3>
-        <p class="lab-project-desc">An interactive art experience built entirely through vibe coding — no design tools, no code written by hand. We wanted to understand what becomes possible when a designer works purely in language, and to feel what it's like to describe something into existence rather than draw it. A golden door opens onto an open sky. A Tolkien-inspired story scrolls with read-along narrator, the sky brightening from pre-dawn to full daylight as it plays. The entire experience lives in a single HTML file, 84 kilobytes, two minutes long. Built in a day.</p>
-        <div class="lab-tags">
-          <span class="lab-tag">Cursor</span>
-          <span class="lab-tag">Claude Sonnet 4.6</span>
-          <span class="lab-tag">ElevenLabs</span>
-        </div>
-        <span class="lab-project-cta"><span class="lab-project-cta-arrow">→</span> wearetheones.art</span>
-      </div>
-      <div class="lab-project-media">
-        <img src="../images/Labs-the-one.jpg" alt="A golden door opening onto an open sky, the opening scene of We Are the Ones, an interactive art experience." loading="lazy">
-      </div>
-    </a>
-
+<!-- HERO -->
+<section class="page-hero" style="max-width:1920px">
+  <div style="max-width:800px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px">
+    <span class="mr-wipe" id="sv-hero-eyebrow" style="font-size:23px;font-weight:var(--weight-black);letter-spacing:var(--tracking-section-title);line-height:var(--line-height-eyebrow);text-transform:uppercase;color:var(--text-accent)">Our Services</span>
+    <h1 class="mr-wipe" id="sv-hero-headline" style="font-weight:900;font-size:clamp(36px,7vw,72px);line-height:1.05;letter-spacing:-1px;margin:0">Brand and product, designed together.</h1>
+    <p style="font-size:20px;line-height:1.4;color:var(--text-primary);max-width:559px;margin:0">We bring brand strategy, product design, and AI into one practice to help you shape what's next and build it.</p>
   </div>
 </section>
 
+<!-- BRANDING — text left, image right -->
+<section class="about-section" style="max-width:1920px">
+  <div class="services-split fade-in" style="max-width:1292px;margin:0 auto">
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <h2 style="font-size:36px;font-weight:900;line-height:1.24;margin:0">Branding</h2>
+      <p style="font-size:20px;line-height:1.5;margin:0">We define what brands stand for and how they show up. Positioning, identity, and systems built to scale and evolve. AI expands how we explore and create.</p>
+      <ul class="services-list">
+        <li>Brand Strategy</li>
+        <li>Identity Systems</li>
+        <li>Visual Identity</li>
+        <li>Brand Voice &amp; Messaging</li>
+        <li>Brand Guidelines</li>
+        <li>Brand Experiences</li>
+      </ul>
+    </div>
+    <div class="services-split-image">
+      <img src="../images/services-branding.jpg" width="1928" height="1084" alt="A close-up brand identity treatment: bold letterforms in white and orange on navy." loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- DIGITAL PRODUCTS — image left, text right -->
+<section class="about-section" style="max-width:1920px">
+  <div class="services-split fade-in" style="max-width:1292px;margin:0 auto">
+    <div class="services-split-image">
+      <img src="../images/services-digital-products.png" width="2000" height="1307" alt="Adobe Express's editing interface, showing the AI assistant panel with auto-enhance and creation suggestions." loading="lazy">
+    </div>
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <h2 style="font-size:36px;font-weight:900;line-height:1.24;margin:0">Digital Products</h2>
+      <p style="font-size:20px;line-height:1.5;margin:0">Websites, apps, and platforms built for adoption. Design that adapts as the product grows and holds up when the team scales past the people who started it.</p>
+      <ul class="services-list">
+        <li>Product Design</li>
+        <li>UX Research &amp; Strategy</li>
+        <li>CX, UX &amp; Interaction Design</li>
+        <li>Motion Design</li>
+        <li>Mobile &amp; Web Apps</li>
+        <li>Design Systems</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WEBSITES — text left, image right -->
+<section class="about-section" style="max-width:1920px">
+  <div class="services-split fade-in" style="max-width:1292px;margin:0 auto">
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <h2 style="font-size:36px;font-weight:900;line-height:1.24;margin:0">Websites</h2>
+      <p style="font-size:20px;line-height:1.5;margin:0">Your website brings your brand to life. We design award-winning websites that make a lasting impression and help people find what they need with ease.</p>
+      <ul class="services-list">
+        <li>Content Strategy</li>
+        <li>Web Design</li>
+        <li>Interactive Experiences</li>
+        <li>Content Production</li>
+        <li>Frontend &amp; Backend Development</li>
+        <li>CMS Implementation</li>
+      </ul>
+    </div>
+    <div class="services-split-image">
+      <img src="../images/services-websites.png" width="2000" height="1307" alt="The California Walnuts website homepage, with a hero image of a kale and walnut salad." loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- AI INTERFACES & AGENTS — image left, text right -->
+<section class="about-section" style="max-width:1920px">
+  <div class="services-split fade-in" style="max-width:1292px;margin:0 auto">
+    <div class="services-split-image">
+      <img src="../images/services-ai-interfaces.jpg" width="1600" height="1200" alt="Three phone screens from an AI-powered AR shopping concept: room scanning, AI-guided product search, and an AR comparison view." loading="lazy">
+    </div>
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <h2 style="font-size:36px;font-weight:900;line-height:1.24;margin:0">AI Interfaces &amp; Agents</h2>
+      <p style="font-size:20px;line-height:1.5;margin:0">Companies are still catching up on agentic AI. The model working is not the same as the product working. Design decides whether people trust it and come back.</p>
+      <ul class="services-list">
+        <li>AI Product Design</li>
+        <li>Agentic Workflows</li>
+        <li>Conversational UI</li>
+        <li>Model Behavior</li>
+        <li>Multimodal Interaction</li>
+        <li>AI-ready Design Systems</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBALIZATION — text left, image right -->
+<section class="about-section" style="max-width:1920px">
+  <div class="services-split fade-in" style="max-width:1292px;margin:0 auto">
+    <div style="display:flex;flex-direction:column;gap:32px">
+      <h2 style="font-size:36px;font-weight:900;line-height:1.24;margin:0">Globalization</h2>
+      <p style="font-size:20px;line-height:1.5;margin:0">Brands and products that work in one market rarely survive translation intact. Meaning has to be rebuilt, not converted. Bilingual design leadership across the US and Japan.</p>
+      <ul class="services-list">
+        <li>Global Brand Platforms</li>
+        <li>Localization</li>
+        <li>Global Research &amp; Strategy</li>
+        <li>Market Entry</li>
+        <li>Bilingual Design Systems</li>
+        <li>Global Websites</li>
+      </ul>
+    </div>
+    <div class="services-split-image">
+      <img src="../images/services-globalization.jpg" width="2000" height="2248" alt="The Japanese-language Modere e-commerce homepage, with lifestyle and product photography." loading="lazy">
+    </div>
+  </div>
+</section>
 
 <!-- CLOSE — reused verbatim from the homepage's "Ready to move at Raft
-     speed?" panel: same classes, same Calendly modal trigger. -->
+     speed?" panel, same as about.html: same classes, same Calendly modal
+     trigger. -->
 <section class="connect-cta-sunken fade-in">
   <p class="connect-cta-sunken-heading">Ready to move at <span class="emphasis" style="font-size:clamp(30px,7vw,64px);line-height:1">Raft</span> speed?</p>
   <button class="cta-solid-button connect-cta-solid open-calendly-modal" type="button">Book a call with Lance <span class="connect-cta-solid-arrow">→</span></button>
@@ -519,7 +374,8 @@
   })();
 
   // Mobile menu — hamburger opens a full-screen overlay (nav links,
-  // theme toggle); closes via the X icon, Escape, or tapping a link.
+  // theme toggle, language switch); closes via the X icon, Escape, or
+  // tapping a link.
   (function() {
     const hamburger = document.getElementById('nav-hamburger');
     const overlay = document.getElementById('mobile-menu-overlay');
@@ -559,6 +415,21 @@
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+  })();
+
+  // Hero wipe reveal — same clip-path mechanism and 120ms stagger as the
+  // homepage's headline and about.html's hero (styles.css .headline-line /
+  // .mr-wipe), just triggered on load here rather than after a logo intro
+  // animation.
+  (function () {
+    const items = [
+      document.getElementById('sv-hero-eyebrow'),
+      document.getElementById('sv-hero-headline')
+    ].filter(Boolean);
+    const staggerMs = 120;
+    items.forEach((el, i) => {
+      setTimeout(() => el.classList.add('revealed'), i * staggerMs);
+    });
   })();
 </script>
 

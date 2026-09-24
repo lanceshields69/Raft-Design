@@ -65,7 +65,7 @@
        rounded corners), plus the split ratio: 50/50 here vs About's 60/40,
        per the Figma spec. Same gap/stacking breakpoints as .about-split. */
     .services-split { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    .services-split-image { width: 100%; aspect-ratio: 1 / 1; border-radius: var(--radius-md); overflow: hidden; }
+    .services-split-image { width: 100%; aspect-ratio: 1 / 1; border-radius: 0; overflow: hidden; }
     .services-split-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
     @media (max-width: 1024px) {
       .services-split { grid-template-columns: 1fr; gap: 48px; }

@@ -885,7 +885,7 @@ p {
    a gradient. EN-only: ja/index.html keeps its original uppercase
    .headline-line + .headline-momentum treatment untouched. */
 .headline-line--single {
-  font-weight: var(--weight-regular);
+  font-weight: 600; /* Semi Bold */
   font-size: clamp(28px, 4.9vw, 70px);
   line-height: 1.03;
   letter-spacing: -2px;
@@ -919,9 +919,22 @@ p {
 }
 
 @media (max-width: 768px) {
+  /* Mobile nudge: EN -11px -> 4px (down 15px), JA -18px (base) -> 2px
+     (down 20px). */
   html[lang="en"] .ai-native-mark {
-    top: -11px;
+    top: 4px;
     margin-left: 3px;
+  }
+
+  html[lang="ja"] .ai-native-mark {
+    top: 2px;
+  }
+
+  /* 30% smaller than desktop's 22px. Nested selector so it outranks the
+     base .ai-native-asterisk rule, which is declared later in the file. */
+  .ai-native-mark .ai-native-asterisk {
+    width: 15.4px;
+    height: 15.4px;
   }
 }
 
@@ -1111,7 +1124,7 @@ html[lang="ja"] .headline-line {
    spec (EN uses Regular). */
 html[lang="ja"] .headline-line--single {
   font-family: 'Noto Sans JP', sans-serif;
-  font-weight: var(--weight-medium);
+  font-weight: 700; /* Bold */
   font-size: clamp(26px, 4.4vw, 64px);
   line-height: 1.167;
   letter-spacing: -2px;

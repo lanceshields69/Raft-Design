@@ -2200,8 +2200,8 @@ html[lang="ja"] .approach-heading {
 
 /* Design Intelligence Banner (Scan CTA) */
 .scan-banner-section {
-  padding: var(--space-xl) var(--space-xxl);
-  max-width: 1920px;
+  /* Full-bleed: no max-width or side padding on the section so the dither
+     strip runs edge to edge; the text row insets itself (see box). */
   border-top: 1px solid var(--border-rule);
 }
 
@@ -2210,8 +2210,13 @@ html[lang="ja"] .approach-heading {
   align-items: center;
   gap: 40px;
   padding: var(--space-xxxl) var(--space-xxl);
-  background-color: var(--bg-sunken);
-  border: 1px solid var(--border-bright);
+}
+
+/* Paper Dithering shader (dither-banner.js) mounts into this strip. */
+.scan-banner-dither {
+  width: 100%;
+  height: clamp(160px, 18vw, 271px);
+  overflow: hidden;
 }
 
 .scan-banner-text {
@@ -2229,11 +2234,11 @@ html[lang="ja"] .approach-heading {
 }
 
 .scan-banner-heading {
-  font-weight: var(--weight-regular);
-  font-size: var(--font-size-heading-1);
-  line-height: var(--font-size-heading-1);
-  letter-spacing: 0.4px;
-  color: var(--text-accent);
+  /* Figma 950:5340: Inter Black 28/32, white (not the old green display heading) */
+  font-weight: 900;
+  font-size: var(--font-size-heading-2);
+  line-height: 32px;
+  color: var(--text-primary);
 }
 
 .scan-banner-body {
@@ -3618,10 +3623,6 @@ html[lang="ja"] .approach-heading {
     text-align: center;
     padding: var(--space-md) 20px;
     font-size: var(--font-size-body-md);
-  }
-
-  .scan-banner-section {
-    padding: 40px 15px;
   }
 
   .scan-banner-box {

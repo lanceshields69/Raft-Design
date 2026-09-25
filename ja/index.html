@@ -518,6 +518,7 @@
           <button class="scan-cta scan-cta--wide" id="scan-banner-cta-btn" type="button"><span class="scan-cta-arrow">→</span> サイトを診断する</button>
         </div>
       </div>
+      <div class="scan-banner-dither" data-dither-banner aria-hidden="true"></div>
     </section>
 
     <!-- FAQs Section -->
@@ -1268,6 +1269,7 @@
   <!-- Ishmael (floating chat, Japanese) -->
   <div id="raft-chat-root"></div>
   <script src="../raft-chat.js"></script>
+  <script src="../dither-banner.js" defer></script>
   <script src="../hero-lens.js" defer></script>
   <script>
     new RaftChat(document.getElementById('raft-chat-root'), {

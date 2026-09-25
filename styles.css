@@ -743,6 +743,14 @@ p {
   color: var(--text-primary);
 }
 
+/* EN subhead is ~150 chars; scale it so it holds two lines from tablet up
+   (mobile keeps its own 22px below — 2 lines isn't reachable at 342px). */
+@media (min-width: 769px) {
+  html[lang="en"] .hero-subhead {
+    font-size: clamp(19px, 1.95vw, 24px);
+  }
+}
+
 /* Hero scroll-down CTA (Figma node 649:4819) — anchors to the Approach
    section right below. Reuses .scan-cta's pill/outline treatment; the
    arrow is the shared .scan-cta-arrow span, rotated 90deg to point down. */
@@ -898,6 +906,12 @@ p {
     top: -11px;
     margin-left: 3px;
   }
+}
+
+/* EN headline ends "next*." — the period follows the asterisk directly,
+   so drop the 6px gap that used to precede the next word. */
+html[lang="en"] .ai-native-trigger {
+  margin-right: 0;
 }
 
 .ai-native-asterisk {
@@ -1175,6 +1189,13 @@ html[lang="ja"] .ai-native-panel {
   line-height: 0.95;
   color: var(--text-primary);
   max-width: 368px;
+}
+
+/* EN heading ("Knowing what's worth making.") is a short single line; the
+   368px cap above would orphan "making." — it's kept for JA's longer heading. */
+html[lang="en"] .approach-heading {
+  max-width: none;
+  text-wrap: balance; /* on phones it wraps to 2 lines — split evenly, no orphan */
 }
 
 .approach-body {

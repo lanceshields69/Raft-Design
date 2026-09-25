@@ -8,6 +8,8 @@
     { "source": "/ja/projects/", "destination": "/ja/work/", "permanent": true },
     { "source": "/ja/projects/:slug", "destination": "/ja/work/:slug", "permanent": true },
     { "source": "/ja/projects/:slug/", "destination": "/ja/work/:slug/", "permanent": true },
+    { "source": "/about.html", "destination": "/about/", "permanent": true },
+    { "source": "/ja/about.html", "destination": "/ja/about/", "permanent": true },
     { "source": "/design-foundation.html", "destination": "/design-foundation/", "permanent": true },
     { "source": "/ja/design-foundation.html", "destination": "/ja/design-foundation/", "permanent": true },
     { "source": "/design-system.html", "destination": "/design-system/", "permanent": true },

@@ -116,7 +116,7 @@
        name rather than duplicating it under a new "services-" name — same
        precedent as Labs reusing .work-hero (it's genuinely shared, defined
        in page-spacing.css). .about-split/.about-split-image are NOT shared
-       though — they're private to about.html's own <style> block — so this
+       though — they're private to about/index.html's own <style> block — so this
        page defines its own .services-split/.services-split-image below
        rather than depending on markup that happens to share a class name
        with no matching rule. */
@@ -124,7 +124,7 @@
     :root {
       /* styles.css hardcodes font-family directly rather than tokenizing it
          (see body/.emphasis rules) — --font-sans is page-local so the body
-         tag below can use it, same as about.html. Without this, the body's
+         tag below can use it, same as about/index.html. Without this, the body's
          inline font-family:var(--font-sans) resolves to nothing and falls
          back to the browser's default serif — the bug this page shipped
          with initially. */
@@ -164,7 +164,7 @@
   <div class="nav-links">
     <a href="/work/" class="nav-link">Work</a>
     <a href="/services/" class="nav-link" style="color:var(--text-accent)">Services</a>
-    <a href="/about.html" class="nav-link">About</a>
+    <a href="/about/" class="nav-link">About</a>
     <a href="/journal/" class="nav-link">Journal</a>
       <a href="/labs/" class="nav-link">Labs</a>
     <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode">
@@ -235,7 +235,7 @@
   <nav class="mobile-menu-links">
     <a href="/work/" class="mobile-menu-link">Work</a>
     <a href="/services/" class="mobile-menu-link">Services</a>
-    <a href="/about.html" class="mobile-menu-link">About</a>
+    <a href="/about/" class="mobile-menu-link">About</a>
     <a href="/journal/" class="mobile-menu-link">Journal</a>
       <a href="/labs/" class="mobile-menu-link">Labs</a>
   </nav>
@@ -357,7 +357,7 @@
 </section>
 
 <!-- CLOSE — reused verbatim from the homepage's "Ready to move at Raft
-     speed?" panel, same as about.html: same classes, same Calendly modal
+     speed?" panel, same as about/index.html: same classes, same Calendly modal
      trigger. -->
 <section class="connect-cta-sunken fade-in">
   <p class="connect-cta-sunken-heading">Ready to move at <span class="emphasis" style="font-size:clamp(30px,7vw,64px);line-height:1">Raft</span> speed?</p>
@@ -486,7 +486,7 @@
   })();
 
   // Hero wipe reveal — same clip-path mechanism and 120ms stagger as the
-  // homepage's headline and about.html's hero (styles.css .headline-line /
+  // homepage's headline and about/index.html's hero (styles.css .headline-line /
   // .mr-wipe), just triggered on load here rather than after a logo intro
   // animation.
   (function () {

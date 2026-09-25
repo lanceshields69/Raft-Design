@@ -3,7 +3,7 @@
    Separate file/class because .nav-header, .footer, .work-hero*, and
    .work-row/.journal-row are also shared with labs/index.html — this
    stays scoped to body.wide-spacing, applied to work/index.html,
-   journal/index.html, about.html, and their /ja/ counterparts (all six
+   journal/index.html, about/index.html, and their /ja/ counterparts (all six
    carry the class and link this file); Labs is untouched.
 
    Formula: clamp(24px, min(10vw, calc((100vw - 1292px) / 2)), 192px)
@@ -132,7 +132,7 @@ body.wide-spacing .connect-cta-sunken {
    moved to their own inline-styled .page-hero earlier in this spacing
    pass), so this is safe to override without affecting any other
    page. .lab-projects-section is defined in labs/index.html's own
-   <style> block, same self-contained-page pattern as about.html. */
+   <style> block, same self-contained-page pattern as about/index.html. */
 body.wide-spacing .work-hero,
 body.wide-spacing .lab-projects-section {
   padding-left: var(--page-gutter);

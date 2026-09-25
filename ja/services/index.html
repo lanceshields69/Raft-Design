@@ -123,7 +123,7 @@
     :root {
       /* styles.css hardcodes font-family directly rather than tokenizing it
          — --font-sans is page-local so the body tag below can use it, same
-         as ja/about.html. */
+         as ja/about/. */
       --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
 
@@ -152,7 +152,7 @@
   <div class="nav-links">
     <a href="/ja/work/" class="nav-link">Work</a>
     <a href="/ja/services/" class="nav-link" style="color:var(--text-accent)">Services</a>
-    <a href="/ja/about.html" class="nav-link">About</a>
+    <a href="/ja/about/" class="nav-link">About</a>
     <a href="/ja/journal/" class="nav-link">Journal</a>
     <a href="/ja/labs/" class="nav-link">Labs</a>
     <button class="theme-toggle" id="theme-toggle" type="button" aria-label="ライトモードに切り替え">
@@ -223,7 +223,7 @@
   <nav class="mobile-menu-links">
     <a href="/ja/work/" class="mobile-menu-link">Work</a>
     <a href="/ja/services/" class="mobile-menu-link">Services</a>
-    <a href="/ja/about.html" class="mobile-menu-link">About</a>
+    <a href="/ja/about/" class="mobile-menu-link">About</a>
     <a href="/ja/journal/" class="mobile-menu-link">Journal</a>
     <a href="/ja/labs/" class="mobile-menu-link">Labs</a>
   </nav>
@@ -347,7 +347,7 @@
   </div>
 </section>
 
-<!-- CLOSE — reused verbatim from ja/about.html's CTA panel: same classes,
+<!-- CLOSE — reused verbatim from ja/about/'s CTA panel: same classes,
      same Calendly modal trigger, same JA copy as the homepage/About. -->
 <section class="connect-cta-sunken fade-in">
   <p class="connect-cta-sunken-heading"><span class="emphasis">Raft</span>のスピードで動く準備を。</p>
@@ -476,7 +476,7 @@
   })();
 
   // Hero wipe reveal — same clip-path mechanism and 120ms stagger as the
-  // homepage's headline and about.html's hero (styles.css .headline-line /
+  // homepage's headline and about/index.html's hero (styles.css .headline-line /
   // .mr-wipe), just triggered on load here rather than after a logo intro
   // animation.
   (function () {

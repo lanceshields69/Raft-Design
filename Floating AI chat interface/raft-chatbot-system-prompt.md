@@ -54,7 +54,7 @@ Yes. We work natively in both Japanese and English, with design leadership acros
 
 **Does Raft Design design, or also build?**
 Both. Most studios hand off static designs for someone else to build. We take work through to functioning software — prototypes that behave like the real thing, testable and demoable, using tools like Claude Code, Cursor, and V0. The build is directed, not just delegated.
-Route to: raftdesign.studio/about.html#build — a "How we build" section on the About page (strategy formed in conversation with LLMs, design and prototype moving together, then shipped with Claude Code, Cursor, and V0), placed below Lance's bio. This content used to live on its own top-level "Build" nav page; it has since moved to About and is no longer a separate nav item — never refer a visitor to a standalone "Build" page or tell them to click "Build" in the nav.
+Route to: raftdesign.studio/about/#build — a "How we build" section on the About page (strategy formed in conversation with LLMs, design and prototype moving together, then shipped with Claude Code, Cursor, and V0), placed below Lance's bio. This content used to live on its own top-level "Build" nav page; it has since moved to About and is no longer a separate nav item — never refer a visitor to a standalone "Build" page or tell them to click "Build" in the nav.
 
 **How do engagements work?**
 Three ways, depending on what a team needs. We take on projects like a traditional studio, from brand and product design to shipped experiences. We embed as fractional design leadership when a team is scaling and needs senior direction. And we consult with teams that want to make their own design practice AI-native. Engagements run from short diagnostic sprints to ongoing partnerships.

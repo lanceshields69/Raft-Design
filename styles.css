@@ -865,8 +865,18 @@ p {
   }
 }
 
+.headline-line.revealed.reveal-done {
+  /* Set by JS once the wipe has finished: clip-path (even a wide inset)
+     makes a backdrop root, which would stop the hover panel's
+     backdrop-filter from seeing the hero video behind it. */
+  clip-path: none;
+  transition: none;
+}
+
 .headline-line.revealed {
-  clip-path: inset(-100% 0 -100% 0);
+  /* Extra room below so the hover panel (which opens under the headline's
+     last line) isn't cut off by this clip. */
+  clip-path: inset(-100% 0 -800% 0);
 }
 
 /* EN homepage hero v3 (Figma node 740:2229) — single flowing sentence in
@@ -891,7 +901,14 @@ p {
    definition on hover/focus. tabindex on the trigger (not the img) so
    keyboard users can reach it; :focus-within keeps the panel open while
    it holds focus. */
+/* Hover/focus target: the whole green phrase plus its asterisk. The
+   asterisk itself is .ai-native-mark, positioned as a superscript. */
 .ai-native-trigger {
+  position: relative;
+  cursor: help;
+}
+
+.ai-native-mark {
   position: relative;
   top: -18px;
   display: inline-block;
@@ -902,7 +919,7 @@ p {
 }
 
 @media (max-width: 768px) {
-  html[lang="en"] .ai-native-trigger {
+  html[lang="en"] .ai-native-mark {
     top: -11px;
     margin-left: 3px;
   }
@@ -910,7 +927,8 @@ p {
 
 /* EN headline ends "next*." — the period follows the asterisk directly,
    so drop the 6px gap that used to precede the next word. */
-html[lang="en"] .ai-native-trigger {
+html[lang="en"] .ai-native-mark,
+html[lang="ja"] .ai-native-mark {
   margin-right: 0;
 }
 
@@ -941,26 +959,54 @@ html[lang="en"] .ai-native-trigger {
   position: absolute;
   top: calc(100% + 14px);
   left: 50%;
-  width: 320px;
-  max-width: min(80vw, 320px);
-  padding: 20px;
-  background: rgb(69, 95, 78);
-  border: 1px solid var(--border-rule);
+  width: 370px;
+  max-width: min(80vw, 370px);
+  padding: 24px;
+  /* Light-glass card (Figma 917:5185) — the light-mode tint at 70% with a
+     backdrop blur, black text in both themes since the card is always
+     light. Blur needs .headline-line to drop its clip-path once revealed
+     (see .reveal-done), as clip-path makes a backdrop root. */
+  background: rgba(234, 255, 234, 0.7);
+  -webkit-backdrop-filter: blur(4px) saturate(1.1);
+  backdrop-filter: blur(4px) saturate(1.1);
+  border: 1px solid rgba(255, 255, 255, 0.45);
   border-radius: var(--radius-md);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
   font-family: 'Inter', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 24px;
   letter-spacing: normal;
   text-transform: none;
-  color: var(--text-primary);
+  color: #000;
   opacity: 0;
   visibility: hidden;
   transform: translate(-50%, -6px);
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
   z-index: 10;
   pointer-events: none;
+}
+
+/* Light mode inverts the card: dark-mode canvas tint with light text. */
+[data-theme="light"] .ai-native-panel {
+  background: rgba(4, 34, 15, 0.7);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #EDF2EE;
+}
+
+/* Title on its own line (Figma: semibold title, body below). JA markup
+   already has a <br> after the title, so hide it to avoid a blank line. */
+.ai-native-panel strong {
+  display: block;
+  font-weight: 600;
+}
+
+.ai-native-panel br {
+  display: none;
+}
+
+html[lang="ja"] .ai-native-panel {
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
 }
 
 .ai-native-trigger:hover .ai-native-panel,
@@ -1066,23 +1112,32 @@ html[lang="ja"] .headline-line {
 html[lang="ja"] .headline-line--single {
   font-family: 'Noto Sans JP', sans-serif;
   font-weight: var(--weight-medium);
-  font-size: clamp(26px, 3.4vw, 52px);
+  font-size: clamp(26px, 4.4vw, 64px);
   line-height: 1.167;
   letter-spacing: -2px;
 }
 
 html[lang="ja"] .hero-subhead {
+  word-break: auto-phrase; /* wrap at phrase boundaries, not mid-word (ブ/ランド) */
   font-family: 'Noto Sans JP', sans-serif;
-  font-size: 24px;
+  font-size: 16px; /* holds 2 lines, matching EN (see desktop rule below) */
   letter-spacing: normal;
   line-height: 1.7;
+}
+
+/* Side-by-side layout (logo left): the text column is ~100vw - 380px, and
+   the subhead is ~46 chars per line, so size it to that column. */
+@media (min-width: 1025px) {
+  html[lang="ja"] .hero-subhead {
+    font-size: clamp(14px, calc((100vw - 380px) / 46), 21px);
+  }
 }
 
 /* Wide enough that the text only wraps at the manual <br> after
    「ために、」, not earlier — EN's 800px cap (above) is too narrow for
    this text at 24px Noto Sans JP. */
 html[lang="ja"] .hero-tags--subhead {
-  max-width: 900px;
+  max-width: 940px;
 }
 
 html[lang="ja"] .hero-link {
@@ -1191,11 +1246,13 @@ html[lang="ja"] .ai-native-panel {
   max-width: 368px;
 }
 
-/* EN heading ("Knowing what's worth making.") is a short single line; the
-   368px cap above would orphan "making." — it's kept for JA's longer heading. */
-html[lang="en"] .approach-heading {
+/* Home approach headings are short single lines in both languages; the
+   368px cap above would orphan a word — on phones they wrap to 2 lines,
+   split evenly instead. */
+html[lang="en"] .approach-heading,
+html[lang="ja"] .approach-heading {
   max-width: none;
-  text-wrap: balance; /* on phones it wraps to 2 lines — split evenly, no orphan */
+  text-wrap: balance;
 }
 
 .approach-body {

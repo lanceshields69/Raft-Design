@@ -234,7 +234,7 @@
         </div>
         <div class="hero-copy">
           <h1 class="intro-heading">
-            <span class="headline-line headline-line--single"><span class="headline-variant headline-variant--desktop">Brand and product design<br>for <span class="headline-highlight">what comes next</span><span class="ai-native-trigger" tabindex="0"><img src="images/asterisk.svg" alt="" class="ai-native-asterisk"><span class="ai-native-panel" role="tooltip"><strong>What comes next?</strong> Nobody knows exactly, and that's the point. We help you design for a future that's still taking shape, the same way a raft is built for water nobody has charted yet.</span></span>.</span><span class="headline-variant headline-variant--mobile">Brand and product design for <span class="headline-highlight">what comes next</span><span class="ai-native-trigger" tabindex="0"><img src="images/asterisk.svg" alt="" class="ai-native-asterisk"><span class="ai-native-panel" role="tooltip"><strong>What comes next?</strong> Nobody knows exactly, and that's the point. We help you design for a future that's still taking shape, the same way a raft is built for water nobody has charted yet.</span></span>.</span></span>
+            <span class="headline-line headline-line--single"><span class="headline-variant headline-variant--desktop">Brand and product design<br>for <span class="ai-native-trigger" tabindex="0"><span class="headline-highlight">what comes next</span><span class="ai-native-mark"><img src="images/asterisk.svg" alt="" class="ai-native-asterisk"></span><span class="ai-native-panel" role="tooltip"><strong>What comes next?</strong> Nobody knows exactly, and that's the point. We help you design for a future that's still taking shape, the same way a raft is built for water nobody has charted yet.</span></span>.</span><span class="headline-variant headline-variant--mobile">Brand and product design for <span class="ai-native-trigger" tabindex="0"><span class="headline-highlight">what comes next</span><span class="ai-native-mark"><img src="images/asterisk.svg" alt="" class="ai-native-asterisk"></span><span class="ai-native-panel" role="tooltip"><strong>What comes next?</strong> Nobody knows exactly, and that's the point. We help you design for a future that's still taking shape, the same way a raft is built for water nobody has charted yet.</span></span>.</span></span>
           </h1>
           <div class="hero-tags hero-tags--subhead">
             <p class="hero-subhead">Raft helps startups and established companies turn new technology into brands and products people trust. We use AI to move faster. People make the calls.</p>
@@ -843,6 +843,9 @@
       const lineDurationMs = 600; // matches .headline-line's clip-path transition duration
       lines.forEach((line, i) => {
         setTimeout(() => line.classList.add('revealed'), i * staggerMs);
+        // Once the wipe is done, drop the clip-path entirely so the hover
+        // panel's backdrop-filter can see the video behind it.
+        setTimeout(() => line.classList.add('reveal-done'), i * staggerMs + lineDurationMs + 100);
       });
 
       const headlineDoneMs = (lines.length - 1) * staggerMs + lineDurationMs;

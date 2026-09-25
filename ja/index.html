@@ -241,14 +241,14 @@
         </div>
         <div class="hero-copy">
           <h1 class="intro-heading">
-            <span class="headline-line headline-line--single">Raftは、<span class="headline-highlight">AIネイティブ</span><span class="ai-native-trigger" tabindex="0"><img src="../images/asterisk.svg" alt="" class="ai-native-asterisk"><span class="ai-native-panel" role="tooltip"><strong>AIネイティブなエージェンシー</strong><br>AIは、私たちの思考・デザイン・リリースのプロセスに組み込まれています。あらゆる段階を加速させながら、判断は人が担います。</span></span>なブランディング・<br class="hero-break-desktop">プロダクトデザインエージェンシーです。</span>
+            <span class="headline-line headline-line--single">ブランドとUXデザインを、<br class="hero-break-desktop"><span class="ai-native-trigger" tabindex="0"><span class="headline-highlight">次のかたちへ</span><span class="ai-native-mark"><img src="../images/asterisk.svg" alt="" class="ai-native-asterisk"></span><span class="ai-native-panel" role="tooltip"><strong>次のかたちへ？</strong><br>その姿は、まだ誰にもわかりません。だからこそ、デザインする意味があります。Raftは、まだ形になりつつある未来を、ともにデザインします。まだ誰も航路を描いていない水域を進むために、筏があるように。</span></span>。</span>
           </h1>
           <div class="hero-tags hero-tags--subhead">
-            <p class="hero-subhead">AI・デザイン・テクノロジーを融合し、世界の挑戦的なブランドのために、<br class="hero-break-desktop">大胆なインタラクティブ体験を生み出します。</p>
+            <p class="hero-subhead">Raftは、スタートアップや既存企業が、新しいテクノロジーを人から信頼されるブランドとプロダクトへと変えるお手伝いをします。AIでスピードを上げる。判断するのは、あくまで人です。</p>
           </div>
           <div class="hero-links">
             <a href="/ja/work/" class="hero-link"><span class="hero-link-arrow" aria-hidden="true">→</span> 実績を見る</a>
-            <a href="/ja/services/" class="hero-link"><span class="hero-link-arrow" aria-hidden="true">→</span> できることを見る</a>
+            <a href="/ja/services/" class="hero-link"><span class="hero-link-arrow" aria-hidden="true">→</span> サービスを見る</a>
             <a href="/ja/about.html" class="hero-link"><span class="hero-link-arrow" aria-hidden="true">→</span> Raftについて知る</a>
           </div>
         </div>
@@ -309,8 +309,8 @@
       <div class="approach-content">
         <div class="approach-left">
           <div class="approach-text fade-in">
-            <p class="approach-heading">人のために。AIとつくる。規模が大きくても、速く動く。</p>
-            <p class="approach-body">AIは、人がプロダクトを見つけ、使う方法を変えています。RAFTは、AIが前提となる時代に向けてブランドやプロダクトを見直す、事業基盤のある企業と、新しい技術を人が使いたくなる体験へと変えるスタートアップの両方と仕事をしています。私たちは早い段階からチームに加わり、デザインから開発まで一緒に進めます。戦略、ブランド、プロダクト、AIを最初から一体で考え、互いに影響を与えながら形にしていきます。</p>
+            <p class="approach-heading">つくる価値のあるものを、見極める。</p>
+            <p class="approach-body">いまや、ほとんどのものはつくれます。本当に難しいのは、顧客とビジネスにとって何が大切かを見極めることです。強いブランドでも、わかりにくいプロダクトを補うことはできません。だからこそ、Raftはブランド、プロダクト、戦略を切り離さずに考えます。早い段階でプロトタイプをつくり、デザインから実装までチームに伴走します。</p>
             <a href="/ja/about.html" class="scan-cta"><span class="scan-cta-arrow">→</span> Raftについて詳しく見る</a>
           </div>
           <div class="approach-stats fade-in">
@@ -850,6 +850,9 @@
       const lineDurationMs = 600; // matches .headline-line's clip-path transition duration
       lines.forEach((line, i) => {
         setTimeout(() => line.classList.add('revealed'), i * staggerMs);
+        // Once the wipe is done, drop the clip-path entirely so the hover
+        // panel's backdrop-filter can see the video behind it.
+        setTimeout(() => line.classList.add('reveal-done'), i * staggerMs + lineDurationMs + 100);
       });
 
       const headlineDoneMs = (lines.length - 1) * staggerMs + lineDurationMs;

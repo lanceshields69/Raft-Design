@@ -2198,6 +2198,42 @@ html[lang="ja"] .approach-heading {
   display: block;
 }
 
+/* Raft message panel (home, under Work): Paper Dithering shader + rotating phrase.
+   Text is the page-canvas colour, so it reads as a cut-out of the dither. */
+.raft-message {
+  position: relative;
+  height: clamp(280px, 33.33vw, 500px); /* Paper frame is 1500 x 500 */
+  overflow: hidden;
+}
+
+/* No hairline below the panel either (the Offerings section's own top rule). */
+.raft-message + .ai-systems-section {
+  border-top: none;
+}
+
+.raft-message > [data-dither] {
+  position: absolute;
+  inset: 0;
+}
+
+.raft-message-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  text-align: center;
+  /* Always one line: 110px (Paper) at full width, scaling with the viewport below that.
+     The longest phrase ("Water nobody has charted.") is ~12.6em wide, so 7.2vw keeps it
+     inside ~90% of the viewport. */
+  white-space: nowrap;
+  font-size: min(110px, 7.2vw);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--bg-canvas);
+}
+
 /* Design Intelligence Banner (Scan CTA) */
 .scan-banner-section {
   /* Full-bleed: no max-width or side padding on the section so the dither

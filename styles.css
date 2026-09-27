@@ -912,6 +912,8 @@ p {
   position: relative;
   top: -18px;
   display: inline-block;
+  width: 22px;
+  height: 22px;
   margin-left: 4px;
   margin-right: 6px;
   vertical-align: super;
@@ -932,6 +934,11 @@ p {
 
   /* 30% smaller than desktop's 22px. Nested selector so it outranks the
      base .ai-native-asterisk rule, which is declared later in the file. */
+  .ai-native-mark {
+    width: 15.4px;
+    height: 15.4px;
+  }
+
   .ai-native-mark .ai-native-asterisk {
     width: 15.4px;
     height: 15.4px;
@@ -950,6 +957,30 @@ html[lang="ja"] .ai-native-mark {
   width: 22px;
   height: 22px;
   animation: ai-native-spin 6s linear infinite;
+}
+
+/* Dark/light asterisk swap — same pattern as .nav-logo-gif--dark/--light.
+   Light mode uses the mid green (--text-accent, matches .headline-highlight
+   and the About page's dither "r"), not the bright brand green. */
+.ai-native-asterisk--light {
+  display: none;
+}
+
+[data-theme="light"] .ai-native-asterisk--dark {
+  display: none;
+}
+
+[data-theme="light"] .ai-native-asterisk--light {
+  display: block;
+}
+
+/* The two stacked images would otherwise sit inline and widen .ai-native-mark
+   (which is already position:relative with an explicit width/height above);
+   only one is ever visible, so lay both into that same box. */
+.ai-native-mark .ai-native-asterisk {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 @keyframes ai-native-spin {

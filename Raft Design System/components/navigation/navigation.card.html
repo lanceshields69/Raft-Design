@@ -1,0 +1,25 @@
+<!-- @dsCard group="Components" viewport="700x420" name="Navigation" subtitle="Sticky nav header, theme toggle, site footer" -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Navigation</title>
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script><style>body{background:var(--bg-canvas);padding:0;display:flex;align-items:center}#root{width:100%}</style><style>#root{transform-origin:top left}</style></head><body><div id="root"></div>
+<script type="text/babel">
+const { NavHeader, ThemeToggle, SiteFooter } = window.RaftDesignSystem_76d511;
+const links = ['Approach','Expertise','Projects','Build','Studio','Journal','Contact','AI Tools'].map(l=>({label:l}));
+function Demo(){
+  const [theme,setTheme] = React.useState('dark');
+  React.useEffect(()=>{ if(theme==='light') document.documentElement.dataset.theme='light'; else delete document.documentElement.dataset.theme; },[theme]);
+  const toggle = ()=>setTheme(t=>t==='light'?'dark':'light');
+  return <div>
+    <NavHeader active="Projects" links={links} theme={theme} onToggleTheme={toggle} logo={'../../assets/r-mark-'+(theme==='light'?'light':'dark')+'.gif'} />
+    <div style={{display:'flex',alignItems:'center',gap:16,padding:'20px 15px'}}>
+      <ThemeToggle theme={theme} onToggle={toggle} />
+      <span style={{fontSize:16,color:'var(--text-muted)'}}>Theme toggle — dark is the default</span>
+    </div>
+    <div style={{transform:'scale(0.52)',transformOrigin:'top left',width:'192%'}}><SiteFooter assetBase="../../assets/" /></div>
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script></body></html>

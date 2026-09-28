@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Raft site page" description="Raft Design page scaffold: sticky nav, 72px hero, section block, CTA banner, footer" -->
+<helmet><script src="./ds-base.js"></script><style>@keyframes raft-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}</style></helmet>
+<div style="background:var(--bg-canvas);min-height:100vh;font-family:var(--font-sans);color:var(--text-primary)">
+<x-import component-from-global-scope="RaftDesignSystem_76d511.NavHeader" dc-props="{{ navProps }}" hint-size="100%,66px"></x-import>
+<x-import component-from-global-scope="RaftDesignSystem_76d511.PageHero" title="Page title" intro="One sentence that says what this page is for, kept inside the 559px measure." hint-size="100%,300px"></x-import>
+<section style="padding:20px 15px 120px;max-width:1920px;border-top:1px solid var(--border-rule)">
+<x-import component-from-global-scope="RaftDesignSystem_76d511.SectionLabel" style="margin-bottom:133px" hint-size="120px,26px">Section</x-import>
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:40px">
+<div style="display:flex;flex-direction:column;gap:24px">
+<p style="font-size:28px;font-weight:900;line-height:.95;max-width:368px">A short claim that sets up the paragraph beside it.</p>
+<p style="font-size:16px;line-height:1.4;max-width:615px">Body copy at 16px. Plain, declarative, senior. Say the thing, then say why it holds. No hype adjectives; the arrow does the pointing.</p>
+</div>
+<div style="flex-shrink:0;width:250px;height:250px;background:var(--lime);border-radius:var(--radius-sm)"></div>
+</div>
+</section>
+<section style="padding:32px;max-width:1920px;border-top:1px solid var(--border-rule)">
+<x-import component-from-global-scope="RaftDesignSystem_76d511.CtaBanner" heading="Banner heading" body="One line of supporting copy, then a single wide CTA." cta="Take the action" hint-size="100%,220px"></x-import>
+</section>
+<x-import component-from-global-scope="RaftDesignSystem_76d511.SiteFooter" hint-size="100%,420px"></x-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;navLinks&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Approach, Expertise, Projects, Build, Studio, Journal, Contact, AI Tools&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Navigation&quot;},&quot;activeLink&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Projects&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Navigation&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const labels = (this.props.navLinks || 'Approach, Expertise, Projects, Build, Studio, Journal, Contact, AI Tools').split(',').map(s => s.trim()).filter(Boolean);
+    return {
+      navProps: {
+        links: labels.map(label => ({ label })),
+        active: this.props.activeLink ?? 'Projects',
+        theme: 'dark',
+        logo: '../../assets/r-mark-dark.gif'
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

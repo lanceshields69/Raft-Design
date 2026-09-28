@@ -1,0 +1,93 @@
+/* Brand palette — dark mode IS the default (:root). Light mode is a full
+   parallel palette applied with [data-theme="light"] on <html>, not an
+   inverted filter. Values from the Figma "Sections" collections. */
+
+/* Canonical per-theme source. The switch below reads from these; so does
+   the live site's hero-lens.css, which needs direct access to "the other
+   theme's" values for a subtree clone that [data-theme] on <html> can't
+   reach. One set of literals here instead of two independently hand-kept
+   copies (which is exactly the drift a 2026-09 audit found and fixed). */
+:root {
+  --palette-dark-bg-canvas:     #04220F;
+  --palette-dark-bg-surface:    #2E4034;
+  --palette-dark-bg-elevated:   #102A1B;
+  --palette-dark-text-primary:  #EDF2EE;
+  --palette-dark-text-accent:   #3DE83D;
+  --palette-dark-border-rule:   #1E3A28;
+  --palette-dark-border-button: #3DE83D;
+  --palette-dark-bg-sunken:     #02190A;
+  --palette-dark-border-bright: #438259;
+
+  --palette-light-bg-canvas:     #F7FFF7;
+  --palette-light-bg-surface:    #EBF7EB;
+  --palette-light-bg-elevated:   #EBF7EB;
+  --palette-light-text-primary:  #000000;
+  --palette-light-text-accent:   #159845;
+  --palette-light-border-rule:   #CFE5D7;
+  --palette-light-border-button: #159845;
+  --palette-light-bg-sunken:     #EAFFEA;
+  --palette-light-border-bright: #A9C7B4;
+}
+
+:root {
+  --bg-canvas: var(--palette-dark-bg-canvas);   /* page background — same value as the wordmark's dark state */
+  --bg-surface: var(--palette-dark-bg-surface);  /* small UI chrome only (theme-toggle pill, community strip) */
+  --bg-elevated: var(--palette-dark-bg-elevated); /* cards, modals, panels */
+  --bg-brand: #3DE83D;    /* solid brand-green fills — constant across themes */
+  --bg-sunken: var(--palette-dark-bg-sunken);   /* recessed panels, darker than canvas */
+  --text-primary: var(--palette-dark-text-primary); /* body text — off-white, never pure white */
+  --text-muted: #8FA396;  /* labels, captions, metadata — constant across themes */
+  --text-accent: var(--palette-dark-text-accent); /* links + accent text */
+  --border-rule: var(--palette-dark-border-rule); /* dividers, hairlines, card borders */
+  --border-button: var(--palette-dark-border-button); /* pill button outlines */
+  --border-bright: var(--palette-dark-border-bright); /* border on sunken panels */
+  --accent-ink: #0B1F14;  /* text sitting on brand-green fills — constant across themes */
+
+  /* True white/black — distinct from --text-primary (off-white) and
+     --bg-canvas (near-black), which are never pure. Reserved for the rare,
+     deliberate exceptions: video/media chrome floating over a thumbnail or
+     scrim, and SolidButton's light-mode inversion. Theme-invariant by
+     definition — no [data-theme="light"] override exists for either. */
+  --pure-white: #FFFFFF;
+  --pure-black: #000000;
+
+  /* Modal backdrop dimmer — shared by the contact and Calendly modals,
+     which independently carried identical rgba() literals until the same
+     2026-09 audit folded them into one token. */
+  --overlay-scrim: rgba(0, 0, 0, 0.5);
+
+  /* Wordmark palette — fixed, independent of page theme */
+  --lime: #3DE83D;
+  --dark: #04220F;
+  --white: #EDF2EE;
+  --mid: #0E4A22;  /* transient flicker state only, never a resting state */
+
+  /* Semantic aliases */
+  --surface-page: var(--bg-canvas);
+  --surface-card: var(--bg-elevated);
+  --surface-chrome: var(--bg-surface);
+  --surface-recessed: var(--bg-sunken);
+  --text-body: var(--text-primary);
+  --text-label: var(--text-muted);
+  --text-link: var(--text-accent);
+  --on-brand: var(--accent-ink);
+
+  /* Form validation — the one deliberate exception to the brand palette.
+     Untokenized in the source (raw hex on .contact-modal-field-error);
+     named here so a second error component doesn't re-invent them. */
+  --color-error: #FF8A80;
+}
+
+[data-theme="light"] {
+  --bg-canvas: var(--palette-light-bg-canvas);
+  --bg-surface: var(--palette-light-bg-surface);
+  --bg-elevated: var(--palette-light-bg-elevated);  /* no separate light-mode modal spec; reuses the surface tone */
+  --text-primary: var(--palette-light-text-primary);
+  --text-accent: var(--palette-light-text-accent);
+  --border-rule: var(--palette-light-border-rule);
+  --border-button: var(--palette-light-border-button);
+  --bg-sunken: var(--palette-light-bg-sunken);
+  --border-bright: var(--palette-light-border-bright);
+  --overlay-scrim: rgba(165, 165, 165, 0.5);
+  --color-error: #C62828;
+}

@@ -1,0 +1,58 @@
+<!-- @dsCard group="Website" viewport="1440x900" name="raftdesign.studio" subtitle="Click-through recreation: home, projects, journal, AI tools, contact" -->
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Raft Design — website UI kit</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>@keyframes raft-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+</head><body>
+<div id="root"></div>
+<script type="text/babel" src="Home.jsx"></script>
+<script type="text/babel" src="ProjectsIndex.jsx"></script>
+<script type="text/babel" src="JournalIndex.jsx"></script>
+<script type="text/babel" src="ToolsPage.jsx"></script>
+<script type="text/babel" src="ContactModal.jsx"></script>
+<script type="text/babel">
+const { NavHeader, SiteFooter } = window.RaftDesignSystem_76d511;
+const LINKS = ['Approach','Expertise','Projects','Build','Studio','Journal','Contact','AI Tools'].map(l => ({ label: l }));
+const PAGES = { Projects: 'ProjectsIndex', Journal: 'JournalIndex', 'AI Tools': 'ToolsPage' };
+
+function App() {
+  const [page, setPage] = React.useState('Home');
+  const [theme, setTheme] = React.useState('dark');
+  const [contact, setContact] = React.useState(false);
+  const [lightbox, setLightbox] = React.useState(null);
+  React.useEffect(() => {
+    if (theme === 'light') document.documentElement.dataset.theme = 'light';
+    else delete document.documentElement.dataset.theme;
+  }, [theme]);
+
+  const navigate = (link) => {
+    if (link.label === 'Contact') { setContact(true); return; }
+    const next = PAGES[link.label];
+    setPage(next || 'Home');
+    window.scrollTo({ top: 0 });
+  };
+
+  const body = page === 'ProjectsIndex' ? <window.ProjectsIndex />
+    : page === 'JournalIndex' ? <window.JournalIndex />
+    : page === 'ToolsPage' ? <window.ToolsPage onContact={() => setContact(true)} />
+    : <window.Home onContact={() => setContact(true)} onScan={() => setContact(true)} onOpenImage={setLightbox} onNavigate={navigate} />;
+
+  const active = page === 'ProjectsIndex' ? 'Projects' : page === 'JournalIndex' ? 'Journal' : page === 'ToolsPage' ? 'AI Tools' : null;
+
+  return <>
+    <NavHeader links={LINKS} active={active} theme={theme} onToggleTheme={() => setTheme(t => t === 'light' ? 'dark' : 'light')} onNavigate={navigate} logo={'../../assets/r-mark-' + (theme === 'light' ? 'light' : 'dark') + '.gif'} />
+    {body}
+    <window.ContactModal open={contact} onClose={() => setContact(false)} />
+    {lightbox ? <div onClick={() => setLightbox(null)} style={{ position: 'fixed', inset: 0, zIndex: 1000, background: 'rgb(from var(--bg-canvas) r g b / 94%)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'zoom-out' }}>
+      <img src={lightbox} alt="" style={{ maxWidth: '80vw', maxHeight: '90vh', objectFit: 'contain', borderRadius: 'var(--radius-md)' }} />
+    </div> : null}
+    <SiteFooter assetBase="../../assets/" />
+  </>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body></html>

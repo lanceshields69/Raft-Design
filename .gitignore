@@ -4,3 +4,11 @@ node_modules/
 .env
 .env.local
 .env*.local
+
+# Raft Design System package: the component/token/guideline core is tracked,
+# but the ~51MB slide-deck deliverable bundled in the same folder is a
+# different artifact and isn't source for anything else — kept locally,
+# not in this repo.
+Raft Design System/Raft Design System Deck.zip
+Raft Design System/Raft Design System Deck.html
+Raft Design System/design-system-deck/

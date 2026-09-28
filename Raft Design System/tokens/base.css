@@ -1,0 +1,34 @@
+/* Base layer — the site's reset, body defaults, heavy-heading tuning and
+   link colors. Mirrors styles.css in the source repo. */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box }
+body {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-regular);
+  font-optical-sizing: auto;
+  letter-spacing: var(--tracking-body);
+  line-height: 1.55;
+  color: var(--text-primary);
+  background: var(--bg-canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3 {
+  font-weight: var(--weight-black);
+  font-optical-sizing: auto;
+  font-variation-settings: 'opsz' 32;
+  font-feature-settings: "kern" 1, "cv11" 1;
+  text-rendering: optimizeLegibility;
+}
+p { margin: 0 }
+img { display: block; max-width: 100% }
+a { color: var(--text-accent); text-decoration: none; transition: color .2s }
+a:hover { color: var(--text-primary) }
+hr { border: none; border-top: 1px solid var(--border-rule); width: 100% }
+.emphasis {
+  font-family: var(--font-emphasis);
+  font-style: italic;
+  font-weight: var(--weight-semibold);
+  font-variation-settings: 'SOFT' 0, 'WONK' 1;
+  letter-spacing: -0.03em;
+  color: var(--text-accent);
+}

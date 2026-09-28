@@ -1,0 +1,44 @@
+/* Type — Inter carries the system, weight 900 for anything that reads as a
+   heading. Fraunces (italic 600, SOFT 0 / WONK 1) is the emphasis + stat
+   face. Noto Sans JP is the logotype face and the default on JA pages. */
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-sans-ja: 'Inter', 'Noto Sans JP', sans-serif;
+  --font-emphasis: 'Fraunces', serif;
+  --font-emphasis-ja: 'Noto Serif JP', serif;
+  --font-logotype: 'Noto Sans JP', sans-serif;
+
+  --font-size-label-small: 11px;   /* CategoryTag, verdict eyebrow */
+  --font-size-label-medium: 12px;  /* StatusBadge text */
+  --font-size-eyebrow: 13px;       /* section-label pill, journal badge */
+  --font-size-body-md: 16px;       /* default body copy */
+  --font-size-body-lg: 20px;       /* CTA buttons, intro paragraphs */
+  --font-size-heading-3: 24px;     /* ToolCard title, article subhead */
+  --font-size-heading-2: 28px;     /* card + FAQ headings */
+  --font-size-heading-1: 36px;     /* section display headings, stat values */
+  --font-size-display: 72px;       /* page hero headings ("AI TOOLS", "PROJECTS") */
+
+  --line-height-eyebrow: 0.86;
+  --line-height-label: 20px;
+  --line-height-body: 24px;
+  --line-height-heading: 28px;
+  --line-height-heading-large: 36px;
+
+  --tracking-display: -2px;        /* 72px hero headings */
+  --tracking-heading: 0;
+  --tracking-body: 0;
+  --tracking-eyebrow: 0.52px;      /* pill/badge components WITH a background */
+  --tracking-section-title: 1px;   /* flat uppercase field labels, no pill */
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-black: 900;
+
+  /* Semantic aliases */
+  --text-style-heading-family: var(--font-sans);
+  --text-style-heading-weight: var(--weight-black);
+  --text-style-body-size: var(--font-size-body-md);
+  --text-style-body-line: var(--line-height-body);
+}

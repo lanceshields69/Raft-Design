@@ -1,0 +1,20 @@
+/* Status badge colors — scoped to the AI Tools page's StatusBadge in the
+   source (tools.css), not part of the sitewide palette. Five variants,
+   each a text/dot color plus a 12% tint fill and a 25-30% border. */
+:root {
+  --status-stack: #12D510;
+  --status-stack-bg: rgba(63, 232, 61, 0.12);
+  --status-stack-border: rgba(18, 213, 16, 0.3);
+  --status-rotation: #00C7BE;  /* Colors/Mint — the one bound Figma variable of the five */
+  --status-rotation-bg: rgba(54, 232, 199, 0.12);
+  --status-rotation-border: rgba(54, 232, 199, 0.3);
+  --status-watching: #AAA9FF;
+  --status-watching-bg: rgba(170, 169, 255, 0.12);
+  --status-watching-border: rgba(170, 169, 255, 0.3);
+  --status-overhyped: #FFAE00;
+  --status-overhyped-bg: rgba(255, 174, 0, 0.12);
+  --status-overhyped-border: rgba(255, 174, 0, 0.3);
+  --status-dropped: #F87171;
+  --status-dropped-bg: rgba(248, 113, 113, 0.1);
+  --status-dropped-border: rgba(248, 113, 113, 0.25);
+}

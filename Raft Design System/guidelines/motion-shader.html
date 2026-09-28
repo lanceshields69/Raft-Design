@@ -1,0 +1,42 @@
+<!-- @dsCard group="Brand" viewport="700x560" name="Dither shader" subtitle="Live WebGL motif — three surfaces on the home + About pages, added 2026-09" -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<script src="../assets/dither-banner.js" defer></script>
+<style>
+  body{background:var(--bg-canvas);padding:16px;font-family:var(--font-sans);color:var(--text-primary)}
+  .row{display:flex;gap:16px;margin-bottom:16px}
+  .demo{position:relative;border-radius:var(--radius-md);overflow:hidden;flex:1;height:120px}
+  .demo-label{position:absolute;left:8px;bottom:8px;z-index:2;font-size:11px;font-weight:900;letter-spacing:.52px;text-transform:uppercase;color:var(--text-primary);background:rgba(0,0,0,.35);padding:2px 8px;border-radius:var(--radius-sm)}
+  .msg{position:relative;height:140px;border-radius:var(--radius-md);overflow:hidden;margin-bottom:16px}
+  .raft-message-text{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);margin:0;white-space:nowrap;font-size:min(56px,7vw);font-weight:900;letter-spacing:-.02em;color:var(--bg-canvas);z-index:2}
+  .lb{font-size:11px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+  .attrs{font-size:12px;line-height:1.7;color:var(--text-muted)}
+  .attrs code{color:var(--text-accent);font-weight:600}
+</style>
+</head><body>
+
+<div class="lb">Three shapes, one shared script</div>
+<div class="row">
+  <div class="demo"><div class="demo-label">wave (home banner)</div><div data-dither data-shape="wave" data-type="4x4" data-size="3" data-scale="1.25" style="position:absolute;inset:0"></div></div>
+  <div class="demo"><div class="demo-label">sphere (About "r")</div><div data-dither data-shape="sphere" data-type="8x8" data-size="2" data-scale="1" style="position:absolute;inset:0"></div></div>
+  <div class="demo"><div class="demo-label">simplex (message panel)</div><div data-dither data-shape="simplex" data-type="8x8" data-size="2.5" data-scale="1.29" style="position:absolute;inset:0"></div></div>
+</div>
+
+<div class="lb">Message panel — phrase changes while the centre goes dark</div>
+<div class="msg">
+  <div data-dither data-shape="simplex" data-type="8x8" data-size="2.5" data-scale="1.29" data-messages='["A craft built for change.","Small by design."]' style="position:absolute;inset:0"></div>
+  <p class="raft-message-text">A craft built for change.</p>
+</div>
+
+<div class="lb">Data-attribute API (dither-banner.js)</div>
+<p class="attrs">
+  <code>data-dither</code> / <code>data-dither-banner</code> — either selector self-mounts a shader; use whichever reads better at the call site.<br>
+  <code>data-shape</code> — wave · sphere · simplex · dots · warp · ripple · swirl<br>
+  <code>data-type</code> — random · 2x2 · 4x4 · 8x8 (Bayer dither matrix)<br>
+  <code>data-size</code> / <code>data-scale</code> / <code>data-speed</code> / <code>data-frame</code> — pixel size, zoom, animation speed, start frame<br>
+  <code>data-light-front</code> — a CSS variable name (e.g. <code>--text-accent</code>) to draw with in light mode instead of the default <code>--bg-brand</code>; updates live on theme toggle<br>
+  <code>data-messages</code> — a JSON array; a sibling element with the exact class <code>.raft-message-text</code> (hardcoded in the script, not itself configurable) has its text rotated through the array, timed to swap while the shader's centre band is dark so the change is hidden by the dither itself
+</p>
+<p class="attrs">Pauses off-screen or when the tab is hidden; renders one still frame under <code>prefers-reduced-motion</code>. ~29KB, self-hosted (no CDN) — see the source comment in <code>assets/dither-banner.js</code> for the full mount/uniform reference.</p>
+
+</body></html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Raft portfolio deck" description="15-slide new-business deck in the Raft system — approach, expertise, projects, build, studio, contact" -->
+<helmet><script src="./ds-base.js"></script><style>
+@keyframes deck-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes deck-wipe{from{clip-path:inset(-25% 100% -25% 0)}to{clip-path:inset(-25% 0 -25% 0)}}
+@keyframes deck-wipe-rev{from{clip-path:inset(-25% 0 -25% 100%)}to{clip-path:inset(-25% 0 -25% 0)}}
+@keyframes deck-unveil{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes deck-drift{from{transform:scale(1.06)}to{transform:scale(1)}}
+@media (prefers-reduced-motion:no-preference){
+[data-deck-active]>*{animation:deck-rise .6s cubic-bezier(.2,.7,.3,1) both}
+[data-deck-active]>*:nth-child(2){animation-delay:.09s}
+[data-deck-active]>*:nth-child(3){animation-delay:.18s}
+[data-deck-active]>*:nth-child(4){animation-delay:.27s}
+[data-deck-active]>*:nth-child(5){animation-delay:.36s}
+[data-deck-active] [data-anim="pane"]{animation:deck-unveil .75s cubic-bezier(.65,0,.35,1) both;overflow:hidden}
+[data-deck-active] [data-anim="pane"]>img{animation:deck-drift 2.4s cubic-bezier(.2,.7,.3,1) both}
+[data-deck-active] [data-anim="wipe"]{animation:deck-wipe .65s cubic-bezier(.65,0,.35,1) both}
+[data-deck-active] [data-anim="wipe-rev"]{animation:deck-wipe-rev .65s cubic-bezier(.65,0,.35,1) both}
+[data-deck-active] [data-anim="mark"]{animation:deck-unveil .55s cubic-bezier(.65,0,.35,1) both}
+[data-deck-active] [data-d="2"]{animation-delay:.14s}
+[data-deck-active] [data-d="3"]{animation-delay:.28s}
+[data-deck-active] [data-d="4"]{animation-delay:.5s}
+}
+</style></helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%" data-uneditable="">
+
+<section data-label="Cover" data-screen-label="01" style="width:1920px;height:1080px;background:var(--bg-canvas);color:var(--text-primary);font-family:var(--font-sans);display:grid;grid-template-columns:auto 1fr;column-gap:64px;align-content:center;padding:96px">
+<div data-anim="mark" style="width:320px;height:320px;background:var(--lime);display:flex;align-items:center;justify-content:center;align-self:start">
+<div style="display:flex;flex-direction:column;align-items:center;font-weight:900;text-transform:uppercase;line-height:.85"><span style="font-size:78px;letter-spacing:-.06em;color:var(--dark)">Raft</span><span style="font-size:78px;letter-spacing:-.04em;color:var(--white)">Design</span></div>
+</div>
+<div style="align-self:start;min-width:0">
+<h1 style="font-weight:900;font-size:150px;line-height:.78;letter-spacing:-.03em;text-transform:uppercase">
+<span data-anim="wipe" style="display:block;white-space:nowrap">DESIGNING</span>
+<span data-anim="wipe" data-d="2" style="display:block;white-space:nowrap">FOR <span style="font-family:var(--font-emphasis);font-style:italic;font-weight:600;font-variation-settings:'SOFT' 0,'WONK' 1;font-size:170px;letter-spacing:-.03em;color:var(--text-accent);text-transform:none">turbulent</span></span>
+<span data-anim="wipe" data-d="3" style="display:block;white-space:nowrap">TIMES AHEAD.</span>
+</h1>
+<p data-anim="wipe" data-d="4" style="margin-top:48px;font-size:36px;font-weight:900;letter-spacing:-.02em;color:var(--text-accent)">AI-Native Product Studio</p>
+<div data-anim="wipe" data-d="4" style="margin-top:24px;display:flex;gap:40px;font-size:28px;color:var(--text-primary)"><p><span style="color:var(--text-accent)">→</span> AI product design</p><p><span style="color:var(--text-accent)">→</span> Brand systems</p><p><span style="color:var(--text-accent)">→</span> Product strategy</p><p><span style="color:var(--text-accent)">→</span> Design through build</p></div>
+</div>
+</section>
+
+<section data-label="Approach" data-screen-label="02" style="width:1920px;height:1080px;background:var(--bg-canvas);color:var(--text-primary);font-family:var(--font-sans);padding:96px;display:flex;flex-direction:column;justify-content:center;gap:48px">
+<span style="align-self:flex-start;background:var(--bg-brand);color:var(--accent-ink);font-size:24px;font-weight:900;letter-spacing:.96px;line-height:.86;text-transform:uppercase;padding:12px 32px;border-radius:var(--radius-sm)">Approach</span>
+<div style="display:flex;gap:80px;align-items:flex-start">
+<p style="flex:0 0 720px;font-size:72px;font-weight:900;line-height:.95;letter-spacing:-.02em">Creating experiences to get you where you need to go, even as the water keeps changing.</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:32px;font-size:30px;line-height:1.45;max-width:820px">
+<p>AI is changing how people find, trust, and use everything, and most companies feel it without knowing what to do next. Startups move fast on engineering but haven't built the brand people stay for. Established companies have the trust, and are still learning to carry it into an AI-first world. We work with both.</p>
+<p>Strategy, design, and build happen together, not handed off in sequence. What comes out is still elegant, still human, built to carry a company through water the rest of the industry hasn't learned to read yet.</p>
+</div>
+</div>
+</section>
+
+<section data-label="Clients" data-screen-label="03" style="width:1920px;height:1080px;background:var(--bg-canvas);color:var(--text-primary);font-family:var(--font-sans);padding:96px;display:flex;flex-direction:column;justify-content:center;gap:64px">
+<p style="font-size:64px;font-weight:900;line-height:1;letter-spacing:-.02em">Twenty years of work with the companies people already trust.</p>
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:56px 72px;align-items:center;opacity:.6">
+<img src="../../assets/client-adobe.png" alt="Adobe" style="width:100%;height:56px;object-fit:contain">
+<img src="../../assets/client-walmart.png" alt="Walmart" style="width:100%;height:56px;object-fit:contain">
+<img src="../../assets/client-visa.png" alt="Visa" style="width:100%;height:56px;object-fit:contain">
+<img src="../../assets/client-hitachi.png" alt="Hitachi" style="width:100%;height:56px;object-fit:contain">
+<img src="../../assets/client-redbull.png" alt="Red Bull" style="width:100%;height:56px;object-fit:contain">
+<img src="../../assets/client-chase.png" alt="Chase" style="width:100%;height:56px;object-fit:contain">
+<img src="../../assets/client-kddi.png" alt="KDDI" style="width:100%;height:56px;object-fit:contain">
+<img src="../../assets/client-mitsubishi.png" alt="Mitsubishi" style="width:100%;height:56px;object-fit:contain">
+<img src="../../assets/client-jal.png" alt="JAL" style="width:100%;height:56px;object-fit:contain">
+<img src="../../assets/client-chanel.png" alt="Chanel" style="width:100%;height:56px;object-fit:contain">
+<img src="../../assets/client-yokogawa.png" alt="Yokogawa" style="width:100%;height:56px;object-fit:contain">
+<img src="../../assets/client-mitsui.png" alt="Mitsui" style="width:100%;height:56px;object-fit:contain">
+<img src="../../assets/client-kraft.png" alt="Kraft" style="width:100%;height:56px;object-fit:contain">
+<img src="../../assets/client-tepco.png" alt="TEPCO" style="width:100%;height:56px;object-fit:contain">
+<img src="../../assets/client-fitbit.png" alt="Fitbit" style="width:100%;height:56px;object-fit:contain">
+</div>
+</section>
+
+<section data-label="Expertise" data-screen-label="04" style="width:1920px;height:1080px;background:var(--bg-canvas);color:var(--text-primary);font-family:var(--font-sans);padding:96px;display:flex;flex-direction:column;justify-content:center;gap:56px">
+<span style="align-self:flex-start;background:var(--bg-brand);color:var(--accent-ink);font-size:24px;font-weight:900;letter-spacing:.96px;line-height:.86;text-transform:uppercase;padding:12px 32px;border-radius:var(--radius-sm)">Expertise</span>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:56px 80px">
+<div style="display:flex;flex-direction:column;gap:20px"><p style="font-size:48px;font-weight:900;line-height:.95">Brand strategy &amp; design</p><p style="font-size:28px;line-height:1.45">We define what brands stand for and how they show up. Positioning, identity, and systems built to scale and evolve. AI expands how we explore and create.</p><p style="font-size:26px;font-weight:600;color:var(--text-accent)">→ Brand strategy, identity systems, positioning, art direction</p></div>
+<div style="display:flex;flex-direction:column;gap:20px"><p style="font-size:48px;font-weight:900;line-height:.95">Products &amp; platforms</p><p style="font-size:28px;line-height:1.45">Websites, apps, and platforms built for adoption. Design that adapts as the product grows and holds up when the team scales past the people who started it.</p><p style="font-size:26px;font-weight:600;color:var(--text-accent)">→ Product design, UX, design systems, web, mobile</p></div>
+<div style="display:flex;flex-direction:column;gap:20px"><p style="font-size:48px;font-weight:900;line-height:.95">AI product design</p><p style="font-size:28px;line-height:1.45">Companies are still catching up on agentic AI. The model working is not the same as the product working. Design decides whether people trust it and come back.</p><p style="font-size:26px;font-weight:600;color:var(--text-accent)">→ AI product design, agentic interfaces, conversational UI</p></div>
+<div style="display:flex;flex-direction:column;gap:20px"><p style="font-size:48px;font-weight:900;line-height:.95">Global brand &amp; product</p><p style="font-size:28px;line-height:1.45">Brands and products that work in one market rarely survive translation intact. Meaning has to be rebuilt, not converted. Bilingual design leadership across the US and Japan.</p><p style="font-size:26px;font-weight:600;color:var(--text-accent)">→ Global brand platforms, localization, bilingual leadership</p></div>
+</div>
+</section>
+
+<section data-label="Impact" data-screen-label="05" style="width:1920px;height:1080px;background:var(--bg-canvas);color:var(--text-primary);font-family:var(--font-sans);padding:96px;display:flex;flex-direction:column;justify-content:center;gap:72px">
+<p style="font-size:64px;font-weight:900;line-height:1;letter-spacing:-.02em">Design judgment, at the scale it has to survive.</p>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:72px">
+<div style="display:flex;flex-direction:column;gap:20px;padding-right:56px;border-right:1px solid var(--border-rule)"><p style="font-family:var(--font-emphasis);font-style:italic;font-weight:600;font-variation-settings:'SOFT' 0,'WONK' 1;font-size:140px;line-height:.9;letter-spacing:-.03em;color:var(--text-accent)">540M+</p><p style="font-size:30px;line-height:1.25;color:var(--text-muted)">Users and visitors interacted with our design in Walmart app</p></div>
+<div style="display:flex;flex-direction:column;gap:20px;padding-right:56px;border-right:1px solid var(--border-rule)"><p style="font-family:var(--font-emphasis);font-style:italic;font-weight:600;font-variation-settings:'SOFT' 0,'WONK' 1;font-size:140px;line-height:.9;letter-spacing:-.03em;color:var(--text-accent)">114%</p><p style="font-size:30px;line-height:1.25;color:var(--text-muted)">Increase of monthly active users from our strategy</p></div>
+<div style="display:flex;flex-direction:column;gap:20px"><p style="font-family:var(--font-emphasis);font-style:italic;font-weight:600;font-variation-settings:'SOFT' 0,'WONK' 1;font-size:140px;line-height:.9;letter-spacing:-.03em;color:var(--text-accent)">5X</p><p style="font-size:30px;line-height:1.25;color:var(--text-muted)">Increase in add-on discovery and use in Express</p></div>
+</div>
+</section>
+
+<section data-label="Projects opener" data-screen-label="06" style="width:1920px;height:1080px;background:var(--bg-canvas);color:var(--text-primary);font-family:var(--font-sans);padding:96px;display:flex;flex-direction:column;justify-content:center;gap:40px">
+<span style="align-self:flex-start;background:var(--bg-brand);color:var(--accent-ink);font-size:24px;font-weight:900;letter-spacing:.96px;line-height:.86;text-transform:uppercase;padding:12px 32px;border-radius:var(--radius-sm)">Projects</span>
+<h2 style="font-size:132px;font-weight:900;line-height:.85;letter-spacing:-.03em;text-transform:uppercase;color:var(--text-accent)">Four ways<br>this looks<br>in practice.</h2>
+<div style="display:flex;gap:56px;font-size:30px;color:var(--text-muted)"><p>01 &nbsp;LegalOn</p><p>02 &nbsp;Adobe Express Photos</p><p>03 &nbsp;Walmart</p><p>04 &nbsp;Adobe Express Enterprise</p></div>
+</section>
+
+<section data-label="LegalOn" data-screen-label="07" style="width:1920px;height:1080px;background:var(--bg-canvas);color:var(--text-primary);font-family:var(--font-sans);display:grid;grid-template-columns:840px 1fr">
+<div style="padding:96px;display:flex;flex-direction:column;justify-content:center;gap:32px">
+<p style="font-size:24px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted)">Project 01</p>
+<p style="font-size:72px;font-weight:900;line-height:.95;letter-spacing:-.02em">LegalOn's AI Brand Platform</p>
+<p style="font-size:30px;font-weight:700;color:var(--text-accent)">Global Brand &amp; Product Platform</p>
+<p style="font-size:28px;line-height:1.5">LegalOn built Japan's leading legal AI, then expanded into a broader suite of AI-powered business products. The platform had to hold two opposing demands at once: one coherent global identity across seven products, and enough room for each to stand on its own.</p>
+<p style="font-size:28px;line-height:1.5;color:var(--text-muted)">The resolution was the “ON” concept: always on, always intelligent, always working.</p>
+<div style="display:flex;gap:24px;margin-top:8px">
+<img src="../../assets/legalon-3.webp" alt="" style="width:33%;aspect-ratio:1;object-fit:cover;border:1px solid var(--border-rule);border-radius:var(--radius-md)">
+<img src="../../assets/legalon-5.webp" alt="" style="width:33%;aspect-ratio:1;object-fit:cover;border:1px solid var(--border-rule);border-radius:var(--radius-md)">
+<img src="../../assets/legalon-graphics.webp" alt="" style="width:33%;aspect-ratio:1;object-fit:cover;border:1px solid var(--border-rule);border-radius:var(--radius-md)">
+</div>
+</div>
+<div data-anim="pane" style="position:relative;overflow:hidden"><img src="../../assets/legalon-hero.jpg" alt="LegalOn brand platform" style="width:100%;height:100%;object-fit:cover"></div>
+</section>
+
+<section data-label="Adobe Express Photos" data-screen-label="08" style="width:1920px;height:1080px;background:var(--bg-canvas);color:var(--text-primary);font-family:var(--font-sans);display:grid;grid-template-columns:1fr 840px">
+<div data-anim="pane" style="position:relative;overflow:hidden"><img src="../../assets/harmony-hero.jpg" alt="Adobe Express Photos" style="width:100%;height:100%;object-fit:cover"></div>
+<div style="padding:96px;display:flex;flex-direction:column;justify-content:center;gap:32px">
+<p style="font-size:24px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted)">Project 02</p>
+<p style="font-size:72px;font-weight:900;line-height:.95;letter-spacing:-.02em">Adobe Express Photos</p>
+<p style="font-size:30px;font-weight:700;color:var(--text-accent)">0-to-1 AI Product Design</p>
+<p style="font-size:28px;line-height:1.5">Adobe wanted to democratize image editing. Adobe's new AI-powered desktop image editor transforms complex editing into one-click operations, making professional-quality enhancement accessible to marketers, SMBs, office workers, and consumers.</p>
+<div style="display:flex;gap:24px;margin-top:8px">
+<img src="../../assets/Harmony-thumbnail-01.webp" alt="" style="width:33%;aspect-ratio:1;object-fit:cover;border:1px solid var(--border-rule);border-radius:var(--radius-md)">
+<img src="../../assets/Harmony-thumbnail-02.webp" alt="" style="width:33%;aspect-ratio:1;object-fit:cover;border:1px solid var(--border-rule);border-radius:var(--radius-md)">
+<img src="../../assets/Harmony-thumbnail-03.webp" alt="" style="width:33%;aspect-ratio:1;object-fit:cover;border:1px solid var(--border-rule);border-radius:var(--radius-md)">
+</div>
+</div>
+</section>
+
+<section data-label="Walmart" data-screen-label="09" style="width:1920px;height:1080px;background:var(--bg-canvas);color:var(--text-primary);font-family:var(--font-sans);display:grid;grid-template-columns:840px 1fr">
+<div style="padding:96px;display:flex;flex-direction:column;justify-content:center;gap:32px">
+<p style="font-size:24px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted)">Project 03</p>
+<p style="font-size:72px;font-weight:900;line-height:.95;letter-spacing:-.02em">Walmart's AI-First Shopping Experience</p>
+<p style="font-size:30px;font-weight:700;color:var(--text-accent)">AI Commerce Strategy &amp; Product Design</p>
+<p style="font-size:28px;line-height:1.5">Search at Walmart is used by millions every day, which made it both the highest-leverage place to introduce AI and the easiest place to lose trust. The position was that AI should layer onto search rather than replace it, tested in reversible ways on top of a stable core.</p>
+<p style="font-size:28px;line-height:1.5;color:var(--text-muted)">That framing became the foundation for multimodal search, an AI wizard with AR, and GenAI fashion discovery.</p>
+</div>
+<div data-anim="pane" style="height:1080px;overflow:hidden;display:flex;flex-direction:column;gap:2px;background:var(--border-rule)">
+<img src="../../assets/walmart-1.webp" alt="" style="width:100%;height:600px;flex:0 0 600px;object-fit:cover">
+<div style="flex:1;min-height:0;display:flex;gap:2px">
+<img src="../../assets/walmart-3.webp" alt="" style="width:50%;height:100%;object-fit:cover">
+<img src="../../assets/walmart-4.webp" alt="" style="width:50%;height:100%;object-fit:cover">
+</div>
+</div>
+</section>
+
+<section data-label="Express Enterprise" data-screen-label="10" style="width:1920px;height:1080px;background:var(--bg-canvas);color:var(--text-primary);font-family:var(--font-sans);display:grid;grid-template-columns:1fr 840px">
+<div data-anim="pane" style="position:relative;overflow:hidden"><img src="../../assets/express-hero.jpg" alt="Adobe Express Enterprise" style="width:100%;height:100%;object-fit:cover"></div>
+<div style="padding:96px;display:flex;flex-direction:column;justify-content:center;gap:32px">
+<p style="font-size:24px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted)">Project 04</p>
+<p style="font-size:72px;font-weight:900;line-height:.95;letter-spacing:-.02em">Adobe Express Enterprise Platform</p>
+<p style="font-size:30px;font-weight:700;color:var(--text-accent)">Embed SDK + Plugin Ecosystem</p>
+<p style="font-size:28px;line-height:1.5">Express had to work not only as an app, but as a platform other companies could build on and inside of — an embed SDK and an add-on marketplace, designed so third-party surfaces still felt like Express.</p>
+<div style="display:flex;flex-direction:column;gap:12px;padding-top:24px;border-top:1px solid var(--border-rule)">
+<p style="font-size:24px;font-weight:900;letter-spacing:.96px;text-transform:uppercase;color:var(--text-accent)">Result</p>
+<p style="font-size:28px;line-height:1.5;color:var(--text-muted)">5X increase in add-on discovery and use in Express.</p>
+</div>
+</div>
+</section>
+
+<section data-label="Build" data-screen-label="11" style="width:1920px;height:1080px;background:var(--bg-canvas);color:var(--text-primary);font-family:var(--font-sans);padding:96px;display:flex;flex-direction:column;justify-content:center;gap:56px">
+<span style="align-self:flex-start;background:var(--bg-brand);color:var(--accent-ink);font-size:24px;font-weight:900;letter-spacing:.96px;line-height:.86;text-transform:uppercase;padding:12px 32px;border-radius:var(--radius-sm)">Build</span>
+<p style="font-size:84px;font-weight:900;line-height:.92;letter-spacing:-.02em">Designers hand off.<br>Builders wait for specs.<br>Neither is necessary anymore.</p>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:56px">
+<div style="display:flex;flex-direction:column;gap:16px"><p style="font-size:40px;font-weight:900;line-height:.95">Start with the strategy</p><p style="font-size:27px;line-height:1.45">Time with Claude and ChatGPT thinking through the problem, the user, and the product logic — getting to a clear point of view before a single pixel or line of code exists.</p><p style="font-size:25px;font-weight:600;color:var(--text-accent)">→ Problem framing, product logic, positioning</p></div>
+<div style="display:flex;flex-direction:column;gap:16px"><p style="font-size:40px;font-weight:900;line-height:.95">Design and prototype together</p><p style="font-size:27px;line-height:1.45">Moving between Figma and AI tools to sketch flows, screens, and interactions. Close enough to the real thing to be tested and shared without waiting for engineering.</p><p style="font-size:25px;font-weight:600;color:var(--text-accent)">→ Figma, Figma Make, rapid prototyping</p></div>
+<div style="display:flex;flex-direction:column;gap:16px"><p style="font-size:40px;font-weight:900;line-height:.95">Ship it</p><p style="font-size:27px;line-height:1.45">Claude Code, Cursor, and V0 generate and refine working code. The build is directed, not delegated — knowing what you want, knowing when it's right, and knowing how to get there fast.</p><p style="font-size:25px;font-weight:600;color:var(--text-accent)">→ Claude Code, Cursor, V0, deployed product</p></div>
+</div>
+</section>
+
+<section data-label="Tool stack" data-screen-label="12" style="width:1920px;height:1080px;background:var(--bg-canvas);color:var(--text-primary);font-family:var(--font-sans);padding:96px;display:flex;flex-direction:column;justify-content:center;gap:48px">
+<div style="display:flex;align-items:center;gap:32px"><p style="font-size:64px;font-weight:900;line-height:1;letter-spacing:-.02em">The stack, and how we rate it.</p><p style="font-size:28px;color:var(--text-muted)">Published openly, and kept current.</p></div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px">
+<div style="display:flex;flex-direction:column;gap:20px;padding:32px;background:var(--bg-elevated);border:1px solid var(--border-rule);border-radius:var(--radius-md)"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px"><p style="font-size:40px;font-weight:900;line-height:1.1">Claude</p><span style="display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:var(--radius-pill);background:rgba(63,232,61,.12);border:1px solid rgba(18,213,16,.3);font-size:22px;font-weight:500;white-space:nowrap"><span style="width:9px;height:9px;border-radius:50%;background:var(--status-stack)"></span>core stack</span></div><p style="font-size:26px;line-height:1.45;font-weight:600;color:var(--text-muted)">Strategic briefs, long-form synthesis, prompt writing for coding.</p></div>
+<div style="display:flex;flex-direction:column;gap:20px;padding:32px;background:var(--bg-elevated);border:1px solid var(--border-rule);border-radius:var(--radius-md)"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px"><p style="font-size:40px;font-weight:900;line-height:1.1">Claude Code</p><span style="display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:var(--radius-pill);background:rgba(63,232,61,.12);border:1px solid rgba(18,213,16,.3);font-size:22px;font-weight:500;white-space:nowrap"><span style="width:9px;height:9px;border-radius:50%;background:var(--status-stack)"></span>core stack</span></div><p style="font-size:26px;line-height:1.45;font-weight:600;color:var(--text-muted)">Front-end builds, design-to-code handoff, live iteration during client sessions.</p></div>
+<div style="display:flex;flex-direction:column;gap:20px;padding:32px;background:var(--bg-elevated);border:1px solid var(--border-rule);border-radius:var(--radius-md)"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px"><p style="font-size:40px;font-weight:900;line-height:1.1">Figma + MCP</p><span style="display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:var(--radius-pill);background:rgba(63,232,61,.12);border:1px solid rgba(18,213,16,.3);font-size:22px;font-weight:500;white-space:nowrap"><span style="width:9px;height:9px;border-radius:50%;background:var(--status-stack)"></span>core stack</span></div><p style="font-size:26px;line-height:1.45;font-weight:600;color:var(--text-muted)">Design system source of truth, and the token pipeline that feeds Claude Code directly.</p></div>
+<div style="display:flex;flex-direction:column;gap:20px;padding:32px;background:var(--bg-elevated);border:1px solid var(--border-rule);border-radius:var(--radius-md)"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px"><p style="font-size:40px;font-weight:900;line-height:1.1">Cursor</p><span style="display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:var(--radius-pill);background:rgba(54,232,199,.12);border:1px solid rgba(54,232,199,.3);font-size:22px;font-weight:500;white-space:nowrap"><span style="width:9px;height:9px;border-radius:50%;background:var(--status-rotation)"></span>in rotation</span></div><p style="font-size:26px;line-height:1.45;font-weight:600;color:var(--text-muted)">Line-level work where you want to see the diff before it lands.</p></div>
+<div style="display:flex;flex-direction:column;gap:20px;padding:32px;background:var(--bg-elevated);border:1px solid var(--border-rule);border-radius:var(--radius-md)"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px"><p style="font-size:40px;font-weight:900;line-height:1.1">Claude Design</p><span style="display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:var(--radius-pill);background:rgba(170,169,255,.12);border:1px solid rgba(170,169,255,.3);font-size:22px;font-weight:500;white-space:nowrap"><span style="width:9px;height:9px;border-radius:50%;background:var(--status-watching)"></span>watching</span></div><p style="font-size:26px;line-height:1.45;font-weight:600;color:var(--text-muted)">Prototypes, concepts, and design systems built conversationally.</p></div>
+<div style="display:flex;flex-direction:column;gap:20px;padding:32px;background:var(--bg-elevated);border:1px solid var(--border-rule);border-radius:var(--radius-md)"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px"><p style="font-size:40px;font-weight:900;line-height:1.1">Lovable</p><span style="display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:var(--radius-pill);background:rgba(54,232,199,.12);border:1px solid rgba(54,232,199,.3);font-size:22px;font-weight:500;white-space:nowrap"><span style="width:9px;height:9px;border-radius:50%;background:var(--status-rotation)"></span>in rotation</span></div><p style="font-size:26px;line-height:1.45;font-weight:600;color:var(--text-muted)">Prompts into polished, working web apps — the easiest path from idea to credible product.</p></div>
+</div>
+</section>
+
+<section data-label="Studio" data-screen-label="13" style="width:1920px;height:1080px;background:var(--bg-canvas);color:var(--text-primary);font-family:var(--font-sans);padding:96px;display:flex;flex-direction:column;justify-content:center;gap:48px">
+<span style="align-self:flex-start;background:var(--bg-brand);color:var(--accent-ink);font-size:24px;font-weight:900;letter-spacing:.96px;line-height:.86;text-transform:uppercase;padding:12px 32px;border-radius:var(--radius-sm)">Studio</span>
+<div style="display:flex;gap:80px;align-items:flex-start">
+<div style="flex:1;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:56px;font-weight:400;line-height:1.05;letter-spacing:-.02em">Raft Design is an AI-native studio collaborating with companies in the U.S. and Japan on brand, product, and innovation.</p>
+<p style="font-size:28px;line-height:1.5">Founded and run by Lance Shields, we have twenty years of building brand, product, and platform work across Tokyo and San Francisco taught the same lesson twice: what survives isn't the work built to impress. It's the work built to move. We work hands-on, owning the hard problems and building alongside product and engineering rather than handing off. Design leadership at Adobe and Walmart. Brand and product work with LegalOn, Visa, Hitachi, and Red Bull.</p>
+<p style="font-size:28px;line-height:1.5;color:var(--text-muted)">Most engagements start with a company that isn't sure how to move yet. We work natively in both Japanese and English, with design leadership across both markets.</p>
+</div>
+<img src="../../assets/anime-6.gif" alt="" style="flex-shrink:0;width:360px;height:360px;border-radius:var(--radius-sm)">
+</div>
+</section>
+
+<section data-label="Awards" data-screen-label="14" style="width:1920px;height:1080px;background:var(--bg-canvas);color:var(--text-primary);font-family:var(--font-sans);padding:96px;display:flex;flex-direction:column;justify-content:center;gap:40px">
+<p style="font-size:64px;font-weight:400;line-height:1;letter-spacing:-.02em">Awards</p>
+<div style="display:flex;gap:80px;align-items:center">
+<div style="flex:1;display:flex;flex-direction:column">
+<div style="padding:20px 0;border-bottom:1px solid var(--border-rule)"><p style="font-size:27px;line-height:1.4">Webby Winner — All-in-One AI-Powered Creativity App, 2024, for Adobe Express</p></div>
+<div style="padding:20px 0;border-bottom:1px solid var(--border-rule)"><p style="font-size:27px;line-height:1.4">Webby Winner — Best Nonprofit Website, 2016, for Thatsnotcool.com</p></div>
+<div style="padding:20px 0;border-bottom:1px solid var(--border-rule)"><p style="font-size:27px;line-height:1.4">Webby Winner — Campaign in Advertising, 2016, for “I am a Witness”</p></div>
+<div style="padding:20px 0;border-bottom:1px solid var(--border-rule)"><p style="font-size:27px;line-height:1.4">W3 Gold — Mobile Apps: Education, 2017, for Respect Effect</p></div>
+<div style="padding:20px 0;border-bottom:1px solid var(--border-rule)"><p style="font-size:27px;line-height:1.4">Japan Marketers Award — Silver: B2B Marketing, 2011, for Yokogawa</p></div>
+<div style="padding:20px 0"><p style="font-size:27px;line-height:1.4">Good Design Award — Best Global Website, 2008, for Hitachi.com</p></div>
+</div>
+<img src="../../assets/awards-logos.png" alt="Webby, Good Design, Davey, W3 and Communicator award logos" style="flex-shrink:0;height:640px;width:auto">
+</div>
+</section>
+
+<section data-label="Engagements" data-screen-label="15" style="width:1920px;height:1080px;background:var(--bg-canvas);color:var(--text-primary);font-family:var(--font-sans);padding:96px;display:flex;flex-direction:column;justify-content:center;gap:56px">
+<p style="font-size:84px;font-weight:900;line-height:.92;letter-spacing:-.02em">Three ways to work together.</p>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:56px">
+<div style="display:flex;flex-direction:column;gap:20px;padding-right:48px;border-right:1px solid var(--border-rule)"><p style="font-size:44px;font-weight:900;line-height:.95">Projects</p><p style="font-size:28px;line-height:1.5">We take on projects like a traditional studio, from brand and product design to shipped experiences.</p></div>
+<div style="display:flex;flex-direction:column;gap:20px;padding-right:48px;border-right:1px solid var(--border-rule)"><p style="font-size:44px;font-weight:900;line-height:.95">Fractional leadership</p><p style="font-size:28px;line-height:1.5">We embed as fractional design leadership when a team is scaling and needs senior direction.</p></div>
+<div style="display:flex;flex-direction:column;gap:20px"><p style="font-size:44px;font-weight:900;line-height:.95">AI-native consulting</p><p style="font-size:28px;line-height:1.5">We consult with teams that want to make their own design practice AI-native.</p></div>
+</div>
+<p style="font-size:30px;line-height:1.5;color:var(--text-muted);max-width:1300px">Engagements run from short diagnostic sprints to ongoing partnerships. Most studios hand off static designs for someone else to build; we take work through to functioning software.</p>
+</section>
+
+<section data-label="Contact" data-screen-label="16" style="width:1920px;height:1080px;background:var(--bg-canvas);color:var(--text-primary);font-family:var(--font-sans);padding:96px;display:flex;flex-direction:column;justify-content:space-between">
+<div style="display:flex;justify-content:space-between;align-items:flex-start">
+<div style="width:240px;height:240px;background:var(--lime);display:flex;align-items:center;justify-content:center"><div style="display:flex;flex-direction:column;align-items:center;font-weight:900;text-transform:uppercase;line-height:.85"><span style="font-size:58px;letter-spacing:-.06em;color:var(--dark)">Raft</span><span style="font-size:58px;letter-spacing:-.04em;color:var(--white)">Design</span></div></div>
+<p style="font-size:32px;font-weight:900;letter-spacing:-.02em;color:var(--text-accent);text-align:right">AI-Native Product Studio</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:40px">
+<p style="font-size:110px;font-weight:900;line-height:.9;letter-spacing:-.03em"><span style="color:var(--text-accent)">Connect</span> with me to explore your project's potential.</p>
+<div style="display:flex;gap:64px;align-items:center;font-size:34px">
+<a href="mailto:hello@raftdesign.studio" style="color:var(--text-primary)">hello@raftdesign.studio</a>
+<span style="color:var(--text-muted)">(415) 361-9584</span>
+<span style="color:var(--text-muted)">raftdesign.studio</span>
+</div>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:flex-end;padding-top:40px;border-top:1px solid var(--border-rule)">
+<p style="font-size:26px;color:var(--text-muted)">Hollywood, Los Angeles, CA 90068 &nbsp;·&nbsp; Tokyo, Japan</p>
+<p style="font-size:26px;color:var(--text-muted)">Designed by hand. Built by AI.</p>
+</div>
+</section>
+
+</x-import>
+</x-dc>
+</body>
+</html>

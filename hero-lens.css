@@ -44,29 +44,31 @@
 
 /* Opposite-theme tokens. [data-theme] on <html> can't be overridden for a
    subtree (light rules match via the html ancestor), so both directions
-   are spelled out here. */
+   are spelled out here — reading from styles.css's --palette-dark-*/
+   --palette-light-* source rather than repeating the literals, so this
+   clone can't go stale if a token value ever changes there. */
 .hero-lens.hero-lens--light {
-  --bg-canvas:     #F7FFF7;
-  --bg-surface:    #EBF7EB;
-  --bg-elevated:   #EBF7EB;
-  --text-primary:  #000000;
-  --text-accent:   #159845;
-  --border-rule:   #CFE5D7;
-  --border-button: #159845;
-  --bg-sunken:     #EAFFEA;
-  --border-bright: #A9C7B4;
+  --bg-canvas:     var(--palette-light-bg-canvas);
+  --bg-surface:    var(--palette-light-bg-surface);
+  --bg-elevated:   var(--palette-light-bg-elevated);
+  --text-primary:  var(--palette-light-text-primary);
+  --text-accent:   var(--palette-light-text-accent);
+  --border-rule:   var(--palette-light-border-rule);
+  --border-button: var(--palette-light-border-button);
+  --bg-sunken:     var(--palette-light-bg-sunken);
+  --border-bright: var(--palette-light-border-bright);
 }
 
 .hero-lens.hero-lens--dark {
-  --bg-canvas:     #04220F;
-  --bg-surface:    #2E4034;
-  --bg-elevated:   #102A1B;
-  --text-primary:  #EDF2EE;
-  --text-accent:   #3DE83D;
-  --border-rule:   #1E3A28;
-  --border-button: #3DE83D;
-  --bg-sunken:     #02190A;
-  --border-bright: #438259;
+  --bg-canvas:     var(--palette-dark-bg-canvas);
+  --bg-surface:    var(--palette-dark-bg-surface);
+  --bg-elevated:   var(--palette-dark-bg-elevated);
+  --text-primary:  var(--palette-dark-text-primary);
+  --text-accent:   var(--palette-dark-text-accent);
+  --border-rule:   var(--palette-dark-border-rule);
+  --border-button: var(--palette-dark-border-button);
+  --bg-sunken:     var(--palette-dark-bg-sunken);
+  --border-bright: var(--palette-dark-border-bright);
 }
 
 .hero-lens.hero-lens--light .intro-bg-video--dark,

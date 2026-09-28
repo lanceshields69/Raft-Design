@@ -1,19 +1,61 @@
+/* Canonical per-theme palette — the single source for the 9 core
+   surface/text/border values that swap between dark and light mode. The
+   :root / [data-theme="light"] switch below reads from these, and so does
+   hero-lens.css's "opposite theme" hero clone: [data-theme] on <html>
+   can't be forced onto just a subtree, so that clone can't lean on the
+   switch below and needs direct access to whichever set it's rendering.
+   One set of literals here, instead of two hand-copied elsewhere, means
+   the clone can't quietly drift out of sync with a real token change. */
+:root {
+  --palette-dark-bg-canvas:     #04220F;
+  --palette-dark-bg-surface:    #2E4034;
+  --palette-dark-bg-elevated:   #102A1B;
+  --palette-dark-text-primary:  #EDF2EE;
+  --palette-dark-text-accent:   #3DE83D;
+  --palette-dark-border-rule:   #1E3A28;
+  --palette-dark-border-button: #3DE83D;
+  --palette-dark-bg-sunken:     #02190A;
+  --palette-dark-border-bright: #438259;
+
+  --palette-light-bg-canvas:     #F7FFF7;
+  --palette-light-bg-surface:    #EBF7EB;
+  --palette-light-bg-elevated:   #EBF7EB;
+  --palette-light-text-primary:  #000000;
+  --palette-light-text-accent:   #159845;
+  --palette-light-border-rule:   #CFE5D7;
+  --palette-light-border-button: #159845;
+  --palette-light-bg-sunken:     #EAFFEA;
+  --palette-light-border-bright: #A9C7B4;
+}
+
 /* Design tokens — dark mode is the default (:root); light mode overrides
    below via [data-theme="light"] on <html>. Values from the Figma design
    system (Sections-Dark Mode / Sections-Light Mode). */
 :root {
-  --bg-canvas:     #04220F;  /* page background — same value as wordmark --dark */
-  --bg-surface:    #2E4034;  /* small UI chrome, e.g. the theme-toggle pill */
-  --bg-elevated:   #102A1B;  /* cards, modal, panels */
+  --bg-canvas:     var(--palette-dark-bg-canvas);  /* page background — same value as wordmark --dark */
+  --bg-surface:    var(--palette-dark-bg-surface);  /* small UI chrome, e.g. the theme-toggle pill */
+  --bg-elevated:   var(--palette-dark-bg-elevated);  /* cards, modal, panels */
   --bg-brand:      #3DE83D;  /* solid brand-green fills (chips, filled buttons) — constant across themes */
-  --text-primary:  #EDF2EE;  /* body text — off-white, never pure white */
+  --text-primary:  var(--palette-dark-text-primary);  /* body text — off-white, never pure white */
   --text-muted:    #8FA396;  /* labels, captions, metadata — constant across themes */
-  --text-accent:   #3DE83D;  /* colored text/links — shifts per theme for contrast */
-  --border-rule:   #1E3A28;  /* dividers, hairlines */
-  --border-button: #3DE83D;  /* pill button outlines — shifts per theme, matches --text-accent */
-  --bg-sunken:     #02190A;  /* recessed panel fill (darker than canvas), e.g. the scan-banner card */
-  --border-bright: #438259;  /* border on sunken panels — shifts per theme */
+  --text-accent:   var(--palette-dark-text-accent);  /* colored text/links — shifts per theme for contrast */
+  --border-rule:   var(--palette-dark-border-rule);  /* dividers, hairlines */
+  --border-button: var(--palette-dark-border-button);  /* pill button outlines — shifts per theme, matches --text-accent */
+  --bg-sunken:     var(--palette-dark-bg-sunken);  /* recessed panel fill (darker than canvas), e.g. the scan-banner card */
+  --border-bright: var(--palette-dark-border-bright);  /* border on sunken panels — shifts per theme */
   --accent-ink:    #0B1F14;  /* text sitting on brand-green blocks — constant across themes */
+
+  /* True white/black — distinct from --text-primary (off-white) and
+     --bg-canvas (near-black), which are never pure. Reserved for the rare,
+     deliberate exceptions: video/media chrome floating over a thumbnail or
+     scrim, and the light-mode-inverted solid CTA button. Theme-invariant
+     by definition, so no [data-theme="light"] override exists for either. */
+  --pure-white: #FFFFFF;
+  --pure-black: #000000;
+
+  /* Modal backdrop dimmer — shared by the contact and Calendly modals,
+     which were carrying identical rgba() literals independently. */
+  --overlay-scrim: rgba(0, 0, 0, 0.5);
 
   /* Wordmark logo palette — fixed, independent of page theme (the green
      logo block itself doesn't change between dark/light per the design) */
@@ -66,15 +108,16 @@
 }
 
 [data-theme="light"] {
-  --bg-canvas:     #F7FFF7;
-  --bg-surface:    #EBF7EB;
-  --bg-elevated:   #EBF7EB;  /* no separate modal spec in the light-mode file; reusing --bg-surface's tone */
-  --text-primary:  #000000;
-  --text-accent:   #159845;
-  --border-rule:   #CFE5D7;
-  --border-button: #159845;
-  --bg-sunken:     #EAFFEA;
-  --border-bright: #A9C7B4;
+  --bg-canvas:     var(--palette-light-bg-canvas);
+  --bg-surface:    var(--palette-light-bg-surface);
+  --bg-elevated:   var(--palette-light-bg-elevated);  /* no separate modal spec in the light-mode file; reusing --bg-surface's tone */
+  --text-primary:  var(--palette-light-text-primary);
+  --text-accent:   var(--palette-light-text-accent);
+  --border-rule:   var(--palette-light-border-rule);
+  --border-button: var(--palette-light-border-button);
+  --bg-sunken:     var(--palette-light-bg-sunken);
+  --border-bright: var(--palette-light-border-bright);
+  --overlay-scrim: rgba(165, 165, 165, 0.5);
 }
 
 /* Reset & Base */
@@ -1022,7 +1065,7 @@ html[lang="ja"] .ai-native-mark {
   line-height: 24px;
   letter-spacing: normal;
   text-transform: none;
-  color: #000;
+  color: var(--pure-black); /* card is always light-glass, in both themes */
   opacity: 0;
   visibility: hidden;
   transform: translate(-50%, -6px);
@@ -2489,13 +2532,9 @@ html[lang="ja"] .approach-heading {
   align-items: center;
   justify-content: center;
   padding: 16px;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--overlay-scrim);
   opacity: 0;
   transition: opacity 0.2s ease-out;
-}
-
-[data-theme="light"] .contact-modal-overlay {
-  background: rgba(165, 165, 165, 0.5);
 }
 
 .contact-modal-overlay.active {
@@ -2715,8 +2754,8 @@ html[lang="ja"] .approach-heading {
   justify-content: center;
   gap: var(--space-sm);
   flex-shrink: 0;
-  background: #ffffff;
-  color: #000000;
+  background: var(--pure-white);
+  color: var(--pure-black);
   border: none;
   border-radius: var(--radius-pill);
   font-family: inherit;
@@ -2730,8 +2769,8 @@ html[lang="ja"] .approach-heading {
 }
 
 [data-theme="light"] .cta-solid-button {
-  background: #000000;
-  color: #ffffff;
+  background: var(--pure-black);
+  color: var(--pure-white);
 }
 
 /* Light mode's button is black, so the dark-mode hover (fade toward
@@ -2836,13 +2875,9 @@ html[lang="ja"] .approach-heading {
   align-items: center;
   justify-content: center;
   padding: 16px;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--overlay-scrim);
   opacity: 0;
   transition: opacity 0.2s ease-out;
-}
-
-[data-theme="light"] .calendly-modal-overlay {
-  background: rgba(165, 165, 165, 0.5);
 }
 
 .calendly-modal-overlay.active {
@@ -3831,7 +3866,7 @@ html[lang="ja"] .approach-heading {
   bottom: 30px;
   width: clamp(160px, 42vw, 300px);
   border-radius: 24px;
-  border: 4px solid #fff;
+  border: 4px solid var(--pure-white);
   overflow: hidden;
   cursor: pointer;
   z-index: 390; /* below --chat-z-scrim(400)/--chat-z-dock(410) so an open
@@ -3881,7 +3916,7 @@ html[lang="ja"] .approach-heading {
   background: rgba(216, 216, 216, 0.3);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  color: #fff;
+  color: var(--pure-white);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: -0.13px;
@@ -3905,7 +3940,7 @@ html[lang="ja"] .approach-heading {
   position: fixed;
   inset: 0;
   z-index: 500;
-  background: #000;
+  background: var(--pure-black);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease;
@@ -3943,7 +3978,7 @@ html[lang="ja"] .approach-heading {
   background: rgba(0, 0, 0, 0.4);
   border: none;
   border-radius: 999px;
-  color: #fff;
+  color: var(--pure-white);
   cursor: pointer;
   opacity: 0;
   pointer-events: none;

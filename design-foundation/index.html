@@ -336,6 +336,9 @@
          balance the desktop dividers. */
       .df-ai-tool-item { padding: 32px 0 !important; border-right: none !important; border-top: 1px solid var(--border-rule); }
       .df-ai-tool-item:first-child { border-top: none; padding-top: 0 !important; }
+      /* Hero break is desktop-only — let the headline wrap naturally on
+         narrow viewports instead of forcing the same break point. */
+      .df-hero-break { display: none; }
     }
   </style>
 </head>
@@ -435,8 +438,8 @@
         <span class="project-section-label" style="color:var(--text-accent);margin-bottom:0;font-size:16px;font-weight:900;text-transform:uppercase">The Design Foundation Sprint</span>
         <span style="color:var(--text-accent);font-size:13px;font-weight:700">For Funded Startups</span>
       </div>
-      <h1 style="font-weight:900;font-size:clamp(36px,4.6vw,60px);line-height:1.02;letter-spacing:-2px;margin:0;color:var(--text-primary)">You raised the round. Now the product has to look like it.</h1>
-      <p style="font-size:20px;line-height:1.5;max-width:560px;color:var(--text-primary);margin:0">Your team ships fast, and AI writes a lot of the code. Without a design foundation, that speed shows: a product that works but doesn't feel like one company made it. We partner with funded startups to close that gap in four weeks, so you get a brand people love and a product people love to use.</p>
+      <h1 style="font-weight:900;font-size:clamp(36px,4.6vw,60px);line-height:1.02;letter-spacing:-2px;margin:0;color:var(--text-primary)">Scale the product. <br class="df-hero-break">Not the design debt.</h1>
+      <p style="font-size:20px;line-height:1.5;max-width:560px;color:var(--text-primary);margin:0">Raft helps recently funded teams turn scattered brand, UX, and product decisions into a foundation the whole company can build from in four weeks.</p>
       <div style="display:flex;flex-direction:column;align-items:flex-start;gap:24px;margin-top:8px">
         <a href="https://calendly.com/raftdesignstudio/30min" target="_blank" rel="noopener noreferrer" class="scan-cta scan-cta--wide">Book a 30-minute fit assessment</a>
         <a href="#pricing" class="text-link text-link-large" style="color:var(--text-primary);font-weight:700">See pricing <span class="arrow">→</span></a>

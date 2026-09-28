@@ -339,6 +339,12 @@
       /* Hero break is desktop-only — let the headline wrap naturally on
          narrow viewports instead of forcing the same break point. */
       .df-hero-break { display: none; }
+      /* Founder's Problems: the fixed 426px left column (headline/subhead)
+         next to the problem-item list has no room to sit side-by-side once
+         the viewport gets this narrow — stack instead, same pattern as
+         .df-hero-grid above. */
+      .df-fp-row { flex-direction: column !important; }
+      .df-fp-left { flex-basis: auto !important; max-width: none !important; width: 100%; }
     }
   </style>
 </head>
@@ -452,6 +458,72 @@
 
     <div style="width:100%;margin-top:-30px">
       <img src="../images/Diagram.gif" alt="Diagram showing engineering and business maturity advancing steadily while design maturity lags, until Raft's intervention brings both into alignment before the scaling stage" style="width:100%;height:auto;display:block;border-radius:var(--radius-md)">
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER'S PROBLEMS (Figma node 1026:3445, added 2026-09) -->
+<section style="padding:80px var(--page-gutter);max-width:calc(1292px + var(--page-gutter) * 2);margin:0 auto;border-top:1px solid var(--border-rule)">
+  <span class="section-label">Design maturity gap</span>
+  <div class="df-fp-row" style="display:flex;gap:60px;align-items:flex-start">
+    <div class="df-fp-left" style="display:flex;flex-direction:column;gap:24px;flex:0 0 426px;max-width:426px">
+      <h2 style="font-weight:900;font-size:clamp(32px,4vw,48px);line-height:1.25;letter-spacing:-2px;margin:0;color:var(--text-primary)">The design gap usually shows up before the design hire does.</h2>
+      <p style="font-size:20px;line-height:1.4;margin:0;color:var(--text-muted)">At Series A, the product and team start growing faster than the decisions holding them together. You may already be seeing the signs.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:32px;flex:1 1 0;min-width:0">
+      <div style="display:flex;gap:20px;align-items:flex-start">
+        <img src="../images/bad.svg" width="40" height="42" alt="" style="flex-shrink:0">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <p style="font-size:24px;font-weight:900;margin:0;color:var(--text-primary)">The product still needs someone to explain it.</p>
+          <p style="font-size:18px;line-height:1.5;margin:0;color:var(--text-muted)">It works in a founder-led demo, but new users need help understanding the value or completing important workflows.</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:20px;align-items:flex-start">
+        <img src="../images/bad.svg" width="40" height="42" alt="" style="flex-shrink:0">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <p style="font-size:24px;font-weight:900;margin:0;color:var(--text-primary)">Every release adds another version of the same pattern.</p>
+          <p style="font-size:18px;line-height:1.5;margin:0;color:var(--text-muted)">With AI features ship quickly, but the interface becomes less consistent and harder to extend.</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:20px;align-items:flex-start">
+        <img src="../images/bad.svg" width="40" height="42" alt="" style="flex-shrink:0">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <p style="font-size:24px;font-weight:900;margin:0;color:var(--text-primary)">Design decisions are scattered across the team.</p>
+          <p style="font-size:18px;line-height:1.5;margin:0;color:var(--text-muted)">Founders, PMs, and engineers make customer-experience decisions one ticket at a time.</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:20px;align-items:flex-start">
+        <img src="../images/bad.svg" width="40" height="42" alt="" style="flex-shrink:0">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <p style="font-size:24px;font-weight:900;margin:0;color:var(--text-primary)">The company tells a different story in every place.</p>
+          <p style="font-size:18px;line-height:1.5;margin:0;color:var(--text-muted)">The website, sales deck, demo, and product no longer feel like one company.</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:20px;align-items:flex-start">
+        <img src="../images/bad.svg" width="40" height="42" alt="" style="flex-shrink:0">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <p style="font-size:24px;font-weight:900;margin:0;color:var(--text-primary)">You need senior judgment before you need a design department.</p>
+          <p style="font-size:18px;line-height:1.5;margin:0;color:var(--text-muted)">The gap is already affecting the roadmap, but a full design team is still premature.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--bg-surface);padding:48px;margin-top:48px">
+    <p style="font-weight:900;font-size:28px;line-height:32px;margin:0 0 32px;max-width:696px;color:var(--text-primary)">Raft turns scattered decisions into a foundation the whole team can build from.</p>
+    <div style="display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap">
+      <div style="flex:1 1 240px;display:flex;flex-direction:column;gap:8px">
+        <p style="font-size:20px;font-weight:900;margin:0;color:var(--text-primary)">Clear brand</p>
+        <p style="font-size:18px;line-height:1.5;margin:0;color:var(--text-primary)">One story across product, sales, and marketing.</p>
+      </div>
+      <div style="flex:1 1 240px;display:flex;flex-direction:column;gap:8px">
+        <p style="font-size:20px;font-weight:900;margin:0;color:var(--text-primary)">Stronger core UX</p>
+        <p style="font-size:18px;line-height:1.5;margin:0;color:var(--text-primary)">Important workflows that make sense without a guided demo.</p>
+      </div>
+      <div style="flex:1 1 240px;display:flex;flex-direction:column;gap:8px">
+        <p style="font-size:20px;font-weight:900;margin:0;color:var(--text-primary)">Reusable product system</p>
+        <p style="font-size:18px;line-height:1.5;margin:0;color:var(--text-primary)">Shared patterns the team can extend without starting over.</p>
+      </div>
     </div>
   </div>
 </section>

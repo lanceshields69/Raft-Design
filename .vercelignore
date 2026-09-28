@@ -1,0 +1,5 @@
+# Kept in git (it's the source of truth for the design-system component
+# package), but not deployed: nothing on the live site loads it, and the
+# static deploy has no build step to otherwise exclude it. Left exposed
+# once already — see the 2026-09 commit that added this file.
+Raft Design System/

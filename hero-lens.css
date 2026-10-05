@@ -44,9 +44,11 @@
 
 /* Opposite-theme tokens. [data-theme] on <html> can't be overridden for a
    subtree (light rules match via the html ancestor), so both directions
-   are spelled out here — reading from styles.css's --palette-dark-*/
-   --palette-light-* source rather than repeating the literals, so this
-   clone can't go stale if a token value ever changes there. */
+   are spelled out here, reading from the --palette-dark-... and
+   --palette-light-... source tokens in styles.css rather than repeating the
+   literals, so this clone can't go stale if a token value ever changes there.
+   (Never write a star followed by a slash inside a CSS comment: it ends the
+   comment early and silently drops the next rule.) */
 .hero-lens.hero-lens--light {
   --bg-canvas:     var(--palette-light-bg-canvas);
   --bg-surface:    var(--palette-light-bg-surface);

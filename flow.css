@@ -107,3 +107,16 @@
 .flow-audio-credit a:focus-visible {
   text-decoration: underline;
 }
+
+/* The URL sign-off links home; keep it looking like type, underline on hover/focus. */
+.flow-url a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.flow-url a:hover,
+.flow-url a:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}

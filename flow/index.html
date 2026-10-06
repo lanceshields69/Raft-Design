@@ -38,9 +38,60 @@
       <div data-dither data-light-front="--text-accent" data-shape="simplex" data-type="8x8" data-size="2.5" data-scale="1.29" data-speed="1" data-frame="2864630.595" data-typewriter data-messages='["A craft built for change.", "A raft, not a ship.", "Small by design.", "Make what matters.", "Water nobody has charted."]' aria-hidden="true"></div>
       <h1 class="raft-message-text">A craft built for change.</h1>
       <p class="flow-url">raftdesign.studio</p>
+      <button class="flow-audio-toggle" id="flow-audio-toggle" type="button" aria-label="Pause music" aria-pressed="true">
+        <svg class="flow-audio-icon flow-audio-icon--pause" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <rect x="4" y="3" width="4" height="14" rx="1"/><rect x="12" y="3" width="4" height="14" rx="1"/>
+        </svg>
+        <svg class="flow-audio-icon flow-audio-icon--play" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path d="M6 3.6v12.8a1 1 0 0 0 1.5.86l10.6-6.4a1 1 0 0 0 0-1.72L7.5 2.74A1 1 0 0 0 6 3.6Z"/>
+        </svg>
+      </button>
+      <iframe id="flow-audio" class="flow-audio-frame" title="Music: I Am Robot And Proud / Kid Wave" allow="autoplay; encrypted-media" tabindex="-1" aria-hidden="true"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1992454051&amp;auto_play=false&amp;visual=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false"></iframe>
+      <p class="flow-audio-credit"><a href="https://soundcloud.com/7e-p" target="_blank" rel="noopener noreferrer">7e.p.</a> · <a href="https://soundcloud.com/7e-p/epcd137_5" target="_blank" rel="noopener noreferrer">I Am Robot And Proud / Kid Wave</a></p>
     </section>
   </main>
 
+  <script src="https://w.soundcloud.com/player/api.js"></script>
+  <script>
+    // Music: SoundCloud embed (the artist's own sharing route) driven through the
+    // Widget API so the site's own button controls it. Browsers block sound until
+    // the visitor interacts, so we try to play on load and, if that doesn't start,
+    // the first click/key/tap does. Once someone pauses, we never auto-resume.
+    (function() {
+      const btn = document.getElementById('flow-audio-toggle');
+      const widget = SC.Widget(document.getElementById('flow-audio'));
+      let playing = false;
+      let userPaused = false;
+
+      function render() {
+        btn.classList.toggle('is-paused', !playing);
+        btn.setAttribute('aria-pressed', String(playing));
+        btn.setAttribute('aria-label', playing ? 'Pause music' : 'Play music');
+      }
+
+      widget.bind(SC.Widget.Events.PLAY, () => { playing = true; render(); });
+      widget.bind(SC.Widget.Events.PAUSE, () => { playing = false; render(); });
+      widget.bind(SC.Widget.Events.FINISH, () => { widget.seekTo(0); widget.play(); }); // loop
+
+      widget.bind(SC.Widget.Events.READY, () => {
+        widget.setVolume(60);
+        if (!userPaused) widget.play();
+        // If the browser blocked autoplay, the first gesture starts it.
+        const start = e => {
+          if (btn.contains(e.target) || userPaused) return;
+          widget.isPaused(paused => { if (paused) widget.play(); });
+        };
+        ['pointerdown', 'keydown'].forEach(ev => window.addEventListener(ev, start, { once: true }));
+      });
+
+      btn.addEventListener('click', () => {
+        if (playing) { userPaused = true; widget.pause(); }
+        else { userPaused = false; widget.play(); }
+      });
+      render();
+    })();
+  </script>
   <script src="../dither-banner.js" defer></script>
 </body>
 </html>

@@ -121,6 +121,10 @@
     ]
   }
   </script>
+  <style>
+    /* Cross-document view transition: the panel morphs into /flow/ (see flow.css). */
+    @view-transition { navigation: auto; }
+  </style>
 </head>
 <body class="home">
 
@@ -411,6 +415,11 @@
     <section class="raft-message" aria-label="Raft Design principles">
       <div data-dither data-light-front="--text-accent" data-shape="simplex" data-type="8x8" data-size="2.5" data-scale="1.29" data-speed="1" data-frame="2864630.595" data-messages='["A craft built for change.", "A raft, not a ship.", "Small by design.", "Make what matters.", "Water nobody has charted."]' aria-hidden="true"></div>
       <p class="raft-message-text">A craft built for change.</p>
+      <a class="raft-message-expand" href="/flow/" aria-label="Open the full-screen animation">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9"/>
+        </svg>
+      </a>
     </section>
 
     <!-- AI Systems Panel -->

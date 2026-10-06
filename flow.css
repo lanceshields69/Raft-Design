@@ -1,7 +1,11 @@
 /* Raft Flow: full-height version of the home page's Raft message panel.
    Same Paper Dithering shader + rotating phrase (dither-banner.js); the
    headline styling comes from .raft-message-text in styles.css. */
+/* Opt in to the cross-document view transition from the home page panel. */
+@view-transition { navigation: auto; }
+
 .flow-panel {
+  view-transition-name: raft-panel;
   position: relative;
   height: 100svh;
   overflow: hidden;
@@ -42,17 +46,17 @@
   display: grid;
   place-items: center;
   padding: 0;
-  border: 1px solid var(--bg-brand);
+  border: 1px solid var(--text-accent);
   border-radius: 50%;
   background: var(--bg-canvas);
-  color: var(--bg-brand);
+  color: var(--text-accent);
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
 }
 
 .flow-audio-toggle:hover,
 .flow-audio-toggle:focus-visible {
-  background: var(--bg-brand);
+  background: var(--text-accent);
   color: var(--bg-canvas);
 }
 
@@ -92,7 +96,7 @@
   align-items: center;
   font-size: 12px;
   line-height: 1.2;
-  color: var(--bg-brand);
+  color: var(--text-accent);
 }
 
 .flow-audio-credit a {

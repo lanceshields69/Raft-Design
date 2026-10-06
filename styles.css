@@ -2308,6 +2308,46 @@ html[lang="ja"] .approach-heading {
   color: var(--bg-canvas);
 }
 
+/* Expand affordance: small corner icon linking to the full-screen /flow/ version.
+   Shares view-transition-name with .flow-panel so the panel appears to grow into it. */
+.raft-message {
+  view-transition-name: raft-panel;
+}
+
+.raft-message-expand {
+  position: absolute;
+  right: var(--space-lg);
+  top: var(--space-lg);
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid var(--text-accent);
+  border-radius: 50%;
+  background: var(--bg-canvas);
+  color: var(--text-accent);
+  transition: transform 0.15s, background 0.15s, color 0.15s;
+}
+
+.raft-message-expand svg {
+  width: 22px;
+  height: 22px;
+}
+
+.raft-message-expand:hover,
+.raft-message-expand:focus-visible {
+  transform: scale(1.08);
+  background: var(--text-accent);
+  color: var(--bg-canvas);
+}
+
+@media (max-width: 640px) {
+  .raft-message-expand {
+    right: var(--space-md);
+    top: var(--space-md);
+  }
+}
+
 /* Design Intelligence Banner (Scan CTA) */
 .scan-banner-section {
   /* Full-bleed: no max-width or side padding on the section so the dither

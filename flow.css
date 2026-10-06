@@ -1,0 +1,18 @@
+/* Raft Flow: tall version of the home page's Raft message panel.
+   Same Paper Dithering shader + rotating phrase (dither-banner.js); the
+   headline styling comes from .raft-message-text in styles.css. */
+.flow-panel {
+  position: relative;
+  height: clamp(560px, calc(100svh - 80px), 1100px);
+  overflow: hidden;
+}
+
+.flow-panel > [data-dither] {
+  position: absolute;
+  inset: 0;
+}
+
+/* The shared rule makes the text absolute-centred; reset h1 defaults. */
+.flow-panel .raft-message-text {
+  font-family: inherit;
+}

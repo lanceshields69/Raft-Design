@@ -124,3 +124,26 @@
   text-decoration-thickness: 3px;
   text-underline-offset: 6px;
 }
+
+/* Minimize: mirror of the home panel's expand button, top-right. */
+.flow-minimize {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid var(--text-accent);
+  border-radius: 50%;
+  background: var(--bg-canvas);
+  color: var(--text-accent);
+  transition: transform 0.15s, background 0.15s, color 0.15s;
+}
+
+.flow-minimize:hover,
+.flow-minimize:focus-visible {
+  transform: scale(1.08);
+  background: var(--text-accent);
+  color: var(--bg-canvas);
+}

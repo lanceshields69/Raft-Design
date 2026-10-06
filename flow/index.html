@@ -38,6 +38,11 @@
       <div data-dither data-light-front="--text-accent" data-shape="simplex" data-type="8x8" data-size="2.5" data-scale="1.29" data-speed="1" data-frame="2864630.595" data-typewriter data-messages='["A craft built for change.", "A raft, not a ship.", "Small by design.", "Make what matters.", "Water nobody has charted."]' aria-hidden="true"></div>
       <h1 class="raft-message-text">A craft built for change.</h1>
       <p class="flow-url"><a href="/">raftdesign.studio</a></p>
+      <a class="flow-minimize" id="flow-minimize" href="/#raft-message" aria-label="Minimize and return to the home page">
+        <svg width="22" height="22" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M13.5 6.5h-4v-4M9.5 6.5 14 2M2.5 9.5h4v4M6.5 9.5 2 14"/>
+        </svg>
+      </a>
       <button class="flow-audio-toggle" id="flow-audio-toggle" type="button" aria-label="Pause music" aria-pressed="true">
         <svg class="flow-audio-icon flow-audio-icon--pause" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
           <rect x="4" y="3" width="4" height="14" rx="1"/><rect x="12" y="3" width="4" height="14" rx="1"/>
@@ -52,6 +57,20 @@
     </section>
   </main>
 
+  <script>
+    // Minimize: if we came from the home page, step back in history so the panel
+    // shrinks back (view transition) to exactly where the visitor left it.
+    // Direct visits fall through to the link's /#raft-message href.
+    document.getElementById('flow-minimize').addEventListener('click', e => {
+      try {
+        const ref = new URL(document.referrer);
+        if (ref.origin === location.origin && ref.pathname === '/' && history.length > 1) {
+          e.preventDefault();
+          history.back();
+        }
+      } catch (err) {}
+    });
+  </script>
   <script src="https://w.soundcloud.com/player/api.js"></script>
   <script>
     // Music: SoundCloud embed (the artist's own sharing route) driven through the

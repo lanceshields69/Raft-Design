@@ -245,8 +245,9 @@
         </div>
         <div class="hero-copy">
           <h1 class="intro-heading">
-            <span class="headline-line headline-line--single">ブランドとUXデザインを、<br class="hero-break-desktop"><span class="ai-native-trigger" tabindex="0"><span class="headline-highlight">次のかたちへ</span><span class="ai-native-mark"><img src="../images/asterisk.svg" alt="" class="ai-native-asterisk ai-native-asterisk--dark"><img src="../images/asterisk-light.svg" alt="" class="ai-native-asterisk ai-native-asterisk--light"></span><span class="ai-native-panel" role="tooltip"><strong>次のかたちへ？</strong><br>その姿は、まだ誰にもわかりません。だからこそ、デザインする意味があります。Raftは、まだ形になりつつある未来を、ともにデザインします。まだ誰も航路を描いていない水域を進むために、筏があるように。</span></span>。</span>
+            <span class="headline-line headline-line--single">ブランドとUXデザインを、<br class="hero-break-desktop"><span class="ai-native-trigger" tabindex="0" aria-describedby="ai-native-panel"><span class="headline-highlight">次のかたちへ</span><span class="ai-native-mark"><img src="../images/asterisk.svg" alt="" class="ai-native-asterisk ai-native-asterisk--dark"><img src="../images/asterisk-light.svg" alt="" class="ai-native-asterisk ai-native-asterisk--light"></span></span>。</span>
           </h1>
+          <span class="ai-native-panel" id="ai-native-panel" role="tooltip"><strong>次のかたちへ？</strong><br>その姿は、まだ誰にもわかりません。だからこそ、デザインする意味があります。Raftは、まだ形になりつつある未来を、ともにデザインします。まだ誰も航路を描いていない水域を進むために、筏があるように。</span>
           <div class="hero-tags hero-tags--subhead">
             <p class="hero-subhead">Raftは、スタートアップや既存企業が、新しいテクノロジーを人から信頼されるブランドとプロダクトへと変えるお手伝いをします。AIでスピードを上げる。判断するのは、あくまで人です。</p>
           </div>
@@ -793,6 +794,26 @@
     // opens on tap instead. Toggles per-trigger, closes on an outside
     // tap or Escape. Desktop keeps the CSS :hover/:focus-within behavior
     // untouched; this only adds the .is-open class on top of it.
+    // The definition panel sits outside the h1 (so the heading is just the
+    // headline), so place it under the trigger from here: centered on it,
+    // 14px below. Mobile CSS overrides this with a fixed, viewport-centered card.
+    (function() {
+      const trigger = document.querySelector('.ai-native-trigger');
+      const panel = document.getElementById('ai-native-panel');
+      if (!trigger || !panel) return;
+      function place() {
+        const box = panel.offsetParent;
+        if (!box) return;
+        const t = trigger.getBoundingClientRect(), b = box.getBoundingClientRect();
+        panel.style.setProperty('--panel-left', (t.left + t.width / 2 - b.left - box.clientLeft) + 'px');
+        panel.style.setProperty('--panel-top', (t.bottom - b.top - box.clientTop + 14) + 'px');
+      }
+      ['pointerenter', 'focus', 'click'].forEach(type => trigger.addEventListener(type, place));
+      window.addEventListener('resize', place);
+      if (document.fonts) document.fonts.ready.then(place);
+      place();
+    })();
+
     (function() {
       const triggers = document.querySelectorAll('.ai-native-trigger');
       if (!triggers.length || !window.matchMedia('(hover: none)').matches) return;

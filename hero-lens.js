@@ -131,7 +131,7 @@
         if (e.clientX >= lr.left && e.clientX <= lr.right && e.clientY >= lr.top && e.clientY <= lr.bottom) return true;
       }
     }
-    var el = t.closest('.intro-heading, .hero-subhead');
+    var el = t.closest('.intro-heading, .hero-subhead, .ai-native-panel');
     if (!el) return false;
     // Text nodes only: selecting the element would also return its
     // (full-width) block boxes.

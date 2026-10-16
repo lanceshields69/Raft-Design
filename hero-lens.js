@@ -22,6 +22,16 @@
     lens.removeAttribute('id');
     lens.querySelectorAll('[id]').forEach(function (el) { el.removeAttribute('id'); });
     lens.querySelectorAll('[tabindex]').forEach(function (el) { el.setAttribute('tabindex', '-1'); });
+    // Keep the page to a single <h1>: the clone's headline becomes a <div>
+    // with the same classes/children (UA h1 box restored in hero-lens.css).
+    lens.querySelectorAll('h1').forEach(function (h) {
+      var d = document.createElement('div');
+      Array.prototype.forEach.call(h.attributes, function (a) { d.setAttribute(a.name, a.value); });
+      while (h.firstChild) d.appendChild(h.firstChild);
+      h.replaceWith(d);
+    });
+    // The clone is decorative: don't repeat the client-logo alt text.
+    lens.querySelectorAll('img[alt]').forEach(function (img) { img.setAttribute('alt', ''); });
 
     srcEls = Array.prototype.slice.call(hero.querySelectorAll('*'));
     lensEls = Array.prototype.slice.call(lens.querySelectorAll('*'));
@@ -121,7 +131,7 @@
         if (e.clientX >= lr.left && e.clientX <= lr.right && e.clientY >= lr.top && e.clientY <= lr.bottom) return true;
       }
     }
-    var el = t.closest('.intro-heading, .hero-subhead');
+    var el = t.closest('.intro-heading, .hero-subhead, .ai-native-panel');
     if (!el) return false;
     // Text nodes only: selecting the element would also return its
     // (full-width) block boxes.

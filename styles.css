@@ -841,6 +841,12 @@ p {
   --marquee-distance: 33.333%; /* fallback for one of 3 sets, before JS measures the exact seam */
 }
 
+/* Duplicate logo sets (marquee loop) are wrapped so they can be
+   aria-hidden; display: contents keeps each logo a direct flex item. */
+.client-logos-set {
+  display: contents;
+}
+
 .client-logo {
   flex-shrink: 0;
   width: 125px;
@@ -1044,8 +1050,10 @@ html[lang="ja"] .ai-native-mark {
      anchored to the trigger's left edge risked being cut off on the
      right for a long headline. Centering keeps it inside that box. */
   position: absolute;
-  top: calc(100% + 14px);
-  left: 50%;
+  /* Lives at the end of .hero-copy, not inside the h1; JS (index.html) sets these
+     to the trigger's center / bottom + 14px. */
+  top: var(--panel-top, 0);
+  left: var(--panel-left, 50%);
   width: 370px;
   max-width: min(80vw, 370px);
   padding: 24px;
@@ -1065,6 +1073,11 @@ html[lang="ja"] .ai-native-mark {
   line-height: 24px;
   letter-spacing: normal;
   text-transform: none;
+  /* Formerly inherited from .intro-heading. */
+  font-optical-sizing: auto;
+  font-variation-settings: 'opsz' 32;
+  font-feature-settings: "kern" 1, "cv11" 1;
+  text-rendering: optimizeLegibility;
   color: var(--pure-black); /* card is always light-glass, in both themes */
   opacity: 0;
   visibility: hidden;
@@ -1094,12 +1107,11 @@ html[lang="ja"] .ai-native-mark {
 
 html[lang="ja"] .ai-native-panel {
   font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  overflow-wrap: anywhere; /* formerly inherited from the JA headline */
 }
 
-.ai-native-trigger:hover .ai-native-panel,
-.ai-native-trigger:focus .ai-native-panel,
-.ai-native-trigger:focus-within .ai-native-panel,
-.ai-native-trigger.is-open .ai-native-panel {
+.intro-heading:has(.ai-native-trigger:is(:hover, :focus, :focus-within, .is-open)) ~ .ai-native-panel,
+.ai-native-panel:hover {
   opacity: 1;
   visibility: visible;
   transform: translate(-50%, 0);
@@ -1118,10 +1130,8 @@ html[lang="ja"] .ai-native-panel {
     transform: translate(-50%, -50%);
   }
 
-  .ai-native-trigger:hover .ai-native-panel,
-  .ai-native-trigger:focus .ai-native-panel,
-  .ai-native-trigger:focus-within .ai-native-panel,
-  .ai-native-trigger.is-open .ai-native-panel {
+  .intro-heading:has(.ai-native-trigger:is(:hover, :focus, :focus-within, .is-open)) ~ .ai-native-panel,
+  .ai-native-panel:hover {
     transform: translate(-50%, -50%);
   }
 }

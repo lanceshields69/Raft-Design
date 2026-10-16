@@ -1050,7 +1050,7 @@ html[lang="ja"] .ai-native-mark {
      anchored to the trigger's left edge risked being cut off on the
      right for a long headline. Centering keeps it inside that box. */
   position: absolute;
-  /* Lives just after the <h1>, not inside it; JS (index.html) sets these
+  /* Lives at the end of .hero-copy, not inside the h1; JS (index.html) sets these
      to the trigger's center / bottom + 14px. */
   top: var(--panel-top, 0);
   left: var(--panel-left, 50%);
@@ -1110,7 +1110,7 @@ html[lang="ja"] .ai-native-panel {
   overflow-wrap: anywhere; /* formerly inherited from the JA headline */
 }
 
-.intro-heading:has(.ai-native-trigger:is(:hover, :focus, :focus-within, .is-open)) + .ai-native-panel,
+.intro-heading:has(.ai-native-trigger:is(:hover, :focus, :focus-within, .is-open)) ~ .ai-native-panel,
 .ai-native-panel:hover {
   opacity: 1;
   visibility: visible;
@@ -1130,7 +1130,7 @@ html[lang="ja"] .ai-native-panel {
     transform: translate(-50%, -50%);
   }
 
-  .intro-heading:has(.ai-native-trigger:is(:hover, :focus, :focus-within, .is-open)) + .ai-native-panel,
+  .intro-heading:has(.ai-native-trigger:is(:hover, :focus, :focus-within, .is-open)) ~ .ai-native-panel,
   .ai-native-panel:hover {
     transform: translate(-50%, -50%);
   }

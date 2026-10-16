@@ -13,6 +13,19 @@ const ROOT = __dirname;
 const DATA_DIR = path.join(ROOT, 'journal', 'data');
 const SITE = 'https://raftdesign.studio';
 
+// Entity signals shared by every Organization / Person node (keep in sync with
+// the hand-written JSON-LD on the rest of the site).
+// TODO: add a Japanese alternateName for the Organization once the katakana is confirmed.
+const ORG_SAME_AS = [
+  'https://www.linkedin.com/company/raftdesignstudio/',
+  'https://clutch.co/profile/raft-design',
+  'https://upstreamjournal.substack.com/',
+  'https://note.com/raftdesign',
+  'https://x.com/raftdesignco',
+  'https://www.instagram.com/raftdesignstudio',
+];
+const LANCE_SAME_AS = ['https://lanceshields.design', 'https://github.com/lanceshields69'];
+
 const THEME_TOGGLE_SVG = `
         <svg class="theme-toggle-icon theme-toggle-icon--moon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M17.5 10.6583C17.3689 12.0768 16.8365 13.4287 15.9652 14.5557C15.0939 15.6826 13.9196 16.5382 12.5798 17.0221C11.2399 17.5061 9.78999 17.5984 8.39958 17.2884C7.00918 16.9784 5.73583 16.2788 4.72852 15.2715C3.72121 14.2642 3.02162 12.9908 2.71159 11.6004C2.40156 10.21 2.49393 8.76007 2.97788 7.42025C3.46184 6.08042 4.31736 4.90614 5.44434 4.03479C6.57133 3.16345 7.92316 2.63109 9.34167 2.5C8.51118 3.62356 8.11154 5.00787 8.21544 6.40118C8.31935 7.79448 8.91988 9.10422 9.90783 10.0922C10.8958 11.0801 12.2055 11.6807 13.5988 11.7846C14.9921 11.8885 16.3764 11.4888 17.5 10.6583Z" stroke="currentColor" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
@@ -390,20 +403,16 @@ ${jsonLd({
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Raft Design',
+  alternateName: ['Raft Design Studio'],
   url: isJa ? `${SITE}/ja/` : SITE,
   description: isJa
     ? '日米をまたいでブランド、プロダクト、デジタル体験を手がけるAIネイティブなスタジオ。'
     : 'AI-native studio working across the U.S. and Japan on brand, product, and digital experience.',
   ...(isJa ? { inLanguage: 'ja' } : {}),
-  founder: { '@type': 'Person', name: 'Lance Shields' },
+  founder: { '@type': 'Person', name: 'Lance Shields', sameAs: LANCE_SAME_AS },
   areaServed: ['US', 'JP'],
   knowsLanguage: ['en', 'ja'],
-  sameAs: [
-    'https://www.linkedin.com/company/raftdesignstudio/',
-    'https://x.com/raftdesignco',
-    'https://www.instagram.com/raftdesignstudio',
-    'https://note.com/raftdesign',
-  ],
+  sameAs: ORG_SAME_AS,
 })}
 ${jsonLd({
   '@context': 'https://schema.org',
@@ -518,8 +527,8 @@ ${prevArticle ? `  <link rel="prev" href="${SITE}/ja/journal/${prevArticle.slug}
   datePublished: article.date,
   image: ogImage,
   inLanguage: 'ja',
-  author: { '@type': 'Person', name: j.author, sameAs: [authorUrl] },
-  publisher: { '@type': 'Organization', name: 'Raft Design', url: `${SITE}/ja/` },
+  author: { '@type': 'Person', name: j.author, sameAs: [authorUrl, ...LANCE_SAME_AS] },
+  publisher: { '@type': 'Organization', name: 'Raft Design', alternateName: ['Raft Design Studio'], url: `${SITE}/ja/`, sameAs: ORG_SAME_AS },
   mainEntityOfPage: url,
   ...(inSeries ? {
     isPartOf: { '@type': 'CreativeWorkSeries', name: UPSTREAM_SERIES_NAME, url: `${SITE}/ja/journal/` },
@@ -530,24 +539,20 @@ ${jsonLd({
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: j.author,
-  sameAs: [authorUrl],
+  sameAs: [authorUrl, ...LANCE_SAME_AS],
 })}
 ${jsonLd({
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Raft Design',
+  alternateName: ['Raft Design Studio'],
   url: `${SITE}/ja/`,
   description: '日米をまたいでブランド、プロダクト、デジタル体験を手がけるAIネイティブなスタジオ。',
   inLanguage: 'ja',
-  founder: { '@type': 'Person', name: 'Lance Shields' },
+  founder: { '@type': 'Person', name: 'Lance Shields', sameAs: LANCE_SAME_AS },
   areaServed: ['US', 'JP'],
   knowsLanguage: ['en', 'ja'],
-  sameAs: [
-    'https://www.linkedin.com/company/raftdesignstudio/',
-    'https://x.com/raftdesignco',
-    'https://www.instagram.com/raftdesignstudio',
-    'https://note.com/raftdesign',
-  ],
+  sameAs: ORG_SAME_AS,
 })}
 ${jsonLd({
   '@context': 'https://schema.org',

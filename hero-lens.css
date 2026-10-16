@@ -84,3 +84,11 @@
 @media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
   .hero-lens { display: none; }
 }
+
+/* The clone's headline is a <div> (one <h1> per page — see hero-lens.js).
+   Zero specificity: stands in for the UA h1 box only, so every authored
+   .intro-heading rule still wins, exactly as it does on the real <h1>. */
+:where(.hero-lens div.intro-heading) {
+  font-size: 2em;
+  margin-block: 0.67em;
+}

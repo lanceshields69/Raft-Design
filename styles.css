@@ -841,6 +841,12 @@ p {
   --marquee-distance: 33.333%; /* fallback for one of 3 sets, before JS measures the exact seam */
 }
 
+/* Duplicate logo sets (marquee loop) are wrapped so they can be
+   aria-hidden; display: contents keeps each logo a direct flex item. */
+.client-logos-set {
+  display: contents;
+}
+
 .client-logo {
   flex-shrink: 0;
   width: 125px;

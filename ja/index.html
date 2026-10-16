@@ -45,12 +45,14 @@
       document.documentElement.dataset.theme = 'light';
     }
   </script>
+  <!-- TODO: add a Japanese alternateName (katakana) to the Organization below once confirmed. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     "@id": "https://raftdesign.studio/#organization",
     "name": "Raft Design",
+    "alternateName": ["Raft Design Studio"],
     "url": "https://raftdesign.studio/ja/",
     "description": "Raftは、AIネイティブなブランディング・プロダクトデザインエージェンシーです。AI・デザイン・テクノロジーを融合し、世界の挑戦的なブランドへ大胆なインタラクティブ体験を生み出します。",
     "inLanguage": "ja",
@@ -59,10 +61,11 @@
     "knowsLanguage": ["en", "ja"],
     "sameAs": [
       "https://www.linkedin.com/company/raftdesignstudio/",
-      "https://x.com/raftdesignco",
-      "https://www.instagram.com/raftdesignstudio",
+      "https://clutch.co/profile/raft-design",
+      "https://upstreamjournal.substack.com/",
       "https://note.com/raftdesign",
-      "https://upstreamjournal.substack.com/"
+      "https://x.com/raftdesignco",
+      "https://www.instagram.com/raftdesignstudio"
     ]
   }
   </script>
@@ -79,7 +82,8 @@
     "sameAs": [
       "https://lanceshields.design",
       "https://www.linkedin.com/in/lanceshields/",
-      "https://upstreamjournal.substack.com/"
+      "https://upstreamjournal.substack.com/",
+      "https://github.com/lanceshields69"
     ]
   }
   </script>
@@ -253,53 +257,57 @@
           </div>
         </div>
       </div>
-      <div class="client-logos" id="client-logos" aria-hidden="true">
+      <div class="client-logos" id="client-logos" role="group" aria-label="Clients">
         <div class="client-logos-track">
-            <img class="client-logo" src="../images/client-chase.png" alt="">
-            <img class="client-logo" src="../images/client-hitachi.png" alt="">
-            <img class="client-logo" src="../images/client-redbull.png" alt="">
-            <img class="client-logo" src="../images/client-kddi.png" alt="">
-            <img class="client-logo" src="../images/client-walmart.png" alt="">
-            <img class="client-logo" src="../images/client-mitsubishi.png" alt="">
-            <img class="client-logo" src="../images/client-adobe.png" alt="">
-            <img class="client-logo" src="../images/client-yokogawa.png" alt="">
-            <img class="client-logo" src="../images/client-visa.png" alt="">
-            <img class="client-logo" src="../images/client-jal.png" alt="">
-            <img class="client-logo" src="../images/client-chanel.png" alt="">
-            <img class="client-logo" src="../images/client-mitsui.png" alt="">
-            <img class="client-logo" src="../images/client-kraft.png" alt="">
-            <img class="client-logo" src="../images/client-tepco.png" alt="">
-            <img class="client-logo" src="../images/client-fitbit.png" alt="">
-            <img class="client-logo" src="../images/client-chase.png" alt="">
-            <img class="client-logo" src="../images/client-hitachi.png" alt="">
-            <img class="client-logo" src="../images/client-redbull.png" alt="">
-            <img class="client-logo" src="../images/client-kddi.png" alt="">
-            <img class="client-logo" src="../images/client-walmart.png" alt="">
-            <img class="client-logo" src="../images/client-mitsubishi.png" alt="">
-            <img class="client-logo" src="../images/client-adobe.png" alt="">
-            <img class="client-logo" src="../images/client-yokogawa.png" alt="">
-            <img class="client-logo" src="../images/client-visa.png" alt="">
-            <img class="client-logo" src="../images/client-jal.png" alt="">
-            <img class="client-logo" src="../images/client-chanel.png" alt="">
-            <img class="client-logo" src="../images/client-mitsui.png" alt="">
-            <img class="client-logo" src="../images/client-kraft.png" alt="">
-            <img class="client-logo" src="../images/client-tepco.png" alt="">
-            <img class="client-logo" src="../images/client-fitbit.png" alt="">
-            <img class="client-logo" src="../images/client-chase.png" alt="">
-            <img class="client-logo" src="../images/client-hitachi.png" alt="">
-            <img class="client-logo" src="../images/client-redbull.png" alt="">
-            <img class="client-logo" src="../images/client-kddi.png" alt="">
-            <img class="client-logo" src="../images/client-walmart.png" alt="">
-            <img class="client-logo" src="../images/client-mitsubishi.png" alt="">
-            <img class="client-logo" src="../images/client-adobe.png" alt="">
-            <img class="client-logo" src="../images/client-yokogawa.png" alt="">
-            <img class="client-logo" src="../images/client-visa.png" alt="">
-            <img class="client-logo" src="../images/client-jal.png" alt="">
-            <img class="client-logo" src="../images/client-chanel.png" alt="">
-            <img class="client-logo" src="../images/client-mitsui.png" alt="">
-            <img class="client-logo" src="../images/client-kraft.png" alt="">
-            <img class="client-logo" src="../images/client-tepco.png" alt="">
-            <img class="client-logo" src="../images/client-fitbit.png" alt="">
+            <img class="client-logo" src="../images/client-chase.png" alt="Chase">
+            <img class="client-logo" src="../images/client-hitachi.png" alt="Hitachi">
+            <img class="client-logo" src="../images/client-redbull.png" alt="Red Bull">
+            <img class="client-logo" src="../images/client-kddi.png" alt="KDDI">
+            <img class="client-logo" src="../images/client-walmart.png" alt="Walmart">
+            <img class="client-logo" src="../images/client-mitsubishi.png" alt="Mitsubishi">
+            <img class="client-logo" src="../images/client-adobe.png" alt="Adobe">
+            <img class="client-logo" src="../images/client-yokogawa.png" alt="Yokogawa">
+            <img class="client-logo" src="../images/client-visa.png" alt="Visa">
+            <img class="client-logo" src="../images/client-jal.png" alt="Japan Airlines">
+            <img class="client-logo" src="../images/client-chanel.png" alt="Chanel">
+            <img class="client-logo" src="../images/client-mitsui.png" alt="Mitsui">
+            <img class="client-logo" src="../images/client-kraft.png" alt="Kraft">
+            <img class="client-logo" src="../images/client-tepco.png" alt="TEPCO">
+            <img class="client-logo" src="../images/client-fitbit.png" alt="Fitbit">
+            <div class="client-logos-set" aria-hidden="true">
+              <img class="client-logo" src="../images/client-chase.png" alt="">
+              <img class="client-logo" src="../images/client-hitachi.png" alt="">
+              <img class="client-logo" src="../images/client-redbull.png" alt="">
+              <img class="client-logo" src="../images/client-kddi.png" alt="">
+              <img class="client-logo" src="../images/client-walmart.png" alt="">
+              <img class="client-logo" src="../images/client-mitsubishi.png" alt="">
+              <img class="client-logo" src="../images/client-adobe.png" alt="">
+              <img class="client-logo" src="../images/client-yokogawa.png" alt="">
+              <img class="client-logo" src="../images/client-visa.png" alt="">
+              <img class="client-logo" src="../images/client-jal.png" alt="">
+              <img class="client-logo" src="../images/client-chanel.png" alt="">
+              <img class="client-logo" src="../images/client-mitsui.png" alt="">
+              <img class="client-logo" src="../images/client-kraft.png" alt="">
+              <img class="client-logo" src="../images/client-tepco.png" alt="">
+              <img class="client-logo" src="../images/client-fitbit.png" alt="">
+            </div>
+            <div class="client-logos-set" aria-hidden="true">
+              <img class="client-logo" src="../images/client-chase.png" alt="">
+              <img class="client-logo" src="../images/client-hitachi.png" alt="">
+              <img class="client-logo" src="../images/client-redbull.png" alt="">
+              <img class="client-logo" src="../images/client-kddi.png" alt="">
+              <img class="client-logo" src="../images/client-walmart.png" alt="">
+              <img class="client-logo" src="../images/client-mitsubishi.png" alt="">
+              <img class="client-logo" src="../images/client-adobe.png" alt="">
+              <img class="client-logo" src="../images/client-yokogawa.png" alt="">
+              <img class="client-logo" src="../images/client-visa.png" alt="">
+              <img class="client-logo" src="../images/client-jal.png" alt="">
+              <img class="client-logo" src="../images/client-chanel.png" alt="">
+              <img class="client-logo" src="../images/client-mitsui.png" alt="">
+              <img class="client-logo" src="../images/client-kraft.png" alt="">
+              <img class="client-logo" src="../images/client-tepco.png" alt="">
+              <img class="client-logo" src="../images/client-fitbit.png" alt="">
+            </div>
           </div>
         </div>
     </section>
@@ -315,7 +323,7 @@
           </div>
           <div class="approach-stats fade-in">
             <div class="approach-stat">
-              <p class="stat-number">5.4億+</p>
+              <p class="stat-number">5.6億+</p>
               <p class="stat-description">Walmartアプリで、私たちのデザインに触れたユーザー・訪問者数</p>
             </div>
             <div class="approach-stat">
@@ -818,9 +826,10 @@
     (function() {
       const track = document.querySelector('.client-logos-track');
       if (!track) return;
-      const setSize = track.children.length / 3;
+      const logos = track.querySelectorAll('.client-logo');
+      const setSize = logos.length / 3;
       function setMarqueeDistance() {
-        const seamItem = track.children[setSize];
+        const seamItem = logos[setSize];
         if (seamItem) {
           track.style.setProperty('--marquee-distance', seamItem.offsetLeft + 'px');
         }

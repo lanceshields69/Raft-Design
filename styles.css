@@ -3215,6 +3215,13 @@ html[lang="ja"] .approach-heading {
   margin-top: var(--space-lg);
 }
 
+.project-external-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
 .project-right {
   width: 280px;
   flex-shrink: 0;

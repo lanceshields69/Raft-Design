@@ -87,20 +87,176 @@
       }
     ],
     "stats": [
-      { "value": "85%", "label": "ナレッジワーカーの85%がAIを使用" },
-      { "value": "29%", "label": "実際の業務フローに組み込めているのは29%" },
-      { "value": "1%", "label": "自社がAIにおいて成熟していると考えるリーダーは1%" }
+      {
+        "value": "85%",
+        "label": "ナレッジワーカーの85%がAIを使用"
+      },
+      {
+        "value": "29%",
+        "label": "実際の業務フローに組み込めているのは29%"
+      },
+      {
+        "value": "1%",
+        "label": "自社がAIにおいて成熟していると考えるリーダーは1%"
+      }
     ],
     "citations": [
-      { "name": "Harvard Business School — コンサルタント758人を対象としたAIタスク研究" },
-      { "name": "Atlassian 2026年版 State of Teams Report" },
-      { "name": "McKinsey AI成熟度調査" },
-      { "name": "Stanford Digital Economy Lab — 51件の企業向けAI導入事例" }
+      {
+        "name": "Harvard Business School — コンサルタント758人を対象としたAIタスク研究"
+      },
+      {
+        "name": "Atlassian 2026年版 State of Teams Report"
+      },
+      {
+        "name": "McKinsey AI成熟度調査"
+      },
+      {
+        "name": "Stanford Digital Economy Lab — 51件の企業向けAI導入事例"
+      }
     ]
   },
   "en": {
     "title": "The AI-Native Designer Was Only Phase One",
     "excerpt": "A team of faster designers can be a slower team. We spent the past year obsessed with getting individual designers faster with AI. Fair enough, most of us figured that out. But make seven designers faster and you don't get a faster team. You get seven private workflows, seven definitions of done, and a coordination problem nobody's talking about.",
-    "substackUrl": "https://upstreamjournal.substack.com/p/the-ai-native-designer-was-only-phase"
+    "substackUrl": "https://upstreamjournal.substack.com/p/the-ai-native-designer-was-only-phase",
+    "subhead": "Making one designer faster was the easy part. The hard part is the team.",
+    "body": [
+      {
+        "html": "Over coffee recently, another Design Director and I got into a long conversation about what it actually means to transform a design team with AI. We weren’t talking about how to get one designer to use Claude, Figma Make, Cursor, or Lovable. Most of us spent the past year figuring that out, experimenting in public, sharing what we learned."
+      },
+      {
+        "html": "The harder problem is what happens when the whole team changes at once. Seven designers, each faster, each working differently, all feeding into the same product and engineering pipeline. Nobody is really writing about that. The entire AI design conversation is still stuck on the individual, and I think that’s the wrong unit of analysis now."
+      },
+      {
+        "html": "The first phase was about the AI-native designer. That phase is basically over. The next one is about the AI-native design team, and most organizations are nowhere near ready for it."
+      },
+      {
+        "h2": "Individual speed is the least interesting thing AI does"
+      },
+      {
+        "html": "We keep celebrating the wrong number."
+      },
+      {
+        "html": "AI makes individuals faster, and the evidence is real. In a Harvard Business School experiment with 758 consultants, participants using GPT-4 completed 12.2% more tasks and finished them 25.1% faster when the work fell within the model’s capabilities. Quality went up too. Every designer I know has felt some version of this. Research synthesis in hours instead of days. More directions explored before a crit. A rough idea turned into a working prototype while the thinking is still warm."
+      },
+      {
+        "html": "That’s the part everyone posts about. It’s also the part that matters least, because it’s the easy part. Individual speed is available to anyone with a login, which makes it table stakes rather than an advantage. Treating it like a transformation is how teams talk themselves into thinking they’ve changed when they haven’t."
+      },
+      {
+        "html": "The same Harvard research found the part nobody screenshots. When people used AI outside the model’s capabilities, they were <em>more</em> likely to land on the wrong answer. It raised their speed and their confidence, not their understanding."
+      },
+      {
+        "html": "I watched this happen recently. A team spent a serious pile of tokens building a tool that was, on its own terms, beautifully made. As a product it didn’t make much sense. It didn’t solve a real user problem or a real business one. It was just impressively built. The seduction of building is here, and it’s worth watching out for. AI makes it so easy to produce something polished that you can skip the part where you ask whether it should exist."
+      },
+      {
+        "html": "Polished can still be wrong. A functioning interface can still be a bad product. More output usually just means more to review. And a designer producing more work often slows the team down rather than speeding it up."
+      },
+      {
+        "h2": "A team of faster designers is a slower team"
+      },
+      {
+        "html": "This is the part I think we are getting badly wrong."
+      },
+      {
+        "html": "Picture seven designers. One builds in Cursor. One prefers Figma Make. One has a private library of Claude prompts nobody else can see. One uses Lovable and has invented a whole new way of working with engineering that lives entirely in their head. Each of them is faster. Each of them is also a separate process, a separate source of truth, a separate definition of done."
+      },
+      {
+        "html": "Now the team has more prototypes to review, more generated code for engineering to inspect, more concepts waiting on product decisions, and more tools quietly holding pieces of customer and company knowledge that never get shared. The work sped up. The coordination around it didn’t move at all."
+      },
+      {
+        "html": "Atlassian has a name for this. It calls it the AI fragmentation tax. Its 2026 State of Teams research found that 85% of knowledge workers use AI, but only 29% have embedded it into their actual flow of work. And 87% said they lack the time or capacity to coordinate, because everyone is heads-down on execution. That’s the whole problem in one stat. AI helped everyone produce more while the meetings, reviews, and approvals around the work stayed exactly the same."
+      },
+      {
+        "html": "The team becomes a highway with faster cars and the same number of lanes. You know how that ends. Everything backs up, and the faster cars just reach the jam sooner."
+      },
+      {
+        "html": "A room full of AI-native individuals is not an AI-native team. Left alone, it’s a faster and more fragmented one, and it will feel productive right up until it seizes."
+      },
+      {
+        "h2": "Rolling out tools just decorates the old process"
+      },
+      {
+        "html": "The instinct is to standardize. Give everyone Claude. Run a Cursor workshop. Wire Figma to the codebase. Ask each designer to ship one AI prototype this quarter. All reasonable. None of it is transformation."
+      },
+      {
+        "html": "It’s the old process with AI bolted on. Discovery still runs the same way. Design still produces the same artifacts. Product still reviews them, engineering still reinterprets them, the same approvals happen in the same order. Everyone just arrives at the same handoff faster. You’ve made the assembly line quicker without asking whether it should still be an assembly line."
+      },
+      {
+        "html": "McKinsey found that only 1% of leaders consider their companies mature in AI, meaning it’s genuinely integrated into workflows and producing real business outcomes. Nearly everyone is spending. Almost nobody has changed how the work operates. That 1% figure has nothing to do with technology. Everyone has the same models. What separates them is nerve, the willingness to redesign the process instead of decorating it."
+      },
+      {
+        "html": "The real question is the one almost nobody is asking: how would we design this entire workflow if AI had always existed? If you can’t answer that, you’re just upgrading, and calling it a transformation."
+      },
+      {
+        "h2": "The Design Director’s job is to lead the whole team through this"
+      },
+      {
+        "html": "Most leaders think their AI job is procurement. Pick the stack, buy the seats, mandate that everyone ship to code, announce the transformation. That’s the version I want to argue against, because it’s the easy version and it’s the wrong one. Handing people tools and requiring output is abdication with a budget."
+      },
+      {
+        "html": "A design leader still has to develop people, protect quality, create clarity, build trust. AI takes none of that off the table. It adds a harder job on top: leading a whole team through this deliberately, together, and safely, instead of turning seven people loose to fend for themselves and calling the survivors transformed."
+      },
+      {
+        "html": "Deliberately means you design the system where people and AI work together instead of letting it assemble itself by accident. You map what actually happens from customer insight to shipped product and you’re honest about where it’s broken. Where information gets lost. Where designers redo each other’s work without knowing it. Where engineering has to reverse-engineer design intent. Which decisions an agent can support and which ones still need a human who will put their name on the outcome."
+      },
+      {
+        "html": "Together means nobody gets left behind on purpose. The fast movers will always sprint ahead. If you let the gap widen, you don’t have an AI-native team, you have two or three power users and a group of people quietly being made obsolete. Bringing everyone along is what separates a real team capability from a few private workflows that walk out the door when those people do."
+      },
+      {
+        "html": "Safely means you build the checkpoints that keep polished-and-wrong from shipping, you decide what customer data is allowed near a model before someone finds out the hard way, and you protect the principles that never get automated no matter how good the model gets. Speed without those is just a faster way to be wrong in production."
+      },
+      {
+        "html": "And none of it works if you transform design in isolation. This is the part almost nobody says out loud. If design gets faster and reshapes its process while product and engineering keep theirs, you haven’t transformed the work. You’ve built a faster upstream that floods a downstream that never changed. The transformation has to fit the workflows of the people you hand off to. Otherwise all you’ve done is move the bottleneck one step to the right."
+      },
+      {
+        "html": "Then there are the artifact questions, which get their own piece later in this series. When is a coded prototype disposable and when is it real. When is it wired tightly enough to the design system to be worth engineering’s time. How something one designer learns on a Tuesday becomes something the other six know by Friday. Real questions, and none of them answer themselves."
+      },
+      {
+        "html": "None of these are tool questions. They’re organizational design questions, and they will not solve themselves through seven people independently inventing seven better personal workflows. Seven private workflows is what a team ends up with when nobody leads."
+      },
+      {
+        "h2": "Start with one real project, not a mandate"
+      },
+      {
+        "html": "If I were leading this, I wouldn’t announce a transformation. Mandates produce compliance, not learning. I’d start with a single project. Something real but contained, big enough to expose how the process actually works, small enough that failure doesn’t become a crisis. Design, product, and engineering in it together, deliberately working a different way and being honest about what happened. Did the team learn faster, or just generate more. Did engineering save time, or spend it cleaning up generated code. Where did human judgment turn out to be the whole game. That pilot, and how to build a real re-engineered workflow around it, is the subject of the next piece."
+      },
+      {
+        "html": "A Stanford Digital Economy Lab study of 51 successful enterprise AI implementations found that the thing separating winners from everyone else came down to the organization far more than the model. Its processes, its leadership, its readiness, its willingness to learn through failure. I find that genuinely encouraging. Access to Claude or Cursor is something everyone gets. The advantage is how fast a team learns to use them well together, and that’s something a leader can actually build."
+      },
+      {
+        "h2": "What the team learns is worth more than what it ships"
+      },
+      {
+        "html": "Here’s the part I’d bet on. The prototype gets all the attention, but the real value is the knowledge left behind after it ships."
+      },
+      {
+        "html": "The prompts that worked. The failures that keep repeating. The rules worth automating and the product principles that should never be automated no matter how good the model gets. The examples that show an agent what good looks like. The design system components that move cleanly between design and code. The decisions that still need someone with experience, customer understanding, and taste to make the final call."
+      },
+      {
+        "html": "That’s the team’s context layer. It’s intelligence that belongs to the organization instead of hiding in one designer’s private workflow. And it compounds, which almost nothing else in this whole conversation does. Turning that context into a permanent capability, the roles, the rituals, the way an organization learns, is where this series ends up."
+      },
+      {
+        "html": "That’s where the real opportunity is. The first phase of AI design was personal. New tools, and the thrill of discovering how much more one person could do. We needed it. But it’s finished, and the teams still optimizing for it are optimizing for a game that’s already been won."
+      },
+      {
+        "html": "The next phase is collective. Redesigned workflows, redefined roles, shared context, real quality standards, new relationships across design, product, and engineering. Individual experiments turned into a team capability."
+      },
+      {
+        "html": "The AI-native designer was only phase one. The teams that figure out phase two first will be operating in a way their competitors structurally can’t copy, because you can buy the tools in an afternoon and you cannot buy the year of learning that makes them work together."
+      },
+      {
+        "html": "Now we build the AI-native design team."
+      },
+      {
+        "hr": true
+      },
+      {
+        "html": "<em>Upstream · The AI-Native Teams series, part 1 of 4</em>"
+      },
+      {
+        "html": "<em>Next: Stop adding AI to the design process. Re-engineer it.</em>"
+      }
+    ],
+    "originalDate": "2026-07-15"
   }
 }

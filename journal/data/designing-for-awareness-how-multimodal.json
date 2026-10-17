@@ -62,7 +62,14 @@
         "paragraphs": [
           "システムがより多くの信号にアクセスできるようになるにつれ、制約となるのはもはやデータではなく、注意になります。",
           "すべてのマルチモーダルシステムは、次を決めなければなりません。",
-          { "list": ["どの信号が重要か", "どれを無視できるか", "コンテキストはどれだけ持続すべきか", "いつ不確実性を表に出すべきか"] },
+          {
+            "list": [
+              "どの信号が重要か",
+              "どれを無視できるか",
+              "コンテキストはどれだけ持続すべきか",
+              "いつ不確実性を表に出すべきか"
+            ]
+          },
           "これらの意思決定は、インターフェースのモックアップにはめったに現れません。しかし、どんな視覚的なディテールよりも、ユーザーの信頼を形づくります。一瞬の信号に過剰反応するシステムは、侵害的に感じられます。意味のある文脈を無視するシステムは、無能に感じられます。",
           "ここで、デザインリーダーシップが重要になります。エンジニアは、モデルをより有能にできます。デザイナーは、その能力がどう表現され——あるいは、抑制されるかを決めます。"
         ]
@@ -91,7 +98,14 @@
         "paragraphs": [
           "マルチモーダルAIへの信頼は、透明性に関する声明だけでは獲得できません。一貫性、抑制、そして回復可能性によって獲得されます。",
           "ユーザーは、システムを次の基準で判断します。",
-          { "list": ["どれくらいの頻度で間違えるか", "どれくらいの自信を持って間違えるか", "異議を唱えられたとき、どう応答するか", "曖昧さを尊重しているか"] },
+          {
+            "list": [
+              "どれくらいの頻度で間違えるか",
+              "どれくらいの自信を持って間違えるか",
+              "異議を唱えられたとき、どう応答するか",
+              "曖昧さを尊重しているか"
+            ]
+          },
           "より多くを見るシステムは、より少なくを前提としなければなりません。",
           "この原則は、どんなモデルベンチマークよりも重要だと分かるかもしれません。"
         ]
@@ -100,7 +114,13 @@
         "heading": "インターフェースから、状況認識へ",
         "paragraphs": [
           "デザインは、時間とともに範囲を広げてきました。",
-          { "list": ["画面から、フローへ", "フローから、システムへ", "システムから、時間をまたぐ振る舞いへ"] },
+          {
+            "list": [
+              "画面から、フローへ",
+              "フローから、システムへ",
+              "システムから、時間をまたぐ振る舞いへ"
+            ]
+          },
           "マルチモーダルAIは、この領域をさらに広い何かへと押し進めます。「状況認識」をデザインすることです。",
           "システムは、いま何が起きていると考えているのか。その信念を支える根拠は何か。不確実性を、どう伝えるのか。どうやって、邪魔にならずにいるのか。",
           "これらの問いは、新しいものではありません。しかし、いまや避けて通れません。"
@@ -111,19 +131,25 @@
         "paragraphs": [
           "マルチモーダルAIが成熟するにつれ、最も重要な問いはもはや、システムに何が「できるか」ではなくなっています。どう振る舞うか——何に気づき、何を記憶し、不完全な情報にどれだけの自信を持って行動するか、です。",
           "現在の研究と初期のプロダクトのシグナルをもとに、次に最も探求したいマルチモーダルデザインの課題を、3つ挙げます。",
-          { "h3": "1. プロンプトから、状況的トリガーへ" },
+          {
+            "h3": "1. プロンプトから、状況的トリガーへ"
+          },
           "ほとんどのAIシステムは、いまだに尋ねられるのを待っています。",
           "マルチモーダルなシステムでさえ、画像や音声、動画を、同じループへのより豊かな入力として扱っていることが多い——プロンプトが入り、応答が出る。しかしアフェクティブ・コンピューティングとコンテキストアウェアなシステムに関する研究は、別のモデルを示唆しています。明示的な要求ではなく、「摩擦のパターン」を認識することから知能が立ち上がる、というモデルです。",
           "ためらい。繰り返し。トーンの変化。ペースの変化。",
           "これらの信号は、すでに存在しています。デザイン上の課題は、検知そのものではなく、判断です。それはいつ重要なのか。介入が助けになるのはいつか。沈黙のほうがよいのはいつか。",
           "私が関心を持っているのは、確信が高く、結果が重要な場合にだけ介入するシステムです。割り込む権利を、みずから獲得するシステム。その抑制をデザインすることが、この先のマルチモーダルの課題の中でも、とりわけ重要になるかもしれません。",
-          { "h3": "2. 監視なきエフェメラルなマルチモーダル記憶" },
+          {
+            "h3": "2. 監視なきエフェメラルなマルチモーダル記憶"
+          },
           "マルチモーダルAIは、自然と、より豊かな記憶を可能にします。何が言われたか、何が見られたか、どう言われたか、いつだったか。その能力は同時に、最大のリスクでもあります。",
           "人間とAIのインタラクションに関する研究は一貫して、短命な記憶が有用性と信頼を向上させることを示していますが、多くのプロダクトはいまだに記憶を二択として扱っています。永久に保持するか、完全に破棄するかです。",
           "私が関心を持っているのは、その中間です。モダリティをまたいで、エフェメラルに、減衰していく記憶。",
           "システムが文脈を短く記憶し、デフォルトでは薄れさせ、ユーザーが意図的に重要なものだけを保存できるとしたら、どうでしょうか。雑談ではなく、意思決定。生の入力ではなく、結果。網羅的なログではなく、意図。",
           "記憶を、形とライフスパンとアフォーダンスを持つ「素材」としてデザインすることは、この領域をますます定義しつつある監視への懸念を引き起こすことなく、より有能なAI体験を切り拓く可能性があります。",
-          { "h3": "3. 入力が不完全なときの、確信のデザイン" },
+          {
+            "h3": "3. 入力が不完全なときの、確信のデザイン"
+          },
           "マルチモーダルシステムが、よりノイズが多く、より曖昧な入力——ぼやけた画像、部分的な音声、環境信号——を取り込むようになるにつれ、最大のリスクは失敗ではありません。過信です。",
           "現代のモデルの多くは、すでに内部で不確実性を追跡しています。欠けているのは、その不確実性が人にどう伝えられるかです。",
           "今日、不確実性はしばしば隠されているか、免責事項として表面化されます。どちらも、信頼を築きません。",
@@ -136,7 +162,13 @@
         "paragraphs": [
           "これらの課題を合わせて見ると、デザインの役割における一つの転換が見えてきます。",
           "私たちはもう、インターフェースやフローだけを形づくっているのではありません。形づくっているのは——",
-          { "list": ["システムが何に気づくか", "何を記憶するか", "どれだけの確信を持って行動するか"] },
+          {
+            "list": [
+              "システムが何に気づくか",
+              "何を記憶するか",
+              "どれだけの確信を持って行動するか"
+            ]
+          },
           "マルチモーダルAIが本質的に必要としているのは、より多くの機能ではありません。より良い判断力です。",
           "それが、次に最も探求したい領域です。"
         ]
@@ -151,14 +183,294 @@
       }
     ],
     "citations": [
-      { "name": "MIT Media Lab — アフェクティブ・コンピューティング研究(表情認識・音声分析による感情推定)" },
-      { "name": "Google DeepMind — マルチモーダルAIモデル「Gemini」、ロボティクスモデル「PaLM-E」" },
-      { "name": "Meta AI — 6つのモダリティを統合する研究モデル「ImageBind」" }
+      {
+        "name": "MIT Media Lab — アフェクティブ・コンピューティング研究(表情認識・音声分析による感情推定)"
+      },
+      {
+        "name": "Google DeepMind — マルチモーダルAIモデル「Gemini」、ロボティクスモデル「PaLM-E」"
+      },
+      {
+        "name": "Meta AI — 6つのモダリティを統合する研究モデル「ImageBind」"
+      }
     ]
   },
   "en": {
     "title": "Designing for Awareness: How Multimodal AI Is Reshaping the Future of Interaction",
     "excerpt": "For most of its history, AI has been blind and deaf—reasoning only from text. Multimodal AI changes what design is responsible for: not just interfaces, but what a system notices, remembers, and knows when to leave alone.",
-    "substackUrl": "https://upstreamjournal.substack.com/p/designing-for-awareness-how-multimodal"
+    "substackUrl": "https://upstreamjournal.substack.com/p/designing-for-awareness-how-multimodal",
+    "subhead": "For most of its recent history, artificial intelligence has been blind, deaf, and oddly confident.",
+    "body": [
+      {
+        "html": "Even as large language models grew more fluent, their understanding of the world was narrow. They relied almost entirely on text—documents, prompts, transcripts—stripped of tone, environment, and physical context. The results were impressive but fragile. Systems sounded intelligent while routinely misunderstanding reality."
+      },
+      {
+        "html": "That limitation is now being addressed through multimodal AI: models that combine text with images, audio, video, and increasingly, sensor-based data like motion, depth, and spatial context."
+      },
+      {
+        "html": "This shift is often described as a technical upgrade. In practice, it’s a change in how intelligence is designed, perceived, and trusted."
+      },
+      {
+        "h2": "A brief history: multimodal before it was fashionable"
+      },
+      {
+        "html": "The idea that intelligence improves when multiple signals are combined is not new. In the late 1990s and early 2000s, researchers in human–computer interaction and cognitive science showed that humans rely on overlapping sensory cues to reduce ambiguity. Facial expression alone is unreliable; tone of voice helps. Speech alone is ambiguous; gesture clarifies."
+      },
+      {
+        "html": "Early AI systems experimented with this insight. Affective computing research at institutions like MIT Media Lab combined facial recognition with vocal analysis to infer emotional states. Robotics labs fused vision with tactile sensors to help machines grasp objects more reliably. These systems worked—but they were narrow, expensive, and difficult to scale."
+      },
+      {
+        "html": "What changed around 2023 was not the idea, but the infrastructure."
+      },
+      {
+        "h2": "Foundation models change the equation"
+      },
+      {
+        "html": "The release of large-scale foundation models marked a turning point. Instead of training separate models for separate tasks, companies began building general-purpose models that learn shared representations across domains."
+      },
+      {
+        "html": "OpenAI’s GPT-4, released in 2023, was one of the first widely deployed models to accept image inputs alongside text. In demonstrations, users showed the model photos of everyday objects—whiteboards, refrigerators, sketches—and received context-aware responses that went well beyond image captioning. The model wasn’t just recognizing pixels; it was reasoning about situations."
+      },
+      {
+        "html": "Google DeepMind followed with Gemini, designed from the ground up as a multimodal system spanning text, images, audio, video, and code. Anthropic’s Claude introduced vision capabilities soon after. Meanwhile, Meta AI released ImageBind, a research model that aligned six modalities—text, images, audio, video, depth data, and motion sensor data—into a single embedding space."
+      },
+      {
+        "html": "The significance of ImageBind was not its performance on consumer tasks, but its implication: modalities no longer need to be paired one-to-one. Any signal can be related to any other."
+      },
+      {
+        "html": "This is a fundamental change. Instead of asking “how do we add vision to language,” researchers are now asking “how do we represent the world consistently, regardless of how it’s sensed?”"
+      },
+      {
+        "h2": "From interaction to context"
+      },
+      {
+        "html": "Most AI products today are still interaction-driven. The user asks. The system responds. This model works well when the problem is well-defined and the context is explicit."
+      },
+      {
+        "html": "Multimodal systems begin to erode that assumption."
+      },
+      {
+        "html": "When an AI can analyze a screenshot alongside a support ticket, it no longer needs to ask clarifying questions. When a meeting assistant can combine speech patterns, facial cues, and presentation slides, it can detect confusion or disagreement without being prompted. When a system can observe what’s happening—visually, temporally, spatially—the burden of explanation shifts away from the user."
+      },
+      {
+        "html": "This is why multimodal AI is increasingly described as “context-aware.”"
+      },
+      {
+        "html": "It’s also why design becomes more consequential."
+      },
+      {
+        "h2": "The rise of non-obvious inputs"
+      },
+      {
+        "html": "While text, images, and audio dominate headlines, some of the most interesting multimodal research is happening outside traditional UI."
+      },
+      {
+        "html": "Sensor data—motion, depth, temperature, inertial measurement units—is increasingly treated as a first-class input. In robotics, models like Google’s PaLM-E integrate visual perception with proprioceptive data to plan physical actions. In autonomous vehicles, AI systems fuse camera feeds, radar, lidar, GPS, and audio to make safety-critical decisions."
+      },
+      {
+        "html": "Beyond mobility, researchers are experimenting with biometric signals, environmental data, and even chemical sensing. Electronic “noses,” for example, can detect gas leaks or spoilage by interpreting molecular signatures, adding a biochemical layer to AI perception. While these systems are largely industrial or experimental today, they point to a broader trend: intelligence grounded in the physical world."
+      },
+      {
+        "html": "For designers, this raises new questions. These inputs don’t arrive through buttons or forms. They are ambient, continuous, and often invisible."
+      },
+      {
+        "h2": "Attention as a design decision"
+      },
+      {
+        "html": "As systems gain access to more signals, the limiting factor is no longer data—it’s attention."
+      },
+      {
+        "html": "Every multimodal system must decide:"
+      },
+      {
+        "list": [
+          "Which signals matter",
+          "Which can be ignored",
+          "How long context should persist",
+          "When uncertainty should be surfaced"
+        ]
+      },
+      {
+        "html": "These decisions are rarely visible in interface mockups, but they shape user trust more than any visual detail. A system that overreacts to a fleeting signal feels invasive. One that ignores meaningful context feels incompetent."
+      },
+      {
+        "html": "This is where design leadership matters. Engineers can make models more capable. Designers decide how those capabilities are expressed—or restrained."
+      },
+      {
+        "h2": "Quiet UX beats spectacular demos"
+      },
+      {
+        "html": "The most compelling multimodal experiences tend to be understated."
+      },
+      {
+        "html": "A well-designed system asks fewer questions. It reduces friction rather than adding novelty. It intervenes selectively."
+      },
+      {
+        "html": "This runs counter to how AI is often marketed. Demos emphasize spectacle: real-time voice, animated avatars, visual effects. In practice, sustained adoption comes from systems that feel reliable and respectful."
+      },
+      {
+        "html": "In customer support, multimodal AI works best when it resolves issues faster without drawing attention to itself. In education, it helps when it notices confusion without embarrassing the learner. In creative tools, it succeeds when it augments intent without hijacking the process."
+      },
+      {
+        "html": "Multimodal UX is not louder UX. It’s more precise."
+      },
+      {
+        "h2": "Academia and industry are converging—uneasily"
+      },
+      {
+        "html": "Academic research has long emphasized multimodal grounding as a path toward robust intelligence. Industry adoption, however, is driven by different incentives: cost reduction, automation, and differentiation."
+      },
+      {
+        "html": "These motivations are now colliding."
+      },
+      {
+        "html": "Healthcare, education, and enterprise tools all suffer when AI lacks context. At the same time, regulatory and ethical concerns increase as systems perceive more. Facial analysis, voice stress detection, and biometric inference carry real risks."
+      },
+      {
+        "html": "Design sits at the intersection of these pressures. It translates capability into behavior. It defines boundaries."
+      },
+      {
+        "h2": "Designing trust in perceptive systems"
+      },
+      {
+        "html": "Trust in multimodal AI won’t be earned through transparency statements alone. It will be earned through consistency, restraint, and recoverability."
+      },
+      {
+        "html": "Users will judge systems based on:"
+      },
+      {
+        "list": [
+          "How often they’re wrong",
+          "How confidently they’re wrong",
+          "How they respond when challenged",
+          "Whether they respect ambiguity"
+        ]
+      },
+      {
+        "html": "A system that sees more must assume less."
+      },
+      {
+        "html": "That principle may prove more important than any model benchmark."
+      },
+      {
+        "h2": "From interfaces to awareness"
+      },
+      {
+        "html": "Over time, design has expanded in scope:"
+      },
+      {
+        "list": [
+          "From screens to flows",
+          "From flows to systems",
+          "From systems to behavior over time"
+        ]
+      },
+      {
+        "html": "Multimodal AI pushes the discipline toward something broader: designing awareness."
+      },
+      {
+        "html": "What does the system believe is happening?<br>What evidence supports that belief?<br>How does it communicate uncertainty?<br>How does it stay out of the way?"
+      },
+      {
+        "html": "These questions are not new—but they are now unavoidable."
+      },
+      {
+        "h2": "Themes I’m Exploring for Multimodal Design in the Coming Year"
+      },
+      {
+        "html": "As multimodal AI matures, the most important questions are no longer about what systems <em>can</em> do. They’re about how they behave—what they notice, what they remember, and how confidently they act on incomplete information."
+      },
+      {
+        "html": "Based on current research and early product signals, these are the three multimodal design challenges I’m most interested in exploring next."
+      },
+      {
+        "h2": "1. From Prompts to Situational Triggers"
+      },
+      {
+        "html": "Most AI systems still wait to be asked."
+      },
+      {
+        "html": "Even multimodal ones often treat images, audio, or video as richer inputs to the same loop: prompt in, response out. But research in affective computing and context-aware systems suggests a different model—one where intelligence emerges from recognizing <em>patterns of friction</em>, not explicit requests."
+      },
+      {
+        "html": "Hesitation. Repetition. Shifts in tone. Changes in pace."
+      },
+      {
+        "html": "These signals already exist. The design challenge isn’t detection—it’s judgment. When do they matter? When is intervention helpful? When is silence better?"
+      },
+      {
+        "html": "I’m interested in systems that step in only when confidence is high and consequences are meaningful—systems that earn the right to interrupt. Designing that restraint may be one of the most important multimodal challenges ahead."
+      },
+      {
+        "h2": "2. Ephemeral Multimodal Memory Without Surveillance"
+      },
+      {
+        "html": "Multimodal AI naturally enables richer memory: what was said, what was seen, how it was said, and when. That capability is also its greatest risk."
+      },
+      {
+        "html": "While human–AI interaction research consistently shows that short-lived memory improves usefulness and trust, most products still treat memory as binary—either retained indefinitely or discarded entirely."
+      },
+      {
+        "html": "I’m interested in a middle ground: ephemeral, decaying memory across modalities."
+      },
+      {
+        "html": "What if systems remembered context briefly, let it fade by default, and allowed users to intentionally preserve what mattered? Decisions instead of chatter. Outcomes instead of raw inputs. Intent instead of exhaustive logs."
+      },
+      {
+        "html": "Designing memory as a <em>material</em>—with shape, lifespan, and affordances—could unlock more capable AI experiences without triggering the surveillance concerns that increasingly define the category."
+      },
+      {
+        "h2": "3. Designing Confidence When Inputs Are Imperfect"
+      },
+      {
+        "html": "As multimodal systems ingest noisier, more ambiguous inputs—blurry images, partial audio, environmental signals—the biggest risk isn’t failure. It’s overconfidence."
+      },
+      {
+        "html": "Most modern models already track uncertainty internally. What’s missing is how that uncertainty is expressed to people."
+      },
+      {
+        "html": "Today, uncertainty is often hidden or surfaced through disclaimers. Neither builds trust."
+      },
+      {
+        "html": "I’m interested in systems that modulate tone, specificity, and assertiveness based on input quality—mirroring how humans naturally communicate doubt. Not explicit warnings, but subtle shifts in language and recommendation strength."
+      },
+      {
+        "html": "In high-stakes domains—healthcare, finance, legal, enterprise—this may become table stakes. Trust won’t come from always being right. It will come from knowing when the system might not be."
+      },
+      {
+        "h2": "Why these themes matter together"
+      },
+      {
+        "html": "Taken together, these challenges point to a shift in the role of design."
+      },
+      {
+        "html": "We’re no longer just shaping interfaces or flows. We’re shaping:"
+      },
+      {
+        "list": [
+          "what the system notices",
+          "what it remembers",
+          "how confidently it acts"
+        ]
+      },
+      {
+        "html": "Multimodal AI doesn’t primarily need more features. It needs better judgment."
+      },
+      {
+        "html": "That’s the space I’m most interested in exploring next."
+      },
+      {
+        "h2": "Looking ahead"
+      },
+      {
+        "html": "My own interest is in exploring multimodal AI experiences that move beyond productivity theater and toward genuine collaboration. Systems that observe context carefully, act sparingly, and earn trust gradually."
+      },
+      {
+        "html": "The future of AI design won’t be defined by how much a system can do."
+      },
+      {
+        "html": "It will be defined by how well it understands when to do nothing."
+      }
+    ],
+    "originalDate": "2025-12-18"
   }
 }

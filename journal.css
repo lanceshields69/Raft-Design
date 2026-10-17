@@ -680,3 +680,185 @@
     height: 210px;
   }
 }
+
+/* ---- Article: blocks used by native English articles ----
+   Reuse the article column, type scale and tokens above; nothing here
+   introduces new colors or sizes beyond one-off table/figure metrics. */
+
+.article-list a,
+.article-facts a,
+.article-source a {
+  color: var(--text-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: opacity 0.2s;
+}
+
+.article-list a:hover,
+.article-facts a:hover,
+.article-source a:hover {
+  opacity: 0.7;
+}
+
+.article-p code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+  padding: 1px var(--space-xs);
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+}
+
+.article-list {
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-body);
+}
+
+ol.article-list li {
+  list-style: decimal;
+}
+
+.article-h2,
+.article-h3 {
+  scroll-margin-top: 96px; /* clears the sticky nav for #fragment links */
+}
+
+.article-section > .article-h2:not(:first-child),
+.article-section > .article-h3 {
+  padding-top: var(--space-sm);
+}
+
+.article-rule {
+  width: 100%;
+  border: 0;
+  border-top: 1px solid var(--border-rule);
+  margin: var(--space-sm) 0;
+}
+
+.article-source {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.article-note {
+  padding: var(--space-md) var(--space-lg);
+  border: 1px solid var(--border-rule);
+  border-left: 3px solid var(--text-accent);
+  background: var(--bg-elevated);
+}
+
+.article-facts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--border-rule);
+  border-bottom: 1px solid var(--border-rule);
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-body);
+  color: var(--text-primary);
+}
+
+.article-facts-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: var(--space-md);
+}
+
+.article-facts dt {
+  font-weight: var(--weight-bold);
+  color: var(--text-muted);
+}
+
+.article-facts dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.article-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border-rule);
+}
+
+.article-table-wrap:focus-visible {
+  outline: 2px solid var(--text-accent);
+  outline-offset: 2px;
+}
+
+.article-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--text-primary);
+  text-align: left;
+}
+
+.article-table caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.article-table th,
+.article-table td {
+  padding: var(--space-12) var(--space-md);
+  vertical-align: top;
+  border-bottom: 1px solid var(--border-rule);
+}
+
+.article-table tbody tr:last-child th,
+.article-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.article-table thead th {
+  font-size: var(--font-size-eyebrow);
+  letter-spacing: var(--tracking-section-title);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+}
+
+.article-table tbody th {
+  font-weight: var(--weight-bold);
+  white-space: nowrap;
+}
+
+.article-figure {
+  margin: var(--space-sm) 0;
+}
+
+.article-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.article-figure figcaption {
+  padding-top: var(--space-sm);
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+@media (max-width: 480px) {
+  .article-facts-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .article-nav {
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  /* English titles are long (up to ~90 characters); the 60px display leading is sized for Japanese. */
+  html[lang="en"] .article-title {
+    line-height: 40px;
+  }
+}

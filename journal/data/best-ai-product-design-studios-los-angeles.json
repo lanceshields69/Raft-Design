@@ -1,0 +1,336 @@
+{
+  "slug": "best-ai-product-design-studios-los-angeles",
+  "date": "2026-10-17",
+  "image": "Raft-Design-Founder.jpg",
+  "imageWidth": 2432,
+  "imageHeight": 1728,
+  "en": {
+    "title": "5 Best Brand and AI Product Design Studios for Startups in Los Angeles (2026)",
+    "excerpt": "Five Los Angeles design partners, five different strengths. A practical guide for AI startups choosing between brand, product UX, design systems, and engineering.",
+    "metaTitle": "5 Best AI Brand & Product Design Studios in LA (2026) | Raft Design",
+    "metaDescription": "Compare Raft Design, Venice, WANDR, Goji Labs and basement.studio for AI startups: brand, product UX, engineering and design systems. Find your fit.",
+    "subhead": "Five studios, five different strengths—from integrated brand and product foundations to UX research, software engineering, and ambitious digital launches.",
+    "displayDate": "October 2026",
+    "original": true,
+    "body": [
+      {
+        "html": "It’s never been easier to get an AI product into someone’s hands. A small team can move from a prompt to a working prototype in days. But building faster doesn’t necessarily help customers understand what a product does, trust what it tells them, or see why it matters."
+      },
+      {
+        "html": "For startups entering Series A or B, these questions become harder to postpone. The brand developed around an early MVP may not reflect the business anymore. New product features introduce inconsistent interactions. Marketing, product, and engineering teams start making design decisions independently. AI adds its own challenges around uncertainty, user control, and making complex technology understandable."
+      },
+      {
+        "html": "A good design partner can help, but not every studio solves the same problem. Some excel at brand and go-to-market work. Others specialize in research, enterprise UX, or engineering. The useful question isn’t <em>Which agency is best?</em> It’s <em>Which team is best equipped to address the problem we’re facing right now?</em>"
+      },
+      {
+        "html": "Here are five studios worth considering for startups in the Los Angeles technology ecosystem."
+      },
+      {
+        "note": "<strong>Editorial disclosure:</strong> This article is published by Raft Design, one of the studios included in the comparison, and written by its founder. Selections reflect publicly available work, services, and fit for growing AI startups as reviewed in October 2026. The order is an editorial judgment, not a measured ranking of design quality. We link to each studio’s published work so readers can evaluate the evidence themselves."
+      },
+      {
+        "h2": "At a glance"
+      },
+      {
+        "table": {
+          "caption": "Comparison of five design studios by best fit and core strength",
+          "head": [
+            "Studio",
+            "Best fit",
+            "Core strength"
+          ],
+          "rows": [
+            [
+              "1. Raft Design",
+              "Recently funded teams building brand and product foundations together",
+              "Integrated brand, AI product design, AI-ready design systems"
+            ],
+            [
+              "2. Venice Inc.",
+              "AI startups defining a new category and preparing for market",
+              "Brand, product and go-to-market design"
+            ],
+            [
+              "3. WANDR",
+              "AI products struggling with usability, trust or adoption",
+              "UX research, product strategy and interaction design"
+            ],
+            [
+              "4. Goji Labs",
+              "Startups that need design and production software development",
+              "Product discovery, UX and engineering"
+            ],
+            [
+              "5. basement.studio",
+              "Technology companies launching a memorable digital presence",
+              "Brand, interactive web experiences and creative technology"
+            ]
+          ]
+        }
+      },
+      {
+        "h2": "1. Raft Design — Integrated brand and AI product foundations"
+      },
+      {
+        "meta": [
+          [
+            "Location",
+            "Hollywood, Los Angeles"
+          ],
+          [
+            "Best for",
+            "Recently funded Series A and B startups whose brand, product experience, and design infrastructure need to grow together"
+          ],
+          [
+            "Website",
+            "<a href=\"https://raftdesign.studio/\" target=\"_blank\" rel=\"noopener noreferrer\">raftdesign.studio</a>"
+          ]
+        ]
+      },
+      {
+        "html": "Raft Design brings brand identity and product design into one engagement. That distinction matters at the point when a startup is moving beyond its MVP: the company needs to explain itself to a bigger market while making its increasingly complex product feel like part of the same experience."
+      },
+      {
+        "html": "The studio is founded by Lance Shields, a design leader with more than 25 years of experience across brand and digital products. His previous work includes AI-powered shopping experiences at <a href=\"/work/walmart/\">Walmart</a>, AI creative product initiatives at Adobe, and branding and product-platform work with <a href=\"/work/legalon/\">LegalOn</a>. These are the founder’s earlier roles and engagements, <strong>not</strong> projects that should all be represented as contracts delivered by Raft itself."
+      },
+      {
+        "html": "Raft’s signature offer is its <strong>four-week <a href=\"/design-foundation/\">Design Foundation Sprint</a></strong>. It combines positioning, brand identity, core product UX/UI, and a reusable design system in a single focused engagement for growing startups. The service publishes its starting price rather than asking founders to commit to an open-ended agency process."
+      },
+      {
+        "html": "A key difference is that the system is intended to be <strong><a href=\"/design-system/\">AI-ready</a></strong>. Structured brand guidance, tokens, components, and documentation such as <code>DESIGN.md</code> help marketing and product teams give their AI-assisted content and coding tools consistent instructions instead of repeatedly reinventing the company’s visual and interaction rules. This is a practical goal, not a claim that every AI tool is already directly integrated."
+      },
+      {
+        "html": "Raft is also developing <strong>Keel</strong>, a pre-release product intended to give startups a living brand guide and shared product design foundation that people and AI tools can use. Keel’s planned Figma and repository integrations should not be described as already shipped."
+      },
+      {
+        "html": "Beyond client work, Shields co-founded <strong>AI Design LA</strong>, a community for designers, builders, and startup founders exploring AI-native practices. Raft designed and built the community website—one of the studio’s own projects and a way to support knowledge-sharing beyond commercial engagements."
+      },
+      {
+        "html": "<strong>When to consider Raft:</strong> You need brand and product design addressed together, want direct access to senior product design judgment, and need reusable foundations your team can extend after the engagement."
+      },
+      {
+        "html": "<strong>What to consider:</strong> Raft is a founder-led boutique, not a large software engineering consultancy. A four-week foundation sprint delivers strategy, core experiences, prototyping and systems; it isn’t a promise to ship a complete production application with complex backend infrastructure."
+      },
+      {
+        "html": "<strong>Explore:</strong> <a href=\"/design-foundation/\">Design Foundation Sprint</a> · <a href=\"/design-system/\">AI-ready design systems</a> · <a href=\"https://designwithkeel.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Keel</a> · <a href=\"https://aidesignla.org/about/\" target=\"_blank\" rel=\"noopener noreferrer\">AI Design LA</a>"
+      },
+      {
+        "h2": "2. Venice Inc. — Brand, product and go-to-market design"
+      },
+      {
+        "meta": [
+          [
+            "Location",
+            "California (the studio calls itself “The Design Company of California”)"
+          ],
+          [
+            "Best for",
+            "Early-stage AI companies introducing a product or defining a new category"
+          ],
+          [
+            "Website",
+            "<a href=\"https://www.venice.inc/\" target=\"_blank\" rel=\"noopener noreferrer\">venice.inc</a>"
+          ]
+        ]
+      },
+      {
+        "html": "Venice Inc. is a strong comparison because it genuinely works across <strong>both brand and product design</strong>. A good example is Runlayer, a seed-stage company focused on helping organizations securely connect AI tools to business infrastructure. Venice’s published case study describes a six-month engagement covering the brand, website, and product experience."
+      },
+      {
+        "html": "Its work with Windmill provides another example of designing multiple sides of a young business at once: visual identity, go-to-market work, and new product interaction patterns. Both examples show how product design decisions and market communication can develop together."
+      },
+      {
+        "html": "For a startup trying to explain an unfamiliar technology, that integrated approach can be valuable. Buyers need a story they can understand, while users need an experience that makes the story credible."
+      },
+      {
+        "html": "<strong>When to consider Venice:</strong> You are at seed or early growth stage and need a distinctive launch identity and thoughtful product design from a small, closely involved team."
+      },
+      {
+        "html": "<strong>What to consider:</strong> Ask about the scope of design-system documentation, how work is handed over, and what ongoing ownership looks like once the launch is over. Those questions matter regardless of the studio’s visual quality."
+      },
+      {
+        "html": "<strong>Explore:</strong> <a href=\"https://www.venice.inc/runlayer\" target=\"_blank\" rel=\"noopener noreferrer\">Runlayer case study</a> · <a href=\"https://www.venice.inc/windmill\" target=\"_blank\" rel=\"noopener noreferrer\">Windmill case study</a>"
+      },
+      {
+        "h2": "3. WANDR — Product usability, trust and adoption"
+      },
+      {
+        "meta": [
+          [
+            "Location",
+            "Los Angeles, with other offices listed in Silicon Valley, Austin, Miami and Mexico City"
+          ],
+          [
+            "Best for",
+            "Teams with a working AI product that users find confusing, difficult to trust, or hard to adopt"
+          ],
+          [
+            "Website",
+            "<a href=\"https://www.wandr.studio/\" target=\"_blank\" rel=\"noopener noreferrer\">wandr.studio</a>"
+          ]
+        ]
+      },
+      {
+        "html": "WANDR focuses on product strategy, UX research, and experience design. That makes it a logical choice for companies whose underlying technology is capable but whose customers aren’t getting value from it consistently."
+      },
+      {
+        "html": "AI interaction design is different from polishing a conventional dashboard. An AI system can produce an incomplete answer, behave inconsistently, or misunderstand user intent. The experience needs to make room for uncertainty, correction, feedback and meaningful control."
+      },
+      {
+        "html": "WANDR’s published AI product design approach addresses these questions. Its work with Vectrix included product strategy, end-to-end UX and a design system, while its Sticky.io work involved redesigning merchant and admin interfaces and establishing design operations. These are relevant examples of turning difficult workflows into usable products; they should not be misrepresented as proof that every project used generative AI."
+      },
+      {
+        "html": "<strong>When to consider WANDR:</strong> Your product is live, but onboarding, workflow clarity, trust, or adoption needs serious attention. A research-centered engagement may uncover problems that visual polish alone won’t fix."
+      },
+      {
+        "html": "<strong>What to consider:</strong> If you also need a major brand repositioning and identity overhaul, ask how WANDR would staff and integrate that work with UX. Its public positioning places more emphasis on the product experience."
+      },
+      {
+        "html": "<strong>Explore:</strong> <a href=\"https://www.wandr.studio/industries/ai-product-design\" target=\"_blank\" rel=\"noopener noreferrer\">WANDR’s AI product design practice</a>"
+      },
+      {
+        "h2": "4. Goji Labs — Design and production development"
+      },
+      {
+        "meta": [
+          [
+            "Location",
+            "Serves Los Angeles; describes its work as digital and remote"
+          ],
+          [
+            "Best for",
+            "Startups that need to design and engineer a functioning application"
+          ],
+          [
+            "Website",
+            "<a href=\"https://gojilabs.com/\" target=\"_blank\" rel=\"noopener noreferrer\">gojilabs.com</a>"
+          ]
+        ]
+      },
+      {
+        "html": "Goji Labs combines product discovery, UX/UI design and software engineering. That is a different proposition from a design-only studio, and a useful one for startups without a full internal development team."
+      },
+      {
+        "html": "An impressive AI demo is not the same as a dependable application. Production software has to handle integration, security, performance, failure states and ongoing maintenance. Working with a partner that addresses both experience and engineering can reduce the coordination required to move from concept to launch."
+      },
+      {
+        "html": "Goji Labs publicly offers AI product-development services alongside its broader web and mobile development practice. Its case studies span digital platforms and complex workflows; readers should evaluate the relevant examples and technical scope rather than assuming every project is an AI-native product."
+      },
+      {
+        "html": "<strong>When to consider Goji Labs:</strong> You need an engineering-capable delivery partner, particularly when the work involves custom applications, AI integrations, and infrastructure beyond the interface."
+      },
+      {
+        "html": "<strong>What to consider:</strong> If brand strategy and visual identity are major priorities, clarify whether those deliverables are included or would require additional collaborators."
+      },
+      {
+        "html": "<strong>Explore:</strong> <a href=\"https://gojilabs.com/ai-product-development/\" target=\"_blank\" rel=\"noopener noreferrer\">AI product development services</a>"
+      },
+      {
+        "h2": "5. basement.studio — Brand-led digital experiences and creative technology"
+      },
+      {
+        "meta": [
+          [
+            "Presence",
+            "Founded in 2020 and based in Mar del Plata, Argentina; works primarily with technology companies in the San Francisco Bay Area. It does not list a Los Angeles office, so treat it as a remote partner for LA teams."
+          ],
+          [
+            "Best for",
+            "Technology companies looking for a distinctive brand and technically sophisticated digital launch"
+          ],
+          [
+            "Website",
+            "<a href=\"https://basement.studio/\" target=\"_blank\" rel=\"noopener noreferrer\">basement.studio</a>"
+          ]
+        ]
+      },
+      {
+        "html": "basement.studio combines visual design, interaction, motion and frontend engineering. Its work is particularly relevant when a technology company’s website has to do more than describe features: it needs to create understanding, establish credibility and make a complicated offering memorable."
+      },
+      {
+        "html": "Its relationship with Harvey AI is a useful case study for founders. The studio describes a partnership that began in late 2022, when Harvey was a seed-stage startup, and evolved as the company grew, encompassing brand identity, the website, marketing materials, and visual consistency. It’s a good reminder that a brand system should be able to evolve without being reinvented every time the company reaches a new stage."
+      },
+      {
+        "html": "The studio has also worked on digital experiences for Vercel, demonstrating a strong connection between ambitious visual design and frontend implementation."
+      },
+      {
+        "html": "<strong>When to consider basement.studio:</strong> Your immediate challenge is a high-profile launch, a memorable digital brand presence, or an interactive website requiring strong design and engineering craft."
+      },
+      {
+        "html": "<strong>What to consider:</strong> If your main requirement is ongoing complex SaaS product UX or deep customer research, ask for specific examples of those engagements and how that work would be staffed."
+      },
+      {
+        "html": "<strong>Explore:</strong> <a href=\"https://basement.studio/post/from-seed-to-unicorn-how-we-supercharged-harvey-ai\" target=\"_blank\" rel=\"noopener noreferrer\">Harvey AI story</a> · <a href=\"https://basement.studio/\" target=\"_blank\" rel=\"noopener noreferrer\">basement.studio</a>"
+      },
+      {
+        "h2": "What AI startup founders should ask before hiring a design studio"
+      },
+      {
+        "html": "The comparison matters less than the questions it prompts. Before contacting an agency, clarify the problem you’re trying to solve."
+      },
+      {
+        "h3": "Do you need brand design, product design, or both?"
+      },
+      {
+        "html": "A startup’s early identity may be good enough for fundraising but not for a larger market. Meanwhile, its product may have grown through months of quick decisions. If both sides need to mature, find out whether the partner develops brand and UX together or treats them as unrelated workstreams."
+      },
+      {
+        "h3": "Has the team designed AI-powered products, or does it mainly use AI tools?"
+      },
+      {
+        "html": "Both skills have value, but they’re not the same. Ask how the designers handle unreliable answers, model uncertainty, human review, correction, feedback, and trust. An actual project walkthrough is more useful than a list of AI tools."
+      },
+      {
+        "h3": "Will the work survive the handoff?"
+      },
+      {
+        "html": "Ask what you will own at the end: approved visual assets, design tokens, reusable components, content guidance, source files, interaction patterns, and implementation documentation. If your team uses AI to produce content or code, ask how those tools will access and apply the design rules."
+      },
+      {
+        "h3": "Who will do the work?"
+      },
+      {
+        "html": "Find out whether the people involved in discovery also make the key design decisions during the engagement. A large team offers capacity; a senior-led boutique may offer continuity. Choose the model that fits your needs."
+      },
+      {
+        "h3": "Are you buying deliverables or progress toward a business goal?"
+      },
+      {
+        "html": "A large number of Figma screens does not necessarily mean greater value. Better onboarding, a clearer value proposition, a usable design foundation, or a smoother path to production may matter more than output volume. Agree on the problem and success criteria before debating deliverable counts."
+      },
+      {
+        "h2": "How to choose by growth stage"
+      },
+      {
+        "html": "<strong>Before product-market fit:</strong> Prioritize fast learning, understandable positioning, and enough design to test your assumptions. Avoid buying infrastructure you cannot yet use."
+      },
+      {
+        "html": "<strong>After a Series A or B round:</strong> Ask whether your brand identity, product UX, and reusable design foundations can support the next stage of the company. This is often where disconnected decisions begin costing real time."
+      },
+      {
+        "html": "<strong>With an existing product and weak adoption:</strong> Research and usability expertise may be more important than another visual redesign. Understand where users lose confidence or abandon a task."
+      },
+      {
+        "html": "<strong>When you need to ship a complete application:</strong> Make sure your partner has the engineering, security, and operational capabilities required by your product—not just an excellent prototype."
+      },
+      {
+        "html": "<strong>Ahead of a major launch:</strong> Look closely at a studio’s identity work, storytelling, digital craft, and ability to translate unfamiliar technology into a clear experience."
+      },
+      {
+        "h2": "The most useful question to ask"
+      },
+      {
+        "html": "AI is making it faster to build things. It isn’t making the underlying choices automatic: what problem matters, what users should trust, how a product should behave, or how its brand should make sense across every interaction."
+      },
+      {
+        "html": "The five studios here solve different parts of that challenge. A useful selection process starts by deciding which problem matters most right now, then looking for evidence that the team has solved similar problems before."
+      },
+      {
+        "html": "Before you hire anyone, ask one final question: <strong>Will this engagement leave our company better equipped to keep building when the studio is gone?</strong>"
+      }
+    ],
+    "heroImageAlt": "Lance Shields, wearing a green cap, standing in front of a whiteboard and speaking with a seated group in a bright workshop space",
+    "heroPosition": "center 12%",
+    "socialImage": "best-ai-product-design-studios-los-angeles-social.jpg"
+  }
+}

@@ -184,7 +184,7 @@
 
   <url>
     <loc>https://raftdesign.studio/journal/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/journal/" />
@@ -303,10 +303,87 @@
   </url>
 
   <url>
+    <loc>https://raftdesign.studio/journal/best-ai-product-design-studios-los-angeles/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://raftdesign.studio/journal/introducing-the-design-foundation/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://raftdesign.studio/journal/why-i-built-a-raft-not-a-ship/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/journal/why-i-built-a-raft-not-a-ship/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/journal/why-i-built-a-raft-not-a-ship/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/journal/why-i-built-a-raft-not-a-ship/" />
+  </url>
+
+  <url>
+    <loc>https://raftdesign.studio/journal/stop-adding-ai-to-the-design-process/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/journal/stop-adding-ai-to-the-design-process/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/journal/stop-adding-ai-to-the-design-process/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/journal/stop-adding-ai-to-the-design-process/" />
+  </url>
+
+  <url>
+    <loc>https://raftdesign.studio/journal/ai-native-designer-phase-one/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/journal/ai-native-designer-phase-one/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/journal/ai-native-designer-phase-one/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/journal/ai-native-designer-phase-one/" />
+  </url>
+
+  <url>
+    <loc>https://raftdesign.studio/journal/how-i-use-ai/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/journal/how-i-use-ai/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/journal/how-i-use-ai/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/journal/how-i-use-ai/" />
+  </url>
+
+  <url>
+    <loc>https://raftdesign.studio/journal/designing-for-awareness-how-multimodal/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/journal/designing-for-awareness-how-multimodal/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/journal/designing-for-awareness-how-multimodal/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/journal/designing-for-awareness-how-multimodal/" />
+  </url>
+
+  <url>
+    <loc>https://raftdesign.studio/journal/stop-treating-ai-like-cheating-on-your-homework/</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/journal/stop-treating-ai-like-cheating-on-your-homework/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/journal/stop-treating-ai-like-cheating-on-your-homework/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/journal/stop-treating-ai-like-cheating-on-your-homework/" />
+  </url>
+
+  <url>
     <loc>https://raftdesign.studio/ja/journal/ai-native-designer-phase-one/</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/journal/ai-native-designer-phase-one/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/journal/ai-native-designer-phase-one/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/journal/ai-native-designer-phase-one/" />
   </url>
 
   <url>
@@ -314,6 +391,9 @@
     <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/journal/stop-adding-ai-to-the-design-process/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/journal/stop-adding-ai-to-the-design-process/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/journal/stop-adding-ai-to-the-design-process/" />
   </url>
 
   <url>
@@ -321,6 +401,9 @@
     <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/journal/why-i-built-a-raft-not-a-ship/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/journal/why-i-built-a-raft-not-a-ship/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/journal/why-i-built-a-raft-not-a-ship/" />
   </url>
 
   <url>
@@ -328,6 +411,9 @@
     <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/journal/how-i-use-ai/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/journal/how-i-use-ai/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/journal/how-i-use-ai/" />
   </url>
 
   <url>
@@ -335,6 +421,9 @@
     <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/journal/designing-for-awareness-how-multimodal/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/journal/designing-for-awareness-how-multimodal/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/journal/designing-for-awareness-how-multimodal/" />
   </url>
 
   <url>
@@ -342,6 +431,9 @@
     <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/journal/stop-treating-ai-like-cheating-on-your-homework/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/journal/stop-treating-ai-like-cheating-on-your-homework/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/journal/stop-treating-ai-like-cheating-on-your-homework/" />
   </url>
 
 </urlset>

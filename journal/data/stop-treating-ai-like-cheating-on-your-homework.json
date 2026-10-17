@@ -39,17 +39,27 @@
       {
         "heading": "AIネイティブなデザインチームは、実際どう働くか",
         "paragraphs": [
-          { "h3": "リサーチは、タグづけから解釈へと移る" },
+          {
+            "h3": "リサーチは、タグづけから解釈へと移る"
+          },
           "AIネイティブなチームでは、ツールは片手間のプロジェクトではありません。日々のリズムの一部です。",
           "リサーチは、たいていこれが最初に現れる場所です。一人がタグづけと要約に一週間を費やす代わりに、チームは書き起こし、メモ、アンケート回答をモデルに投入し、テーマや矛盾、顧客の「ジョブ」についての最初の切り口を得ます。そして、そのアウトプットを実際のクリップや生のメモと照らし合わせ、間違いを修正し、本当に重要なことを議論することにエネルギーを使います。作業は、手作業の仕分けから、能動的な解釈へと移っていきます。",
           "あるプロジェクトでは、複雑なオンボーディングフローについて18件のインタビューがありました。通常であれば、一週間の孤独な書き起こし作業になっていたはずです。代わりに、デザイナーとリサーチャーは午後を一緒に過ごしました。18セッションすべてをLLMに投入し、テーマを尋ね、さらに押し込みました。「パワーユーザーと新規ユーザーは、どこで分岐するか」「信頼とコントロールについて、人々は何と言っていたか」「インタビュイー同士は、どこで矛盾しているか」。モデルは、見落としていたかもしれないパターンを浮かび上がらせました。経験豊富なユーザーは、システムが明確で即座の価値を示せば、より多くのデータを喜んで提供する一方で、新規ユーザーはプロファイリングのように感じられるものに悪く反応する、というものです。この洞察が、フローの構造と、選択肢のフレーミングの仕方を変えました。機械的なタグづけに使わずに済んだ時間は、クリップを見て、トレードオフを判断することに使われました。",
-          { "h3": "パターンと競合が、スライドショーではなく地図になる" },
+          {
+            "h3": "パターンと競合が、スライドショーではなく地図になる"
+          },
           "競合分析とパターン分析も、同じ方向に動きます。巨大なティアダウンデッキを手作業で作る代わりに、チームはAIを使って多くのプロダクトの主要なフローを歩き、何が起きているかを記述させます。モデルは、繰り返し現れる構造や奇妙な例外を見つけるのが得意です。デザイナーは依然としてフローそのものをレビューしますが、より完全な地形図から出発でき、どこで慣習に従い、どこで破るかについて、より意図的になれます。",
-          { "h3": "プロトタイピングが、アイデアとインタラクションの距離を縮める" },
+          {
+            "h3": "プロトタイピングが、アイデアとインタラクションの距離を縮める"
+          },
           "変化が最も目に見えるのは、プロトタイピングです。AI拡張されたデザインツールとコードアシスタントによって、デザイナーは平易な言葉でフローを説明し、ラフなプロトタイプをすぐに受け取れます。ムードを説明し、モデルにそのムードに合うパレット、タイポグラフィ、マイクロコピーを提案させ、そこから磨き上げていくこともできます。静止フレームから推測させる代わりに、それをコードに落とし込んでエンジニアに固めてもらうこともできます。目標は、AIにデザインをさせることではありません。「これはうまくいくかもしれない」から「誰かがそれを使っている様子が見える」までの道のりを、短くすることです。",
-          { "h3": "書くことが、ボトルネックでなくなる" },
+          {
+            "h3": "書くことが、ボトルネックでなくなる"
+          },
           "ライティングとコミュニケーションも変わります。ブリーフ、原則、ユーザーストーリー、ビジョンメモ、戦略文書、採用基準、人事評価は、しばしばメモや実例から引いたAIの下書きから始まります。そこから人が書き直し、削ぎ落とし、ニュアンスを加え、チームのトーンに調整します。白紙のページは消え、労力は明快さと整合性へと移っていきます。",
-          { "h3": "AIワークスペースが、共有された記憶になる" },
+          {
+            "h3": "AIワークスペースが、共有された記憶になる"
+          },
           "静かに、AIワークスペース自体が、プロジェクトの共有された記憶になっていきます。個人的なプロンプトと忘れられた文書の代わりに、チームは各イニシアチブごとに、リサーチ、ブリーフ、意思決定、却下された選択肢とその理由を種として持つ、長く続くスレッドを保持します。新しい人が加わったとき、その人の前でモデルにここまでの経緯を語らせ、一緒に修正できます。完璧ではありませんが、フォルダとSlackを探し回るよりはましです。",
           "これは、デフォルトが違うだけの、ごく普通の仕事です。"
         ]
@@ -69,22 +79,32 @@
         "heading": "デザインチームが実際にAIを採用するための5つの方法",
         "paragraphs": [
           "AIを片手間の趣味以上のものにしたいなら、「ツールで遊んでみて」だけでは足りません。チームの働き方そのものを変える必要があります。",
-          { "h3": "1. AIを、すべてのプロジェクトの一部にする。傍流にしない" },
+          {
+            "h3": "1. AIを、すべてのプロジェクトの一部にする。傍流にしない"
+          },
           "プロジェクトごとに、AIの具体的な使い道を少なくとも一つ選び、ブリーフに書き込んでください。リサーチ統合、競合レビュー、初期フロー案、ブリーフ執筆、プロトタイピング。「このプロジェクトでAIをどう使うか、そのアウトプットをどう検証するか」といった、シンプルな一文を加えてください。",
           "クリットでは、直接尋ねてください。「AIはどこで役立ったか。そして、依然として人間の判断が必要だったのはどこか」。その一つの問いだけで、AIの使用は当たり前になり、焦点は目新しさではなく品質に保たれます。",
-          { "h3": "2. 個人的なハックではなく、共有されたプロンプトを作る" },
+          {
+            "h3": "2. 個人的なハックではなく、共有されたプロンプトを作る"
+          },
           "多くのチームが停滞するのは、AIの使用が個人的で、隠されているからです。プロンプトを、個人的な小技ではなく、共有されたツールとして扱ってください。",
           "実際にうまくいったプロンプトを集めてください。インタビューのクラスタリング、UXコピーのリライト、フローのマッピング、エッジケースの生成。それぞれについて、次の3つを記録してください。何を貼り付けるか、プロンプトのテキスト、そして結果をどう健全性チェックするか。これらは、デザインシステムのドキュメント、Notion、Confluenceなど、すでに仕事が置かれている場所に保管してください。",
           "目標はシンプルです。二人目の人が、一人目と同じくらい速く価値を得られること。",
-          { "h3": "3. 小さなプロセスA/Bテストを一つ実施する" },
+          {
+            "h3": "3. 小さなプロセスA/Bテストを一つ実施する"
+          },
           "大きなAI変革プログラムは必要ありません。必要なのは、一つの明確な実験です。",
           "リスクの低いプロジェクトを選んでください。ストリームAは、通常のプロセスで進めます。ストリームBは、同じ品質基準と制約のもとで、リサーチ、アイデア出し、文書作成、プロトタイピングにAIを大きく活用します。そして、最初のテスト可能なプロトタイプまでの時間、探索された実行可能なコンセプトの数、PMとエンジニアリングとの整合までの時間、ローンチ後の手戻りを比較してください。",
           "うまくいかなかったことも含めて、結果をオープンに共有してください。一つの正直なケーススタディは、長いAI戦略デッキよりも多くの懐疑論者を動かします。",
-          { "h3": "4. 磨き上げではなく、プロセスに報いる、焦点を絞ったAIハッカソンを行う" },
+          {
+            "h3": "4. 磨き上げではなく、プロセスに報いる、焦点を絞ったAIハッカソンを行う"
+          },
           "ハッカソンは、感情的な障壁を下げ、実践を通じて学ばせるための良い方法です。ただし、派手なデモではなく、プロセスを中心に設計する必要があります。",
           "チームにとって本当に重要な、実際の問題を選んでください。散らかったリサーチの山を統合する、AIネイティブなパターンでコアフローを再考する、散らばった文書を一つのプロジェクトの「頭脳」にまとめる、といったものです。デザイナー、PM、エンジニアからなる、部門横断のスクワッドを組んでください。各スクワッドに、何を尋ね、何を得て、どう修正したかを記述する、シンプルなプロンプトとプロセスのログをつけさせてください。",
           "結果は、AIがどれだけ解決策の探索空間を広げたか、チームがAIに何を委ねたかをどれだけ明確に説明できるか、そのアプローチがどれだけ再利用可能かで評価してください。終わったら、最良のプロンプト、ワークフロー、テンプレートを取り出し、全員が使えるようにしてください。",
-          { "h3": "5. AIの流暢さを、コアなデザインスキルとして扱う" },
+          {
+            "h3": "5. AIの流暢さを、コアなデザインスキルとして扱う"
+          },
           "AIが本当に仕事の一部であるなら、他のコアスキルと同じように扱う必要があります。",
           "LLMを使って責任を持ってリサーチを統合する方法、競合・パターン分析のためのプロンプトパターン、Figma AIとコードアシスタントを使ってより速くプロトタイピングする方法といったテーマについて、短く実践的なセッションを行ってください。AIに自信のあるデザイナーと、まだ学んでいる人を、仮想の演習ではなく実際のプロジェクトでペアにしてください。",
           "人事評価の場では、より多くの選択肢を探るため、あるいはより速く動くために、AIをどう使ったか、そしてどこでAIの失敗を見つけて修正したかを尋ねてください。シグナルは明確です。良いAIの使い方は、良いクラフトの一部であり、ギミックではありません。"
@@ -109,13 +129,219 @@
       }
     ],
     "citations": [
-      { "name": "Ethan Mollick — コンサルタントを対象としたGPT-4研究、「フォースマルチプライヤー」という表現の出典" },
-      { "name": "Jakob Nielsen — UXにおけるAIピボットについての論考" }
+      {
+        "name": "Ethan Mollick — コンサルタントを対象としたGPT-4研究、「フォースマルチプライヤー」という表現の出典"
+      },
+      {
+        "name": "Jakob Nielsen — UXにおけるAIピボットについての論考"
+      }
     ]
   },
   "en": {
     "title": "Stop Treating AI Like Cheating on Your Homework: A Playbook for AI-Native Design Teams",
     "excerpt": "In 2026, as AI becomes standard in everyday tools, the real edge will go to design teams that stop treating it like cheating and build truly AI-native ways of working.",
-    "substackUrl": "https://upstreamjournal.substack.com/p/stop-treating-ai-like-cheating-on"
+    "substackUrl": "https://upstreamjournal.substack.com/p/stop-treating-ai-like-cheating-on",
+    "subhead": "In 2026, as AI becomes standard in everyday tools, the real edge will go to design teams that stop treating it like cheating and build truly AI-native ways of working.",
+    "body": [
+      {
+        "html": "At the top of the tech world, AI is no longer optional. Leaders talk about AI first strategies, teams are told to reach for AI tools before they start from scratch, and performance reviews increasingly ask how people used AI, not whether they did."
+      },
+      {
+        "html": "Yet inside many design teams, the pattern is familiar. People open ChatGPT or another model to clean up an email or summarize a meeting. When it is time for the real work, they close the tab, open Figma, open a blank doc, and work the way they did five years ago."
+      },
+      {
+        "html": "<strong>Ask why, and you mostly hear fear, not ignorance.</strong>"
+      },
+      {
+        "html": "Designers worry that AI will make their work generic. They worry about hallucinations and legal risk. They worry that PMs and engineers already underestimate design, and that saying “AI helped” will reinforce the idea that design is just pushing buttons. Underneath all of that is a quieter feeling many people say out loud: it feels like cheating."
+      },
+      {
+        "html": "The homework metaphor is strong. Many of us were trained that copying is the worst sin. Letting a model analyze research or draft a brief feels suspiciously close to copying someone else’s work. If you take pride in originality and taste, it is not easy to admit that a machine helped generate ideas, patterns or words."
+      },
+      {
+        "html": "That shame has real effects. It keeps AI in the corner, used for low risk tasks but not for the activities that actually drive product strategy."
+      },
+      {
+        "html": "The trouble is that this emotional story does not match what we already see in practice. Experiments across different kinds of knowledge work show that people who use AI with judgment tend to produce better results in less time. In a well known study with consultants, people who used GPT-4 with simple guidance finished more tasks, worked faster, and produced work that outside evaluators rated as significantly higher quality than a control group without AI. Ethan Mollick, who co authored that study, calls AI a force multiplier for creativity and judgment, not a replacement for them."
+      },
+      {
+        "html": "Jakob Nielsen looks at this from a different angle. In his writing on the AI pivot in UX, he argues that we have a limited window to trade yesterday’s expertise for tomorrow’s relevance. Many of the tasks that defined UX in the last decade, such as basic wireframing and routine research synthesis, are now subject to automation. The differentiating value moves toward agency, judgment and persuasion, not manual production. Pretending AI does not exist is not a neutral choice. It is a career decision."
+      },
+      {
+        "html": "I have seen this shift directly over the past year. On the teams I have led, there was a moment when people were still embarrassed to say they used an LLM, a vibe coding session or a generative design tool to get started. It sounded like admitting a shortcut. Somewhere along the way that flipped. Now people enjoy talking through how the model helped them extend their ideas. In reviews, they will say that a direction started as an AI exploration and then show the raw thread, the first ugly draft, and the edits that turned it into something real. The pride is not in the tool. It is in what they did on top of it."
+      },
+      {
+        "html": "That change in attitude mattered more than any new feature."
+      },
+      {
+        "h2": "The AI colleague you pretend you do not have"
+      },
+      {
+        "html": "Mollick likes to describe AI as a new kind of colleague. It is strange, sometimes wrong in confident ways, but it is also tireless and surprisingly capable in language and pattern recognition. The most useful mental model inside design teams is to treat it like a very fast junior."
+      },
+      {
+        "html": "A good junior designer can tag interviews, cluster themes, pull out quotes, sketch flows, draft briefs, try many layout variations and put together a first version of a deck. You do not confuse that work with your own judgment. You review it, correct it and build on it. You also rely on it, because it lets you spend more of your time on decisions rather than mechanics."
+      },
+      {
+        "html": "AI can play the same role. Once you see it that way, the question stops being “is AI good enough” and becomes “where in our process does a fast, tireless junior create leverage.” For modern product design, the honest answer is “almost everywhere.”"
+      },
+      {
+        "html": "The key is to keep ownership of the thinking. You still decide what problem matters. You still choose which options to explore. You still carry responsibility for the final call."
+      },
+      {
+        "h2": "How AI native design teams actually work"
+      },
+      {
+        "html": "<strong>Research moves from tagging to interpretation</strong>"
+      },
+      {
+        "html": "On AI native teams, the tools are not a side project. They are part of the daily rhythm."
+      },
+      {
+        "html": "Research is usually the first place where this shows up. Instead of one person spending a week on tagging and summarizing, the team feeds transcripts, notes and survey responses into a model to get a first cut at themes, contradictions and jobs to be done. They then spend their energy checking that against clips and raw notes, correcting mistakes and debating what really matters. The work shifts from manual sorting to active interpretation."
+      },
+      {
+        "html": "On one project, we had eighteen interviews about a complex onboarding flow. Normally that would have been a week of lonely transcription work. Instead, the designer and researcher sat together for an afternoon. They fed all eighteen sessions into an LLM, asked for themes, then pushed harder: “Where do power users and new users diverge,” “What did people say about trust and control,” “Where do interviewees contradict each other.” The model surfaced a pattern we might have missed: experienced users were happy to give more data if the system showed clear, immediate value, while new users reacted badly to anything that felt like a profile. That insight changed the structure of the flow and how we framed choices. The hours we did not spend on mechanical tagging went into watching clips and deciding trade offs."
+      },
+      {
+        "html": "<strong>Patterns and competitors become a map, not a slideshow</strong>"
+      },
+      {
+        "html": "Competitor and pattern analysis move in the same direction. Rather than manually building huge teardown decks, teams use AI to walk through key flows across many products and describe what is happening. The model is good at spotting recurring structures and odd outliers. Designers still review the flows themselves, but they start from a more complete map of the landscape and can be more intentional about where to follow conventions and where to break them."
+      },
+      {
+        "html": "<strong>Prototyping collapses the distance from idea to interaction</strong>"
+      },
+      {
+        "html": "Prototyping is where the change is most visible. With AI augmented design tools and code assistants, designers can describe a flow in plain language and get a rough prototype back quickly. They can describe a mood and let the model suggest palettes, type choices and microcopy that fit that mood, then refine from there. They can push that into code for engineers to harden, rather than asking them to guess from static frames. The goal is not to let AI design. The goal is to shorten the path from “we think this might work” to “we can see someone using it.”"
+      },
+      {
+        "html": "<strong>Writing stops being the bottleneck</strong>"
+      },
+      {
+        "html": "Writing and communication also shift. Briefs, principles, user stories, vision memos, strategy docs, hiring rubrics and performance reviews often start with AI drafts pulled from notes and examples. People then rewrite, prune, add nuance and tune the tone to the team. The empty page disappears, and the effort moves into clarity and alignment."
+      },
+      {
+        "html": "<strong>The AI workspace becomes shared memory</strong>"
+      },
+      {
+        "html": "Quietly, the AI workspace itself becomes a shared memory for the project. Instead of private prompts and forgotten docs, teams keep a long running thread for each initiative, seeded with research, briefs, decisions, rejected options and rationale. When someone new joins, you can ask the model, in front of them, to tell the story so far and then correct it together. It is not perfect, but it is better than hunting through folders and Slack."
+      },
+      {
+        "html": "This is ordinary work with different defaults."
+      },
+      {
+        "h2": "Trust is the hard problem"
+      },
+      {
+        "html": "If AI can help like this, why do so many teams still hesitate? Because they do not trust it, and they do not think other people will trust it either."
+      },
+      {
+        "html": "From the perspective of a PM, an engineering lead or a lawyer, AI looks like a risk multiplier. It can make up facts. It can encode bias. It can leak data if misused. If AI appears in a spec without explanation, they are right to be nervous."
+      },
+      {
+        "html": "So the real work for design leaders is not only to use AI, but to make AI use legible and auditable."
+      },
+      {
+        "html": "In practice, that means being open about how and where AI was used, treating its output like junior work that always gets critiqued, and anchoring every important conclusion in primary evidence. It means showing prompts and raw outputs in reviews so people can see the chain from input to model to edited artifact. It means talking about the places where the model was wrong, and how the team caught and corrected it."
+      },
+      {
+        "html": "It also means involving PMs and engineers directly. When they help craft prompts, interpret outputs and test ideas, AI stops being “design’s secret weapon” and starts being a shared tool. That alone lowers a lot of resistance."
+      },
+      {
+        "html": "On the teams I have led, the emotional shift has been obvious. Once people see that we are not hiding AI, and not pretending it is better than it is, the shame disappears. Saying that we used an LLM here feels more like saying that we ran a survey or did five extra concepts. It is simply part of the craft."
+      },
+      {
+        "h2": "Five ways to help your design team actually adopt AI"
+      },
+      {
+        "html": "If you want AI to be more than a side hobby, “go play with the tools” is not enough. You have to change how the team works together."
+      },
+      {
+        "h3": "1. Make AI part of every project, not a side quest"
+      },
+      {
+        "html": "For each project, pick at least one concrete use of AI and write it into the brief: research synthesis, competitor review, first draft flows, brief writing or prototyping. Add a simple line such as, “How will we use AI on this project, and how will we validate its output.”"
+      },
+      {
+        "html": "In crits, ask directly, “Where did AI help, and what still needed human judgment.” That one question makes AI use normal and keeps the focus on quality, not novelty."
+      },
+      {
+        "h3": "2. Create shared prompts, not private hacks"
+      },
+      {
+        "html": "Most teams stall because AI use is individual and hidden. Treat prompts as shared tools, not personal tricks."
+      },
+      {
+        "html": "Collect prompts that actually worked: clustering interviews, rewriting UX copy, mapping flows, generating edge cases. For each one, capture three things: what you paste in, the prompt text, and how you sanity-check the result. Store these where the work already lives, such as your design system docs, Notion or Confluence."
+      },
+      {
+        "html": "The goal is simple: the second person should get value as quickly as the first."
+      },
+      {
+        "h3": "3. Run one small process A/B test"
+      },
+      {
+        "html": "You do not need a big AI transformation program. You need one clear experiment."
+      },
+      {
+        "html": "Take a low risk project. Stream A runs your normal process. Stream B uses AI heavily for research, ideation, docs and prototyping, with the same quality bar and constraints. Then compare time to first testable prototype, number of viable concepts explored, time to PM and engineering alignment, and rework after launch."
+      },
+      {
+        "html": "Share the results openly, including what did not work. One honest case study will move more skeptics than a long AI strategy deck."
+      },
+      {
+        "h3": "4. Run focused AI hackathons that reward process, not just polish"
+      },
+      {
+        "html": "Hackathons are a good way to lower the emotional barrier and let people learn by doing, as long as you design them around process rather than flashy demos."
+      },
+      {
+        "html": "Pick real problems that matter to the team, such as synthesizing a messy pile of research, rethinking a core flow with AI native patterns, or turning scattered docs into a single project “brain.” Form cross functional squads of designers, PMs and engineers. Ask each squad to keep a simple prompt and process log describing what they asked, what they got, and how they corrected it."
+      },
+      {
+        "html": "Judge the results on how much AI expanded the solution space, how clearly the team can explain what they trusted AI with, and how reusable their approach is. Afterwards, harvest the best prompts, workflows and templates and make them available to everyone."
+      },
+      {
+        "h3": "5. Treat AI fluency as a core design skill"
+      },
+      {
+        "html": "If AI is really part of the job, you have to treat it like any other core skill."
+      },
+      {
+        "html": "Run short, practical sessions on topics such as using LLMs to synthesize research responsibly, prompt patterns for competitor and pattern analysis, or prototyping faster with Figma AI and a code assistant. Pair AI confident designers with learners on real projects rather than hypothetical exercises."
+      },
+      {
+        "html": "In performance conversations, ask people how they used AI to explore more options or move faster, and where they caught and corrected AI failures. The signal is clear: good AI use is part of good craft, not a gimmick."
+      },
+      {
+        "h2": "What to expect in 2026"
+      },
+      {
+        "html": "The clock on all of this is not theoretical. By 2026, AI will not feel like a separate destination. It will be how most tools behave."
+      },
+      {
+        "html": "Most large enterprises are expected to have generative models in production by then, and to have AI wired into day to day processes rather than stuck in pilots. People will mostly stop thinking of generative AI as a separate app and simply bump into it inside search, productivity tools and developer environments."
+      },
+      {
+        "html": "At the same time, the backlash will become more formal. Many organizations are planning explicit “AI free” skills checks in hiring and evaluation, to prove that people can still reason, write and solve problems without a model beside them."
+      },
+      {
+        "html": "For design leaders, that future is very specific. By 2026, the advantage will sit with teams that can show two things at once. First, that they are deeply AI native in how they research, explore and prototype. Second, that they can close every AI tab, explain their decisions in plain language and still think clearly on their own."
+      },
+      {
+        "h2": "The gap that is forming"
+      },
+      {
+        "html": "By the end of 2025, almost every designer will have touched AI. Far fewer will have reshaped how they actually work. That is the gap that is opening up."
+      },
+      {
+        "html": "The point is not to give up craft to machines. It is to use AI as a force multiplier on your judgment, your taste and your ability to move a cross functional team. Being honest that the work was AI assisted is not a weakness if you can also show where your own thinking pushed it further."
+      },
+      {
+        "html": "This is the moment for design leaders to set the tone. If you can say, “We use AI wherever it helps us think wider and move faster, and we can still close every AI tab and explain our decisions clearly,” you are not cheating. You are showing your team what good design leadership looks like in the age of AI."
+      }
+    ],
+    "originalDate": "2025-11-29"
   }
 }

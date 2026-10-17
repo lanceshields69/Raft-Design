@@ -84,12 +84,156 @@
       }
     ],
     "citations": [
-      { "name": "Ethan Mollick — 著書『Co-Intelligence』" }
+      {
+        "name": "Ethan Mollick — 著書『Co-Intelligence』"
+      }
     ]
   },
   "en": {
     "title": "How I Use AI",
     "excerpt": "The designers who thrive in the AI era aren't just fluent with the tools—they know exactly where human judgment takes over. This is my journey from cautious observer to AI-native practitioner, learning what to collaborate on and what to protect.",
-    "substackUrl": "https://upstreamjournal.substack.com/p/how-i-use-ai"
+    "substackUrl": "https://upstreamjournal.substack.com/p/how-i-use-ai",
+    "subhead": "Learning to design with AI, then learning to design AI itself.",
+    "body": [
+      {
+        "html": "I didn’t have a lightning-bolt moment with AI. It crept up on me the way most meaningful changes do—quietly at first, easy to underestimate. It was late 2024 at Adobe, and competitors were experimenting with integrations in Microsoft Copilot and ChatGPT that we needed to understand. Not theoretically. Practically."
+      },
+      {
+        "html": "So I started paying closer attention."
+      },
+      {
+        "html": "After 25 years in UX and digital design, I’ve learned that being first isn’t nearly as important as understanding what actually sticks. I’ve seen waves come and go. Flash. Web 2.0. Social. Mobile. The app explosion. Each one reshaped how people interacted with technology."
+      },
+      {
+        "html": "But AI felt different. Bigger, somehow. Faster. Less polite about waiting for us to catch up."
+      },
+      {
+        "h2": "Learning the Language"
+      },
+      {
+        "html": "At first, I treated tools like ChatGPT the way most people did. Summarizing things. Drafting emails. Answering basic questions. Interesting, but not revolutionary yet."
+      },
+      {
+        "html": "Then I started pushing it. I experimented with other models too, especially Claude. Claude caught my attention not because it was “smarter,” but because it communicated differently. The tone felt more conversational. More honest about uncertainty. It had a writing style that felt closer to how I think."
+      },
+      {
+        "html": "That combination—using different models for different strengths—was the first real shift."
+      },
+      {
+        "html": "Around that same time, I had a realization that surprised me. AI wasn’t a fixed thing you learned once and mastered. It was evolving alongside me. The more I experimented, the better I got at asking questions. The better my prompts became, the more useful the output was. My skill and the model’s capability were growing together."
+      },
+      {
+        "html": "That’s when AI stopped feeling like a novelty and started feeling like a collaborator."
+      },
+      {
+        "html": "Today, I use AI constantly. Not in some flashy, sci-fi way. In a very practical, human way."
+      },
+      {
+        "html": "I use it as a researcher, pulling together background, patterns, and signals that would have taken days to gather on my own. I use it as a junior strategist, helping me think through tradeoffs, frame problems, and explore different angles before bringing ideas to a team. I use it as a brainstorming partner when I’m stuck—not to give me “the answer,” but to help me see options I might not have considered."
+      },
+      {
+        "html": "I also use it to organize my thinking. To clarify what I’m trying to say. To turn messy ideas into something coherent enough to react to."
+      },
+      {
+        "html": "And yes, I use it outside of work too. For career decisions. Financial planning. Health questions. Family conversations. The truth is, it’s become a thinking aid. Not a replacement for judgment, but a way to sharpen it."
+      },
+      {
+        "html": "Ethan Mollick says in <em>Co-Intelligence</em> that one of the best ways to understand AI is to try using it for everything, and then learn what it’s good at and what it isn’t. That framing stuck with me. So that’s what I did. I tried it everywhere. And over time, patterns emerged. Some things it’s great at. Some things it’s mediocre at. Some things it absolutely shouldn’t be doing."
+      },
+      {
+        "html": "That process—steady experimentation, honest assessment, constant adjustment—is how I learned to work with AI."
+      },
+      {
+        "h2": "But here’s what I don’t use it for"
+      },
+      {
+        "html": "I don’t use AI to decide what good design is. Not the UX. Not the visual craft. That still requires a trained eye and 20+ years of understanding human behavior."
+      },
+      {
+        "html": "AI can generate rough mocks. It can explore variations. But it can’t make the final call on whether something actually works. Whether the hierarchy is right. Whether the interaction feels natural. Whether it’s going to hold up under real use."
+      },
+      {
+        "html": "I don’t use it for strategy either—at least not the way some people might think. AI can help generate ideas, surface patterns, frame problems. It’s great for that. But strategy comes from something deeper. Nuanced business understanding. User empathy. Organizational context. The kind of knowledge that gets lost when you try to compress it into a prompt."
+      },
+      {
+        "html": "And I definitely don’t use it to lead people."
+      },
+      {
+        "html": "The relationships that make a design team work—the trust, the honest conversations, the ability to read what someone needs before they say it—that’s human. AI can’t build that. It can’t sense when someone’s struggling. It can’t have the hard conversation that needs to happen. Leadership requires presence. Empathy. The willingness to be uncomfortable together."
+      },
+      {
+        "html": "So yes, I use AI constantly. But I’m also very clear about where the machine stops and where I need to start."
+      },
+      {
+        "h2": "Building AI Products"
+      },
+      {
+        "html": "Designing <em>with</em> AI is one thing. Designing <em>AI products</em> is another."
+      },
+      {
+        "html": "My first real experience came through Project Harmony at Adobe—a net-new, AI-first image editor designed to bring Photoshop-level capability to a much broader audience. The challenge wasn’t technical capability. Adobe has no shortage of powerful tools. The challenge was approachability. Trust. Ease."
+      },
+      {
+        "html": "How do you design an AI-powered experience that doesn’t feel intimidating or magical in a way that scares people off?"
+      },
+      {
+        "html": "We leaned heavily on AI assistants and generative features, but always with a focus on clarity and control. The goal wasn’t to show off the tech. It was to help people do things they couldn’t do before, without having to learn a decade’s worth of professional tools. As the project grew, it became a top priority for leadership. For me, it was a crash course in designing AI-first experiences that needed to feel both powerful and humane."
+      },
+      {
+        "html": "Later, when I moved to Walmart to lead core e-commerce design, AI showed up again in a very different form."
+      },
+      {
+        "html": "Walmart had already made big bets on agentic AI, which was part of what drew me there. But when I joined, one issue stood out: search. Especially on mobile. Customers struggled to find what they needed. Filters were underused. Researching complex purchases—like TVs—was frustrating."
+      },
+      {
+        "html": "Buying a TV is hard. The products are complex. The price points are high. Most people don’t do it often enough to feel confident. And it’s incredibly difficult to replicate the context of someone’s living room in a traditional shopping flow."
+      },
+      {
+        "html": "That’s where multimodal AI came in."
+      },
+      {
+        "html": "This was my first time designing with true multimodal inputs—not just text or images, but live camera, spatial context, lighting, distance, layout, and voice. We explored what it would mean if a customer could point their phone at their living room and let AI understand the space. The size of the wall. The distance from the couch. The lighting conditions. The colors in the room."
+      },
+      {
+        "html": "From there, AI could make recommendations grounded in reality."
+      },
+      {
+        "html": "It struck me that this was something even a physical store couldn’t do. You can’t bring your living room to Best Buy. But you <em>can</em> bring it to your phone."
+      },
+      {
+        "html": "In a way, it felt like inviting an expert TV salesperson into your home. Someone who could see what you see, understand your constraints, and help you make a confident decision. That’s the kind of AI experience that excites me. Contextual. Assistive. Human."
+      },
+      {
+        "h2": "What’s Next"
+      },
+      {
+        "html": "I don’t know exactly where AI is going, but I know it’s not slowing down. Power and velocity will keep increasing. And the burden is on us to keep learning."
+      },
+      {
+        "html": "Here’s what I think changes: AI is going to redefine who can do what. Designers who understand research, strategy, systems, and storytelling—and who know how to work with AI—will be able to do far more than they ever could alone. Not because AI replaces expertise, but because it fills in gaps and accelerates thinking."
+      },
+      {
+        "html": "The projects I’m most excited about are the ones that expand human capability. Helping people work better. Create better. Manage their lives with more clarity. AI should amplify creativity, not replace it. It should support judgment, not erode it. If we let AI make all the decisions, if we stop exercising our own thinking, something important gets lost."
+      },
+      {
+        "html": "The goal isn’t to remove the human from the loop. It’s to strengthen it."
+      },
+      {
+        "html": "This piece itself came from the kind of collaboration I’m describing—prompting, shaping, refining with AI as a thinking partner. That feels fitting. Because this is exactly how I work. Not as a shortcut. As a partner."
+      },
+      {
+        "html": "This isn’t a manifesto. It’s just an honest account of how AI has worked its way into my life and my work. Slowly at first. Then all at once."
+      },
+      {
+        "html": "The designers who will thrive in this next chapter aren’t the ones chasing tools. They’re the ones learning how to think alongside them."
+      },
+      {
+        "hr": true
+      },
+      {
+        "html": "Read about an AI-assisted, vibe-coded personal project I did called Ship Yourself Cards app: <strong><a href=\"https://www.lanceshields.design/lab\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.lanceshields.design/lab</a></strong>"
+      }
+    ],
+    "originalDate": "2026-01-19"
   }
 }

@@ -88,20 +88,191 @@
       }
     ],
     "stats": [
-      { "value": "1,400", "label": "AI Builders Weekの参加デザイナー・PM数" },
-      { "value": "96%", "label": "セッションを肯定的に評価した参加者の割合" },
-      { "value": "19%", "label": "「速くなった」と感じたが実際には時間が長くかかっていた開発者の割合" }
+      {
+        "value": "1,400",
+        "label": "AI Builders Weekの参加デザイナー・PM数"
+      },
+      {
+        "value": "96%",
+        "label": "セッションを肯定的に評価した参加者の割合"
+      },
+      {
+        "value": "19%",
+        "label": "「速くなった」と感じたが実際には時間が長くかかっていた開発者の割合"
+      }
     ],
     "citations": [
-      { "name": "DORA — AI支援ソフトウェア開発に関する2025年版レポート" },
-      { "name": "Atlassian — 2026年 AI Builders Week" },
-      { "name": "METR — 2025年、経験豊富なオープンソース開発者を対象にしたランダム化研究" },
-      { "name": "Vercel — プロダクト判断をコードと同様に扱う社内エージェント運用" }
+      {
+        "name": "DORA — AI支援ソフトウェア開発に関する2025年版レポート"
+      },
+      {
+        "name": "Atlassian — 2026年 AI Builders Week"
+      },
+      {
+        "name": "METR — 2025年、経験豊富なオープンソース開発者を対象にしたランダム化研究"
+      },
+      {
+        "name": "Vercel — プロダクト判断をコードと同様に扱う社内エージェント運用"
+      }
     ]
   },
   "en": {
     "title": "Stop Adding AI to the Design Process. Re-engineer It.",
     "excerpt": "Putting AI into every stage of a broken process just makes the same process run faster. Re-engineering the workflow itself—not bolting tools onto it—is the harder, more necessary work.",
-    "substackUrl": "https://upstreamjournal.substack.com/p/stop-adding-ai-to-the-design-process"
+    "substackUrl": "https://upstreamjournal.substack.com/p/stop-adding-ai-to-the-design-process",
+    "subhead": "Most teams are asking where AI fits into the workflow they have. The better question is what workflow is possible now.",
+    "body": [
+      {
+        "html": "<strong><a href=\"https://www.linkedin.com/pulse/ai-native-designer-only-phase-one-lance-shields-jrh5c/\" target=\"_blank\" rel=\"noopener noreferrer\">Last time I argued</a></strong> that seven AI-native designers don’t make an AI-native team. Each person gets faster, the coordination around them doesn’t move, and the team ends up more fragmented than it started."
+      },
+      {
+        "html": "The reason I’m continuing to write about how a design team can become AI-native is I feel like too many teams including mine have given designers the tools and let them tinker and share but this becomes about individual skill building. But how do we bring the whole team is what I’m continuing to ask myself and what I’d like to bring to my next team."
+      },
+      {
+        "html": "The obvious response is to standardize. Put AI into every stage of the process you already run. An LLM for research synthesis. Figma Make for concepts. Claude Code or Cursor for prototypes. Figma wired to the codebase for handoff."
+      },
+      {
+        "html": "Every one of those is a real improvement. Together they still leave you with the same process you had before, running slightly faster."
+      },
+      {
+        "html": "The design process most of us run was built for a world where making things was expensive. Research, synthesis, requirements, Figma, prototype, review, handoff, build, QA. Each function produces an artifact and passes it to the next one. Product writes requirements, design interprets them, engineering interprets the design, QA interprets the implementation. Every handoff is a translation, and every translation loses something."
+      },
+      {
+        "html": "We are now automating the boxes and leaving the arrows between them exactly as they were."
+      },
+      {
+        "h2": "AI amplifies whatever your organization already is"
+      },
+      {
+        "html": "DORA’s <strong><a href=\"https://dora.dev/research/2025/dora-report/?utm_source=chatgpt.com\" target=\"_blank\" rel=\"noopener noreferrer\">research</a></strong> on AI-assisted software development lands on something design leaders should sit with. AI works as an amplifier. It magnifies strong organizational capability, and it magnifies dysfunction just as efficiently. Individual gains get swallowed downstream in testing, security review, deployment, and rework."
+      },
+      {
+        "html": "Design has exactly this problem and mostly refuses to look at it. A coded prototype produced in two hours is not a gain if engineering spends two days finding out it uses the wrong components, ignores half the states, and can’t survive contact with the real architecture. The first artifact arrived faster. The product didn’t."
+      },
+      {
+        "html": "I’d go further. If your handoffs were unclear before AI, they are now unclear at higher volume. If design and engineering disagreed about what a prototype means, you now have that disagreement four times a week instead of once a sprint. Fragmentation isn’t a side effect of moving fast. It’s the old dysfunction, amplified."
+      },
+      {
+        "h2": "Map the workflow you actually have"
+      },
+      {
+        "html": "Design Workflow Re-engineering doesn’t start with tools. It starts with mapping how one real piece of work travels from a customer problem to production. Not the process on the slide. The one people actually follow, including the parts nobody documents."
+      },
+      {
+        "html": "Where does work sit waiting. Where does information get recreated because someone couldn’t find it. Where does engineering reverse-engineer design intent from a file. Which decisions take five people because nobody owns them. What knowledge is trapped in a Slack thread, a meeting nobody recorded, or one designer’s personal prompt library."
+      },
+      {
+        "html": "Then go through it activity by activity and ask what should be eliminated, what’s structured enough to automate, what AI can make better without owning, and what should move to a different role entirely. The point isn’t to attach a tool to every step. It’s to find the steps that should disappear, merge, move earlier, or produce something completely different than they do today."
+      },
+      {
+        "html": "Most teams skip this because it’s unglamorous and it surfaces things people would rather not say out loud. That’s exactly why it works."
+      },
+      {
+        "h2": "Learn by building, together, on something real"
+      },
+      {
+        "html": "Atlassian ran an <strong><a href=\"https://www.atlassian.com/blog/ai-at-work/a-design-technologists-take-on-ai-builders?utm_source=chatgpt.com\" target=\"_blank\" rel=\"noopener noreferrer\">AI Builders Week</a></strong> in 2026 where 1,400 designers and product managers stopped theorizing and built. Thirty-one sessions, more than 100 presenters and mentors, and 96% of participants rated it positively. Later rounds moved past foundational skills into actual workflow changes with measurable impact."
+      },
+      {
+        "html": "The number that matters there isn’t 1,400. It’s that people worked on real problems, with protected time, alongside people who could help them, with permission to fail. Four days doesn’t transform an organization. It does surface which new ways of working are worth keeping."
+      },
+      {
+        "html": "That’s the model I’d use, scaled down. Not a mandate. One bounded, cross-functional pilot on a real project with genuine customer value, manageable risk, a reasonably mature slice of the design system, and product and engineering partners who actually want to work differently."
+      },
+      {
+        "html": "And write the hypothesis down before you start. Something like: working from a shared, system-aligned coded prototype, we can reach customer learning earlier and cut implementation rework without increasing review burden or defects."
+      },
+      {
+        "html": "That’s an experiment. “Everyone should be using Cursor this quarter” is a press release."
+      },
+      {
+        "h2": "Stop pretending every coded artifact is the same thing"
+      },
+      {
+        "html": "Here’s the fight I keep seeing between design and engineering, and it’s almost always a vocabulary problem. A designer hands over something built in Cursor. Engineering doesn’t know whether it’s a sketch, a proposal, or something they’re expected to ship. So they either dismiss it or waste two days evaluating it as production code. Both outcomes are expensive."
+      },
+      {
+        "html": "A designer on my team built a prototype in two days and sent it to engineering as a way of saying, “Here’s what I mean.” They treated it as an implementation proposal and spent a week reviewing architecture, components, and state handling. She meant a sketch; they received a spec. The problem wasn’t the code. It was that we had no shared language for what the code was supposed to be."
+      },
+      {
+        "html": "Designers are producing code now. Almost nobody has agreed on what any of it is <em>for</em>. I’d name five levels and make the team use them out loud:"
+      },
+      {
+        "html": "<strong>1. Thinking artifact.</strong> Disposable. Built to explore an idea, thrown away after."
+      },
+      {
+        "html": "<strong>2. Experiential prototype.</strong> Realistic enough for a customer or the team to learn something from the interaction."
+      },
+      {
+        "html": "<strong>3. System-aligned prototype.</strong> Built with the real components, tokens, patterns, and accessibility expectations."
+      },
+      {
+        "html": "<strong>4. Engineering-ready artifact.</strong> Runs in the real environment, handles the important states, and gives engineering a credible starting point."
+      },
+      {
+        "html": "<strong>5. Production contribution.</strong> Meets the same architecture, testing, security, accessibility, performance, and review bar as any other code."
+      },
+      {
+        "html": "Nobody needs every designer operating at level five. What a team needs is to stop guessing which level they’re looking at. Say the number when you hand something over and most of the friction disappears."
+      },
+      {
+        "html": "Levels three and four are where this gets hard, and they depend entirely on how mature your design system is. Connecting an inconsistent design system to an agent doesn’t fix the system. It reproduces the inconsistency faster, at scale, in production. That problem is big enough that it gets its own piece next time."
+      },
+      {
+        "image": {
+          "alt": "The implementation ladder: five stages from thinking artifact and experiential prototype, which design owns, to system-aligned prototype, engineering-ready and production contribution, where it starts making promises.",
+          "caption": "",
+          "w": 1488,
+          "h": 921,
+          "file": "stop-adding-ai-to-the-design-process-inline-2a200536.png"
+        }
+      },
+      {
+        "h2": "Measure the workflow, not the person"
+      },
+      {
+        "html": "Most teams measuring AI’s impact are measuring the wrong unit. They track whether individual designers feel faster, which is the one number almost guaranteed to mislead them. In a 2025 randomized study, <strong><a href=\"https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/?utm_source=chatgpt.com\" target=\"_blank\" rel=\"noopener noreferrer\">METR</a></strong> found experienced open-source developers using early-2025 AI tools took 19% <em>longer</em> on tasks while believing they’d been made faster. Newer tools have improved and results vary by task and person, but the finding worth keeping is the gap between perceived and actual speed."
+      },
+      {
+        "html": "Set that next to the Harvard research I cited last time, where consultants using GPT-4 finished 25% faster inside the model’s capabilities and got worse outside them. Both are true. Individual acceleration is real, inconsistent, task-dependent, and largely invisible to the person experiencing it. Which is the whole argument for measuring the workflow instead of the designer."
+      },
+      {
+        "html": "So measure the things that survive contact with reality. Did we get to customer evidence sooner. Did review time drop. Did engineering rework go down. Did quality improve. What did the tools cost. What did the team learn that it can use again next quarter."
+      },
+      {
+        "html": "Speed inside one box has never been the metric."
+      },
+      {
+        "h2": "The output of the pilot is the system you’re left with"
+      },
+      {
+        "html": "You don’t need a consultancy and a hundred-slide transformation plan. Start with one project. Pair the advanced adopters with the people still finding their footing. Get engineering in before the prototype hardens. Run workflow reviews instead of tool demos. Write down the prompts that failed, the context that was missing, the corrections you kept making, and the decisions that still needed a human."
+      },
+      {
+        "html": "Then keep what worked."
+      },
+      {
+        "html": "<strong><a href=\"https://vercel.com/blog/teaching-agents-product-design-at-vercel?utm_source=chatgpt.com\" target=\"_blank\" rel=\"noopener noreferrer\">Vercel</a></strong> has started treating accepted product decisions the way it treats code. Their agents can reach product judgment, interface quality guidance, interaction patterns, examples, lint rules, and evaluations that live alongside the product. People still decide which lessons become standards."
+      },
+      {
+        "html": "That’s the real deliverable. Not the feature. The system you’re left holding afterward: a shared process, better design system coverage, clearer decision rights, reusable context for agents, known failure patterns, explicit quality gates, and an actual agreement about what design owes engineering."
+      },
+      {
+        "html": "Re-engineering the process doesn’t write designers out of it. It clears away inherited work so they can concentrate on the parts that still require them. Understanding customers. Framing the right problem. Making consequential calls. Deciding what good looks like."
+      },
+      {
+        "html": "Stop asking where AI fits into your design process."
+      },
+      {
+        "html": "Ask what design process is possible now that it exists."
+      },
+      {
+        "hr": true
+      },
+      {
+        "html": "<em><strong>See the deck version of this article:</strong> </em><strong><a href=\"https://speakerdeck.com/lanceshields/stop-adding-ai-to-the-design-process-re-engineer-it\" target=\"_blank\" rel=\"noopener noreferrer\">https://speakerdeck.com/lanceshields/stop-adding-ai-to-the-design-process-re-engineer-it</a></strong>"
+      }
+    ],
+    "originalDate": "2026-08-01"
   }
 }

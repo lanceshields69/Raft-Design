@@ -7,6 +7,79 @@
   "en": {
     "title": "Introducing the Design Foundation Sprint",
     "excerpt": "AI didn't close the gap between engineering and design at funded startups. It widened it. Introducing the Design Foundation Sprint, a fixed four-week engagement for the moment right after you raise.",
-    "substackUrl": "https://upstreamjournal.substack.com/p/introducing-the-design-foundation?r=2fr0bw&utm_campaign=post&utm_medium=web"
+    "substackUrl": "https://upstreamjournal.substack.com/p/introducing-the-design-foundation?r=2fr0bw&utm_campaign=post&utm_medium=web",
+    "subhead": "Senior Design Leadership for Recently Funded Startups",
+    "body": [
+      {
+        "html": "Today I’m launching the <strong><a href=\"https://raftdesign.studio/design-foundation/\" target=\"_blank\" rel=\"noopener noreferrer\">Design Foundation Sprint</a></strong>: a four-week, fixed-price engagement from Raft Design that gives funded startups a real brand and product foundation, built and led directly by me, before you’re ready to hire a full-time design leader. It comes in two scopes, Core and Full System, both fixed price, both done in a month."
+      },
+      {
+        "html": "I’ve watched the same thing happen to five different startups over the past fifteen years, under five different sets of circumstances. A company raises money. Engineering starts shipping. And somewhere in that acceleration, the product, the brand, and the site quietly stop keeping up with the company the founders are actually becoming."
+      },
+      {
+        "html": "Nobody plans for this gap. It’s not a mistake. It’s just what happens when the fastest-moving part of a company outruns the slowest-moving part, and design is almost always the slowest-moving part, because it’s the one function that doesn’t scale by adding more engineers."
+      },
+      {
+        "html": "I started noticing the pattern long before I had language for it. Before Adobe, before Walmart, I ran the creative work behind a run of startups: Health Catalyst, which went on to IPO on Nasdaq. Cloud Cruiser, acquired by HPE. OrderDynamics, acquired by Tecsys. Leadspace, still shipping today. Protagonist, still running the exact design I built for them a decade ago, while they’ve grown into a client list that now includes Microsoft and the U.S. government. I didn’t build any of those outcomes. But watching early design decisions hold up, or not, across a decade taught me something a single project never could: the work that survives isn’t the work built to impress at launch. It’s the work built to move with the company as it changes."
+      },
+      {
+        "html": "That’s the whole thesis behind Raft, and it’s the whole thesis behind the Design Foundation Sprint."
+      },
+      {
+        "h2": "Why now, specifically"
+      },
+      {
+        "html": "AI changed the actual water underneath this problem, not just the tools sitting on top of it. Engineering teams can now ship product surface area at a pace that would have taken a team three times the size five years ago. That’s not a hypothetical, it’s just what a funded startup’s roadmap looks like right now. Design hasn’t gotten three times faster in the same way, and the gap that used to open slowly, over a year or two, now opens in a matter of months."
+      },
+      {
+        "html": "I don’t think the answer is throwing more AI at the brand and product side to match engineering’s pace. I think the answer is judgment, applied with real speed, at the exact moment a company needs it most: after the round closes, before there’s budget or conviction to hire a full-time design leader."
+      },
+      {
+        "image": {
+          "alt": "Chart titled “Startup design maturity gap”: engineering progress rises steadily from seed to scaling while design lags after the funded stage, and Raft Design closes the gap so both are aligned for scale.",
+          "caption": "",
+          "w": 730,
+          "h": 508,
+          "file": "introducing-the-design-foundation-inline-ee7dfc3f.jpeg"
+        }
+      },
+      {
+        "h2": "Why brand and product, not one or the other"
+      },
+      {
+        "html": "Most of the sprint-shop competitors I researched before building this pick one lane. A brand studio ships an identity and hands you a PDF. A product studio ships screens with no coherent identity behind them. Neither solves the actual problem, because you can’t design a product interface that expresses a brand that doesn’t exist yet, and you can’t finish a brand system without knowing what it needs to hold together across a real product surface."
+      },
+      {
+        "html": "So the Design Foundation Sprint runs brand first, then product, in that order, on purpose. Four weeks: define the direction, build the brand system, design the product surface on top of it, then systemize the whole thing into something your engineering team can actually build from without you translating for them."
+      },
+      {
+        "h2": "Why the system matters more than the deliverables"
+      },
+      {
+        "html": "Every sprint like this used to end the same way: a Figma file and a PDF, handed off, slowly drifting out of date the moment the company kept moving without you. I structure the output differently. Brand rules, design tokens, components, templates, and a <strong><a href=\"https://uxdesign.cc/design-md-the-one-standard-file-carries-your-visual-identity-for-humans-and-agents-9058d5b39d9b\" target=\"_blank\" rel=\"noopener noreferrer\">DESIGN.md</a></strong> file that your team, and your AI tools, can both keep working from after I’m gone. Claude, Cursor, Figma Make, whatever you’re already using. The system is the asset. The tools will keep changing under it, and that’s fine, because the system doesn’t depend on any one of them."
+      },
+      {
+        "html": "This is also, honestly, my answer to the question I get most often: why not just use AI to do this myself? You can, for the parts that don’t require judgment. AI accelerates good decisions and bad ones equally. The value I bring isn’t the AI. It’s twenty years of knowing which decision is actually right for your specific business, then using AI to build it faster than a traditional studio ever could."
+      },
+      {
+        "html": "If your team already has a system in place and the gap isn’t “we need one,” it’s “ours doesn’t work for our AI tools yet,” that’s a different, narrower engagement than the sprint. I built that one too: <strong><a href=\"https://raftdesign.studio/design-system/\" target=\"_blank\" rel=\"noopener noreferrer\">https://raftdesign.studio/design-system/</a></strong>"
+      },
+      {
+        "h2": "What a month can actually do"
+      },
+      {
+        "html": "I’ll be direct about the limits. Four weeks doesn’t replace a design leader. It doesn’t map every edge case in a mature product. What it does do: give you a real brand system, five to ten core product screens built on top of it, and a foundation solid enough that whoever you hire next, in six months or two years, inherits something coherent instead of something they have to unwind first."
+      },
+      {
+        "html": "That’s the actual promise. Not “everything, forever.” Just the specific, bounded thing a funded startup needs in the specific window before it’s ready to hire the thing I used to be, twenty years ago, before any of this had a name."
+      },
+      {
+        "html": "If you’re in that window right now, reply to this and tell me where the gap actually is. And if you know a founder who’s in it, this is the piece to forward them:"
+      },
+      {
+        "html": "<strong><a href=\"https://raftdesign.studio/design-foundation/\" target=\"_blank\" rel=\"noopener noreferrer\">https://raftdesign.studio/design-foundation/</a></strong>"
+      }
+    ],
+    "originalDate": "2026-09-10"
   }
 }

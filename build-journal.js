@@ -427,6 +427,86 @@ function renderContentItem(item) {
   throw new Error(`Unrecognized content item: ${JSON.stringify(item)}`);
 }
 
+// ---------------------------------------------------------------------
+// English native-article helpers
+// ---------------------------------------------------------------------
+
+const MONTHS_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const AUTHOR_EN = { name: 'Lance Shields', bio: 'Founder of Raft Design and a product design leader with 25+ years of experience across Adobe, Walmart, startups, and global digital products.' };
+
+// English pages date from the original publication; the Japanese pages keep `date`.
+function enDate(a) {
+  return a.en.originalDate || a.date;
+}
+
+function formatDateEn(iso) {
+  const [y, m, d] = iso.split('-').map(Number);
+  return `${MONTHS_EN[m - 1]} ${d}, ${y}`;
+}
+
+function slugifyHeading(html) {
+  return html.replace(/<[^>]+>/g, '').toLowerCase().replace(/&amp;/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
+// English body items hold trusted inline HTML (a, strong, em, br, code) — already
+// sanitized when migrated from the original posts — so they are emitted as-is.
+function renderEnItem(item, usedIds) {
+  if (item.html !== undefined) return `          <p class="article-p">${item.html}</p>`;
+  const heading = (tag, cls) => {
+    let id = slugifyHeading(item[tag]);
+    while (usedIds.has(id)) id += '-2';
+    usedIds.add(id);
+    return `          <${tag} class="${cls}" id="${id}">${item[tag]}</${tag}>`;
+  };
+  if (item.h2) return heading('h2', 'article-h2');
+  if (item.h3) return heading('h3', 'article-h3');
+  if (item.list) {
+    const tag = item.ordered ? 'ol' : 'ul';
+    return `          <${tag} class="article-list">\n${item.list.map((li) => `            <li>${li}</li>`).join('\n')}\n          </${tag}>`;
+  }
+  if (item.hr) return '          <hr class="article-rule">';
+  if (item.note) return `          <aside class="article-note">\n            <p class="article-p">${item.note}</p>\n          </aside>`;
+  if (item.meta) {
+    const rows = item.meta.map(([k, v]) => `            <div class="article-facts-row"><dt>${esc(k)}</dt><dd>${v}</dd></div>`).join('\n');
+    return `          <dl class="article-facts">\n${rows}\n          </dl>`;
+  }
+  if (item.table) {
+    const t = item.table;
+    const head = t.head.map((h) => `<th scope="col">${esc(h)}</th>`).join('');
+    const rows = t.rows.map((r) => `              <tr><th scope="row">${esc(r[0])}</th>${r.slice(1).map((c) => `<td>${esc(c)}</td>`).join('')}</tr>`).join('\n');
+    return `          <div class="article-table-wrap" role="region" aria-label="${esc(t.caption)}" tabindex="0">
+            <table class="article-table">
+              <caption>${esc(t.caption)}</caption>
+              <thead><tr>${head}</tr></thead>
+              <tbody>
+${rows}
+              </tbody>
+            </table>
+          </div>`;
+  }
+  if (item.image) {
+    const im = item.image;
+    return `          <figure class="article-figure">
+            <img src="../../images/${im.file}" width="${im.w}" height="${im.h}" alt="${esc(im.alt)}" loading="lazy">${im.caption ? `\n            <figcaption>${im.caption}</figcaption>` : ''}
+          </figure>`;
+  }
+  throw new Error(`Unrecognized English content item: ${JSON.stringify(item).slice(0, 120)}`);
+}
+
+// Groups the flat item list into <div class="article-section"> blocks that start at each h2.
+function renderEnSections(items) {
+  const groups = [[]];
+  for (const it of items) {
+    if (it.h2 && groups[groups.length - 1].length) groups.push([]);
+    groups[groups.length - 1].push(it);
+  }
+  const usedIds = new Set();
+  return groups.map((g, i) => {
+    const cls = i === groups.length - 1 ? 'article-section article-section--last' : 'article-section';
+    return `        <div class="${cls}">\n${g.map((it) => renderEnItem(it, usedIds)).join('\n')}\n        </div>`;
+  }).join('\n');
+}
+
 // The only two articles that form an actual series — prev/next nav and
 // isPartOf schema are wired only between these two, in this order.
 const UPSTREAM_SERIES = ['ai-native-designer-phase-one', 'stop-adding-ai-to-the-design-process'];
@@ -498,21 +578,23 @@ function buildIndexPage(lang, articles) {
   const description = isJa
     ? 'デザインで導く、ということ。デザインの実践が、働き方の未来と交わる場所。Raft Design創業者ランス・シールズによるエッセイ。'
     : 'Leading through design. Where the practice of design meets the future of how we work — essays from Raft Design founder Lance Shields.';
+  // The JA index's social title predates its <title> rewrite; kept as published.
+  const socialTitle = isJa ? 'ジャーナル — デザインリーダーシップとAIネイティブな実践 | Raft Design' : title;
   const heroTitle = 'Journal';
-  const readLabel = isJa ? '記事を読む' : 'Read on Substack';
+  const readLabel = isJa ? '記事を読む' : 'Read article';
   // The English index shares a fixed social image; the Japanese index uses its newest article's image.
-  const ogImage = isJa ? `${SITE}/images/${articles[0].image}` : `${SITE}/images/article-img-stop-adding-ai.jpg`;
+  const ogImage = isJa ? `${SITE}/images/${articles[0].image}` : `${SITE}/images/article-img-stop-adding-ai.jpg`; // EN keeps its fixed social image
 
   const head = `  <title>${esc(title)}</title>
   <meta name="description" content="${esc(description)}">
-  <meta property="og:title" content="${esc(title)}">
+  <meta property="og:title" content="${esc(socialTitle)}">
   <meta property="og:description" content="${esc(description)}">
   <meta property="og:image" content="${ogImage}">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="${isJa ? 'ja_JP' : 'en_US'}">
   <meta property="og:url" content="${url}">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="${esc(title)}">
+  <meta name="twitter:title" content="${esc(socialTitle)}">
   <meta name="twitter:description" content="${esc(description)}">
   <meta name="twitter:image" content="${ogImage}">
   <link rel="alternate" hreflang="${isJa ? 'ja' : 'en'}" href="${url}">
@@ -545,7 +627,7 @@ ${jsonLd({
     itemListElement: articles.map((a, i) => ({
       '@type': 'ListItem',
       position: i + 1,
-      url: isJa ? `${SITE}/ja/journal/${a.slug}/` : a.en.substackUrl,
+      url: isJa ? `${SITE}/ja/journal/${a.slug}/` : `${SITE}/journal/${a.slug}/`,
       name: isJa ? a.ja.title : a.en.title,
     })),
   },
@@ -566,13 +648,12 @@ ${jsonLd({
       const t = isJa ? a.ja.title : a.en.title;
       const excerpt = isJa ? a.ja.excerpt : a.en.excerpt;
       const alt = isJa ? a.ja.thumbnailAlt : `Thumbnail for "${a.en.title}"`;
-      const href = isJa ? `/ja/journal/${a.slug}/` : a.en.substackUrl;
-      const linkAttrs = isJa ? '' : ' target="_blank" rel="noopener"';
-      return `        <a href="${href}" class="journal-card"${linkAttrs}>
+      const href = isJa ? `/ja/journal/${a.slug}/` : `/journal/${a.slug}/`;
+      return `        <a href="${href}" class="journal-card">
           <img class="journal-card-image" src="${imagesPath}${a.image}" width="${a.imageWidth}" height="${a.imageHeight}" alt="${esc(alt)}" loading="lazy">
           <p class="journal-card-title">${esc(t)}</p>
           <p class="journal-card-excerpt">${esc(excerpt)}</p>
-          <p class="journal-card-link text-link"><span class="arrow">→</span> ${readLabel}</p>
+          <p class="journal-card-link text-link">${isJa ? `<span class="arrow">→</span> ${readLabel}` : `${readLabel} <span class="arrow">→</span>`}</p>
         </a>`;
     }).join('\n');
     cardsHtml.push(`      <div class="journal-row">\n${cardsInRow}\n      </div>`);
@@ -619,7 +700,7 @@ ${cardsHtml.join('\n')}
 }
 
 // ---------------------------------------------------------------------
-// Article page (JA only)
+// Article page (JA)
 // ---------------------------------------------------------------------
 
 function formatDateJa(iso) {
@@ -627,7 +708,7 @@ function formatDateJa(iso) {
   return `${y}.${m}.${d}`;
 }
 
-function buildArticlePage(article, allArticles) {
+function buildArticlePageJa(article, allArticles) {
   const j = article.ja;
   const stylesPath = '../../../';
   const imagesPath = '../../../images/';
@@ -650,16 +731,19 @@ function buildArticlePage(article, allArticles) {
 
   const head = `  <title>${esc(title)}</title>
   <meta name="description" content="${esc(j.excerpt)}">
-  <meta property="og:title" content="${esc(title)}">
+  <meta property="og:title" content="${esc(`${j.title} | Raft Design ジャーナル`)}">
   <meta property="og:description" content="${esc(j.excerpt)}">
   <meta property="og:image" content="${ogImage}">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:url" content="${url}">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="${esc(title)}">
+  <meta name="twitter:title" content="${esc(`${j.title} | Raft Design ジャーナル`)}">
   <meta name="twitter:description" content="${esc(j.excerpt)}">
   <meta name="twitter:image" content="${ogImage}">
+  <link rel="alternate" hreflang="ja" href="${url}">
+  <link rel="alternate" hreflang="en" href="${SITE}/journal/${article.slug}/">
+  <link rel="alternate" hreflang="x-default" href="${SITE}/journal/${article.slug}/">
   <link rel="canonical" href="${url}">
 ${prevArticle ? `  <link rel="prev" href="${SITE}/ja/journal/${prevArticle.slug}/">\n` : ''}${nextArticle ? `  <link rel="next" href="${SITE}/ja/journal/${nextArticle.slug}/">\n` : ''}${jsonLd({
   '@context': 'https://schema.org',
@@ -781,15 +865,140 @@ ${authorCardHtml}
 
   const journalHref = '/ja/journal/';
   const langSwitch = {
-    otherHref: article.en.substackUrl,
+    otherHref: `/journal/${article.slug}/`,
     otherHreflang: 'en',
-    otherTarget: '_blank',
-    otherRel: 'noopener',
   };
 
   const extraCss = '\n  <link rel="stylesheet" href="../../ja.css">';
 
   return page({ lang: 'ja', stylesPath, imagesPath, extraCss, head, journalHref, langSwitch, bodyMain });
+}
+
+// ---------------------------------------------------------------------
+// Article page (EN — native, hosted on Raft)
+// ---------------------------------------------------------------------
+
+function buildArticlePageEn(article, allEn) {
+  const e = article.en;
+  const stylesPath = '../../';
+  const imagesPath = '../../images/';
+  const url = `${SITE}/journal/${article.slug}/`;
+  const jaUrl = article.ja ? `${SITE}/ja/journal/${article.slug}/` : null;
+  const title = e.metaTitle || `${e.title} | Raft Design`;
+  const description = e.metaDescription || e.excerpt;
+  const ogImage = `${SITE}/images/${e.socialImage || article.image}`; // dedicated 1200x630 card when provided
+  const published = enDate(article);
+  const modified = e.dateModified || published;
+  const authorUrl = 'https://www.linkedin.com/in/lanceshields/';
+
+  const seriesIndex = UPSTREAM_SERIES.indexOf(article.slug);
+  const inSeries = seriesIndex !== -1;
+
+  // Prev/next is chronological (allEn is sorted newest-first): "next" is the newer post.
+  const idx = allEn.findIndex((a) => a.slug === article.slug);
+  const nextArticle = idx > 0 ? allEn[idx - 1] : null;
+  const prevArticle = idx < allEn.length - 1 ? allEn[idx + 1] : null;
+
+  // hreflang only where a genuine Japanese counterpart exists.
+  const hreflang = jaUrl ? `  <link rel="alternate" hreflang="en" href="${url}">
+  <link rel="alternate" hreflang="ja" href="${jaUrl}">
+  <link rel="alternate" hreflang="x-default" href="${url}">
+` : '';
+
+  const head = `  <title>${esc(title)}</title>
+  <meta name="description" content="${esc(description)}">
+  <meta property="og:title" content="${esc(title)}">
+  <meta property="og:description" content="${esc(description)}">
+  <meta property="og:image" content="${ogImage}">${e.socialImage ? `
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="${esc(e.title)}">` : ''}
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="${url}">
+  <meta property="article:published_time" content="${published}">
+  <meta property="article:author" content="${AUTHOR_EN.name}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${esc(title)}">
+  <meta name="twitter:description" content="${esc(description)}">
+  <meta name="twitter:image" content="${ogImage}">
+${hreflang}  <link rel="canonical" href="${url}">
+${prevArticle ? `  <link rel="prev" href="${SITE}/journal/${prevArticle.slug}/">\n` : ''}${nextArticle ? `  <link rel="next" href="${SITE}/journal/${nextArticle.slug}/">\n` : ''}${jsonLd({
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: e.title,
+  description: e.excerpt,
+  datePublished: published,
+  dateModified: modified,
+  image: ogImage,
+  inLanguage: 'en',
+  author: { '@type': 'Person', name: AUTHOR_EN.name, sameAs: [authorUrl, ...LANCE_SAME_AS] },
+  publisher: { '@type': 'Organization', name: 'Raft Design', alternateName: ['Raft Design Studio'], url: `${SITE}/`, sameAs: ORG_SAME_AS },
+  mainEntityOfPage: url,
+  ...(inSeries ? {
+    isPartOf: { '@type': 'CreativeWorkSeries', name: UPSTREAM_SERIES_NAME, url: `${SITE}/journal/` },
+    position: seriesIndex + 1,
+  } : {}),
+})}
+${jsonLd({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+    { '@type': 'ListItem', position: 2, name: 'Journal', item: `${SITE}/journal/` },
+    { '@type': 'ListItem', position: 3, name: e.title, item: url },
+  ],
+})}`;
+
+  const sourceCredit = e.substackUrl && !e.original
+    ? `\n          <p class="article-p article-source">Originally published in <a href="${esc(e.substackUrl.split('?')[0])}" target="_blank" rel="noopener noreferrer">Upstream</a> on Substack.</p>`
+    : '';
+  const bodyHtml = renderEnSections(e.body).replace(/(\n        <\/div>)$/, `${sourceCredit}$1`);
+
+  const heroAlt = e.heroImageAlt || `Cover image for “${e.title}”`;
+  const bodyMain = `    <div class="article-hero">
+      <div class="article-hero-inner">
+        <div class="article-meta">
+          <span>${esc(e.displayDate || formatDateEn(published))}</span>
+          <span class="article-meta-divider" aria-hidden="true"></span>
+          <span>${AUTHOR_EN.name}</span>
+        </div>
+        <h1 class="article-title">${esc(e.title)}</h1>
+        <p class="article-subhead">${esc(e.subhead)}</p>
+      </div>
+      <img class="article-hero-image" src="${imagesPath}${article.image}" width="${article.imageWidth}" height="${article.imageHeight}" alt="${esc(heroAlt)}" loading="eager"${e.heroPosition ? ` style="object-position:${esc(e.heroPosition)}"` : ''}>
+    </div>
+
+    <div class="article-body">
+${bodyHtml}
+      <div class="article-author-card">
+        <div class="article-author-row">
+          <img class="article-author-avatar" src="${imagesPath}lance-shields.jpg" width="120" height="120" alt="${AUTHOR_EN.name}" loading="lazy">
+          <div class="article-author-body">
+            <p class="article-author-eyebrow">About the author</p>
+            <p class="article-author-name">${AUTHOR_EN.name}</p>
+            <p class="article-author-bio">${esc(AUTHOR_EN.bio)}</p>
+            <p class="article-author-link text-link"><a href="${authorUrl}" target="_blank" rel="noopener"><span class="arrow">→</span> On LinkedIn</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="article-nav" aria-label="Article navigation">
+      ${prevArticle
+        ? `<a href="/journal/${prevArticle.slug}/" class="article-nav-link" rel="prev">← Previous article</a>`
+        : `<span class="article-nav-link article-nav-link--disabled">← Previous article</span>`}
+      <a href="/journal/" class="article-nav-link">All articles</a>
+      ${nextArticle
+        ? `<a href="/journal/${nextArticle.slug}/" class="article-nav-link" rel="next">Next article →</a>`
+        : `<span class="article-nav-link article-nav-link--disabled">Next article →</span>`}
+    </nav>`;
+
+  // JP switcher: the translated article when one exists, otherwise the Japanese Journal index.
+  const langSwitch = { otherHref: article.ja ? `/ja/journal/${article.slug}/` : '/ja/journal/', otherHreflang: 'ja' };
+  const fontOpts = { interWeights: '200;14..32,300;14..32,400;14..32,500;14..32,700;14..32,900' };
+
+  return page({ lang: 'en', stylesPath, imagesPath, head, journalHref: '/journal/', langSwitch, bodyMain, fontOpts });
 }
 
 // ---------------------------------------------------------------------
@@ -812,9 +1021,8 @@ function buildHomeCarousel(lang, articles) {
   const cardsHtml = articles.map((a) => {
     const t = isJa ? a.ja.title : a.en.title;
     const alt = isJa ? a.ja.thumbnailAlt : `Thumbnail for "${a.en.title}"`;
-    const href = isJa ? `/ja/journal/${a.slug}/` : a.en.substackUrl;
-    const linkAttrs = isJa ? '' : ' target="_blank" rel="noopener"';
-    return `          <a href="${href}" class="journal-carousel-card"${linkAttrs}>
+    const href = isJa ? `/ja/journal/${a.slug}/` : `/journal/${a.slug}/`;
+    return `          <a href="${href}" class="journal-carousel-card">
             <div class="journal-carousel-card-image-wrap">
               <img class="journal-carousel-card-image" src="${imagesPath}${a.image}" width="${a.imageWidth}" height="${a.imageHeight}" alt="${esc(alt)}" loading="lazy">
             </div>
@@ -864,18 +1072,24 @@ function patchHomepage(filePath, lang, articles) {
 
 function main() {
   const files = fs.readdirSync(DATA_DIR).filter((f) => f.endsWith('.json'));
-  const articles = files
-    .map((f) => JSON.parse(fs.readFileSync(path.join(DATA_DIR, f), 'utf8')))
-    .sort((a, b) => b.date.localeCompare(a.date));
-  // Articles without a `ja` block are English-only (e.g. a Substack piece with
-  // no Japanese translation yet) and are omitted from the Japanese site.
-  const jaArticles = articles.filter((a) => a.ja);
+  const all = files.map((f) => JSON.parse(fs.readFileSync(path.join(DATA_DIR, f), 'utf8')));
+  // English order follows original English publication dates; Japanese order follows `date`.
+  const articles = [...all].sort((a, b) => enDate(b).localeCompare(enDate(a)) || b.date.localeCompare(a.date));
+  // Articles without a `ja` block are English-only and are omitted from the Japanese site.
+  const jaArticles = all.filter((a) => a.ja).sort((a, b) => b.date.localeCompare(a.date));
 
   fs.mkdirSync(path.join(ROOT, 'journal'), { recursive: true });
   fs.mkdirSync(path.join(ROOT, 'ja', 'journal'), { recursive: true });
   fs.writeFileSync(path.join(ROOT, 'journal', 'index.html'), buildIndexPage('en', articles));
   fs.writeFileSync(path.join(ROOT, 'ja', 'journal', 'index.html'), buildIndexPage('ja', jaArticles));
   console.log('Wrote /journal/index.html and /ja/journal/index.html');
+
+  for (const article of articles) {
+    const dir = path.join(ROOT, 'journal', article.slug);
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, 'index.html'), buildArticlePageEn(article, articles));
+    console.log(`Wrote /journal/${article.slug}/index.html`);
+  }
 
   for (const article of jaArticles) {
     if (PROTECTED_SLUGS.includes(article.slug)) {
@@ -884,7 +1098,7 @@ function main() {
     }
     const dir = path.join(ROOT, 'ja', 'journal', article.slug);
     fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(path.join(dir, 'index.html'), buildArticlePage(article, jaArticles));
+    fs.writeFileSync(path.join(dir, 'index.html'), buildArticlePageJa(article, jaArticles));
     console.log(`Wrote /ja/journal/${article.slug}/index.html`);
   }
 

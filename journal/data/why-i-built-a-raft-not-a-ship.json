@@ -52,6 +52,73 @@
   "en": {
     "title": "Why I Built a Raft, Not a Ship",
     "excerpt": "On choosing to build something built to move with change, rather than something built to look finished.",
-    "substackUrl": "https://upstreamjournal.substack.com/p/why-i-built-a-raft-not-a-ship"
+    "substackUrl": "https://upstreamjournal.substack.com/p/why-i-built-a-raft-not-a-ship",
+    "subhead": "Twenty years moving between Tokyo and San Francisco, brand and product, human judgment and AI, taught me the same lesson every time. Stop building for permanence. Build for movement.",
+    "body": [
+      {
+        "html": "I spent most of my twenties and thirties moving back and forth between Tokyo and San Francisco, which meant I spent most of that time thinking about the same problem from opposite sides of the ocean. How does a brand or a product actually translate across cultures? Not just the words but the meaning and value underneath the words."
+      },
+      {
+        "html": "I began my journey as a creative director in Japan in the early 2000s, at Scient Japan and later MRM/McCann, helping Japanese companies figure out how to speak to a global audience. Hitachi, Yokogawa Electric, Mitsubishi Corp, ANA, NTT DoCoMo. I led the global relaunch of Hitachi.com and won Japan’s Good Design Award for it. I built a B2B brand platform for Yokogawa called Vigilance and won a marketing award for that too."
+      },
+      {
+        "html": "When I moved back to San Francisco, I co-founded a small digital agency called Ideas in Digital and kept doing the same work from the other side of the Pacific. TEPCO, Yokogawa again, KDDI, Japan Airlines, Modere Japan. There was something different about helping these companies as a business owner myself. With every successful client project, we kept our business afloat and grew our team while winning several Webby Awards."
+      },
+      {
+        "html": "Then I had the opportunity to join Adobe to build the company’s first International Design team, designing software for customers in Asia as well as partnering directly with design teams at LINE, Alibaba, and Tencent. That’s the point where my career actually shifted. It took me out of web design and brand work and into product design for the first time, and it eventually put me in charge of Adobe Express Photos, a 0 to 1 AI-powered image editor. That project is where I first designed an AI product. My team and I were tasked with deciding, screen by screen, whether a person trusts what the AI just did to their photo."
+      },
+      {
+        "html": "From Adobe I took that experience to Walmart, where I led design for the core commerce team and helped build the company’s AI search and GenAI product detail page. I also led the vision for Walmart Camera, a tool built to give AI more context about a customer’s actual home and life, which is what pulled multimodal AI design into my toolkit."
+      },
+      {
+        "html": "And most recently I partnered with LegalOn, Japan’s leading AI legal tech company, working directly with their Chief Design Officer and her team to build a brand platform for their expansion beyond Japan. It became a mashup of lots of experiences from the past two decades: brand strategy and design, innovative AI, and helping a company grow globally."
+      },
+      {
+        "h2": "Why Raft"
+      },
+      {
+        "html": "At some point all of that experience needed a name. I kept coming back to the same image. Not a ship built for one route. A raft."
+      },
+      {
+        "html": "A raft doesn’t fight the current. It reads it, adjusts, and keeps moving. That’s closer to how this career actually worked than I noticed at the time. Agency to Adobe. Brand to product. Tokyo to San Francisco and back more times than I can count. Every move meant learning new water, not defending an old structure."
+      },
+      {
+        "html": "None of it happened in a calm moment either. The tech market right now is as unpredictable as I’ve seen it in twenty years with layoffs and entire teams gone overnight. The safe move was staying anchored somewhere big and waiting it out. I didn’t want to wait. AI tools now let one person do close to what used to take a full studio team, and twenty years of experience is too long to leave sitting on a shelf. I wanted to put it back to work, for companies actually trying to build something real with AI instead of just talking about it."
+      },
+      {
+        "html": "A raft only means something once it’s carrying someone else across the water. That’s the other half of the name. This studio uses AI to do the work itself, in Figma, in Claude, in Claude Code, building at a speed and a level of craft that used to need a much bigger team. And it uses that same fluency for the client side of the boat: helping companies figure out what AI actually means for their own products, their own customers, their own business, not just bolting on a feature because everyone else is."
+      },
+      {
+        "html": "That’s the main thesis of Raft Design. Get a company where it needs to go, even as the water keeps changing. I’ve spent twenty years watching that shift happen from both sides, startups moving fast with no brand built yet, established companies with the trust still learning to carry it into an AI-first world. Raft’s approach is to build something light enough to move fast and sturdy enough to carry a company confidently through uncharted waters that the rest of the industry hasn’t learned to navigate yet."
+      },
+      {
+        "h2": "Building it"
+      },
+      {
+        "html": "To represent the studio, I needed a <a href=\"https://www.raftdesign.studio/\" target=\"_blank\" rel=\"noopener noreferrer\">site</a>, so I built one myself, fully bilingual in English and Japanese from the start. I built it using Claude, Figma, and Claude Code, and the process ended up teaching me almost as much as the strategy did."
+      },
+      {
+        "html": "Building it bilingual from day one was one of the most important parts of the project. It mattered to me that the studio could reach a U.S. client and a Japanese client on equal footing, and that it would show up correctly in search and in AI tools like ChatGPT and Gemini in the right language for each audience. I also created the entire design system in Figma using variables, then had Claude Code implement dark and light modes directly off that same variable system. Watching a single design token structure drive both language versions and both color modes at once was the clearest proof I’ve had that this way of working actually holds up past another Anthropic demo on Linkedin."
+      },
+      {
+        "html": "I was also excited that Figma’s new Motion feature let me put small, deliberate gif animations throughout the site instead of static screens, which matters more than it sounds like it should for a studio whose whole pitch is about staying in motion instead of standing still. It also harkens back to my early Flash designer days when the web was fresh and new."
+      },
+      {
+        "html": "The more interesting part was learning GEO, generative engine optimization, alongside the more familiar SEO work. I ended up building a tool of my own, called Design Intelligence, using Lovable. It’s a diagnostic that lives on the site itself, in both English and Japanese, and lets anyone drop in a URL and get back a set of scores on design quality, brand content, LLM readability, and accessibility. The idea was to give people curious about design and AI a real, useful way to learn something before they’ve ever talked to me. You can try it yourself at"
+      },
+      {
+        "html": "https://design-intelligence-engine.lovable.app."
+      },
+      {
+        "html": "Building it, alongside the more traditional structural work of getting my own site properly indexed and crawlable by LLMs, taught me that the sites built well enough for a human are increasingly not the same as the sites built well enough for ChatGPT or Gemini to actually read and cite. Getting both right is its own discipline now, and it’s one I think most studios, including a lot of large ones, haven’t caught up to yet."
+      },
+      {
+        "html": "Designing your own identity turned out to be a genuinely different exercise than designing someone else’s. There’s no client to push back on an idea that’s gone too far, which means the only real check is whether you still believe it a week later. I still believe this one."
+      },
+      {
+        "html": "Raft Design is live at <strong><a href=\"https://www.raftdesign.studio/\" target=\"_blank\" rel=\"noopener noreferrer\">raftdesign.studio</a></strong>."
+      }
+    ],
+    "originalDate": "2026-08-04"
   }
 }

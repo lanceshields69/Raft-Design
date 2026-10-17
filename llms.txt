@@ -32,12 +32,14 @@
 ## Journal
 - [Journal index (English)](https://raftdesign.studio/journal/)
 - [Journal index (Japanese)](https://raftdesign.studio/ja/journal/)
-- [Stop Adding AI to the Design Process. Re-engineer It.](https://raftdesign.studio/ja/journal/stop-adding-ai-to-the-design-process/) — 「AIをデザインプロセスに追加するのはやめよう。再設計しよう。」/ [English (Substack)](https://upstreamjournal.substack.com/p/stop-adding-ai-to-the-design-process)
-- [Why I Built a Raft, Not a Ship](https://raftdesign.studio/ja/journal/why-i-built-a-raft-not-a-ship/) — 「船ではなく、いかだをつくった理由」/ [English (Substack)](https://upstreamjournal.substack.com/p/why-i-built-a-raft-not-a-ship)
-- [The AI-Native Designer Was Only Phase One](https://raftdesign.studio/ja/journal/ai-native-designer-phase-one/) — 「AIネイティブ・デザイナーは、フェーズ1にすぎなかった」/ [English (Substack)](https://upstreamjournal.substack.com/p/the-ai-native-designer-was-only-phase)
-- [How I Use AI](https://raftdesign.studio/ja/journal/how-i-use-ai/) — 「私のAIの使い方」/ [English (Substack)](https://upstreamjournal.substack.com/p/how-i-use-ai)
-- [Designing for Awareness: How Multimodal AI Is Reshaping the Future of Interaction](https://raftdesign.studio/ja/journal/designing-for-awareness-how-multimodal/) — 「状況認識のためのデザイン：マルチモーダルAIがインタラクションの未来を変える」/ [English (Substack)](https://upstreamjournal.substack.com/p/designing-for-awareness-how-multimodal)
-- [Stop Treating AI Like Cheating on Your Homework: A Playbook for AI-Native Design Teams](https://raftdesign.studio/ja/journal/stop-treating-ai-like-cheating-on-your-homework/) — 「AIを宿題のカンニングのように扱うのはやめよう：AIネイティブなデザインチームのためのプレイブック」/ [English (Substack)](https://upstreamjournal.substack.com/p/stop-treating-ai-like-cheating-on)
+- [5 Best Brand and AI Product Design Studios for Startups in Los Angeles (2026)](https://raftdesign.studio/journal/best-ai-product-design-studios-los-angeles/) — English only
+- [Introducing the Design Foundation Sprint](https://raftdesign.studio/journal/introducing-the-design-foundation/) — English only
+- [Stop Adding AI to the Design Process. Re-engineer It.](https://raftdesign.studio/journal/stop-adding-ai-to-the-design-process/) / [日本語](https://raftdesign.studio/ja/journal/stop-adding-ai-to-the-design-process/) — 「AIをデザインプロセスに追加するのはやめよう。再設計しよう。」
+- [Why I Built a Raft, Not a Ship](https://raftdesign.studio/journal/why-i-built-a-raft-not-a-ship/) / [日本語](https://raftdesign.studio/ja/journal/why-i-built-a-raft-not-a-ship/) — 「船ではなく、いかだをつくった理由」
+- [The AI-Native Designer Was Only Phase One](https://raftdesign.studio/journal/ai-native-designer-phase-one/) / [日本語](https://raftdesign.studio/ja/journal/ai-native-designer-phase-one/) — 「AIネイティブ・デザイナーは、フェーズ1にすぎなかった」
+- [How I Use AI](https://raftdesign.studio/journal/how-i-use-ai/) / [日本語](https://raftdesign.studio/ja/journal/how-i-use-ai/) — 「私のAIの使い方」
+- [Designing for Awareness: How Multimodal AI Is Reshaping the Future of Interaction](https://raftdesign.studio/journal/designing-for-awareness-how-multimodal/) / [日本語](https://raftdesign.studio/ja/journal/designing-for-awareness-how-multimodal/) — 「状況認識のためのデザイン：マルチモーダルAIがインタラクションの未来を変える」
+- [Stop Treating AI Like Cheating on Your Homework: A Playbook for AI-Native Design Teams](https://raftdesign.studio/journal/stop-treating-ai-like-cheating-on-your-homework/) / [日本語](https://raftdesign.studio/ja/journal/stop-treating-ai-like-cheating-on-your-homework/) — 「AIを宿題のカンニングのように扱うのはやめよう：AIネイティブなデザインチームのためのプレイブック」
 
 ## AI Tools
 - [AI Tools (English)](https://raftdesign.studio/tools/): A reviewed, regularly-updated collection of the AI tools Raft Design actually uses for reasoning, design, and build — including ones dropped and why.

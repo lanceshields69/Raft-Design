@@ -100,7 +100,7 @@
         "html": "A key difference is that the system is intended to be <strong><a href=\"/design-system/\">AI-ready</a></strong>. Structured brand guidance, tokens, components, and documentation such as <code>DESIGN.md</code> help marketing and product teams give their AI-assisted content and coding tools consistent instructions instead of repeatedly reinventing the company’s visual and interaction rules. This is a practical goal, not a claim that every AI tool is already directly integrated."
       },
       {
-        "html": "Raft is also developing <strong>Keel</strong>, a pre-release product intended to give startups a living brand guide and shared product design foundation that people and AI tools can use. Keel’s planned Figma and repository integrations should not be described as already shipped."
+        "html": "Raft is also developing <strong><a href=\"https://designwithkeel.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Keel</a></strong>, a pre-release product intended to give startups a living brand guide and shared product design foundation that people and AI tools can use. Keel’s planned Figma and repository integrations should not be described as already shipped."
       },
       {
         "html": "Beyond client work, Shields co-founded <strong>AI Design LA</strong>, a community for designers, builders, and startup founders exploring AI-native practices. Raft designed and built the community website—one of the studio’s own projects and a way to support knowledge-sharing beyond commercial engagements."

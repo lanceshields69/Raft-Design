@@ -51,32 +51,24 @@ const CLOSE_SVG = `<svg width="17" height="16" viewBox="0 0 16.5332 16" fill="no
             <path fill-rule="evenodd" clip-rule="evenodd" d="M16.2405 0.259611C16.4123 0.426056 16.5088 0.651679 16.5088 0.886921C16.5088 1.12216 16.4123 1.34779 16.2405 1.51423L1.564 15.7175C1.39011 15.8743 1.16012 15.9596 0.922484 15.9556C0.684845 15.9515 0.458111 15.8584 0.290049 15.6957C0.121987 15.5331 0.0257188 15.3136 0.021526 15.0837C0.0173331 14.8537 0.105543 14.6311 0.267572 14.4628L14.9441 0.259611C15.1161 0.0933737 15.3492 0 15.5923 0C15.8354 0 16.0685 0.0933737 16.2405 0.259611Z" fill="currentColor"/>
           </svg>`;
 
+// Site-wide nav (same on every page): top-level pages plus a Contact CTA pill.
 const NAV_ITEMS = {
-  en: [
-    ['work', 'Work'], ['approach', 'Approach'], ['services', 'Services'],
-    ['studio', 'Studio'],
-  ],
-  ja: [
-    ['work', 'Work'], ['approach', 'Approach'], ['services', 'Services'],
-    ['studio', 'Studio'],
-  ],
+  en: [['/work/', 'Work'], ['/services/', 'Services'], ['/about/', 'About'], ['/journal/', 'Journal'], ['/labs/', 'Labs']],
+  ja: [['/ja/work/', 'Work'], ['/ja/services/', 'Services'], ['/ja/about/', 'About'], ['/ja/journal/', 'Journal'], ['/ja/labs/', 'Labs']],
 };
-const JOURNAL_LABEL = { en: 'Journal', ja: 'Journal' };
-const CONTACT_LABEL = { en: 'Contact', ja: 'Contact' };
-const TOOLS_LABEL = { en: 'AI Tools', ja: 'AI Tools' };
+const CTA = {
+  en: { href: '/contact/', label: 'Contact Us' },
+  ja: { href: '/ja/contact/', label: 'お問い合わせ' },
+};
 
 // langSwitch: { activeLabel, otherHref, otherHreflang, otherTarget, otherRel }
 function nav(lang, imagesPath, journalHref, langSwitch) {
   const items = NAV_ITEMS[lang];
   const homeHref = lang === 'ja' ? '/ja/' : '/';
-  const anchorPrefix = lang === 'ja' ? '/ja/#' : '/#';
-  const toolsHref = lang === 'ja' ? '/ja/tools/' : '/tools/';
+  const cta = CTA[lang];
 
-  const linkList = (cls) => items.map(([id, label]) =>
-    `      <a href="${anchorPrefix}${id}" class="${cls}">${label}</a>`).join('\n') +
-    `\n      <a href="${journalHref}" class="${cls}">${JOURNAL_LABEL[lang]}</a>` +
-    `\n      <a href="${anchorPrefix}contact" class="${cls}">${CONTACT_LABEL[lang]}</a>` +
-    `\n      <a href="${toolsHref}" class="${cls}">${TOOLS_LABEL[lang]}</a>`;
+  const linkList = (cls) => items.map(([href, label]) =>
+    `      <a href="${href}" class="${cls}">${label}</a>`).join('\n');
 
   const langBlock = (extra) => {
     const otherAttrs = [
@@ -112,6 +104,7 @@ ${linkList('nav-link')}
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="${themeLabel}">${THEME_TOGGLE_SVG}
       </button>
 ${langBlock('')}
+      <a href="${cta.href}" class="cta-solid-button nav-cta-button">${cta.label}</a>
     </div>
     <button class="nav-hamburger" id="nav-hamburger" type="button" aria-label="${menuLabel}" aria-expanded="false" aria-controls="mobile-menu-overlay">
       ${HAMBURGER_SVG}
@@ -135,6 +128,7 @@ ${langBlock('')}
     <nav class="mobile-menu-links">
 ${linkList('mobile-menu-link')}
     </nav>
+  <a href="${cta.href}" class="cta-solid-button mobile-menu-cta">${cta.label}</a>
   </div>`;
 }
 
@@ -260,17 +254,134 @@ const GTAG_SNIPPET = `  <!-- Google tag (gtag.js) -->
     gtag('config', 'G-RW873N0SWM');
   </script>`;
 
+const AHREFS_SNIPPET = `  <script src="https://analytics.ahrefs.com/analytics.js" data-key="JP3/LvYmI24t5w4Tro8ARQ" async></script>`;
+
 const THEME_HEAD_SCRIPT = `  <script>
     if (localStorage.getItem('raft-theme') === 'light') {
       document.documentElement.dataset.theme = 'light';
     }
   </script>`;
 
-function fontLink(lang) {
-  const jpWeights = lang === 'ja' ? '400;500;600;900' : '900';
+function fontLink(lang, { jpWeights, interWeights = '200;14..32,300;14..32,400;14..32,500;14..32,900' } = {}) {
+  jpWeights = jpWeights || (lang === 'ja' ? '400;500;600;900' : '900');
   return `  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200;14..32,300;14..32,400;14..32,500;14..32,900&family=Noto+Sans+JP:wght@${jpWeights}&family=Fraunces:ital,opsz,SOFT,WONK,wght@0,9..144,0,1,600&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">`;
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,${interWeights}&family=Noto+Sans+JP:wght@${jpWeights}&family=Fraunces:ital,opsz,SOFT,WONK,wght@0,9..144,0,1,600&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">`;
+}
+
+// Calendly booking modal (opens from the nav CTA). Copied from the live pages; only the close label is per-language.
+function calendlyModal(lang) {
+  const closeLabel = lang === 'ja' ? '閉じる' : 'Close';
+  return `  <!-- Calendly Modal — triggered by any .open-calendly-modal element (nav
+       "Book a call" pill, desktop + mobile). widget.js loads lazily on
+       first open, never on page load. -->
+  <div class="calendly-modal-overlay" id="calendly-modal-overlay">
+    <div class="calendly-modal" id="calendly-modal" role="dialog" aria-modal="true" aria-label="Book a call">
+      <div class="calendly-modal-header">
+        <button class="calendly-modal-close" id="calendly-modal-close" type="button" aria-label="${closeLabel}">
+          <svg width="14" height="14" viewBox="0 0 16.5332 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.268262 0.259611C0.440253 0.0933737 0.673395 0 0.916476 0C1.15956 0 1.3927 0.0933737 1.56469 0.259611L16.2412 14.4628C16.3313 14.5441 16.4036 14.6421 16.4538 14.751C16.5039 14.8599 16.5309 14.9774 16.533 15.0966C16.5352 15.2158 16.5125 15.3342 16.4664 15.4448C16.4203 15.5553 16.3516 15.6557 16.2645 15.74C16.1774 15.8243 16.0736 15.8907 15.9594 15.9354C15.8452 15.98 15.7229 16.002 15.5997 15.9999C15.4765 15.9978 15.3551 15.9717 15.2426 15.9232C15.13 15.8746 15.0288 15.8047 14.9448 15.7175L0.268262 1.51423C0.0964852 1.34779 0 1.12216 0 0.886921C0 0.651679 0.0964852 0.426056 0.268262 0.259611Z" fill="currentColor"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.2405 0.259611C16.4123 0.426056 16.5088 0.651679 16.5088 0.886921C16.5088 1.12216 16.4123 1.34779 16.2405 1.51423L1.564 15.7175C1.39011 15.8743 1.16012 15.9596 0.922484 15.9556C0.684845 15.9515 0.458111 15.8584 0.290049 15.6957C0.121987 15.5331 0.0257188 15.3136 0.021526 15.0837C0.0173331 14.8537 0.105543 14.6311 0.267572 14.4628L14.9441 0.259611C15.1161 0.0933737 15.3492 0 15.5923 0C15.8354 0 16.0685 0.0933737 16.2405 0.259611Z" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+      <div class="calendly-modal-body">
+        <div class="calendly-inline-container" id="calendly-inline-container"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var overlay = document.getElementById('calendly-modal-overlay');
+      var modal = document.getElementById('calendly-modal');
+      var closeBtn = document.getElementById('calendly-modal-close');
+      var container = document.getElementById('calendly-inline-container');
+      var triggers = document.querySelectorAll('.open-calendly-modal');
+      if (!overlay || !modal || !triggers.length) return;
+
+      var CALENDLY_URL = 'https://calendly.com/raftdesignstudio/30min';
+      var trigger = null;
+      var widgetInitialized = false;
+      var scriptPromise = null;
+
+      function loadCalendlyScript() {
+        if (scriptPromise) return scriptPromise;
+        scriptPromise = new Promise(function (resolve, reject) {
+          if (window.Calendly) { resolve(); return; }
+          var script = document.createElement('script');
+          script.src = 'https://assets.calendly.com/assets/external/widget.js';
+          script.async = true;
+          script.onload = resolve;
+          script.onerror = reject;
+          document.body.appendChild(script);
+        });
+        return scriptPromise;
+      }
+
+      function initWidget() {
+        if (widgetInitialized) return;
+        widgetInitialized = true;
+        window.Calendly.initInlineWidget({
+          url: CALENDLY_URL,
+          parentElement: container,
+          resize: true
+        });
+      }
+
+      function getFocusable() {
+        return Array.from(modal.querySelectorAll('a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])'))
+          .filter(function (el) { return el.offsetParent !== null; });
+      }
+
+      function trapFocus(e) {
+        if (e.key !== 'Tab') return;
+        var focusable = getFocusable();
+        if (!focusable.length) return;
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+
+      function onKeydown(e) {
+        if (e.key === 'Escape') closeModal();
+        else trapFocus(e);
+      }
+
+      function openModal(el) {
+        trigger = el || document.activeElement;
+        overlay.classList.add('active');
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () { overlay.classList.add('visible'); });
+        });
+        document.body.style.overflow = 'hidden';
+        if (closeBtn) closeBtn.focus();
+        document.addEventListener('keydown', onKeydown);
+        loadCalendlyScript().then(initWidget);
+      }
+
+      function closeModal() {
+        overlay.classList.remove('visible');
+        document.body.style.overflow = '';
+        document.removeEventListener('keydown', onKeydown);
+        setTimeout(function () { overlay.classList.remove('active'); }, 200);
+        if (trigger) trigger.focus();
+      }
+
+      triggers.forEach(function (el) {
+        el.addEventListener('click', function (e) { openModal(e.currentTarget); });
+      });
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      overlay.addEventListener('click', function (e) {
+        if (e.target === e.currentTarget) closeModal();
+      });
+    })();
+  </script>`;
 }
 
 function esc(s) {
@@ -325,25 +436,33 @@ const UPSTREAM_SERIES_NAME = 'Upstream — The AI-Native Teams Series';
 const PROTECTED_SLUGS = [];
 
 function jsonLd(obj) {
-  return `  <script type="application/ld+json">\n  ${JSON.stringify(obj, null, 2).split('\n').join('\n  ')}\n  </script>`;
+  // Short arrays of plain strings/numbers stay on one line, matching the other pages' JSON-LD.
+  const json = JSON.stringify(obj, null, 2).replace(/\[\n\s+((?:"(?:[^"\\]|\\.)*"|-?[\d.]+)(?:,\n\s+(?:"(?:[^"\\]|\\.)*"|-?[\d.]+))*)\n\s+\]/g,
+    (m, items) => {
+      const inline = `[${items.split(/,\n\s+/).join(', ')}]`;
+      return inline.length <= 40 ? inline : m;   // long lists (e.g. sameAs URLs) stay one per line
+    });
+  return `  <script type="application/ld+json">\n  ${json.split('\n').join('\n  ')}\n  </script>`;
 }
 
-function page({ lang, stylesPath, imagesPath, extraCss, head, journalHref, langSwitch, bodyMain }) {
+function page({ lang, stylesPath, imagesPath, extraCss, head, journalHref, langSwitch, bodyMain, fontOpts }) {
   return `<!DOCTYPE html>
 <html lang="${lang}">
 <head>
 ${GTAG_SNIPPET}
+${AHREFS_SNIPPET}
     <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 ${head}
   <link rel="icon" type="image/png" href="${imagesPath}r-mark-favicon.png">
-${fontLink(lang)}
+${fontLink(lang, fontOpts)}
   <link rel="stylesheet" href="${stylesPath}styles.css">
   <link rel="stylesheet" href="${stylesPath}work-index.css">
   <link rel="stylesheet" href="${stylesPath}journal.css">${extraCss || ''}
+  <link rel="stylesheet" href="${stylesPath}page-spacing.css">
 ${THEME_HEAD_SCRIPT}
 </head>
-<body>
+<body class="wide-spacing">
 
 ${nav(lang, imagesPath, journalHref, langSwitch)}
 
@@ -354,6 +473,9 @@ ${bodyMain}
 ${footer(lang, imagesPath)}
 
 ${BOTTOM_SCRIPT}
+
+${calendlyModal(lang)}
+
 </body>
 </html>
 `;
@@ -371,17 +493,15 @@ function buildIndexPage(lang, articles) {
   const otherUrl = isJa ? `${SITE}/journal/` : `${SITE}/ja/journal/`;
 
   const title = isJa
-    ? 'ジャーナル — デザインリーダーシップとAIネイティブな実践 | Raft Design'
-    : 'Journal — Design Leadership & AI-Native Practice | Raft Design';
+    ? 'ジャーナル：デザインリーダーシップとAIネイティブな実践｜Raft Design'
+    : 'Journal: Design Leadership and AI-Native Practice | Raft Design';
   const description = isJa
     ? 'デザインで導く、ということ。デザインの実践が、働き方の未来と交わる場所。Raft Design創業者ランス・シールズによるエッセイ。'
     : 'Leading through design. Where the practice of design meets the future of how we work — essays from Raft Design founder Lance Shields.';
   const heroTitle = 'Journal';
-  const heroSub = isJa
-    ? 'デザインで導く、ということ。<br aria-hidden>デザインの実践が、働き方の未来と交わる場所。'
-    : 'Leading through design.<br aria-hidden>Where the practice of design meets the future of how we work.';
   const readLabel = isJa ? '記事を読む' : 'Read on Substack';
-  const ogImage = `${SITE}/images/${articles[0].image}`;
+  // The English index shares a fixed social image; the Japanese index uses its newest article's image.
+  const ogImage = isJa ? `${SITE}/images/${articles[0].image}` : `${SITE}/images/article-img-stop-adding-ai.jpg`;
 
   const head = `  <title>${esc(title)}</title>
   <meta name="description" content="${esc(description)}">
@@ -458,10 +578,27 @@ ${jsonLd({
     cardsHtml.push(`      <div class="journal-row">\n${cardsInRow}\n      </div>`);
   }
 
-  const bodyMain = `    <div class="work-hero">
-      <h1 class="work-hero-title">${heroTitle}</h1>
-      <p class="work-hero-intro">${heroSub}</p>
-    </div>
+  // Hero copy is hand-written per language (the intro line differs from the meta description).
+  const hero = isJa ? `    <section class="page-hero" style="max-width:1920px">
+      <div style="max-width:900px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px">
+        <span style="font-size:23px;font-weight:var(--weight-black);letter-spacing:var(--tracking-section-title);line-height:var(--line-height-eyebrow);text-transform:uppercase;color:var(--text-accent)">ジャーナル</span>
+        <!-- max-width raised 800px -> 900px: at 800px this headline wrapped
+             to 2 lines with just "る。" orphaned alone on the second line;
+             900px is wide enough for it to fit on one line at every
+             breakpoint above mobile (font-size clamps down below that,
+             which also fixes it independently at small widths). -->
+        <h1 style="font-weight:700;font-family:'Noto Sans JP',sans-serif;font-size:clamp(34px,7vw,64px);line-height:1.3;letter-spacing:0;margin:0">これからを、深く見つめる。</h1>
+        <p style="font-size:20px;line-height:1.8;color:var(--text-primary);max-width:660px;margin:0;overflow-wrap:anywhere">AIはデザインをどう変え、私たちがつくるブランドやプロダクトに何をもたらすのか。エッセイを通して考えます。</p>
+      </div>
+    </section>` : `    <section class="page-hero" style="max-width:1920px">
+      <div style="max-width:800px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px">
+        <span style="font-size:23px;font-weight:var(--weight-black);letter-spacing:var(--tracking-section-title);line-height:var(--line-height-eyebrow);text-transform:uppercase;color:var(--text-accent)">Journal</span>
+        <h1 style="font-weight:700;font-size:clamp(40px,8vw,79px);line-height:.95;letter-spacing:-2px;margin:0">A closer look at what's next.</h1>
+        <p style="font-size:20px;line-height:1.4;color:var(--text-primary);max-width:559px;margin:0">Essays on how AI is changing design, and what it means for the brands and products we build.</p>
+      </div>
+    </section>`;
+
+  const bodyMain = `${hero}
 
     <div class="journal-grid">
 ${cardsHtml.join('\n')}
@@ -474,7 +611,11 @@ ${cardsHtml.join('\n')}
 
   const extraCss = isJa ? '\n  <link rel="stylesheet" href="../ja.css">' : '';
 
-  return page({ lang, stylesPath, imagesPath, extraCss, head, journalHref, langSwitch, bodyMain });
+  const fontOpts = isJa
+    ? { jpWeights: '400;500;600;700;900' }
+    : { interWeights: '200;14..32,300;14..32,400;14..32,500;14..32,700;14..32,900' };
+
+  return page({ lang, stylesPath, imagesPath, extraCss, head, journalHref, langSwitch, bodyMain, fontOpts });
 }
 
 // ---------------------------------------------------------------------
@@ -491,7 +632,7 @@ function buildArticlePage(article, allArticles) {
   const stylesPath = '../../../';
   const imagesPath = '../../../images/';
   const url = `${SITE}/ja/journal/${article.slug}/`;
-  const title = `${j.title} | Raft Design ジャーナル`;
+  const title = `${j.title}｜Raft Design`;
   const ogImage = `${SITE}/images/${article.image}`;
 
   const authorUrl = 'https://www.linkedin.com/in/lanceshields/';

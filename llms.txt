@@ -24,6 +24,7 @@
 - [Adobe Express Enterprise — Embed SDK + Plugin Ecosystem](https://raftdesign.studio/work/adobe-express-enterprise/) / [日本語](https://raftdesign.studio/ja/work/adobe-express-enterprise/)
 - [Modere — Japanese Market Platform Redesign](https://raftdesign.studio/work/modere/) / [日本語](https://raftdesign.studio/ja/work/modere/)
 - [Modular Suite for XD — Design Collaboration Tools](https://raftdesign.studio/work/modular-suite-xd/) / [日本語](https://raftdesign.studio/ja/work/modular-suite-xd/)
+- [AI Design LA — Community Platform and Brand Identity](https://raftdesign.studio/work/ai-design-la/)
 
 ## Services
 - [Design Foundation Sprint](https://raftdesign.studio/design-foundation/) / [日本語](https://raftdesign.studio/ja/design-foundation/): A four-week engagement for funded startups — brand system first, then the product screens that express it, delivered as a tokenized, documented design system rather than a one-off deliverable.

@@ -55,6 +55,12 @@
   padding-top: 0;
 }
 
+/* A lone last card (AI Design LA) holds the width of a normal two-up
+   column instead of stretching across the whole row. */
+.work-row--single .work-card {
+  flex: 0 0 calc((100% - var(--space-xxxl)) / 2);
+}
+
 .work-card {
   display: flex;
   flex-direction: column;
@@ -144,6 +150,10 @@
   .work-row {
     flex-direction: column;
     gap: var(--space-xl);
+  }
+
+  .work-row--single .work-card {
+    flex: 1 0 0;
   }
 
   .work-hero-title {

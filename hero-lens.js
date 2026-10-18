@@ -107,10 +107,12 @@
     syncMarquee();
     syncVideo();
     lens.classList.add('is-active');
+    hero.classList.add('is-lens-on');
     clearInterval(syncTimer);
     syncTimer = setInterval(syncVideo, 1000);
   }
   function deactivate() {
+    hero.classList.remove('is-lens-on');
     if (!lens) return;
     lens.classList.remove('is-active', 'is-over-cta', 'is-over-text');
     clearInterval(syncTimer);
@@ -161,7 +163,30 @@
     }
     queue();
   });
-  window.addEventListener('scroll', function () { if (lens && lens.classList.contains('is-active')) queue(); }, { passive: true });
+
+  // mouseenter/leave alone can miss: a fast exit out of the window, a scroll that
+  // moves the hero under a still pointer, or a tab switch. Re-check against
+  // the real element under the pointer so the lens (and the hidden system
+  // cursor) can't get stuck on or off.
+  var seen = false;
+  function pointerInHero() {
+    var el = document.elementFromPoint(lastX, lastY);
+    return !!(el && hero.contains(el));
+  }
+  function resync() {
+    if (!seen) return;
+    var inside = pointerInHero();
+    var on = hero.classList.contains('is-lens-on');
+    if (inside && !on) { activate(); queue(); }
+    else if (!inside && on) deactivate();
+    else if (on) queue();
+  }
+  window.addEventListener('mousemove', function (e) { seen = true; lastX = e.clientX; lastY = e.clientY; }, { passive: true, capture: true });
+  window.addEventListener('scroll', resync, { passive: true });
+  document.documentElement.addEventListener('mouseleave', function () { seen = false; deactivate(); });
+  document.addEventListener('mouseout', function (e) { if (!e.relatedTarget) { seen = false; deactivate(); } });
+  window.addEventListener('blur', function () { seen = false; deactivate(); });
+  document.addEventListener('visibilitychange', function () { if (document.hidden) { seen = false; deactivate(); } });
 
   // Pre-build once the page has settled so the first hover isn't a cold start.
   window.addEventListener('load', function () {

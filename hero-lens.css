@@ -9,8 +9,8 @@
   initial-value: 0px;
 }
 
-.intro-section.has-hero-lens,
-.intro-section.has-hero-lens * {
+.intro-section.has-hero-lens.is-lens-on,
+.intro-section.has-hero-lens.is-lens-on * {
   cursor: none;
 }
 

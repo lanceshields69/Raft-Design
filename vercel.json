@@ -20,8 +20,8 @@
     { "source": "/ja/llms-full.txt", "destination": "/ja/ai.md" }
   ],
   "headers": [
-    { "source": "/ai.md", "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }, { "key": "X-Robots-Tag", "value": "noindex" }] },
-    { "source": "/ja/ai.md", "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }, { "key": "X-Robots-Tag", "value": "noindex" }] },
+    { "source": "/ai.md", "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }] },
+    { "source": "/ja/ai.md", "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }] },
     { "source": "/llms-full.txt", "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }, { "key": "X-Robots-Tag", "value": "noindex" }] },
     { "source": "/ja/llms-full.txt", "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }, { "key": "X-Robots-Tag", "value": "noindex" }] }
   ]

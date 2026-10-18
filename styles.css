@@ -2204,13 +2204,13 @@ html[lang="ja"] .approach-heading {
   color: var(--text-accent);
 }
 
-/* English home page: stats use Kode Mono SemiBold (the terminal look from the
+/* English home page: stats use Kode Mono Medium (the terminal look from the
    /ai/ page) in place of Fraunces. Kode Mono has no italic. The Japanese home
    page keeps Fraunces for now. */
 html[lang="en"] .stat-number {
   font-family: 'Kode Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   font-variation-settings: normal;
 }
 

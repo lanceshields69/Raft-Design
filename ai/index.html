@@ -70,6 +70,7 @@
   <link rel="icon" type="image/png" href="../images/r-mark-favicon.png">
   <link rel="alternate" hreflang="en" href="https://raftdesign.studio/ai/">
   <link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/ai/">
+  <link rel="alternate" type="text/markdown" href="/ai.md">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
@@ -169,6 +170,7 @@
     }
     .tip-arrow { display: block; flex: none; }
     @media (prefers-reduced-motion: reduce) { .tip { transition: none; } }
+    .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
     /* Occasional random glitch on the logo (script at end of body). */
     .logo .gl-line { display: block; white-space: pre; will-change: transform; }
     .logo.glitching { text-shadow: 3px 0 rgba(237, 242, 238, .55), -3px 0 rgba(61, 232, 61, .35); }
@@ -256,7 +258,8 @@
       <a href="/journal/">/journal</a>
       <a href="/labs/">/labs</a>
       <a href="/contact/">/contact</a>
-      <a href="/llms.txt">/llms.txt</a>
+      <a href="/llms.txt" data-tip="tip-llms" aria-describedby="tip-llms">/llms.txt</a>
+      <a href="/ai.md" data-tip="tip-aimd" aria-describedby="tip-aimd">/ai.md</a>
     </nav>
 
     <!-- assistant-style intro -->
@@ -280,7 +283,7 @@
       <dt>founder</dt><dd>Lance Shields</dd>
       <dt>location</dt><dd>Los Angeles, CA 90068 · working across U.S. + Japan</dd>
       <dt>languages</dt><dd>en, ja</dd>
-      <dt>experience</dt><dd>20 years · Adobe, Walmart, LegalOn</dd>
+      <dt>experience</dt><dd>25+ years · Adobe, Walmart, LegalOn</dd>
       <dt>url</dt><dd><a href="https://raftdesign.studio">https://raftdesign.studio</a></dd>
     </dl>
 
@@ -344,7 +347,7 @@
     <h2 class="rule" id="faq"><b>──[ 07 ]──</b> FAQ ────────────────────────────────────────────────────</h2>
     <dl class="faq">
       <dt>What is Raft Design?</dt>
-      <dd>Raft Design is an AI-native studio working across the U.S. and Japan on brand, product, and digital experience. Twenty years of experience across Adobe, Walmart, and LegalOn shape how we work: hands-on, fast, and built to move with change rather than around it.</dd>
+      <dd>Raft Design is an AI-native studio working across the U.S. and Japan on brand, product, and digital experience. 25+ years of experience across Adobe, Walmart, and LegalOn shape how we work: hands-on, fast, and built to move with change rather than around it.</dd>
       <dt>What does "AI-native studio" mean?</dt>
       <dd>It means AI is part of how the work gets made, not just what it's about. Strategy forms in conversation with language models, design and prototype move together, and working software gets built without the usual handoff between design and engineering. The result is senior design judgment delivered at a speed a traditional studio can't match.</dd>
       <dt>How do engagements work?</dt>
@@ -369,11 +372,14 @@
     <p class="eof">/* EOF */</p>
     <div class="foot">
       <a href="/">human version</a>
-      <a href="/llms.txt">llms.txt</a>
+      <a href="/llms.txt" data-tip="tip-llms" aria-describedby="tip-llms">llms.txt</a>
+      <a href="/ai.md" data-tip="tip-aimd" aria-describedby="tip-aimd">ai.md</a>
       <a href="/sitemap.xml">sitemap.xml</a>
       <span>designed by hand. built by AI.</span>
     </div>
   </main>
+  <span class="sr-only" id="tip-llms">A table of contents for AI. Models read it first to find their way around.</span>
+  <span class="sr-only" id="tip-aimd">Raft, minus the design. Everything an AI needs to decide if we're a fit.</span>
   <div class="tip" id="human-tip" role="tooltip" aria-hidden="true">
     <div class="tip-box">This content is only human-compatible.</div>
     <svg class="tip-arrow" width="12.1244" height="10.5" viewBox="0 0 12.1244 10.5" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.06218 10.5L12.1244 0H0L6.06218 10.5Z" fill="#818181"/></svg>
@@ -386,18 +392,47 @@
     </div>
   </div>
     <script>
-    // Tooltip on links that leave the machine version for the regular site.
+    // Tooltips: links that leave the machine version for the regular site, plus
+    // the llms.txt and ai.md links (data-tip). Hover, keyboard focus, and tap.
     (function () {
       var tip = document.getElementById('human-tip');
       if (!tip) return;
+      var box = tip.querySelector('.tip-box');
+      var humanText = box.textContent;
       var current = null;
+      var lastType = 'mouse'; // 'mouse' | 'touch' | 'key'
+
+      // Static description for the human-version links, so assistive tech
+      // announces it on focus without waiting for the visual tooltip.
+      var humanDesc = document.createElement('span');
+      humanDesc.className = 'sr-only';
+      humanDesc.id = 'tip-human';
+      humanDesc.textContent = humanText;
+      document.body.appendChild(humanDesc);
 
       function isHuman(a) {
         if (a.closest('.hm-toggle')) return false;
         var h = a.getAttribute('href') || '';
         if (/^https?:\/\/(www\.)?raftdesign\.studio\/?$/.test(h)) return true;
-        return /^\/(?!\/|ai(\/|$)|ja\/ai(\/|$)|llms\.txt|sitemap\.xml|assets\/)/.test(h);
+        return /^\/(?!\/|ai(\/|$)|ja\/ai(\/|$)|ai\.md|ja\/ai\.md|llms\.txt|sitemap\.xml|assets\/)/.test(h);
       }
+
+      // Links with data-tip name a description element; the other tip links
+      // are the human-version ones.
+      function tipText(a) {
+        var id = a.getAttribute('data-tip');
+        if (id) { var d = document.getElementById(id); return d ? d.textContent : ''; }
+        return isHuman(a) ? humanText : '';
+      }
+
+      function tipLink(t) {
+        var a = t && t.closest && t.closest('a[href]');
+        return a && tipText(a) ? a : null;
+      }
+
+      Array.prototype.forEach.call(document.querySelectorAll('a[href]'), function (a) {
+        if (!a.hasAttribute('data-tip') && isHuman(a)) a.setAttribute('aria-describedby', 'tip-human');
+      });
 
       function place(x, rect) {
         var w = tip.offsetWidth, h = tip.offsetHeight;
@@ -415,35 +450,55 @@
 
       function show(a, x, y) {
         current = a;
-        a.setAttribute('aria-describedby', 'human-tip');
+        box.textContent = tipText(a);
         tip.setAttribute('aria-hidden', 'false');
         var r = rectAt(a, y);
         place(x, r);
         tip.classList.add('show');
       }
 
+      function showAtLink(a) {
+        var r = a.getBoundingClientRect();
+        show(a, r.left + r.width / 2, r.top + r.height / 2);
+      }
+
       function hide() {
-        if (current) current.removeAttribute('aria-describedby');
         current = null;
         tip.classList.remove('show');
         tip.setAttribute('aria-hidden', 'true');
       }
 
+      document.addEventListener('pointerdown', function (e) {
+        lastType = e.pointerType === 'touch' ? 'touch' : 'mouse';
+        // a touch outside the open tip's link closes it
+        if (lastType === 'touch' && current && !current.contains(e.target)) hide();
+      }, true);
+      document.addEventListener('keydown', function () { lastType = 'key'; }, true);
+
       document.addEventListener('mouseover', function (e) {
-        var a = e.target.closest && e.target.closest('a[href]');
-        if (a && isHuman(a)) show(a, e.clientX, e.clientY); else if (current) hide();
+        if (lastType === 'touch') return; // compatibility mouse events after a tap
+        var a = tipLink(e.target);
+        if (a) show(a, e.clientX, e.clientY); else if (current) hide();
       });
       document.addEventListener('mousemove', function (e) {
-        if (current) place(e.clientX, rectAt(current, e.clientY));
+        if (current && lastType !== 'touch') place(e.clientX, rectAt(current, e.clientY));
       });
       document.addEventListener('mouseout', function (e) {
+        if (lastType === 'touch') return;
         if (current && !(e.relatedTarget && current.contains(e.relatedTarget))) hide();
       });
       document.addEventListener('focusin', function (e) {
-        var a = e.target.closest && e.target.closest('a[href]');
-        if (a && isHuman(a)) { var r = a.getBoundingClientRect(); show(a, r.left + r.width / 2, r.top + r.height / 2); }
+        if (lastType === 'touch') return;
+        var a = tipLink(e.target);
+        if (a) showAtLink(a);
       });
       document.addEventListener('focusout', hide);
+      // Touch: the first tap on a tip link shows its tooltip, the second follows the link.
+      document.addEventListener('click', function (e) {
+        if (lastType !== 'touch') return;
+        var a = tipLink(e.target);
+        if (a && current !== a) { e.preventDefault(); showAtLink(a); }
+      }, true);
       addEventListener('scroll', hide, { passive: true });
     })();
   </script>

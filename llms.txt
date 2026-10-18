@@ -1,52 +1,71 @@
 # Raft Design
 
-> Raft Design is a bilingual AI-native studio working across the U.S. and
-> Japan on brand, product, and digital experience. Founded by Lance Shields,
-> a designer with twenty years of design leadership at Adobe and Walmart,
-> and brand/product work with LegalOn, Visa, Hitachi, and Red Bull. The
-> studio works hands-on, fast, and builds to move with change rather than
-> around it.
+> Raft Design is an AI-native brand and product design studio based in Los Angeles, working in English and Japanese. It was founded by Lance Shields, a designer with 25+ years of experience who previously led design at Adobe and Walmart. Raft helps startups and established companies turn new technology into brands and products people trust. The core offer is the Design Foundation Sprint, a four-week fixed-price engagement for funded startups that delivers a brand system, core product screens, and a documented design system.
+
+Last updated: 2026-10-18
+
+For a single-file summary of the whole site, read [ai.md](https://raftdesign.studio/ai.md) (Japanese: [ja/ai.md](https://raftdesign.studio/ja/ai.md)).
 
 ## Studio
-- [Home (English)](https://raftdesign.studio/): Studio thesis, practice areas, and origin story. Includes an "Engage" section (after Services) with two tiles linking to the Design Foundation Sprint and AI-Ready Design Systems pages below.
-- [Home (Japanese)](https://raftdesign.studio/ja/): 日本語版ホームページ。「Engage」セクション（Services の後）に、Design Foundation SprintとAI対応デザインシステムへのタイルを含む。
-- [Meet Raft](https://raftdesign.studio/about/) / [日本語](https://raftdesign.studio/ja/about/): Founder Lance Shields' background — design leadership at Adobe and Walmart, a decade leading a Tokyo design team, and why the studio is built to move rather than to look finished.
-- [Labs](https://raftdesign.studio/labs/) / [日本語](https://raftdesign.studio/ja/labs/): Lance Shields' hands-on experiments in AI product design, prototyping, and emerging tools.
-- [Contact](https://raftdesign.studio/contact/) / [日本語](https://raftdesign.studio/ja/contact/): Get in touch to start a project.
+- [Home (English)](https://raftdesign.studio/): Positioning, approach, featured work, the two main offerings, journal, the Design Intelligence Engine site scanner, and FAQ.
+- [Home (Japanese)](https://raftdesign.studio/ja/): Japanese version of the home page.
+- [About](https://raftdesign.studio/about/) / [日本語](https://raftdesign.studio/ja/about/): The studio, founder Lance Shields' background (Adobe, Walmart, a decade leading a Tokyo design team, an SF design studio), awards, and how Raft builds with AI.
+- [Services](https://raftdesign.studio/services/) / [日本語](https://raftdesign.studio/ja/services/): Five service areas: branding, digital products, websites, AI interfaces and agents, and globalization.
+- [Labs](https://raftdesign.studio/labs/) / [日本語](https://raftdesign.studio/ja/labs/): Six self-initiated experiments in AI product design, prototyping, and emerging tools.
+- [Contact](https://raftdesign.studio/contact/) / [日本語](https://raftdesign.studio/ja/contact/): Contact form, email, phone, office address, and consultation booking.
+
+## Offerings
+- [Design Foundation Sprint](https://raftdesign.studio/design-foundation/) / [日本語](https://raftdesign.studio/ja/design-foundation/): A four-week fixed-price engagement for funded startups. Brand first, then the product screens that express it, delivered as a tokenized, documented design system. Core is $28,000, Full System is $34,000, and Land & Expand fractional design leadership is $10,000 per month.
+- [AI-Ready Design Systems](https://raftdesign.studio/design-system/) / [日本語](https://raftdesign.studio/ja/design-system/): Design systems that give a team and its AI tools the same source of truth: brand rules, voice, tokens, components, templates, and DESIGN.md. Links to a real example, the [Raft Design & Brand System deck](https://raftdesign.studio/design-system-deck/) (English only; the Japanese page links to the English deck).
 
 ## Work
 - [Work index (English)](https://raftdesign.studio/work/)
 - [Work index (Japanese)](https://raftdesign.studio/ja/work/)
-- [LegalOn — Global AI Brand Platform](https://raftdesign.studio/work/legalon/) / [日本語](https://raftdesign.studio/ja/work/legalon/)
-- [That's Not Cool — Webby Award-Winning Non-Profit Site](https://raftdesign.studio/work/thats-not-cool/) / [日本語](https://raftdesign.studio/ja/work/thats-not-cool/)
-- [Adobe Express Photos — 0-to-1 AI Product Design](https://raftdesign.studio/work/adobe-express-photos/) / [日本語](https://raftdesign.studio/ja/work/adobe-express-photos/)
-- [Walmart — AI-First Shopping Experience](https://raftdesign.studio/work/walmart/) / [日本語](https://raftdesign.studio/ja/work/walmart/)
-- [Adobe Express Enterprise — Embed SDK + Plugin Ecosystem](https://raftdesign.studio/work/adobe-express-enterprise/) / [日本語](https://raftdesign.studio/ja/work/adobe-express-enterprise/)
-- [Modere — Japanese Market Platform Redesign](https://raftdesign.studio/work/modere/) / [日本語](https://raftdesign.studio/ja/work/modere/)
-- [Modular Suite for XD — Design Collaboration Tools](https://raftdesign.studio/work/modular-suite-xd/) / [日本語](https://raftdesign.studio/ja/work/modular-suite-xd/)
-- [AI Design LA — Community Platform and Brand Identity](https://raftdesign.studio/work/ai-design-la/)
 
-## Services
-- [Design Foundation Sprint](https://raftdesign.studio/design-foundation/) / [日本語](https://raftdesign.studio/ja/design-foundation/): A four-week engagement for funded startups — brand system first, then the product screens that express it, delivered as a tokenized, documented design system rather than a one-off deliverable.
-- [AI-Ready Design Systems](https://raftdesign.studio/design-system/) / [日本語](https://raftdesign.studio/ja/design-system/): Why and how Raft builds design systems that give both a team and its AI tools (Claude Design, ChatGPT, Cursor, and others) the same source of truth — brand rules, tokens, components, and DESIGN.md. Links to a real example, the [Raft Design & Brand System deck](https://raftdesign.studio/design-system-deck/) (English only).
+## Raft projects
+- [LegalOn: Global AI Brand Platform](https://raftdesign.studio/work/legalon/) / [日本語](https://raftdesign.studio/ja/work/legalon/): Brand and product platform for seven AI products built on the "ON" concept, with teams in Tokyo and the U.S.
+- [AI Design LA: Community Platform and Brand Identity](https://raftdesign.studio/work/ai-design-la/): Visual identity and website for a Los Angeles AI design community co-founded by our founder. English page only.
+- [Keel (pre-release)](https://designwithkeel.com/): A product we are building that turns a company's website into a brand guide and design foundations for people and AI tools. In private beta.
+- [Design Intelligence Engine](https://design-intelligence-engine.lovable.app/?lang=en): A site scanner we built that scores how well a site is designed and built, including how readable it is to LLMs and search.
+- [Raft Design & Brand System](https://raftdesign.studio/design-system-deck/): Our own design and brand system: tokens, components, voice, motion, templates, and DESIGN.md. English only.
 
-## Journal
-- [Journal index (English)](https://raftdesign.studio/journal/)
-- [Journal index (Japanese)](https://raftdesign.studio/ja/journal/)
-- [5 Best Brand and AI Product Design Studios for Startups in Los Angeles (2026)](https://raftdesign.studio/journal/best-ai-product-design-studios-los-angeles/) — English only
-- [Introducing the Design Foundation Sprint](https://raftdesign.studio/journal/introducing-the-design-foundation/) — English only
-- [Stop Adding AI to the Design Process. Re-engineer It.](https://raftdesign.studio/journal/stop-adding-ai-to-the-design-process/) / [日本語](https://raftdesign.studio/ja/journal/stop-adding-ai-to-the-design-process/) — 「AIをデザインプロセスに追加するのはやめよう。再設計しよう。」
-- [Why I Built a Raft, Not a Ship](https://raftdesign.studio/journal/why-i-built-a-raft-not-a-ship/) / [日本語](https://raftdesign.studio/ja/journal/why-i-built-a-raft-not-a-ship/) — 「船ではなく、いかだをつくった理由」
-- [The AI-Native Designer Was Only Phase One](https://raftdesign.studio/journal/ai-native-designer-phase-one/) / [日本語](https://raftdesign.studio/ja/journal/ai-native-designer-phase-one/) — 「AIネイティブ・デザイナーは、フェーズ1にすぎなかった」
-- [How I Use AI](https://raftdesign.studio/journal/how-i-use-ai/) / [日本語](https://raftdesign.studio/ja/journal/how-i-use-ai/) — 「私のAIの使い方」
-- [Designing for Awareness: How Multimodal AI Is Reshaping the Future of Interaction](https://raftdesign.studio/journal/designing-for-awareness-how-multimodal/) / [日本語](https://raftdesign.studio/ja/journal/designing-for-awareness-how-multimodal/) — 「状況認識のためのデザイン：マルチモーダルAIがインタラクションの未来を変える」
-- [Stop Treating AI Like Cheating on Your Homework: A Playbook for AI-Native Design Teams](https://raftdesign.studio/journal/stop-treating-ai-like-cheating-on-your-homework/) / [日本語](https://raftdesign.studio/ja/journal/stop-treating-ai-like-cheating-on-your-homework/) — 「AIを宿題のカンニングのように扱うのはやめよう：AIネイティブなデザインチームのためのプレイブック」
+## Experience behind the studio
+Raft is founder-led. The work below was led by our founder before Raft, at Walmart, Adobe, and previous studios.
+
+- [Walmart: AI-First Shopping Experience](https://raftdesign.studio/work/walmart/) / [日本語](https://raftdesign.studio/ja/work/walmart/): AI shopping features layered onto search, led by our founder as Design Director at Walmart.
+- [Adobe Express Photos: 0-to-1 AI Product Design](https://raftdesign.studio/work/adobe-express-photos/) / [日本語](https://raftdesign.studio/ja/work/adobe-express-photos/): AI-powered desktop image editor, led by our founder at Adobe.
+- [Adobe Express Enterprise: Embed SDK and Plugin Ecosystem](https://raftdesign.studio/work/adobe-express-enterprise/) / [日本語](https://raftdesign.studio/ja/work/adobe-express-enterprise/): Embeddable editors, SDK, and plugin marketplace, led by our founder at Adobe.
+- [Modular Suite for XD: Design Collaboration Tools](https://raftdesign.studio/work/modular-suite-xd/) / [日本語](https://raftdesign.studio/ja/work/modular-suite-xd/): Three collaboration plugins for Adobe XD, from our founder's time at Adobe.
+- [Fitbit: Interactive Retail Experience](https://raftdesign.studio/work/fitbit/) / [日本語](https://raftdesign.studio/ja/work/fitbit/): Guided in-store product experience in 1,000+ Best Buy and Target stores, led by our founder at a previous studio.
+- [California Walnuts: Brand and Digital Experience](https://raftdesign.studio/work/california-walnuts/) / [日本語](https://raftdesign.studio/ja/work/california-walnuts/): Creative direction and UX/UI design for walnuts.org, led by our founder at a previous studio.
+- [That's Not Cool: Webby Award-Winning Non-Profit Site](https://raftdesign.studio/work/thats-not-cool/) / [日本語](https://raftdesign.studio/ja/work/thats-not-cool/): Redesign of a teen digital-relationships site for Futures Without Violence, led by our founder at a previous studio.
+- [Modere: Japanese Market Platform Redesign](https://raftdesign.studio/work/modere/) / [日本語](https://raftdesign.studio/ja/work/modere/): Modere.co.jp rebuilt into a community-powered wellness platform, led by our founder at a previous studio.
+- Earlier clients named on the [Design Foundation page](https://raftdesign.studio/design-foundation/): Cloud Cruiser (acquired by HPE, 2017), Health Catalyst (Nasdaq IPO, 2019), OrderDynamics (acquired by Tecsys, 2018), Leadspace (still operating), Rally Health, and Besure.
 
 ## AI Tools
-- [AI Tools (English)](https://raftdesign.studio/tools/): A reviewed, regularly-updated collection of the AI tools Raft Design actually uses for reasoning, design, and build — including ones dropped and why.
-- [AI Tools (Japanese)](https://raftdesign.studio/ja/tools/): 日本語版AIツールページ。
+- [AI Tools (English)](https://raftdesign.studio/tools/): A reviewed, regularly updated list of the AI tools Raft uses for reasoning, design, and build, including tools dropped and why.
+- [AI Tools (Japanese)](https://raftdesign.studio/ja/tools/): Japanese version of the AI Tools page.
+
+## Machine-readable versions
+- [AI version of the home page (English)](https://raftdesign.studio/ai/): Terminal-style summary of the home page.
+- [AI version of the home page (Japanese)](https://raftdesign.studio/ja/ai/): Japanese version of the same page.
+- [ai.md (English)](https://raftdesign.studio/ai.md): Plain-markdown summary of the whole site: fit, offerings, work, approach, FAQ, and contact. Also served at /llms-full.txt.
+- [ai.md (Japanese)](https://raftdesign.studio/ja/ai.md): Japanese version. Also served at /ja/llms-full.txt.
 
 ## Contact
-- [Contact (English)](https://raftdesign.studio/contact/): Contact form to start a project.
-- [Contact (Japanese)](https://raftdesign.studio/ja/contact/): お問い合わせページ。
-hello@raftdesign.studio
+- Email: hello@raftdesign.studio
+- [Contact page](https://raftdesign.studio/contact/) / [日本語](https://raftdesign.studio/ja/contact/)
+- [Book a 30-minute call](https://calendly.com/raftdesignstudio/30min)
+- [Raft Design overview (PDF)](https://raftdesign.studio/assets/raft-design-overview.pdf) / [日本語](https://raftdesign.studio/assets/raft-design-overview-ja.pdf)
+
+## Optional
+- [Journal index (English)](https://raftdesign.studio/journal/)
+- [Journal index (Japanese)](https://raftdesign.studio/ja/journal/)
+- [5 Best Brand and AI Product Design Studios for Startups in Los Angeles (2026)](https://raftdesign.studio/journal/best-ai-product-design-studios-los-angeles/): English only.
+- [Introducing the Design Foundation Sprint](https://raftdesign.studio/journal/introducing-the-design-foundation/): English only.
+- [Stop Adding AI to the Design Process. Re-engineer It.](https://raftdesign.studio/journal/stop-adding-ai-to-the-design-process/) / [日本語](https://raftdesign.studio/ja/journal/stop-adding-ai-to-the-design-process/): 「AIをデザインプロセスに追加するのはやめよう。再設計しよう。」
+- [Why I Built a Raft, Not a Ship](https://raftdesign.studio/journal/why-i-built-a-raft-not-a-ship/) / [日本語](https://raftdesign.studio/ja/journal/why-i-built-a-raft-not-a-ship/): 「船ではなく、いかだをつくった理由」
+- [The AI-Native Designer Was Only Phase One](https://raftdesign.studio/journal/ai-native-designer-phase-one/) / [日本語](https://raftdesign.studio/ja/journal/ai-native-designer-phase-one/): 「AIネイティブ・デザイナーは、フェーズ1にすぎなかった」
+- [How I Use AI](https://raftdesign.studio/journal/how-i-use-ai/) / [日本語](https://raftdesign.studio/ja/journal/how-i-use-ai/): 「私のAIの使い方」
+- [Designing for Awareness: How Multimodal AI Is Reshaping the Future of Interaction](https://raftdesign.studio/journal/designing-for-awareness-how-multimodal/) / [日本語](https://raftdesign.studio/ja/journal/designing-for-awareness-how-multimodal/): 「状況認識のためのデザイン：マルチモーダルAIがインタラクションの未来を変える」
+- [Stop Treating AI Like Cheating on Your Homework: A Playbook for AI-Native Design Teams](https://raftdesign.studio/journal/stop-treating-ai-like-cheating-on-your-homework/) / [日本語](https://raftdesign.studio/ja/journal/stop-treating-ai-like-cheating-on-your-homework/): 「AIを宿題のカンニングのように扱うのはやめよう：AIネイティブなデザインチームのためのプレイブック」

@@ -191,13 +191,10 @@
 
 .stat-bar-value {
   /* Figma's "Stats/Small" style (article template, node 251:7124/7129/7134)
-     confirms Fraunces SemiBold, not Lora — corrected. Mirrors .emphasis's
-     existing Fraunces variation-settings convention (styles.css). The
-     Google Fonts <link> across all journal pages was switched from Lora
-     to Fraunces (upright, weight 600) to match. */
-  font-family: 'Fraunces', serif;
-  font-weight: var(--weight-semibold);
-  font-variation-settings: 'SOFT' 0, 'WONK' 1;
+     was Fraunces SemiBold; now Kode Mono Medium to match the terminal look
+     used for stats sitewide (.stat-number in styles.css). */
+  font-family: 'Kode Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-weight: 500;
   font-size: var(--font-size-heading-1); /* corrected 40px -> 36px per Figma Size/heading-1 */
   line-height: var(--line-height-heading-large); /* was previously unset */
   letter-spacing: -0.4px; /* Stats/Small letterSpacing; one-off, not tokenized */

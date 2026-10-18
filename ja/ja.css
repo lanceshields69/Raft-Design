@@ -125,7 +125,7 @@ body {
   max-width: 380px;
 }
 
-/* 4. Fraunces has no Japanese glyphs — use Noto Serif JP Black for
+/* 4. Kode Mono has no Japanese glyphs — use Noto Serif JP Black for
    the accent word instead, keeping the same weight and color. */
 .emphasis {
   font-family: 'Noto Serif JP', serif;
@@ -215,4 +215,10 @@ body {
   font-weight: 900;
   letter-spacing: 0;
   font-size: min(110px, 6.8vw);
+}
+
+/* Stats: Kode Mono has no Japanese glyphs, so kanji such as 億 fall back to
+   Noto Sans JP at a matching weight instead of a thin system font. */
+.stat-number {
+  font-family: 'Kode Mono', 'Noto Sans JP', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 }

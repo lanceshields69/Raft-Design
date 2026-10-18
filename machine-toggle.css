@@ -1,0 +1,66 @@
+/* Human / Machine version toggle — Figma "Side toggle" (1143:4113).
+   Fixed flush to the right edge, vertically centered. The
+   active item is brand green; the inactive one is a link to the other
+   version of the page. Uses the site's color tokens (styles.css defines
+   them; /ai/ defines the same names inline). */
+.hm-toggle {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 900;
+  width: 51px;
+  height: 208px;
+  font-family: 'Kode Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-weight: 700;
+}
+
+/* Tab-shaped panel from the design. The 1px edge runs along the curved
+   left side only; there is deliberately no stroke on the right edge, which
+   sits flush against the viewport. */
+.hm-toggle-shape {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: visible;
+}
+
+.hm-toggle-fill { fill: var(--bg-sunken, #02190A); }
+
+.hm-toggle-items {
+  position: absolute;
+  top: 33px;
+  left: 0;
+  width: 51px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 21px 8px;
+}
+
+.hm-toggle-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  line-height: normal;
+  text-decoration: none;
+  white-space: nowrap;
+  color: var(--text-primary, #EDF2EE);
+}
+
+.hm-toggle-item svg { display: block; flex: none; }
+
+.hm-toggle-item[aria-current="page"] { color: var(--text-accent, #3DE83D); }
+
+a.hm-toggle-item:hover,
+a.hm-toggle-item:focus-visible { color: var(--text-accent, #3DE83D); background: none; outline: none; }
+a.hm-toggle-item:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Too narrow to spare the screen edge on phones. */
+@media (max-width: 768px) {
+  .hm-toggle { display: none; }
+}

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raft Design — Machine Version</title>
+  <meta name="description" content="Raftは、スタートアップや既存企業が、新しいテクノロジーを人から信頼されるブランドとプロダクトへと変えるお手伝いをします。AIでスピードを上げる。判断するのは、あくまで人です。">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="../../images/r-mark-favicon.png">
+  <link rel="alternate" hreflang="en" href="https://raftdesign.studio/ai/">
+  <link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/ai/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=M+PLUS+1+Code:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../machine-toggle.css">
+  <script>
+    // Streamed-output effect (see script at end of body). The text is always
+    // present in the HTML; this only hides it until the script has blanked it.
+    // Streams once per browser session; repeat views render instantly.
+    var seen = false;
+    try { seen = sessionStorage.getItem('raft-ja-ai-streamed') === '1'; } catch (e) {}
+    if (/[?&]stream\b/.test(location.search)) seen = false; // /ai/?stream replays it
+    if (!seen && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      try { sessionStorage.setItem('raft-ja-ai-streamed', '1'); } catch (e) {}
+      document.documentElement.classList.add('stream');
+      setTimeout(function () { document.documentElement.classList.remove('stream'); }, 4000);
+    }
+  </script>
+  <style>
+    :root {
+      --bg: #04220F;
+      --bg-sunken: #02190A;
+      --bg-elevated: #102A1B;
+      --text: #EDF2EE;
+      --muted: #8FA396;
+      --accent: #3DE83D;
+      --rule: #1E3A28;
+      --bright: #438259;
+      --ink: #0B1F14;
+      --logo-size: clamp(8px, 2.6vw, 20px); /* logo is 5 lines at line-height 1 */
+      --mono: 'M PLUS 1 Code', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: var(--bg); }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 14px;
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: var(--accent); color: var(--ink); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { background: var(--accent); color: var(--ink); }
+    a:focus-visible { outline: 1px solid var(--accent); outline-offset: 2px; }
+
+    .term { max-width: 920px; margin: 0 auto; padding: 0 24px 96px; }
+
+    /* ---- top bar ---- */
+    .bar {
+      position: sticky; top: 0; z-index: 5;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 14px 0; background: var(--bg);
+      border-bottom: 1px dashed var(--rule);
+      font-size: 12px; color: var(--muted);
+    }
+    .bar-left { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); flex: none; }
+    .lang { color: var(--muted); font-size: 12px; flex: none; }
+    .lang b { color: var(--accent); font-weight: 700; }
+    .lang a { color: var(--muted); }
+    .lang a:hover { color: var(--ink); }
+    .bar-path { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* ---- logo ---- */
+    .logo { margin-top: 48px; color: var(--accent); font-size: var(--logo-size); line-height: 1; white-space: pre; font-weight: 700; overflow: hidden; }
+    .logo-sub { margin-top: 10px; letter-spacing: 0.9em; font-weight: 700; color: var(--text); }
+    /* Paper dither wave, same shader as the home page's Design Intelligence
+       Engine banner. Full content width, as tall as the 5-line logo. */
+    .logo-dither { margin-top: 24px; width: 100%; height: calc(var(--logo-size) * 5); overflow: hidden; }
+    .nav { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 4px 20px; }
+    .nav a { color: var(--text); }
+    .nav a::before { content: '['; color: var(--muted); }
+    .nav a::after { content: ']'; color: var(--muted); }
+    .nav a:hover { color: var(--ink); }
+    .nav a:hover::before, .nav a:hover::after { color: var(--ink); }
+
+    /* ---- blocks ---- */
+    .rule { margin: 44px 0 20px; color: var(--bright); white-space: nowrap; overflow: hidden; }
+    .rule b { color: var(--accent); font-weight: 700; }
+    .prompt { color: var(--accent); }
+    .prompt::before { content: '$ '; color: var(--muted); }
+    .out { margin: 6px 0 0; color: var(--text); }
+    .muted { color: var(--muted); }
+    .accent { color: var(--accent); }
+    /* Tooltip for links that lead out to the regular (human) pages —
+       Figma "tool-tip" (1143:4609). Positioned by script above the link. */
+    .tip {
+      position: fixed; z-index: 1000; left: 0; top: 0;
+      display: flex; flex-direction: column; align-items: center;
+      pointer-events: none; opacity: 0; transition: opacity .12s ease;
+    }
+    .tip.show { opacity: 1; }
+    .tip-box {
+      background: #818181; padding: 6px 8px; width: 150px;
+      color: #fff; font-size: 11px; line-height: 14px; font-weight: 400; text-align: center;
+    }
+    .tip-arrow { display: block; flex: none; }
+    @media (prefers-reduced-motion: reduce) { .tip { transition: none; } }
+    .stream main.term { visibility: hidden; }
+    .sx-hide { visibility: hidden; }
+    .cursor { display: inline-block; width: 0.6em; height: 1.1em; background: var(--accent); vertical-align: -0.2em; animation: blink 1.1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
+
+    /* assistant chat */
+    .chat { margin-top: 36px; border: 1px solid var(--rule); background: var(--bg-sunken); }
+    .chat-head { padding: 8px 16px; border-bottom: 1px solid var(--rule); color: var(--muted); font-size: 12px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .chat-body { padding: 18px 16px 20px; }
+    .msg-user { color: var(--muted); }
+    .msg-user::before { content: '> '; color: var(--accent); font-weight: 700; }
+    .msg-ai { margin-top: 14px; padding-left: 16px; border-left: 2px solid var(--accent); }
+    .msg-ai p + p { margin-top: 12px; }
+    .msg-ai strong { color: var(--accent); font-weight: 700; }
+    .tags { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { border: 1px solid var(--bright); color: var(--muted); padding: 0 8px; font-size: 12px; }
+
+    /* key-value + leaders */
+    .kv { display: grid; grid-template-columns: max-content 1fr; gap: 2px 16px; }
+    .kv dt { color: var(--muted); }
+    .kv dd { color: var(--text); }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .stat { border: 1px solid var(--rule); background: var(--bg-elevated); padding: 14px 16px; }
+    .stat-n { color: var(--accent); font-size: 30px; font-weight: 700; line-height: 1.2; }
+    .stat-l { color: var(--muted); font-size: 12px; margin-top: 4px; }
+
+    .row { display: flex; align-items: baseline; gap: 10px; padding: 4px 0; }
+    .row .n { color: var(--muted); flex: none; width: 2ch; text-align: right; }
+    .row .leader { flex: 1; min-width: 12px; border-bottom: 1px dotted var(--bright); transform: translateY(-4px); }
+    .row .meta { color: var(--muted); font-size: 12px; text-align: right; }
+    @media (max-width: 640px) {
+      .row { flex-wrap: wrap; }
+      .row .leader { display: none; }
+      .row .meta { width: 100%; text-align: left; padding-left: calc(2ch + 10px); }
+    }
+
+    .card { border: 1px solid var(--rule); background: var(--bg-elevated); padding: 16px 18px; }
+    .card + .card { margin-top: 14px; }
+    .card h3 { font-size: 14px; color: var(--accent); font-weight: 700; }
+    .card p { margin-top: 6px; }
+    .card .go { margin-top: 10px; display: inline-block; }
+
+    .faq dt { margin-top: 20px; color: var(--accent); font-weight: 700; }
+    .faq dt::before { content: '* '; color: var(--muted); }
+    .faq dd { margin-top: 4px; padding-left: 2ch; color: var(--text); }
+
+    .cta { margin-top: 8px; display: inline-block; background: var(--accent); color: var(--ink); font-weight: 700; padding: 8px 18px; }
+    .cta:hover { background: var(--text); color: var(--ink); }
+
+    .eof { margin-top: 56px; color: var(--muted); }
+    .foot { margin-top: 20px; padding-top: 16px; border-top: 1px dashed var(--rule); font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 20px; }
+
+    @media (max-width: 480px) {
+      .term { padding: 0 16px 72px; }
+      .kv { grid-template-columns: 1fr; }
+      .kv dd { margin-bottom: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="term">
+
+    <div class="bar">
+      <div class="bar-left"><span class="dot" aria-hidden="true"></span><span class="bar-path">raftdesign.studio/ja/ai</span></div>
+      <div class="lang" role="group" aria-label="Language"><a href="/ai/" hreflang="en" lang="en">EN</a> | <b aria-current="page">JP</b></div>
+    </div>
+
+<pre class="logo" aria-label="RAFT">██████      ████    ████████  ████████
+██    ██  ██    ██  ██          ████
+██████    ████████  ██████      ████
+██  ██    ██    ██  ██          ████
+██    ██  ██    ██  ██          ████</pre>
+    <p class="logo-sub">DESIGN</p>
+    <div class="logo-dither" data-dither-banner aria-hidden="true"></div>
+
+    <nav class="nav" aria-label="Machine navigation">
+      <a href="/ja/ai/">/home</a>
+      <a href="/ja/work/">/work</a>
+      <a href="/ja/services/">/services</a>
+      <a href="/ja/about/">/about</a>
+      <a href="/ja/journal/">/journal</a>
+      <a href="/ja/labs/">/labs</a>
+      <a href="/ja/contact/">/contact</a>
+      <a href="/llms.txt">/llms.txt</a>
+    </nav>
+
+    <!-- assistant-style intro -->
+    <section class="chat" aria-label="Summary">
+      <div class="chat-head"><span>raft-assistant · session 001</span><span>status: <span class="accent">online</span> · human-reviewed</span></div>
+      <div class="chat-body">
+        <p class="msg-user">Raft Designとは?</p>
+        <div class="msg-ai">
+          <p>Raft Designは、米国と日本でブランド、プロダクト、デジタル体験に取り組むAIネイティブなスタジオです。</p>
+          <p>Raftは、スタートアップや既存企業が、新しいテクノロジーを人から信頼されるブランドとプロダクトへと変えるお手伝いをします。</p>
+          <p class="muted">AIでスピードを上げる。判断するのは、あくまで人です。<span class="cursor" aria-hidden="true"></span></p>
+          <div class="tags"><span class="tag">brand</span><span class="tag">product</span><span class="tag">ai-native</span><span class="tag">los-angeles</span><span class="tag">tokyo</span></div>
+        </div>
+      </div>
+    </section>
+
+    <h2 class="rule" id="about"><b>──[ 01 ]──</b> ABOUT ────────────────────────────────────────────────</h2>
+    <dl class="kv">
+      <dt>name</dt><dd>Raft Design</dd>
+      <dt>type</dt><dd>AIネイティブなスタジオ</dd>
+      <dt>founder</dt><dd>Lance Shields</dd>
+      <dt>location</dt><dd>Los Angeles, CA 90068 · 米国と日本</dd>
+      <dt>languages</dt><dd>ja, en</dd>
+      <dt>experience</dt><dd>20年 · Adobe, Walmart, LegalOn</dd>
+      <dt>url</dt><dd><a href="https://raftdesign.studio/ja/">https://raftdesign.studio/ja/</a></dd>
+    </dl>
+
+    <h2 class="rule" id="approach"><b>──[ 02 ]──</b> APPROACH ────────────────────────────────────────────────</h2>
+    <p class="prompt">cat approach.md</p>
+    <div class="out">
+      <p class="accent"># つくる価値のあるものを、見極める。</p>
+      <p style="margin-top:10px">いまや、ほとんどのものはつくれます。本当に難しいのは、顧客とビジネスにとって何が大切かを見極めることです。強いブランドでも、わかりにくいプロダクトを補うことはできません。だからこそ、Raftはブランド、プロダクト、戦略を切り離さずに考えます。早い段階でプロトタイプをつくり、デザインから実装までチームに伴走します。</p>
+      <p style="margin-top:10px"><a href="/ja/about/">→ Raftについて詳しく見る</a></p>
+    </div>
+
+    <h2 class="rule" id="proof"><b>──[ 03 ]──</b> PROOF ────────────────────────────────────────────────</h2>
+    <div class="stats">
+      <div class="stat"><p class="stat-n">5.6億+</p><p class="stat-l">Walmartアプリで、私たちのデザインに触れたユーザー・訪問者数</p></div>
+      <div class="stat"><p class="stat-n">2X</p><p class="stat-l">拡張可能なプラットフォームによる、Adobe ExpressのMAU増加率</p></div>
+    </div>
+
+    <h2 class="rule" id="featured-work"><b>──[ 04 ]──</b> FEATURED WORK ────────────────────────────────────────────────</h2>
+    <p class="prompt">ls -l /work --featured</p>
+    <div class="out">
+      <div class="row"><span class="n">1</span><a href="/ja/work/legalon/">legalon</a><span class="leader"></span><span class="meta">グローバルブランディングプラットフォーム · ブランディング デザイン 戦略 グローバル</span></div>
+      <div class="row"><span class="n">2</span><a href="/ja/work/walmart/">walmart</a><span class="leader"></span><span class="meta">AIファースト・ショッピング体験 · デザイン 戦略 AIプロダクト</span></div>
+      <div class="row"><span class="n">3</span><a href="/ja/work/adobe-express-photos/">adobe-express-photos</a><span class="leader"></span><span class="meta">0→1のAIプロダクトデザイン · デザイン 戦略 AIプロダクト</span></div>
+      <div class="row"><span class="n">4</span><a href="/ja/work/fitbit/">fitbit</a><span class="leader"></span><span class="meta">インタラクティブな店頭体験 · デザイン 戦略 リテール</span></div>
+      <p style="margin-top:12px"><a href="/ja/work/">→ すべての実績を見る</a></p>
+    </div>
+
+    <h2 class="rule" id="offerings"><b>──[ 05 ]──</b> OFFERINGS ────────────────────────────────────────────────</h2>
+    <div class="card">
+      <h3>design-foundation-sprint</h3>
+      <p><span class="muted">tagline:</span> 専任の採用を待たずに、経験豊富なデザインリーダーを。</p>
+      <p>Raftは30日で、戦略、ブランド、プロダクト体験、デザイン基盤を一つの方向に揃えます。顧客に価値が伝わり、信頼され、確信を持って選ばれるために。</p>
+      <a class="go" href="/ja/design-foundation/">→ デザイン基盤構築スプリントを見る</a>
+    </div>
+    <div class="card">
+      <h3>ai-ready-design-systems</h3>
+      <p><span class="muted">tagline:</span> チームもAIも使えるデザインシステムを。</p>
+      <p>ブランドルール、言葉づかい、コンポーネント、テンプレート、DESIGN.mdを、チームとAIが共通で参照できる基盤にまとめます。制作をより速く、仕上がりをより一貫したものにします。</p>
+      <a class="go" href="/ja/design-system/">→ AI対応デザインシステムを見る</a>
+    </div>
+    <div class="card">
+      <h3>design-intelligence-engine</h3>
+      <p>サイトのデザインと構築の質、気になりませんか。LLMや検索に正しく読み取られているか。私たちの診断ツールがサイトをスキャンし、本当のスコアをお届けします。</p>
+      <a class="go" href="/ja/tools/">→ サイトを診断する</a>
+    </div>
+
+    <h2 class="rule" id="journal"><b>──[ 06 ]──</b> JOURNAL ────────────────────────────────────────────────</h2>
+    <p class="prompt">tail -n 6 /journal</p>
+    <div class="out">
+      <div class="row"><span class="n">1</span><a href="/ja/journal/stop-adding-ai-to-the-design-process/">AIをデザインプロセスに追加するのはやめよう。再設計しよう。</a></div>
+      <div class="row"><span class="n">2</span><a href="/ja/journal/why-i-built-a-raft-not-a-ship/">船ではなく、いかだをつくった理由</a></div>
+      <div class="row"><span class="n">3</span><a href="/ja/journal/ai-native-designer-phase-one/">AIネイティブ・デザイナーは、フェーズ1にすぎなかった</a></div>
+      <div class="row"><span class="n">4</span><a href="/ja/journal/how-i-use-ai/">私のAIの使い方</a></div>
+      <div class="row"><span class="n">5</span><a href="/ja/journal/designing-for-awareness-how-multimodal/">状況認識のためのデザイン：マルチモーダルAIがインタラクションの未来を変える</a></div>
+      <div class="row"><span class="n">6</span><a href="/ja/journal/stop-treating-ai-like-cheating-on-your-homework/">AIを宿題のカンニングのように扱うのはやめよう：AIネイティブなデザインチームのためのプレイブック</a></div>
+    </div>
+
+    <h2 class="rule" id="faq"><b>──[ 07 ]──</b> FAQ ────────────────────────────────────────────────</h2>
+    <dl class="faq">
+      <dt>Raft Designとは?</dt>
+      <dd>Raft Designは、米国と日本でブランド、プロダクト、デジタル体験に取り組むAIネイティブなスタジオです。Adobe、Walmart、LegalOnでの20年の経験に基づき、私たちは手を動かしながら素早く動き、変化を避けるのではなく共に進みます。</dd>
+      <dt>「AIネイティブなスタジオ」とはどういう意味ですか?</dt>
+      <dd>これは、AIが仕事の対象であるだけでなく、仕事の作り方そのものの一部であることを意味します。戦略は言語モデルとの対話の中で形づくられ、デザインとプロトタイプは同時に進み、デザインとエンジニアリングの間によくある引き継ぎなしに、動くソフトウェアが作られます。その結果、従来のスタジオでは実現できない速度で、経験豊富なデザインの判断力を届けます。</dd>
+      <dt>Raft Designは日本語に対応していますか?</dt>
+      <dd>はい。私たちは日本語と英語の両方でネイティブに対応し、両市場でデザインリーダーシップを発揮しています。創業者は日本で10年以上、日本語で、幅広いクライアントとプロジェクトに携わってきました。このサイトも完全にバイリンガルです。海外展開を目指す日本企業や、日本市場に参入するグローバルブランドに対しては、単に翻訳するのではなく、新しい市場に合わせて意味を再構築します。これこそが、より難しく、より重要な仕事です。</dd>
+      <dt>Raft Designはデザインだけでなく、実装も行いますか?</dt>
+      <dd>その両方です。多くのスタジオは、静的なデザインを誰かに引き渡して終わりです。私たちは、Claude Code、Cursor、V0などのツールを使い、実際に動作するソフトウェアまで作り上げます。プロトタイプは本物のように動作し、テストやデモが可能です。実装は任せきりにするのではなく、私たち自身が方向づけます。</dd>
+      <dt>プロジェクトはどのように進みますか?</dt>
+      <dd>チームのニーズに応じて、3つの関わり方があります。従来のスタジオのように、ブランドやプロダクトのデザインからリリースまでプロジェクトを担うこと。チームが拡大し、経験豊富な方向性を必要とするタイミングで、フラクショナルなデザインリーダーシップとして加わること。そして、自社のデザイン実践をAIネイティブにしたいチームへのコンサルティングです。関わり方は、短期の診断スプリントから継続的なパートナーシップまで幅広くあります。</dd>
+    </dl>
+
+    <h2 class="rule" id="contact"><b>──[ 08 ]──</b> CONTACT ────────────────────────────────────────────────</h2>
+    <p class="prompt">raft --connect</p>
+    <div class="out">
+      <p>Raftのスピードで、次のプロジェクトへ。</p>
+      <dl class="kv" style="margin-top:12px">
+        <dt>email</dt><dd><a href="mailto:hello@raftdesign.studio">hello@raftdesign.studio</a></dd>
+        <dt>phone</dt><dd><a href="tel:4153619584">(415) 361-9584</a></dd>
+        <dt>book</dt><dd><a href="/ja/contact/">/ja/contact</a></dd>
+        <dt>overview</dt><dd><a href="/assets/raft-design-overview-ja.pdf">raft-overview-ja.pdf</a></dd>
+      </dl>
+      <a class="cta" href="/ja/contact/">相談を予約する →</a>
+    </div>
+
+    <p class="eof">/* EOF */</p>
+    <div class="foot">
+      <a href="/ja/">human version</a>
+      <a href="/llms.txt">llms.txt</a>
+      <a href="/sitemap.xml">sitemap.xml</a>
+      <span>designed by hand. built by AI.</span>
+    </div>
+  </main>
+  <div class="tip" id="human-tip" role="tooltip" aria-hidden="true">
+    <div class="tip-box">このコンテンツは人間専用です。</div>
+    <svg class="tip-arrow" width="12.1244" height="10.5" viewBox="0 0 12.1244 10.5" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.06218 10.5L12.1244 0H0L6.06218 10.5Z" fill="#818181"/></svg>
+  </div>
+  <div class="hm-toggle" role="group" aria-label="Site version">
+    <svg class="hm-toggle-shape" width="51" height="208" viewBox="0 0 51 208" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><clipPath id="hm-shape"><path d="M51 208C51 186.891 36.0169 176 25 176H26C11.6406 176 0 164.359 0 150V56C1.54632e-06 42.7452 10.7452 32 24 32C35.4407 32 51 21.1088 51 0V208Z"/></clipPath></defs><path class="hm-toggle-fill" d="M51 208C51 186.891 36.0169 176 25 176H26C11.6406 176 0 164.359 0 150V56C1.54632e-06 42.7452 10.7452 32 24 32C35.4407 32 51 21.1088 51 0V208Z"/><path d="M51 208C51 186.891 36.0169 176 25 176H26C11.6406 176 0 164.359 0 150V56C1.54632e-06 42.7452 10.7452 32 24 32C35.4407 32 51 21.1088 51 0" stroke="white" stroke-opacity="0.3" stroke-width="2" clip-path="url(#hm-shape)"/></svg>
+    <div class="hm-toggle-items">
+    <a class="hm-toggle-item" href="/ja/"><svg width="24" height="24.1975" viewBox="0 0 24 24.1975" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9.47454 7.93916L9.48151 7.94334C10.0997 8.32457 13.2799 9.63065 16.844 6.29019C18.2756 4.83636 18.9537 2.62356 18.9537 2.62356C18.9537 2.62356 17.4309 3.30726 16.2426 2.85006C15.4376 2.53783 14.6361 1.57535 14.4856 1.38369C14.1155 0.966917 13.6541 0.612869 13.1168 0.368938C11.0218 -0.581695 8.54691 0.368939 7.59558 2.48347C6.66794 4.54643 7.51264 6.92371 9.47454 7.93916Z" fill="currentColor"/><path d="M3.68754 24.1975L5.79789 15.7651L6.80218 15.7854L5.09537 24.1975H18.9053L17.1985 15.7854L18.2021 15.7651L20.3118 24.1975H24L21.3028 13.7203C20.9564 12.3132 19.826 9.7979 16.7755 9.68848H7.20014C4.14961 9.7972 3.04356 12.3132 2.69718 13.7203L0 24.1975H3.68754Z" fill="currentColor"/></svg>HUMAN</a>
+    <span class="hm-toggle-item" aria-current="page"><svg width="24" height="20.2598" viewBox="0 0 24 20.2598" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2.90625 14.7587L2.90625 20.2598H21.0135V14.7587L2.90625 14.7587ZM11.9599 18.627C11.3467 18.627 10.8503 18.1267 10.8503 17.5093C10.8503 16.8923 11.3467 16.392 11.9599 16.392C12.5726 16.392 13.069 16.8923 13.069 17.5093C13.069 18.1267 12.5726 18.627 11.9599 18.627Z" fill="currentColor"/><path d="M11.9566 10.371C12.7817 10.371 13.4507 9.69691 13.4507 8.86538C13.4507 8.03385 12.7817 7.35976 11.9566 7.35976C11.1314 7.35976 10.4625 8.03385 10.4625 8.86538C10.4625 9.69691 11.1314 10.371 11.9566 10.371Z" fill="currentColor"/><path d="M23.8612 0.889805C24.0584 0.673275 24.0436 0.337678 23.8288 0.139393C23.6148 -0.0588919 23.2823 -0.043528 23.085 0.172041L17.3617 5.24104C15.9972 3.81367 14.0838 2.92211 11.9623 2.92211C11.7141 2.92211 11.4692 2.93699 11.2272 2.96052C11.078 2.5193 10.8384 2.05167 10.4534 1.67766C9.92222 1.16059 9.21567 0.923892 8.36477 0.961821C6.53575 1.05112 5.28607 2.76799 4.78534 3.59954L0.914817 0.172041C0.718528 -0.043528 0.385026 -0.0588919 0.170632 0.139393C-0.0437618 0.337678 -0.0580547 0.673275 0.138711 0.889805L5.45473 6.72746C4.8225 7.83507 4.45517 9.11648 4.45517 10.4872C4.45517 11.6678 4.73198 12.7816 5.21127 13.7779L18.7119 13.7779C18.9153 13.3549 19.0735 12.9069 19.1978 12.4456C20.4628 11.9242 23.8345 10.37 23.4991 8.71847C23.4433 8.44481 23.278 8.22684 23.0207 8.0876C22.2489 7.67135 20.57 8.03575 19.1869 8.45921C19.0216 7.86771 18.7919 7.30263 18.4989 6.77835L23.8612 0.889805ZM5.27511 4.03308C5.67627 3.34844 6.81065 1.68198 8.3943 1.60469C9.0675 1.573 9.60777 1.75256 10.0065 2.13905C10.2772 2.40071 10.453 2.7315 10.5745 3.05798C9.03034 3.34988 7.65155 4.1147 6.5953 5.20311L5.27511 4.03308ZM11.9604 12.0091C10.2381 12.0091 8.84167 10.6015 8.84167 8.86538C8.84167 7.12979 10.2381 5.72163 11.9604 5.72163C13.6832 5.72163 15.0801 7.12979 15.0801 8.86538C15.0801 10.6015 13.6832 12.0091 11.9604 12.0091ZM22.7196 8.65509C22.833 8.71559 22.8606 8.78616 22.873 8.84666C23.0417 9.67965 21.104 10.8967 19.3622 11.674C19.4246 11.2861 19.468 10.8914 19.468 10.4862C19.468 10.008 19.4089 9.54474 19.3236 9.09151C20.7243 8.66037 22.1774 8.36367 22.7196 8.65509Z" fill="currentColor"/></svg>AI</span>
+    </div>
+  </div>
+    <script>
+    // Tooltip on links that leave the machine version for the regular site.
+    (function () {
+      var tip = document.getElementById('human-tip');
+      if (!tip) return;
+      var current = null;
+
+      function isHuman(a) {
+        if (a.closest('.hm-toggle')) return false;
+        var h = a.getAttribute('href') || '';
+        if (/^https?:\/\/(www\.)?raftdesign\.studio\/?$/.test(h)) return true;
+        return /^\/(?!\/|ai(\/|$)|ja\/ai(\/|$)|llms\.txt|sitemap\.xml|assets\/)/.test(h);
+      }
+
+      function place(x, rect) {
+        var w = tip.offsetWidth, h = tip.offsetHeight;
+        var left = Math.max(8, Math.min(innerWidth - w - 8, x - w / 2));
+        tip.style.transform = 'translate(' + Math.round(left) + 'px,' + Math.round(rect.top - h - 4) + 'px)';
+        // keep the arrow pointing at the cursor/link even when the box is clamped
+        tip.querySelector('.tip-arrow').style.transform = 'translateX(' + Math.round(x - (left + w / 2)) + 'px)';
+      }
+
+      function rectAt(a, y) {
+        var rs = a.getClientRects();
+        for (var i = 0; i < rs.length; i++) if (y >= rs[i].top && y <= rs[i].bottom) return rs[i];
+        return rs[0] || a.getBoundingClientRect();
+      }
+
+      function show(a, x, y) {
+        current = a;
+        a.setAttribute('aria-describedby', 'human-tip');
+        tip.setAttribute('aria-hidden', 'false');
+        var r = rectAt(a, y);
+        place(x, r);
+        tip.classList.add('show');
+      }
+
+      function hide() {
+        if (current) current.removeAttribute('aria-describedby');
+        current = null;
+        tip.classList.remove('show');
+        tip.setAttribute('aria-hidden', 'true');
+      }
+
+      document.addEventListener('mouseover', function (e) {
+        var a = e.target.closest && e.target.closest('a[href]');
+        if (a && isHuman(a)) show(a, e.clientX, e.clientY); else if (current) hide();
+      });
+      document.addEventListener('mousemove', function (e) {
+        if (current) place(e.clientX, rectAt(current, e.clientY));
+      });
+      document.addEventListener('mouseout', function (e) {
+        if (current && !(e.relatedTarget && current.contains(e.relatedTarget))) hide();
+      });
+      document.addEventListener('focusin', function (e) {
+        var a = e.target.closest && e.target.closest('a[href]');
+        if (a && isHuman(a)) { var r = a.getBoundingClientRect(); show(a, r.left + r.width / 2, r.top + r.height / 2); }
+      });
+      document.addEventListener('focusout', hide);
+      addEventListener('scroll', hide, { passive: true });
+    })();
+  </script>
+  <script src="../../dither-banner.js" defer></script>
+  <script>
+    // Writes the page out like an LLM response: the assistant panel streams
+    // at roughly token speed, then the rest of the document speeds up. Any
+    // click or key press finishes instantly. Without JS (or with reduced
+    // motion) the page simply renders in full.
+    (function () {
+      var root = document.querySelector('main.term');
+      var html = document.documentElement;
+      if (!root || !html.classList.contains('stream')) return;
+
+      var cursor = root.querySelector('.cursor');
+      if (cursor) cursor.parentNode.removeChild(cursor);
+      else { cursor = document.createElement('span'); cursor.className = 'cursor'; cursor.setAttribute('aria-hidden', 'true'); }
+
+      var LEAF = /^(P|H2|H3|DT|DD|A|SPAN|DIV)$/;
+      var CONTAINERS = '.chat, .msg-ai, .card, .stat, .row';
+      var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode: function (n) {
+          if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+          if (n.parentElement.closest('.logo, .logo-sub, script, style')) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+
+      function leafOf(node) {
+        var el = node.parentElement;
+        while (el && el !== root && getComputedStyle(el).display === 'inline') el = el.parentElement;
+        return el;
+      }
+
+      var items = [], n;
+      while ((n = walker.nextNode())) {
+        var leaf = leafOf(n);
+        items.push({ node: n, text: n.nodeValue, leaf: leaf, box: leaf.closest(CONTAINERS), chat: !!leaf.closest('.chat') });
+      }
+
+      var hidden = [];
+      items.forEach(function (it) {
+        it.node.nodeValue = '';
+        [it.box, it.leaf].forEach(function (el) {
+          if (el && hidden.indexOf(el) === -1) { el.classList.add('sx-hide'); hidden.push(el); }
+        });
+      });
+      html.classList.remove('stream');
+
+      var i = 0, pos = 0, last = 0, budget = 0, finished = false;
+
+      function show(it) {
+        if (it.box) it.box.classList.remove('sx-hide');
+        it.leaf.classList.remove('sx-hide');
+      }
+
+      function finish() {
+        if (finished) return;
+        finished = true;
+        items.forEach(function (it) { it.node.nodeValue = it.text; show(it); });
+        var eof = root.querySelector('.eof');
+        if (eof) eof.appendChild(cursor);
+        removeEventListener('pointerdown', finish);
+        removeEventListener('keydown', finish);
+      }
+
+      function tick(t) {
+        if (finished) return;
+        var dt = Math.min(64, t - (last || t));
+        last = t;
+        var it = items[i];
+        // ~70 chars/s inside the assistant panel (token pace), faster after.
+        budget += dt / 1000 * (it.chat ? 40 : 300);
+        while (budget >= 1 && i < items.length) {
+          it = items[i];
+          show(it);
+          var take = Math.min(Math.floor(budget), it.text.length - pos);
+          pos += take; budget -= take;
+          it.node.nodeValue = it.text.slice(0, pos);
+          if (pos >= it.text.length) { i++; pos = 0; if (!it.chat && items[i] && items[i].chat) break; }
+          if (!take) break;
+        }
+        var cur = items[Math.min(i, items.length - 1)];
+        cursor.parentNode !== cur.node.parentNode || cursor.previousSibling !== cur.node
+          ? cur.node.parentNode.insertBefore(cursor, cur.node.nextSibling) : 0;
+        if (i >= items.length) return finish();
+        setTimeout(function () { tick(performance.now()); }, 16);
+      }
+
+      addEventListener('pointerdown', finish);
+      addEventListener('keydown', finish);
+      tick(performance.now());
+    })();
+  </script>
+</body>
+</html>

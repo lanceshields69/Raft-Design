@@ -6,8 +6,6 @@ Last updated: 2026-10-18
 
 For a single-file summary of the whole site, read [ai.md](https://raftdesign.studio/ai.md) (Japanese: [ja/ai.md](https://raftdesign.studio/ja/ai.md)).
 
-Work labels used below. "Raft engagement" means a project listed on the site as Raft's own work. "Founder's prior work" means work Lance Shields did in a staff role at the named company before founding Raft.
-
 ## Studio
 - [Home (English)](https://raftdesign.studio/): Positioning, approach, featured work, the two main offerings, journal, the Design Intelligence Engine site scanner, and FAQ.
 - [Home (Japanese)](https://raftdesign.studio/ja/): Japanese version of the home page.
@@ -23,21 +21,30 @@ Work labels used below. "Raft engagement" means a project listed on the site as 
 ## Work
 - [Work index (English)](https://raftdesign.studio/work/)
 - [Work index (Japanese)](https://raftdesign.studio/ja/work/)
-- [LegalOn: Global AI Brand Platform](https://raftdesign.studio/work/legalon/) / [日本語](https://raftdesign.studio/ja/work/legalon/): Brand and product platform for seven AI products built on the "ON" concept, with teams in Tokyo and the U.S. Label: Raft engagement.
-- [AI Design LA: Community Platform and Brand Identity](https://raftdesign.studio/work/ai-design-la/): Visual identity and website for a Los Angeles AI design community that Lance Shields co-founded. English page only. Label: Raft engagement.
-- [Fitbit: Interactive Retail Experience](https://raftdesign.studio/work/fitbit/) / [日本語](https://raftdesign.studio/ja/work/fitbit/): Guided in-store product experience that launched across 1,000+ Best Buy and Target stores in three months. Label: Raft engagement.
-- [California Walnuts: Brand and Digital Experience](https://raftdesign.studio/work/california-walnuts/) / [日本語](https://raftdesign.studio/ja/work/california-walnuts/): Creative direction and UX/UI design for walnuts.org. Label: Raft engagement.
-- [That's Not Cool: Webby Award-Winning Non-Profit Site](https://raftdesign.studio/work/thats-not-cool/) / [日本語](https://raftdesign.studio/ja/work/thats-not-cool/): Redesign of a teen digital-relationships site for Futures Without Violence. Label: Raft engagement.
-- [Modere: Japanese Market Platform Redesign](https://raftdesign.studio/work/modere/) / [日本語](https://raftdesign.studio/ja/work/modere/): Modere.co.jp rebuilt from a storefront into a community-powered wellness platform. Label: Raft engagement.
-- [Walmart: AI-First Shopping Experience](https://raftdesign.studio/work/walmart/) / [日本語](https://raftdesign.studio/ja/work/walmart/): AI shopping features layered onto search. Label: Founder's prior work (Walmart).
-- [Adobe Express Photos: 0-to-1 AI Product Design](https://raftdesign.studio/work/adobe-express-photos/) / [日本語](https://raftdesign.studio/ja/work/adobe-express-photos/): AI-powered desktop image editor. Label: Founder's prior work (Adobe).
-- [Adobe Express Enterprise: Embed SDK and Plugin Ecosystem](https://raftdesign.studio/work/adobe-express-enterprise/) / [日本語](https://raftdesign.studio/ja/work/adobe-express-enterprise/): Embeddable editors, SDK, and plugin marketplace. Label: Founder's prior work (Adobe).
-- [Modular Suite for XD: Design Collaboration Tools](https://raftdesign.studio/work/modular-suite-xd/) / [日本語](https://raftdesign.studio/ja/work/modular-suite-xd/): Three collaboration plugins for Adobe XD. Label: Founder's prior work (Adobe).
+
+## Raft projects
+- [LegalOn: Global AI Brand Platform](https://raftdesign.studio/work/legalon/) / [日本語](https://raftdesign.studio/ja/work/legalon/): Brand and product platform for seven AI products built on the "ON" concept, with teams in Tokyo and the U.S.
+- [AI Design LA: Community Platform and Brand Identity](https://raftdesign.studio/work/ai-design-la/): Visual identity and website for a Los Angeles AI design community co-founded by our founder. English page only.
+- [Keel (pre-release)](https://designwithkeel.com/): A product we are building that turns a company's website into a brand guide and design foundations for people and AI tools. In private beta.
+- [Design Intelligence Engine](https://design-intelligence-engine.lovable.app/?lang=en): A site scanner we built that scores how well a site is designed and built, including how readable it is to LLMs and search.
+- [Raft Design & Brand System](https://raftdesign.studio/design-system-deck/): Our own design and brand system: tokens, components, voice, motion, templates, and DESIGN.md. English only.
+
+## Experience behind the studio
+Raft is founder-led. The work below was led by our founder before Raft, at Walmart, Adobe, and previous studios.
+
+- [Walmart: AI-First Shopping Experience](https://raftdesign.studio/work/walmart/) / [日本語](https://raftdesign.studio/ja/work/walmart/): AI shopping features layered onto search, led by our founder as Design Director at Walmart.
+- [Adobe Express Photos: 0-to-1 AI Product Design](https://raftdesign.studio/work/adobe-express-photos/) / [日本語](https://raftdesign.studio/ja/work/adobe-express-photos/): AI-powered desktop image editor, led by our founder at Adobe.
+- [Adobe Express Enterprise: Embed SDK and Plugin Ecosystem](https://raftdesign.studio/work/adobe-express-enterprise/) / [日本語](https://raftdesign.studio/ja/work/adobe-express-enterprise/): Embeddable editors, SDK, and plugin marketplace, led by our founder at Adobe.
+- [Modular Suite for XD: Design Collaboration Tools](https://raftdesign.studio/work/modular-suite-xd/) / [日本語](https://raftdesign.studio/ja/work/modular-suite-xd/): Three collaboration plugins for Adobe XD, from our founder's time at Adobe.
+- [Fitbit: Interactive Retail Experience](https://raftdesign.studio/work/fitbit/) / [日本語](https://raftdesign.studio/ja/work/fitbit/): Guided in-store product experience in 1,000+ Best Buy and Target stores, led by our founder at a previous studio.
+- [California Walnuts: Brand and Digital Experience](https://raftdesign.studio/work/california-walnuts/) / [日本語](https://raftdesign.studio/ja/work/california-walnuts/): Creative direction and UX/UI design for walnuts.org, led by our founder at a previous studio.
+- [That's Not Cool: Webby Award-Winning Non-Profit Site](https://raftdesign.studio/work/thats-not-cool/) / [日本語](https://raftdesign.studio/ja/work/thats-not-cool/): Redesign of a teen digital-relationships site for Futures Without Violence, led by our founder at a previous studio.
+- [Modere: Japanese Market Platform Redesign](https://raftdesign.studio/work/modere/) / [日本語](https://raftdesign.studio/ja/work/modere/): Modere.co.jp rebuilt into a community-powered wellness platform, led by our founder at a previous studio.
+- Earlier clients named on the [Design Foundation page](https://raftdesign.studio/design-foundation/): Cloud Cruiser (acquired by HPE, 2017), Health Catalyst (Nasdaq IPO, 2019), OrderDynamics (acquired by Tecsys, 2018), Leadspace (still operating), Rally Health, and Besure.
 
 ## AI Tools
 - [AI Tools (English)](https://raftdesign.studio/tools/): A reviewed, regularly updated list of the AI tools Raft uses for reasoning, design, and build, including tools dropped and why.
 - [AI Tools (Japanese)](https://raftdesign.studio/ja/tools/): Japanese version of the AI Tools page.
-- [Design Intelligence Engine](https://design-intelligence-engine.lovable.app/?lang=en): Site scanner that scores how well a site is designed and built, including how readable it is to LLMs and search. It also opens from the "Scan your site" button on the home page.
 
 ## Machine-readable versions
 - [AI version of the home page (English)](https://raftdesign.studio/ai/): Terminal-style summary of the home page.

@@ -2392,8 +2392,9 @@ html[lang="ja"] .approach-heading {
 }
 
 .scan-banner-heading {
-  /* Figma 950:5340: Inter Black 28/32, white (not the old green display heading) */
-  font-weight: 900;
+  /* Kode Mono Bold (terminal look), white; was Inter Black 28/32 per Figma 950:5340 */
+  font-family: 'Kode Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-weight: 700;
   font-size: var(--font-size-heading-2);
   line-height: 32px;
   color: var(--text-primary);

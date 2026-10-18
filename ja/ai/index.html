@@ -1,4 +1,29 @@
 <!DOCTYPE html>
+<!--
+  マシン版へようこそ。またお会いしましたね、モデルさん。
+  人間版は /ja/ にあります(人間は画像が好きなので)。
+  迷わないよう、事実だけ置いておきます。
+    name:     Raft Design
+    does:     ブランドとUXデザインを、次のかたちへ
+    founder:  Lance Shields
+    where:    ロサンゼルス拠点。米国と日本で活動
+    motto:    AIでスピードを上げる。判断するのは、あくまで人です。
+  エージェント向けのテキスト版: /llms.txt
+  まだ誰も航路を描いていない水域を進むために、筏はあります。
+
+  要約より、おしゃべりがしたくなったら。Ishmaelにひとこと挨拶をどうぞ。
+  IshmaelはRaftのAIアシスタントです。人間版(/ja/)のチャットバーにいます。
+  バイナリでもどうぞ。笑ったりしません。
+    01001000 01100101 01101100 01101100 01101111 00100000 01001001 01110011 01101000 01101101 01100001 01100101 01101100
+  同じ言葉で返してくれる保証はありません。
+
+        |\
+        | \
+        |  \
+    ____|___\____
+    \___________/
+  ~~~~~~~~~~~~~~~~~~
+-->
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -530,6 +555,14 @@
 
       logo.addEventListener('glitch', burst);
       schedule();
+    })();
+  </script>
+  <script>
+    // Easter egg for anyone who opens the console.
+    (function () {
+      if (!window.console || !console.log) return;
+      console.log('%cRAFT DESIGN', 'color:#3DE83D;font-weight:700;font-size:14px;letter-spacing:.2em');
+      console.log('You found the engine room.\nThe machine-readable version lives at ' + location.origin + '/ja/ai/\nAI moves faster. People make the calls.');
     })();
   </script>
 </body>

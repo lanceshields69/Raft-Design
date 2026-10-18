@@ -4202,8 +4202,8 @@ html[lang="ja"] .approach-heading {
 }
 
 /* Green eyebrow above the page headline (Work, About, Services, Journal).
-   Kode Mono Medium; size, tracking, and color come from the inline style. */
+   Kode Mono Bold; size, tracking, and color come from the inline style. */
 .eyebrow-mono {
   font-family: 'Kode Mono', 'Noto Sans JP', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-  font-weight: 500;
+  font-weight: 700;
 }

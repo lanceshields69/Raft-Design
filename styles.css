@@ -4136,3 +4136,66 @@ html[lang="ja"] .approach-heading {
     bottom: 44px;
   }
 }
+
+/* Footer links to the machine-readable files (llms.txt, ai.md). Link styling
+   comes from .footer-link; tooltip behavior is in machine-tip.js. */
+.footer-machine-links {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-left: 10px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* Tooltip for those links. Same design as the tooltip on /ai/ (Figma
+   "tool-tip" 1143:4609), positioned above the link by machine-tip.js. */
+.machine-tip {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.12s ease;
+}
+
+.machine-tip.show {
+  opacity: 1;
+}
+
+.machine-tip-box {
+  background: #818181;
+  padding: 6px 8px;
+  width: 150px;
+  color: #fff;
+  font-family: 'Kode Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.machine-tip-arrow {
+  display: block;
+  flex: none;
+}
+
+.machine-tip-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .machine-tip { transition: none; }
+}

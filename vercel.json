@@ -14,5 +14,15 @@
     { "source": "/ja/design-foundation.html", "destination": "/ja/design-foundation/", "permanent": true },
     { "source": "/design-system.html", "destination": "/design-system/", "permanent": true },
     { "source": "/ja/design-system.html", "destination": "/ja/design-system/", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/llms-full.txt", "destination": "/ai.md" },
+    { "source": "/ja/llms-full.txt", "destination": "/ja/ai.md" }
+  ],
+  "headers": [
+    { "source": "/ai.md", "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }, { "key": "X-Robots-Tag", "value": "noindex" }] },
+    { "source": "/ja/ai.md", "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }, { "key": "X-Robots-Tag", "value": "noindex" }] },
+    { "source": "/llms-full.txt", "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }, { "key": "X-Robots-Tag", "value": "noindex" }] },
+    { "source": "/ja/llms-full.txt", "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }, { "key": "X-Robots-Tag", "value": "noindex" }] }
   ]
 }

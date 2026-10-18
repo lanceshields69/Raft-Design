@@ -1850,6 +1850,8 @@ html[lang="ja"] .approach-heading {
 .section-label {
   display: inline-block;
   align-self: flex-start;
+  font-family: 'Kode Mono', 'Noto Sans JP', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-weight: 500;
   font-size: var(--font-size-eyebrow);
   letter-spacing: var(--tracking-eyebrow);
   line-height: var(--line-height-eyebrow);
@@ -4197,4 +4199,11 @@ html[lang="ja"] .approach-heading {
 
 @media (prefers-reduced-motion: reduce) {
   .machine-tip { transition: none; }
+}
+
+/* Green eyebrow above the page headline (Work, About, Services, Journal).
+   Kode Mono Medium; size, tracking, and color come from the inline style. */
+.eyebrow-mono {
+  font-family: 'Kode Mono', 'Noto Sans JP', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-weight: 500;
 }

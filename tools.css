@@ -188,8 +188,9 @@
   background: var(--bg-surface);
   border: 1px solid var(--border-rule);
   border-radius: var(--radius-sm);
+  font-family: 'Kode Mono', 'Noto Sans JP', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   font-size: var(--font-size-label-small);
-  font-weight: var(--weight-black);
+  font-weight: 500;
   letter-spacing: var(--tracking-eyebrow);
   line-height: 1.5;
   text-transform: uppercase;

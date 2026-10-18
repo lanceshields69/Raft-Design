@@ -268,7 +268,7 @@ function fontLink(lang, { jpWeights, interWeights = '200;14..32,300;14..32,400;1
   jpWeights = jpWeights || (lang === 'ja' ? '400;500;600;900' : '900');
   return `  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,${interWeights}&family=Noto+Sans+JP:wght@${jpWeights}&family=Fraunces:ital,opsz,SOFT,WONK,wght@0,9..144,0,1,600&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">`;
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,${interWeights}&family=Noto+Sans+JP:wght@${jpWeights}&family=Kode+Mono:wght@500;700&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">`;
 }
 
 // Calendly booking modal (opens from the nav CTA). Copied from the live pages; only the close label is per-language.

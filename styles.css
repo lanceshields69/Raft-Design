@@ -159,10 +159,9 @@ h1, h2, h3 {
 }
 
 .emphasis {
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-  font-weight: 600;
-  font-variation-settings: 'SOFT' 0, 'WONK' 1;
+  font-family: 'Kode Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-style: normal;
+  font-weight: 500;
   letter-spacing: -0.03em;
   font-size: 145px;
   line-height: 0;
@@ -2194,24 +2193,13 @@ html[lang="ja"] .approach-heading {
 }
 
 .stat-number {
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-  font-weight: 600;
-  font-variation-settings: 'SOFT' 0, 'WONK' 1;
+  font-family: 'Kode Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-style: normal;
+  font-weight: 500;
   font-size: 105px;
   letter-spacing: -0.03em;
   line-height: 0.9;
   color: var(--text-accent);
-}
-
-/* English home page: stats use Kode Mono Medium (the terminal look from the
-   /ai/ page) in place of Fraunces. Kode Mono has no italic. The Japanese home
-   page keeps Fraunces for now. */
-html[lang="en"] .stat-number {
-  font-family: 'Kode Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-  font-style: normal;
-  font-weight: 500;
-  font-variation-settings: normal;
 }
 
 .stat-description {

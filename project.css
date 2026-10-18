@@ -202,15 +202,12 @@
   max-width: 36ch;
 }
 
-/* Matches journal.css's .stat-bar-value styling exactly (Fraunces
-   SemiBold, brand green, 36px/36px) per Lance's request — same
-   font-variation-settings convention as .emphasis (styles.css). Needs
-   Fraunces loaded via the page's Google Fonts <link> (added alongside
-   the existing Inter/Noto Sans JP/Playfair Display request). */
+/* Matches journal.css's .stat-bar-value styling (Kode Mono Medium, brand
+   green, 36px/36px). Needs Kode Mono loaded via the page's Google Fonts
+   <link>, alongside the Inter/Noto Sans JP/Playfair Display request. */
 .project-page .project-metric-value {
-  font-family: 'Fraunces', serif;
-  font-weight: var(--weight-semibold);
-  font-variation-settings: 'SOFT' 0, 'WONK' 1;
+  font-family: 'Kode Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-weight: 500;
   font-size: var(--font-size-heading-1);
   line-height: var(--line-height-heading-large);
   letter-spacing: 0.4px;

@@ -88,6 +88,7 @@
       const widget = SC.Widget(document.getElementById('flow-audio'));
       let playing = false;
       let userPaused = false;
+      let leavingPage = false;
 
       function render() {
         btn.classList.toggle('is-paused', !playing);
@@ -95,16 +96,24 @@
         btn.setAttribute('aria-label', playing ? 'Pause music' : 'Play music');
       }
 
-      widget.bind(SC.Widget.Events.PLAY, () => { playing = true; render(); });
+      widget.bind(SC.Widget.Events.PLAY, () => {
+        if (leavingPage) { widget.pause(); return; }
+        playing = true;
+        render();
+      });
       widget.bind(SC.Widget.Events.PAUSE, () => { playing = false; render(); });
-      widget.bind(SC.Widget.Events.FINISH, () => { widget.seekTo(0); widget.play(); }); // loop
+      widget.bind(SC.Widget.Events.FINISH, () => {
+        if (leavingPage) return;
+        widget.seekTo(0);
+        widget.play();
+      }); // loop
 
       widget.bind(SC.Widget.Events.READY, () => {
         widget.setVolume(60);
-        if (!userPaused) widget.play();
+        if (!userPaused && !leavingPage) widget.play();
         // If the browser blocked autoplay, the first gesture starts it.
         const start = e => {
-          if (btn.contains(e.target) || userPaused) return;
+          if (btn.contains(e.target) || userPaused || leavingPage) return;
           widget.isPaused(paused => { if (paused) widget.play(); });
         };
         ['pointerdown', 'keydown'].forEach(ev => window.addEventListener(ev, start, { once: true }));
@@ -113,6 +122,15 @@
       btn.addEventListener('click', () => {
         if (playing) { userPaused = true; widget.pause(); }
         else { userPaused = false; widget.play(); }
+      });
+      window.addEventListener('pagehide', () => {
+        leavingPage = true;
+        widget.pause();
+      });
+      window.addEventListener('pageshow', (event) => {
+        if (!event.persisted) return;
+        leavingPage = false;
+        if (!userPaused) widget.play();
       });
       render();
     })();

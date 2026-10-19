@@ -132,26 +132,28 @@ function extractShell(lang) {
   const absolute = (s) => s.replace(/(src|href)="(\.{1,2}\/[^"]*)"/g,
     (m, attr, rel) => `${attr}="${path.posix.resolve(shellDir, rel)}"`);
   const head = html.slice(0, html.indexOf('</head>'));
-  // Keep shared page styles; the animated logo belongs only on /ai/.
+  // Keep shared page styles; home-page logo and audio belong only on /ai/.
   const extraCss = [...head.matchAll(/<link rel="stylesheet" href="[^"]+">/g)]
     .map((m) => absolute(m[0]))
-    .filter((l) => !l.includes('/machine-toggle.css') && !l.includes('/logo-morph.css'));
+    .filter((l) => !['/machine-toggle.css', '/logo-morph.css', '/audio.css'].some((asset) => l.includes(asset)));
   const logo = grab(/<pre class="logo"[^>]*>[\s\S]*?<\/pre>/, 'logo')
     .replace(/\saria-hidden="true"/, ' aria-label="RAFT"');
-  const logoAfter = grab(/<p class="logo-sub"[\s\S]*?<div class="logo-dither"[^>]*><\/div>/, 'logo subtitle');
+  const logoSub = grab(/<p class="logo-sub"[^>]*>[\s\S]*?<\/p>/, 'logo subtitle');
+  const logoDither = grab(/<div class="logo-dither"[^>]*><\/div>/, 'logo dither');
   return {
     fonts: grab(/<link href="https:\/\/fonts\.googleapis\.com\/css2[^>]*>/, 'font link'),
     headScript: grab(/<script>\n\s*\/\/ Streamed-output effect[\s\S]*?<\/script>/, 'stream script'),
     style: grab(/<style>[\s\S]*?<\/style>/, 'style block'),
     extraCss: extraCss.join('\n  '),
-    logo: `${logo}\n    ${logoAfter}`,
+    logo: `${logo}\n    ${logoSub}\n    ${logoDither}`,
     nav: grab(/<nav class="nav"[\s\S]*?<\/nav>/, 'nav'),
     foot: grab(/<div class="foot">[\s\S]*?<\/div>/, 'footer'),
     // Subpages get the static logo with glitch bursts from the shared
     // /ai/logo-glitch.js (added by the template), so drop the morph and any
     // inline copy of the glitch script the shell still carries.
     tail: absolute(html.slice(html.indexOf('</main>') + '</main>'.length, html.indexOf('</body>')))
-      .replace(/\s*<script src="\/ai\/logo-morph\.js" defer><\/script>/, '')
+      .replace(/\s*<script src="\/ai\/(?:logo-morph|audio)\.js" defer><\/script>/g, '')
+      .replace(/\s*<script src="https:\/\/w\.soundcloud\.com\/player\/api\.js" defer><\/script>/, '')
       .replace(/\s*<script>\s*\/\/ Random glitch bursts on the pixel logo[\s\S]*?<\/script>/g, ''),
   };
 }

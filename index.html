@@ -102,6 +102,7 @@
   <link rel="stylesheet" href="build.css">
   <link rel="stylesheet" href="journal.css">
   <link rel="stylesheet" href="raft-chat.css">
+  <link rel="stylesheet" href="home-audio.css">
   <link rel="stylesheet" href="home-spacing.css">
   <link rel="stylesheet" href="hero-lens.css">
   <script>
@@ -1413,6 +1414,27 @@
     });
   </script>
 
+  <div class="home-audio" id="home-audio" role="group" aria-label="Home page soundtrack">
+    <div class="home-audio-credit">
+      <a class="home-audio-title" href="https://soundcloud.com/7e-p/epcd137_4" target="_blank" rel="noopener noreferrer" title="I Am Robot And Proud / Lines In A Grid">Lines In A Grid</a>
+      <span class="home-audio-meta">
+        <a href="https://soundcloud.com/7e-p" target="_blank" rel="noopener noreferrer">7e.p.</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://soundcloud.com/7e-p/epcd137_4" target="_blank" rel="noopener noreferrer" aria-label="Listen on SoundCloud">
+          <img class="home-audio-source-logo home-audio-source-logo--dark" src="ai/soundcloud-logo-white.png" width="58" alt="">
+          <img class="home-audio-source-logo home-audio-source-logo--light" src="ai/soundcloud-logo-black.png" width="58" alt="">
+        </a>
+      </span>
+    </div>
+    <button class="home-audio-toggle" id="home-audio-toggle" type="button" aria-label="Play soundtrack" aria-pressed="false" title="Play soundtrack">
+      <svg class="home-audio-icon--play" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M5 2.5L15 9L5 15.5V2.5Z" fill="currentColor"/></svg>
+      <svg class="home-audio-icon--stop" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><rect x="4" y="4" width="10" height="10" fill="currentColor"/></svg>
+    </button>
+  </div>
+  <iframe class="home-audio-frame" id="home-audio-frame" title="I Am Robot And Proud / Lines In A Grid by 7e.p." allow="autoplay; encrypted-media" loading="eager" data-src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1992457259&amp;color=%233DE83D&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false"></iframe>
+  <script src="https://w.soundcloud.com/player/api.js" defer></script>
+  <script src="home-audio.js" defer></script>
+
   <!-- Showreel — floating launch panel (Figma node 793:5157), revealed once
        #approach scrolls into view. Click morphs it into a fullscreen custom
        Vimeo player with sound on (the click itself is the user gesture
@@ -1533,6 +1555,7 @@
 
       var player = null;
       var isOpen = false;
+      var closeTimer = null;
 
       function onKeydown(e) {
         if (e.key === 'Escape') closeShowreel();
@@ -1541,6 +1564,9 @@
       function openShowreel() {
         if (isOpen) return;
         isOpen = true;
+        if (closeTimer) clearTimeout(closeTimer);
+        closeTimer = null;
+        window.dispatchEvent(new Event('raft:showreel-open'));
 
         var rect = launcher.getBoundingClientRect();
         morph.style.transition = 'none';
@@ -1602,12 +1628,15 @@
         document.body.style.overflow = '';
         document.removeEventListener('keydown', onKeydown);
 
-        setTimeout(function () {
+        closeTimer = setTimeout(function () {
+          if (isOpen) return;
           iframe.src = '';
           player = null;
           if (progressBar) progressBar.style.width = '0%';
           setPlayPauseIcon(true);
           setMuteIcon(false);
+          closeTimer = null;
+          window.dispatchEvent(new Event('raft:showreel-closed'));
         }, 500);
       }
 

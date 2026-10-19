@@ -1,0 +1,123 @@
+/* Home soundtrack beside Ishmael's dock, with the AI page's pill and control. */
+.home-audio {
+  position: fixed;
+  z-index: 411;
+  left: 16px;
+  bottom: 110px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: calc(100vw - 32px);
+  font-family: 'Kode Mono', ui-monospace, monospace;
+}
+
+.home-audio-credit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  flex: none;
+  box-sizing: border-box;
+  width: 132px;
+  min-height: 48px;
+  padding: 5px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  background: var(--bg-canvas);
+  line-height: 1.2;
+}
+
+[data-theme="light"] .home-audio-credit {
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+.home-audio-credit a {
+  color: var(--text-accent);
+  text-decoration: none;
+  background: transparent;
+}
+
+.home-audio-credit a:hover,
+.home-audio-credit a:focus-visible {
+  text-decoration: underline;
+}
+
+.home-audio-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.home-audio-meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.home-audio-source-logo {
+  display: block;
+  width: 58px;
+  height: auto;
+}
+
+.home-audio-source-logo--light { display: none; }
+[data-theme="light"] .home-audio-source-logo--dark { display: none; }
+[data-theme="light"] .home-audio-source-logo--light { display: block; }
+
+.home-audio-toggle {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid var(--border-button);
+  border-radius: 50%;
+  background: var(--bg-canvas);
+  color: var(--text-accent);
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.home-audio-toggle:hover,
+.home-audio-toggle:focus-visible {
+  background: var(--text-accent);
+  color: var(--bg-canvas);
+}
+
+.home-audio-toggle:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 3px;
+}
+
+.home-audio-toggle:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.home-audio-icon--stop,
+.home-audio-toggle.is-playing .home-audio-icon--play { display: none; }
+.home-audio-toggle.is-playing .home-audio-icon--stop { display: block; }
+
+.home-audio-frame {
+  position: absolute;
+  left: -9999px;
+  width: 300px;
+  height: 166px;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* The expanded chat takes priority over the floating soundtrack. */
+body:has(.raft-chat-dock:not([data-mode="rest"])) .home-audio {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-audio-toggle { transition: none; }
+}

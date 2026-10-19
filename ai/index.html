@@ -232,6 +232,7 @@
     }
   </style>
   <link rel="stylesheet" href="./logo-morph.css">
+  <link rel="stylesheet" href="./audio.css?v=6">
 </head>
 <body>
   <main class="term">
@@ -250,7 +251,11 @@
       <svg class="logo-morph" viewBox="0 0 810 210" preserveAspectRatio="xMinYMid meet" aria-hidden="true"></svg>
     </div>
     <p class="logo-sub">DESIGN</p>
-    <div class="logo-dither" data-dither-banner aria-hidden="true"></div>
+    <div class="ai-wave">
+      <div class="logo-dither" data-dither-banner aria-hidden="true"></div>
+    </div>
+    <iframe id="ai-audio-frame" class="ai-audio-frame" title="I Am Robot And Proud / Bird at Sunrise by 7e.p." allow="autoplay; encrypted-media" tabindex="-1" aria-hidden="true" scrolling="no"
+      data-src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A1955185147&amp;color=%233DE83D&amp;auto_play=false&amp;visual=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false"></iframe>
 
     <nav class="nav" aria-label="Machine navigation">
       <a href="/ai/">/home</a>
@@ -263,6 +268,22 @@
       <a href="/llms.txt" data-tip="tip-llms" aria-describedby="tip-llms">/llms.txt</a>
       <a href="/ai.md" data-tip="tip-aimd" aria-describedby="tip-aimd">/ai.md</a>
     </nav>
+    <div class="ai-audio-controls">
+      <p class="ai-audio-credit">
+        <a href="https://soundcloud.com/7e-p/sets/i-am-robot-and-proud-bird-at" target="_blank" rel="noopener noreferrer" aria-label="I Am Robot And Proud / Bird at Sunrise on SoundCloud">Bird at Sunrise</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://soundcloud.com/7e-p" target="_blank" rel="noopener noreferrer">7e.p.</a>
+        <a href="https://soundcloud.com/7e-p/sets/i-am-robot-and-proud-bird-at" target="_blank" rel="noopener noreferrer" aria-label="Bird at Sunrise on SoundCloud"><img src="./soundcloud-logo-white.png" width="80" height="10" alt="SoundCloud"></a>
+      </p>
+      <button class="ai-audio-toggle" id="ai-audio-toggle" type="button" aria-label="Play soundtrack" aria-pressed="false" title="Play soundtrack">
+        <svg class="ai-audio-icon ai-audio-icon--play" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path d="M6 3.6v12.8a1 1 0 0 0 1.5.86l10.6-6.4a1 1 0 0 0 0-1.72L7.5 2.74A1 1 0 0 0 6 3.6Z"/>
+        </svg>
+        <svg class="ai-audio-icon ai-audio-icon--stop" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <rect x="3" y="3" width="14" height="14" rx="1"/>
+        </svg>
+      </button>
+    </div>
 
     <!-- assistant-style intro -->
     <section class="chat" aria-label="Summary">
@@ -596,6 +617,8 @@
     })();
   </script>
   <script src="./logo-morph.js" defer></script>
+  <script src="https://w.soundcloud.com/player/api.js" defer></script>
+  <script src="./audio.js" defer></script>
   <script>
     // Easter egg for anyone who opens the console.
     (function () {

@@ -119,6 +119,15 @@
     .ds-shift-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(320px,1fr); gap: 80px; align-items: start; }
     .ds-stats-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: 24px; margin-top: 48px; }
     .ds-stat-figure { font-family: var(--font-emphasis); font-weight: 500; font-size: 36px; color: var(--text-accent); margin: 0; }
+    .ds-stat-label { font-family: 'Noto Sans JP', sans-serif; font-size: 13px; line-height: 1.7; color: var(--text-muted); margin: 6px 0 0; overflow-wrap: anywhere; }
+    .ds-stat-source { font-family: 'Noto Sans JP', sans-serif; font-size: 11px; margin: 8px 0 0; }
+    .ds-stat-source a { color: var(--text-muted); text-decoration: underline; text-underline-offset: 2px; }
+    .ds-stat-source a:hover { color: var(--text-primary); }
+    /* The no-number stat lines its text up with the other stats' labels
+       (figure height + label margin) while all three sit on one row. */
+    .ds-stats-row { container-type: inline-size; }
+    @container (min-width: 468px) { .ds-stat-plain { padding-top: 62px; } }
+    .ds-stat-plain p { font-family: 'Noto Sans JP', sans-serif; font-size: 13px; line-height: 1.7; color: var(--text-primary); margin: 0; overflow-wrap: anywhere; }
     .ds-compare-grid { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); gap: 16px; align-items: stretch; }
     .ds-compare-card { border-radius: 6px; padding: 28px 24px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
     .ds-compare-card--no { background: var(--bg-sunken); border: 1px solid var(--border-rule); }
@@ -294,6 +303,21 @@
     <div>
       <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:clamp(26px,3.5vw,34px);line-height:1.5;letter-spacing:0;margin:0;overflow-wrap:anywhere"><!--c:shift.headline-->デザインシステムのあり方が、変わりはじめています。<!--/c--></h2>
       <p style="font-family:'Noto Sans JP',sans-serif;font-size:20px;line-height:1.9;color:var(--text-muted);margin:20px 0 0;overflow-wrap:anywhere"><!--c:shift.body-->すでに多くのチームがAIツールを活用しています。しかし、ほとんどのデザインシステムはAIの利用を前提に設計されていません。その結果、制作スピードは上がっても、アウトプットに一貫性がなく、ブランドから外れた成果物や重複した作業が生まれています。<!--/c--></p>
+      <div class="ds-stats-row">
+        <div>
+          <p class="ds-stat-figure"><!--c:@stats.0.figure-->88%<!--/c--></p>
+          <p class="ds-stat-label"><!--c:shift.stats.0.label-->少なくとも1つの業務機能でAIを活用している組織の割合<!--/c--></p>
+          <p class="ds-stat-source"><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" data-c-href="@stats.0.source.url" target="_blank" rel="noopener noreferrer"><!--c:shift.stats.0.source_label-->McKinsey、2025年11月<!--/c--></a></p>
+        </div>
+        <div>
+          <p class="ds-stat-figure"><!--c:@stats.1.figure-->94%<!--/c--></p>
+          <p class="ds-stat-label"><!--c:shift.stats.1.label-->AIの出力を、正確性・品質・ブランドの一貫性の観点で見直すマーケターの割合<!--/c--></p>
+          <p class="ds-stat-source"><a href="https://www.canva.com/newsroom/news/marketing-ai-report/" data-c-href="@stats.1.source.url" target="_blank" rel="noopener noreferrer"><!--c:shift.stats.1.source_label-->Canva、2025年3月<!--/c--></a></p>
+        </div>
+        <div class="ds-stat-plain">
+          <p><!--c:shift.stats.2.label-->再利用可能なコンポーネントとブランドガイドが、AIツールの確かな出発点になります。<!--/c--></p>
+        </div>
+      </div>
     </div>
 
     <div class="ds-compare-grid">

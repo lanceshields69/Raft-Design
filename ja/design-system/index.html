@@ -14,22 +14,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI対応型デザインシステム｜Raft Design</title>
-  <meta name="description" content="Raftは、チームとAIツールが同じ基盤を拠り所にできるブランド＆プロダクトシステムをつくります。一貫性を保ったまま、新しい制作をより速く進められるようになります。">
-  <meta property="og:title" content="AI対応型デザインシステム — Raft Design">
-  <meta property="og:description" content="Raftは、チームとAIツールが同じ基盤を拠り所にできるブランド＆プロダクトシステムをつくります。一貫性を保ったまま、新しい制作をより速く進められるようになります。">
+  <meta data-c-content="meta.description" name="description" content="Raftは、チームとAIツールが同じ基盤を拠り所にできるブランド＆プロダクトシステムをつくります。一貫性を保ったまま、新しい制作をより速く進められるようになります。">
+  <meta data-c-content="meta.social_title" property="og:title" content="AI対応型デザインシステム — Raft Design">
+  <meta data-c-content="meta.description" property="og:description" content="Raftは、チームとAIツールが同じ基盤を拠り所にできるブランド＆プロダクトシステムをつくります。一貫性を保ったまま、新しい制作をより速く進められるようになります。">
   <meta property="og:image" content="https://raftdesign.studio/images/Raft-Design-Social-v2.png">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:url" content="https://raftdesign.studio/ja/design-system/">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AI対応型デザインシステム — Raft Design">
-  <meta name="twitter:description" content="Raftは、チームとAIツールが同じ基盤を拠り所にできるブランド＆プロダクトシステムをつくります。一貫性を保ったまま、新しい制作をより速く進められるようになります。">
+  <meta data-c-content="meta.social_title" name="twitter:title" content="AI対応型デザインシステム — Raft Design">
+  <meta data-c-content="meta.description" name="twitter:description" content="Raftは、チームとAIツールが同じ基盤を拠り所にできるブランド＆プロダクトシステムをつくります。一貫性を保ったまま、新しい制作をより速く進められるようになります。">
   <meta name="twitter:image" content="https://raftdesign.studio/images/Raft-Design-Social-v2.png">
   <link rel="alternate" hreflang="en" href="https://raftdesign.studio/design-system/">
   <link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/design-system/">
   <link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/design-system/">
   <link rel="canonical" href="https://raftdesign.studio/ja/design-system/">
   <link rel="icon" type="image/png" href="../../images/r-mark-favicon.png">
+  <!--c:block:service-jsonld-->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -37,13 +38,29 @@
     "name": "AI対応型デザインシステム",
     "url": "https://raftdesign.studio/ja/design-system/",
     "description": "Raftは、チームとAIツールが同じ基盤を拠り所にできるブランド＆プロダクトシステムをつくります。一貫性を保ったまま、新しい制作をより速く進められるようになります。",
-    "provider": { "@id": "https://raftdesign.studio/#organization" },
-    "areaServed": ["US", "JP"],
+    "provider": {
+      "@id": "https://raftdesign.studio/#organization"
+    },
+    "areaServed": [
+      "US",
+      "JP"
+    ],
     "inLanguage": "ja",
     "audience": {
       "@type": "Audience",
       "audienceType": "ブランド＆プロダクトのデザインシステムを構築・拡張するチーム"
     }
+  }
+  </script>
+  <!--/c:block-->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://raftdesign.studio/ja/" },
+      { "@type": "ListItem", "position": 2, "name": "AI対応型デザインシステム", "item": "https://raftdesign.studio/ja/design-system/" }
+    ]
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,6 +69,7 @@
   <link rel="stylesheet" href="../../styles.css">
   <link rel="stylesheet" href="../../page-spacing.css">
   <link rel="stylesheet" href="../../tools.css">
+  <link rel="stylesheet" href="../../machine-toggle.css">
   <link rel="stylesheet" href="../ja.css">
   <script>
     if (localStorage.getItem('raft-theme') === 'light') {
@@ -101,6 +119,15 @@
     .ds-shift-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(320px,1fr); gap: 80px; align-items: start; }
     .ds-stats-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: 24px; margin-top: 48px; }
     .ds-stat-figure { font-family: var(--font-emphasis); font-weight: 500; font-size: 36px; color: var(--text-accent); margin: 0; }
+    .ds-stat-label { font-family: 'Noto Sans JP', sans-serif; font-size: 13px; line-height: 1.7; color: var(--text-muted); margin: 6px 0 0; overflow-wrap: anywhere; }
+    .ds-stat-source { font-family: 'Noto Sans JP', sans-serif; font-size: 11px; margin: 8px 0 0; }
+    .ds-stat-source a { color: var(--text-muted); text-decoration: underline; text-underline-offset: 2px; }
+    .ds-stat-source a:hover { color: var(--text-primary); }
+    /* The no-number stat lines its text up with the other stats' labels
+       (figure height + label margin) while all three sit on one row. */
+    .ds-stats-row { container-type: inline-size; }
+    @container (min-width: 468px) { .ds-stat-plain { padding-top: 62px; } }
+    .ds-stat-plain p { font-family: 'Noto Sans JP', sans-serif; font-size: 13px; line-height: 1.7; color: var(--text-primary); margin: 0; overflow-wrap: anywhere; }
     .ds-compare-grid { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); gap: 16px; align-items: stretch; }
     .ds-compare-card { border-radius: 6px; padding: 28px 24px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
     .ds-compare-card--no { background: var(--bg-sunken); border: 1px solid var(--border-rule); }
@@ -234,36 +261,36 @@
   <div class="ds-hero-grid">
     <div>
       <div style="display:flex;align-items:center;gap:14px">
-        <span style="font-family:'Noto Sans JP',sans-serif;font-size:11px;font-weight:600;letter-spacing:0;text-transform:uppercase;color:var(--text-accent)">AI対応型デザインシステム</span>
+        <span style="font-family:'Noto Sans JP',sans-serif;font-size:11px;font-weight:600;letter-spacing:0;text-transform:uppercase;color:var(--text-accent)"><!--c:hero.eyebrow-->AI対応型デザインシステム<!--/c--></span>
         <div style="flex:1;height:1px;background:var(--text-accent);opacity:0.35"></div>
       </div>
       <h1 style="font-weight:900;letter-spacing:0;margin:24px 0 0;line-height:1.5;overflow-wrap:anywhere">
-        <span style="display:block;font-family:'Noto Sans JP',sans-serif;font-size:clamp(26px,3.6vw,42px)">デザインシステムは、</span>
-        <span style="display:block;font-family:'Noto Serif JP',serif;font-weight:900;color:var(--text-accent);font-size:clamp(26px,3.6vw,42px)">Figmaの中だけで完結するものではありません。</span>
+        <span style="display:block;font-family:'Noto Sans JP',sans-serif;font-size:clamp(26px,3.6vw,42px)"><!--c:hero.headline.0-->デザインシステムは、<!--/c--></span>
+        <span style="display:block;font-family:'Noto Serif JP',serif;font-weight:900;color:var(--text-accent);font-size:clamp(26px,3.6vw,42px)"><!--c:hero.headline.1-->Figmaの中だけで完結するものではありません。<!--/c--></span>
       </h1>
-      <p style="font-family:'Noto Sans JP',sans-serif;font-size:17px;line-height:1.9;color:var(--text-muted);max-width:480px;margin:24px 0 0;overflow-wrap:anywhere">Raftは、チームとAIツールが同じ基盤を拠り所にできるブランド＆プロダクトシステムをつくります。一貫性を保ったまま、新しい制作をより速く進められるようになります。</p>
+      <p style="font-family:'Noto Sans JP',sans-serif;font-size:17px;line-height:1.9;color:var(--text-muted);max-width:480px;margin:24px 0 0;overflow-wrap:anywhere"><!--c:hero.body-->Raftは、チームとAIツールが同じ基盤を拠り所にできるブランド＆プロダクトシステムをつくります。一貫性を保ったまま、新しい制作をより速く進められるようになります。<!--/c--></p>
       <div style="display:flex;align-items:center;flex-wrap:wrap;gap:16px 24px;margin-top:36px">
-        <button type="button" id="ds-talk-to-us-btn" class="scan-cta"><span class="scan-cta-arrow">→</span> 相談する</button>
-        <a href="/design-system-deck/" target="_blank" rel="noopener noreferrer" style="font-family:'Noto Sans JP',sans-serif;font-size:16px;font-weight:400;line-height:24px;color:var(--text-primary);text-decoration:none">Raftのデザインシステム事例を見る <span style="color:var(--text-accent)">→</span></a>
+        <button type="button" id="ds-talk-to-us-btn" class="scan-cta"><span class="scan-cta-arrow">→</span> <!--c:hero.cta_talk-->相談する<!--/c--></button>
+        <a href="/design-system-deck/" data-c-href="@links.example_deck" target="_blank" rel="noopener noreferrer" style="font-family:'Noto Sans JP',sans-serif;font-size:16px;font-weight:400;line-height:24px;color:var(--text-primary);text-decoration:none"><!--c:hero.cta_example-->Raftのデザインシステム事例を見る<!--/c--> <span style="color:var(--text-accent)">→</span></a>
       </div>
     </div>
 
     <div class="ds-hero-card" id="ds-hero-card">
       <div class="ds-hero-card-grid">
         <div data-ds-leaf style="--ds-x:-40px" data-cx="0" data-cy="0" data-cs="1">
-          <div class="ds-hero-chip" data-ds-leaf style="--ds-s:0.85">ブランド</div>
-          <div class="ds-hero-chip" data-ds-leaf style="--ds-s:0.85;margin-top:16px">プロダクト</div>
-          <div class="ds-hero-chip ds-hero-chip--active ds-ai-ready-chip" data-ds-leaf style="--ds-s:0.85;margin-top:16px">AI対応</div>
+          <div class="ds-hero-chip" data-ds-leaf style="--ds-s:0.85"><!--c:hero.card.layers.0-->ブランド<!--/c--></div>
+          <div class="ds-hero-chip" data-ds-leaf style="--ds-s:0.85;margin-top:16px"><!--c:hero.card.layers.1-->プロダクト<!--/c--></div>
+          <div class="ds-hero-chip ds-hero-chip--active ds-ai-ready-chip" data-ds-leaf style="--ds-s:0.85;margin-top:16px"><!--c:hero.card.layers.2-->AI対応<!--/c--></div>
         </div>
         <div class="ds-hero-divider" data-ds-leaf style="--ds-y:-20px"></div>
         <div data-ds-leaf style="--ds-x:40px;display:flex;flex-direction:column;justify-content:space-between">
           <div>
-            <p class="ds-hero-label" data-ds-leaf style="--ds-y:15px;margin:0">人</p>
-            <p class="ds-hero-label" data-ds-leaf style="--ds-y:15px;margin:12px 0 0">チーム</p>
-            <p class="ds-hero-label" data-ds-leaf style="--ds-y:15px;margin:12px 0 0">AIツール</p>
+            <p class="ds-hero-label" data-ds-leaf style="--ds-y:15px;margin:0"><!--c:hero.card.audiences.0-->人<!--/c--></p>
+            <p class="ds-hero-label" data-ds-leaf style="--ds-y:15px;margin:12px 0 0"><!--c:hero.card.audiences.1-->チーム<!--/c--></p>
+            <p class="ds-hero-label" data-ds-leaf style="--ds-y:15px;margin:12px 0 0"><!--c:hero.card.audiences.2-->AIツール<!--/c--></p>
             <div style="width:24px;height:1px;background:var(--text-accent);opacity:0.4;margin-top:16px"></div>
           </div>
-          <p data-ds-leaf style="--ds-y:20px;font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--text-muted);line-height:1.7;margin:16px 0 0">ひとつのシステムから、<br>より多くの可能性へ。</p>
+          <p data-ds-leaf style="--ds-y:20px;font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--text-muted);line-height:1.7;margin:16px 0 0"><!--c:hero.card.tagline.0-->ひとつのシステムから、<!--/c--><br><!--c:hero.card.tagline.1-->より多くの可能性へ。<!--/c--></p>
         </div>
       </div>
     </div>
@@ -274,20 +301,21 @@
 <section style="padding:80px var(--page-gutter);max-width:calc(1292px + var(--page-gutter) * 2);margin:0 auto;border-top:1px solid var(--border-rule)">
   <div class="ds-shift-grid">
     <div>
-      <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:clamp(26px,3.5vw,34px);line-height:1.5;letter-spacing:0;margin:0;overflow-wrap:anywhere">デザインシステムのあり方が、変わりはじめています。</h2>
-      <p style="font-family:'Noto Sans JP',sans-serif;font-size:20px;line-height:1.9;color:var(--text-muted);margin:20px 0 0;overflow-wrap:anywhere">すでに多くのチームがAIツールを活用しています。しかし、ほとんどのデザインシステムはAIの利用を前提に設計されていません。その結果、制作スピードは上がっても、アウトプットに一貫性がなく、ブランドから外れた成果物や重複した作業が生まれています。</p>
+      <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:clamp(26px,3.5vw,34px);line-height:1.5;letter-spacing:0;margin:0;overflow-wrap:anywhere"><!--c:shift.headline-->デザインシステムのあり方が、変わりはじめています。<!--/c--></h2>
+      <p style="font-family:'Noto Sans JP',sans-serif;font-size:20px;line-height:1.9;color:var(--text-muted);margin:20px 0 0;overflow-wrap:anywhere"><!--c:shift.body-->すでに多くのチームがAIツールを活用しています。しかし、ほとんどのデザインシステムはAIの利用を前提に設計されていません。その結果、制作スピードは上がっても、アウトプットに一貫性がなく、ブランドから外れた成果物や重複した作業が生まれています。<!--/c--></p>
       <div class="ds-stats-row">
         <div>
-          <p class="ds-stat-figure">71%</p>
-          <p style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--text-muted);line-height:1.7;margin:6px 0 0">業務でAIツールを活用しているチームの割合</p>
+          <p class="ds-stat-figure"><!--c:@stats.0.figure-->88%<!--/c--></p>
+          <p class="ds-stat-label"><!--c:shift.stats.0.label-->少なくとも1つの業務機能でAIを活用している組織の割合<!--/c--></p>
+          <p class="ds-stat-source"><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" data-c-href="@stats.0.source.url" target="_blank" rel="noopener noreferrer"><!--c:shift.stats.0.source_label-->McKinsey、2025年11月<!--/c--></a></p>
         </div>
         <div>
-          <p class="ds-stat-figure">60%</p>
-          <p style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--text-muted);line-height:1.7;margin:6px 0 0">ブランド表現に一貫性がないと回答したチームの割合</p>
+          <p class="ds-stat-figure"><!--c:@stats.1.figure-->94%<!--/c--></p>
+          <p class="ds-stat-label"><!--c:shift.stats.1.label-->AIの出力を、正確性・品質・ブランドの一貫性の観点で見直すマーケターの割合<!--/c--></p>
+          <p class="ds-stat-source"><a href="https://www.canva.com/newsroom/news/marketing-ai-report/" data-c-href="@stats.1.source.url" target="_blank" rel="noopener noreferrer"><!--c:shift.stats.1.source_label-->Canva、2025年3月<!--/c--></a></p>
         </div>
-        <div>
-          <p class="ds-stat-figure">3×</p>
-          <p style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--text-muted);line-height:1.7;margin:6px 0 0">構造化されたAI対応型システムによる制作スピードの向上</p>
+        <div class="ds-stat-plain">
+          <p><!--c:shift.stats.2.label-->再利用可能なコンポーネントとブランドガイドが、AIツールの確かな出発点になります。<!--/c--></p>
         </div>
       </div>
     </div>
@@ -295,24 +323,24 @@
     <div class="ds-compare-grid">
       <div class="ds-compare-card ds-compare-card--no">
         <img src="../../images/ds-icon-traditional.svg" alt="" width="36" height="36">
-        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:13px;margin:8px 0 0;text-align:center">従来型のアプローチ</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:13px;margin:8px 0 0;text-align:center"><!--c:shift.before.title-->従来型のアプローチ<!--/c--></p>
         <ul class="ds-compare-list">
-          <li><span style="color:var(--text-muted)">✕</span><span style="font-family:'Noto Sans JP',sans-serif;opacity:0.7">静的なブランドガイドライン</span></li>
-          <li><span style="color:var(--text-muted)">✕</span><span style="font-family:'Noto Sans JP',sans-serif;opacity:0.7">人が使うことだけを想定</span></li>
-          <li><span style="color:var(--text-muted)">✕</span><span style="font-family:'Noto Sans JP',sans-serif;opacity:0.7">プロジェクトごとに一から作り直す</span></li>
-          <li><span style="color:var(--text-muted)">✕</span><span style="font-family:'Noto Sans JP',sans-serif;opacity:0.7">AIによるアウトプットが一貫しない</span></li>
+          <li><span style="color:var(--text-muted)">✕</span><span style="font-family:'Noto Sans JP',sans-serif;opacity:0.7"><!--c:shift.before.items.0-->静的なブランドガイドライン<!--/c--></span></li>
+          <li><span style="color:var(--text-muted)">✕</span><span style="font-family:'Noto Sans JP',sans-serif;opacity:0.7"><!--c:shift.before.items.1-->人が使うことだけを想定<!--/c--></span></li>
+          <li><span style="color:var(--text-muted)">✕</span><span style="font-family:'Noto Sans JP',sans-serif;opacity:0.7"><!--c:shift.before.items.2-->プロジェクトごとに一から作り直す<!--/c--></span></li>
+          <li><span style="color:var(--text-muted)">✕</span><span style="font-family:'Noto Sans JP',sans-serif;opacity:0.7"><!--c:shift.before.items.3-->AIによるアウトプットが一貫しない<!--/c--></span></li>
         </ul>
       </div>
       <div class="ds-compare-arrow"><img src="../../images/ds-icon-arrow.svg" alt="" width="20" height="20"></div>
       <div class="ds-compare-card ds-compare-card--yes">
         <img class="svg-icon--dark" src="../../images/ds-icon-ai-ready-star.svg" alt="" width="36" height="36">
 <img class="svg-icon--light" src="../../images/ds-icon-ai-ready-star-light.svg" alt="" width="36" height="36">
-        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:13px;margin:8px 0 0;text-align:center;color:var(--text-accent)">Raftの<wbr>AI対応型アプローチ</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:13px;margin:8px 0 0;text-align:center;color:var(--text-accent)"><!--c:shift.after.title.0-->Raftの<!--/c--><wbr><!--c:shift.after.title.1-->AI対応型アプローチ<!--/c--></p>
         <ul class="ds-compare-list">
-          <li><span style="color:var(--text-accent)">✓</span><span style="font-family:'Noto Sans JP',sans-serif">AIツールが活用できる構造</span></li>
-          <li><span style="color:var(--text-accent)">✓</span><span style="font-family:'Noto Sans JP',sans-serif">ブランドに沿った一貫したアウトプット</span></li>
-          <li><span style="color:var(--text-accent)">✓</span><span style="font-family:'Noto Sans JP',sans-serif">再利用可能なコンポーネントとテンプレート</span></li>
-          <li><span style="color:var(--text-accent)">✓</span><span style="font-family:'Noto Sans JP',sans-serif">より速く、より高品質な制作</span></li>
+          <li><span style="color:var(--text-accent)">✓</span><span style="font-family:'Noto Sans JP',sans-serif"><!--c:shift.after.items.0-->AIツールが活用できる構造<!--/c--></span></li>
+          <li><span style="color:var(--text-accent)">✓</span><span style="font-family:'Noto Sans JP',sans-serif"><!--c:shift.after.items.1-->ブランドに沿った一貫したアウトプット<!--/c--></span></li>
+          <li><span style="color:var(--text-accent)">✓</span><span style="font-family:'Noto Sans JP',sans-serif"><!--c:shift.after.items.2-->再利用可能なコンポーネントとテンプレート<!--/c--></span></li>
+          <li><span style="color:var(--text-accent)">✓</span><span style="font-family:'Noto Sans JP',sans-serif"><!--c:shift.after.items.3-->より速く、より高品質な制作<!--/c--></span></li>
         </ul>
       </div>
     </div>
@@ -323,57 +351,57 @@
 <section style="padding:80px var(--page-gutter);max-width:calc(1292px + var(--page-gutter) * 2);margin:0 auto;border-top:1px solid var(--border-rule)">
   <div class="ds-build-grid">
     <div>
-      <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:clamp(22px,3vw,26px);line-height:1.5;letter-spacing:0;margin:0;overflow-wrap:anywhere">ブランド、プロダクト、AIをつなぐ、ひとつの完全なシステム。</h2>
-      <p style="font-family:'Noto Sans JP',sans-serif;font-size:15px;line-height:1.9;margin:16px 0 0;overflow-wrap:anywhere">チームとAIツールが、一貫性のある高品質な成果物をつくるために必要な要素を、ひとつのシステムとして構造化します。</p>
+      <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:clamp(22px,3vw,26px);line-height:1.5;letter-spacing:0;margin:0;overflow-wrap:anywhere"><!--c:build.headline-->ブランド、プロダクト、AIをつなぐ、ひとつの完全なシステム。<!--/c--></h2>
+      <p style="font-family:'Noto Sans JP',sans-serif;font-size:15px;line-height:1.9;margin:16px 0 0;overflow-wrap:anywhere"><!--c:build.body-->チームとAIツールが、一貫性のある高品質な成果物をつくるために必要な要素を、ひとつのシステムとして構造化します。<!--/c--></p>
     </div>
     <div class="ds-build-items">
       <div class="ds-build-item">
         <img class="svg-icon--dark" src="../../images/ds-icon-brand-foundations.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../../images/ds-icon-brand-foundations-light.svg" alt="" width="28" height="28">
-        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">ブランド基盤</p>
-        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">戦略、ポジショニング、ビジュアルアイデンティティ</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0"><!--c:build.items.0.name-->ブランド基盤<!--/c--></p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere"><!--c:build.items.0.summary-->戦略、ポジショニング、ビジュアルアイデンティティ<!--/c--></p>
       </div>
       <div class="ds-build-item">
         <img class="svg-icon--dark" src="../../images/ds-icon-voice-content.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../../images/ds-icon-voice-content-light.svg" alt="" width="28" height="28">
-        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">ボイス＆コンテンツ</p>
-        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">メッセージング、トーン、コピーガイドライン</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0"><!--c:build.items.1.name-->ボイス＆コンテンツ<!--/c--></p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere"><!--c:build.items.1.summary-->メッセージング、トーン、コピーガイドライン<!--/c--></p>
       </div>
       <div class="ds-build-item">
         <img class="svg-icon--dark" src="../../images/ds-icon-design-tokens.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../../images/ds-icon-design-tokens-light.svg" alt="" width="28" height="28">
-        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">デザイントークン</p>
-        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">カラー、タイポグラフィ、スペーシング、レイアウトルール</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0"><!--c:build.items.2.name-->デザイントークン<!--/c--></p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere"><!--c:build.items.2.summary-->カラー、タイポグラフィ、スペーシング、レイアウトルール<!--/c--></p>
       </div>
       <div class="ds-build-item">
         <img class="svg-icon--dark" src="../../images/ds-icon-component-library.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../../images/ds-icon-component-library-light.svg" alt="" width="28" height="28">
-        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">コンポーネントライブラリ</p>
-        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">UIコンポーネント、パターン、状態設計</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0"><!--c:build.items.3.name-->コンポーネントライブラリ<!--/c--></p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere"><!--c:build.items.3.summary-->UIコンポーネント、パターン、状態設計<!--/c--></p>
       </div>
       <div class="ds-build-item">
         <img class="svg-icon--dark" src="../../images/ds-icon-templates.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../../images/ds-icon-templates-light.svg" alt="" width="28" height="28">
-        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">テンプレート</p>
-        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">プレゼン資料、マーケティング素材、提案書、Webページ</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0"><!--c:build.items.4.name-->テンプレート<!--/c--></p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere"><!--c:build.items.4.summary-->プレゼン資料、マーケティング素材、提案書、Webページ<!--/c--></p>
       </div>
       <div class="ds-build-item">
         <img class="svg-icon--dark" src="../../images/ds-icon-design-md.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../../images/ds-icon-design-md-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">DESIGN.md</p>
-        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">AIツール向けに構造化されたコンテキスト</p>
+        <p style="font-weight:600;font-size:16px;margin:0"><!--c:build.items.5.name-->DESIGN.md<!--/c--></p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere"><!--c:build.items.5.summary-->AIツール向けに構造化されたコンテキスト<!--/c--></p>
       </div>
       <div class="ds-build-item">
         <img class="svg-icon--dark" src="../../images/ds-icon-ai-workflows.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../../images/ds-icon-ai-workflows-light.svg" alt="" width="28" height="28">
-        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">AIワークフロー</p>
-        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">ツール設定、プロンプト、活用ガイド</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0"><!--c:build.items.6.name-->AIワークフロー<!--/c--></p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere"><!--c:build.items.6.summary-->ツール設定、プロンプト、活用ガイド<!--/c--></p>
       </div>
       <div class="ds-build-item">
         <img class="svg-icon--dark" src="../../images/ds-icon-implementation.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../../images/ds-icon-implementation-light.svg" alt="" width="28" height="28">
-        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">実装</p>
-        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">ハンドオフ資料、エンジニアリング支援</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0"><!--c:build.items.7.name-->実装<!--/c--></p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere"><!--c:build.items.7.summary-->ハンドオフ資料、エンジニアリング支援<!--/c--></p>
       </div>
     </div>
   </div>
@@ -383,33 +411,33 @@
 <section style="padding:80px var(--page-gutter);max-width:calc(1292px + var(--page-gutter) * 2);margin:0 auto;border-top:1px solid var(--border-rule)">
   <div class="ds-team-grid">
     <div>
-      <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:clamp(22px,3vw,26px);line-height:1.5;letter-spacing:0;margin:0;overflow-wrap:anywhere">つくるすべてのチームのために。</h2>
-      <p style="font-family:'Noto Sans JP',sans-serif;font-size:15px;line-height:1.9;color:var(--text-accent);margin:16px 0 0;overflow-wrap:anywhere">同じシステムを共有することで、あらゆるチームが手戻りを減らし、一貫性を保ちながら、より速く動けるようになります。</p>
+      <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:clamp(22px,3vw,26px);line-height:1.5;letter-spacing:0;margin:0;overflow-wrap:anywhere"><!--c:teams.headline-->つくるすべてのチームのために。<!--/c--></h2>
+      <p style="font-family:'Noto Sans JP',sans-serif;font-size:15px;line-height:1.9;color:var(--text-accent);margin:16px 0 0;overflow-wrap:anywhere"><!--c:teams.body-->同じシステムを共有することで、あらゆるチームが手戻りを減らし、一貫性を保ちながら、より速く動けるようになります。<!--/c--></p>
     </div>
     <div class="ds-team-items">
       <div class="ds-team-item">
         <img class="svg-icon--dark" src="../../images/ds-icon-team-marketing.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../../images/ds-icon-team-marketing-light.svg" alt="" width="28" height="28">
-        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">マーケティング</p>
-        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">キャンペーン素材、広告、ランディングページ、SNSコンテンツを制作。</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0"><!--c:teams.items.0.name-->マーケティング<!--/c--></p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere"><!--c:teams.items.0.summary-->キャンペーン素材、広告、ランディングページ、SNSコンテンツを制作。<!--/c--></p>
       </div>
       <div class="ds-team-item">
         <img class="svg-icon--dark" src="../../images/ds-icon-team-sales.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../../images/ds-icon-team-sales-light.svg" alt="" width="28" height="28">
-        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">セールス</p>
-        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">提案資料、プレゼン資料、営業支援素材を作成。</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0"><!--c:teams.items.1.name-->セールス<!--/c--></p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere"><!--c:teams.items.1.summary-->提案資料、プレゼン資料、営業支援素材を作成。<!--/c--></p>
       </div>
       <div class="ds-team-item">
         <img class="svg-icon--dark" src="../../images/ds-icon-team-product-design.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../../images/ds-icon-team-product-design-light.svg" alt="" width="28" height="28">
-        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">プロダクト＋デザイン</p>
-        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">新しいユーザーフロー、プロトタイプ、プロダクト画面を検討・設計。</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0"><!--c:teams.items.2.name-->プロダクト＋デザイン<!--/c--></p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere"><!--c:teams.items.2.summary-->新しいユーザーフロー、プロトタイプ、プロダクト画面を検討・設計。<!--/c--></p>
       </div>
       <div class="ds-team-item">
         <img class="svg-icon--dark" src="../../images/ds-icon-team-engineering.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../../images/ds-icon-team-engineering-light.svg" alt="" width="28" height="28">
-        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">エンジニアリング</p>
-        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">共有されたトークン、コンポーネント、実装ガイドをもとに開発。</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0"><!--c:teams.items.3.name-->エンジニアリング<!--/c--></p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere"><!--c:teams.items.3.summary-->共有されたトークン、コンポーネント、実装ガイドをもとに開発。<!--/c--></p>
       </div>
     </div>
   </div>
@@ -419,31 +447,31 @@
 <section id="see-it-in-action" style="padding:80px var(--page-gutter);max-width:calc(1292px + var(--page-gutter) * 2);margin:0 auto;border-top:1px solid var(--border-rule)">
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:64px">
     <div>
-      <span class="project-section-label" style="font-family:'Noto Sans JP',sans-serif;letter-spacing:0;color:var(--text-accent);margin-bottom:0">実際の仕組みを見る</span>
-      <h3 style="font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:clamp(20px,2.6vw,26px);line-height:1.5;margin:20px 0 0;overflow-wrap:anywhere">このRaftのデザインガイドラインも、同じシステムからつくられています。</h3>
-      <p style="font-family:'Noto Sans JP',sans-serif;font-size:16px;font-weight:600;margin:24px 0 0;overflow-wrap:anywhere">Raft自身のブランドシステムには、以下が含まれます。</p>
+      <span class="project-section-label" style="font-family:'Noto Sans JP',sans-serif;letter-spacing:0;color:var(--text-accent);margin-bottom:0"><!--c:example.eyebrow-->実際の仕組みを見る<!--/c--></span>
+      <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:clamp(20px,2.6vw,26px);line-height:1.5;margin:20px 0 0;overflow-wrap:anywhere"><!--c:example.headline-->このRaftのデザインガイドラインも、同じシステムからつくられています。<!--/c--></h2>
+      <p style="font-family:'Noto Sans JP',sans-serif;font-size:16px;font-weight:600;margin:24px 0 0;overflow-wrap:anywhere"><!--c:example.lead-->Raft自身のブランドシステムには、以下が含まれます。<!--/c--></p>
       <ul class="ds-checklist">
         <li><img class="svg-icon--dark" src="../../images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="../../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-family:'Noto Sans JP',sans-serif;font-size:16px">デザイントークン</span></li>
+<img class="svg-icon--light" src="../../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-family:'Noto Sans JP',sans-serif;font-size:16px"><!--c:example.includes.0-->デザイントークン<!--/c--></span></li>
         <li><img class="svg-icon--dark" src="../../images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="../../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-family:'Noto Sans JP',sans-serif;font-size:16px">タイポグラフィとレイアウトルール</span></li>
+<img class="svg-icon--light" src="../../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-family:'Noto Sans JP',sans-serif;font-size:16px"><!--c:example.includes.1-->タイポグラフィとレイアウトルール<!--/c--></span></li>
         <li><img class="svg-icon--dark" src="../../images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="../../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-family:'Noto Sans JP',sans-serif;font-size:16px">再利用可能なコンポーネント</span></li>
+<img class="svg-icon--light" src="../../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-family:'Noto Sans JP',sans-serif;font-size:16px"><!--c:example.includes.2-->再利用可能なコンポーネント<!--/c--></span></li>
         <li><img class="svg-icon--dark" src="../../images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="../../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-family:'Noto Sans JP',sans-serif;font-size:16px">ブランドボイス</span></li>
+<img class="svg-icon--light" src="../../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-family:'Noto Sans JP',sans-serif;font-size:16px"><!--c:example.includes.3-->ブランドボイス<!--/c--></span></li>
         <li><img class="svg-icon--dark" src="../../images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="../../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-family:'Noto Sans JP',sans-serif;font-size:16px">モーションガイド</span></li>
+<img class="svg-icon--light" src="../../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-family:'Noto Sans JP',sans-serif;font-size:16px"><!--c:example.includes.4-->モーションガイド<!--/c--></span></li>
         <li><img class="svg-icon--dark" src="../../images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="../../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-family:'Noto Sans JP',sans-serif;font-size:16px">プレゼンテーションテンプレート</span></li>
+<img class="svg-icon--light" src="../../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-family:'Noto Sans JP',sans-serif;font-size:16px"><!--c:example.includes.5-->プレゼンテーションテンプレート<!--/c--></span></li>
         <li><img class="svg-icon--dark" src="../../images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="../../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px">DESIGN.md</span></li>
+<img class="svg-icon--light" src="../../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px"><!--c:example.includes.6-->DESIGN.md<!--/c--></span></li>
         <li><img class="svg-icon--dark" src="../../images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="../../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-family:'Noto Sans JP',sans-serif;font-size:16px;overflow-wrap:anywhere">Claude Designなど、AIツール向けのガイドライン</span></li>
+<img class="svg-icon--light" src="../../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-family:'Noto Sans JP',sans-serif;font-size:16px;overflow-wrap:anywhere"><!--c:example.includes.7-->Claude Designなど、AIツール向けのガイドライン<!--/c--></span></li>
       </ul>
     </div>
     <div style="display:flex;flex-direction:column;gap:32px">
       <iframe width="100%" style="aspect-ratio:16/9;border-radius:var(--radius-sm)" src="https://www.youtube.com/embed/-Q_afihcKs0?si=QvlXaj-x5coFCtP8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <a class="scan-cta" href="/design-system-deck/" target="_blank" rel="noopener noreferrer" style="align-self:flex-start"><span class="scan-cta-arrow">→</span> Raftのデザインシステムを見る</a>
+      <a class="scan-cta" href="/design-system-deck/" data-c-href="@links.example_deck" target="_blank" rel="noopener noreferrer" style="align-self:flex-start"><span class="scan-cta-arrow">→</span> <!--c:example.cta-->Raftのデザインシステムを見る<!--/c--></a>
     </div>
   </div>
 </section>
@@ -452,38 +480,38 @@
 <section style="padding:80px var(--page-gutter);max-width:calc(1292px + var(--page-gutter) * 2);margin:0 auto;border-top:1px solid var(--border-rule)">
   <div style="display:flex;gap:80px;flex-wrap:wrap">
     <div style="width:320px;flex-shrink:0;display:flex;flex-direction:column;gap:16px">
-      <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:clamp(22px,3vw,26px);line-height:1.5;letter-spacing:0;margin:0;overflow-wrap:anywhere">最新のAIツールと連携します。</h2>
-      <p style="font-family:'Noto Sans JP',sans-serif;font-size:15px;line-height:1.9;color:var(--text-muted);margin:0;overflow-wrap:anywhere">現在Raftが実践しているワークフローのひとつが、<strong style="color:var(--text-primary)">Claude Design</strong>です。デザインシステム全体、ブランドルール、DESIGN.mdをコンテキストとして読み込ませることで、チームはブランドに沿ったアウトプットを、より確実に生成できます。</p>
-      <p style="font-family:'Noto Sans JP',sans-serif;font-size:15px;line-height:1.9;margin:0;overflow-wrap:anywhere">Raftは特定のツールに依存しません。<strong>価値があるのはシステムそのものです。ツールは、これからも進化し続けます。</strong></p>
+      <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:clamp(22px,3vw,26px);line-height:1.5;letter-spacing:0;margin:0;overflow-wrap:anywhere"><!--c:tools.headline-->最新のAIツールと連携します。<!--/c--></h2>
+      <p style="font-family:'Noto Sans JP',sans-serif;font-size:15px;line-height:1.9;color:var(--text-muted);margin:0;overflow-wrap:anywhere"><!--c:tools.body.0-->現在Raftが実践しているワークフローのひとつが、<!--/c--><strong style="color:var(--text-primary)"><!--c:@tools.0-->Claude Design<!--/c--></strong><!--c:tools.body.1-->です。デザインシステム全体、ブランドルール、DESIGN.mdをコンテキストとして読み込ませることで、チームはブランドに沿ったアウトプットを、より確実に生成できます。<!--/c--></p>
+      <p style="font-family:'Noto Sans JP',sans-serif;font-size:15px;line-height:1.9;margin:0;overflow-wrap:anywhere"><!--c:tools.agnostic.0-->Raftは特定のツールに依存しません。<!--/c--><strong><!--c:tools.agnostic.1-->価値があるのはシステムそのものです。ツールは、これからも進化し続けます。<!--/c--></strong></p>
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:32px 48px;align-items:flex-start;padding-top:8px">
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
         <img src="../../images/claude-icon.png" alt="" width="30" height="30" style="border-radius:50%">
-        <p style="font-size:12px;color:var(--text-primary);margin:0">Claude Design</p>
+        <p style="font-size:12px;color:var(--text-primary);margin:0"><!--c:@tools.0-->Claude Design<!--/c--></p>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
         <img src="../../images/tool-icon-chatgpt.svg" alt="" width="30" height="30">
-        <p style="font-size:12px;color:var(--text-primary);margin:0">ChatGPT</p>
+        <p style="font-size:12px;color:var(--text-primary);margin:0"><!--c:@tools.1-->ChatGPT<!--/c--></p>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
         <img src="../../images/tool-icon-figma-make.svg" alt="" width="32" height="32">
-        <p style="font-size:12px;color:var(--text-primary);margin:0">Figma Make</p>
+        <p style="font-size:12px;color:var(--text-primary);margin:0"><!--c:@tools.2-->Figma Make<!--/c--></p>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
         <img src="../../images/tool-icon-cursor.svg" alt="" width="27" height="30">
-        <p style="font-size:12px;color:var(--text-primary);margin:0">Cursor</p>
+        <p style="font-size:12px;color:var(--text-primary);margin:0"><!--c:@tools.3-->Cursor<!--/c--></p>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
         <img src="../../images/tool-icon-lovable.png" alt="" width="30" height="30">
-        <p style="font-size:12px;color:var(--text-primary);margin:0">Lovable</p>
+        <p style="font-size:12px;color:var(--text-primary);margin:0"><!--c:@tools.4-->Lovable<!--/c--></p>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
         <img src="../../images/tool-icon-canva.svg" alt="" width="30" height="30">
-        <p style="font-size:12px;color:var(--text-primary);margin:0">Canva AI</p>
+        <p style="font-size:12px;color:var(--text-primary);margin:0"><!--c:@tools.5-->Canva AI<!--/c--></p>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
         <img src="../../images/tool-icon-other.svg" alt="" width="30" height="30">
-        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-primary);margin:0">その他</p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-primary);margin:0"><!--c:tools.other-->その他<!--/c--></p>
       </div>
     </div>
   </div>
@@ -493,34 +521,34 @@
 <section style="padding:80px var(--page-gutter);max-width:calc(1292px + var(--page-gutter) * 2);margin:0 auto;border-top:1px solid var(--border-rule)">
   <div class="ds-build-grid">
     <div>
-      <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:clamp(22px,3vw,26px);line-height:1.5;letter-spacing:0;margin:0;overflow-wrap:anywhere">「できること」の基準を、もう一段上へ。</h2>
+      <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:clamp(22px,3vw,26px);line-height:1.5;letter-spacing:0;margin:0;overflow-wrap:anywhere"><!--c:outcomes.headline-->「できること」の基準を、もう一段上へ。<!--/c--></h2>
     </div>
     <div style="display:flex;flex-direction:column;gap:24px">
-      <p style="font-family:'Noto Sans JP',sans-serif;font-size:16px;line-height:1.9;margin:0;overflow-wrap:anywhere">AI対応型デザインシステムは、一貫性のある高品質なブランド・プロダクト体験を保ちながら、制作スピードを高めます。</p>
+      <p style="font-family:'Noto Sans JP',sans-serif;font-size:16px;line-height:1.9;margin:0;overflow-wrap:anywhere"><!--c:outcomes.body-->AI対応型デザインシステムは、一貫性のある高品質なブランド・プロダクト体験を保ちながら、制作スピードを高めます。<!--/c--></p>
       <div class="ds-build-items" style="border-top:1px solid var(--border-rule)">
         <div class="ds-build-item">
           <img class="svg-icon--dark" src="../../images/outcome-icon-faster-production.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../../images/outcome-icon-faster-production-light.svg" alt="" width="28" height="28">
-          <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">より速い制作</p>
-          <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">手戻りを減らし、より多くのものを、より短時間で。</p>
+          <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0"><!--c:outcomes.items.0.name-->より速い制作<!--/c--></p>
+          <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere"><!--c:outcomes.items.0.summary-->手戻りを減らし、より多くのものを、より短時間で。<!--/c--></p>
         </div>
         <div class="ds-build-item">
           <img class="svg-icon--dark" src="../../images/outcome-icon-consistent-quality.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../../images/outcome-icon-consistent-quality-light.svg" alt="" width="28" height="28">
-          <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">一貫したクオリティ</p>
-          <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">あらゆるチャネルで、ブランドらしさを保つ。</p>
+          <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0"><!--c:outcomes.items.1.name-->一貫したクオリティ<!--/c--></p>
+          <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere"><!--c:outcomes.items.1.summary-->あらゆるチャネルで、ブランドらしさを保つ。<!--/c--></p>
         </div>
         <div class="ds-build-item">
           <img class="svg-icon--dark" src="../../images/outcome-icon-greater-alignment.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../../images/outcome-icon-greater-alignment-light.svg" alt="" width="28" height="28">
-          <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">より高い連携</p>
-          <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">チーム間で共通の基準を持つ。</p>
+          <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0"><!--c:outcomes.items.2.name-->より高い連携<!--/c--></p>
+          <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere"><!--c:outcomes.items.2.summary-->チーム間で共通の基準を持つ。<!--/c--></p>
         </div>
         <div class="ds-build-item">
           <img class="svg-icon--dark" src="../../images/outcome-icon-long-term-scale.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../../images/outcome-icon-long-term-scale-light.svg" alt="" width="28" height="28">
-          <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0">長期的なスケール</p>
-          <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere">成長に合わせて進化する基盤。</p>
+          <p style="font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:16px;margin:0"><!--c:outcomes.items.3.name-->長期的なスケール<!--/c--></p>
+          <p style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--text-muted);margin:0;overflow-wrap:anywhere"><!--c:outcomes.items.3.summary-->成長に合わせて進化する基盤。<!--/c--></p>
         </div>
       </div>
     </div>
@@ -530,32 +558,32 @@
 <!-- RELATED WORK -->
 <section style="padding:80px var(--page-gutter);max-width:calc(1292px + var(--page-gutter) * 2);margin:0 auto;border-top:1px solid var(--border-rule)">
   <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:16px">
-    <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:clamp(22px,3vw,30px);letter-spacing:0;margin:0;overflow-wrap:anywhere">関連プロジェクト</h2>
-    <a href="/ja/work/" style="font-family:'Noto Sans JP',sans-serif;font-size:14px;color:var(--text-accent);text-decoration:none">すべてのプロジェクトを見る →</a>
+    <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:clamp(22px,3vw,30px);letter-spacing:0;margin:0;overflow-wrap:anywhere"><!--c:related.headline-->関連プロジェクト<!--/c--></h2>
+    <a href="/ja/work/" data-c-href="@links.all_work" style="font-family:'Noto Sans JP',sans-serif;font-size:14px;color:var(--text-accent);text-decoration:none"><!--c:related.view_all-->すべてのプロジェクトを見る →<!--/c--></a>
   </div>
-  <p style="font-family:'Noto Sans JP',sans-serif;font-size:15px;color:var(--text-muted);margin:12px 0 0;overflow-wrap:anywhere">ブランドとプロダクトのシステムを設計した事例です。</p>
+  <p style="font-family:'Noto Sans JP',sans-serif;font-size:15px;color:var(--text-muted);margin:12px 0 0;overflow-wrap:anywhere"><!--c:related.body-->ブランドとプロダクトのシステムを設計した事例です。<!--/c--></p>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:40px">
-    <a href="/ja/work/legalon/" style="background:var(--bg-elevated);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit">
+    <a href="/ja/work/legalon/" data-c-href="@related.0.href" style="background:var(--bg-elevated);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit">
       <div style="height:180px;overflow:hidden"><img src="../../images/legalon-hero.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 25%"></div>
       <div style="padding:20px 24px 24px;display:flex;flex-direction:column;gap:6px">
-        <p style="font-weight:600;font-size:14px;color:var(--text-primary);margin:0">LegalOn</p>
-        <p style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--text-primary);margin:0;overflow-wrap:anywhere">AIリーガルプラットフォームのブランド＆プロダクトシステム</p>
+        <p style="font-weight:600;font-size:14px;color:var(--text-primary);margin:0"><!--c:@related.0.name-->LegalOn<!--/c--></p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--text-primary);margin:0;overflow-wrap:anywhere"><!--c:related.items.0-->AIリーガルプラットフォームのブランド＆プロダクトシステム<!--/c--></p>
         <span style="color:var(--text-accent);font-size:13px;margin-top:6px">→</span>
       </div>
     </a>
-    <a href="/ja/work/adobe-express-photos/" style="background:var(--bg-elevated);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit">
-      <div style="height:180px;overflow:hidden"><img src="../../images/harmony-hero.jpg" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+    <a href="/work/ai-design-la/" data-c-href="@related.1.href" style="background:var(--bg-elevated);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit">
+      <div style="height:180px;overflow:hidden"><img src="../../images/ai-design-la-hero.webp" alt="" style="width:100%;height:100%;object-fit:cover"></div>
       <div style="padding:20px 24px 24px;display:flex;flex-direction:column;gap:6px">
-        <p style="font-weight:600;font-size:14px;color:var(--text-primary);margin:0">Adobe Express Photos</p>
-        <p style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--text-primary);margin:0;overflow-wrap:anywhere">デザインシステムとプラットフォームエコシステム</p>
+        <p style="font-weight:600;font-size:14px;color:var(--text-primary);margin:0"><!--c:@related.1.name-->AI Design LA<!--/c--></p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--text-primary);margin:0;overflow-wrap:anywhere"><!--c:related.items.1-->ロサンゼルスのAIデザインコミュニティのための、ビジュアルアイデンティティとウェブサイト<!--/c--></p>
         <span style="color:var(--text-accent);font-size:13px;margin-top:6px">→</span>
       </div>
     </a>
-    <a href="/ja/work/modere/" style="background:var(--bg-elevated);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit">
-      <div style="height:180px;overflow:hidden"><img src="../../images/modere-1.webp" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+    <a href="/design-system-deck/" data-c-href="@related.2.href" target="_blank" rel="noopener noreferrer" style="background:var(--bg-elevated);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit">
+      <div style="height:180px;overflow:hidden"><img src="../../images/lab-raft-design.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center top"></div>
       <div style="padding:20px 24px 24px;display:flex;flex-direction:column;gap:6px">
-        <p style="font-weight:600;font-size:14px;color:var(--text-primary);margin:0">Modere eCommerce</p>
-        <p style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--text-primary);margin:0;overflow-wrap:anywhere">ウェルネスブランド向けバイリンガルECプラットフォーム</p>
+        <p style="font-weight:600;font-size:14px;color:var(--text-primary);margin:0"><!--c:@related.2.name-->Raft Design System<!--/c--></p>
+        <p style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--text-primary);margin:0;overflow-wrap:anywhere"><!--c:related.items.2-->AIツール向けのDESIGN.mdを備えた、Raft自身のブランド＆プロダクトシステム<!--/c--></p>
         <span style="color:var(--text-accent);font-size:13px;margin-top:6px">→</span>
       </div>
     </a>
@@ -568,11 +596,11 @@
     <div style="max-width:600px">
       <!-- NOTE: no JA translation supplied for this eyebrow in the approved
            doc — left in English pending confirmation, see summary. -->
-      <span style="font-size:11px;font-weight:600;letter-spacing:1.98px;text-transform:uppercase;color:var(--text-accent)">Let&rsquo;s build what&rsquo;s next</span>
-      <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:clamp(26px,4vw,36px);line-height:1.5;letter-spacing:0;margin:20px 0 0;overflow-wrap:anywhere">チームのためのAI対応型デザインシステムを、つくりませんか？</h2>
-      <p style="font-family:'Noto Sans JP',sans-serif;font-size:16px;color:var(--text-muted);margin:16px 0 0;overflow-wrap:anywhere">目指す姿と、Raftにできることについて、お話ししましょう。</p>
+      <span style="font-size:11px;font-weight:600;letter-spacing:1.98px;text-transform:uppercase;color:var(--text-accent)"><!--c:cta.eyebrow-->Let’s build what’s next<!--/c--></span>
+      <h2 style="font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:clamp(26px,4vw,36px);line-height:1.5;letter-spacing:0;margin:20px 0 0;overflow-wrap:anywhere"><!--c:cta.headline-->チームのためのAI対応型デザインシステムを、つくりませんか？<!--/c--></h2>
+      <p style="font-family:'Noto Sans JP',sans-serif;font-size:16px;color:var(--text-muted);margin:16px 0 0;overflow-wrap:anywhere"><!--c:cta.body-->目指す姿と、Raftにできることについて、お話ししましょう。<!--/c--></p>
     </div>
-    <button type="button" id="ds-cta-talk-btn" class="scan-cta scan-cta--wide"><span class="scan-cta-arrow">→</span> 相談をはじめる</button>
+    <button type="button" id="ds-cta-talk-btn" class="scan-cta scan-cta--wide"><span class="scan-cta-arrow">→</span> <!--c:cta.button-->相談をはじめる<!--/c--></button>
   </div>
 </section>
 
@@ -944,5 +972,13 @@
     })();
   </script>
 
+<!-- Human / machine version toggle: AI links to this page's terminal version -->
+  <div class="hm-toggle" role="group" aria-label="Site version">
+    <svg class="hm-toggle-shape" width="51" height="208" viewBox="0 0 51 208" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><clipPath id="hm-shape"><path d="M51 208C51 186.891 36.0169 176 25 176H26C11.6406 176 0 164.359 0 150V56C1.54632e-06 42.7452 10.7452 32 24 32C35.4407 32 51 21.1088 51 0V208Z"/></clipPath></defs><path class="hm-toggle-fill" d="M51 208C51 186.891 36.0169 176 25 176H26C11.6406 176 0 164.359 0 150V56C1.54632e-06 42.7452 10.7452 32 24 32C35.4407 32 51 21.1088 51 0V208Z"/><path d="M51 208C51 186.891 36.0169 176 25 176H26C11.6406 176 0 164.359 0 150V56C1.54632e-06 42.7452 10.7452 32 24 32C35.4407 32 51 21.1088 51 0" stroke="white" stroke-opacity="0.3" stroke-width="2" clip-path="url(#hm-shape)"/></svg>
+    <div class="hm-toggle-items">
+    <span class="hm-toggle-item" aria-current="page"><svg width="24" height="24.1975" viewBox="0 0 24 24.1975" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9.47454 7.93916L9.48151 7.94334C10.0997 8.32457 13.2799 9.63065 16.844 6.29019C18.2756 4.83636 18.9537 2.62356 18.9537 2.62356C18.9537 2.62356 17.4309 3.30726 16.2426 2.85006C15.4376 2.53783 14.6361 1.57535 14.4856 1.38369C14.1155 0.966917 13.6541 0.612869 13.1168 0.368938C11.0218 -0.581695 8.54691 0.368939 7.59558 2.48347C6.66794 4.54643 7.51264 6.92371 9.47454 7.93916Z" fill="currentColor"/><path d="M3.68754 24.1975L5.79789 15.7651L6.80218 15.7854L5.09537 24.1975H18.9053L17.1985 15.7854L18.2021 15.7651L20.3118 24.1975H24L21.3028 13.7203C20.9564 12.3132 19.826 9.7979 16.7755 9.68848H7.20014C4.14961 9.7972 3.04356 12.3132 2.69718 13.7203L0 24.1975H3.68754Z" fill="currentColor"/></svg>HUMAN</span>
+    <a class="hm-toggle-item" href="/ja/ai/design-system/" data-c-href="@pages.terminal"><svg width="24" height="20.2598" viewBox="0 0 24 20.2598" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2.90625 14.7587L2.90625 20.2598H21.0135V14.7587L2.90625 14.7587ZM11.9599 18.627C11.3467 18.627 10.8503 18.1267 10.8503 17.5093C10.8503 16.8923 11.3467 16.392 11.9599 16.392C12.5726 16.392 13.069 16.8923 13.069 17.5093C13.069 18.1267 12.5726 18.627 11.9599 18.627Z" fill="currentColor"/><path d="M11.9566 10.371C12.7817 10.371 13.4507 9.69691 13.4507 8.86538C13.4507 8.03385 12.7817 7.35976 11.9566 7.35976C11.1314 7.35976 10.4625 8.03385 10.4625 8.86538C10.4625 9.69691 11.1314 10.371 11.9566 10.371Z" fill="currentColor"/><path d="M23.8612 0.889805C24.0584 0.673275 24.0436 0.337678 23.8288 0.139393C23.6148 -0.0588919 23.2823 -0.043528 23.085 0.172041L17.3617 5.24104C15.9972 3.81367 14.0838 2.92211 11.9623 2.92211C11.7141 2.92211 11.4692 2.93699 11.2272 2.96052C11.078 2.5193 10.8384 2.05167 10.4534 1.67766C9.92222 1.16059 9.21567 0.923892 8.36477 0.961821C6.53575 1.05112 5.28607 2.76799 4.78534 3.59954L0.914817 0.172041C0.718528 -0.043528 0.385026 -0.0588919 0.170632 0.139393C-0.0437618 0.337678 -0.0580547 0.673275 0.138711 0.889805L5.45473 6.72746C4.8225 7.83507 4.45517 9.11648 4.45517 10.4872C4.45517 11.6678 4.73198 12.7816 5.21127 13.7779L18.7119 13.7779C18.9153 13.3549 19.0735 12.9069 19.1978 12.4456C20.4628 11.9242 23.8345 10.37 23.4991 8.71847C23.4433 8.44481 23.278 8.22684 23.0207 8.0876C22.2489 7.67135 20.57 8.03575 19.1869 8.45921C19.0216 7.86771 18.7919 7.30263 18.4989 6.77835L23.8612 0.889805ZM5.27511 4.03308C5.67627 3.34844 6.81065 1.68198 8.3943 1.60469C9.0675 1.573 9.60777 1.75256 10.0065 2.13905C10.2772 2.40071 10.453 2.7315 10.5745 3.05798C9.03034 3.34988 7.65155 4.1147 6.5953 5.20311L5.27511 4.03308ZM11.9604 12.0091C10.2381 12.0091 8.84167 10.6015 8.84167 8.86538C8.84167 7.12979 10.2381 5.72163 11.9604 5.72163C13.6832 5.72163 15.0801 7.12979 15.0801 8.86538C15.0801 10.6015 13.6832 12.0091 11.9604 12.0091ZM22.7196 8.65509C22.833 8.71559 22.8606 8.78616 22.873 8.84666C23.0417 9.67965 21.104 10.8967 19.3622 11.674C19.4246 11.2861 19.468 10.8914 19.468 10.4862C19.468 10.008 19.4089 9.54474 19.3236 9.09151C20.7243 8.66037 22.1774 8.36367 22.7196 8.65509Z" fill="currentColor"/></svg>AI</a>
+    </div>
+  </div>
 </body>
 </html>

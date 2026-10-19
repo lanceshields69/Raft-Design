@@ -457,4 +457,84 @@
     <priority>0.5</priority>
   </url>
 
+  <url>
+    <loc>https://raftdesign.studio/services/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/services/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/services/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/services/" />
+  </url>
+
+  <url>
+    <loc>https://raftdesign.studio/ja/services/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/services/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/services/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/services/" />
+  </url>
+
+  <url>
+    <loc>https://raftdesign.studio/work/fitbit/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/work/fitbit/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/work/fitbit/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/work/fitbit/" />
+  </url>
+
+  <url>
+    <loc>https://raftdesign.studio/ja/work/fitbit/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/work/fitbit/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/work/fitbit/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/work/fitbit/" />
+  </url>
+
+  <url>
+    <loc>https://raftdesign.studio/work/california-walnuts/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/work/california-walnuts/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/work/california-walnuts/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/work/california-walnuts/" />
+  </url>
+
+  <url>
+    <loc>https://raftdesign.studio/ja/work/california-walnuts/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/work/california-walnuts/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/work/california-walnuts/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/work/california-walnuts/" />
+  </url>
+
+  <url>
+    <loc>https://raftdesign.studio/work/thats-not-cool/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/work/thats-not-cool/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/work/thats-not-cool/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/work/thats-not-cool/" />
+  </url>
+
+  <url>
+    <loc>https://raftdesign.studio/ja/work/thats-not-cool/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://raftdesign.studio/work/thats-not-cool/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/work/thats-not-cool/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/work/thats-not-cool/" />
+  </url>
+
 </urlset>

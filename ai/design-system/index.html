@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<!--
+  Machine version of https://raftdesign.studio/design-system/
+  Rendered by build-pages.js from content/design-system.json, the same source as the
+  human page. Do not edit by hand: edit the JSON and run node build-pages.js.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Ready Design Systems, Machine Version | Raft Design</title>
+  <meta name="description" content="Machine-readable version of the AI-Ready Design Systems page. It renders from the same content source as the human page.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="/images/r-mark-favicon.png">
+  <link rel="alternate" hreflang="en" href="https://raftdesign.studio/ai/design-system/">
+  <link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/ai/design-system/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/machine-toggle.css">
+  <script>
+    // Streamed-output effect (see script at end of body). The text is always
+    // present in the HTML; this only hides it until the script has blanked it.
+    // Streams once per browser session; repeat views render instantly.
+    var seen = false;
+    try { seen = sessionStorage.getItem('raft-ai-streamed') === '1'; } catch (e) {}
+    if (/[?&]stream\b/.test(location.search)) seen = false; // /ai/?stream replays it
+    if (!seen && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      try { sessionStorage.setItem('raft-ai-streamed', '1'); } catch (e) {}
+      document.documentElement.classList.add('stream');
+      setTimeout(function () { document.documentElement.classList.remove('stream'); }, 4000);
+    }
+  </script>
+  <style>
+    :root {
+      --bg: #04220F;
+      --bg-sunken: #02190A;
+      --bg-elevated: #102A1B;
+      --text: #EDF2EE;
+      --muted: #8FA396;
+      --accent: #3DE83D;
+      --rule: #1E3A28;
+      --bright: #438259;
+      --ink: #0B1F14;
+      --logo-size: clamp(8px, 2.6vw, 20px); /* logo is 5 lines at line-height 1 */
+      --mono: 'Kode Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: var(--bg); }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 14px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: var(--accent); color: var(--ink); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { background: var(--accent); color: var(--ink); }
+    a:focus-visible { outline: 1px solid var(--accent); outline-offset: 2px; }
+
+    .term { max-width: 920px; margin: 0 auto; padding: 0 24px 96px; }
+
+    /* ---- top bar ---- */
+    .bar {
+      position: sticky; top: 0; z-index: 5;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 14px 0; background: var(--bg);
+      border-bottom: 1px dashed var(--rule);
+      font-size: 12px; color: var(--muted);
+    }
+    .bar-left { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); flex: none; }
+    .lang { color: var(--muted); font-size: 12px; flex: none; }
+    .lang b { color: var(--accent); font-weight: 700; }
+    .lang a { color: var(--muted); }
+    .lang a:hover { color: var(--ink); }
+    .bar-path { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* ---- logo ---- */
+    .logo { margin-top: 48px; color: var(--accent); font-size: var(--logo-size); line-height: 1; white-space: pre; font-weight: 700; overflow: hidden; }
+    .logo-sub { margin-top: 10px; letter-spacing: 0.9em; font-weight: 700; color: var(--text); }
+    /* Paper dither wave, same shader as the home page's Design Intelligence
+       Engine banner. Full content width, as tall as the 5-line logo. */
+    .logo-dither { margin-top: 24px; width: 100%; height: calc(var(--logo-size) * 5); overflow: hidden; }
+    .nav { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 4px 20px; }
+    .nav a { color: var(--text); }
+    .nav a::before { content: '['; color: var(--muted); }
+    .nav a::after { content: ']'; color: var(--muted); }
+    .nav a:hover { color: var(--ink); }
+    .nav a:hover::before, .nav a:hover::after { color: var(--ink); }
+
+    /* ---- blocks ---- */
+    .rule { margin: 44px 0 20px; color: var(--bright); white-space: nowrap; overflow: hidden; }
+    .rule b { color: var(--accent); font-weight: 700; }
+    .prompt { color: var(--accent); }
+    .prompt::before { content: '$ '; color: var(--muted); }
+    .out { margin: 6px 0 0; color: var(--text); }
+    .muted { color: var(--muted); }
+    .accent { color: var(--accent); }
+    /* Tooltip for links that lead out to the regular (human) pages —
+       Figma "tool-tip" (1143:4609). Positioned by script above the link. */
+    .tip {
+      position: fixed; z-index: 1000; left: 0; top: 0;
+      display: flex; flex-direction: column; align-items: center;
+      pointer-events: none; opacity: 0; transition: opacity .12s ease;
+    }
+    .tip.show { opacity: 1; }
+    .tip-box {
+      background: #818181; padding: 6px 8px; width: 150px;
+      color: #fff; font-size: 11px; line-height: 14px; font-weight: 400; text-align: center;
+    }
+    .tip-arrow { display: block; flex: none; }
+    @media (prefers-reduced-motion: reduce) { .tip { transition: none; } }
+    .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+    /* Occasional random glitch on the logo (script at end of body). */
+    .logo .gl-line { display: block; white-space: pre; will-change: transform; }
+    .logo.glitching { text-shadow: 3px 0 rgba(237, 242, 238, .55), -3px 0 rgba(61, 232, 61, .35); }
+    .stream main.term { visibility: hidden; }
+    .sx-hide { visibility: hidden; }
+    .cursor { display: inline-block; width: 0.6em; height: 1.1em; background: var(--accent); vertical-align: -0.2em; animation: blink 1.1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
+
+    /* assistant chat */
+    .chat { margin-top: 36px; border: 1px solid var(--rule); background: var(--bg-sunken); }
+    .chat-head { padding: 8px 16px; border-bottom: 1px solid var(--rule); color: var(--muted); font-size: 12px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .chat-body { padding: 18px 16px 20px; }
+    .msg-user { color: var(--muted); }
+    .msg-user::before { content: '> '; color: var(--accent); font-weight: 700; }
+    .msg-ai { margin-top: 14px; padding-left: 16px; border-left: 2px solid var(--accent); }
+    .msg-ai p + p { margin-top: 12px; }
+    .msg-ai strong { color: var(--accent); font-weight: 700; }
+    .tags { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { border: 1px solid var(--bright); color: var(--muted); padding: 0 8px; font-size: 12px; }
+
+    /* key-value + leaders */
+    .kv { display: grid; grid-template-columns: max-content 1fr; gap: 2px 16px; }
+    .kv dt { color: var(--muted); }
+    .kv dd { color: var(--text); }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .stat { border: 1px solid var(--rule); background: var(--bg-elevated); padding: 14px 16px; }
+    .stat-n { color: var(--accent); font-size: 30px; font-weight: 700; line-height: 1.2; }
+    .stat-l { color: var(--muted); font-size: 12px; margin-top: 4px; }
+
+    .row { display: flex; align-items: baseline; gap: 10px; padding: 4px 0; }
+    .row .n { color: var(--muted); flex: none; width: 2ch; text-align: right; }
+    .row .leader { flex: 1; min-width: 12px; border-bottom: 1px dotted var(--bright); transform: translateY(-4px); }
+    .row .meta { color: var(--muted); font-size: 12px; text-align: right; }
+    @media (max-width: 640px) {
+      .row { flex-wrap: wrap; }
+      .row .leader { display: none; }
+      .row .meta { width: 100%; text-align: left; padding-left: calc(2ch + 10px); }
+    }
+
+    .card { border: 1px solid var(--rule); background: var(--bg-elevated); padding: 16px 18px; }
+    .card + .card { margin-top: 14px; }
+    .card h3 { font-size: 14px; color: var(--accent); font-weight: 700; }
+    .card p { margin-top: 6px; }
+    .card .go { margin-top: 10px; display: inline-block; }
+
+    .faq dt { margin-top: 20px; color: var(--accent); font-weight: 700; }
+    .faq dt::before { content: '* '; color: var(--muted); }
+    .faq dd { margin-top: 4px; padding-left: 2ch; color: var(--text); }
+
+    .cta { margin-top: 8px; display: inline-block; background: var(--accent); color: var(--ink); font-weight: 700; padding: 8px 18px; }
+    .cta:hover { background: var(--text); color: var(--ink); }
+
+    .eof { margin-top: 56px; color: var(--muted); }
+    .foot { margin-top: 20px; padding-top: 16px; border-top: 1px dashed var(--rule); font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 20px; }
+
+    @media (max-width: 480px) {
+      .term { padding: 0 16px 72px; }
+      .kv { grid-template-columns: 1fr; }
+      .kv dd { margin-bottom: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="term">
+
+    <div class="bar">
+      <div class="bar-left"><span class="dot" aria-hidden="true"></span><span class="bar-path">raftdesign.studio/ai/design-system</span></div>
+      <div class="lang" role="group" aria-label="Language"><b aria-current="page">EN</b> | <a href="/ja/ai/design-system/" hreflang="ja" lang="ja">JP</a></div>
+    </div>
+
+<pre class="logo" aria-label="RAFT">██████      ████    ████████  ████████
+██    ██  ██    ██  ██          ████
+██████    ████████  ██████      ████
+██  ██    ██    ██  ██          ████
+██    ██  ██    ██  ██          ████</pre>
+    <p class="logo-sub">DESIGN</p>
+    <div class="logo-dither" data-dither-banner aria-hidden="true"></div>
+
+    <nav class="nav" aria-label="Machine navigation">
+      <a href="/ai/">/home</a>
+      <a href="/work/">/work</a>
+      <a href="/services/">/services</a>
+      <a href="/about/">/about</a>
+      <a href="/journal/">/journal</a>
+      <a href="/labs/">/labs</a>
+      <a href="/contact/">/contact</a>
+      <a href="/llms.txt" data-tip="tip-llms" aria-describedby="tip-llms">/llms.txt</a>
+      <a href="/ai.md" data-tip="tip-aimd" aria-describedby="tip-aimd">/ai.md</a>
+    </nav>
+
+    <section class="chat" aria-label="Summary">
+      <div class="chat-head"><span>raft-assistant · /ai/design-system/</span><span>status: <span class="accent">online</span> · human-reviewed</span></div>
+      <div class="chat-body">
+        <p class="msg-user">what is an ai-ready design system?</p>
+        <div class="msg-ai">
+          <p><strong>Your Design System shouldn’t stop at Figma.</strong></p>
+          <p>Raft Design creates brand and product systems that give your teams and AI tools the same source of truth, so new work can move faster without losing consistency.</p>
+          <p class="muted">One system. More possibilities.<span class="cursor" aria-hidden="true"></span></p>
+          <div class="tags"><span class="tag">brand</span><span class="tag">product</span><span class="tag">ai-ready</span><span class="tag">people</span><span class="tag">teams</span><span class="tag">ai-tools</span></div>
+        </div>
+      </div>
+    </section>
+    <p class="muted" style="margin-top:16px">Both versions of this page render from the same content source. <a href="/design-system/">→ /design-system/</a></p>
+
+    <h2 class="rule" id="offer"><b>──[ 01 ]──</b> OFFER ───────────────────────────────────────────────────────────────────────────────────────────</h2>
+    <dl class="kv">
+      <dt>name</dt><dd>AI-Ready Design Systems</dd>
+      <dt>for</dt><dd>Teams building or scaling a brand and product design system</dd>
+      <dt>pricing</dt><dd>Pricing and timeline are not published.</dd>
+      <dt>included in</dt><dd><a href="/design-foundation/">Design Foundation Sprint</a> · Every Design Foundation Sprint includes an AI-ready design system.</dd>
+      <dt>example</dt><dd><a href="/design-system-deck/">See the Raft design system example</a></dd>
+      <dt>human page</dt><dd><a href="/design-system/">https://raftdesign.studio/design-system/</a></dd>
+    </dl>
+
+    <h2 class="rule" id="the-shift"><b>──[ 02 ]──</b> THE SHIFT ───────────────────────────────────────────────────────────────────────────────────────</h2>
+    <p class="prompt">cat shift.md</p>
+    <div class="out">
+      <p class="accent"># The way design systems work is changing.</p>
+      <p style="margin-top:10px">Teams are already using AI tools, but most design systems weren’t built for them. The result is fast but inconsistent output, off-brand materials, and duplicated effort.</p>
+    </div>
+    <div class="stats" style="margin-top:16px">
+      <div class="stat"><p class="stat-n">88%</p><p class="stat-l">of organizations use AI in at least one business function</p><p class="stat-l"><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai">McKinsey, November 2025</a></p></div>
+      <div class="stat"><p class="stat-n">94%</p><p class="stat-l">of marketers review and refine AI output for accuracy, quality, and brand consistency</p><p class="stat-l"><a href="https://www.canva.com/newsroom/news/marketing-ai-report/">Canva, March 2025</a></p></div>
+      <div class="stat"><p class="stat-l">Reusable components and brand guidance give AI tools a stronger starting point.</p></div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>Traditional approach</h3>
+      <p><span class="muted">✕</span> Static brand guidelines</p>
+      <p><span class="muted">✕</span> Designed for humans only</p>
+      <p><span class="muted">✕</span> Reinvention for each project</p>
+      <p><span class="muted">✕</span> Inconsistent AI output</p>
+    </div>
+    <div class="card">
+      <h3>Raft’s AI-ready approach</h3>
+      <p><span class="accent">✓</span> Structured for AI tools</p>
+      <p><span class="accent">✓</span> Consistent on-brand output</p>
+      <p><span class="accent">✓</span> Reusable components + templates</p>
+      <p><span class="accent">✓</span> Faster, higher quality work</p>
+    </div>
+
+    <h2 class="rule" id="what-we-build"><b>──[ 03 ]──</b> WHAT WE BUILD ───────────────────────────────────────────────────────────────────────────────────</h2>
+    <p class="prompt">ls /system</p>
+    <div class="out">
+      <p class="accent"># A complete system for brand, product, and AI.</p>
+      <p style="margin-top:10px">We structure all the pieces your team and AI tools need to create consistent, high-quality work.</p>
+      <div style="margin-top:12px">
+      <div class="row"><span class="n">1</span><span>Brand foundations</span><span class="leader"></span><span class="meta">Strategy, positioning, visual identity</span></div>
+      <div class="row"><span class="n">2</span><span>Voice and content</span><span class="leader"></span><span class="meta">Messaging, tone, copy guidance</span></div>
+      <div class="row"><span class="n">3</span><span>Design tokens</span><span class="leader"></span><span class="meta">Colors, type, spacing, layout rules</span></div>
+      <div class="row"><span class="n">4</span><span>Component library</span><span class="leader"></span><span class="meta">UI components, patterns, states</span></div>
+      <div class="row"><span class="n">5</span><span>Templates</span><span class="leader"></span><span class="meta">Decks, marketing, proposals, pages</span></div>
+      <div class="row"><span class="n">6</span><span>DESIGN.md</span><span class="leader"></span><span class="meta">Structured context for AI tools</span></div>
+      <div class="row"><span class="n">7</span><span>AI workflows</span><span class="leader"></span><span class="meta">Tool setup, prompts, usage guidance</span></div>
+      <div class="row"><span class="n">8</span><span>Implementation</span><span class="leader"></span><span class="meta">Hand-off docs, engineering support</span></div>
+      </div>
+    </div>
+
+    <h2 class="rule" id="teams"><b>──[ 04 ]──</b> TEAMS ───────────────────────────────────────────────────────────────────────────────────────────</h2>
+    <p class="prompt">ls /teams</p>
+    <div class="out">
+      <p class="accent"># Built for every team that creates.</p>
+      <p style="margin-top:10px">The same system helps different teams move faster, with less rework and greater consistency.</p>
+      <div style="margin-top:12px">
+      <div class="row"><span class="n">1</span><span>Marketing</span><span class="leader"></span><span class="meta">Create campaign assets, ads, landing pages, and social content.</span></div>
+      <div class="row"><span class="n">2</span><span>Sales</span><span class="leader"></span><span class="meta">Generate decks, proposals, and customer enablement materials.</span></div>
+      <div class="row"><span class="n">3</span><span>Product + Design</span><span class="leader"></span><span class="meta">Explore new flows, prototypes, and product surfaces.</span></div>
+      <div class="row"><span class="n">4</span><span>Engineering</span><span class="leader"></span><span class="meta">Work from shared tokens, components, and implementation guidance.</span></div>
+      </div>
+    </div>
+
+    <h2 class="rule" id="example"><b>──[ 05 ]──</b> EXAMPLE ─────────────────────────────────────────────────────────────────────────────────────────</h2>
+    <p class="prompt">cat raft-design-system.md</p>
+    <div class="out">
+      <p class="muted">// See how it works</p>
+      <p class="accent"># This Raft design guideline was built with the same system.</p>
+      <p style="margin-top:10px">Raft’s own brand system includes:</p>
+      <div style="margin-top:12px">
+      <div class="row"><span class="n">1</span><span>Design tokens</span></div>
+      <div class="row"><span class="n">2</span><span>Typography and layout rules</span></div>
+      <div class="row"><span class="n">3</span><span>Reusable components</span></div>
+      <div class="row"><span class="n">4</span><span>Brand voice</span></div>
+      <div class="row"><span class="n">5</span><span>Motion guidance</span></div>
+      <div class="row"><span class="n">6</span><span>Presentation templates</span></div>
+      <div class="row"><span class="n">7</span><span>DESIGN.md</span></div>
+      <div class="row"><span class="n">8</span><span>Guidance for AI tools such as Claude Design</span></div>
+      </div>
+      <p style="margin-top:12px"><a href="/design-system-deck/">→ View the Raft Design System</a></p>
+    </div>
+
+    <h2 class="rule" id="tools"><b>──[ 06 ]──</b> TOOLS ───────────────────────────────────────────────────────────────────────────────────────────</h2>
+    <p class="prompt">cat tools.md</p>
+    <div class="out">
+      <p class="accent"># Works with modern AI tools.</p>
+      <p style="margin-top:10px">One workflow we use today is Claude Design, where we load the full design system, brand rules, and DESIGN.md as context. This allows teams to generate on-brand output more reliably.</p>
+      <p style="margin-top:10px">We’re tool-agnostic. The system is the asset. The tools will evolve.</p>
+      <div class="tags"><span class="tag">Claude Design</span><span class="tag">ChatGPT</span><span class="tag">Figma Make</span><span class="tag">Cursor</span><span class="tag">Lovable</span><span class="tag">Canva AI</span><span class="tag">Other</span></div>
+    </div>
+
+    <h2 class="rule" id="outcomes"><b>──[ 07 ]──</b> OUTCOMES ────────────────────────────────────────────────────────────────────────────────────────</h2>
+    <p class="prompt">cat outcomes.md</p>
+    <div class="out">
+      <p class="accent"># A higher standard for what’s possible.</p>
+      <p style="margin-top:10px">An AI-ready design system helps you move faster while maintaining a consistent, high-quality brand and product experience.</p>
+      <div style="margin-top:12px">
+      <div class="row"><span class="n">1</span><span>Faster production</span><span class="leader"></span><span class="meta">Create more, faster, with less rework.</span></div>
+      <div class="row"><span class="n">2</span><span>Consistent quality</span><span class="leader"></span><span class="meta">Stay on-brand across all channels.</span></div>
+      <div class="row"><span class="n">3</span><span>Greater alignment</span><span class="leader"></span><span class="meta">One source of truth across teams.</span></div>
+      <div class="row"><span class="n">4</span><span>Long-term scale</span><span class="leader"></span><span class="meta">A foundation that grows with you.</span></div>
+      </div>
+    </div>
+
+    <h2 class="rule" id="related-work"><b>──[ 08 ]──</b> RELATED WORK ────────────────────────────────────────────────────────────────────────────────────</h2>
+    <p class="prompt">ls -l /work --related</p>
+    <div class="out">
+      <p class="muted">Examples of brand and product systems we’ve created.</p>
+      <div style="margin-top:12px">
+      <div class="row"><span class="n">1</span><a href="/work/legalon/">LegalOn</a><span class="leader"></span><span class="meta">Brand and product system for an AI-legal platform</span></div>
+      <div class="row"><span class="n">2</span><a href="/work/ai-design-la/">AI Design LA</a><span class="leader"></span><span class="meta">Visual identity and website for a Los Angeles AI design community</span></div>
+      <div class="row"><span class="n">3</span><a href="/design-system-deck/">Raft Design System</a><span class="leader"></span><span class="meta">Raft’s own brand and product system, with DESIGN.md for AI tools</span></div>
+      </div>
+      <p style="margin-top:12px"><a href="/work/">View all projects →</a></p>
+    </div>
+
+    <h2 class="rule" id="contact"><b>──[ 09 ]──</b> CONTACT ─────────────────────────────────────────────────────────────────────────────────────────</h2>
+    <p class="prompt">raft --connect</p>
+    <div class="out">
+      <p class="muted">// Let’s build what’s next</p>
+      <p class="accent"># Create an AI-ready design system for your team.</p>
+      <p style="margin-top:10px">Let’s talk about your goals and how Raft can help.</p>
+      <dl class="kv" style="margin-top:12px">
+        <dt>email</dt><dd><a href="mailto:hello@raftdesign.studio">hello@raftdesign.studio</a></dd>
+        <dt>book</dt><dd><a href="/contact/">/contact</a></dd>
+      </dl>
+      <a class="cta" href="/contact/">Start a conversation →</a>
+    </div>
+
+    <p class="eof">/* EOF */</p>
+    <div class="foot">
+      <a href="/design-system/">human version</a>
+      <a href="/llms.txt" data-tip="tip-llms" aria-describedby="tip-llms">llms.txt</a>
+      <a href="/ai.md" data-tip="tip-aimd" aria-describedby="tip-aimd">ai.md</a>
+      <a href="/sitemap.xml">sitemap.xml</a>
+      <span>designed by hand. built by AI.</span>
+    </div>
+  </main>
+  <span class="sr-only" id="tip-llms">A table of contents for AI. Models read it first to find their way around.</span>
+  <span class="sr-only" id="tip-aimd">Raft, minus the design. Everything an AI needs to decide if we're a fit.</span>
+  <div class="tip" id="human-tip" role="tooltip" aria-hidden="true">
+    <div class="tip-box">This content is only human-compatible.</div>
+    <svg class="tip-arrow" width="12.1244" height="10.5" viewBox="0 0 12.1244 10.5" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.06218 10.5L12.1244 0H0L6.06218 10.5Z" fill="#818181"/></svg>
+  </div>
+  <div class="hm-toggle" role="group" aria-label="Site version">
+    <svg class="hm-toggle-shape" width="51" height="208" viewBox="0 0 51 208" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><clipPath id="hm-shape"><path d="M51 208C51 186.891 36.0169 176 25 176H26C11.6406 176 0 164.359 0 150V56C1.54632e-06 42.7452 10.7452 32 24 32C35.4407 32 51 21.1088 51 0V208Z"/></clipPath></defs><path class="hm-toggle-fill" d="M51 208C51 186.891 36.0169 176 25 176H26C11.6406 176 0 164.359 0 150V56C1.54632e-06 42.7452 10.7452 32 24 32C35.4407 32 51 21.1088 51 0V208Z"/><path d="M51 208C51 186.891 36.0169 176 25 176H26C11.6406 176 0 164.359 0 150V56C1.54632e-06 42.7452 10.7452 32 24 32C35.4407 32 51 21.1088 51 0" stroke="white" stroke-opacity="0.3" stroke-width="2" clip-path="url(#hm-shape)"/></svg>
+    <div class="hm-toggle-items">
+    <a class="hm-toggle-item" href="/design-system/"><svg width="24" height="24.1975" viewBox="0 0 24 24.1975" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9.47454 7.93916L9.48151 7.94334C10.0997 8.32457 13.2799 9.63065 16.844 6.29019C18.2756 4.83636 18.9537 2.62356 18.9537 2.62356C18.9537 2.62356 17.4309 3.30726 16.2426 2.85006C15.4376 2.53783 14.6361 1.57535 14.4856 1.38369C14.1155 0.966917 13.6541 0.612869 13.1168 0.368938C11.0218 -0.581695 8.54691 0.368939 7.59558 2.48347C6.66794 4.54643 7.51264 6.92371 9.47454 7.93916Z" fill="currentColor"/><path d="M3.68754 24.1975L5.79789 15.7651L6.80218 15.7854L5.09537 24.1975H18.9053L17.1985 15.7854L18.2021 15.7651L20.3118 24.1975H24L21.3028 13.7203C20.9564 12.3132 19.826 9.7979 16.7755 9.68848H7.20014C4.14961 9.7972 3.04356 12.3132 2.69718 13.7203L0 24.1975H3.68754Z" fill="currentColor"/></svg>HUMAN</a>
+    <span class="hm-toggle-item" aria-current="page"><svg width="24" height="20.2598" viewBox="0 0 24 20.2598" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2.90625 14.7587L2.90625 20.2598H21.0135V14.7587L2.90625 14.7587ZM11.9599 18.627C11.3467 18.627 10.8503 18.1267 10.8503 17.5093C10.8503 16.8923 11.3467 16.392 11.9599 16.392C12.5726 16.392 13.069 16.8923 13.069 17.5093C13.069 18.1267 12.5726 18.627 11.9599 18.627Z" fill="currentColor"/><path d="M11.9566 10.371C12.7817 10.371 13.4507 9.69691 13.4507 8.86538C13.4507 8.03385 12.7817 7.35976 11.9566 7.35976C11.1314 7.35976 10.4625 8.03385 10.4625 8.86538C10.4625 9.69691 11.1314 10.371 11.9566 10.371Z" fill="currentColor"/><path d="M23.8612 0.889805C24.0584 0.673275 24.0436 0.337678 23.8288 0.139393C23.6148 -0.0588919 23.2823 -0.043528 23.085 0.172041L17.3617 5.24104C15.9972 3.81367 14.0838 2.92211 11.9623 2.92211C11.7141 2.92211 11.4692 2.93699 11.2272 2.96052C11.078 2.5193 10.8384 2.05167 10.4534 1.67766C9.92222 1.16059 9.21567 0.923892 8.36477 0.961821C6.53575 1.05112 5.28607 2.76799 4.78534 3.59954L0.914817 0.172041C0.718528 -0.043528 0.385026 -0.0588919 0.170632 0.139393C-0.0437618 0.337678 -0.0580547 0.673275 0.138711 0.889805L5.45473 6.72746C4.8225 7.83507 4.45517 9.11648 4.45517 10.4872C4.45517 11.6678 4.73198 12.7816 5.21127 13.7779L18.7119 13.7779C18.9153 13.3549 19.0735 12.9069 19.1978 12.4456C20.4628 11.9242 23.8345 10.37 23.4991 8.71847C23.4433 8.44481 23.278 8.22684 23.0207 8.0876C22.2489 7.67135 20.57 8.03575 19.1869 8.45921C19.0216 7.86771 18.7919 7.30263 18.4989 6.77835L23.8612 0.889805ZM5.27511 4.03308C5.67627 3.34844 6.81065 1.68198 8.3943 1.60469C9.0675 1.573 9.60777 1.75256 10.0065 2.13905C10.2772 2.40071 10.453 2.7315 10.5745 3.05798C9.03034 3.34988 7.65155 4.1147 6.5953 5.20311L5.27511 4.03308ZM11.9604 12.0091C10.2381 12.0091 8.84167 10.6015 8.84167 8.86538C8.84167 7.12979 10.2381 5.72163 11.9604 5.72163C13.6832 5.72163 15.0801 7.12979 15.0801 8.86538C15.0801 10.6015 13.6832 12.0091 11.9604 12.0091ZM22.7196 8.65509C22.833 8.71559 22.8606 8.78616 22.873 8.84666C23.0417 9.67965 21.104 10.8967 19.3622 11.674C19.4246 11.2861 19.468 10.8914 19.468 10.4862C19.468 10.008 19.4089 9.54474 19.3236 9.09151C20.7243 8.66037 22.1774 8.36367 22.7196 8.65509Z" fill="currentColor"/></svg>AI</span>
+    </div>
+  </div>
+    <script>
+    // Tooltips: links that leave the machine version for the regular site, plus
+    // the llms.txt and ai.md links (data-tip). Hover, keyboard focus, and tap.
+    (function () {
+      var tip = document.getElementById('human-tip');
+      if (!tip) return;
+      var box = tip.querySelector('.tip-box');
+      var humanText = box.textContent;
+      var current = null;
+      var lastType = 'mouse'; // 'mouse' | 'touch' | 'key'
+
+      // Static description for the human-version links, so assistive tech
+      // announces it on focus without waiting for the visual tooltip.
+      var humanDesc = document.createElement('span');
+      humanDesc.className = 'sr-only';
+      humanDesc.id = 'tip-human';
+      humanDesc.textContent = humanText;
+      document.body.appendChild(humanDesc);
+
+      function isHuman(a) {
+        if (a.closest('.hm-toggle')) return false;
+        var h = a.getAttribute('href') || '';
+        if (/^https?:\/\/(www\.)?raftdesign\.studio\/?$/.test(h)) return true;
+        return /^\/(?!\/|ai(\/|$)|ja\/ai(\/|$)|ai\.md|ja\/ai\.md|llms\.txt|sitemap\.xml|assets\/)/.test(h);
+      }
+
+      // Links with data-tip name a description element; the other tip links
+      // are the human-version ones.
+      function tipText(a) {
+        var id = a.getAttribute('data-tip');
+        if (id) { var d = document.getElementById(id); return d ? d.textContent : ''; }
+        return isHuman(a) ? humanText : '';
+      }
+
+      function tipLink(t) {
+        var a = t && t.closest && t.closest('a[href]');
+        return a && tipText(a) ? a : null;
+      }
+
+      Array.prototype.forEach.call(document.querySelectorAll('a[href]'), function (a) {
+        if (!a.hasAttribute('data-tip') && isHuman(a)) a.setAttribute('aria-describedby', 'tip-human');
+      });
+
+      function place(x, rect) {
+        var w = tip.offsetWidth, h = tip.offsetHeight;
+        var left = Math.max(8, Math.min(innerWidth - w - 8, x - w / 2));
+        tip.style.transform = 'translate(' + Math.round(left) + 'px,' + Math.round(rect.top - h - 4) + 'px)';
+        // keep the arrow pointing at the cursor/link even when the box is clamped
+        tip.querySelector('.tip-arrow').style.transform = 'translateX(' + Math.round(x - (left + w / 2)) + 'px)';
+      }
+
+      function rectAt(a, y) {
+        var rs = a.getClientRects();
+        for (var i = 0; i < rs.length; i++) if (y >= rs[i].top && y <= rs[i].bottom) return rs[i];
+        return rs[0] || a.getBoundingClientRect();
+      }
+
+      function show(a, x, y) {
+        current = a;
+        box.textContent = tipText(a);
+        tip.setAttribute('aria-hidden', 'false');
+        var r = rectAt(a, y);
+        place(x, r);
+        tip.classList.add('show');
+      }
+
+      function showAtLink(a) {
+        var r = a.getBoundingClientRect();
+        show(a, r.left + r.width / 2, r.top + r.height / 2);
+      }
+
+      function hide() {
+        current = null;
+        tip.classList.remove('show');
+        tip.setAttribute('aria-hidden', 'true');
+      }
+
+      document.addEventListener('pointerdown', function (e) {
+        lastType = e.pointerType === 'touch' ? 'touch' : 'mouse';
+        // a touch outside the open tip's link closes it
+        if (lastType === 'touch' && current && !current.contains(e.target)) hide();
+      }, true);
+      document.addEventListener('keydown', function () { lastType = 'key'; }, true);
+
+      document.addEventListener('mouseover', function (e) {
+        if (lastType === 'touch') return; // compatibility mouse events after a tap
+        var a = tipLink(e.target);
+        if (a) show(a, e.clientX, e.clientY); else if (current) hide();
+      });
+      document.addEventListener('mousemove', function (e) {
+        if (current && lastType !== 'touch') place(e.clientX, rectAt(current, e.clientY));
+      });
+      document.addEventListener('mouseout', function (e) {
+        if (lastType === 'touch') return;
+        if (current && !(e.relatedTarget && current.contains(e.relatedTarget))) hide();
+      });
+      document.addEventListener('focusin', function (e) {
+        if (lastType === 'touch') return;
+        var a = tipLink(e.target);
+        if (a) showAtLink(a);
+      });
+      document.addEventListener('focusout', hide);
+      // Touch: the first tap on a tip link shows its tooltip, the second follows the link.
+      document.addEventListener('click', function (e) {
+        if (lastType !== 'touch') return;
+        var a = tipLink(e.target);
+        if (a && current !== a) { e.preventDefault(); showAtLink(a); }
+      }, true);
+      addEventListener('scroll', hide, { passive: true });
+    })();
+  </script>
+  <script src="/dither-banner.js" defer></script>
+  <script>
+    // Writes the page out like an LLM response: the assistant panel streams
+    // at roughly token speed, then the rest of the document speeds up. Any
+    // click or key press finishes instantly. Without JS (or with reduced
+    // motion) the page simply renders in full.
+    (function () {
+      var root = document.querySelector('main.term');
+      var html = document.documentElement;
+      if (!root || !html.classList.contains('stream')) return;
+
+      var cursor = root.querySelector('.cursor');
+      if (cursor) cursor.parentNode.removeChild(cursor);
+      else { cursor = document.createElement('span'); cursor.className = 'cursor'; cursor.setAttribute('aria-hidden', 'true'); }
+
+      var LEAF = /^(P|H2|H3|DT|DD|A|SPAN|DIV)$/;
+      var CONTAINERS = '.chat, .msg-ai, .card, .stat, .row';
+      var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode: function (n) {
+          if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+          if (n.parentElement.closest('.logo, .logo-sub, script, style')) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+
+      function leafOf(node) {
+        var el = node.parentElement;
+        while (el && el !== root && getComputedStyle(el).display === 'inline') el = el.parentElement;
+        return el;
+      }
+
+      var items = [], n;
+      while ((n = walker.nextNode())) {
+        var leaf = leafOf(n);
+        items.push({ node: n, text: n.nodeValue, leaf: leaf, box: leaf.closest(CONTAINERS), chat: !!leaf.closest('.chat') });
+      }
+
+      var hidden = [];
+      items.forEach(function (it) {
+        it.node.nodeValue = '';
+        [it.box, it.leaf].forEach(function (el) {
+          if (el && hidden.indexOf(el) === -1) { el.classList.add('sx-hide'); hidden.push(el); }
+        });
+      });
+      html.classList.remove('stream');
+
+      var i = 0, pos = 0, last = 0, budget = 0, finished = false;
+
+      function show(it) {
+        if (it.box) it.box.classList.remove('sx-hide');
+        it.leaf.classList.remove('sx-hide');
+      }
+
+      function finish() {
+        if (finished) return;
+        finished = true;
+        items.forEach(function (it) { it.node.nodeValue = it.text; show(it); });
+        var eof = root.querySelector('.eof');
+        if (eof) eof.appendChild(cursor);
+        removeEventListener('pointerdown', finish);
+        removeEventListener('keydown', finish);
+      }
+
+      function tick(t) {
+        if (finished) return;
+        var dt = Math.min(64, t - (last || t));
+        last = t;
+        var it = items[i];
+        // ~70 chars/s inside the assistant panel (token pace), faster after.
+        budget += dt / 1000 * (it.chat ? 70 : 520);
+        while (budget >= 1 && i < items.length) {
+          it = items[i];
+          show(it);
+          var take = Math.min(Math.floor(budget), it.text.length - pos);
+          pos += take; budget -= take;
+          it.node.nodeValue = it.text.slice(0, pos);
+          if (pos >= it.text.length) { i++; pos = 0; if (!it.chat && items[i] && items[i].chat) break; }
+          if (!take) break;
+        }
+        var cur = items[Math.min(i, items.length - 1)];
+        cursor.parentNode !== cur.node.parentNode || cursor.previousSibling !== cur.node
+          ? cur.node.parentNode.insertBefore(cursor, cur.node.nextSibling) : 0;
+        if (i >= items.length) return finish();
+        setTimeout(function () { tick(performance.now()); }, 16);
+      }
+
+      addEventListener('pointerdown', finish);
+      addEventListener('keydown', finish);
+      tick(performance.now());
+    })();
+  </script>
+  <script>
+    // Random glitch bursts on the pixel logo: rows slide sideways, a few
+    // pixels drop out, and the color splits for a few frames. Skipped for
+    // reduced motion; pauses while the tab is hidden. Dispatch a "glitch"
+    // event on .logo to trigger one on demand.
+    (function () {
+      var logo = document.querySelector('.logo');
+      if (!logo || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var rows = logo.textContent.split('\n');
+      logo.textContent = '';
+      var lines = rows.map(function (txt) {
+        var el = document.createElement('span');
+        el.className = 'gl-line';
+        el.textContent = txt;
+        logo.appendChild(el);
+        return { el: el, txt: txt };
+      });
+      var DROP = ['\u2592', '\u2591', ' '];
+
+      function frame(on) {
+        lines.forEach(function (l) {
+          if (!on) { l.el.style.transform = ''; l.el.textContent = l.txt; return; }
+          var shift = Math.random() < 0.55 ? Math.round((Math.random() * 2 - 1) * 22) : 0;
+          l.el.style.transform = shift ? 'translateX(' + shift + 'px)' : '';
+          l.el.textContent = l.txt.replace(/\u2588/g, function (c) {
+            return Math.random() < 0.05 ? DROP[Math.floor(Math.random() * DROP.length)] : c;
+          });
+        });
+        logo.classList.toggle('glitching', on);
+      }
+
+      var running = false;
+      function burst() {
+        if (running) return;
+        running = true;
+        var n = 5 + Math.floor(Math.random() * 5), i = 0;
+        (function step() {
+          if (i++ < n) { frame(true); setTimeout(step, 40 + Math.random() * 40); }
+          else { frame(false); running = false; }
+        })();
+      }
+
+      function schedule() {
+        setTimeout(function () {
+          if (!document.hidden) {
+            burst();
+            if (Math.random() < 0.3) setTimeout(burst, 380);
+          }
+          schedule();
+        }, 2500 + Math.random() * 5500);
+      }
+
+      logo.addEventListener('glitch', burst);
+      schedule();
+    })();
+  </script>
+  <script>
+    // Easter egg for anyone who opens the console.
+    (function () {
+      if (!window.console || !console.log) return;
+      console.log('%cRAFT DESIGN', 'color:#3DE83D;font-weight:700;font-size:14px;letter-spacing:.2em');
+      console.log('You found the engine room.\nThe machine-readable version lives at ' + location.origin + '/ai/\nAI moves faster. People make the calls.');
+    })();
+  </script>
+</body>
+</html>

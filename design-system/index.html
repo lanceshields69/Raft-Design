@@ -14,22 +14,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI-Ready Design Systems for Brand and Product | Raft Design</title>
-  <meta name="description" content="Raft creates brand and product systems that give your teams and AI tools the same source of truth, so new work can move faster without losing consistency.">
-  <meta property="og:title" content="AI-Ready Design Systems — Raft Design">
-  <meta property="og:description" content="Raft creates brand and product systems that give your teams and AI tools the same source of truth, so new work can move faster without losing consistency.">
+  <meta data-c-content="meta.description" name="description" content="Raft creates brand and product systems that give your teams and AI tools the same source of truth, so new work can move faster without losing consistency.">
+  <meta data-c-content="meta.social_title" property="og:title" content="AI-Ready Design Systems — Raft Design">
+  <meta data-c-content="meta.description" property="og:description" content="Raft creates brand and product systems that give your teams and AI tools the same source of truth, so new work can move faster without losing consistency.">
   <meta property="og:image" content="https://raftdesign.studio/images/Raft-Design-Social-v2.png">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://raftdesign.studio/design-system/">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AI-Ready Design Systems — Raft Design">
-  <meta name="twitter:description" content="Raft creates brand and product systems that give your teams and AI tools the same source of truth, so new work can move faster without losing consistency.">
+  <meta data-c-content="meta.social_title" name="twitter:title" content="AI-Ready Design Systems — Raft Design">
+  <meta data-c-content="meta.description" name="twitter:description" content="Raft creates brand and product systems that give your teams and AI tools the same source of truth, so new work can move faster without losing consistency.">
   <meta name="twitter:image" content="https://raftdesign.studio/images/Raft-Design-Social-v2.png">
   <link rel="alternate" hreflang="en" href="https://raftdesign.studio/design-system/">
   <link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/design-system/">
   <link rel="alternate" hreflang="x-default" href="https://raftdesign.studio/design-system/">
   <link rel="canonical" href="https://raftdesign.studio/design-system/">
   <link rel="icon" type="image/png" href="../images/r-mark-favicon.png">
+  <!--c:block:service-jsonld-->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -37,14 +38,20 @@
     "name": "AI-Ready Design Systems",
     "url": "https://raftdesign.studio/design-system/",
     "description": "Raft creates brand and product systems that give your teams and AI tools the same source of truth, so new work can move faster without losing consistency.",
-    "provider": { "@id": "https://raftdesign.studio/#organization" },
-    "areaServed": ["US", "JP"],
+    "provider": {
+      "@id": "https://raftdesign.studio/#organization"
+    },
+    "areaServed": [
+      "US",
+      "JP"
+    ],
     "audience": {
       "@type": "Audience",
       "audienceType": "Teams building or scaling a brand and product design system"
     }
   }
   </script>
+  <!--/c:block-->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -61,6 +68,7 @@
   <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="../page-spacing.css">
   <link rel="stylesheet" href="../tools.css">
+  <link rel="stylesheet" href="../machine-toggle.css">
   <script>
     if (localStorage.getItem('raft-theme') === 'light') {
       document.documentElement.dataset.theme = 'light';
@@ -242,37 +250,37 @@
   <div class="ds-hero-grid">
     <div>
       <div style="display:flex;align-items:center;gap:14px">
-        <span style="font-size:11px;font-weight:600;letter-spacing:1.98px;text-transform:uppercase;color:var(--text-accent)">AI-Ready Design Systems</span>
+        <span style="font-size:11px;font-weight:600;letter-spacing:1.98px;text-transform:uppercase;color:var(--text-accent)"><!--c:hero.eyebrow-->AI-Ready Design Systems<!--/c--></span>
         <div style="flex:1;height:1px;background:var(--text-accent);opacity:0.35"></div>
       </div>
       <h1 style="font-weight:900;letter-spacing:-1.5px;text-transform:uppercase;margin:24px 0 0;line-height:1.02">
-        <span style="display:block;font-size:clamp(30px,4vw,48px)">Your Design System</span>
-        <span style="display:block;font-family:var(--font-emphasis);font-style:normal;font-weight:500;color:var(--text-accent);text-transform:none;font-size:clamp(34px,4.6vw,58px);letter-spacing:-1.5px">shouldn&rsquo;t stop</span>
-        <span style="display:block;font-size:clamp(30px,4vw,48px)">at Figma.</span>
+        <span style="display:block;font-size:clamp(30px,4vw,48px)"><!--c:hero.headline.0-->Your Design System<!--/c--></span>
+        <span style="display:block;font-family:var(--font-emphasis);font-style:normal;font-weight:500;color:var(--text-accent);text-transform:none;font-size:clamp(34px,4.6vw,58px);letter-spacing:-1.5px"><!--c:hero.headline.1-->shouldn’t stop<!--/c--></span>
+        <span style="display:block;font-size:clamp(30px,4vw,48px)"><!--c:hero.headline.2-->at Figma.<!--/c--></span>
       </h1>
-      <p style="font-size:17px;line-height:1.7;color:var(--text-muted);max-width:460px;margin:24px 0 0">Raft Design creates brand and product systems that give your teams and AI tools the same source of truth, so new work can move faster without losing consistency.</p>
+      <p style="font-size:17px;line-height:1.7;color:var(--text-muted);max-width:460px;margin:24px 0 0"><!--c:hero.body-->Raft Design creates brand and product systems that give your teams and AI tools the same source of truth, so new work can move faster without losing consistency.<!--/c--></p>
       <div style="display:flex;align-items:center;flex-wrap:wrap;gap:16px 24px;margin-top:36px">
-        <button type="button" id="ds-talk-to-us-btn" class="scan-cta"><span class="scan-cta-arrow">→</span> Talk to us</button>
-        <a href="/design-system-deck/" target="_blank" rel="noopener noreferrer" style="font-size:16px;font-weight:400;line-height:24px;color:var(--text-primary);text-decoration:none">See the Raft design system example <span style="color:var(--text-accent)">→</span></a>
+        <button type="button" id="ds-talk-to-us-btn" class="scan-cta"><span class="scan-cta-arrow">→</span> <!--c:hero.cta_talk-->Talk to us<!--/c--></button>
+        <a href="/design-system-deck/" data-c-href="@links.example_deck" target="_blank" rel="noopener noreferrer" style="font-size:16px;font-weight:400;line-height:24px;color:var(--text-primary);text-decoration:none"><!--c:hero.cta_example-->See the Raft design system example<!--/c--> <span style="color:var(--text-accent)">→</span></a>
       </div>
     </div>
 
     <div class="ds-hero-card" id="ds-hero-card">
       <div class="ds-hero-card-grid">
         <div data-ds-leaf style="--ds-x:-40px" data-cx="0" data-cy="0" data-cs="1">
-          <div class="ds-hero-chip" data-ds-leaf style="--ds-s:0.85">Brand</div>
-          <div class="ds-hero-chip" data-ds-leaf style="--ds-s:0.85;margin-top:16px">Product</div>
-          <div class="ds-hero-chip ds-hero-chip--active ds-ai-ready-chip" data-ds-leaf style="--ds-s:0.85;margin-top:16px">AI-ready</div>
+          <div class="ds-hero-chip" data-ds-leaf style="--ds-s:0.85"><!--c:hero.card.layers.0-->Brand<!--/c--></div>
+          <div class="ds-hero-chip" data-ds-leaf style="--ds-s:0.85;margin-top:16px"><!--c:hero.card.layers.1-->Product<!--/c--></div>
+          <div class="ds-hero-chip ds-hero-chip--active ds-ai-ready-chip" data-ds-leaf style="--ds-s:0.85;margin-top:16px"><!--c:hero.card.layers.2-->AI-ready<!--/c--></div>
         </div>
         <div class="ds-hero-divider" data-ds-leaf style="--ds-y:-20px"></div>
         <div data-ds-leaf style="--ds-x:40px;display:flex;flex-direction:column;justify-content:space-between">
           <div>
-            <p class="ds-hero-label" data-ds-leaf style="--ds-y:15px;margin:0">People</p>
-            <p class="ds-hero-label" data-ds-leaf style="--ds-y:15px;margin:12px 0 0">Teams</p>
-            <p class="ds-hero-label" data-ds-leaf style="--ds-y:15px;margin:12px 0 0">AI Tools</p>
+            <p class="ds-hero-label" data-ds-leaf style="--ds-y:15px;margin:0"><!--c:hero.card.audiences.0-->People<!--/c--></p>
+            <p class="ds-hero-label" data-ds-leaf style="--ds-y:15px;margin:12px 0 0"><!--c:hero.card.audiences.1-->Teams<!--/c--></p>
+            <p class="ds-hero-label" data-ds-leaf style="--ds-y:15px;margin:12px 0 0"><!--c:hero.card.audiences.2-->AI Tools<!--/c--></p>
             <div style="width:24px;height:1px;background:var(--text-accent);opacity:0.4;margin-top:16px"></div>
           </div>
-          <p data-ds-leaf style="--ds-y:20px;font-size:13px;color:var(--text-muted);line-height:1.5;margin:16px 0 0">One system.<br>More possibilities.</p>
+          <p data-ds-leaf style="--ds-y:20px;font-size:13px;color:var(--text-muted);line-height:1.5;margin:16px 0 0"><!--c:hero.card.tagline.0-->One system.<!--/c--><br><!--c:hero.card.tagline.1-->More possibilities.<!--/c--></p>
         </div>
       </div>
     </div>
@@ -283,31 +291,31 @@
 <section style="padding:80px var(--page-gutter);max-width:calc(1292px + var(--page-gutter) * 2);margin:0 auto;border-top:1px solid var(--border-rule)">
   <div class="ds-shift-grid">
     <div>
-      <h2 style="font-weight:900;font-size:clamp(28px,3.5vw,36px);line-height:1.05;letter-spacing:-1px;margin:0">The way design systems work is changing.</h2>
-      <p style="font-size:20px;line-height:1.5;color:var(--text-muted);margin:20px 0 0">Teams are already using AI tools, but most design systems weren&rsquo;t built for them. The result is fast but inconsistent output, off-brand materials, and duplicated effort.</p>
+      <h2 style="font-weight:900;font-size:clamp(28px,3.5vw,36px);line-height:1.05;letter-spacing:-1px;margin:0"><!--c:shift.headline-->The way design systems work is changing.<!--/c--></h2>
+      <p style="font-size:20px;line-height:1.5;color:var(--text-muted);margin:20px 0 0"><!--c:shift.body-->Teams are already using AI tools, but most design systems weren’t built for them. The result is fast but inconsistent output, off-brand materials, and duplicated effort.<!--/c--></p>
     </div>
 
     <div class="ds-compare-grid">
       <div class="ds-compare-card ds-compare-card--no">
         <img src="../images/ds-icon-traditional.svg" alt="" width="36" height="36">
-        <p style="font-weight:600;font-size:13px;margin:8px 0 0;text-align:center">Traditional approach</p>
+        <p style="font-weight:600;font-size:13px;margin:8px 0 0;text-align:center"><!--c:shift.before.title-->Traditional approach<!--/c--></p>
         <ul class="ds-compare-list">
-          <li><span style="color:var(--text-muted)">✕</span><span style="opacity:0.7">Static brand guidelines</span></li>
-          <li><span style="color:var(--text-muted)">✕</span><span style="opacity:0.7">Designed for humans only</span></li>
-          <li><span style="color:var(--text-muted)">✕</span><span style="opacity:0.7">Reinvention for each project</span></li>
-          <li><span style="color:var(--text-muted)">✕</span><span style="opacity:0.7">Inconsistent AI output</span></li>
+          <li><span style="color:var(--text-muted)">✕</span><span style="opacity:0.7"><!--c:shift.before.items.0-->Static brand guidelines<!--/c--></span></li>
+          <li><span style="color:var(--text-muted)">✕</span><span style="opacity:0.7"><!--c:shift.before.items.1-->Designed for humans only<!--/c--></span></li>
+          <li><span style="color:var(--text-muted)">✕</span><span style="opacity:0.7"><!--c:shift.before.items.2-->Reinvention for each project<!--/c--></span></li>
+          <li><span style="color:var(--text-muted)">✕</span><span style="opacity:0.7"><!--c:shift.before.items.3-->Inconsistent AI output<!--/c--></span></li>
         </ul>
       </div>
       <div class="ds-compare-arrow"><img src="../images/ds-icon-arrow.svg" alt="" width="20" height="20"></div>
       <div class="ds-compare-card ds-compare-card--yes">
         <img class="svg-icon--dark" src="../images/ds-icon-ai-ready-star.svg" alt="" width="36" height="36">
 <img class="svg-icon--light" src="../images/ds-icon-ai-ready-star-light.svg" alt="" width="36" height="36">
-        <p style="font-weight:600;font-size:13px;margin:8px 0 0;text-align:center;color:var(--text-accent)">Raft&rsquo;s AI-ready approach</p>
+        <p style="font-weight:600;font-size:13px;margin:8px 0 0;text-align:center;color:var(--text-accent)"><!--c:shift.after.title.0-->Raft’s AI-ready approach<!--/c--></p>
         <ul class="ds-compare-list">
-          <li><span style="color:var(--text-accent)">✓</span><span>Structured for AI tools</span></li>
-          <li><span style="color:var(--text-accent)">✓</span><span>Consistent on-brand output</span></li>
-          <li><span style="color:var(--text-accent)">✓</span><span>Reusable components + templates</span></li>
-          <li><span style="color:var(--text-accent)">✓</span><span>Faster, higher quality work</span></li>
+          <li><span style="color:var(--text-accent)">✓</span><span><!--c:shift.after.items.0-->Structured for AI tools<!--/c--></span></li>
+          <li><span style="color:var(--text-accent)">✓</span><span><!--c:shift.after.items.1-->Consistent on-brand output<!--/c--></span></li>
+          <li><span style="color:var(--text-accent)">✓</span><span><!--c:shift.after.items.2-->Reusable components + templates<!--/c--></span></li>
+          <li><span style="color:var(--text-accent)">✓</span><span><!--c:shift.after.items.3-->Faster, higher quality work<!--/c--></span></li>
         </ul>
       </div>
     </div>
@@ -318,57 +326,57 @@
 <section style="padding:80px var(--page-gutter);max-width:calc(1292px + var(--page-gutter) * 2);margin:0 auto;border-top:1px solid var(--border-rule)">
   <div class="ds-build-grid">
     <div>
-      <h2 style="font-weight:900;font-size:clamp(24px,3vw,28px);line-height:1.2;margin:0">A complete system for brand, product, and AI.</h2>
-      <p style="font-size:15px;line-height:1.6;margin:16px 0 0">We structure all the pieces your team and AI tools need to create consistent, high-quality work.</p>
+      <h2 style="font-weight:900;font-size:clamp(24px,3vw,28px);line-height:1.2;margin:0"><!--c:build.headline-->A complete system for brand, product, and AI.<!--/c--></h2>
+      <p style="font-size:15px;line-height:1.6;margin:16px 0 0"><!--c:build.body-->We structure all the pieces your team and AI tools need to create consistent, high-quality work.<!--/c--></p>
     </div>
     <div class="ds-build-items">
       <div class="ds-build-item">
         <img class="svg-icon--dark" src="../images/ds-icon-brand-foundations.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../images/ds-icon-brand-foundations-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">Brand foundations</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">Strategy, positioning, visual identity</p>
+        <p style="font-weight:600;font-size:16px;margin:0"><!--c:build.items.0.name-->Brand foundations<!--/c--></p>
+        <p style="font-size:12px;color:var(--text-muted);margin:0"><!--c:build.items.0.summary-->Strategy, positioning, visual identity<!--/c--></p>
       </div>
       <div class="ds-build-item">
         <img class="svg-icon--dark" src="../images/ds-icon-voice-content.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../images/ds-icon-voice-content-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">Voice and content</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">Messaging, tone, copy guidance</p>
+        <p style="font-weight:600;font-size:16px;margin:0"><!--c:build.items.1.name-->Voice and content<!--/c--></p>
+        <p style="font-size:12px;color:var(--text-muted);margin:0"><!--c:build.items.1.summary-->Messaging, tone, copy guidance<!--/c--></p>
       </div>
       <div class="ds-build-item">
         <img class="svg-icon--dark" src="../images/ds-icon-design-tokens.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../images/ds-icon-design-tokens-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">Design tokens</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">Colors, type, spacing, layout rules</p>
+        <p style="font-weight:600;font-size:16px;margin:0"><!--c:build.items.2.name-->Design tokens<!--/c--></p>
+        <p style="font-size:12px;color:var(--text-muted);margin:0"><!--c:build.items.2.summary-->Colors, type, spacing, layout rules<!--/c--></p>
       </div>
       <div class="ds-build-item">
         <img class="svg-icon--dark" src="../images/ds-icon-component-library.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../images/ds-icon-component-library-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">Component library</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">UI components, patterns, states</p>
+        <p style="font-weight:600;font-size:16px;margin:0"><!--c:build.items.3.name-->Component library<!--/c--></p>
+        <p style="font-size:12px;color:var(--text-muted);margin:0"><!--c:build.items.3.summary-->UI components, patterns, states<!--/c--></p>
       </div>
       <div class="ds-build-item">
         <img class="svg-icon--dark" src="../images/ds-icon-templates.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../images/ds-icon-templates-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">Templates</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">Decks, marketing, proposals, pages</p>
+        <p style="font-weight:600;font-size:16px;margin:0"><!--c:build.items.4.name-->Templates<!--/c--></p>
+        <p style="font-size:12px;color:var(--text-muted);margin:0"><!--c:build.items.4.summary-->Decks, marketing, proposals, pages<!--/c--></p>
       </div>
       <div class="ds-build-item">
         <img class="svg-icon--dark" src="../images/ds-icon-design-md.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../images/ds-icon-design-md-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">DESIGN.md</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">Structured context for AI tools</p>
+        <p style="font-weight:600;font-size:16px;margin:0"><!--c:build.items.5.name-->DESIGN.md<!--/c--></p>
+        <p style="font-size:12px;color:var(--text-muted);margin:0"><!--c:build.items.5.summary-->Structured context for AI tools<!--/c--></p>
       </div>
       <div class="ds-build-item">
         <img class="svg-icon--dark" src="../images/ds-icon-ai-workflows.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../images/ds-icon-ai-workflows-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">AI workflows</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">Tool setup, prompts, usage guidance</p>
+        <p style="font-weight:600;font-size:16px;margin:0"><!--c:build.items.6.name-->AI workflows<!--/c--></p>
+        <p style="font-size:12px;color:var(--text-muted);margin:0"><!--c:build.items.6.summary-->Tool setup, prompts, usage guidance<!--/c--></p>
       </div>
       <div class="ds-build-item">
         <img class="svg-icon--dark" src="../images/ds-icon-implementation.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../images/ds-icon-implementation-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">Implementation</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">Hand-off docs, engineering support</p>
+        <p style="font-weight:600;font-size:16px;margin:0"><!--c:build.items.7.name-->Implementation<!--/c--></p>
+        <p style="font-size:12px;color:var(--text-muted);margin:0"><!--c:build.items.7.summary-->Hand-off docs, engineering support<!--/c--></p>
       </div>
     </div>
   </div>
@@ -378,33 +386,33 @@
 <section style="padding:80px var(--page-gutter);max-width:calc(1292px + var(--page-gutter) * 2);margin:0 auto;border-top:1px solid var(--border-rule)">
   <div class="ds-team-grid">
     <div>
-      <h2 style="font-weight:900;font-size:clamp(24px,3vw,28px);line-height:1.2;margin:0">Built for every team that creates.</h2>
-      <p style="font-size:15px;line-height:1.6;color:var(--text-accent);margin:16px 0 0">The same system helps different teams move faster, with less rework and greater consistency.</p>
+      <h2 style="font-weight:900;font-size:clamp(24px,3vw,28px);line-height:1.2;margin:0"><!--c:teams.headline-->Built for every team that creates.<!--/c--></h2>
+      <p style="font-size:15px;line-height:1.6;color:var(--text-accent);margin:16px 0 0"><!--c:teams.body-->The same system helps different teams move faster, with less rework and greater consistency.<!--/c--></p>
     </div>
     <div class="ds-team-items">
       <div class="ds-team-item">
         <img class="svg-icon--dark" src="../images/ds-icon-team-marketing.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../images/ds-icon-team-marketing-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">Marketing</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">Create campaign assets, ads, landing pages, and social content.</p>
+        <p style="font-weight:600;font-size:16px;margin:0"><!--c:teams.items.0.name-->Marketing<!--/c--></p>
+        <p style="font-size:12px;color:var(--text-muted);margin:0"><!--c:teams.items.0.summary-->Create campaign assets, ads, landing pages, and social content.<!--/c--></p>
       </div>
       <div class="ds-team-item">
         <img class="svg-icon--dark" src="../images/ds-icon-team-sales.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../images/ds-icon-team-sales-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">Sales</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">Generate decks, proposals, and customer enablement materials.</p>
+        <p style="font-weight:600;font-size:16px;margin:0"><!--c:teams.items.1.name-->Sales<!--/c--></p>
+        <p style="font-size:12px;color:var(--text-muted);margin:0"><!--c:teams.items.1.summary-->Generate decks, proposals, and customer enablement materials.<!--/c--></p>
       </div>
       <div class="ds-team-item">
         <img class="svg-icon--dark" src="../images/ds-icon-team-product-design.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../images/ds-icon-team-product-design-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">Product + Design</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">Explore new flows, prototypes, and product surfaces.</p>
+        <p style="font-weight:600;font-size:16px;margin:0"><!--c:teams.items.2.name-->Product + Design<!--/c--></p>
+        <p style="font-size:12px;color:var(--text-muted);margin:0"><!--c:teams.items.2.summary-->Explore new flows, prototypes, and product surfaces.<!--/c--></p>
       </div>
       <div class="ds-team-item">
         <img class="svg-icon--dark" src="../images/ds-icon-team-engineering.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../images/ds-icon-team-engineering-light.svg" alt="" width="28" height="28">
-        <p style="font-weight:600;font-size:16px;margin:0">Engineering</p>
-        <p style="font-size:12px;color:var(--text-muted);margin:0">Work from shared tokens, components, and implementation guidance.</p>
+        <p style="font-weight:600;font-size:16px;margin:0"><!--c:teams.items.3.name-->Engineering<!--/c--></p>
+        <p style="font-size:12px;color:var(--text-muted);margin:0"><!--c:teams.items.3.summary-->Work from shared tokens, components, and implementation guidance.<!--/c--></p>
       </div>
     </div>
   </div>
@@ -414,31 +422,31 @@
 <section id="see-it-in-action" style="padding:80px var(--page-gutter);max-width:calc(1292px + var(--page-gutter) * 2);margin:0 auto;border-top:1px solid var(--border-rule)">
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:64px">
     <div>
-      <span class="project-section-label" style="color:var(--text-accent);margin-bottom:0">See how it works</span>
-      <h2 style="font-weight:900;font-size:clamp(22px,2.6vw,28px);line-height:1.15;margin:20px 0 0">This Raft design guideline was built with the same system.</h2>
-      <p style="font-size:16px;font-weight:600;margin:24px 0 0">Raft&rsquo;s own brand system includes:</p>
+      <span class="project-section-label" style="color:var(--text-accent);margin-bottom:0"><!--c:example.eyebrow-->See how it works<!--/c--></span>
+      <h2 style="font-weight:900;font-size:clamp(22px,2.6vw,28px);line-height:1.15;margin:20px 0 0"><!--c:example.headline-->This Raft design guideline was built with the same system.<!--/c--></h2>
+      <p style="font-size:16px;font-weight:600;margin:24px 0 0"><!--c:example.lead-->Raft’s own brand system includes:<!--/c--></p>
       <ul class="ds-checklist">
         <li><img class="svg-icon--dark" src="../images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px">Design tokens</span></li>
+<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px"><!--c:example.includes.0-->Design tokens<!--/c--></span></li>
         <li><img class="svg-icon--dark" src="../images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px">Typography and layout rules</span></li>
+<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px"><!--c:example.includes.1-->Typography and layout rules<!--/c--></span></li>
         <li><img class="svg-icon--dark" src="../images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px">Reusable components</span></li>
+<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px"><!--c:example.includes.2-->Reusable components<!--/c--></span></li>
         <li><img class="svg-icon--dark" src="../images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px">Brand voice</span></li>
+<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px"><!--c:example.includes.3-->Brand voice<!--/c--></span></li>
         <li><img class="svg-icon--dark" src="../images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px">Motion guidance</span></li>
+<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px"><!--c:example.includes.4-->Motion guidance<!--/c--></span></li>
         <li><img class="svg-icon--dark" src="../images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px">Presentation templates</span></li>
+<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px"><!--c:example.includes.5-->Presentation templates<!--/c--></span></li>
         <li><img class="svg-icon--dark" src="../images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px">DESIGN.md</span></li>
+<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px"><!--c:example.includes.6-->DESIGN.md<!--/c--></span></li>
         <li><img class="svg-icon--dark" src="../images/icon-check-green.svg" alt="" width="20" height="20">
-<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px">Guidance for AI tools such as Claude Design</span></li>
+<img class="svg-icon--light" src="../images/icon-check-green-light.svg" alt="" width="20" height="20"><span style="font-size:16px"><!--c:example.includes.7-->Guidance for AI tools such as Claude Design<!--/c--></span></li>
       </ul>
     </div>
     <div style="display:flex;flex-direction:column;gap:32px">
       <iframe width="100%" style="aspect-ratio:16/9;border-radius:var(--radius-sm)" src="https://www.youtube.com/embed/-Q_afihcKs0?si=QvlXaj-x5coFCtP8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      <a class="scan-cta" href="/design-system-deck/" target="_blank" rel="noopener noreferrer" style="align-self:flex-start"><span class="scan-cta-arrow">→</span> View the Raft Design System</a>
+      <a class="scan-cta" href="/design-system-deck/" data-c-href="@links.example_deck" target="_blank" rel="noopener noreferrer" style="align-self:flex-start"><span class="scan-cta-arrow">→</span> <!--c:example.cta-->View the Raft Design System<!--/c--></a>
     </div>
   </div>
 </section>
@@ -447,38 +455,38 @@
 <section style="padding:80px var(--page-gutter);max-width:calc(1292px + var(--page-gutter) * 2);margin:0 auto;border-top:1px solid var(--border-rule)">
   <div style="display:flex;gap:80px;flex-wrap:wrap">
     <div style="width:320px;flex-shrink:0;display:flex;flex-direction:column;gap:16px">
-      <h2 style="font-weight:900;font-size:clamp(24px,3vw,28px);line-height:1.2;margin:0">Works with modern AI tools.</h2>
-      <p style="font-size:15px;line-height:1.7;color:var(--text-muted);margin:0">One workflow we use today is <strong style="color:var(--text-primary)">Claude Design</strong>, where we load the full design system, brand rules, and DESIGN.md as context. This allows teams to generate on-brand output more reliably.</p>
-      <p style="font-size:15px;line-height:1.7;margin:0">We&rsquo;re tool-agnostic. <strong>The system is the asset. The tools will evolve.</strong></p>
+      <h2 style="font-weight:900;font-size:clamp(24px,3vw,28px);line-height:1.2;margin:0"><!--c:tools.headline-->Works with modern AI tools.<!--/c--></h2>
+      <p style="font-size:15px;line-height:1.7;color:var(--text-muted);margin:0"><!--c:tools.body.0-->One workflow we use today is <!--/c--><strong style="color:var(--text-primary)"><!--c:@tools.0-->Claude Design<!--/c--></strong><!--c:tools.body.1-->, where we load the full design system, brand rules, and DESIGN.md as context. This allows teams to generate on-brand output more reliably.<!--/c--></p>
+      <p style="font-size:15px;line-height:1.7;margin:0"><!--c:tools.agnostic.0-->We’re tool-agnostic. <!--/c--><strong><!--c:tools.agnostic.1-->The system is the asset. The tools will evolve.<!--/c--></strong></p>
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:32px 48px;align-items:flex-start;padding-top:8px">
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
         <img src="../images/claude-icon.png" alt="" width="30" height="30" style="border-radius:50%">
-        <p style="font-size:12px;color:var(--text-primary);margin:0">Claude Design</p>
+        <p style="font-size:12px;color:var(--text-primary);margin:0"><!--c:@tools.0-->Claude Design<!--/c--></p>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
         <img src="../images/tool-icon-chatgpt.svg" alt="" width="30" height="30">
-        <p style="font-size:12px;color:var(--text-primary);margin:0">ChatGPT</p>
+        <p style="font-size:12px;color:var(--text-primary);margin:0"><!--c:@tools.1-->ChatGPT<!--/c--></p>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
         <img src="../images/tool-icon-figma-make.svg" alt="" width="32" height="32">
-        <p style="font-size:12px;color:var(--text-primary);margin:0">Figma Make</p>
+        <p style="font-size:12px;color:var(--text-primary);margin:0"><!--c:@tools.2-->Figma Make<!--/c--></p>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
         <img src="../images/tool-icon-cursor.svg" alt="" width="27" height="30">
-        <p style="font-size:12px;color:var(--text-primary);margin:0">Cursor</p>
+        <p style="font-size:12px;color:var(--text-primary);margin:0"><!--c:@tools.3-->Cursor<!--/c--></p>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
         <img src="../images/tool-icon-lovable.png" alt="" width="30" height="30">
-        <p style="font-size:12px;color:var(--text-primary);margin:0">Lovable</p>
+        <p style="font-size:12px;color:var(--text-primary);margin:0"><!--c:@tools.4-->Lovable<!--/c--></p>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
         <img src="../images/tool-icon-canva.svg" alt="" width="30" height="30">
-        <p style="font-size:12px;color:var(--text-primary);margin:0">Canva AI</p>
+        <p style="font-size:12px;color:var(--text-primary);margin:0"><!--c:@tools.5-->Canva AI<!--/c--></p>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
         <img src="../images/tool-icon-other.svg" alt="" width="30" height="30">
-        <p style="font-size:12px;color:var(--text-primary);margin:0">Other</p>
+        <p style="font-size:12px;color:var(--text-primary);margin:0"><!--c:tools.other-->Other<!--/c--></p>
       </div>
     </div>
   </div>
@@ -488,34 +496,34 @@
 <section style="padding:80px var(--page-gutter);max-width:calc(1292px + var(--page-gutter) * 2);margin:0 auto;border-top:1px solid var(--border-rule)">
   <div class="ds-build-grid">
     <div>
-      <h2 style="font-weight:900;font-size:clamp(24px,3vw,28px);line-height:1.2;margin:0">A higher standard for what&rsquo;s possible.</h2>
+      <h2 style="font-weight:900;font-size:clamp(24px,3vw,28px);line-height:1.2;margin:0"><!--c:outcomes.headline-->A higher standard for what’s possible.<!--/c--></h2>
     </div>
     <div style="display:flex;flex-direction:column;gap:24px">
-      <p style="font-size:16px;line-height:1.7;margin:0">An AI-ready design system helps you move faster while maintaining a consistent, high-quality brand and product experience.</p>
+      <p style="font-size:16px;line-height:1.7;margin:0"><!--c:outcomes.body-->An AI-ready design system helps you move faster while maintaining a consistent, high-quality brand and product experience.<!--/c--></p>
       <div class="ds-build-items" style="border-top:1px solid var(--border-rule)">
         <div class="ds-build-item">
           <img class="svg-icon--dark" src="../images/outcome-icon-faster-production.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../images/outcome-icon-faster-production-light.svg" alt="" width="28" height="28">
-          <p style="font-weight:600;font-size:16px;margin:0">Faster production</p>
-          <p style="font-size:12px;color:var(--text-muted);margin:0">Create more, faster, with less rework.</p>
+          <p style="font-weight:600;font-size:16px;margin:0"><!--c:outcomes.items.0.name-->Faster production<!--/c--></p>
+          <p style="font-size:12px;color:var(--text-muted);margin:0"><!--c:outcomes.items.0.summary-->Create more, faster, with less rework.<!--/c--></p>
         </div>
         <div class="ds-build-item">
           <img class="svg-icon--dark" src="../images/outcome-icon-consistent-quality.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../images/outcome-icon-consistent-quality-light.svg" alt="" width="28" height="28">
-          <p style="font-weight:600;font-size:16px;margin:0">Consistent quality</p>
-          <p style="font-size:12px;color:var(--text-muted);margin:0">Stay on-brand across all channels.</p>
+          <p style="font-weight:600;font-size:16px;margin:0"><!--c:outcomes.items.1.name-->Consistent quality<!--/c--></p>
+          <p style="font-size:12px;color:var(--text-muted);margin:0"><!--c:outcomes.items.1.summary-->Stay on-brand across all channels.<!--/c--></p>
         </div>
         <div class="ds-build-item">
           <img class="svg-icon--dark" src="../images/outcome-icon-greater-alignment.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../images/outcome-icon-greater-alignment-light.svg" alt="" width="28" height="28">
-          <p style="font-weight:600;font-size:16px;margin:0">Greater alignment</p>
-          <p style="font-size:12px;color:var(--text-muted);margin:0">One source of truth across teams.</p>
+          <p style="font-weight:600;font-size:16px;margin:0"><!--c:outcomes.items.2.name-->Greater alignment<!--/c--></p>
+          <p style="font-size:12px;color:var(--text-muted);margin:0"><!--c:outcomes.items.2.summary-->One source of truth across teams.<!--/c--></p>
         </div>
         <div class="ds-build-item">
           <img class="svg-icon--dark" src="../images/outcome-icon-long-term-scale.svg" alt="" width="28" height="28">
 <img class="svg-icon--light" src="../images/outcome-icon-long-term-scale-light.svg" alt="" width="28" height="28">
-          <p style="font-weight:600;font-size:16px;margin:0">Long-term scale</p>
-          <p style="font-size:12px;color:var(--text-muted);margin:0">A foundation that grows with you.</p>
+          <p style="font-weight:600;font-size:16px;margin:0"><!--c:outcomes.items.3.name-->Long-term scale<!--/c--></p>
+          <p style="font-size:12px;color:var(--text-muted);margin:0"><!--c:outcomes.items.3.summary-->A foundation that grows with you.<!--/c--></p>
         </div>
       </div>
     </div>
@@ -525,32 +533,32 @@
 <!-- RELATED WORK -->
 <section style="padding:80px var(--page-gutter);max-width:calc(1292px + var(--page-gutter) * 2);margin:0 auto;border-top:1px solid var(--border-rule)">
   <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:16px">
-    <h2 style="font-weight:700;font-size:clamp(24px,3vw,32px);letter-spacing:-0.5px;margin:0">Related work</h2>
-    <a href="/work/" style="font-size:14px;color:var(--text-accent);text-decoration:none">View all projects →</a>
+    <h2 style="font-weight:700;font-size:clamp(24px,3vw,32px);letter-spacing:-0.5px;margin:0"><!--c:related.headline-->Related work<!--/c--></h2>
+    <a href="/work/" data-c-href="@links.all_work" style="font-size:14px;color:var(--text-accent);text-decoration:none"><!--c:related.view_all-->View all projects →<!--/c--></a>
   </div>
-  <p style="font-size:15px;color:var(--text-muted);margin:12px 0 0">Examples of brand and product systems we&rsquo;ve created.</p>
+  <p style="font-size:15px;color:var(--text-muted);margin:12px 0 0"><!--c:related.body-->Examples of brand and product systems we’ve created.<!--/c--></p>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:40px">
-    <a href="/work/legalon/" style="background:var(--bg-elevated);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit">
+    <a href="/work/legalon/" data-c-href="@related.0.href" style="background:var(--bg-elevated);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit">
       <div style="height:180px;overflow:hidden"><img src="../images/legalon-hero.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 25%"></div>
       <div style="padding:20px 24px 24px;display:flex;flex-direction:column;gap:6px">
-        <p style="font-weight:600;font-size:14px;color:var(--text-primary);margin:0">LegalOn</p>
-        <p style="font-size:13px;color:var(--text-primary);margin:0">Brand and product system for an AI-legal platform</p>
+        <p style="font-weight:600;font-size:14px;color:var(--text-primary);margin:0"><!--c:@related.0.name-->LegalOn<!--/c--></p>
+        <p style="font-size:13px;color:var(--text-primary);margin:0"><!--c:related.items.0-->Brand and product system for an AI-legal platform<!--/c--></p>
         <span style="color:var(--text-accent);font-size:13px;margin-top:6px">→</span>
       </div>
     </a>
-    <a href="/work/ai-design-la/" style="background:var(--bg-elevated);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit">
+    <a href="/work/ai-design-la/" data-c-href="@related.1.href" style="background:var(--bg-elevated);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit">
       <div style="height:180px;overflow:hidden"><img src="../images/ai-design-la-hero.webp" alt="" style="width:100%;height:100%;object-fit:cover"></div>
       <div style="padding:20px 24px 24px;display:flex;flex-direction:column;gap:6px">
-        <p style="font-weight:600;font-size:14px;color:var(--text-primary);margin:0">AI Design LA</p>
-        <p style="font-size:13px;color:var(--text-primary);margin:0">Visual identity and website for a Los Angeles AI design community</p>
+        <p style="font-weight:600;font-size:14px;color:var(--text-primary);margin:0"><!--c:@related.1.name-->AI Design LA<!--/c--></p>
+        <p style="font-size:13px;color:var(--text-primary);margin:0"><!--c:related.items.1-->Visual identity and website for a Los Angeles AI design community<!--/c--></p>
         <span style="color:var(--text-accent);font-size:13px;margin-top:6px">→</span>
       </div>
     </a>
-    <a href="/design-system-deck/" target="_blank" rel="noopener noreferrer" style="background:var(--bg-elevated);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit">
+    <a href="/design-system-deck/" data-c-href="@related.2.href" target="_blank" rel="noopener noreferrer" style="background:var(--bg-elevated);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit">
       <div style="height:180px;overflow:hidden"><img src="../images/lab-raft-design.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center top"></div>
       <div style="padding:20px 24px 24px;display:flex;flex-direction:column;gap:6px">
-        <p style="font-weight:600;font-size:14px;color:var(--text-primary);margin:0">Raft Design System</p>
-        <p style="font-size:13px;color:var(--text-primary);margin:0">Raft&rsquo;s own brand and product system, with DESIGN.md for AI tools</p>
+        <p style="font-weight:600;font-size:14px;color:var(--text-primary);margin:0"><!--c:@related.2.name-->Raft Design System<!--/c--></p>
+        <p style="font-size:13px;color:var(--text-primary);margin:0"><!--c:related.items.2-->Raft’s own brand and product system, with DESIGN.md for AI tools<!--/c--></p>
         <span style="color:var(--text-accent);font-size:13px;margin-top:6px">→</span>
       </div>
     </a>
@@ -561,11 +569,11 @@
 <section style="padding:80px var(--page-gutter);max-width:calc(1292px + var(--page-gutter) * 2);margin:0 auto;border-top:1px solid var(--border-rule)">
   <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:40px">
     <div style="max-width:600px">
-      <span style="font-size:11px;font-weight:600;letter-spacing:1.98px;text-transform:uppercase;color:var(--text-accent)">Let&rsquo;s build what&rsquo;s next</span>
-      <h2 style="font-weight:700;font-size:clamp(28px,4vw,40px);line-height:1.15;letter-spacing:-1px;margin:20px 0 0">Create an AI-ready design system for your team.</h2>
-      <p style="font-size:16px;color:var(--text-muted);margin:16px 0 0">Let&rsquo;s talk about your goals and how Raft can help.</p>
+      <span style="font-size:11px;font-weight:600;letter-spacing:1.98px;text-transform:uppercase;color:var(--text-accent)"><!--c:cta.eyebrow-->Let’s build what’s next<!--/c--></span>
+      <h2 style="font-weight:700;font-size:clamp(28px,4vw,40px);line-height:1.15;letter-spacing:-1px;margin:20px 0 0"><!--c:cta.headline-->Create an AI-ready design system for your team.<!--/c--></h2>
+      <p style="font-size:16px;color:var(--text-muted);margin:16px 0 0"><!--c:cta.body-->Let’s talk about your goals and how Raft can help.<!--/c--></p>
     </div>
-    <button type="button" id="ds-cta-talk-btn" class="scan-cta scan-cta--wide"><span class="scan-cta-arrow">→</span> Start a conversation</button>
+    <button type="button" id="ds-cta-talk-btn" class="scan-cta scan-cta--wide"><span class="scan-cta-arrow">→</span> <!--c:cta.button-->Start a conversation<!--/c--></button>
   </div>
 </section>
 
@@ -937,5 +945,13 @@
     })();
   </script>
 
+<!-- Human / machine version toggle: AI links to this page's terminal version -->
+  <div class="hm-toggle" role="group" aria-label="Site version">
+    <svg class="hm-toggle-shape" width="51" height="208" viewBox="0 0 51 208" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><clipPath id="hm-shape"><path d="M51 208C51 186.891 36.0169 176 25 176H26C11.6406 176 0 164.359 0 150V56C1.54632e-06 42.7452 10.7452 32 24 32C35.4407 32 51 21.1088 51 0V208Z"/></clipPath></defs><path class="hm-toggle-fill" d="M51 208C51 186.891 36.0169 176 25 176H26C11.6406 176 0 164.359 0 150V56C1.54632e-06 42.7452 10.7452 32 24 32C35.4407 32 51 21.1088 51 0V208Z"/><path d="M51 208C51 186.891 36.0169 176 25 176H26C11.6406 176 0 164.359 0 150V56C1.54632e-06 42.7452 10.7452 32 24 32C35.4407 32 51 21.1088 51 0" stroke="white" stroke-opacity="0.3" stroke-width="2" clip-path="url(#hm-shape)"/></svg>
+    <div class="hm-toggle-items">
+    <span class="hm-toggle-item" aria-current="page"><svg width="24" height="24.1975" viewBox="0 0 24 24.1975" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9.47454 7.93916L9.48151 7.94334C10.0997 8.32457 13.2799 9.63065 16.844 6.29019C18.2756 4.83636 18.9537 2.62356 18.9537 2.62356C18.9537 2.62356 17.4309 3.30726 16.2426 2.85006C15.4376 2.53783 14.6361 1.57535 14.4856 1.38369C14.1155 0.966917 13.6541 0.612869 13.1168 0.368938C11.0218 -0.581695 8.54691 0.368939 7.59558 2.48347C6.66794 4.54643 7.51264 6.92371 9.47454 7.93916Z" fill="currentColor"/><path d="M3.68754 24.1975L5.79789 15.7651L6.80218 15.7854L5.09537 24.1975H18.9053L17.1985 15.7854L18.2021 15.7651L20.3118 24.1975H24L21.3028 13.7203C20.9564 12.3132 19.826 9.7979 16.7755 9.68848H7.20014C4.14961 9.7972 3.04356 12.3132 2.69718 13.7203L0 24.1975H3.68754Z" fill="currentColor"/></svg>HUMAN</span>
+    <a class="hm-toggle-item" href="/ai/design-system/" data-c-href="@pages.terminal"><svg width="24" height="20.2598" viewBox="0 0 24 20.2598" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2.90625 14.7587L2.90625 20.2598H21.0135V14.7587L2.90625 14.7587ZM11.9599 18.627C11.3467 18.627 10.8503 18.1267 10.8503 17.5093C10.8503 16.8923 11.3467 16.392 11.9599 16.392C12.5726 16.392 13.069 16.8923 13.069 17.5093C13.069 18.1267 12.5726 18.627 11.9599 18.627Z" fill="currentColor"/><path d="M11.9566 10.371C12.7817 10.371 13.4507 9.69691 13.4507 8.86538C13.4507 8.03385 12.7817 7.35976 11.9566 7.35976C11.1314 7.35976 10.4625 8.03385 10.4625 8.86538C10.4625 9.69691 11.1314 10.371 11.9566 10.371Z" fill="currentColor"/><path d="M23.8612 0.889805C24.0584 0.673275 24.0436 0.337678 23.8288 0.139393C23.6148 -0.0588919 23.2823 -0.043528 23.085 0.172041L17.3617 5.24104C15.9972 3.81367 14.0838 2.92211 11.9623 2.92211C11.7141 2.92211 11.4692 2.93699 11.2272 2.96052C11.078 2.5193 10.8384 2.05167 10.4534 1.67766C9.92222 1.16059 9.21567 0.923892 8.36477 0.961821C6.53575 1.05112 5.28607 2.76799 4.78534 3.59954L0.914817 0.172041C0.718528 -0.043528 0.385026 -0.0588919 0.170632 0.139393C-0.0437618 0.337678 -0.0580547 0.673275 0.138711 0.889805L5.45473 6.72746C4.8225 7.83507 4.45517 9.11648 4.45517 10.4872C4.45517 11.6678 4.73198 12.7816 5.21127 13.7779L18.7119 13.7779C18.9153 13.3549 19.0735 12.9069 19.1978 12.4456C20.4628 11.9242 23.8345 10.37 23.4991 8.71847C23.4433 8.44481 23.278 8.22684 23.0207 8.0876C22.2489 7.67135 20.57 8.03575 19.1869 8.45921C19.0216 7.86771 18.7919 7.30263 18.4989 6.77835L23.8612 0.889805ZM5.27511 4.03308C5.67627 3.34844 6.81065 1.68198 8.3943 1.60469C9.0675 1.573 9.60777 1.75256 10.0065 2.13905C10.2772 2.40071 10.453 2.7315 10.5745 3.05798C9.03034 3.34988 7.65155 4.1147 6.5953 5.20311L5.27511 4.03308ZM11.9604 12.0091C10.2381 12.0091 8.84167 10.6015 8.84167 8.86538C8.84167 7.12979 10.2381 5.72163 11.9604 5.72163C13.6832 5.72163 15.0801 7.12979 15.0801 8.86538C15.0801 10.6015 13.6832 12.0091 11.9604 12.0091ZM22.7196 8.65509C22.833 8.71559 22.8606 8.78616 22.873 8.84666C23.0417 9.67965 21.104 10.8967 19.3622 11.674C19.4246 11.2861 19.468 10.8914 19.468 10.4862C19.468 10.008 19.4089 9.54474 19.3236 9.09151C20.7243 8.66037 22.1774 8.36367 22.7196 8.65509Z" fill="currentColor"/></svg>AI</a>
+    </div>
+  </div>
 </body>
 </html>

@@ -1,0 +1,463 @@
+{
+  "_readme": "Shared content for the AI-Ready Design Systems page. build-pages.js renders design-system/index.html, ja/design-system/index.html (text between <!--c:key--> markers only) and the terminal pages /ai/design-system/ and /ja/ai/design-system/. Keys starting with @ in the HTML markers read from \"facts\". Edit here, then run: node build-pages.js",
+  "facts": {
+    "pages": {
+      "human": {
+        "en": "/design-system/",
+        "ja": "/ja/design-system/"
+      },
+      "terminal": {
+        "en": "/ai/design-system/",
+        "ja": "/ja/ai/design-system/"
+      }
+    },
+    "links": {
+      "example_deck": "/design-system-deck/",
+      "included_in": {
+        "en": "/design-foundation/",
+        "ja": "/ja/design-foundation/"
+      },
+      "all_work": {
+        "en": "/work/",
+        "ja": "/ja/work/"
+      },
+      "contact": {
+        "en": "/contact/",
+        "ja": "/ja/contact/"
+      }
+    },
+    "email": "hello@raftdesign.studio",
+    "pricing_published": false,
+    "included_in_offer": "Design Foundation Sprint",
+    "area_served": [
+      "US",
+      "JP"
+    ],
+    "tools": [
+      "Claude Design",
+      "ChatGPT",
+      "Figma Make",
+      "Cursor",
+      "Lovable",
+      "Canva AI"
+    ],
+    "related": [
+      {
+        "name": "LegalOn",
+        "href": {
+          "en": "/work/legalon/",
+          "ja": "/ja/work/legalon/"
+        },
+        "image": "images/legalon-hero.jpg"
+      },
+      {
+        "name": "AI Design LA",
+        "href": {
+          "en": "/work/ai-design-la/",
+          "ja": "/work/ai-design-la/"
+        },
+        "image": "images/ai-design-la-hero.webp"
+      },
+      {
+        "name": "Raft Design System",
+        "href": {
+          "en": "/design-system-deck/",
+          "ja": "/design-system-deck/"
+        },
+        "image": "images/lab-raft-design.jpg"
+      }
+    ]
+  },
+  "en": {
+    "meta": {
+      "title": "AI-Ready Design Systems for Brand and Product | Raft Design",
+      "description": "Raft creates brand and product systems that give your teams and AI tools the same source of truth, so new work can move faster without losing consistency.",
+      "social_title": "AI-Ready Design Systems — Raft Design",
+      "offer_name": "AI-Ready Design Systems",
+      "audience": "Teams building or scaling a brand and product design system"
+    },
+    "offer": {
+      "pricing": "Pricing and timeline are not published.",
+      "included": "Every Design Foundation Sprint includes an AI-ready design system."
+    },
+    "terminal": {
+      "title": "AI-Ready Design Systems, Machine Version | Raft Design",
+      "description": "Machine-readable version of the AI-Ready Design Systems page. It renders from the same content source as the human page.",
+      "question": "what is an ai-ready design system?",
+      "source_line": "Both versions of this page render from the same content source."
+    },
+    "hero": {
+      "eyebrow": "AI-Ready Design Systems",
+      "headline": [
+        "Your Design System",
+        "shouldn’t stop",
+        "at Figma."
+      ],
+      "body": "Raft Design creates brand and product systems that give your teams and AI tools the same source of truth, so new work can move faster without losing consistency.",
+      "cta_talk": "Talk to us",
+      "cta_example": "See the Raft design system example",
+      "card": {
+        "layers": [
+          "Brand",
+          "Product",
+          "AI-ready"
+        ],
+        "audiences": [
+          "People",
+          "Teams",
+          "AI Tools"
+        ],
+        "tagline": [
+          "One system.",
+          "More possibilities."
+        ]
+      }
+    },
+    "shift": {
+      "headline": "The way design systems work is changing.",
+      "body": "Teams are already using AI tools, but most design systems weren’t built for them. The result is fast but inconsistent output, off-brand materials, and duplicated effort.",
+      "before": {
+        "title": "Traditional approach",
+        "items": [
+          "Static brand guidelines",
+          "Designed for humans only",
+          "Reinvention for each project",
+          "Inconsistent AI output"
+        ]
+      },
+      "after": {
+        "title": [
+          "Raft’s AI-ready approach"
+        ],
+        "items": [
+          "Structured for AI tools",
+          "Consistent on-brand output",
+          "Reusable components + templates",
+          "Faster, higher quality work"
+        ]
+      }
+    },
+    "build": {
+      "headline": "A complete system for brand, product, and AI.",
+      "body": "We structure all the pieces your team and AI tools need to create consistent, high-quality work.",
+      "items": [
+        {
+          "name": "Brand foundations",
+          "summary": "Strategy, positioning, visual identity"
+        },
+        {
+          "name": "Voice and content",
+          "summary": "Messaging, tone, copy guidance"
+        },
+        {
+          "name": "Design tokens",
+          "summary": "Colors, type, spacing, layout rules"
+        },
+        {
+          "name": "Component library",
+          "summary": "UI components, patterns, states"
+        },
+        {
+          "name": "Templates",
+          "summary": "Decks, marketing, proposals, pages"
+        },
+        {
+          "name": "DESIGN.md",
+          "summary": "Structured context for AI tools"
+        },
+        {
+          "name": "AI workflows",
+          "summary": "Tool setup, prompts, usage guidance"
+        },
+        {
+          "name": "Implementation",
+          "summary": "Hand-off docs, engineering support"
+        }
+      ]
+    },
+    "teams": {
+      "headline": "Built for every team that creates.",
+      "body": "The same system helps different teams move faster, with less rework and greater consistency.",
+      "items": [
+        {
+          "name": "Marketing",
+          "summary": "Create campaign assets, ads, landing pages, and social content."
+        },
+        {
+          "name": "Sales",
+          "summary": "Generate decks, proposals, and customer enablement materials."
+        },
+        {
+          "name": "Product + Design",
+          "summary": "Explore new flows, prototypes, and product surfaces."
+        },
+        {
+          "name": "Engineering",
+          "summary": "Work from shared tokens, components, and implementation guidance."
+        }
+      ]
+    },
+    "example": {
+      "eyebrow": "See how it works",
+      "headline": "This Raft design guideline was built with the same system.",
+      "lead": "Raft’s own brand system includes:",
+      "includes": [
+        "Design tokens",
+        "Typography and layout rules",
+        "Reusable components",
+        "Brand voice",
+        "Motion guidance",
+        "Presentation templates",
+        "DESIGN.md",
+        "Guidance for AI tools such as Claude Design"
+      ],
+      "cta": "View the Raft Design System"
+    },
+    "tools": {
+      "headline": "Works with modern AI tools.",
+      "body": [
+        "One workflow we use today is ",
+        ", where we load the full design system, brand rules, and DESIGN.md as context. This allows teams to generate on-brand output more reliably."
+      ],
+      "agnostic": [
+        "We’re tool-agnostic. ",
+        "The system is the asset. The tools will evolve."
+      ],
+      "other": "Other"
+    },
+    "outcomes": {
+      "headline": "A higher standard for what’s possible.",
+      "body": "An AI-ready design system helps you move faster while maintaining a consistent, high-quality brand and product experience.",
+      "items": [
+        {
+          "name": "Faster production",
+          "summary": "Create more, faster, with less rework."
+        },
+        {
+          "name": "Consistent quality",
+          "summary": "Stay on-brand across all channels."
+        },
+        {
+          "name": "Greater alignment",
+          "summary": "One source of truth across teams."
+        },
+        {
+          "name": "Long-term scale",
+          "summary": "A foundation that grows with you."
+        }
+      ]
+    },
+    "related": {
+      "headline": "Related work",
+      "view_all": "View all projects →",
+      "body": "Examples of brand and product systems we’ve created.",
+      "items": [
+        "Brand and product system for an AI-legal platform",
+        "Visual identity and website for a Los Angeles AI design community",
+        "Raft’s own brand and product system, with DESIGN.md for AI tools"
+      ]
+    },
+    "cta": {
+      "eyebrow": "Let’s build what’s next",
+      "headline": "Create an AI-ready design system for your team.",
+      "body": "Let’s talk about your goals and how Raft can help.",
+      "button": "Start a conversation"
+    }
+  },
+  "ja": {
+    "meta": {
+      "title": "AI対応型デザインシステム｜Raft Design",
+      "description": "Raftは、チームとAIツールが同じ基盤を拠り所にできるブランド＆プロダクトシステムをつくります。一貫性を保ったまま、新しい制作をより速く進められるようになります。",
+      "social_title": "AI対応型デザインシステム — Raft Design",
+      "offer_name": "AI対応型デザインシステム",
+      "audience": "ブランド＆プロダクトのデザインシステムを構築・拡張するチーム"
+    },
+    "offer": {
+      "pricing": "料金とスケジュールは公開していません。",
+      "included": "すべてのデザイン基盤構築スプリントに、AI対応デザインシステムが含まれます。"
+    },
+    "terminal": {
+      "title": "AI対応型デザインシステム（マシン版）｜Raft Design",
+      "description": "AI対応型デザインシステムのページのマシン版です。人間版と同じコンテンツソースから生成されています。",
+      "question": "AI対応型デザインシステムとは?",
+      "source_line": "このページと人間版は、同じコンテンツソースから生成されています。"
+    },
+    "hero": {
+      "eyebrow": "AI対応型デザインシステム",
+      "headline": [
+        "デザインシステムは、",
+        "Figmaの中だけで完結するものではありません。"
+      ],
+      "body": "Raftは、チームとAIツールが同じ基盤を拠り所にできるブランド＆プロダクトシステムをつくります。一貫性を保ったまま、新しい制作をより速く進められるようになります。",
+      "cta_talk": "相談する",
+      "cta_example": "Raftのデザインシステム事例を見る",
+      "card": {
+        "layers": [
+          "ブランド",
+          "プロダクト",
+          "AI対応"
+        ],
+        "audiences": [
+          "人",
+          "チーム",
+          "AIツール"
+        ],
+        "tagline": [
+          "ひとつのシステムから、",
+          "より多くの可能性へ。"
+        ]
+      }
+    },
+    "shift": {
+      "headline": "デザインシステムのあり方が、変わりはじめています。",
+      "body": "すでに多くのチームがAIツールを活用しています。しかし、ほとんどのデザインシステムはAIの利用を前提に設計されていません。その結果、制作スピードは上がっても、アウトプットに一貫性がなく、ブランドから外れた成果物や重複した作業が生まれています。",
+      "before": {
+        "title": "従来型のアプローチ",
+        "items": [
+          "静的なブランドガイドライン",
+          "人が使うことだけを想定",
+          "プロジェクトごとに一から作り直す",
+          "AIによるアウトプットが一貫しない"
+        ]
+      },
+      "after": {
+        "title": [
+          "Raftの",
+          "AI対応型アプローチ"
+        ],
+        "items": [
+          "AIツールが活用できる構造",
+          "ブランドに沿った一貫したアウトプット",
+          "再利用可能なコンポーネントとテンプレート",
+          "より速く、より高品質な制作"
+        ]
+      }
+    },
+    "build": {
+      "headline": "ブランド、プロダクト、AIをつなぐ、ひとつの完全なシステム。",
+      "body": "チームとAIツールが、一貫性のある高品質な成果物をつくるために必要な要素を、ひとつのシステムとして構造化します。",
+      "items": [
+        {
+          "name": "ブランド基盤",
+          "summary": "戦略、ポジショニング、ビジュアルアイデンティティ"
+        },
+        {
+          "name": "ボイス＆コンテンツ",
+          "summary": "メッセージング、トーン、コピーガイドライン"
+        },
+        {
+          "name": "デザイントークン",
+          "summary": "カラー、タイポグラフィ、スペーシング、レイアウトルール"
+        },
+        {
+          "name": "コンポーネントライブラリ",
+          "summary": "UIコンポーネント、パターン、状態設計"
+        },
+        {
+          "name": "テンプレート",
+          "summary": "プレゼン資料、マーケティング素材、提案書、Webページ"
+        },
+        {
+          "name": "DESIGN.md",
+          "summary": "AIツール向けに構造化されたコンテキスト"
+        },
+        {
+          "name": "AIワークフロー",
+          "summary": "ツール設定、プロンプト、活用ガイド"
+        },
+        {
+          "name": "実装",
+          "summary": "ハンドオフ資料、エンジニアリング支援"
+        }
+      ]
+    },
+    "teams": {
+      "headline": "つくるすべてのチームのために。",
+      "body": "同じシステムを共有することで、あらゆるチームが手戻りを減らし、一貫性を保ちながら、より速く動けるようになります。",
+      "items": [
+        {
+          "name": "マーケティング",
+          "summary": "キャンペーン素材、広告、ランディングページ、SNSコンテンツを制作。"
+        },
+        {
+          "name": "セールス",
+          "summary": "提案資料、プレゼン資料、営業支援素材を作成。"
+        },
+        {
+          "name": "プロダクト＋デザイン",
+          "summary": "新しいユーザーフロー、プロトタイプ、プロダクト画面を検討・設計。"
+        },
+        {
+          "name": "エンジニアリング",
+          "summary": "共有されたトークン、コンポーネント、実装ガイドをもとに開発。"
+        }
+      ]
+    },
+    "example": {
+      "eyebrow": "実際の仕組みを見る",
+      "headline": "このRaftのデザインガイドラインも、同じシステムからつくられています。",
+      "lead": "Raft自身のブランドシステムには、以下が含まれます。",
+      "includes": [
+        "デザイントークン",
+        "タイポグラフィとレイアウトルール",
+        "再利用可能なコンポーネント",
+        "ブランドボイス",
+        "モーションガイド",
+        "プレゼンテーションテンプレート",
+        "DESIGN.md",
+        "Claude Designなど、AIツール向けのガイドライン"
+      ],
+      "cta": "Raftのデザインシステムを見る"
+    },
+    "tools": {
+      "headline": "最新のAIツールと連携します。",
+      "body": [
+        "現在Raftが実践しているワークフローのひとつが、",
+        "です。デザインシステム全体、ブランドルール、DESIGN.mdをコンテキストとして読み込ませることで、チームはブランドに沿ったアウトプットを、より確実に生成できます。"
+      ],
+      "agnostic": [
+        "Raftは特定のツールに依存しません。",
+        "価値があるのはシステムそのものです。ツールは、これからも進化し続けます。"
+      ],
+      "other": "その他"
+    },
+    "outcomes": {
+      "headline": "「できること」の基準を、もう一段上へ。",
+      "body": "AI対応型デザインシステムは、一貫性のある高品質なブランド・プロダクト体験を保ちながら、制作スピードを高めます。",
+      "items": [
+        {
+          "name": "より速い制作",
+          "summary": "手戻りを減らし、より多くのものを、より短時間で。"
+        },
+        {
+          "name": "一貫したクオリティ",
+          "summary": "あらゆるチャネルで、ブランドらしさを保つ。"
+        },
+        {
+          "name": "より高い連携",
+          "summary": "チーム間で共通の基準を持つ。"
+        },
+        {
+          "name": "長期的なスケール",
+          "summary": "成長に合わせて進化する基盤。"
+        }
+      ]
+    },
+    "related": {
+      "headline": "関連プロジェクト",
+      "view_all": "すべてのプロジェクトを見る →",
+      "body": "ブランドとプロダクトのシステムを設計した事例です。",
+      "items": [
+        "AIリーガルプラットフォームのブランド＆プロダクトシステム",
+        "ロサンゼルスのAIデザインコミュニティのための、ビジュアルアイデンティティとウェブサイト",
+        "AIツール向けのDESIGN.mdを備えた、Raft自身のブランド＆プロダクトシステム"
+      ]
+    },
+    "cta": {
+      "eyebrow": "Let’s build what’s next",
+      "headline": "チームのためのAI対応型デザインシステムを、つくりませんか？",
+      "body": "目指す姿と、Raftにできることについて、お話ししましょう。",
+      "button": "相談をはじめる"
+    }
+  }
+}

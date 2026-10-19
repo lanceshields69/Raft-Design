@@ -12,14 +12,14 @@
   const cases = ['RAFT', 'RAFT', 'Raft', 'Raft', 'raft'];
   const styles = ['regular', 'heavy', 'light', 'italic', 'slab'];
   const googleFonts = {
-    fraunces: { family: 'Fraunces', category: 'serif', threshold: 0.1 },
-    space: { family: 'Space Grotesk', category: 'sans serif', threshold: 0.13 },
-    bungee: { family: 'Bungee', category: 'display', threshold: 0.15 },
-    caveat: { family: 'Caveat', category: 'handwriting', threshold: 0.055 }
+    fraunces: { family: 'Fraunces', category: 'serif', weight: 400, threshold: 0.13 },
+    space: { family: 'Space Grotesk', category: 'sans serif', weight: 400, threshold: 0.16 },
+    bungee: { family: 'Bungee', category: 'display', weight: 400, threshold: 0.15 },
+    caveat: { family: 'Caveat', category: 'handwriting', weight: 400, threshold: 0.075 }
   };
   const readyFonts = new Set();
-  const fontQueue = [];
-  let variationDeck = [];
+  let pixelDeck = [];
+  let fontDeck = [];
   // This bitmap is the five-row wordmark already printed in /ai/index.html.
   // Each bit represents one original two-character block (██).
   const original = [
@@ -83,10 +83,13 @@
     return items;
   }
 
-  function nextVariation() {
-    if (fontQueue.length) return fontQueue.shift();
-    if (!variationDeck.length) variationDeck = shuffle([...styles, ...readyFonts]);
-    return variationDeck.pop();
+  function nextVariation(preferFont) {
+    if (preferFont && readyFonts.size) {
+      if (!fontDeck.length) fontDeck = shuffle([...readyFonts]);
+      return fontDeck.pop();
+    }
+    if (!pixelDeck.length) pixelDeck = shuffle([...styles]);
+    return pixelDeck.pop();
   }
 
   function composition(baseStyle) {
@@ -163,7 +166,7 @@
     const context = canvas.getContext('2d', { willReadFrequently: true });
     if (!context) return drawOriginal(false);
     const word = choice(cases);
-    context.font = `700 190px "${font.family}"`;
+    context.font = `${font.weight} 190px "${font.family}"`;
     context.fillStyle = '#fff';
     const metrics = context.measureText(word);
     const ascent = metrics.actualBoundingBoxAscent || 190 * 0.75;
@@ -225,8 +228,10 @@
   function cycle() {
     stop();
     if (document.hidden || reducedMotion.matches) return;
-    const useOriginal = cycleCount++ % 5 === 0;
-    const variation = useOriginal ? 'original' : nextVariation();
+    const slot = cycleCount++ % 5;
+    const useOriginal = slot === 0;
+    // Alternate pixel and font versions so several heavy faces cannot cluster.
+    const variation = useOriginal ? 'original' : nextVariation(slot === 2 || slot === 4);
     svg.dataset.variation = variation;
     svg.dataset.category = googleFonts[variation]?.category || 'pixel';
     const pixels = useOriginal
@@ -268,10 +273,9 @@
   reducedMotion.addEventListener('change', start);
 
   Object.entries(googleFonts).forEach(([key, font]) => {
-    document.fonts.load(`700 190px "${font.family}"`, 'RAFTraft').then((faces) => {
+    document.fonts.load(`${font.weight} 190px "${font.family}"`, 'RAFTraft').then((faces) => {
       if (!faces.length) return;
       readyFonts.add(key);
-      fontQueue.push(key);
     }).catch(() => {
       // Keep the locally drawn pixel variants if a Google font is unavailable.
     });

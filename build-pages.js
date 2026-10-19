@@ -132,24 +132,23 @@ function extractShell(lang) {
   const absolute = (s) => s.replace(/(src|href)="(\.{1,2}\/[^"]*)"/g,
     (m, attr, rel) => `${attr}="${path.posix.resolve(shellDir, rel)}"`);
   const head = html.slice(0, html.indexOf('</head>'));
-  // Page-specific stylesheets in the /ai/ head (e.g. logo-morph.css), besides
-  // the shared machine-toggle.css the template already links.
+  // Keep shared page styles; the animated logo belongs only on /ai/.
   const extraCss = [...head.matchAll(/<link rel="stylesheet" href="[^"]+">/g)]
     .map((m) => absolute(m[0]))
-    .filter((l) => !l.includes('/machine-toggle.css'));
-  const fontLinks = [...head.matchAll(/<link href="https:\/\/fonts\.googleapis\.com\/css2[^>]*>/g)]
-    .map((m) => m[0]);
-  if (!fontLinks.length) throw new Error(`${file}: could not find font link for the terminal template`);
+    .filter((l) => !l.includes('/machine-toggle.css') && !l.includes('/logo-morph.css'));
+  const logo = grab(/<pre class="logo"[^>]*>[\s\S]*?<\/pre>/, 'logo')
+    .replace(/\saria-hidden="true"/, ' aria-label="RAFT"');
+  const logoAfter = grab(/<p class="logo-sub"[\s\S]*?<div class="logo-dither"[^>]*><\/div>/, 'logo subtitle');
   return {
-    fonts: fontLinks.join('\n  '),
+    fonts: grab(/<link href="https:\/\/fonts\.googleapis\.com\/css2[^>]*>/, 'font link'),
     headScript: grab(/<script>\n\s*\/\/ Streamed-output effect[\s\S]*?<\/script>/, 'stream script'),
     style: grab(/<style>[\s\S]*?<\/style>/, 'style block'),
     extraCss: extraCss.join('\n  '),
-    // The logo may be wrapped in a .logo-stage (logo morph) or stand alone.
-    logo: grab(/(?:<div class="logo-stage"[^>]*>\s*)?<pre class="logo"[\s\S]*?<div class="logo-dither"[^>]*><\/div>/, 'logo'),
+    logo: `${logo}\n    ${logoAfter}`,
     nav: grab(/<nav class="nav"[\s\S]*?<\/nav>/, 'nav'),
     foot: grab(/<div class="foot">[\s\S]*?<\/div>/, 'footer'),
-    tail: absolute(html.slice(html.indexOf('</main>') + '</main>'.length, html.indexOf('</body>'))),
+    tail: absolute(html.slice(html.indexOf('</main>') + '</main>'.length, html.indexOf('</body>')))
+      .replace(/\s*<script src="\/ai\/logo-morph\.js" defer><\/script>/, ''),
   };
 }
 

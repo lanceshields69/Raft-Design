@@ -1850,6 +1850,8 @@ html[lang="ja"] .approach-heading {
 .section-label {
   display: inline-block;
   align-self: flex-start;
+  font-family: 'Kode Mono', 'Noto Sans JP', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-weight: 700;
   font-size: var(--font-size-eyebrow);
   letter-spacing: var(--tracking-eyebrow);
   line-height: var(--line-height-eyebrow);
@@ -1883,7 +1885,8 @@ html[lang="ja"] .approach-heading {
   letter-spacing: var(--tracking-eyebrow);
   line-height: var(--line-height-eyebrow);
   text-transform: uppercase;
-  font-weight: var(--weight-black);
+  font-family: 'Kode Mono', 'Noto Sans JP', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-weight: 700;
   background: var(--bg-brand);
   color: var(--accent-ink);
   padding: 5px 20px;
@@ -4197,4 +4200,26 @@ html[lang="ja"] .approach-heading {
 
 @media (prefers-reduced-motion: reduce) {
   .machine-tip { transition: none; }
+}
+
+/* Green eyebrow above the page headline (Work, About, Services, Journal).
+   Kode Mono Bold, 28px (24px on mobile); tracking and color come from the inline style. */
+.eyebrow-mono {
+  font-family: 'Kode Mono', 'Noto Sans JP', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-weight: 700;
+  font-size: 28px;
+}
+
+@media (max-width: 768px) {
+  .eyebrow-mono {
+    font-size: 24px;
+  }
+}
+
+/* Home page section titles (Approach, Featured Work, Offerings, Journal,
+   FAQs, Contact): 15px, 2px larger than the 13px eyebrow token. */
+body.home .section-label,
+body.home .featured-work-label,
+body.home .journal-carousel-badge {
+  font-size: 15px;
 }

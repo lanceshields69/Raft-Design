@@ -112,9 +112,10 @@ body {
 /* .section-label is shared with sections whose pill text stays in
    English/Roman letters (Approach, Expertise, Studio...) even on this
    page — only the FAQs pill ("よくある質問") is actually Japanese, so
-   this can't be folded into the shared JA font-family rule above. */
+   this can't be folded into the shared JA font-family rule above.
+   Kode Mono for the Roman text; Japanese falls back to Noto Sans JP. */
 .section-label {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Kode Mono', 'Noto Sans JP', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 }
 
 /* .stats-intro-text's 325px max-width (styles.css) is tuned for the
@@ -187,7 +188,7 @@ body {
    — its pill ("AI対応型デザインシステム") is also actual Japanese
    content, same exception as the tools page pills above. */
 .ai-systems-section .section-label {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Kode Mono', 'Noto Sans JP', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   letter-spacing: 0;
 }
 

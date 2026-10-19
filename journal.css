@@ -530,8 +530,9 @@
   align-items: center;
   background: var(--bg-brand);
   color: var(--accent-ink);
+  font-family: 'Kode Mono', 'Noto Sans JP', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   font-size: var(--font-size-eyebrow);
-  font-weight: var(--weight-black);
+  font-weight: 700;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
   padding: 5px 20px; /* matches the sitewide .section-label convention (styles.css) — also left as an intentional untokenized exception there */

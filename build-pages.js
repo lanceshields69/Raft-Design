@@ -126,14 +126,24 @@ function extractShell(lang) {
     if (!m) throw new Error(`${file}: could not find ${what} for the terminal template`);
     return m[0];
   };
-  // Asset paths in /ai/ are relative to its own depth; the terminal pages
-  // sit deeper, so make them root-absolute.
-  const absolute = (s) => s.replace(/(src|href)="(?:\.\.\/)+/g, '$1="/');
+  // Asset paths in /ai/ ("./x", "../x") are relative to the shell page; the
+  // terminal pages sit deeper, so resolve them to root-absolute paths.
+  const shellDir = '/' + path.posix.dirname(file) + '/';
+  const absolute = (s) => s.replace(/(src|href)="(\.{1,2}\/[^"]*)"/g,
+    (m, attr, rel) => `${attr}="${path.posix.resolve(shellDir, rel)}"`);
+  const head = html.slice(0, html.indexOf('</head>'));
+  // Page-specific stylesheets in the /ai/ head (e.g. logo-morph.css), besides
+  // the shared machine-toggle.css the template already links.
+  const extraCss = [...head.matchAll(/<link rel="stylesheet" href="[^"]+">/g)]
+    .map((m) => absolute(m[0]))
+    .filter((l) => !l.includes('/machine-toggle.css'));
   return {
     fonts: grab(/<link href="https:\/\/fonts\.googleapis\.com\/css2[^>]*>/, 'font link'),
     headScript: grab(/<script>\n\s*\/\/ Streamed-output effect[\s\S]*?<\/script>/, 'stream script'),
     style: grab(/<style>[\s\S]*?<\/style>/, 'style block'),
-    logo: grab(/<pre class="logo"[\s\S]*?<div class="logo-dither"[^>]*><\/div>/, 'logo'),
+    extraCss: extraCss.join('\n  '),
+    // The logo may be wrapped in a .logo-stage (logo morph) or stand alone.
+    logo: grab(/(?:<div class="logo-stage"[^>]*>\s*)?<pre class="logo"[\s\S]*?<div class="logo-dither"[^>]*><\/div>/, 'logo'),
     nav: grab(/<nav class="nav"[\s\S]*?<\/nav>/, 'nav'),
     foot: grab(/<div class="foot">[\s\S]*?<\/div>/, 'footer'),
     tail: absolute(html.slice(html.indexOf('</main>') + '</main>'.length, html.indexOf('</body>'))),
@@ -199,7 +209,7 @@ function renderDesignSystemTerminal(content, lang) {
   ${shell.fonts}
   <link rel="stylesheet" href="/machine-toggle.css">
   ${shell.headScript}
-  ${shell.style}
+  ${shell.style}${shell.extraCss ? '\n  ' + shell.extraCss : ''}
 </head>
 <body>
   <main class="term">

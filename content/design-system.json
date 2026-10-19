@@ -66,6 +66,30 @@
         },
         "image": "images/lab-raft-design.jpg"
       }
+    ],
+    "stats": [
+      {
+        "figure": "88%",
+        "source": {
+          "publisher": "McKinsey",
+          "title": "The state of AI in 2025: Agents, innovation, and transformation",
+          "date": "2025-11-05",
+          "url": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai"
+        }
+      },
+      {
+        "figure": "95%",
+        "source": {
+          "publisher": "Canva",
+          "title": "The State of Marketing & AI Report 2025",
+          "date": "2025-03-04",
+          "url": "https://www.canva.com/newsroom/news/marketing-ai-report/"
+        }
+      },
+      {
+        "figure": null,
+        "source": null
+      }
     ]
   },
   "en": {
@@ -116,6 +140,19 @@
     "shift": {
       "headline": "The way design systems work is changing.",
       "body": "Teams are already using AI tools, but most design systems weren’t built for them. The result is fast but inconsistent output, off-brand materials, and duplicated effort.",
+      "stats": [
+        {
+          "label": "of organizations use AI in at least one business function",
+          "source_label": "McKinsey, November 2025"
+        },
+        {
+          "label": "of marketers review and refine AI output for accuracy, quality, and brand consistency",
+          "source_label": "Canva, March 2025"
+        },
+        {
+          "label": "Reusable components and brand guidance give AI tools a stronger starting point."
+        }
+      ],
       "before": {
         "title": "Traditional approach",
         "items": [

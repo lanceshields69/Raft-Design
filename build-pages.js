@@ -243,7 +243,15 @@ ${rule(2, 'THE SHIFT')}
       <p class="accent"># ${e(L.shift.headline)}</p>
       <p style="margin-top:10px">${e(L.shift.body)}</p>
     </div>
-    <div class="card" style="margin-top:16px">
+${L.shift.stats ? `    <div class="stats" style="margin-top:16px">
+${L.shift.stats.map((s, i) => {
+    const f = F.stats[i];
+    const fig = f.figure ? `<p class="stat-n">${e(f.figure)}</p>` : '';
+    const src = f.source ? `<p class="stat-l"><a href="${a(f.source.url)}">${e(s.source_label)}</a></p>` : '';
+    return `      <div class="stat">${fig}<p class="stat-l">${e(s.label)}</p>${src}</div>`;
+  }).join('\n')}
+    </div>
+` : ''}    <div class="card" style="margin-top:16px">
       <h3>${e(L.shift.before.title)}</h3>
 ${L.shift.before.items.map((t) => `      <p><span class="muted">✕</span> ${e(t)}</p>`).join('\n')}
     </div>

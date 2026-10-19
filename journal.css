@@ -531,7 +531,7 @@
   background: var(--bg-brand);
   color: var(--accent-ink);
   font-family: 'Kode Mono', 'Noto Sans JP', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-  font-size: var(--font-size-eyebrow);
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;

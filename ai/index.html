@@ -74,6 +74,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Caveat:wght@700&family=Fraunces:wght@700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../machine-toggle.css">
   <script>
     // Streamed-output effect (see script at end of body). The text is always
@@ -171,9 +172,6 @@
     .tip-arrow { display: block; flex: none; }
     @media (prefers-reduced-motion: reduce) { .tip { transition: none; } }
     .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
-    /* Occasional random glitch on the logo (script at end of body). */
-    .logo .gl-line { display: block; white-space: pre; will-change: transform; }
-    .logo.glitching { text-shadow: 3px 0 rgba(237, 242, 238, .55), -3px 0 rgba(61, 232, 61, .35); }
     .stream main.term { visibility: hidden; }
     .sx-hide { visibility: hidden; }
     .cursor { display: inline-block; width: 0.6em; height: 1.1em; background: var(--accent); vertical-align: -0.2em; animation: blink 1.1s steps(1) infinite; }
@@ -233,6 +231,7 @@
       .kv dd { margin-bottom: 8px; }
     }
   </style>
+  <link rel="stylesheet" href="./logo-morph.css">
 </head>
 <body>
   <main class="term">
@@ -242,11 +241,14 @@
       <div class="lang" role="group" aria-label="Language"><b aria-current="page">EN</b> | <a href="/ja/ai/" hreflang="ja" lang="ja">JP</a></div>
     </div>
 
-<pre class="logo" aria-label="RAFT">██████      ████    ████████  ████████
+    <div class="logo-stage" role="img" aria-label="RAFT">
+<pre class="logo" aria-hidden="true">██████      ████    ████████  ████████
 ██    ██  ██    ██  ██          ████
 ██████    ████████  ██████      ████
 ██  ██    ██    ██  ██          ████
 ██    ██  ██    ██  ██          ████</pre>
+      <svg class="logo-morph" viewBox="0 0 810 210" preserveAspectRatio="xMinYMid meet" aria-hidden="true"></svg>
+    </div>
     <p class="logo-sub">DESIGN</p>
     <div class="logo-dither" data-dither-banner aria-hidden="true"></div>
 
@@ -593,62 +595,7 @@
       tick(performance.now());
     })();
   </script>
-  <script>
-    // Random glitch bursts on the pixel logo: rows slide sideways, a few
-    // pixels drop out, and the color splits for a few frames. Skipped for
-    // reduced motion; pauses while the tab is hidden. Dispatch a "glitch"
-    // event on .logo to trigger one on demand.
-    (function () {
-      var logo = document.querySelector('.logo');
-      if (!logo || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      var rows = logo.textContent.split('\n');
-      logo.textContent = '';
-      var lines = rows.map(function (txt) {
-        var el = document.createElement('span');
-        el.className = 'gl-line';
-        el.textContent = txt;
-        logo.appendChild(el);
-        return { el: el, txt: txt };
-      });
-      var DROP = ['\u2592', '\u2591', ' '];
-
-      function frame(on) {
-        lines.forEach(function (l) {
-          if (!on) { l.el.style.transform = ''; l.el.textContent = l.txt; return; }
-          var shift = Math.random() < 0.55 ? Math.round((Math.random() * 2 - 1) * 22) : 0;
-          l.el.style.transform = shift ? 'translateX(' + shift + 'px)' : '';
-          l.el.textContent = l.txt.replace(/\u2588/g, function (c) {
-            return Math.random() < 0.05 ? DROP[Math.floor(Math.random() * DROP.length)] : c;
-          });
-        });
-        logo.classList.toggle('glitching', on);
-      }
-
-      var running = false;
-      function burst() {
-        if (running) return;
-        running = true;
-        var n = 5 + Math.floor(Math.random() * 5), i = 0;
-        (function step() {
-          if (i++ < n) { frame(true); setTimeout(step, 40 + Math.random() * 40); }
-          else { frame(false); running = false; }
-        })();
-      }
-
-      function schedule() {
-        setTimeout(function () {
-          if (!document.hidden) {
-            burst();
-            if (Math.random() < 0.3) setTimeout(burst, 380);
-          }
-          schedule();
-        }, 2500 + Math.random() * 5500);
-      }
-
-      logo.addEventListener('glitch', burst);
-      schedule();
-    })();
-  </script>
+  <script src="./logo-morph.js" defer></script>
   <script>
     // Easter egg for anyone who opens the console.
     (function () {

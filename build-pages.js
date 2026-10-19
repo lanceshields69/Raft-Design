@@ -137,8 +137,11 @@ function extractShell(lang) {
   const extraCss = [...head.matchAll(/<link rel="stylesheet" href="[^"]+">/g)]
     .map((m) => absolute(m[0]))
     .filter((l) => !l.includes('/machine-toggle.css'));
+  const fontLinks = [...head.matchAll(/<link href="https:\/\/fonts\.googleapis\.com\/css2[^>]*>/g)]
+    .map((m) => m[0]);
+  if (!fontLinks.length) throw new Error(`${file}: could not find font link for the terminal template`);
   return {
-    fonts: grab(/<link href="https:\/\/fonts\.googleapis\.com\/css2[^>]*>/, 'font link'),
+    fonts: fontLinks.join('\n  '),
     headScript: grab(/<script>\n\s*\/\/ Streamed-output effect[\s\S]*?<\/script>/, 'stream script'),
     style: grab(/<style>[\s\S]*?<\/style>/, 'style block'),
     extraCss: extraCss.join('\n  '),

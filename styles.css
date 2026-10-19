@@ -1885,7 +1885,8 @@ html[lang="ja"] .approach-heading {
   letter-spacing: var(--tracking-eyebrow);
   line-height: var(--line-height-eyebrow);
   text-transform: uppercase;
-  font-weight: var(--weight-black);
+  font-family: 'Kode Mono', 'Noto Sans JP', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-weight: 700;
   background: var(--bg-brand);
   color: var(--accent-ink);
   padding: 5px 20px;

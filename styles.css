@@ -4215,3 +4215,11 @@ html[lang="ja"] .approach-heading {
     font-size: 24px;
   }
 }
+
+/* Home page section titles (Approach, Featured Work, Offerings, Journal,
+   FAQs, Contact): 15px, 2px larger than the 13px eyebrow token. */
+body.home .section-label,
+body.home .featured-work-label,
+body.home .journal-carousel-badge {
+  font-size: 15px;
+}

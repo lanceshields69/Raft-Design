@@ -386,3 +386,13 @@
     gap: 32px;
   }
 }
+
+/* Founder attribution line on case pages for work done before Raft.
+   Sits under the title block so the context is on the page itself,
+   not only in ai.md / llms.txt. */
+.project-page .project-attribution {
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-body);
+  color: var(--text-muted);
+  margin: 0 0 var(--space-lg);
+}

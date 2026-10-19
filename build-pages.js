@@ -147,8 +147,12 @@ function extractShell(lang) {
     logo: `${logo}\n    ${logoAfter}`,
     nav: grab(/<nav class="nav"[\s\S]*?<\/nav>/, 'nav'),
     foot: grab(/<div class="foot">[\s\S]*?<\/div>/, 'footer'),
+    // Subpages get the static logo with glitch bursts from the shared
+    // /ai/logo-glitch.js (added by the template), so drop the morph and any
+    // inline copy of the glitch script the shell still carries.
     tail: absolute(html.slice(html.indexOf('</main>') + '</main>'.length, html.indexOf('</body>')))
-      .replace(/\s*<script src="\/ai\/logo-morph\.js" defer><\/script>/, ''),
+      .replace(/\s*<script src="\/ai\/logo-morph\.js" defer><\/script>/, '')
+      .replace(/\s*<script>\s*\/\/ Random glitch bursts on the pixel logo[\s\S]*?<\/script>/g, ''),
   };
 }
 
@@ -212,6 +216,7 @@ function renderDesignSystemTerminal(content, lang) {
   <link rel="stylesheet" href="/machine-toggle.css">
   ${shell.headScript}
   ${shell.style}${shell.extraCss ? '\n  ' + shell.extraCss : ''}
+  <link rel="stylesheet" href="/ai/logo-glitch.css">
 </head>
 <body>
   <main class="term">
@@ -348,7 +353,8 @@ ${rule(9, 'CONTACT')}
 
     <p class="eof">/* EOF */</p>
     ${foot}
-  </main>${toggle}</body>
+  </main>${toggle}  <script src="/ai/logo-glitch.js"></script>
+</body>
 </html>
 `;
 }

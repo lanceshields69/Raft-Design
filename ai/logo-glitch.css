@@ -1,0 +1,5 @@
+/* Glitch bursts on the static pixel logo of the terminal subpages
+   (the /ai/ home page uses the logo morph instead). Same rules the
+   /ai/ page used before the morph. */
+.logo .gl-line { display: block; white-space: pre; will-change: transform; }
+.logo.glitching { text-shadow: 3px 0 rgba(237, 242, 238, .55), -3px 0 rgba(61, 232, 61, .35); }

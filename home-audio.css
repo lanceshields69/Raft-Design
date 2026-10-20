@@ -13,18 +13,20 @@
 
 .home-audio-credit {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2px;
+  align-items: center;
+  gap: 4px;
   flex: none;
   box-sizing: border-box;
-  width: 132px;
+  width: 158px;
   min-height: 48px;
-  padding: 5px 8px;
+  padding: 5px 7px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 999px;
   background: var(--bg-canvas);
+  font-family: Inter, sans-serif;
+  font-size: 10px;
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 [data-theme="light"] .home-audio-credit {
@@ -43,23 +45,24 @@
 }
 
 .home-audio-title {
+  flex: 1 1 auto;
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 12px;
 }
 
 .home-audio-meta {
   display: flex;
   align-items: center;
-  gap: 4px;
+  flex: none;
+  gap: 3px;
   color: var(--text-muted);
-  font-size: 10px;
 }
 
 .home-audio-source-logo {
   display: block;
-  width: 58px;
+  width: 32px;
   height: auto;
 }
 

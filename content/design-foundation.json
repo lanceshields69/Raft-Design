@@ -145,7 +145,7 @@
       "offers": [
         "Brand system plus up to 5 core product screens. For teams with some existing design foundation to build on.",
         "Brand system plus 8–10 product screens and deeper edge-case mapping. The default for most funded startups starting closer to zero.",
-        "Ongoing fractional design leadership, roughly 15 hours a week, for teams that want to keep the brand and product functions running well without a full-time hire. Month to month, no fixed end date."
+        "Ongoing fractional design leadership, roughly 15 hours a week, for teams that want to keep the brand and product functions running well without a full-time hire. Ongoing, no fixed end date."
       ]
     },
     "terminal": {
@@ -303,7 +303,7 @@
       "land_expand": {
         "eyebrow": "After the sprint",
         "name": "Land & Expand",
-        "description": "Ongoing fractional design leadership, roughly 15 hours a week, for teams that want to keep the brand and product functions running well without a full-time hire. Month to month, no fixed end date.",
+        "description": "Ongoing fractional design leadership, roughly 15 hours a week, for teams that want to keep the brand and product functions running well without a full-time hire. Ongoing, no fixed end date.",
         "suffix": "/mo"
       },
       "note": "Currently taking a limited number of sprint engagements in exchange for case-study rights. If you're an early yes, the terms reflect that."
@@ -415,7 +415,7 @@
       "offers": [
         "ブランドシステム＋主要プロダクト画面 最大5画面。すでにある程度のデザイン基盤があるチーム向け。",
         "ブランドシステム＋8〜10画面のプロダクトUI、より深いエッジケース設計。ほぼゼロから基盤を整えるチームに適した標準プラン。",
-        "専任を採用せずに、ブランドとプロダクトの取り組みを継続したいチームのための、継続的なフラクショナル・デザインリーダーシップ。週15時間程度。月単位の契約で、決まった終了日はありません。"
+        "専任を採用せずに、ブランドとプロダクトの取り組みを継続したいチームのための、継続的なフラクショナル・デザインリーダーシップ。週15時間程度。継続的な契約で、決まった終了日はありません。"
       ]
     },
     "terminal": {
@@ -529,7 +529,7 @@
       "land_expand": {
         "eyebrow": "スプリント終了後",
         "name": "Land & Expand",
-        "description": "専任を採用せずに、ブランドとプロダクトの取り組みを継続したいチームに。週15時間程度の継続契約で、デザインリーダーとしてチームに参画します。月単位の契約で、決まった終了日はありません。"
+        "description": "専任を採用せずに、ブランドとプロダクトの取り組みを継続したいチームに。週15時間程度の継続契約で、デザインリーダーとしてチームに参画します。継続的な契約で、決まった終了日はありません。"
       },
       "note": "現在、事例としての公開にご協力いただける企業を対象に、件数を限定してスプリントを受け付けています。早期にお申し込みいただく場合は、そのご協力を契約条件に反映します。"
     },

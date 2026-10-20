@@ -33,7 +33,14 @@ const PAGES = [
     human: { en: 'design-system/index.html', ja: 'ja/design-system/index.html' },
     terminal: { en: 'ai/design-system/index.html', ja: 'ja/ai/design-system/index.html' },
     render: renderDesignSystemTerminal,
-    jsonld: designSystemJsonLd,
+    blocks: { 'service-jsonld': designSystemJsonLd },
+  },
+  {
+    content: 'content/design-foundation.json',
+    human: { en: 'design-foundation/index.html', ja: 'ja/design-foundation/index.html' },
+    terminal: { en: 'ai/design-foundation/index.html', ja: 'ja/ai/design-foundation/index.html' },
+    render: renderDesignFoundationTerminal,
+    blocks: { 'service-jsonld': designFoundationServiceJsonLd, 'faq-jsonld': designFoundationFaqJsonLd },
   },
 ];
 
@@ -50,16 +57,45 @@ function escText(s) {
 }
 function escAttr(s) { return escText(s).replace(/"/g, '&quot;'); }
 
+// Looks a dotted path up in the content ("meta.title", or "@offers.0.price"
+// for the shared facts). Language-keyed facts such as
+// { "en": "/work/", "ja": "/ja/work/" } resolve to the page language.
+function lookupPath(content, lang, key) {
+  const fromFacts = key.startsWith('@');
+  let cur = fromFacts ? content.facts : content[lang];
+  for (const part of (fromFacts ? key.slice(1) : key).split('.')) {
+    if (cur == null) break;
+    cur = Array.isArray(cur) ? cur[Number(part)] : cur[part];
+  }
+  if (cur && typeof cur === 'object' && !Array.isArray(cur) && lang in cur) cur = cur[lang];
+  return cur;
+}
+
+// "key|format" markers render a shared fact through a per-language template
+// from content[lang].formats, e.g. "@offers.0.price|usd" gives "$28,000" in
+// EN and "28,000米ドル" in JA, so every page shows the same number written
+// the way its language writes it. Templates use {n} (a number or string) or
+// {name} for object facts.
+const GROUPED_FORMATS = ['usd', 'usd_mo'];
+function formatValue(content, lang, fmt, value, key, file) {
+  const tpl = content[lang].formats && content[lang].formats[fmt];
+  if (typeof tpl !== 'string') throw new Error(`${file}: format "${fmt}" (used by "${key}") is missing from ${lang}.formats`);
+  if (value && typeof value === 'object') {
+    return tpl.replace(/\{(\w+)\}/g, (m, k) => {
+      if (!(k in value)) throw new Error(`${file}: "${key}" has no "${k}" for format "${fmt}"`);
+      return String(value[k]);
+    });
+  }
+  const n = GROUPED_FORMATS.includes(fmt) && typeof value === 'number' ? value.toLocaleString('en-US') : String(value);
+  return tpl.replace(/\{n\}/g, n);
+}
+
 function makeResolver(content, lang, file) {
   return function resolve(key) {
-    const fromFacts = key.startsWith('@');
-    let cur = fromFacts ? content.facts : content[lang];
-    for (const part of (fromFacts ? key.slice(1) : key).split('.')) {
-      if (cur == null) break;
-      cur = Array.isArray(cur) ? cur[Number(part)] : cur[part];
-    }
-    // Language-keyed facts, e.g. { "en": "/work/", "ja": "/ja/work/" }
-    if (cur && typeof cur === 'object' && !Array.isArray(cur) && lang in cur) cur = cur[lang];
+    const [pathKey, fmt] = key.split('|');
+    let cur = lookupPath(content, lang, pathKey);
+    if (fmt && cur != null) return formatValue(content, lang, fmt, cur, key, file);
+    if (typeof cur === 'number') cur = String(cur);
     if (typeof cur !== 'string') {
       throw new Error(`${file}: marker "${key}" has no text value in the content file`);
     }
@@ -78,12 +114,13 @@ function patchHuman(html, content, lang, file, page) {
   out = out.replace(/<title>[\s\S]*?<\/title>/, () => `<title>${escText(resolve('meta.title'))}</title>`);
 
   out = out.replace(/<!--c:block:([\w-]+)-->\n([\s\S]*?)<!--\/c:block-->/g, (m, name) => {
-    if (name !== 'service-jsonld') throw new Error(`${file}: unknown block "${name}"`);
-    return `<!--c:block:${name}-->\n${page.jsonld(content, lang)}  <!--/c:block-->`;
+    const block = page.blocks && page.blocks[name];
+    if (!block) throw new Error(`${file}: unknown block "${name}"`);
+    return `<!--c:block:${name}-->\n${block(content, lang)}  <!--/c:block-->`;
   });
 
   let count = 0;
-  out = out.replace(/<!--c:([@\w.-]+)-->([\s\S]*?)<!--\/c-->/g, (m, key) => {
+  out = out.replace(/<!--c:([@\w.|-]+)-->([\s\S]*?)<!--\/c-->/g, (m, key) => {
     count++;
     return `<!--c:${key}-->${escText(resolve(key))}<!--/c-->`;
   });
@@ -168,6 +205,7 @@ function terminalTitle(L, lang) {
     if (!L.terminal.title) throw new Error('ja terminal.title is required (format: "<page>｜Raft Design")');
     return L.terminal.title;
   }
+  if (!L.meta || !L.meta.offer_name) throw new Error('meta.offer_name is required: the EN terminal title is built from it');
   return `Raft Design: ${L.meta.offer_name}`;
 }
 
@@ -185,12 +223,13 @@ function rows(items, link) {
   }).join('\n');
 }
 
-function renderDesignSystemTerminal(content, lang) {
+// The shared frame of every terminal page: head, language bar, logo, nav,
+// summary chat, source line, footer and the human/AI toggle. A page supplies
+// its own chat answer (`chat`) and sections (`body`).
+function terminalDocument(content, lang, { contentFile, question, chat, body }) {
   const F = content.facts;
   const L = content[lang];
-  const J = joiner(lang);
   const shell = extractShell(lang);
-  const other = lang === 'en' ? 'ja' : 'en';
   const human = F.pages.human[lang];
   const here = F.pages.terminal[lang];
   const e = escText;
@@ -205,14 +244,10 @@ function renderDesignSystemTerminal(content, lang) {
     ? `<b aria-current="page">EN</b> | <a href="${F.pages.terminal.ja}" hreflang="ja" lang="ja">JP</a>`
     : `<a href="${F.pages.terminal.en}" hreflang="en" lang="en">EN</a> | <b aria-current="page">JP</b>`;
 
-  const tags = [...L.hero.card.layers, ...L.hero.card.audiences]
-    .map((t) => `<span class="tag">${e(lang === 'en' ? t.toLowerCase().replace(/\s+/g, '-') : t)}</span>`).join('');
-  const tools = [...F.tools, L.tools.other].map((t) => `<span class="tag">${e(t)}</span>`).join('');
-
   return `<!DOCTYPE html>
 <!--
   Machine version of ${SITE}${human}
-  Rendered by build-pages.js from ${PAGES[0].content}, the same source as the
+  Rendered by build-pages.js from ${contentFile}, the same source as the
   human page. Do not edit by hand: edit the JSON and run node build-pages.js.
 -->
 <html lang="${lang}">
@@ -248,18 +283,42 @@ ${shell.logo}
     <section class="chat" aria-label="Summary">
       <div class="chat-head"><span>raft-assistant · ${e(here)}</span><span>status: <span class="accent">online</span> · human-reviewed</span></div>
       <div class="chat-body">
-        <p class="msg-user">${e(L.terminal.question)}</p>
+        <p class="msg-user">${e(question)}</p>
         <div class="msg-ai">
-          <p><strong>${e(L.hero.headline.join(J))}</strong></p>
-          <p>${e(L.hero.body)}</p>
-          <p class="muted">${e(L.hero.card.tagline.join(J))}<span class="cursor" aria-hidden="true"></span></p>
-          <div class="tags">${tags}</div>
+${chat}
         </div>
       </div>
     </section>
     <p class="muted" style="margin-top:16px">${e(L.terminal.source_line)} <a href="${a(human)}">→ ${e(human)}</a></p>
 
-${rule(1, 'OFFER')}
+${body.replace(/\n+$/, '')}
+
+    <p class="eof">/* EOF */</p>
+    ${foot}
+  </main>${toggle}  <script src="/ai/logo-glitch.js"></script>
+</body>
+</html>
+`;
+}
+
+function renderDesignSystemTerminal(content, lang) {
+  const F = content.facts;
+  const L = content[lang];
+  const J = joiner(lang);
+  const human = F.pages.human[lang];
+  const e = escText;
+  const a = escAttr;
+
+  const tags = [...L.hero.card.layers, ...L.hero.card.audiences]
+    .map((t) => `<span class="tag">${e(lang === 'en' ? t.toLowerCase().replace(/\s+/g, '-') : t)}</span>`).join('');
+  const tools = [...F.tools, L.tools.other].map((t) => `<span class="tag">${e(t)}</span>`).join('');
+
+  const chat = `          <p><strong>${e(L.hero.headline.join(J))}</strong></p>
+          <p>${e(L.hero.body)}</p>
+          <p class="muted">${e(L.hero.card.tagline.join(J))}<span class="cursor" aria-hidden="true"></span></p>
+          <div class="tags">${tags}</div>`;
+
+  const body = `${rule(1, 'OFFER')}
     <dl class="kv">
       <dt>name</dt><dd>${e(L.meta.offer_name)}</dd>
       <dt>for</dt><dd>${e(L.meta.audience)}</dd>
@@ -365,13 +424,210 @@ ${rule(9, 'CONTACT')}
       </dl>
       <a class="cta" href="${a(F.links.contact[lang])}">${e(L.cta.button)} →</a>
     </div>
-
-    <p class="eof">/* EOF */</p>
-    ${foot}
-  </main>${toggle}  <script src="/ai/logo-glitch.js"></script>
-</body>
-</html>
 `;
+
+  return terminalDocument(content, lang, { contentFile: PAGES[0].content, question: L.terminal.question, chat, body });
+}
+
+// ------------------------------------------------- Design Foundation Sprint
+
+function ldScript(node) {
+  const body = JSON.stringify(node, null, 2).split('\n').map((l) => '  ' + l).join('\n');
+  return `  <script type="application/ld+json">\n${body}\n  </script>\n`;
+}
+
+// FAQ answers are a string, or an array of parts when the visible answer
+// contains an inline link ("...ground up. <a>AI-Ready Design Systems</a> is for...").
+function faqAnswer(item, lang) {
+  return Array.isArray(item.answer) ? item.answer.join(joiner(lang)) : item.answer;
+}
+
+// The Offer prices come from facts.offers, the same values the visible price
+// markers format, so the page text and the JSON-LD cannot disagree.
+function designFoundationServiceJsonLd(content, lang) {
+  const F = content.facts;
+  const L = content[lang];
+  const node = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: F.offer_name,
+    url: SITE + F.pages.human[lang],
+    description: L.schema.description,
+    provider: { '@id': `${SITE}/#organization` },
+    areaServed: F.area_served,
+  };
+  if (lang === 'ja') node.inLanguage = 'ja';
+  node.audience = { '@type': 'Audience', audienceType: L.schema.audience };
+  node.offers = F.offers.map((o, i) => {
+    const offer = { '@type': 'Offer', name: o.name };
+    if (o.unit) {
+      offer.priceSpecification = { '@type': 'UnitPriceSpecification', price: String(o.price), priceCurrency: F.currency, unitText: o.unit };
+    } else {
+      offer.price = String(o.price);
+      offer.priceCurrency = F.currency;
+    }
+    offer.description = L.schema.offers[i];
+    return offer;
+  });
+  return ldScript(node);
+}
+
+function designFoundationFaqJsonLd(content, lang) {
+  const items = content[lang].faq.items;
+  return ldScript({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: lang,
+    mainEntity: items.map((it) => ({
+      '@type': 'Question',
+      name: it.question,
+      acceptedAnswer: { '@type': 'Answer', text: faqAnswer(it, lang) },
+    })),
+  });
+}
+
+function renderDesignFoundationTerminal(content, lang) {
+  const F = content.facts;
+  const L = content[lang];
+  const R = makeResolver(content, lang, 'content/design-foundation.json');
+  const J = joiner(lang);
+  const e = escText;
+  const a = escAttr;
+  const human = F.pages.human[lang];
+
+  const price = (i) => R(`@offers.${i}.price|${F.offers[i].unit ? 'usd_mo' : 'usd'}`) + (F.offers[i].unit && L.pricing.land_expand.suffix ? L.pricing.land_expand.suffix : '');
+  const billing = R('@billing|billing');
+  const stepNames = L.steps.map((st) => st.name);
+  const tags = stepNames.map((t) => `<span class="tag">${e(lang === 'en' ? t.toLowerCase() : t)}</span>`).join('');
+
+  const chat = `          <p><strong>${e(L.hero.headline.join(J))}</strong></p>
+          <p>${e(L.hero.body)}</p>
+          <p class="muted">${e(L.hero.eyebrow)} · ${e(L.hero.audience)}<span class="cursor" aria-hidden="true"></span></p>
+          <div class="tags">${tags}</div>`;
+
+  let n = 0;
+  const sections = [];
+  const section = (label, html) => { n += 1; sections.push(`${rule(n, label)}\n${html}`); };
+
+  section('OFFER', `    <dl class="kv" style="overflow-wrap:anywhere">
+      <dt>name</dt><dd>${e(F.offer_name)}</dd>
+      <dt>for</dt><dd>${e(L.hero.audience)}</dd>
+      <dt>timeline</dt><dd>${e(R('@duration_weeks|duration'))}</dd>
+      <dt>pricing</dt><dd>${F.offers.map((o, i) => `${e(L.pricing[['core', 'full', 'land_expand'][i]].name)} ${e(price(i))}`).join(' · ')}</dd>
+      <dt>billing</dt><dd>${e(billing)}</dd>
+      <dt>book</dt><dd><a href="${a(F.links.calendly)}">${e(F.links.calendly)}</a></dd>
+      <dt>human page</dt><dd><a href="${a(human)}">${e(SITE + human)}</a></dd>
+    </dl>`);
+
+  if (L.problems) {
+    section('PROBLEMS', `    <p class="prompt">cat problems.md</p>
+    <div class="out">
+      <p class="muted">// ${e(L.problems.label)}</p>
+      <p class="accent"># ${e(L.problems.headline)}</p>
+      <p style="margin-top:10px">${e(L.problems.lead)}</p>
+${L.problems.items.map((it) => `      <p style="margin-top:10px"><span class="muted">✕</span> <strong>${e(it.title)}</strong> ${e(it.body)}</p>`).join('\n')}
+      <p class="accent" style="margin-top:14px"># ${e(L.problems.outcome.headline)}</p>
+${L.problems.outcome.items.map((it) => `      <p><span class="accent">✓</span> <strong>${e(it.name)}</strong> ${e(it.body)}</p>`).join('\n')}
+    </div>`);
+  }
+
+  section('SCOPE', `    <p class="prompt">cat scope.md</p>
+    <div class="out">
+      <p class="muted">// ${e(L.scope.label)}</p>
+      <p class="accent"># ${e(L.scope.headline)}</p>
+      <p style="margin-top:10px">${e(L.scope.lead)}</p>
+      <div style="margin-top:12px">
+${F.steps.map((st, i) => {
+    const week = R(`@steps.${i}.week|week`);
+    return `      <div class="row"><span class="n">${e(st.number)}</span><span>${e(L.steps[i].name)}</span><span class="leader"></span><span class="meta">${e(week)}</span></div>
+      <p style="padding-left:calc(2ch + 10px);margin-bottom:6px">${e(L.steps[i].body)}</p>`;
+  }).join('\n')}
+      </div>
+    </div>`);
+
+  section('TRACK RECORD', `    <p class="prompt">cat track-record.md</p>
+    <div class="out">
+      <p class="muted">// ${e(L.track.label)}</p>
+      <p class="accent"># ${e(L.track.headline)}</p>
+      <p style="margin-top:10px">${e(L.track.lead)}</p>
+${F.clients.map((c, i) => `      <div class="card" style="margin-top:14px">
+        <h3>${e(c.name)}</h3>
+        <p class="muted">${e(L.track.items[i].status)}</p>
+        <p>${e(L.track.items[i].quote)}</p>
+        <p class="muted">${e(L.track.items[i].attribution)}</p>
+      </div>`).join('\n')}
+    </div>`);
+
+  const offerCard = (i, key) => {
+    const p = L.pricing[key];
+    const lines = [`        <h3>${e(F.offers[i].name)}</h3>`];
+    if (p.eyebrow) lines.push(`        <p class="muted">${e(p.eyebrow)}</p>`);
+    lines.push(`        <p>${e(p.description)}</p>`);
+    lines.push(`        <p><span class="muted">price:</span> <span class="accent">${e(price(i))}</span></p>`);
+    if (!F.offers[i].unit) lines.push(`        <p class="muted">${e(billing)}</p>`);
+    if (p.includes) {
+      lines.push(`        <p class="muted">${e(L.pricing.included_label)}</p>`);
+      lines.push(...p.includes.map((t) => `        <p><span class="accent">+</span> ${e(t)}</p>`));
+    }
+    return `      <div class="card"${i ? '' : ' style="margin-top:14px"'}>\n${lines.join('\n')}\n      </div>`;
+  };
+  section('PRICING', `    <p class="prompt">cat pricing.md</p>
+    <div class="out">
+      <p class="muted">// ${e(L.pricing.label)}</p>
+      <p class="accent"># ${e(L.pricing.headline)}</p>
+      <p style="margin-top:10px">${e(L.pricing.lead)}</p>
+${offerCard(0, 'core')}
+${offerCard(1, 'full')}
+${offerCard(2, 'land_expand')}
+      <p class="muted" style="margin-top:14px">${e(L.pricing.note)}</p>
+      <p style="margin-top:12px"><a class="cta" href="${a(F.links.calendly)}">${e(L.pricing.cta_reserve)} →</a></p>
+    </div>`);
+
+  section('SELECTED WORK', `    <p class="prompt">ls -l /work --selected</p>
+    <div class="out">
+      <p class="muted">// ${e(L.work.label)}</p>
+      <p class="accent"># ${e(L.work.headline)}</p>
+      <div style="margin-top:12px">
+${F.showcase.map((w, i) => {
+    const name = w.href ? `<a href="${a(w.href[lang])}">${e(w.name)}</a>` : `<span>${e(w.name)}</span>`;
+    return `      <div class="row"><span class="n">${i + 1}</span>${name}<span class="leader"></span><span class="meta">${e(L.work.items[i].subtitle)}</span></div>`;
+  }).join('\n')}
+      </div>
+    </div>`);
+
+  section('AI-READY SYSTEM', `    <p class="prompt">cat ai-ready-design-system.md</p>
+    <div class="out">
+      <p class="muted">// ${e(L.ai.label)}</p>
+      <p class="accent"># ${e(L.ai.headline)}</p>
+      <p style="margin-top:10px">${e(L.ai.body)}</p>
+      <p style="margin-top:12px"><a href="${a(F.links.design_system[lang])}">→ ${e(L.ai.cta)}</a></p>
+    </div>`);
+
+  section('FAQ', `    <dl class="faq">
+${L.faq.items.map((it) => `      <dt>${e(it.question)}</dt>
+      <dd>${e(faqAnswer(it, lang))}</dd>`).join('\n')}
+    </dl>`);
+
+  section('NEXT STEP', `    <p class="prompt">raft --connect</p>
+    <div class="out">
+      <p class="muted">// ${e(L.next.label)}</p>
+      <p class="accent"># ${e(L.next.headline)}</p>
+      <p style="margin-top:10px"><strong>${e(L.next.tab_founder)}.</strong> ${e(L.next.founder_fit)} ${e(L.next.founder_intro)}</p>
+      <p style="margin-top:10px"><strong>${e(L.next.tab_vc)}.</strong> ${e(L.next.vc_fit)} ${e(L.next.vc_intro)}</p>
+      <dl class="kv" style="margin-top:12px;overflow-wrap:anywhere">
+        <dt>email</dt><dd><a href="mailto:${a(F.email)}">${e(F.email)}</a></dd>
+        <dt>book</dt><dd><a href="${a(F.links.calendly)}">${e(F.links.calendly)}</a></dd>
+        <dt>form</dt><dd><a href="${a(human + '#next-step')}">${e(human + '#next-step')}</a></dd>
+      </dl>
+      <a class="cta" href="${a(F.links.calendly)}">${e(L.hero.cta_book)} →</a>
+    </div>`);
+
+  return terminalDocument(content, lang, {
+    contentFile: 'content/design-foundation.json',
+    question: L.terminal.question,
+    chat,
+    body: sections.join('\n\n'),
+  });
 }
 
 // ------------------------------------------------------------------ main

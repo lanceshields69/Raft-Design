@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<!--
+  Machine version of https://raftdesign.studio/design-foundation/
+  Rendered by build-pages.js from content/design-foundation.json, the same source as the
+  human page. Do not edit by hand: edit the JSON and run node build-pages.js.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raft Design: Design Foundation Sprint</title>
+  <meta name="description" content="Machine-readable version of the Design Foundation Sprint page. It renders from the same content source as the human page.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="/images/r-mark-favicon.png">
+  <link rel="alternate" hreflang="en" href="https://raftdesign.studio/ai/design-foundation/">
+  <link rel="alternate" hreflang="ja" href="https://raftdesign.studio/ja/ai/design-foundation/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/machine-toggle.css">
+  <script>
+    // Streamed-output effect (see script at end of body). The text is always
+    // present in the HTML; this only hides it until the script has blanked it.
+    // Streams once per browser session; repeat views render instantly.
+    var seen = false;
+    try { seen = sessionStorage.getItem('raft-ai-streamed') === '1'; } catch (e) {}
+    if (/[?&]stream\b/.test(location.search)) seen = false; // /ai/?stream replays it
+    if (!seen && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      try { sessionStorage.setItem('raft-ai-streamed', '1'); } catch (e) {}
+      document.documentElement.classList.add('stream');
+      setTimeout(function () { document.documentElement.classList.remove('stream'); }, 4000);
+    }
+  </script>
+  <style>
+    :root {
+      --bg: #04220F;
+      --bg-sunken: #02190A;
+      --bg-elevated: #102A1B;
+      --text: #EDF2EE;
+      --muted: #8FA396;
+      --accent: #3DE83D;
+      --rule: #1E3A28;
+      --bright: #438259;
+      --ink: #0B1F14;
+      --logo-size: clamp(8px, 2.6vw, 20px); /* logo is 5 lines at line-height 1 */
+      --mono: 'Kode Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: var(--bg); }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 14px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: var(--accent); color: var(--ink); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { background: var(--accent); color: var(--ink); }
+    a:focus-visible { outline: 1px solid var(--accent); outline-offset: 2px; }
+
+    .term { max-width: 920px; margin: 0 auto; padding: 0 24px 96px; }
+
+    /* ---- top bar ---- */
+    .bar {
+      position: sticky; top: 0; z-index: 5;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 14px 0; background: var(--bg);
+      border-bottom: 1px dashed var(--rule);
+      font-size: 12px; color: var(--muted);
+    }
+    .bar-left { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); flex: none; }
+    .lang { color: var(--muted); font-size: 12px; flex: none; }
+    .lang b { color: var(--accent); font-weight: 700; }
+    .lang a { color: var(--muted); }
+    .lang a:hover { color: var(--ink); }
+    .bar-path { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* ---- logo ---- */
+    .logo { margin-top: 48px; color: var(--accent); font-size: var(--logo-size); line-height: 1; white-space: pre; font-weight: 700; overflow: hidden; }
+    .logo-sub { margin-top: 10px; letter-spacing: 0.9em; font-weight: 700; color: var(--text); }
+    /* Paper dither wave, same shader as the home page's Design Intelligence
+       Engine banner. Full content width, as tall as the 5-line logo. */
+    .logo-dither { margin-top: 24px; width: 100%; height: calc(var(--logo-size) * 5); overflow: hidden; }
+    .nav { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 4px 20px; }
+    .nav a { color: var(--text); }
+    .nav a::before { content: '['; color: var(--muted); }
+    .nav a::after { content: ']'; color: var(--muted); }
+    .nav a:hover { color: var(--ink); }
+    .nav a:hover::before, .nav a:hover::after { color: var(--ink); }
+
+    /* ---- blocks ---- */
+    .rule { margin: 44px 0 20px; color: var(--bright); white-space: nowrap; overflow: hidden; }
+    .rule b { color: var(--accent); font-weight: 700; }
+    .prompt { color: var(--accent); }
+    .prompt::before { content: '$ '; color: var(--muted); }
+    .out { margin: 6px 0 0; color: var(--text); }
+    .muted { color: var(--muted); }
+    .accent { color: var(--accent); }
+    /* Tooltip for links that lead out to the regular (human) pages —
+       Figma "tool-tip" (1143:4609). Positioned by script above the link. */
+    .tip {
+      position: fixed; z-index: 1000; left: 0; top: 0;
+      display: flex; flex-direction: column; align-items: center;
+      pointer-events: none; opacity: 0; transition: opacity .12s ease;
+    }
+    .tip.show { opacity: 1; }
+    .tip-box {
+      background: #818181; padding: 6px 8px; width: 150px;
+      color: #fff; font-size: 11px; line-height: 14px; font-weight: 400; text-align: center;
+    }
+    .tip-arrow { display: block; flex: none; }
+    @media (prefers-reduced-motion: reduce) { .tip { transition: none; } }
+    .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+    .stream main.term { visibility: hidden; }
+    .sx-hide { visibility: hidden; }
+    .cursor { display: inline-block; width: 0.6em; height: 1.1em; background: var(--accent); vertical-align: -0.2em; animation: blink 1.1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
+
+    /* assistant chat */
+    .chat { margin-top: 36px; border: 1px solid var(--rule); background: var(--bg-sunken); }
+    .chat-head { padding: 8px 16px; border-bottom: 1px solid var(--rule); color: var(--muted); font-size: 12px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .chat-body { padding: 18px 16px 20px; }
+    .msg-user { color: var(--muted); }
+    .msg-user::before { content: '> '; color: var(--accent); font-weight: 700; }
+    .msg-ai { margin-top: 14px; padding-left: 16px; border-left: 2px solid var(--accent); }
+    .msg-ai p + p { margin-top: 12px; }
+    .msg-ai strong { color: var(--accent); font-weight: 700; }
+    .tags { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { border: 1px solid var(--bright); color: var(--muted); padding: 0 8px; font-size: 12px; }
+
+    /* key-value + leaders */
+    .kv { display: grid; grid-template-columns: max-content 1fr; gap: 2px 16px; }
+    .kv dt { color: var(--muted); }
+    .kv dd { color: var(--text); }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .stat { border: 1px solid var(--rule); background: var(--bg-elevated); padding: 14px 16px; }
+    .stat-n { color: var(--accent); font-size: 30px; font-weight: 700; line-height: 1.2; }
+    .stat-l { color: var(--muted); font-size: 12px; margin-top: 4px; }
+
+    .row { display: flex; align-items: baseline; gap: 10px; padding: 4px 0; }
+    .row .n { color: var(--muted); flex: none; width: 2ch; text-align: right; }
+    .row .leader { flex: 1; min-width: 12px; border-bottom: 1px dotted var(--bright); transform: translateY(-4px); }
+    .row .meta { color: var(--muted); font-size: 12px; text-align: right; }
+    @media (max-width: 640px) {
+      .row { flex-wrap: wrap; }
+      .row .leader { display: none; }
+      .row .meta { width: 100%; text-align: left; padding-left: calc(2ch + 10px); }
+    }
+
+    .card { border: 1px solid var(--rule); background: var(--bg-elevated); padding: 16px 18px; }
+    .card + .card { margin-top: 14px; }
+    .card h3 { font-size: 14px; color: var(--accent); font-weight: 700; }
+    .card p { margin-top: 6px; }
+    .card .go { margin-top: 10px; display: inline-block; }
+
+    .faq dt { margin-top: 20px; color: var(--accent); font-weight: 700; }
+    .faq dt::before { content: '* '; color: var(--muted); }
+    .faq dd { margin-top: 4px; padding-left: 2ch; color: var(--text); }
+
+    .cta { margin-top: 8px; display: inline-block; background: var(--accent); color: var(--ink); font-weight: 700; padding: 8px 18px; }
+    .cta:hover { background: var(--text); color: var(--ink); }
+
+    .eof { margin-top: 56px; color: var(--muted); }
+    .foot { margin-top: 20px; padding-top: 16px; border-top: 1px dashed var(--rule); font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 20px; }
+
+    @media (max-width: 480px) {
+      .term { padding: 0 16px 72px; }
+      .kv { grid-template-columns: 1fr; }
+      .kv dd { margin-bottom: 8px; }
+    }
+  </style>
+  <link rel="stylesheet" href="/ai/logo-glitch.css">
+</head>
+<body>
+  <main class="term">
+
+    <div class="bar">
+      <div class="bar-left"><span class="dot" aria-hidden="true"></span><span class="bar-path">raftdesign.studio/ai/design-foundation</span></div>
+      <div class="lang" role="group" aria-label="Language"><b aria-current="page">EN</b> | <a href="/ja/ai/design-foundation/" hreflang="ja" lang="ja">JP</a></div>
+    </div>
+
+<pre class="logo" aria-label="RAFT">██████      ████    ████████  ████████
+██    ██  ██    ██  ██          ████
+██████    ████████  ██████      ████
+██  ██    ██    ██  ██          ████
+██    ██  ██    ██  ██          ████</pre>
+    <p class="logo-sub">DESIGN</p>
+    <div class="logo-dither" data-dither-banner aria-hidden="true"></div>
+
+    <nav class="nav" aria-label="Machine navigation">
+      <a href="/ai/">/home</a>
+      <a href="/work/">/work</a>
+      <a href="/services/">/services</a>
+      <a href="/about/">/about</a>
+      <a href="/journal/">/journal</a>
+      <a href="/labs/">/labs</a>
+      <a href="/contact/">/contact</a>
+      <a href="/llms.txt" data-tip="tip-llms" aria-describedby="tip-llms">/llms.txt</a>
+      <a href="/ai.md" data-tip="tip-aimd" aria-describedby="tip-aimd">/ai.md</a>
+    </nav>
+
+    <section class="chat" aria-label="Summary">
+      <div class="chat-head"><span>raft-assistant · /ai/design-foundation/</span><span>status: <span class="accent">online</span> · human-reviewed</span></div>
+      <div class="chat-body">
+        <p class="msg-user">what is the design foundation sprint?</p>
+        <div class="msg-ai">
+          <p><strong>Scale the product. Not the design debt.</strong></p>
+          <p>Raft Design helps recently funded teams turn scattered brand, UX, and product decisions into a foundation the whole company can build from in four weeks.</p>
+          <p class="muted">The Design Foundation Sprint · For Funded Startups<span class="cursor" aria-hidden="true"></span></p>
+          <div class="tags"><span class="tag">define</span><span class="tag">brand</span><span class="tag">product</span><span class="tag">systemize</span></div>
+        </div>
+      </div>
+    </section>
+    <p class="muted" style="margin-top:16px">Both versions of this page render from the same content source. <a href="/design-foundation/">→ /design-foundation/</a></p>
+
+    <h2 class="rule" id="offer"><b>──[ 01 ]──</b> OFFER ───────────────────────────────────────────────────────────────────────────────────────────</h2>
+    <dl class="kv" style="overflow-wrap:anywhere">
+      <dt>name</dt><dd>Design Foundation Sprint</dd>
+      <dt>for</dt><dd>For Funded Startups</dd>
+      <dt>timeline</dt><dd>4 weeks</dd>
+      <dt>pricing</dt><dd>Core $28,000 · Full System $34,000 · Land &amp; Expand $10,000/mo</dd>
+      <dt>billing</dt><dd>50% to start · 50% at delivery</dd>
+      <dt>book</dt><dd><a href="https://calendly.com/raftdesignstudio/30min">https://calendly.com/raftdesignstudio/30min</a></dd>
+      <dt>human page</dt><dd><a href="/design-foundation/">https://raftdesign.studio/design-foundation/</a></dd>
+    </dl>
+
+    <h2 class="rule" id="problems"><b>──[ 02 ]──</b> PROBLEMS ────────────────────────────────────────────────────────────────────────────────────────</h2>
+    <p class="prompt">cat problems.md</p>
+    <div class="out">
+      <p class="muted">// Design maturity gap</p>
+      <p class="accent"># The design gap usually shows up before the design hire does.</p>
+      <p style="margin-top:10px">At Series A, the product and team start growing faster than the decisions holding them together. You may already be seeing the signs.</p>
+      <p style="margin-top:10px"><span class="muted">✕</span> <strong>The product still needs someone to explain it.</strong> It works in a founder-led demo, but new users need help understanding the value or completing important workflows.</p>
+      <p style="margin-top:10px"><span class="muted">✕</span> <strong>Every release adds another version of the same pattern.</strong> With AI you ship features quickly, but the interface becomes less consistent and harder to extend.</p>
+      <p style="margin-top:10px"><span class="muted">✕</span> <strong>Design decisions are scattered across the team.</strong> Founders, PMs, and engineers make customer-experience decisions one ticket at a time.</p>
+      <p style="margin-top:10px"><span class="muted">✕</span> <strong>The company tells a different story in every place.</strong> The website, sales deck, demo, and product no longer feel like one company.</p>
+      <p style="margin-top:10px"><span class="muted">✕</span> <strong>You need senior judgment before you need a design department.</strong> The gap is already affecting the roadmap, but a full design team is still premature.</p>
+      <p class="accent" style="margin-top:14px"># Raft turns scattered decisions into a foundation the whole team can build from.</p>
+      <p><span class="accent">✓</span> <strong>Clear brand</strong> One story across product, sales, and marketing.</p>
+      <p><span class="accent">✓</span> <strong>Stronger core UX</strong> Important workflows that make sense without a guided demo.</p>
+      <p><span class="accent">✓</span> <strong>Reusable product system</strong> Shared patterns the team can extend without starting over.</p>
+    </div>
+
+    <h2 class="rule" id="scope"><b>──[ 03 ]──</b> SCOPE ───────────────────────────────────────────────────────────────────────────────────────────</h2>
+    <p class="prompt">cat scope.md</p>
+    <div class="out">
+      <p class="muted">// The scope</p>
+      <p class="accent"># Brand first. Then the product that expresses it.</p>
+      <p style="margin-top:10px">Why four weeks, not three: most sprints pick one lane. This does both, in the order that actually works.</p>
+      <div style="margin-top:12px">
+      <div class="row"><span class="n">01</span><span>Define</span><span class="leader"></span><span class="meta">— Week 1</span></div>
+      <p style="padding-left:calc(2ch + 10px);margin-bottom:6px">Direction-setting. Positioning, audience, and the design foundation everything else builds on.</p>
+      <div class="row"><span class="n">02</span><span>Brand</span><span class="leader"></span><span class="meta">— Week 2</span></div>
+      <p style="padding-left:calc(2ch + 10px);margin-bottom:6px">Identity system: typography, color architecture, voice, and an investor-ready deck template.</p>
+      <div class="row"><span class="n">03</span><span>Product</span><span class="leader"></span><span class="meta">— Week 3</span></div>
+      <p style="padding-left:calc(2ch + 10px);margin-bottom:6px">5–10 high-fidelity screens, interactive prototype, edge cases mapped, built on the Week 2 system.</p>
+      <div class="row"><span class="n">04</span><span>Systemize</span><span class="leader"></span><span class="meta">— Week 4</span></div>
+      <p style="padding-left:calc(2ch + 10px);margin-bottom:6px">Tokenized component library, fully documented handoff, recorded engineering walkthrough. Your team builds on it without you in the room.</p>
+      </div>
+    </div>
+
+    <h2 class="rule" id="track-record"><b>──[ 04 ]──</b> TRACK RECORD ────────────────────────────────────────────────────────────────────────────────────</h2>
+    <p class="prompt">cat track-record.md</p>
+    <div class="out">
+      <p class="muted">// Track record</p>
+      <p class="accent"># Happy clients. Real outcomes.</p>
+      <p style="margin-top:10px">An IPO on Nasdaq. Acquisitions by HPE and Tecsys. Companies still running and growing years later. What people who hired our founder have to say.</p>
+      <div class="card" style="margin-top:14px">
+        <h3>LegalOn</h3>
+        <p class="muted">Current Project · $200M+ funded</p>
+        <p>“Lance seamlessly connected LegalOn’s U.S.-born brand with the cultural context of Japan. The brand architecture and framework he created gave us a clear way to express our core idea of ‘ON’ while keeping the brand cohesive as our product portfolio expanded.”</p>
+        <p class="muted">— Rin Yano, Chief Design Officer, LegalOn</p>
+      </div>
+      <div class="card" style="margin-top:14px">
+        <h3>Cloud Cruiser</h3>
+        <p class="muted">Acquired by HPE, 2017</p>
+        <p>“LinkedIn only lets me rate Lance high on three attributes, but he actually delivers high on all: great results, personable, expert, good value, on time, high integrity and creative. Finding all of these in one person is very rare.”</p>
+        <p class="muted">— Karla Haley, Director of Demand Generation, Cloud Cruiser</p>
+      </div>
+      <div class="card" style="margin-top:14px">
+        <h3>Health Catalyst</h3>
+        <p class="muted">IPO'd on Nasdaq, 2019 · ~$292M revenue</p>
+        <p>“Lance, and his team, did a fantastic job helping our company launch its new brand identity. He was directly involved in all aspects of the project, including the brand redesign strategy as well as the creative implementation on our fully redesigned website and other collateral.”</p>
+        <p class="muted">— Dan Burton, CEO at the time</p>
+      </div>
+      <div class="card" style="margin-top:14px">
+        <h3>OrderDynamics</h3>
+        <p class="muted">Acquired by Tecsys, 2018</p>
+        <p>“I first worked with Lance's team at OrderDynamics on a website redesign. I thought their work was great and brought them in to redo our website at Leadspace. We went through an RFP process and reviewed several other vendors, but Lance's team stood out in terms of their creative talent and their unique experience in designing B2B websites focused on generating leads.”</p>
+        <p class="muted">— Kylee Hall, Director of Product Marketing, OrderDynamics and Leadspace</p>
+      </div>
+      <div class="card" style="margin-top:14px">
+        <h3>Leadspace</h3>
+        <p class="muted">Still operating, still shipping</p>
+        <p>“Lance and his team did an amazing job redesigning Leadspace.com. Really cutting edge work that helps us stand out in the competitive predictive analytics market. They were also great to work with, patient with our requests but helped guide us with a clear and thoughtful approach to design.”</p>
+        <p class="muted">— Damon Waldron, Director of Demand Generation, Leadspace</p>
+      </div>
+    </div>
+
+    <h2 class="rule" id="pricing"><b>──[ 05 ]──</b> PRICING ─────────────────────────────────────────────────────────────────────────────────────────</h2>
+    <p class="prompt">cat pricing.md</p>
+    <div class="out">
+      <p class="muted">// Pricing</p>
+      <p class="accent"># The most direct way to hire senior design leadership.</p>
+      <p style="margin-top:10px">No hourly billing. No scope creep. No junior handoff. Just a fixed price for senior judgment, delivered in four weeks.</p>
+      <div class="card" style="margin-top:14px">
+        <h3>Core</h3>
+        <p>Ideal for teams with some existing design foundation. You need a brand system and a working product to show investors and early customers, without the full weight of a mature product surface yet.</p>
+        <p><span class="muted">price:</span> <span class="accent">$28,000</span></p>
+        <p class="muted">50% to start · 50% at delivery</p>
+        <p class="muted">What's included</p>
+        <p><span class="accent">+</span> Positioning, audience, experience principles</p>
+        <p><span class="accent">+</span> Core brand identity system (typography, color, voice)</p>
+        <p><span class="accent">+</span> Key sales and marketing templates</p>
+        <p><span class="accent">+</span> Up to 5 core product screens, high-fidelity</p>
+        <p><span class="accent">+</span> Interactive prototype</p>
+        <p><span class="accent">+</span> Core states and edge cases mapped</p>
+        <p><span class="accent">+</span> Component library and design tokens</p>
+        <p><span class="accent">+</span> Documentation and engineering handoff</p>
+        <p><span class="accent">+</span> AI-ready design system (DESIGN.md)</p>
+        <p><span class="accent">+</span> Everything built and delivered in Figma</p>
+      </div>
+      <div class="card">
+        <h3>Full System Sprint</h3>
+        <p>Ideal for teams starting closer to zero. You need the full brand system and a broader product surface mapped and built, ready to hand to engineering across your whole app, not just a few key screens.</p>
+        <p><span class="muted">price:</span> <span class="accent">$34,000</span></p>
+        <p class="muted">50% to start · 50% at delivery</p>
+        <p class="muted">What's included</p>
+        <p><span class="accent">+</span> Everything in Core, plus:</p>
+        <p><span class="accent">+</span> Expanded brand system: iconography/illustration style, extended template set (deck, social, email)</p>
+        <p><span class="accent">+</span> Full messaging framework: positioning statement, brand pillars, audience-specific messaging</p>
+        <p><span class="accent">+</span> 8–10 product screens, high-fidelity</p>
+        <p><span class="accent">+</span> Deeper edge-case and state mapping across the full product surface</p>
+        <p><span class="accent">+</span> Expanded component library covering additional product surfaces</p>
+        <p><span class="accent">+</span> Everything built and delivered in Figma</p>
+      </div>
+      <div class="card">
+        <h3>Land &amp; Expand</h3>
+        <p class="muted">After the sprint</p>
+        <p>Ongoing fractional design leadership, roughly 15 hours a week, for teams that want to keep the brand and product functions running well without a full-time hire.</p>
+        <p><span class="muted">price:</span> <span class="accent">$10,000/mo</span></p>
+      </div>
+      <p class="muted" style="margin-top:14px">Currently taking a limited number of sprint engagements in exchange for case-study rights. If you're an early yes, the terms reflect that.</p>
+      <p style="margin-top:12px"><a class="cta" href="https://calendly.com/raftdesignstudio/30min">Reserve your sprint →</a></p>
+    </div>
+
+    <h2 class="rule" id="selected-work"><b>──[ 06 ]──</b> SELECTED WORK ───────────────────────────────────────────────────────────────────────────────────</h2>
+    <p class="prompt">ls -l /work --selected</p>
+    <div class="out">
+      <p class="muted">// Selected work</p>
+      <p class="accent"># Startup and enterprise work, built to move.</p>
+      <div style="margin-top:12px">
+      <div class="row"><span class="n">1</span><a href="/work/legalon/">LegalOn</a><span class="leader"></span><span class="meta">Brand &amp; Product</span></div>
+      <div class="row"><span class="n">2</span><a href="/work/walmart/">Walmart</a><span class="leader"></span><span class="meta">AI shopping experience</span></div>
+      <div class="row"><span class="n">3</span><a href="/work/adobe-express-photos/">Adobe Express Photos</a><span class="leader"></span><span class="meta">0-to-1 AI product</span></div>
+      <div class="row"><span class="n">4</span><span>Leadspace</span><span class="leader"></span><span class="meta">B2B website redesign</span></div>
+      <div class="row"><span class="n">5</span><span>Rally Health</span><span class="leader"></span><span class="meta">Consumer health platform</span></div>
+      <div class="row"><span class="n">6</span><span>Fitbit</span><span class="leader"></span><span class="meta">In-Store iPad App</span></div>
+      <div class="row"><span class="n">7</span><span>Besure</span><span class="leader"></span><span class="meta">Crowdfunded Insurance</span></div>
+      </div>
+    </div>
+
+    <h2 class="rule" id="ai-ready-system"><b>──[ 07 ]──</b> AI-READY SYSTEM ─────────────────────────────────────────────────────────────────────────────────</h2>
+    <p class="prompt">cat ai-ready-design-system.md</p>
+    <div class="out">
+      <p class="muted">// AI-ready design system</p>
+      <p class="accent"># Your design system shouldn't stop at Figma.</p>
+      <p style="margin-top:10px">Every sprint includes an AI-ready design system, not just Figma files. Your brand rules, tokens, components, and DESIGN.md stay usable by your team and your AI tools long after the sprint ends.</p>
+      <p style="margin-top:12px"><a href="https://raftdesign.studio/design-system/">→ See how it works</a></p>
+    </div>
+
+    <h2 class="rule" id="faq"><b>──[ 08 ]──</b> FAQ ─────────────────────────────────────────────────────────────────────────────────────────────</h2>
+    <dl class="faq">
+      <dt>How is this different from hiring a freelancer?</dt>
+      <dd>You're working directly with someone who's led design at Adobe and Walmart scale, not delegating to a junior contractor. The output is also a full system, brand and product together, not a one-off deliverable.</dd>
+      <dt>What if we need more than 10 product screens?</dt>
+      <dd>The Full System Sprint covers most funded startups' core surfaces. Larger scopes are quoted directly after the fit assessment call.</dd>
+      <dt>Do you work with teams outside the US?</dt>
+      <dd>Raft works in English and Japanese.</dd>
+      <dt>What happens after the sprint ends?</dt>
+      <dd>Most teams either take what's delivered and run with it in-house, or move into the Land &amp; Expand fractional retainer to keep shipping with continued design leadership.</dd>
+      <dt>How soon can we start?</dt>
+      <dd>Sprints typically start within four weeks of booking a fit assessment call, depending on current availability. Book a call to find the next open slot.</dd>
+      <dt>Will our product and roadmap details stay confidential?</dt>
+      <dd>Yes. Happy to sign an NDA before any detailed discussion, just ask.</dd>
+      <dt>Why can't I just use AI tools myself?</dt>
+      <dd>AI tools are powerful, but they don't know which choices are right for your specific business. The value isn't the AI, it's 25+ years of judgment directing it: knowing what to build, when it's right, and how to get there fast. Without that direction, AI accelerates guesswork just as easily as it accelerates good decisions.</dd>
+      <dt>How is this different from AI-Ready Design Systems?</dt>
+      <dd>The Sprint is a fixed, one-time engagement that builds your brand and product foundation from the ground up. AI-Ready Design Systems is for teams that already have a system in place and want it restructured so their team and their AI tools can work from it directly. Most funded startups start with the Sprint.</dd>
+    </dl>
+
+    <h2 class="rule" id="next-step"><b>──[ 09 ]──</b> NEXT STEP ───────────────────────────────────────────────────────────────────────────────────────</h2>
+    <p class="prompt">raft --connect</p>
+    <div class="out">
+      <p class="muted">// Next step</p>
+      <p class="accent"># Let's unblock your roadmap.</p>
+      <p style="margin-top:10px"><strong>I'm a founder.</strong> Best fit: funded startups with an engineering team already shipping and a brand or product that hasn't caught up yet. Share a brief below and you'll get a scoping note and timeline back within 48 hours, or book the 30-minute call directly if you'd rather talk it through first.</p>
+      <p style="margin-top:10px"><strong>I'm a VC.</strong> Best fit: portfolio companies with an engineering team already shipping and a brand or product that hasn't caught up yet. Tell us who, and we'll reach out directly.</p>
+      <dl class="kv" style="margin-top:12px;overflow-wrap:anywhere">
+        <dt>email</dt><dd><a href="mailto:hello@raftdesign.studio">hello@raftdesign.studio</a></dd>
+        <dt>book</dt><dd><a href="https://calendly.com/raftdesignstudio/30min">https://calendly.com/raftdesignstudio/30min</a></dd>
+        <dt>form</dt><dd><a href="/design-foundation/#next-step">/design-foundation/#next-step</a></dd>
+      </dl>
+      <a class="cta" href="https://calendly.com/raftdesignstudio/30min">Book a 30-minute fit assessment →</a>
+    </div>
+
+    <p class="eof">/* EOF */</p>
+    <div class="foot">
+      <a href="/design-foundation/">human version</a>
+      <a href="/llms.txt" data-tip="tip-llms" aria-describedby="tip-llms">llms.txt</a>
+      <a href="/ai.md" data-tip="tip-aimd" aria-describedby="tip-aimd">ai.md</a>
+      <a href="/sitemap.xml">sitemap.xml</a>
+      <span>designed by hand. built by AI.</span>
+    </div>
+  </main>
+  <span class="sr-only" id="tip-llms">A table of contents for AI. Models read it first to find their way around.</span>
+  <span class="sr-only" id="tip-aimd">Raft, minus the design. Everything an AI needs to decide if we're a fit.</span>
+  <div class="tip" id="human-tip" role="tooltip" aria-hidden="true">
+    <div class="tip-box">This content is only human-compatible.</div>
+    <svg class="tip-arrow" width="12.1244" height="10.5" viewBox="0 0 12.1244 10.5" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.06218 10.5L12.1244 0H0L6.06218 10.5Z" fill="#818181"/></svg>
+  </div>
+  <div class="hm-toggle" role="group" aria-label="Site version">
+    <svg class="hm-toggle-shape" width="51" height="208" viewBox="0 0 51 208" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><clipPath id="hm-shape"><path d="M51 208C51 186.891 36.0169 176 25 176H26C11.6406 176 0 164.359 0 150V56C1.54632e-06 42.7452 10.7452 32 24 32C35.4407 32 51 21.1088 51 0V208Z"/></clipPath></defs><path class="hm-toggle-fill" d="M51 208C51 186.891 36.0169 176 25 176H26C11.6406 176 0 164.359 0 150V56C1.54632e-06 42.7452 10.7452 32 24 32C35.4407 32 51 21.1088 51 0V208Z"/><path d="M51 208C51 186.891 36.0169 176 25 176H26C11.6406 176 0 164.359 0 150V56C1.54632e-06 42.7452 10.7452 32 24 32C35.4407 32 51 21.1088 51 0" stroke="white" stroke-opacity="0.3" stroke-width="2" clip-path="url(#hm-shape)"/></svg>
+    <div class="hm-toggle-items">
+    <a class="hm-toggle-item" href="/design-foundation/"><svg width="24" height="24.1975" viewBox="0 0 24 24.1975" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9.47454 7.93916L9.48151 7.94334C10.0997 8.32457 13.2799 9.63065 16.844 6.29019C18.2756 4.83636 18.9537 2.62356 18.9537 2.62356C18.9537 2.62356 17.4309 3.30726 16.2426 2.85006C15.4376 2.53783 14.6361 1.57535 14.4856 1.38369C14.1155 0.966917 13.6541 0.612869 13.1168 0.368938C11.0218 -0.581695 8.54691 0.368939 7.59558 2.48347C6.66794 4.54643 7.51264 6.92371 9.47454 7.93916Z" fill="currentColor"/><path d="M3.68754 24.1975L5.79789 15.7651L6.80218 15.7854L5.09537 24.1975H18.9053L17.1985 15.7854L18.2021 15.7651L20.3118 24.1975H24L21.3028 13.7203C20.9564 12.3132 19.826 9.7979 16.7755 9.68848H7.20014C4.14961 9.7972 3.04356 12.3132 2.69718 13.7203L0 24.1975H3.68754Z" fill="currentColor"/></svg>HUMAN</a>
+    <span class="hm-toggle-item" aria-current="page"><svg width="24" height="20.2598" viewBox="0 0 24 20.2598" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2.90625 14.7587L2.90625 20.2598H21.0135V14.7587L2.90625 14.7587ZM11.9599 18.627C11.3467 18.627 10.8503 18.1267 10.8503 17.5093C10.8503 16.8923 11.3467 16.392 11.9599 16.392C12.5726 16.392 13.069 16.8923 13.069 17.5093C13.069 18.1267 12.5726 18.627 11.9599 18.627Z" fill="currentColor"/><path d="M11.9566 10.371C12.7817 10.371 13.4507 9.69691 13.4507 8.86538C13.4507 8.03385 12.7817 7.35976 11.9566 7.35976C11.1314 7.35976 10.4625 8.03385 10.4625 8.86538C10.4625 9.69691 11.1314 10.371 11.9566 10.371Z" fill="currentColor"/><path d="M23.8612 0.889805C24.0584 0.673275 24.0436 0.337678 23.8288 0.139393C23.6148 -0.0588919 23.2823 -0.043528 23.085 0.172041L17.3617 5.24104C15.9972 3.81367 14.0838 2.92211 11.9623 2.92211C11.7141 2.92211 11.4692 2.93699 11.2272 2.96052C11.078 2.5193 10.8384 2.05167 10.4534 1.67766C9.92222 1.16059 9.21567 0.923892 8.36477 0.961821C6.53575 1.05112 5.28607 2.76799 4.78534 3.59954L0.914817 0.172041C0.718528 -0.043528 0.385026 -0.0588919 0.170632 0.139393C-0.0437618 0.337678 -0.0580547 0.673275 0.138711 0.889805L5.45473 6.72746C4.8225 7.83507 4.45517 9.11648 4.45517 10.4872C4.45517 11.6678 4.73198 12.7816 5.21127 13.7779L18.7119 13.7779C18.9153 13.3549 19.0735 12.9069 19.1978 12.4456C20.4628 11.9242 23.8345 10.37 23.4991 8.71847C23.4433 8.44481 23.278 8.22684 23.0207 8.0876C22.2489 7.67135 20.57 8.03575 19.1869 8.45921C19.0216 7.86771 18.7919 7.30263 18.4989 6.77835L23.8612 0.889805ZM5.27511 4.03308C5.67627 3.34844 6.81065 1.68198 8.3943 1.60469C9.0675 1.573 9.60777 1.75256 10.0065 2.13905C10.2772 2.40071 10.453 2.7315 10.5745 3.05798C9.03034 3.34988 7.65155 4.1147 6.5953 5.20311L5.27511 4.03308ZM11.9604 12.0091C10.2381 12.0091 8.84167 10.6015 8.84167 8.86538C8.84167 7.12979 10.2381 5.72163 11.9604 5.72163C13.6832 5.72163 15.0801 7.12979 15.0801 8.86538C15.0801 10.6015 13.6832 12.0091 11.9604 12.0091ZM22.7196 8.65509C22.833 8.71559 22.8606 8.78616 22.873 8.84666C23.0417 9.67965 21.104 10.8967 19.3622 11.674C19.4246 11.2861 19.468 10.8914 19.468 10.4862C19.468 10.008 19.4089 9.54474 19.3236 9.09151C20.7243 8.66037 22.1774 8.36367 22.7196 8.65509Z" fill="currentColor"/></svg>AI</span>
+    </div>
+  </div>
+    <script>
+    // Tooltips: links that leave the machine version for the regular site, plus
+    // the llms.txt and ai.md links (data-tip). Hover, keyboard focus, and tap.
+    (function () {
+      var tip = document.getElementById('human-tip');
+      if (!tip) return;
+      var box = tip.querySelector('.tip-box');
+      var humanText = box.textContent;
+      var current = null;
+      var lastType = 'mouse'; // 'mouse' | 'touch' | 'key'
+
+      // Static description for the human-version links, so assistive tech
+      // announces it on focus without waiting for the visual tooltip.
+      var humanDesc = document.createElement('span');
+      humanDesc.className = 'sr-only';
+      humanDesc.id = 'tip-human';
+      humanDesc.textContent = humanText;
+      document.body.appendChild(humanDesc);
+
+      function isHuman(a) {
+        if (a.closest('.hm-toggle')) return false;
+        var h = a.getAttribute('href') || '';
+        if (/^https?:\/\/(www\.)?raftdesign\.studio\/?$/.test(h)) return true;
+        return /^\/(?!\/|ai(\/|$)|ja\/ai(\/|$)|ai\.md|ja\/ai\.md|llms\.txt|sitemap\.xml|assets\/)/.test(h);
+      }
+
+      // Links with data-tip name a description element; the other tip links
+      // are the human-version ones.
+      function tipText(a) {
+        var id = a.getAttribute('data-tip');
+        if (id) { var d = document.getElementById(id); return d ? d.textContent : ''; }
+        return isHuman(a) ? humanText : '';
+      }
+
+      function tipLink(t) {
+        var a = t && t.closest && t.closest('a[href]');
+        return a && tipText(a) ? a : null;
+      }
+
+      Array.prototype.forEach.call(document.querySelectorAll('a[href]'), function (a) {
+        if (!a.hasAttribute('data-tip') && isHuman(a)) a.setAttribute('aria-describedby', 'tip-human');
+      });
+
+      function place(x, rect) {
+        var w = tip.offsetWidth, h = tip.offsetHeight;
+        var left = Math.max(8, Math.min(innerWidth - w - 8, x - w / 2));
+        tip.style.transform = 'translate(' + Math.round(left) + 'px,' + Math.round(rect.top - h - 4) + 'px)';
+        // keep the arrow pointing at the cursor/link even when the box is clamped
+        tip.querySelector('.tip-arrow').style.transform = 'translateX(' + Math.round(x - (left + w / 2)) + 'px)';
+      }
+
+      function rectAt(a, y) {
+        var rs = a.getClientRects();
+        for (var i = 0; i < rs.length; i++) if (y >= rs[i].top && y <= rs[i].bottom) return rs[i];
+        return rs[0] || a.getBoundingClientRect();
+      }
+
+      function show(a, x, y) {
+        current = a;
+        box.textContent = tipText(a);
+        tip.setAttribute('aria-hidden', 'false');
+        var r = rectAt(a, y);
+        place(x, r);
+        tip.classList.add('show');
+      }
+
+      function showAtLink(a) {
+        var r = a.getBoundingClientRect();
+        show(a, r.left + r.width / 2, r.top + r.height / 2);
+      }
+
+      function hide() {
+        current = null;
+        tip.classList.remove('show');
+        tip.setAttribute('aria-hidden', 'true');
+      }
+
+      document.addEventListener('pointerdown', function (e) {
+        lastType = e.pointerType === 'touch' ? 'touch' : 'mouse';
+        // a touch outside the open tip's link closes it
+        if (lastType === 'touch' && current && !current.contains(e.target)) hide();
+      }, true);
+      document.addEventListener('keydown', function () { lastType = 'key'; }, true);
+
+      document.addEventListener('mouseover', function (e) {
+        if (lastType === 'touch') return; // compatibility mouse events after a tap
+        var a = tipLink(e.target);
+        if (a) show(a, e.clientX, e.clientY); else if (current) hide();
+      });
+      document.addEventListener('mousemove', function (e) {
+        if (current && lastType !== 'touch') place(e.clientX, rectAt(current, e.clientY));
+      });
+      document.addEventListener('mouseout', function (e) {
+        if (lastType === 'touch') return;
+        if (current && !(e.relatedTarget && current.contains(e.relatedTarget))) hide();
+      });
+      document.addEventListener('focusin', function (e) {
+        if (lastType === 'touch') return;
+        var a = tipLink(e.target);
+        if (a) showAtLink(a);
+      });
+      document.addEventListener('focusout', hide);
+      // Touch: the first tap on a tip link shows its tooltip, the second follows the link.
+      document.addEventListener('click', function (e) {
+        if (lastType !== 'touch') return;
+        var a = tipLink(e.target);
+        if (a && current !== a) { e.preventDefault(); showAtLink(a); }
+      }, true);
+      addEventListener('scroll', hide, { passive: true });
+    })();
+  </script>
+  <script src="/dither-banner.js" defer></script>
+  <script>
+    // Writes the page out like an LLM response: the assistant panel streams
+    // at roughly token speed, then the rest of the document speeds up. Any
+    // click or key press finishes instantly. Without JS (or with reduced
+    // motion) the page simply renders in full.
+    (function () {
+      var root = document.querySelector('main.term');
+      var html = document.documentElement;
+      if (!root || !html.classList.contains('stream')) return;
+
+      var cursor = root.querySelector('.cursor');
+      if (cursor) cursor.parentNode.removeChild(cursor);
+      else { cursor = document.createElement('span'); cursor.className = 'cursor'; cursor.setAttribute('aria-hidden', 'true'); }
+
+      var LEAF = /^(P|H2|H3|DT|DD|A|SPAN|DIV)$/;
+      var CONTAINERS = '.chat, .msg-ai, .card, .stat, .row';
+      var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode: function (n) {
+          if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+          if (n.parentElement.closest('.logo, .logo-sub, script, style')) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+
+      function leafOf(node) {
+        var el = node.parentElement;
+        while (el && el !== root && getComputedStyle(el).display === 'inline') el = el.parentElement;
+        return el;
+      }
+
+      var items = [], n;
+      while ((n = walker.nextNode())) {
+        var leaf = leafOf(n);
+        items.push({ node: n, text: n.nodeValue, leaf: leaf, box: leaf.closest(CONTAINERS), chat: !!leaf.closest('.chat') });
+      }
+
+      var hidden = [];
+      items.forEach(function (it) {
+        it.node.nodeValue = '';
+        [it.box, it.leaf].forEach(function (el) {
+          if (el && hidden.indexOf(el) === -1) { el.classList.add('sx-hide'); hidden.push(el); }
+        });
+      });
+      html.classList.remove('stream');
+
+      var i = 0, pos = 0, last = 0, budget = 0, finished = false;
+
+      function show(it) {
+        if (it.box) it.box.classList.remove('sx-hide');
+        it.leaf.classList.remove('sx-hide');
+      }
+
+      function finish() {
+        if (finished) return;
+        finished = true;
+        items.forEach(function (it) { it.node.nodeValue = it.text; show(it); });
+        var eof = root.querySelector('.eof');
+        if (eof) eof.appendChild(cursor);
+        removeEventListener('pointerdown', finish);
+        removeEventListener('keydown', finish);
+      }
+
+      function tick(t) {
+        if (finished) return;
+        var dt = Math.min(64, t - (last || t));
+        last = t;
+        var it = items[i];
+        // ~70 chars/s inside the assistant panel (token pace), faster after.
+        budget += dt / 1000 * (it.chat ? 70 : 520);
+        while (budget >= 1 && i < items.length) {
+          it = items[i];
+          show(it);
+          var take = Math.min(Math.floor(budget), it.text.length - pos);
+          pos += take; budget -= take;
+          it.node.nodeValue = it.text.slice(0, pos);
+          if (pos >= it.text.length) { i++; pos = 0; if (!it.chat && items[i] && items[i].chat) break; }
+          if (!take) break;
+        }
+        var cur = items[Math.min(i, items.length - 1)];
+        cursor.parentNode !== cur.node.parentNode || cursor.previousSibling !== cur.node
+          ? cur.node.parentNode.insertBefore(cursor, cur.node.nextSibling) : 0;
+        if (i >= items.length) return finish();
+        setTimeout(function () { tick(performance.now()); }, 16);
+      }
+
+      addEventListener('pointerdown', finish);
+      addEventListener('keydown', finish);
+      tick(performance.now());
+    })();
+  </script>
+  <script>
+    // Easter egg for anyone who opens the console.
+    (function () {
+      if (!window.console || !console.log) return;
+      console.log('%cRAFT DESIGN', 'color:#3DE83D;font-weight:700;font-size:14px;letter-spacing:.2em');
+      console.log('You found the engine room.\nThe machine-readable version lives at ' + location.origin + '/ai/\nAI moves faster. People make the calls.');
+    })();
+  </script>
+  <script src="/ai/logo-glitch.js"></script>
+</body>
+</html>

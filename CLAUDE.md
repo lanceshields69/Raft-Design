@@ -12,7 +12,10 @@ After a deploy that changes page content, remind Lance to run `node scripts/inde
 
 ## Shared content for human and terminal pages
 
-The AI-Ready Design Systems page renders from one content file, `content/design-system.json`, into four outputs: the human pages (`/design-system/`, `/ja/design-system/`) and their terminal versions (`/ai/design-system/`, `/ja/ai/design-system/`).
+Two pages render from content files, each into four outputs (the EN and JA human pages and their terminal versions):
+
+- AI-Ready Design Systems: `content/design-system.json` → `/design-system/`, `/ja/design-system/`, `/ai/design-system/`, `/ja/ai/design-system/`.
+- Design Foundation Sprint: `content/design-foundation.json` → `/design-foundation/`, `/ja/design-foundation/`, `/ai/design-foundation/`, `/ja/ai/design-foundation/`. Prices, the billing split, week numbers and client names live once in `facts`. Marker keys can end in `|format` (for example `@offers.0.price|usd`), which renders the fact through that language's `formats` template, so EN shows `$28,000` and JA shows `28,000米ドル` from the same number. The visible prices, the Service/Offer JSON-LD and the FAQPage JSON-LD are all built from these values, so change a price in the JSON only.
 
 - The JSON holds `facts` (shared by both languages: links, tool names, project names and URLs, pricing status) and `en` / `ja` (headlines, body copy, labels, meta). Layout, styles, animation and components stay hand-authored in the HTML.
 - In the human pages, only text between `<!--c:key-->` and `<!--/c-->` markers, attributes tagged `data-c-href` / `data-c-content`, the `<title>`, and the `<!--c:block:…-->` JSON-LD block come from the JSON. Keys starting with `@` read from `facts`.
@@ -20,6 +23,6 @@ The AI-Ready Design Systems page renders from one content file, `content/design-
 - After editing `content/*.json`, run `node build-pages.js` and commit the regenerated HTML. `node build-pages.js --check` exits 1 if any output is out of date. Vercel has no build step, so the committed HTML is what ships.
 - Never hand-edit text inside markers. The next build overwrites it. Edit the JSON instead. Markup outside the markers can be edited by hand as before.
 
-To add the next page (the Design Foundation Sprint is next): create `content/design-foundation.json`, wrap the page's text in markers (keys in document order, same scheme as the design system page), add an entry to `PAGES` in `build-pages.js` with its own terminal render function, add the human/AI toggle to the page pointing at its terminal URL, then run the build and confirm the human page's visible text is unchanged.
+To add another page: create `content/<page>.json` (copy the shape of `design-foundation.json`; each language needs `meta.offer_name`, `terminal.description`, `terminal.question` and `terminal.source_line`, and JA also needs `terminal.title`), wrap the page's text in markers (keys in document order, same scheme as the design system page), add an entry to `PAGES` in `build-pages.js` with its own terminal render function, add the human/AI toggle to the page pointing at its terminal URL, then run the build and confirm the human page's visible text is unchanged.
 
 `ai.md`, `ja/ai.md` and `llms.txt` are still written by hand (they are part of a 60-day indexing test that started 2026-10-18). Later, their per-offer sections could be generated from the same JSON files so facts cannot drift.

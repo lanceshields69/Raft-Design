@@ -135,7 +135,7 @@ function extractShell(lang) {
   // Keep shared page styles; home-page logo and audio belong only on /ai/.
   const extraCss = [...head.matchAll(/<link rel="stylesheet" href="[^"]+">/g)]
     .map((m) => absolute(m[0]))
-    .filter((l) => !['/machine-toggle.css', '/logo-morph.css', '/audio.css'].some((asset) => l.includes(asset)));
+    .filter((l) => !['/machine-toggle.css', '/logo-morph.css', '/audio.css', '/edge-audio.css'].some((asset) => l.includes(asset)));
   const logo = grab(/<pre class="logo"[^>]*>[\s\S]*?<\/pre>/, 'logo')
     .replace(/\saria-hidden="true"/, ' aria-label="RAFT"');
   const logoSub = grab(/<p class="logo-sub"[^>]*>[\s\S]*?<\/p>/, 'logo subtitle');
@@ -152,7 +152,9 @@ function extractShell(lang) {
     // /ai/logo-glitch.js (added by the template), so drop the morph and any
     // inline copy of the glitch script the shell still carries.
     tail: absolute(html.slice(html.indexOf('</main>') + '</main>'.length, html.indexOf('</body>')))
+      .replace(/\s*<!-- AI home soundtrack -->[\s\S]*?<!-- \/AI home soundtrack -->/g, '')
       .replace(/\s*<script src="\/ai\/(?:logo-morph|audio)\.js" defer><\/script>/g, '')
+      .replace(/\s*<script src="\/edge-audio\.js" defer><\/script>/g, '')
       .replace(/\s*<script src="https:\/\/w\.soundcloud\.com\/player\/api\.js" defer><\/script>/, '')
       .replace(/\s*<script>\s*\/\/ Random glitch bursts on the pixel logo[\s\S]*?<\/script>/g, ''),
   };

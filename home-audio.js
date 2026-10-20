@@ -1,58 +1,8 @@
-// Compact SoundCloud soundtrack alongside the human home page's chat dock.
+// SoundCloud soundtrack behind the right-edge player on the human home page.
 (() => {
-  const group = document.getElementById('home-audio');
   const button = document.getElementById('home-audio-toggle');
   const frame = document.getElementById('home-audio-frame');
-  const form = document.querySelector('.raft-chat-form');
-  const launcher = document.getElementById('showreel-launcher');
-  if (!group || !button || !frame) return;
-
-  let launcherObstructing = launcher?.classList.contains('visible') || false;
-  let launcherHideTimer;
-
-  function position() {
-    if (!form) return;
-    const formRect = form.getBoundingClientRect();
-    const groupRect = group.getBoundingClientRect();
-    const viewportHeight = document.documentElement.clientHeight;
-    const viewportWidth = document.documentElement.clientWidth;
-    const mobile = matchMedia('(max-width: 600px)').matches;
-    const besideLeft = formRect.right + 16;
-    const beside = !mobile && besideLeft + groupRect.width <= viewportWidth - 16;
-    group.style.left = `${mobile ? formRect.left : beside ? besideLeft : Math.max(16, Math.min(formRect.right - groupRect.width, viewportWidth - groupRect.width - 16))}px`;
-    group.style.bottom = `${beside
-      ? Math.max(16, viewportHeight - formRect.top - (formRect.height + groupRect.height) / 2)
-      : viewportHeight - formRect.top + 14}px`;
-
-    // On narrow screens both controls occupy the space above the chat dock.
-    // Keep the soundtrack above the floating video preview when it appears.
-    if (launcher && launcherObstructing) {
-      const audioRect = group.getBoundingClientRect();
-      const videoRect = launcher.getBoundingClientRect();
-      const videoTop = viewportHeight - parseFloat(getComputedStyle(launcher).bottom) - launcher.offsetHeight;
-      const overlap = audioRect.right > videoRect.left && audioRect.left < videoRect.right
-        && audioRect.bottom > videoTop && audioRect.top < videoTop + launcher.offsetHeight;
-      if (overlap) group.style.bottom = `${viewportHeight - videoTop + 14}px`;
-    }
-  }
-  position();
-  window.addEventListener('resize', position);
-  if (window.ResizeObserver && form) new ResizeObserver(position).observe(form);
-  if (launcher) new MutationObserver(() => {
-    if (launcher.classList.contains('visible')) {
-      clearTimeout(launcherHideTimer);
-      launcherObstructing = true;
-      position();
-    } else if (launcherObstructing) {
-      // Let the video finish fading out before moving into its old space.
-      clearTimeout(launcherHideTimer);
-      launcherHideTimer = setTimeout(() => {
-        launcherObstructing = false;
-        position();
-      }, 600);
-    }
-  }).observe(launcher, { attributes: true, attributeFilter: ['class', 'style'] });
-  document.fonts?.ready.then(position);
+  if (!button || !frame) return;
 
   let playing = false;
   let ready = false;

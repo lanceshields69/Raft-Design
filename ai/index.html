@@ -76,6 +76,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Caveat:wght@400&family=Fraunces:wght@400&family=Space+Grotesk:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../machine-toggle.css">
+  <link rel="stylesheet" href="../edge-audio.css">
   <script>
     // Streamed-output effect (see script at end of body). The text is always
     // present in the HTML; this only hides it until the script has blanked it.
@@ -232,7 +233,7 @@
     }
   </style>
   <link rel="stylesheet" href="./logo-morph.css">
-  <link rel="stylesheet" href="./audio.css?v=6">
+  <link rel="stylesheet" href="./audio.css?v=7">
 </head>
 <body>
   <main class="term">
@@ -254,7 +255,7 @@
     <div class="ai-wave">
       <div class="logo-dither" data-dither-banner aria-hidden="true"></div>
     </div>
-    <iframe id="ai-audio-frame" class="ai-audio-frame" title="I Am Robot And Proud / Bird at Sunrise by 7e.p." allow="autoplay; encrypted-media" tabindex="-1" aria-hidden="true" scrolling="no"
+    <iframe id="ai-audio-frame" class="edge-audio-frame" title="I Am Robot And Proud / Bird at Sunrise by 7e.p." allow="autoplay; encrypted-media" tabindex="-1" aria-hidden="true" scrolling="no"
       data-src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A1955185147&amp;color=%233DE83D&amp;auto_play=false&amp;visual=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false"></iframe>
 
     <nav class="nav" aria-label="Machine navigation">
@@ -268,23 +269,6 @@
       <a href="/llms.txt" data-tip="tip-llms" aria-describedby="tip-llms">/llms.txt</a>
       <a href="/ai.md" data-tip="tip-aimd" aria-describedby="tip-aimd">/ai.md</a>
     </nav>
-    <div class="ai-audio-controls">
-      <p class="ai-audio-credit">
-        <a href="https://soundcloud.com/7e-p/sets/i-am-robot-and-proud-bird-at" target="_blank" rel="noopener noreferrer" aria-label="I Am Robot And Proud / Bird at Sunrise on SoundCloud">Bird at Sunrise</a>
-        <span aria-hidden="true">·</span>
-        <a href="https://soundcloud.com/7e-p" target="_blank" rel="noopener noreferrer">7e.p.</a>
-        <a href="https://soundcloud.com/7e-p/sets/i-am-robot-and-proud-bird-at" target="_blank" rel="noopener noreferrer" aria-label="Bird at Sunrise on SoundCloud"><img src="./soundcloud-logo-white.png" width="80" height="10" alt="SoundCloud"></a>
-      </p>
-      <button class="ai-audio-toggle" id="ai-audio-toggle" type="button" aria-label="Play soundtrack" aria-pressed="false" title="Play soundtrack">
-        <svg class="ai-audio-icon ai-audio-icon--play" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-          <path d="M6 3.6v12.8a1 1 0 0 0 1.5.86l10.6-6.4a1 1 0 0 0 0-1.72L7.5 2.74A1 1 0 0 0 6 3.6Z"/>
-        </svg>
-        <svg class="ai-audio-icon ai-audio-icon--stop" width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-          <rect x="3" y="3" width="14" height="14" rx="1"/>
-        </svg>
-      </button>
-    </div>
-
     <!-- assistant-style intro -->
     <section class="chat" aria-label="Summary">
       <div class="chat-head"><span>raft-assistant · session 001</span><span>status: <span class="accent">online</span> · human-reviewed</span></div>
@@ -401,6 +385,17 @@
       <span>designed by hand. built by AI.</span>
     </div>
   </main>
+  <!-- AI home soundtrack -->
+  <div class="edge-audio" id="ai-audio" role="group" aria-label="Bird at Sunrise soundtrack by I Am Robot and Proud">
+    <button class="edge-audio-toggle" id="ai-audio-toggle" type="button" aria-label="Play soundtrack" aria-pressed="false" title="Play soundtrack">
+      <svg class="edge-audio-icon--play" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 1.5L10 6L3.5 10.5V1.5Z" fill="currentColor"/></svg>
+      <svg class="edge-audio-icon--stop" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><rect width="10" height="10" fill="currentColor"/></svg>
+    </button>
+    <div class="edge-audio-credit" inert>
+      <a class="edge-audio-title" href="https://soundcloud.com/7e-p/sets/i-am-robot-and-proud-bird-at" target="_blank" rel="noopener noreferrer" aria-label="Bird at Sunrise by I Am Robot and Proud, uploaded by 7e.p. on SoundCloud" title="Bird at Sunrise · I Am Robot and Proud · 7e.p. on SoundCloud">Bird at Sunrise</a>
+    </div>
+  </div>
+  <!-- /AI home soundtrack -->
   <span class="sr-only" id="tip-llms">A table of contents for AI. Models read it first to find their way around.</span>
   <span class="sr-only" id="tip-aimd">Raft, minus the design. Everything an AI needs to decide if we're a fit.</span>
   <div class="tip" id="human-tip" role="tooltip" aria-hidden="true">
@@ -618,6 +613,7 @@
   </script>
   <script src="./logo-morph.js" defer></script>
   <script src="https://w.soundcloud.com/player/api.js" defer></script>
+  <script src="../edge-audio.js" defer></script>
   <script src="./audio.js" defer></script>
   <script>
     // Easter egg for anyone who opens the console.

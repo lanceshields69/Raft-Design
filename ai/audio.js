@@ -1,5 +1,4 @@
-// The SoundCloud widget supplies the audio; this page shows only its play/stop
-// control and visible links to the playlist, uploader, and SoundCloud source.
+// The SoundCloud widget supplies the audio behind the machine page's edge tab.
 (() => {
   const button = document.getElementById('ai-audio-toggle');
   const frame = document.getElementById('ai-audio-frame');
@@ -24,7 +23,7 @@
     button.disabled = true;
     button.setAttribute('aria-pressed', 'false');
     button.setAttribute('aria-label', 'Soundtrack unavailable');
-    button.title = 'Soundtrack unavailable — open the SoundCloud link below';
+    button.title = 'Soundtrack unavailable — open the SoundCloud song link';
   }
 
   if (!window.SC?.Widget) {

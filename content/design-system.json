@@ -105,7 +105,6 @@
       "included": "Every Design Foundation Sprint includes an AI-ready design system."
     },
     "terminal": {
-      "title": "AI-Ready Design Systems, Machine Version | Raft Design",
       "description": "Machine-readable version of the AI-Ready Design Systems page. It renders from the same content source as the human page.",
       "question": "what is an ai-ready design system?",
       "source_line": "Both versions of this page render from the same content source."

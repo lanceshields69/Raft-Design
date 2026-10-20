@@ -3,6 +3,10 @@
   const button = document.getElementById('home-audio-toggle');
   const frame = document.getElementById('home-audio-frame');
   if (!button || !frame) return;
+  const playLabel = button.dataset.playLabel || 'Play soundtrack';
+  const stopLabel = button.dataset.stopLabel || 'Stop soundtrack';
+  const unavailableLabel = button.dataset.unavailableLabel || 'Soundtrack unavailable';
+  const unavailableTitle = button.dataset.unavailableTitle || 'Soundtrack unavailable — open the SoundCloud link';
 
   let playing = false;
   let ready = false;
@@ -16,16 +20,16 @@
   function render() {
     button.classList.toggle('is-playing', playing);
     button.setAttribute('aria-pressed', String(playing));
-    button.setAttribute('aria-label', playing ? 'Stop soundtrack' : 'Play soundtrack');
-    button.title = playing ? 'Stop soundtrack' : 'Play soundtrack';
+    button.setAttribute('aria-label', playing ? stopLabel : playLabel);
+    button.title = playing ? stopLabel : playLabel;
   }
 
   function unavailable() {
     playing = false;
     render();
     button.disabled = true;
-    button.setAttribute('aria-label', 'Soundtrack unavailable');
-    button.title = 'Soundtrack unavailable — open the SoundCloud link';
+    button.setAttribute('aria-label', unavailableLabel);
+    button.title = unavailableTitle;
   }
 
   if (!window.SC?.Widget) {

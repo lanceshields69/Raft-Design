@@ -75,6 +75,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=M+PLUS+1+Code:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../machine-toggle.css">
+  <link rel="stylesheet" href="../../edge-audio.css">
   <script>
     // Streamed-output effect (see script at end of body). The text is always
     // present in the HTML; this only hides it until the script has blanked it.
@@ -249,6 +250,8 @@
 ██    ██  ██    ██  ██          ████</pre>
     <p class="logo-sub">DESIGN</p>
     <div class="logo-dither" data-dither-banner aria-hidden="true"></div>
+    <iframe id="ai-audio-frame" class="edge-audio-frame" title="I Am Robot And Proud / Bird at Sunrise by 7e.p." allow="autoplay; encrypted-media" tabindex="-1" aria-hidden="true" scrolling="no"
+      data-src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A1955185147&amp;color=%233DE83D&amp;auto_play=false&amp;visual=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false"></iframe>
 
     <nav class="nav" aria-label="Machine navigation">
       <a href="/ja/ai/">/home</a>
@@ -377,6 +380,17 @@
       <span>designed by hand. built by AI.</span>
     </div>
   </main>
+  <!-- AI home soundtrack -->
+  <div class="edge-audio" id="ai-audio" role="group" aria-label="I Am Robot and Proud の『Bird at Sunrise』サウンドトラック">
+    <button class="edge-audio-toggle" id="ai-audio-toggle" type="button" aria-label="サウンドトラックを再生" aria-pressed="false" title="サウンドトラックを再生" data-play-label="サウンドトラックを再生" data-stop-label="サウンドトラックを停止" data-unavailable-label="サウンドトラックを再生できません" data-unavailable-title="再生できません — 曲名のリンクからSoundCloudで開けます">
+      <svg class="edge-audio-icon--play" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 1.5L10 6L3.5 10.5V1.5Z" fill="currentColor"/></svg>
+      <svg class="edge-audio-icon--stop" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><rect width="10" height="10" fill="currentColor"/></svg>
+    </button>
+    <div class="edge-audio-credit" inert>
+      <a class="edge-audio-title" href="https://soundcloud.com/7e-p/sets/i-am-robot-and-proud-bird-at" target="_blank" rel="noopener noreferrer" aria-label="I Am Robot and Proud の Bird at Sunrise。7e.p. がSoundCloudに投稿。新しいタブで開く" title="Bird at Sunrise · I Am Robot and Proud · 7e.p. on SoundCloud">Bird at Sunrise</a>
+    </div>
+  </div>
+  <!-- /AI home soundtrack -->
   <span class="sr-only" id="tip-llms">AI向けのサイト目次です。モデルはまずここを読んで、情報の場所を把握します。</span>
   <span class="sr-only" id="tip-aimd">デザインを取り除いたRaft Designです。AIが判断に必要な情報を、一つのファイルにまとめています。</span>
   <div class="tip" id="human-tip" role="tooltip" aria-hidden="true">
@@ -648,6 +662,9 @@
       schedule();
     })();
   </script>
+  <script src="https://w.soundcloud.com/player/api.js" defer></script>
+  <script src="../../edge-audio.js" defer></script>
+  <script src="../../ai/audio.js" defer></script>
   <script>
     // Easter egg for anyone who opens the console.
     (function () {

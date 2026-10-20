@@ -3,6 +3,10 @@
   const button = document.getElementById('ai-audio-toggle');
   const frame = document.getElementById('ai-audio-frame');
   if (!button || !frame) return;
+  const playLabel = button.dataset.playLabel || 'Play soundtrack';
+  const stopLabel = button.dataset.stopLabel || 'Stop soundtrack';
+  const unavailableLabel = button.dataset.unavailableLabel || 'Soundtrack unavailable';
+  const unavailableTitle = button.dataset.unavailableTitle || 'Soundtrack unavailable — open the SoundCloud song link';
 
   let playing = false;
   let ready = false;
@@ -13,8 +17,8 @@
   function render() {
     button.classList.toggle('is-playing', playing);
     button.setAttribute('aria-pressed', String(playing));
-    button.setAttribute('aria-label', playing ? 'Stop soundtrack' : 'Play soundtrack');
-    button.title = playing ? 'Stop soundtrack' : 'Play soundtrack';
+    button.setAttribute('aria-label', playing ? stopLabel : playLabel);
+    button.title = playing ? stopLabel : playLabel;
   }
 
   function unavailable() {
@@ -22,8 +26,8 @@
     button.classList.remove('is-playing');
     button.disabled = true;
     button.setAttribute('aria-pressed', 'false');
-    button.setAttribute('aria-label', 'Soundtrack unavailable');
-    button.title = 'Soundtrack unavailable — open the SoundCloud song link';
+    button.setAttribute('aria-label', unavailableLabel);
+    button.title = unavailableTitle;
   }
 
   if (!window.SC?.Widget) {

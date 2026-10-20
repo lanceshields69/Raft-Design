@@ -96,13 +96,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200;14..32,300;14..32,400;14..32,500;14..32,600;14..32,900&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="../machine-toggle.css">
   <link rel="stylesheet" href="../build.css">
   <link rel="stylesheet" href="../journal.css">
   <link rel="stylesheet" href="ja.css">
   <link rel="stylesheet" href="../raft-chat.css">
+  <link rel="stylesheet" href="../edge-audio.css">
   <link rel="stylesheet" href="../home-spacing.css">
   <link rel="stylesheet" href="../hero-lens.css">
   <script>
@@ -1409,6 +1410,20 @@
     });
   </script>
 
+  <div class="edge-audio" id="home-audio" role="group" aria-label="I Am Robot and Proud の『Lines In a Grid』サウンドトラック">
+    <button class="edge-audio-toggle" id="home-audio-toggle" type="button" aria-label="サウンドトラックを再生" aria-pressed="false" title="サウンドトラックを再生" data-play-label="サウンドトラックを再生" data-stop-label="サウンドトラックを停止" data-unavailable-label="サウンドトラックを再生できません" data-unavailable-title="再生できません — 曲名のリンクからSoundCloudで開けます">
+      <svg class="edge-audio-icon--play" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3.5 1.5L10 6L3.5 10.5V1.5Z" fill="currentColor"/></svg>
+      <svg class="edge-audio-icon--stop" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><rect width="10" height="10" fill="currentColor"/></svg>
+    </button>
+    <div class="edge-audio-credit" inert>
+      <a class="edge-audio-title" href="https://soundcloud.com/7e-p/epcd137_4" target="_blank" rel="noopener noreferrer" aria-label="I Am Robot and Proud の Lines In a Grid / Ep. 7。7e.p. がSoundCloudに投稿。新しいタブで開く" title="Lines In a Grid / Ep. 7 · I Am Robot and Proud · 7e.p. on SoundCloud">Lines In a Grid / Ep. 7</a>
+    </div>
+  </div>
+  <iframe class="edge-audio-frame" id="home-audio-frame" title="I Am Robot And Proud / Lines In A Grid by 7e.p." allow="autoplay; encrypted-media" loading="eager" tabindex="-1" aria-hidden="true" data-src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1992457259&amp;color=%233DE83D&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false"></iframe>
+  <script src="https://w.soundcloud.com/player/api.js" defer></script>
+  <script src="../edge-audio.js" defer></script>
+  <script src="../home-audio.js" defer></script>
+
   <!-- Showreel — floating launch panel (Figma node 793:5157), revealed once
        #approach scrolls into view. Click morphs it into a fullscreen custom
        Vimeo player with sound on (the click itself is the user gesture
@@ -1529,6 +1544,7 @@
 
       var player = null;
       var isOpen = false;
+      var closeTimer = null;
 
       function onKeydown(e) {
         if (e.key === 'Escape') closeShowreel();
@@ -1537,6 +1553,9 @@
       function openShowreel() {
         if (isOpen) return;
         isOpen = true;
+        if (closeTimer) clearTimeout(closeTimer);
+        closeTimer = null;
+        window.dispatchEvent(new Event('raft:showreel-open'));
 
         var rect = launcher.getBoundingClientRect();
         morph.style.transition = 'none';
@@ -1598,12 +1617,14 @@
         document.body.style.overflow = '';
         document.removeEventListener('keydown', onKeydown);
 
-        setTimeout(function () {
+        closeTimer = setTimeout(function () {
           iframe.src = '';
           player = null;
           if (progressBar) progressBar.style.width = '0%';
           setPlayPauseIcon(true);
           setMuteIcon(false);
+          closeTimer = null;
+          window.dispatchEvent(new Event('raft:showreel-closed'));
         }, 500);
       }
 

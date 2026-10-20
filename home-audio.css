@@ -121,6 +121,11 @@ body:has(.raft-chat-dock:not([data-mode="rest"])) .home-audio {
   pointer-events: none;
 }
 
+@media (max-width: 600px) {
+  .home-audio { gap: 6px; }
+  .home-audio-credit { width: 108px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .home-audio-toggle { transition: none; }
 }

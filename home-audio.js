@@ -16,9 +16,10 @@
     const groupRect = group.getBoundingClientRect();
     const viewportHeight = document.documentElement.clientHeight;
     const viewportWidth = document.documentElement.clientWidth;
+    const mobile = matchMedia('(max-width: 600px)').matches;
     const besideLeft = formRect.right + 16;
-    const beside = besideLeft + groupRect.width <= viewportWidth - 16;
-    group.style.left = `${beside ? besideLeft : Math.max(16, Math.min(formRect.right - groupRect.width, viewportWidth - groupRect.width - 16))}px`;
+    const beside = !mobile && besideLeft + groupRect.width <= viewportWidth - 16;
+    group.style.left = `${mobile ? formRect.left : beside ? besideLeft : Math.max(16, Math.min(formRect.right - groupRect.width, viewportWidth - groupRect.width - 16))}px`;
     group.style.bottom = `${beside
       ? Math.max(16, viewportHeight - formRect.top - (formRect.height + groupRect.height) / 2)
       : viewportHeight - formRect.top + 14}px`;

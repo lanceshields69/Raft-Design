@@ -1,0 +1,622 @@
+{
+  "_readme": "Shared content for the Design Foundation Sprint page. build-pages.js renders design-foundation/index.html and ja/design-foundation/index.html (text between <!--c:key--> markers, attributes tagged data-c-href / data-c-content, the title and both JSON-LD blocks) and the terminal pages /ai/design-foundation/ and /ja/ai/design-foundation/. Keys starting with @ read from \"facts\"; \"key|format\" renders a fact through the language's \"formats\" template (prices, week numbers, billing split). Edit here, then run: node build-pages.js",
+  "facts": {
+    "pages": {
+      "human": {
+        "en": "/design-foundation/",
+        "ja": "/ja/design-foundation/"
+      },
+      "terminal": {
+        "en": "/ai/design-foundation/",
+        "ja": "/ja/ai/design-foundation/"
+      }
+    },
+    "offer_name": "Design Foundation Sprint",
+    "duration_weeks": 4,
+    "currency": "USD",
+    "area_served": [
+      "US",
+      "JP"
+    ],
+    "email": "hello@raftdesign.studio",
+    "links": {
+      "calendly": "https://calendly.com/raftdesignstudio/30min",
+      "design_system": {
+        "en": "https://raftdesign.studio/design-system/",
+        "ja": "https://raftdesign.studio/ja/design-system/"
+      },
+      "contact": {
+        "en": "/contact/",
+        "ja": "/ja/contact/"
+      }
+    },
+    "offers": [
+      {
+        "id": "core",
+        "name": "Core",
+        "price": 28000
+      },
+      {
+        "id": "full-system",
+        "name": "Full System",
+        "price": 34000
+      },
+      {
+        "id": "land-expand",
+        "name": "Land & Expand",
+        "price": 10000,
+        "unit": "MONTH",
+        "hours_per_week": 15
+      }
+    ],
+    "billing": {
+      "deposit": 50,
+      "delivery": 50
+    },
+    "steps": [
+      {
+        "number": "01",
+        "week": 1
+      },
+      {
+        "number": "02",
+        "week": 2
+      },
+      {
+        "number": "03",
+        "week": 3
+      },
+      {
+        "number": "04",
+        "week": 4
+      }
+    ],
+    "clients": [
+      {
+        "name": "LegalOn"
+      },
+      {
+        "name": "Cloud Cruiser"
+      },
+      {
+        "name": "Health Catalyst"
+      },
+      {
+        "name": "OrderDynamics"
+      },
+      {
+        "name": "Leadspace"
+      }
+    ],
+    "showcase": [
+      {
+        "name": "LegalOn",
+        "href": {
+          "en": "/work/legalon/",
+          "ja": "/ja/work/legalon/"
+        }
+      },
+      {
+        "name": "Walmart",
+        "href": {
+          "en": "/work/walmart/",
+          "ja": "/ja/work/walmart/"
+        }
+      },
+      {
+        "name": "Adobe Express Photos",
+        "href": {
+          "en": "/work/adobe-express-photos/",
+          "ja": "/ja/work/adobe-express-photos/"
+        }
+      },
+      {
+        "name": "Leadspace"
+      },
+      {
+        "name": "Rally Health"
+      },
+      {
+        "name": "Fitbit"
+      },
+      {
+        "name": "Besure"
+      }
+    ]
+  },
+  "en": {
+    "meta": {
+      "offer_name": "Design Foundation Sprint",
+      "title": "Design Foundation Sprint (4 Weeks) | Raft Design",
+      "description": "Design leadership, before you're ready to hire it. Raft closes the gap between your product and your brand in four weeks: brand first, then the product that expresses it.",
+      "social_title": "Design Foundation Sprint — Raft Design",
+      "social_description": "Design leadership, before you're ready to hire it. Raft closes the gap between your product and your brand in four weeks."
+    },
+    "formats": {
+      "week": "— Week {n}",
+      "usd": "${n}",
+      "billing": "{deposit}% to start · {delivery}% at delivery",
+      "usd_mo": "${n}",
+      "duration": "{n} weeks"
+    },
+    "schema": {
+      "description": "A four-week engagement for funded startups: a brand system first, then the product screens that express it, delivered as a tokenized, documented design system rather than a one-off deliverable.",
+      "audience": "Funded startups",
+      "offers": [
+        "Brand system plus up to 5 core product screens. For teams with some existing design foundation to build on.",
+        "Brand system plus 8–10 product screens and deeper edge-case mapping. The default for most funded startups starting closer to zero.",
+        "Ongoing fractional design leadership, roughly 15 hours a week, for teams that want to keep the brand and product functions running well without a full-time hire. Month to month, no fixed end date."
+      ]
+    },
+    "terminal": {
+      "description": "Machine-readable version of the Design Foundation Sprint page. It renders from the same content source as the human page.",
+      "question": "what is the design foundation sprint?",
+      "source_line": "Both versions of this page render from the same content source."
+    },
+    "hero": {
+      "eyebrow": "The Design Foundation Sprint",
+      "audience": "For Funded Startups",
+      "headline": [
+        "Scale the product.",
+        "Not the design debt."
+      ],
+      "body": "Raft Design helps recently funded teams turn scattered brand, UX, and product decisions into a foundation the whole company can build from in four weeks.",
+      "cta_book": "Book a 30-minute fit assessment",
+      "cta_pricing": "See pricing",
+      "vc_prompt": "For VCs:",
+      "vc_cta": "Refer a portfolio company"
+    },
+    "problems": {
+      "label": "Design maturity gap",
+      "headline": "The design gap usually shows up before the design hire does.",
+      "lead": "At Series A, the product and team start growing faster than the decisions holding them together. You may already be seeing the signs.",
+      "items": [
+        {
+          "title": "The product still needs someone to explain it.",
+          "body": "It works in a founder-led demo, but new users need help understanding the value or completing important workflows."
+        },
+        {
+          "title": "Every release adds another version of the same pattern.",
+          "body": "With AI you ship features quickly, but the interface becomes less consistent and harder to extend."
+        },
+        {
+          "title": "Design decisions are scattered across the team.",
+          "body": "Founders, PMs, and engineers make customer-experience decisions one ticket at a time."
+        },
+        {
+          "title": "The company tells a different story in every place.",
+          "body": "The website, sales deck, demo, and product no longer feel like one company."
+        },
+        {
+          "title": "You need senior judgment before you need a design department.",
+          "body": "The gap is already affecting the roadmap, but a full design team is still premature."
+        }
+      ],
+      "outcome": {
+        "headline": "Raft turns scattered decisions into a foundation the whole team can build from.",
+        "items": [
+          {
+            "name": "Clear brand",
+            "body": "One story across product, sales, and marketing."
+          },
+          {
+            "name": "Stronger core UX",
+            "body": "Important workflows that make sense without a guided demo."
+          },
+          {
+            "name": "Reusable product system",
+            "body": "Shared patterns the team can extend without starting over."
+          }
+        ]
+      }
+    },
+    "scope": {
+      "label": "The scope",
+      "headline": "Brand first. Then the product that expresses it.",
+      "lead": "Why four weeks, not three: most sprints pick one lane. This does both, in the order that actually works."
+    },
+    "steps": [
+      {
+        "name": "Define",
+        "body": "Direction-setting. Positioning, audience, and the design foundation everything else builds on."
+      },
+      {
+        "name": "Brand",
+        "body": "Identity system: typography, color architecture, voice, and an investor-ready deck template."
+      },
+      {
+        "name": "Product",
+        "body": "5–10 high-fidelity screens, interactive prototype, edge cases mapped, built on the Week 2 system."
+      },
+      {
+        "name": "Systemize",
+        "body": "Tokenized component library, fully documented handoff, recorded engineering walkthrough. Your team builds on it without you in the room."
+      }
+    ],
+    "track": {
+      "label": "Track record",
+      "headline": "Happy clients. Real outcomes.",
+      "lead": "An IPO on Nasdaq. Acquisitions by HPE and Tecsys. Companies still running and growing years later. What people who hired our founder have to say.",
+      "items": [
+        {
+          "status": "Current Project · $200M+ funded",
+          "quote": "“Lance seamlessly connected LegalOn’s U.S.-born brand with the cultural context of Japan. The brand architecture and framework he created gave us a clear way to express our core idea of ‘ON’ while keeping the brand cohesive as our product portfolio expanded.”",
+          "attribution": "— Rin Yano, Chief Design Officer, LegalOn"
+        },
+        {
+          "status": "Acquired by HPE, 2017",
+          "quote": "“LinkedIn only lets me rate Lance high on three attributes, but he actually delivers high on all: great results, personable, expert, good value, on time, high integrity and creative. Finding all of these in one person is very rare.”",
+          "attribution": "— Karla Haley, Director of Demand Generation, Cloud Cruiser"
+        },
+        {
+          "status": "IPO'd on Nasdaq, 2019 · ~$292M revenue",
+          "quote": "“Lance, and his team, did a fantastic job helping our company launch its new brand identity. He was directly involved in all aspects of the project, including the brand redesign strategy as well as the creative implementation on our fully redesigned website and other collateral.”",
+          "attribution": "— Dan Burton, CEO at the time"
+        },
+        {
+          "status": "Acquired by Tecsys, 2018",
+          "quote": "“I first worked with Lance's team at OrderDynamics on a website redesign. I thought their work was great and brought them in to redo our website at Leadspace. We went through an RFP process and reviewed several other vendors, but Lance's team stood out in terms of their creative talent and their unique experience in designing B2B websites focused on generating leads.”",
+          "attribution": "— Kylee Hall, Director of Product Marketing, OrderDynamics and Leadspace"
+        },
+        {
+          "status": "Still operating, still shipping",
+          "quote": "“Lance and his team did an amazing job redesigning Leadspace.com. Really cutting edge work that helps us stand out in the competitive predictive analytics market. They were also great to work with, patient with our requests but helped guide us with a clear and thoughtful approach to design.”",
+          "attribution": "— Damon Waldron, Director of Demand Generation, Leadspace"
+        }
+      ]
+    },
+    "pricing": {
+      "label": "Pricing",
+      "headline": "The most direct way to hire senior design leadership.",
+      "lead": "No hourly billing. No scope creep. No junior handoff. Just a fixed price for senior judgment, delivered in four weeks.",
+      "core": {
+        "name": "Core",
+        "description": "Ideal for teams with some existing design foundation. You need a brand system and a working product to show investors and early customers, without the full weight of a mature product surface yet.",
+        "includes": [
+          "Positioning, audience, experience principles",
+          "Core brand identity system (typography, color, voice)",
+          "Key sales and marketing templates",
+          "Up to 5 core product screens, high-fidelity",
+          "Interactive prototype",
+          "Core states and edge cases mapped",
+          "Component library and design tokens",
+          "Documentation and engineering handoff",
+          "AI-ready design system (DESIGN.md)",
+          "Everything built and delivered in Figma"
+        ]
+      },
+      "included_label": "What's included",
+      "cta_reserve": "Reserve your sprint",
+      "full": {
+        "name": "Full System",
+        "description": "Ideal for teams starting closer to zero. You need the full brand system and a broader product surface mapped and built, ready to hand to engineering across your whole app, not just a few key screens.",
+        "includes": [
+          "Everything in Core, plus:",
+          "Expanded brand system: iconography/illustration style, extended template set (deck, social, email)",
+          "Full messaging framework: positioning statement, brand pillars, audience-specific messaging",
+          "8–10 product screens, high-fidelity",
+          "Deeper edge-case and state mapping across the full product surface",
+          "Expanded component library covering additional product surfaces",
+          "Everything built and delivered in Figma"
+        ]
+      },
+      "land_expand": {
+        "eyebrow": "After the sprint",
+        "name": "Land & Expand",
+        "description": "Ongoing fractional design leadership, roughly 15 hours a week, for teams that want to keep the brand and product functions running well without a full-time hire. Month to month, no fixed end date.",
+        "suffix": "/mo"
+      },
+      "note": "Currently taking a limited number of sprint engagements in exchange for case-study rights. If you're an early yes, the terms reflect that."
+    },
+    "work": {
+      "label": "Selected work",
+      "headline": "Startup and enterprise work, built to move.",
+      "items": [
+        {
+          "subtitle": "Brand & Product"
+        },
+        {
+          "subtitle": "AI shopping experience"
+        },
+        {
+          "subtitle": "0-to-1 AI product"
+        },
+        {
+          "subtitle": "B2B website redesign"
+        },
+        {
+          "subtitle": "Consumer health platform"
+        },
+        {
+          "subtitle": "In-Store iPad App"
+        },
+        {
+          "subtitle": "Crowdfunded Insurance"
+        }
+      ],
+      "view_project": "View project"
+    },
+    "ai": {
+      "label": "AI-ready design system",
+      "headline": "Your design system shouldn't stop at Figma.",
+      "body": "Every sprint includes an AI-ready design system, not just Figma files. Your brand rules, tokens, components, and DESIGN.md stay usable by your team and your AI tools long after the sprint ends.",
+      "cta": "See how it works"
+    },
+    "faq": {
+      "label": "FAQ",
+      "items": [
+        {
+          "question": "How is this different from hiring a freelancer?",
+          "answer": "You're working directly with someone who's led design at Adobe and Walmart scale, not delegating to a junior contractor. The output is also a full system, brand and product together, not a one-off deliverable."
+        },
+        {
+          "question": "What if we need more than 10 product screens?",
+          "answer": "The Full System Sprint covers most funded startups' core surfaces. Larger scopes are quoted directly after the fit assessment call."
+        },
+        {
+          "question": "Do you work with teams outside the US?",
+          "answer": "Raft works in English and Japanese."
+        },
+        {
+          "question": "What happens after the sprint ends?",
+          "answer": "Most teams either take what's delivered and run with it in-house, or move into the Land & Expand fractional retainer to keep shipping with continued design leadership."
+        },
+        {
+          "question": "How soon can we start?",
+          "answer": "Sprints typically start within four weeks of booking a fit assessment call, depending on current availability. Book a call to find the next open slot."
+        },
+        {
+          "question": "Will our product and roadmap details stay confidential?",
+          "answer": "Yes. Happy to sign an NDA before any detailed discussion, just ask."
+        },
+        {
+          "question": "Why can't I just use AI tools myself?",
+          "answer": "AI tools are powerful, but they don't know which choices are right for your specific business. The value isn't the AI, it's 25+ years of judgment directing it: knowing what to build, when it's right, and how to get there fast. Without that direction, AI accelerates guesswork just as easily as it accelerates good decisions."
+        },
+        {
+          "question": "How is this different from AI-Ready Design Systems?",
+          "answer": [
+            "The Sprint is a fixed, one-time engagement that builds your brand and product foundation from the ground up.",
+            "AI-Ready Design Systems",
+            "is for teams that already have a system in place and want it restructured so their team and their AI tools can work from it directly. Most funded startups start with the Sprint."
+          ]
+        }
+      ]
+    },
+    "next": {
+      "label": "Next step",
+      "headline": "Let's unblock your roadmap.",
+      "tab_founder": "I'm a founder",
+      "tab_vc": "I'm a VC",
+      "founder_fit": "Best fit: funded startups with an engineering team already shipping and a brand or product that hasn't caught up yet.",
+      "founder_intro": "Share a brief below and you'll get a scoping note and timeline back within 48 hours, or book the 30-minute call directly if you'd rather talk it through first.",
+      "vc_fit": "Best fit: portfolio companies with an engineering team already shipping and a brand or product that hasn't caught up yet.",
+      "vc_intro": "Tell us who, and we'll reach out directly."
+    }
+  },
+  "ja": {
+    "meta": {
+      "offer_name": "Design Foundation Sprint",
+      "title": "Design Foundation Sprint（4週間）｜Raft Design",
+      "description": "専任の採用を待たずに、経験豊富なデザインリーダーを。Raftは、プロダクトとブランドのギャップを4週間で埋めます — まずブランドを築き、そのブランドを体現するプロダクトへとつなげます。",
+      "social_title": "Design Foundation Sprint — Raft Design",
+      "social_description": "専任の採用を待たずに、経験豊富なデザインリーダーを。Raftは、プロダクトとブランドのギャップを4週間で埋めます。"
+    },
+    "formats": {
+      "week": "— 第{n}週",
+      "usd": "{n}米ドル",
+      "billing": "着手時{deposit}% · 納品時{delivery}%",
+      "usd_mo": "月額{n}米ドル",
+      "duration": "{n}週間"
+    },
+    "schema": {
+      "description": "資金調達後のスタートアップ向けの4週間のエンゲージメント。まずブランドシステムを整え、それを表現するプロダクト画面へと展開する、単発の納品物ではなくトークン化・ドキュメント化されたデザインシステムとして提供します。",
+      "audience": "資金調達済みスタートアップ",
+      "offers": [
+        "ブランドシステム＋主要プロダクト画面 最大5画面。すでにある程度のデザイン基盤があるチーム向け。",
+        "ブランドシステム＋8〜10画面のプロダクトUI、より深いエッジケース設計。ほぼゼロから基盤を整えるチームに適した標準プラン。",
+        "専任を採用せずに、ブランドとプロダクトの取り組みを継続したいチームのための、継続的なフラクショナル・デザインリーダーシップ。週15時間程度。月単位の契約で、決まった終了日はありません。"
+      ]
+    },
+    "terminal": {
+      "title": "Design Foundation Sprint（マシン版）｜Raft Design",
+      "description": "Design Foundation Sprintのページのマシン版です。人間版と同じコンテンツソースから生成されています。",
+      "question": "デザイン基盤構築スプリントとは?",
+      "source_line": "このページと人間版は、同じコンテンツソースから生成されています。"
+    },
+    "hero": {
+      "eyebrow": "デザイン基盤構築スプリント",
+      "audience": "資金調達済みスタートアップ向け",
+      "headline": [
+        "資金調達は終わりました。次は、プロダクトがそれに見合う姿になる番です。"
+      ],
+      "body": "チームは速いペースでリリースを重ね、コードの多くをAIが書いています。デザインの土台がないまま速度だけが上がると、プロダクトは動いても、一つの会社がつくったものには感じられません。Raft Designは、その差を4週間で埋めます。まずブランド、次にそれを体現するプロダクトです。",
+      "cta_book": "30分の初回相談を予約する",
+      "cta_pricing": "料金を見る",
+      "vc_prompt": "VCの方ですか？",
+      "vc_cta": "ポートフォリオ企業をご紹介ください"
+    },
+    "scope": {
+      "label": "支援内容",
+      "headline": "まずブランドを。次に、それを体現するプロダクトを。",
+      "lead": "なぜ3週間ではなく、4週間なのか。多くのスプリントは、ブランドかプロダクトのどちらかに集中します。このスプリントでは、両方を、成果につながる順序でつくります。"
+    },
+    "steps": [
+      {
+        "name": "方向性の定義",
+        "body": "ポジショニング、ターゲット、そしてすべての起点となるデザイン基盤を定めます。"
+      },
+      {
+        "name": "ブランド",
+        "body": "書体、配色体系、言葉づかいを一貫したブランドの仕組みにまとめます。投資家へのプレゼンテーションに使える資料テンプレートも整えます。"
+      },
+      {
+        "name": "プロダクト",
+        "body": "第2週に築いた仕組みをもとに、細部まで設計した5〜10画面と、操作できるプロトタイプを制作します。例外的な操作や状況への対応も整理します。"
+      },
+      {
+        "name": "システム化",
+        "body": "デザイントークンで管理するコンポーネントライブラリ、実装に必要なドキュメント、開発チーム向けの説明動画を用意します。担当者がその場にいなくても、チームが自分たちで開発を進められる状態にします。"
+      }
+    ],
+    "track": {
+      "label": "実績とお客様の声",
+      "headline": "お客様の信頼。確かな成果。",
+      "lead": "Nasdaqへの上場。HPEやTecsysによる買収。そして、何年も事業を続け、成長を重ねる企業。創業者に仕事を任せてくださった方々の声をご紹介します。",
+      "items": [
+        {
+          "status": "現在進行中のプロジェクト · 累計調達額2億米ドル超",
+          "quote": "「Lanceは、米国で生まれたLegalOnのブランドを、日本の文化的な文脈に自然につなげてくれました。彼が構築したブランド体系とフレームワークによって、私たちの核となる『ON』という考えを明確に表現できるようになりました。プロダクトが増えても、ブランドとしての一貫性を保つことができています。」",
+          "attribution": "— Rin Yano, Chief Design Officer, LegalOn"
+        },
+        {
+          "status": "2017年、HPEが買収",
+          "quote": "「LinkedInではLanceを高く評価できる項目は3つまでですが、実際にはすべてに当てはまります。優れた成果、親しみやすさ、専門性、費用に見合う価値、納期の厳守、誠実さ、そして創造性。そのすべてを兼ね備えた人に出会うことは、めったにありません。」",
+          "attribution": "— Karla Haley, Director of Demand Generation, Cloud Cruiser"
+        },
+        {
+          "status": "2019年、Nasdaq上場 · 売上高約2億9,200万米ドル",
+          "quote": "「Lanceと彼のチームは、当社の新しいブランドアイデンティティの立ち上げを見事に支えてくれました。ブランド刷新の戦略から、全面的にリニューアルしたWebサイトや各種資料のクリエイティブ制作まで、彼自身がプロジェクトのあらゆる面に直接関わってくれました。」",
+          "attribution": "— Dan Burton, 当時のCEO"
+        },
+        {
+          "status": "2018年、Tecsysが買収",
+          "quote": "「Lanceのチームと初めて仕事をしたのは、OrderDynamicsのWebサイトリニューアルでした。その仕事が素晴らしかったので、LeadspaceのWebサイトリニューアルでも声をかけました。提案依頼書をもとに複数の制作会社を比較しましたが、Lanceのチームは、クリエイティブの力と、見込み顧客の獲得に特化したB2Bサイトのデザイン経験で際立っていました。」",
+          "attribution": "— Kylee Hall, Director of Product Marketing, OrderDynamics / Leadspace"
+        },
+        {
+          "status": "現在も事業を継続し、リリースを重ねています",
+          "quote": "「Lanceと彼のチームは、Leadspace.comのリニューアルで素晴らしい仕事をしてくれました。先進的なデザインのおかげで、競争の激しい予測分析市場でも存在感を示せています。一緒に仕事をしやすく、こちらの要望にも根気強く応じながら、明確で丁寧なデザインの考え方で導いてくれました。」",
+          "attribution": "— Damon Waldron, Director of Demand Generation, Leadspace"
+        }
+      ]
+    },
+    "pricing": {
+      "label": "料金",
+      "headline": "経験豊富なデザインリーダーを迎える、最短ルート。",
+      "lead": "時間単位の請求も、際限のないスコープの拡大も、若手への丸投げもありません。経験に裏打ちされた判断を、固定料金で。4週間で成果にします。",
+      "core": {
+        "name": "Core",
+        "description": "すでにある程度のデザイン基盤があるチームに。投資家や初期顧客に示せるブランドの仕組みと、動きを確認できるプロダクトを整えます。成熟したプロダクト全体を設計する前の段階に適したプランです。",
+        "includes": [
+          "ポジショニング、ターゲット、体験設計の指針",
+          "ブランドアイデンティティの基本体系（書体、色、言葉づかい）",
+          "営業・マーケティングの主要テンプレート",
+          "細部まで設計した主要プロダクト画面、最大5画面",
+          "操作できるプロトタイプ",
+          "主要な画面状態と例外的なケースの整理",
+          "コンポーネントライブラリとデザイントークン",
+          "ドキュメント整備と開発チームへの引き継ぎ",
+          "AIが活用できるデザインシステム（DESIGN.md）",
+          "すべてFigmaで制作・納品"
+        ]
+      },
+      "included_label": "含まれるもの",
+      "cta_reserve": "スプリントを予約する",
+      "full": {
+        "name": "Full System",
+        "description": "ほぼゼロから基盤を整えるチームに。ブランドの仕組み全体と、より広い範囲のプロダクト体験を設計します。主要な数画面にとどまらず、アプリ全体の開発を進められるよう、開発チームに引き継げる状態まで整えます。",
+        "includes": [
+          "Coreの全内容に加えて：",
+          "ブランド体系の拡張：アイコン・イラストのスタイル、プレゼン資料・SNS・メールのテンプレート",
+          "メッセージ体系の整備：ポジショニングを示すステートメント、ブランドの核となる要素、ターゲット別のメッセージ",
+          "細部まで設計したプロダクト画面、8〜10画面",
+          "プロダクト全体にわたる、より詳細な画面状態と例外的なケースの整理",
+          "より多くの画面・機能に対応するコンポーネントライブラリ",
+          "すべてFigmaで制作・納品"
+        ]
+      },
+      "land_expand": {
+        "eyebrow": "スプリント終了後",
+        "name": "Land & Expand",
+        "description": "専任を採用せずに、ブランドとプロダクトの取り組みを継続したいチームに。週15時間程度の継続契約で、デザインリーダーとしてチームに参画します。月単位の契約で、決まった終了日はありません。"
+      },
+      "note": "現在、事例としての公開にご協力いただける企業を対象に、件数を限定してスプリントを受け付けています。早期にお申し込みいただく場合は、そのご協力を契約条件に反映します。"
+    },
+    "work": {
+      "label": "主なプロジェクト",
+      "headline": "スタートアップから大企業まで。前進を生むデザイン。",
+      "items": [
+        {
+          "subtitle": "ブランド＆プロダクト"
+        },
+        {
+          "subtitle": "AIショッピング体験"
+        },
+        {
+          "subtitle": "ゼロから立ち上げたAIプロダクト"
+        },
+        {
+          "subtitle": "B2Bサイトのリニューアル"
+        },
+        {
+          "subtitle": "一般消費者向けヘルスケアプラットフォーム"
+        },
+        {
+          "subtitle": "店頭向けiPadアプリ"
+        },
+        {
+          "subtitle": "クラウドファンディング型保険"
+        }
+      ],
+      "view_project": "プロジェクトを見る"
+    },
+    "ai": {
+      "label": "AI対応デザインシステム",
+      "headline": "デザインシステムを、Figmaの中だけで終わらせない。",
+      "body": "すべてのスプリントに、AIが活用できるデザインシステムが含まれます。Figmaファイルに加え、ブランドルール、トークン、コンポーネント、DESIGN.mdを整備。スプリントが終わった後も、チームとAIツールの両方が使い続けられる基盤を残します。",
+      "cta": "仕組みを見る"
+    },
+    "faq": {
+      "label": "よくある質問",
+      "items": [
+        {
+          "question": "フリーランスへの依頼とは、何が違いますか？",
+          "answer": "AdobeやWalmartの規模でデザインを率いてきた担当者と、直接仕事を進められます。若手の外部スタッフに任せることはありません。また、単発の制作物ではなく、ブランドとプロダクトを一体で支える仕組みを納品します。"
+        },
+        {
+          "question": "プロダクトの画面が10画面を超える場合は？",
+          "answer": "Full Systemは、資金調達済みスタートアップの多くが必要とする主要画面をカバーします。より広い範囲の設計が必要な場合は、初回相談後に個別にお見積もりします。"
+        },
+        {
+          "question": "米国外のチームにも対応していますか？",
+          "answer": "はい。Raftは米国と日本を拠点に、日本語と英語の両方で仕事を進めています。"
+        },
+        {
+          "question": "スプリント終了後はどうなりますか？",
+          "answer": "納品したデザインや仕組みをもとに、自社チームで開発を進めることができます。継続的なデザインリーダーシップが必要な場合は、Land & Expandの継続契約に移行し、リリースを重ねていくこともできます。"
+        },
+        {
+          "question": "いつから始められますか？",
+          "answer": "通常、初回相談のご予約から4週間以内に開始します。時期は稼働状況によって異なります。直近の開始可能日については、ご相談ください。"
+        },
+        {
+          "question": "プロダクトやロードマップの情報は秘密として扱われますか？",
+          "answer": "はい。詳しいお話を伺う前に、秘密保持契約（NDA）を締結できます。ご希望をお知らせください。"
+        },
+        {
+          "question": "AIツールを自分たちで使うだけでは、足りませんか？",
+          "answer": "AIツールは強力ですが、どの選択が自社の事業に適しているかまでは判断してくれません。Raftが提供する価値は、AIを使うこと自体ではなく、25年以上の経験に基づいてAIを使いこなす判断力です。何をつくるべきか、仕上がりをどう見極めるか、どうすればそこに速く到達できるか。その方向づけがなければ、AIは良い判断と同じ速さで、当てずっぽうの判断も加速させます。"
+        },
+        {
+          "question": "AI対応デザインシステムのサービスとは、何が違いますか？",
+          "answer": [
+            "このスプリントは、期間と範囲を定めた単発のプロジェクトで、ブランドとプロダクトの基盤をゼロから構築します。",
+            "AI対応デザインシステム",
+            "は、すでに仕組みがあり、それをチームとAIツールが直接活用できる形に再構成したい企業向けのサービスです。資金調達済みスタートアップの多くは、スプリントから始めています。"
+          ]
+        }
+      ]
+    },
+    "next": {
+      "label": "次のステップ",
+      "headline": "止まっているロードマップを、動かしましょう。",
+      "tab_founder": "創業者の方",
+      "tab_vc": "VCの方",
+      "founder_fit": "対象は、資金調達を終え、エンジニアリングチームがすでに開発を進めているものの、ブランドやプロダクトがまだそれに追いついていないスタートアップです。",
+      "founder_intro": "以下のフォームからブリーフをお送りいただければ、48時間以内にスコープと工程表をお戻しします。先に直接お話ししたい場合は、30分のご相談を予約してください。",
+      "vc_fit": "対象は、エンジニアリングチームがすでに開発を進めているものの、ブランドやプロダクトがまだそれに追いついていないポートフォリオ企業です。",
+      "vc_intro": "対象企業を教えてください。こちらから直接ご連絡します。"
+    }
+  }
+}

@@ -25,6 +25,10 @@
         "en": "https://raftdesign.studio/design-system/",
         "ja": "https://raftdesign.studio/ja/design-system/"
       },
+      "design_system_terminal": {
+        "en": "/ai/design-system/",
+        "ja": "/ja/ai/design-system/"
+      },
       "contact": {
         "en": "/contact/",
         "ja": "/ja/contact/"

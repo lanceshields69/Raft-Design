@@ -17,6 +17,10 @@
         "en": "/design-foundation/",
         "ja": "/ja/design-foundation/"
       },
+      "included_in_terminal": {
+        "en": "/ai/design-foundation/",
+        "ja": "/ja/ai/design-foundation/"
+      },
       "all_work": {
         "en": "/work/",
         "ja": "/ja/work/"

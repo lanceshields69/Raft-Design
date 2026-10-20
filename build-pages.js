@@ -323,7 +323,7 @@ function renderDesignSystemTerminal(content, lang) {
       <dt>name</dt><dd>${e(L.meta.offer_name)}</dd>
       <dt>for</dt><dd>${e(L.meta.audience)}</dd>
       <dt>pricing</dt><dd>${e(L.offer.pricing)}</dd>
-      <dt>included in</dt><dd><a href="${a(F.links.included_in[lang])}">${e(F.included_in_offer)}</a> · ${e(L.offer.included)}</dd>
+      <dt>included in</dt><dd><a href="${a(F.links.included_in_terminal[lang])}">${e(F.included_in_offer)}</a> · ${e(L.offer.included)}</dd>
       <dt>example</dt><dd><a href="${a(F.links.example_deck)}">${e(L.hero.cta_example)}</a></dd>
       <dt>human page</dt><dd><a href="${a(human)}">${e(SITE + human)}</a></dd>
     </dl>
@@ -600,7 +600,7 @@ ${F.showcase.map((w, i) => {
       <p class="muted">// ${e(L.ai.label)}</p>
       <p class="accent"># ${e(L.ai.headline)}</p>
       <p style="margin-top:10px">${e(L.ai.body)}</p>
-      <p style="margin-top:12px"><a href="${a(F.links.design_system[lang])}">→ ${e(L.ai.cta)}</a></p>
+      <p style="margin-top:12px"><a href="${a(F.links.design_system_terminal[lang])}">→ ${e(L.ai.cta)}</a></p>
     </div>`);
 
   section('FAQ', `    <dl class="faq">

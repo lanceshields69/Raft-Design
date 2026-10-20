@@ -2,6 +2,7 @@
 (() => {
   const button = document.getElementById('home-audio-toggle');
   const frame = document.getElementById('home-audio-frame');
+  const wave = document.getElementById('home-audio-wave');
   if (!button || !frame) return;
   const playLabel = button.dataset.playLabel || 'Play soundtrack';
   const stopLabel = button.dataset.stopLabel || 'Stop soundtrack';
@@ -19,6 +20,7 @@
 
   function render() {
     button.classList.toggle('is-playing', playing);
+    wave?.classList.toggle('is-playing', playing);
     button.setAttribute('aria-pressed', String(playing));
     button.setAttribute('aria-label', playing ? stopLabel : playLabel);
     button.title = playing ? stopLabel : playLabel;

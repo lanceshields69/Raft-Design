@@ -160,6 +160,17 @@ function extractShell(lang) {
   };
 }
 
+// Terminal page titles. EN: "Raft Design: <page name>", derived from the page's
+// meta.offer_name so every new page follows it. JA keeps the usual Japanese
+// "<page>｜Raft Design" form, written per page in terminal.title.
+function terminalTitle(L, lang) {
+  if (lang === 'ja') {
+    if (!L.terminal.title) throw new Error('ja terminal.title is required (format: "<page>｜Raft Design")');
+    return L.terminal.title;
+  }
+  return `Raft Design: ${L.meta.offer_name}`;
+}
+
 function rule(n, label) {
   const num = String(n).padStart(2, '0');
   const fill = '─'.repeat(Math.max(8, 96 - label.length));
@@ -208,7 +219,7 @@ function renderDesignSystemTerminal(content, lang) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${e(L.terminal.title)}</title>
+  <title>${e(terminalTitle(L, lang))}</title>
   <meta name="description" content="${a(L.terminal.description)}">
   <meta name="robots" content="noindex">
   <link rel="icon" type="image/png" href="/images/r-mark-favicon.png">

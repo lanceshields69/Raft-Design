@@ -103,13 +103,51 @@
   pointer-events: none;
 }
 
+/* Sound wave above the tab while the soundtrack plays (Figma node 1177:3566). */
+.edge-audio-wave {
+  position: fixed;
+  z-index: 411;
+  top: calc(clamp(20px, calc(50% + 116px), calc(100dvh - 70px)) - 26px);
+  right: 14px;
+  display: flex;
+  gap: 1px;
+  align-items: center;
+  height: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+.edge-audio-wave.is-playing { opacity: 1; }
+
+.edge-audio-wave span {
+  width: 1.5px;
+  height: var(--h);
+  background: #c3c3c3;
+  transform: scaleY(0.35);
+}
+
+.edge-audio-wave.is-playing span {
+  animation: edge-audio-wave 900ms ease-in-out infinite alternate;
+  animation-delay: calc(var(--i) * -130ms);
+}
+
+[data-theme="light"] .edge-audio-wave span { background: rgba(0, 0, 0, 0.4); }
+
+@keyframes edge-audio-wave {
+  from { transform: scaleY(0.35); }
+  to { transform: scaleY(1); }
+}
+
 @media (max-width: 768px) {
   /* The human/AI toggle is hidden at this width, so the tab sits by itself. */
   .edge-audio { top: 50%; transform: translateY(-50%); }
+  .edge-audio-wave { top: calc(50% - 51px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .edge-audio,
   .edge-audio-credit,
   .edge-audio-toggle { transition: none; }
+  .edge-audio-wave.is-playing span { animation: none; transform: none; }
 }

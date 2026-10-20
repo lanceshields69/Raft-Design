@@ -2,6 +2,7 @@
 (() => {
   const button = document.getElementById('ai-audio-toggle');
   const frame = document.getElementById('ai-audio-frame');
+  const wave = document.getElementById('ai-audio-wave');
   if (!button || !frame) return;
   const playLabel = button.dataset.playLabel || 'Play soundtrack';
   const stopLabel = button.dataset.stopLabel || 'Stop soundtrack';
@@ -16,6 +17,7 @@
 
   function render() {
     button.classList.toggle('is-playing', playing);
+    wave?.classList.toggle('is-playing', playing);
     button.setAttribute('aria-pressed', String(playing));
     button.setAttribute('aria-label', playing ? stopLabel : playLabel);
     button.title = playing ? stopLabel : playLabel;
@@ -24,6 +26,7 @@
   function unavailable() {
     playing = false;
     button.classList.remove('is-playing');
+    wave?.classList.remove('is-playing');
     button.disabled = true;
     button.setAttribute('aria-pressed', 'false');
     button.setAttribute('aria-label', unavailableLabel);

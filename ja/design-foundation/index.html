@@ -195,7 +195,10 @@
 
     body { margin: 0; }
 
-    ::-webkit-scrollbar { height: 6px; }
+    /* Thin horizontal scrollers only. An unscoped ::-webkit-scrollbar rule also
+       restyles the page's own scrollbar, which leaves an empty gutter at the
+       right edge in place of the vertical scrollbar. */
+    div::-webkit-scrollbar { height: 6px; }
     .df-hscroll::-webkit-scrollbar { display: none; }
 
     /* Selected-work tiles: two stacked images, the second crossfading in

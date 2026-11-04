@@ -12,3 +12,9 @@ node_modules/
 Raft Design System/Raft Design System Deck.zip
 Raft Design System/Raft Design System Deck.html
 Raft Design System/design-system-deck/
+
+# Screensaver project (Swift .saver + captured media): ~1.1GB of .mov/.mp4
+# sources, the compiled Raft.saver bundle and a zip. Kept locally only —
+# GitHub rejects individual files over 100MB, and the static Vercel deploy
+# has no build step that would otherwise exclude it.
+screensaver/

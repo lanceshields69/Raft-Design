@@ -1,0 +1,311 @@
+{
+  "slug": "i-built-a-version-of-my-website-for-machines",
+  "date": "2026-10-20",
+  "image": "hero-ai-page.jpg",
+  "imageWidth": 1920,
+  "imageHeight": 648,
+  "en": {
+    "title": "I Built a Version of My Website for Machines. Here’s What I Learned.",
+    "metaTitle": "I Built a Website for Machines. Here’s What I Learned. | Raft Design",
+    "excerpt": "A terminal-styled second home page turned into a 60-day test of how AI systems actually read a website, and exposed the contradictions hiding in my own site.",
+    "subhead": "I built a second home page for Raft Design that looks like a terminal, then went looking for evidence. The most useful finding wasn’t the file I published. It was everything my own site couldn’t agree on.",
+    "heroImageAlt": "The Raft Design terminal home page at raftdesign.studio/ai: a block-letter RAFT wordmark in brand green, a dithered wave animation and the terminal navigation, with the HUMAN | AI switch on the right edge.",
+    "originalDate": "2026-10-20",
+    "body": [
+      {
+        "html": "This weekend I built a second version of the Raft Design home page. Same content, different reader. The first version is for people. The second one is styled like a terminal, as if a machine were reading the site out loud."
+      },
+      {
+        "html": "It started as a design idea. It turned into an experiment about how AI systems actually read websites, and it taught me more about my own site than I expected. Here’s what I built, what the research says, and why I think this is an opening for studios and agencies right now."
+      },
+      {
+        "h2": "A toggle between human and AI"
+      },
+      {
+        "html": "The <a href=\"https://raftdesign.studio/ai/\" target=\"_blank\" rel=\"noopener noreferrer\">terminal version</a> uses monospaced type on dark green, a pixel logo that glitches now and then, and a fake chat session that answers “what does Raft Design do?” The content is presented as command output. You read our approach as <code>cat <a href=\"https://raftdesign.studio/ai/#approach\" target=\"_blank\" rel=\"noopener noreferrer\">approach.md</a></code>."
+      },
+      {
+        "html": "A small HUMAN | AI switch sits on the edge of the page. Click it and the site flips between the two versions."
+      },
+      {
+        "html": "I want to be clear about what this page is. It’s a branded concept, not an optimization. A model reading the HTML gets the same text either way, so the terminal styling doesn’t help a machine understand anything. What it does is make an idea visible. Most people never think about the fact that their website now has two audiences. The toggle shows both at once."
+      },
+      {
+        "image": {
+          "file": "article-img-website-for-machines-toggles.jpg",
+          "alt": "Side-by-side crops of the human and AI versions of the Raft Design home page, each with a HUMAN | AI switch on its right edge.",
+          "caption": "",
+          "w": 1150,
+          "h": 845
+        }
+      },
+      {
+        "h2": "Designing the machine side"
+      },
+      {
+        "html": "The terminal page also turned into the most interesting branding exercise I’ve done for Raft."
+      },
+      {
+        "html": "I leaned into the terminal look instead of fighting it. The page is set in Kode Mono, a monospaced typeface. Our brand green on a dark background fit the aesthetic almost perfectly, which was a happy accident."
+      },
+      {
+        "html": "Then I built pieces that only make sense on the machine side. The human home page opens with a video of waves. On the terminal page, the same waves become a dithered WebGL animation, coded to move in sync with the video. I also vibe coded a logo generator that cycles through block-letter versions of RAFT, each one borrowing from the type of an older machine era."
+      },
+      {
+        "video": {
+          "file": "raft-ai-logo.mp4",
+          "alt": "Animation of the Raft Design logo cycling through block-letter versions of RAFT on the terminal home page.",
+          "caption": "The logo generator on the terminal page cycles through block-letter versions of RAFT, each one borrowing from the typography of an older machine era.",
+          "w": 1846,
+          "h": 1080
+        }
+      },
+      {
+        "html": "There’s something retro about AI. We’ve been imagining machines, good and bad, for decades, and our pictures of them still come from old screens and science fiction. I wanted to see how that AI-retro feeling could live inside the Raft brand."
+      },
+      {
+        "html": "It pushed the brand further than I expected. Kode Mono is now starting to replace the Fraunces italic I’d been using as an accent on the main site. An experiment built for machines ended up changing how Raft looks to people."
+      },
+      {
+        "h2": "From a design idea to a real machine version"
+      },
+      {
+        "html": "The terminal page made me curious about the real thing: a version of the site written only for machines."
+      },
+      {
+        "html": "The answer is <a href=\"https://raftdesign.studio/ai.md\" target=\"_blank\" rel=\"noopener noreferrer\">ai.md</a>. It’s a plain Markdown file that summarizes the whole site in about 2,500 words: who we work with, what each offer includes and costs, our projects, our approach, and a FAQ. No layout, no styling, no navigation. Just the facts an AI system would need to describe Raft accurately or decide whether we fit someone’s brief. There’s a Japanese version too."
+      },
+      {
+        "html": "It sits next to <a href=\"https://raftdesign.studio/llms.txt\" target=\"_blank\" rel=\"noopener noreferrer\">llms.txt</a>, an emerging convention for giving AI systems an index of a site. I made <a href=\"https://raftdesign.studio/ai.md\" target=\"_blank\" rel=\"noopener noreferrer\">ai.md</a> indexable, submitted it to Bing through IndexNow, and I’m watching the server logs to see which AI crawlers actually request it. The test runs 60 days, until mid-December."
+      },
+      {
+        "image": {
+          "file": "article-img-website-for-machines-ai-md.jpg",
+          "alt": "The ai.md file open in a browser at raftdesign.studio/ai.md, summarizing the studio in plain Markdown under headings like “At a glance” and “Who we work with”.",
+          "caption": "",
+          "w": 974,
+          "h": 758
+        }
+      },
+      {
+        "h2": "What the research says"
+      },
+      {
+        "html": "Before I got too attached to the idea, I looked for evidence. It’s more sobering than the hype."
+      },
+      {
+        "html": "Otterly ran a <a href=\"https://otterly.ai/blog/geo-experiment-html-vs-markdown/\" target=\"_blank\" rel=\"noopener noreferrer\">controlled test</a> on its own site, publishing Markdown copies of pages next to the HTML originals. Over 14 days, AI search platforms cited the HTML pages and never cited a single .md URL. The most telling detail: over 96% of the visits came from ChatGPT’s live fetcher, which retrieves pages while answering someone’s question. Even agents working in real time chose HTML. Their earlier study found llms.txt received about 0.1% of AI bot traffic over 90 days."
+      },
+      {
+        "html": "The developer Tw93 <a href=\"https://tw93.fun/en/2026-05-01/ai-visibility.html\" target=\"_blank\" rel=\"noopener noreferrer\">makes a more optimistic case</a> for llms.txt and Markdown. Most of that evidence comes from developer documentation, where coding tools do ask for Markdown. He also makes a point I agree with completely: AI referrals are still under 1% of traffic, so this is about brand visibility, not traffic."
+      },
+      {
+        "html": "Put together, the picture for a service business is fairly clear. AI systems read HTML well. A Markdown copy doesn’t get you cited. For a studio like mine, the file itself is a small bet at best."
+      },
+      {
+        "h2": "The real lesson: my site disagreed with itself"
+      },
+      {
+        "html": "The most useful part of this experiment wasn’t the file. It was writing it."
+      },
+      {
+        "html": "To summarize the whole site in one document, I had to check every fact in one place. My site didn’t agree with itself. One page listed one number for my years of experience and another page listed a different one. Our offers were described three different ways across three pages. A client metric on the English version of a case study didn’t match the Japanese version."
+      },
+      {
+        "html": "Humans skim past this kind of thing. AI systems don’t. When sources disagree, a model hedges, picks one at random, or leaves you out of the answer. Consistent facts across your pages are one of the few things that clearly shape how AI describes you, and I’d been getting them wrong without noticing."
+      },
+      {
+        "html": "So I ran a full audit of the site’s HTML: headings, metadata, structured data, sitemap, attribution, and every claim. Then I fixed what it found. That work will do more for how AI describes Raft than <a href=\"https://raftdesign.studio/ai.md\" target=\"_blank\" rel=\"noopener noreferrer\">ai.md</a> ever will."
+      },
+      {
+        "h2": "One source, two versions"
+      },
+      {
+        "html": "The contradictions had a cause. Each version of a page was written and maintained by hand, so they drifted apart over time."
+      },
+      {
+        "html": "The fix is a design-system idea applied to content. The text and facts for a page now live in one content file. A small build script renders the human page and the terminal page from that same file. Change a price once and it updates in both versions and in the page’s structured data."
+      },
+      {
+        "html": "The <a href=\"https://raftdesign.studio/design-system/\" target=\"_blank\" rel=\"noopener noreferrer\">AI-ready design systems page</a> was the first one I converted, and that choice was deliberate. The page argues that one source of truth can serve both people and AI tools. Now the page proves it. Flip the toggle and you see the <a href=\"https://raftdesign.studio/ai/design-system/\" target=\"_blank\" rel=\"noopener noreferrer\">terminal version</a>, built from the same content. The Design Foundation Sprint page is getting the same treatment."
+      },
+      {
+        "image": {
+          "file": "article-img-website-for-machines-source.png",
+          "alt": "Diagram of one shared content source feeding the human web, the AI web, Markdown files and an Ishmael conversation, on top of a shared Raft knowledge base and a content publishing pipeline.",
+          "caption": "",
+          "w": 1528,
+          "h": 1266
+        }
+      },
+      {
+        "h2": "Why agencies should try this"
+      },
+      {
+        "html": "Most agency sites say they understand AI. Very few show it. A machine version of your own site is a rare chance to do both at once: build something that looks and feels like your brand, and run a real test while you’re at it."
+      },
+      {
+        "html": "The brand side is the obvious part. A human/AI toggle is memorable, shareable, and a better demo of your thinking than another case study grid. Every studio has its own way to interpret it. Ours is a terminal. Yours could be a spec sheet, a blueprint, or a field guide."
+      },
+      {
+        "html": "The testing side is the part most people skip. Building the machine version forces you to audit your facts. Publishing <a href=\"https://raftdesign.studio/ai.md\" target=\"_blank\" rel=\"noopener noreferrer\">ai.md</a> and watching your logs gives you your own data instead of someone else’s claims. And whatever you learn becomes material for your clients, who are asking the same questions about their own sites."
+      },
+      {
+        "html": "The cost is low if you build it right. Use a shared content source from the start, so the versions can’t drift. Keep the terminal pages out of search with noindex, since they’re a brand piece. And be honest about what the machine version does and doesn’t do. Overclaiming GEO results is the fastest way to lose the credibility the project is meant to build."
+      },
+      {
+        "h2": "What’s next"
+      },
+      {
+        "html": "The <a href=\"https://raftdesign.studio/ai.md\" target=\"_blank\" rel=\"noopener noreferrer\">ai.md</a> test ends in mid-December. I’ll publish the numbers either way: which AI crawlers requested the file, whether any system cited it, and how accurately ChatGPT, Perplexity, Claude and Copilot describe Raft before and after the cleanup. A null result is still worth sharing. Real data on how AI agents use a small business site is hard to find."
+      },
+      {
+        "html": "In the meantime, the things that actually move AI visibility are less exciting than a new file format. Make your facts consistent across every page. Make sure Bing has indexed your site, since several AI search tools draw on it. And get mentioned on sites other than your own."
+      },
+      {
+        "html": "If you want to see how your site reads to machines today, the <a href=\"https://design-intelligence-engine.lovable.app/?lang=en\" target=\"_blank\" rel=\"noopener noreferrer\">Design Intelligence Engine</a> will scan it and score how readable it is to LLMs and search. Or flip the toggle on <a href=\"https://raftdesign.studio/\" target=\"_blank\" rel=\"noopener noreferrer\">our home page</a> and see the terminal version for yourself."
+      },
+      {
+        "h2": "Sources"
+      },
+      {
+        "list": [
+          "<a href=\"https://otterly.ai/blog/geo-experiment-html-vs-markdown/\" target=\"_blank\" rel=\"noopener noreferrer\">Otterly: GEO Experiment, Markdown vs. HTML</a>",
+          "<a href=\"https://tw93.fun/en/2026-05-01/ai-visibility.html\" target=\"_blank\" rel=\"noopener noreferrer\">Tw93: AI Visibility Principles, Practices, and Trade-offs</a>"
+        ]
+      }
+    ]
+  },
+  "ja": {
+    "title": "人間ではなく、機械のためのサイトをつくってみた。そこで学んだこと",
+    "excerpt": "Raft Designのホームページに、機械のためのターミナル版をつくりました。AIはWebサイトを実際にどう読むのか。60日間の実験と、その過程で見つかった自社サイトの矛盾について。",
+    "subhead": "機械のためにつくった実験は、AIがサイトをどう読むかを教えてくれただけでなく、自分のサイトが抱えていた食い違いも明らかにしました。",
+    "author": "ランス・シールズ",
+    "authorBio": "Raft Design創業者、プリンシパルデザイナー。日米の企業とともに、AIプロダクトデザインとイノベーションに取り組んでいます。",
+    "heroImageAlt": "raftdesign.studio/aiのターミナル版ホームページ。ブランドカラーの緑で描かれたブロック体のRAFTロゴ、ディザリングされた波のアニメーション、ターミナル風のナビゲーション。右端には「HUMAN | AI」スイッチがある。",
+    "thumbnailAlt": "ターミナル風のRaft Designホームページ。「人間ではなく、機械のためのサイトをつくってみた。そこで学んだこと」の記事サムネイル。",
+    "sections": [
+      {
+        "paragraphs": [
+          "週末に、Raft Designのホームページをもう一つつくりました。内容は同じで、読む相手が違います。一つは人間のためのサイト。もう一つは、機械が内容を読み上げているような、ターミナル風のサイトです。",
+          "最初はデザインのアイデアでした。それが、AIは実際にWebサイトをどう読むのかを確かめる実験になり、自分のサイトについても予想以上に多くのことを教えてくれました。何をつくり、調査から何がわかり、なぜ今、スタジオやエージェンシーにとって取り組む価値があるのかを書きます。"
+        ]
+      },
+      {
+        "heading": "人間とAIを切り替える",
+        "paragraphs": [
+          "[ターミナル版](https://raftdesign.studio/ai/)では、濃い緑の背景に等幅フォントを使い、ときどき表示が乱れるピクセルロゴを置きました。「Raft Designは何をする会社？」に答えるチャット画面もあります。コンテンツは、コマンドを実行した結果のように表示されます。私たちのアプローチを読むときは、`cat`で[approach.md](https://raftdesign.studio/ai/#approach)を開く、という具合です。",
+          "ページの端には、小さな「HUMAN | AI」スイッチがあります。押すと、二つのサイトが切り替わります。",
+          "このページが何なのかは、はっきりさせておきたいと思います。これはブランドを表現するコンセプトであり、AI向けの最適化ではありません。AIモデルがHTMLを読むとき、どちらの表示でも受け取る文章は同じです。ターミナル風の見た目によって、機械が内容を理解しやすくなるわけではありません。",
+          "このページがしているのは、ある考えを目に見える形にすることです。今、Webサイトには二種類の読者がいる。そのことを普段は意識しない人にも、スイッチ一つで両方を見てもらえます。",
+          {
+            "image": {
+              "file": "article-img-website-for-machines-toggles.jpg",
+              "alt": "Raft Designの人間向けホームページとAI向けターミナル版を並べた画像。どちらも右端に「HUMAN | AI」の切り替えスイッチがある。",
+              "w": 1150,
+              "h": 845
+            }
+          }
+        ]
+      },
+      {
+        "heading": "機械側をデザインする",
+        "paragraphs": [
+          "ターミナル版は、Raftにとって、これまでで最も興味深いブランディングの試みにもなりました。ターミナルらしさを抑えるのではなく、その方向へ振り切りました。フォントは等幅のKode Mono。暗い背景にブランドカラーの緑を合わせると、偶然にもほぼ思い描いていた雰囲気になりました。",
+          "そこから、機械側にしかない表現をつくりました。人間向けのホームページは、波の動画で始まります。ターミナル版では、同じ波をディザリングしたWebGLアニメーションに変え、動画と動きが同期するようにコードを書きました。さらに、ブロック文字の「RAFT」が次々に現れるロゴジェネレーターも、AIを使ってコードを書きながらつくりました。それぞれの文字は、昔の機械を思わせる書体から着想を得ています。",
+          {
+            "video": {
+              "file": "raft-ai-logo.mp4",
+              "alt": "ターミナル版で、ブロック文字のRAFTロゴがさまざまな書体に切り替わるアニメーション。",
+              "caption": "ターミナル版のロゴジェネレーター。昔の機械を思わせる書体から着想を得た「RAFT」の文字が次々に現れます。",
+              "w": 1846,
+              "h": 1080
+            }
+          },
+          "AIには、どこかレトロなところがあります。私たちは何十年も前から、善い機械も悪い機械も想像してきました。その姿を思い描くとき、今でも古い画面やSFのイメージが浮かびます。その感覚を、Raftのブランドの中で表現してみたかったのです。",
+          "結果として、ブランドは予想以上に先へ進みました。メインサイトでアクセントとして使っていたFrauncesのイタリック体に代わり、Kode Monoを使い始めています。機械のためにつくった実験が、人間から見たRaftの姿を変えました。"
+        ]
+      },
+      {
+        "heading": "デザインのアイデアから、実際に機械が読むファイルへ",
+        "paragraphs": [
+          "ターミナル版をつくるうちに、次の疑問が生まれました。見た目の表現だけでなく、本当に機械のためだけに書いたサイトはどうなるのか。",
+          "その答えが、[ai.md](https://raftdesign.studio/ai.md)です。サイト全体を約2,500語にまとめた、プレーンなMarkdownファイルです。どんなクライアントと仕事をするのか。各サービスに何が含まれ、費用はいくらか。プロジェクト、アプローチ、よくある質問。レイアウトも装飾もナビゲーションもありません。AIがRaftを正確に説明し、誰かの依頼に合うかを判断するための事実だけを載せています。日本語版もあります。",
+          "このファイルは、AI向けにサイトの目次を示す新しい慣行である[llms.txt](https://raftdesign.studio/llms.txt)と並べて公開しています。`ai.md`を検索エンジンが登録できるようにし、IndexNowを通じてBingにも送信しました。今はサーバーログを見ながら、どのAIクローラーが実際にファイルを取得するかを追っています。実験期間は、12月中旬までの60日間です。",
+          {
+            "image": {
+              "file": "article-img-website-for-machines-ai-md.jpg",
+              "alt": "ブラウザーで開いたRaft Designのai.md。スタジオの概要や対象クライアントがMarkdownでまとめられている。",
+              "w": 974,
+              "h": 758
+            }
+          }
+        ]
+      },
+      {
+        "heading": "調査からわかったこと",
+        "paragraphs": [
+          "このアイデアに入れ込みすぎる前に、根拠を探しました。見つかった結果は、期待を少し冷ますものでした。",
+          "Otterlyは自社サイトで、HTMLのページと並べてMarkdown版を公開する[比較実験](https://otterly.ai/blog/geo-experiment-html-vs-markdown/)を行いました。14日間、AI検索サービスはHTMLのページを引用し、`.md`のURLは一つも引用しませんでした。特に興味深いのは、アクセスの96％以上がChatGPTのリアルタイム取得機能から来ていたことです。誰かの質問に答える途中でページを取りに行く機能です。リアルタイムで動くAIエージェントさえ、HTMLを選んでいました。Otterlyの以前の調査では、90日間のAIボットによるアクセスのうち、`llms.txt`へのアクセスは約0.1％でした。",
+          "開発者のTw93は、`llms.txt`とMarkdownについて[より前向きな見方](https://tw93.fun/en/2026-05-01/ai-visibility.html)を示しています。ただし、その根拠の多くは、コーディングツールがMarkdownを要求する開発者向けドキュメントから来ています。もう一つ、彼の指摘には全面的に同意します。AIからの流入はまだ全体の1％未満。ここで狙うべきなのはアクセス数より、ブランドがAIの回答の中でどう見えるかです。",
+          "これらを踏まえると、サービスを提供する事業にとっての現状はかなり明確です。AIはHTMLを十分に読めます。Markdown版を用意するだけで引用されるわけではありません。私のようなスタジオにとって、ファイル自体に賭けられる期待は小さいものです。"
+        ]
+      },
+      {
+        "heading": "本当の発見は、サイトの中で情報が食い違っていたこと",
+        "paragraphs": [
+          "この実験で最も役に立ったのは、ファイルそのものではありません。ファイルを書く作業でした。",
+          "サイト全体を一つの文書にまとめるには、すべての事実を一か所で確認しなければなりません。すると、自分のサイトの情報が一致していないことに気づきました。経験年数がページによって違う。三つのページで、サービスの説明がそれぞれ違う。ある事例で示したクライアントの数値も、英語版と日本語版で食い違っていました。",
+          "人間なら、こうした違いを読み飛ばすかもしれません。AIはそうはいきません。参照先の情報が矛盾すると、モデルは言い方を曖昧にしたり、どれか一つを選んだり、回答からその情報を外したりします。各ページの事実が一致していることは、AIが自分たちをどう説明するかに明らかに影響する数少ない要素の一つです。私はそれを、気づかないまま間違えていました。",
+          "そこで、サイトのHTML全体を点検しました。見出し、メタデータ、構造化データ、サイトマップ、出典や著者の表示、そして一つひとつの主張。見つかった問題は修正しました。この作業のほうが、`ai.md`よりも、AIによるRaftの説明をよくするはずです。"
+        ]
+      },
+      {
+        "heading": "一つの情報源から、二つのサイトをつくる",
+        "paragraphs": [
+          "食い違いには原因がありました。各ページの別バージョンを手作業で書き、管理していたため、時間とともに内容がずれていったのです。",
+          "解決策は、デザインシステムの考え方をコンテンツに適用することでした。今は、ページの文章と事実を一つのコンテンツファイルに置いています。小さなビルドスクリプトが、そのファイルから人間向けのページとターミナル版を生成します。価格を一度変えれば、両方のページと構造化データに反映されます。",
+          "最初にこの仕組みへ移したのは、[AI対応デザインシステムのページ](https://raftdesign.studio/design-system/)です。意図して選びました。このページは、一つの正しい情報源を人間とAIツールの両方が使えると説明しています。今ではページそのものが、それを実証しています。スイッチを切り替えれば、同じコンテンツからつくった[ターミナル版](https://raftdesign.studio/ai/design-system/)が現れます。デザイン基盤構築スプリントのページにも、同じ仕組みを導入する予定です。",
+          {
+            "image": {
+              "file": "article-img-website-for-machines-source.png",
+              "alt": "一つのコンテンツファイルから人間向けサイト、AI向けサイト、Markdownファイルへ情報を展開する構成図。",
+              "w": 1528,
+              "h": 1266
+            }
+          }
+        ]
+      },
+      {
+        "heading": "エージェンシーにも試してほしい理由",
+        "paragraphs": [
+          "AIを理解していると語るエージェンシーのサイトは多くあります。それを形にして見せているサイトは、まだわずかです。",
+          "自分たちのサイトに機械向けのバージョンをつくることは、その両方を一度に行える珍しい機会です。自社のブランドらしい体験をつくりながら、実際の検証もできます。",
+          "ブランドとしての価値はわかりやすいものです。人間とAIを切り替えるスイッチは記憶に残り、人に見せたくなる。事例を並べるだけのページより、自分たちの考え方をよく伝えられます。解釈の仕方はスタジオごとに違っていい。Raftの場合はターミナルでした。別のスタジオなら、仕様書や設計図、フィールドガイドかもしれません。",
+          "一方、検証のほうは見落とされがちです。機械向けのバージョンをつくれば、自分たちが公開している事実を点検せざるを得ません。`ai.md`を公開してログを見れば、他人の主張ではなく、自分たちのデータが得られます。そこで学んだことは、同じ疑問を持つクライアントにも役立ちます。",
+          "正しくつくれば、負担は大きくありません。最初から共通のコンテンツを使い、バージョン間で内容がずれないようにする。ターミナル版はブランド表現なので、`noindex`を指定して検索結果には出さない。そして、機械向けバージョンにできることと、できないことを正直に伝える。GEOの効果を大げさに語れば、この取り組みで築きたい信頼を失ってしまいます。"
+        ]
+      },
+      {
+        "heading": "次に確かめること",
+        "paragraphs": [
+          "`ai.md`の実験は12月中旬に終わります。結果がどうであれ、数字を公開します。どのAIクローラーがファイルを取得したか。引用したシステムはあったか。サイトの情報を整理する前後で、ChatGPT、Perplexity、Claude、CopilotはRaftをどれほど正確に説明するか。",
+          "効果が見られなかったという結果にも、共有する価値があります。AIエージェントが小さな事業のサイトをどう使うのか、実際のデータはまだ多くありません。",
+          "その間に取り組むべきことは、新しいファイル形式ほど目新しくありません。すべてのページで事実を揃えること。複数のAI検索ツールが参照するBingに、サイトが登録されているか確かめること。そして、自分のサイト以外の場所でも言及されることです。",
+          "今、自分のサイトが機械にどう読まれるかを見たい方は、[Design Intelligence Engine](https://design-intelligence-engine.lovable.app/?lang=en)を試してみてください。サイトをスキャンし、LLMや検索エンジンにとっての読み取りやすさを採点します。あるいは、[Raftのホームページ](https://raftdesign.studio/)でスイッチを切り替え、ターミナル版を見てみてください。"
+        ]
+      },
+      {
+        "heading": "参考資料",
+        "paragraphs": [
+          {
+            "list": [
+              "[Otterly: GEO Experiment, Markdown vs. HTML](https://otterly.ai/blog/geo-experiment-html-vs-markdown/)",
+              "[Tw93: AI Visibility Principles, Practices, and Trade-offs](https://tw93.fun/en/2026-05-01/ai-visibility.html)"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -61,6 +61,7 @@ Raft is founder-led. The work below was led by our founder before Raft, at Walma
 ## Optional
 - [Journal index (English)](https://raftdesign.studio/journal/)
 - [Journal index (Japanese)](https://raftdesign.studio/ja/journal/)
+- [I Built a Version of My Website for Machines. Here’s What I Learned.](https://raftdesign.studio/journal/i-built-a-version-of-my-website-for-machines/) / [日本語](https://raftdesign.studio/ja/journal/i-built-a-version-of-my-website-for-machines/): 「人間ではなく、機械のためのサイトをつくってみた。そこで学んだこと」
 - [5 Best Brand and AI Product Design Studios for Startups in Los Angeles (2026)](https://raftdesign.studio/journal/best-ai-product-design-studios-los-angeles/): English only.
 - [Introducing the Design Foundation Sprint](https://raftdesign.studio/journal/introducing-the-design-foundation/): English only.
 - [Stop Adding AI to the Design Process. Re-engineer It.](https://raftdesign.studio/journal/stop-adding-ai-to-the-design-process/) / [日本語](https://raftdesign.studio/ja/journal/stop-adding-ai-to-the-design-process/): 「AIをデザインプロセスに追加するのはやめよう。再設計しよう。」

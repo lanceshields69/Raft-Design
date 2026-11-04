@@ -390,11 +390,11 @@ function esc(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-// Converts inline markdown — [text](url) links, <url> autolinks, and
-// **bold** — inside a paragraph to real HTML tags, HTML-escaping
-// everything else in the string.
+// Converts inline markdown — [text](url) links, <url> autolinks, **bold** and
+// `code` — inside a paragraph to real HTML tags, HTML-escaping everything else
+// in the string.
 function renderInline(raw) {
-  const re = /\[([^\]]+)\]\(([^)]+)\)|<(https?:\/\/[^>]+)>|\*\*([^*]+)\*\*/g;
+  const re = /\[([^\]]+)\]\(([^)]+)\)|<(https?:\/\/[^>]+)>|\*\*([^*]+)\*\*|`([^`]+)`/g;
   let result = '';
   let lastIndex = 0;
   let m;
@@ -406,6 +406,8 @@ function renderInline(raw) {
       result += `<a href="${esc(m[3])}" target="_blank" rel="noopener noreferrer">${esc(m[3])}</a>`;
     } else if (m[4] !== undefined) {
       result += `<strong>${esc(m[4])}</strong>`;
+    } else if (m[5] !== undefined) {
+      result += `<code>${esc(m[5])}</code>`;
     }
     lastIndex = re.lastIndex;
   }
@@ -425,6 +427,18 @@ function renderContentItem(item) {
   if (item.list) {
     const lis = item.list.map((li) => `            <li>${renderInline(li)}</li>`).join('\n');
     return `          <ul class="article-list">\n${lis}\n          </ul>`;
+  }
+  if (item.image) {
+    const im = item.image;
+    return `          <figure class="article-figure">
+            <img src="../../../images/${esc(im.file)}" width="${im.w}" height="${im.h}" alt="${esc(im.alt)}" loading="lazy">${im.caption ? `\n            <figcaption>${renderInline(im.caption)}</figcaption>` : ''}
+          </figure>`;
+  }
+  if (item.video) {
+    const v = item.video;
+    return `          <figure class="article-figure article-figure--video">
+            <video src="../../../images/${esc(v.file)}" width="${v.w}" height="${v.h}" autoplay muted loop playsinline controls preload="metadata" aria-label="${esc(v.alt)}">動画を再生できません。</video>${v.caption ? `\n            <figcaption>${renderInline(v.caption)}</figcaption>` : ''}
+          </figure>`;
   }
   throw new Error(`Unrecognized content item: ${JSON.stringify(item)}`);
 }
@@ -485,6 +499,15 @@ ${rows}
               </tbody>
             </table>
           </div>`;
+  }
+  // Muted looping clip used as an illustration rather than the hero. `controls`
+  // stays on because the clip runs longer than five seconds next to body copy
+  // (WCAG 2.2.2), so a reader can pause it.
+  if (item.video) {
+    const v = item.video;
+    return `          <figure class="article-figure article-figure--video">
+            <video src="../../images/${v.file}"${v.poster ? ` poster="../../images/${v.poster}"` : ''} width="${v.w}" height="${v.h}" autoplay muted loop playsinline controls preload="metadata"${v.alt ? ` aria-label="${esc(v.alt)}"` : ''}>Your browser does not support the video tag.</video>${v.caption ? `\n            <figcaption>${v.caption}</figcaption>` : ''}
+          </figure>`;
   }
   if (item.image) {
     const im = item.image;
@@ -664,7 +687,7 @@ ${jsonLd({
   // Hero copy is hand-written per language (the intro line differs from the meta description).
   const hero = isJa ? `    <section class="page-hero" style="max-width:1920px">
       <div style="max-width:900px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px">
-        <span style="font-size:23px;font-weight:var(--weight-black);letter-spacing:var(--tracking-section-title);line-height:var(--line-height-eyebrow);text-transform:uppercase;color:var(--text-accent)">ジャーナル</span>
+        <span class="eyebrow-mono" style="letter-spacing:var(--tracking-section-title);line-height:var(--line-height-eyebrow);text-transform:uppercase;color:var(--text-accent)">ジャーナル</span>
         <!-- max-width raised 800px -> 900px: at 800px this headline wrapped
              to 2 lines with just "る。" orphaned alone on the second line;
              900px is wide enough for it to fit on one line at every
@@ -675,7 +698,7 @@ ${jsonLd({
       </div>
     </section>` : `    <section class="page-hero" style="max-width:1920px">
       <div style="max-width:800px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px">
-        <span style="font-size:23px;font-weight:var(--weight-black);letter-spacing:var(--tracking-section-title);line-height:var(--line-height-eyebrow);text-transform:uppercase;color:var(--text-accent)">Journal</span>
+        <span class="eyebrow-mono" style="letter-spacing:var(--tracking-section-title);line-height:var(--line-height-eyebrow);text-transform:uppercase;color:var(--text-accent)">Journal</span>
         <h1 style="font-weight:700;font-size:clamp(40px,8vw,79px);line-height:.95;letter-spacing:-2px;margin:0">A closer look at what's next.</h1>
         <p style="font-size:20px;line-height:1.4;color:var(--text-primary);max-width:559px;margin:0">Essays on how AI is changing design, and what it means for the brands and products we build.</p>
       </div>
@@ -873,7 +896,7 @@ ${authorCardHtml}
 
   const extraCss = '\n  <link rel="stylesheet" href="../../ja.css">';
 
-  return page({ lang: 'ja', stylesPath, imagesPath, extraCss, head, journalHref, langSwitch, bodyMain });
+  return page({ lang: 'ja', stylesPath, imagesPath, extraCss, head, journalHref, langSwitch, bodyMain, fontOpts: { jpWeights: '400;500;600;700;900' } });
 }
 
 // ---------------------------------------------------------------------

@@ -836,6 +836,14 @@ ol.article-list li {
   height: auto;
 }
 
+.article-figure--video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #0c1f16; /* terminal dark green — only visible before the first frame paints */
+  border-radius: var(--radius-md);
+}
+
 .article-figure figcaption {
   padding-top: var(--space-sm);
   font-size: 14px;

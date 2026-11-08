@@ -115,9 +115,9 @@ body {
    English/Roman letters (Approach, Expertise, Studio...) even on this
    page — only the FAQs pill ("よくある質問") is actually Japanese, so
    this can't be folded into the shared JA font-family rule above.
-   Kode Mono for the Roman text; Japanese falls back to Noto Sans JP. */
+   Lust for the Roman text; Japanese falls back to Noto Sans JP. */
 .section-label {
-  font-family: 'Kode Mono', 'Noto Sans JP', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-family: 'lust', 'Noto Sans JP', serif;
 }
 
 /* .stats-intro-text's 325px max-width (styles.css) is tuned for the
@@ -190,7 +190,7 @@ body {
    — its pill ("AI対応型デザインシステム") is also actual Japanese
    content, same exception as the tools page pills above. */
 .ai-systems-section .section-label {
-  font-family: 'Kode Mono', 'Noto Sans JP', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-family: 'lust', 'Noto Sans JP', serif;
   letter-spacing: 0;
 }
 
@@ -220,8 +220,8 @@ body {
   font-size: min(110px, 6.8vw);
 }
 
-/* Stats: Kode Mono has no Japanese glyphs, so kanji such as 億 fall back to
-   Noto Sans JP at a matching weight instead of a thin system font. */
+/* Stats: Lust has no Japanese glyphs, so kanji such as 億 fall back to
+   Noto Sans JP instead of a thin system font. */
 .stat-number {
-  font-family: 'Kode Mono', 'Noto Sans JP', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-family: 'lust-display', 'Noto Sans JP', serif;
 }

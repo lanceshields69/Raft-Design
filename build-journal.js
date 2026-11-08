@@ -264,11 +264,11 @@ const THEME_HEAD_SCRIPT = `  <script>
     }
   </script>`;
 
-function fontLink(lang, { jpWeights, interWeights = '200;14..32,300;14..32,400;14..32,500;14..32,900' } = {}) {
+function fontLink(lang, { jpWeights, interWeights = '200;14..32,300;14..32,400;14..32,500;14..32,900', kode = true, typekit = false } = {}) {
   jpWeights = jpWeights || (lang === 'ja' ? '400;500;600;900' : '900');
   return `  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,${interWeights}&family=Noto+Sans+JP:wght@${jpWeights}&family=Kode+Mono:wght@500;700&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">`;
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,${interWeights}&family=Noto+Sans+JP:wght@${jpWeights}${kode ? '&family=Kode+Mono:wght@500;700' : ''}&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">${typekit ? '\n  <link rel="stylesheet" href="https://use.typekit.net/tqh2fwb.css">' : ''}`;
 }
 
 // Calendly booking modal (opens from the nav CTA). Copied from the live pages; only the close label is per-language.
@@ -687,7 +687,7 @@ ${jsonLd({
   // Hero copy is hand-written per language (the intro line differs from the meta description).
   const hero = isJa ? `    <section class="page-hero" style="max-width:1920px">
       <div style="max-width:900px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px">
-        <span class="eyebrow-mono" style="letter-spacing:var(--tracking-section-title);line-height:var(--line-height-eyebrow);text-transform:uppercase;color:var(--text-accent)">ジャーナル</span>
+        <span class="eyebrow-serif" style="letter-spacing:var(--tracking-section-title);line-height:var(--line-height-eyebrow);text-transform:uppercase;color:var(--text-accent)">ジャーナル</span>
         <!-- max-width raised 800px -> 900px: at 800px this headline wrapped
              to 2 lines with just "る。" orphaned alone on the second line;
              900px is wide enough for it to fit on one line at every
@@ -698,7 +698,7 @@ ${jsonLd({
       </div>
     </section>` : `    <section class="page-hero" style="max-width:1920px">
       <div style="max-width:800px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px">
-        <span class="eyebrow-mono" style="letter-spacing:var(--tracking-section-title);line-height:var(--line-height-eyebrow);text-transform:uppercase;color:var(--text-accent)">Journal</span>
+        <span class="eyebrow-serif" style="letter-spacing:var(--tracking-section-title);line-height:var(--line-height-eyebrow);text-transform:uppercase;color:var(--text-accent)">Journal</span>
         <h1 style="font-weight:700;font-size:clamp(40px,8vw,79px);line-height:.95;letter-spacing:-2px;margin:0">A closer look at what's next.</h1>
         <p style="font-size:20px;line-height:1.4;color:var(--text-primary);max-width:559px;margin:0">Essays on how AI is changing design, and what it means for the brands and products we build.</p>
       </div>
@@ -718,8 +718,8 @@ ${cardsHtml.join('\n')}
   const extraCss = isJa ? '\n  <link rel="stylesheet" href="../ja.css">' : '';
 
   const fontOpts = isJa
-    ? { jpWeights: '400;500;600;700;900' }
-    : { interWeights: '200;14..32,300;14..32,400;14..32,500;14..32,700;14..32,900' };
+    ? { jpWeights: '400;500;600;700;900', kode: false, typekit: true }
+    : { interWeights: '200;14..32,300;14..32,400;14..32,500;14..32,700;14..32,900', kode: false, typekit: true };
 
   return page({ lang, stylesPath, imagesPath, extraCss, head, journalHref, langSwitch, bodyMain, fontOpts });
 }

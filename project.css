@@ -202,12 +202,11 @@
   max-width: 36ch;
 }
 
-/* Matches journal.css's .stat-bar-value styling (Kode Mono Medium, brand
-   green, 36px/36px). Needs Kode Mono loaded via the page's Google Fonts
-   <link>, alongside the Inter/Noto Sans JP/Playfair Display request. */
+/* Brand green, 36px/36px, Lust Regular. Needs the Typekit <link> (use.typekit.net/tqh2fwb.css)
+   on the page, alongside the Google Fonts request. */
 .project-page .project-metric-value {
-  font-family: 'Kode Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-  font-weight: 500;
+  font-family: 'lust', 'Noto Sans JP', serif; /* 36px is under 72, so Lust Regular */
+  font-weight: 400;
   font-size: var(--font-size-heading-1);
   line-height: var(--line-height-heading-large);
   letter-spacing: 0.4px;

@@ -2886,6 +2886,13 @@ html[lang="en"] body.home .emphasis {
   margin: 0;
 }
 
+/* "Raft" accent in the sunken panel: Lust Regular (under 72px) on the EN pages
+   (home, About, Services, Labs). JA keeps its own .emphasis (ja.css). */
+html[lang="en"] .connect-cta-sunken-heading .emphasis {
+  font-family: 'lust', serif;
+  font-weight: 400;
+}
+
 .connect-cta-solid {
   padding: 20px 60px;
   font-size: var(--font-size-body-lg);

@@ -21,6 +21,7 @@ const ORG_SAME_AS = [
   'https://clutch.co/profile/raft-design',
   'https://www.designrush.com/agency/profile/raft-design',
   'https://github.com/Raft-Design',
+  'https://www.crunchbase.com/organization/raft-design',
   'https://upstreamjournal.substack.com/',
   'https://note.com/raftdesign',
   'https://x.com/raftdesignco',
